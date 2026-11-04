@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style 1 (archive)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ====== TOKENS (source de vérité : docs/02-design-system.md) ====== */
+:root{
+  --bg:#F4EFE6; --surface:#FFFDF8; --surface-2:#EAE3D6;
+  --ink:#17141C; --ink-soft:#4A4452; --line:#17141C; --shadow:#17141C;
+  --lime:#C8FF3D; --pink:#FF4F9A; --violet:#7C5CFF; --cyan:#2EE6F2;
+  --orange:#FF8A3D; --yellow:#FFD23D; --bad:#FF4D4D;
+  --on-accent:#17141C; --term-hl:color-mix(in srgb,#FFD23D 85%,transparent); --tape:#17141C;
+  --r-card:18px; --bw:2.5px;
+  --dur-fast:150ms; --dur-med:250ms; --dur-slow:450ms;
+  --ease-pop:cubic-bezier(.34,1.56,.64,1);
+  --f-display:"Fredoka",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,sans-serif;
+  --f-mono:"Space Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#110F15; --surface:#1C1922; --surface-2:#26222E;
+    --ink:#F4EFE6; --ink-soft:#B9B1C4; --line:#3A3444; --shadow:var(--course,#7C5CFF);
+    --violet:#9B82FF; --bad:#FF6B6B; --term-hl:color-mix(in srgb,#FFD23D 32%,transparent); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#110F15; --surface:#1C1922; --surface-2:#26222E;
+  --ink:#F4EFE6; --ink-soft:#B9B1C4; --line:#3A3444; --shadow:var(--course,#7C5CFF);
+  --violet:#9B82FF; --bad:#FF6B6B; --term-hl:color-mix(in srgb,#FFD23D 32%,transparent); color-scheme:dark;
+}
+
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;
+  background-image:radial-gradient(color-mix(in srgb,var(--ink) 9%,transparent) 1px,transparent 1.4px);background-size:18px 18px;}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px dashed var(--violet);outline-offset:3px}
+
+/* ====== PAGE ====== */
+.page{max-width:1400px;margin:0 auto;padding:28px 16px 80px}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:24px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1;letter-spacing:-.01em;position:relative}
+.brand em{font-style:normal;background:var(--lime);color:var(--on-accent);padding:0 .18em;border:var(--bw) solid var(--line);border-radius:12px;display:inline-block;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--shadow)}
+.sub{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-top:10px}
+.section-title{font-family:var(--f-display);font-weight:600;font-size:24px;margin:40px 0 16px;display:flex;align-items:center;gap:10px}
+
+/* ====== KIT ====== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;
+  border:var(--bw) solid var(--line);background:var(--surface);font-family:var(--f-display);font-weight:600;font-size:16px;
+  box-shadow:4px 4px 0 var(--shadow);transition:transform var(--dur-fast),box-shadow var(--dur-fast)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow)}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--shadow)}
+.btn.primary{background:var(--course,var(--lime));color:var(--on-accent)}
+.btn.block{width:100%}
+.card{background:var(--surface);border:var(--bw) solid var(--line);border-radius:var(--r-card);box-shadow:4px 4px 0 var(--shadow)}
+.sticker{display:inline-block;font-family:var(--f-mono);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+  padding:3px 8px;border:2px solid var(--line);border-radius:8px;background:var(--course,var(--yellow));color:var(--on-accent);transform:rotate(-3deg)}
+.sticker.r{transform:rotate(3deg)}
+.mono{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.term{background:linear-gradient(transparent 40%,var(--term-hl) 40%);border:0;border-bottom:2px dotted var(--ink);
+  padding:0 2px;font:inherit;font-weight:800;line-height:inherit;cursor:pointer;color:inherit;border-radius:0}
+.bar{height:12px;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.bar>i{display:block;height:100%;background:repeating-linear-gradient(-45deg,var(--course,var(--lime)) 0 8px,color-mix(in srgb,var(--course,var(--lime)) 70%,#000) 8px 16px);
+  background-size:22px 22px;animation:stripes 1s linear infinite}
+@keyframes stripes{to{background-position:22px 0}}
+
+/* tokens strip */
+.tokens{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.swatch{padding:10px;border-radius:14px;border:var(--bw) solid var(--line)}
+.swatch b{display:block;height:44px;border-radius:10px;border:2px solid var(--line);margin-bottom:8px}
+.fonts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+.fonts .card{padding:16px}
+
+/* ====== PHONES ====== */
+.screens{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:28px;align-items:start}
+.label{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.label span{background:var(--ink);color:var(--bg);border-radius:6px;padding:2px 7px}
+.phone{position:relative;width:100%;max-width:360px;height:740px;margin:0 auto;border:3px solid var(--line);border-radius:38px;
+  background:var(--bg);overflow:hidden;box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column}
+.phone .scroll{flex:1;overflow:auto;padding:14px 16px 16px;position:relative;z-index:1;scrollbar-width:none}
+.status{display:flex;justify-content:space-between;padding:10px 22px 4px;font-family:var(--f-mono);font-size:11px;position:relative;z-index:1}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--bw) solid var(--line);background:var(--surface);position:relative;z-index:2}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 0 12px;font-family:var(--f-mono);font-size:10px;text-transform:uppercase;text-decoration:none;color:var(--ink-soft)}
+.nav a.on{color:var(--ink)} .nav a.on i{background:var(--lime);color:var(--on-accent);border:2px solid var(--line)}
+.nav i{font-style:normal;font-size:18px;width:40px;height:28px;display:grid;place-items:center;border-radius:999px;border:2px solid transparent}
+
+/* blobs */
+.blob{position:absolute;z-index:0;opacity:.9;pointer-events:none}
+.blob path{animation:morph 18s ease-in-out infinite alternate}
+@keyframes morph{
+  0%{d:path("M60,-58C76,-41,86,-20,85,-1C84,18,71,37,55,52C39,67,19,79,-3,82C-25,85,-50,79,-64,63C-78,47,-81,23,-79,1C-77,-21,-70,-42,-55,-58C-40,-74,-20,-85,0,-85C20,-85,44,-75,60,-58Z")}
+  50%{d:path("M52,-50C68,-36,82,-18,83,1C84,20,72,40,56,55C40,70,20,80,-2,82C-24,84,-48,78,-62,62C-76,46,-80,23,-77,3C-74,-17,-64,-34,-50,-48C-36,-62,-18,-73,1,-74C20,-75,36,-64,52,-50Z")}
+  100%{d:path("M66,-63C82,-49,88,-25,86,-2C84,21,74,42,58,58C42,74,21,85,-2,87C-25,89,-50,82,-63,66C-76,50,-77,25,-75,2C-73,-21,-68,-42,-54,-56C-40,-70,-20,-77,2,-79C24,-81,50,-77,66,-63Z")}
+}
+
+/* marquee */
+.marquee{margin:6px -16px 14px;border-block:var(--bw) solid var(--line);background:var(--tape);color:var(--lime);overflow:hidden;transform:rotate(-2deg)}
+.marquee div{display:inline-block;white-space:nowrap;padding:6px 0;font-family:var(--f-mono);font-weight:700;font-size:12px;letter-spacing:.1em;animation:marq 14s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* home */
+.hud{display:flex;justify-content:space-between;align-items:center}
+.avatar{width:38px;height:38px;border-radius:50%;border:var(--bw) solid var(--line);display:grid;place-items:center;background:var(--pink);font-size:20px}
+.streak{display:flex;align-items:center;gap:6px;background:var(--orange);color:var(--on-accent);border:2px solid var(--line);border-radius:999px;padding:4px 10px;font-family:var(--f-mono);font-weight:700;font-size:13px;animation:pop 2.4s var(--ease-pop) infinite}
+@keyframes pop{0%,85%,100%{transform:scale(1)}90%{transform:scale(1.15) rotate(-4deg)}}
+.today{padding:16px;position:relative;overflow:hidden;--course:var(--lime)}
+.today .big{font-family:var(--f-display);font-weight:700;font-size:64px;line-height:.9}
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.course{padding:12px;position:relative;min-height:128px;display:flex;flex-direction:column;justify-content:space-between;transition:transform var(--dur-fast)}
+.course:hover{transform:rotate(-1.5deg) translateY(-2px)}
+.course .dot{width:30px;height:30px;border-radius:10px;border:2px solid var(--line);background:var(--course);display:grid;place-items:center;font-size:16px}
+.course h4{font-family:var(--f-display);font-weight:600;font-size:15px;line-height:1.15;margin-top:8px}
+.ring{--p:40;width:38px;height:38px;border-radius:50%;background:conic-gradient(var(--course) calc(var(--p)*1%),var(--surface-2) 0);border:2px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:9px;font-weight:700}
+.ring::before{content:"";position:absolute}
+.course .sticker{position:absolute;top:-9px;right:-6px}
+
+/* reader */
+.reader h2{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.05;margin:10px 0 4px}
+.squiggle{display:block;width:120px;height:12px;margin-bottom:12px}
+.squiggle path{stroke:var(--course,var(--pink));stroke-width:4;fill:none;stroke-linecap:round;stroke-dasharray:200;stroke-dashoffset:200;animation:draw 1.2s .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.para{margin:12px 0}
+.para .fr{font-size:16.5px;line-height:1.7}
+.para .en{font-size:15px;line-height:1.6;color:var(--ink-soft);margin-top:6px;padding-left:12px;border-left:3px solid var(--course,var(--pink))}
+.para .en::before{content:"EN ";font-family:var(--f-mono);font-size:10px;font-weight:700;color:var(--ink)}
+.callout{padding:12px;margin:14px 0;background:var(--surface-2);border:2px dashed var(--line);border-radius:14px;font-size:14.5px}
+.callout .mono{display:block;margin-bottom:4px;font-weight:700}
+.pop{position:absolute;left:28px;right:20px;top:330px;padding:12px;z-index:5;animation:rise var(--dur-med) var(--ease-pop) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px) scale(.96)}}
+.pop .pair{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.chip{font-family:var(--f-mono);font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;border:2px solid var(--line)}
+.langt{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden;font-family:var(--f-mono);font-size:11px;font-weight:700}
+.langt b{padding:4px 9px}.langt b.on{background:var(--ink);color:var(--bg)}
+
+/* flashcard */
+.flip{perspective:1000px;height:360px;margin:16px 0;cursor:pointer}
+.flip .in{position:relative;height:100%;transition:transform var(--dur-slow) var(--ease-pop);transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.face.back{transform:rotateY(180deg);background:var(--surface)}
+.face.front{background:var(--course);color:var(--on-accent)}
+.face .q{font-family:var(--f-display);font-weight:600;font-size:26px;line-height:1.15}
+.fsrs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.fsrs button{border:2px solid var(--line);border-radius:14px;padding:8px 2px;background:var(--surface);font-family:var(--f-display);font-weight:600;font-size:13px;box-shadow:3px 3px 0 var(--shadow)}
+.fsrs small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--ink-soft)}
+
+/* quiz */
+.statement{padding:16px;font-size:17px;line-height:1.55;font-weight:600}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.tf .btn{font-size:20px;min-height:64px;border-radius:18px}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px) rotate(-1deg)}75%{transform:translateX(6px) rotate(1deg)}}
+.feedback{display:none;padding:14px;margin-top:6px;animation:rise var(--dur-med) var(--ease-pop) both}
+.feedback.show{display:block}
+.xp{position:absolute;left:50%;top:45%;font-family:var(--f-display);font-weight:700;font-size:28px;color:var(--ink);background:var(--lime);border:2px solid var(--line);border-radius:999px;padding:2px 12px;pointer-events:none;animation:fly 1s ease-out forwards;z-index:9}
+@keyframes fly{from{opacity:1;transform:translate(-50%,0) scale(.8)}to{opacity:0;transform:translate(-50%,-90px) scale(1.2)}}
+textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:var(--bw) solid var(--line);border-radius:14px;padding:10px 12px}
+
+/* writing */
+.cloze{font-size:19px;line-height:2;font-weight:600;padding:16px}
+.cloze input{display:inline-block;width:130px;padding:2px 8px;border-radius:10px;font-weight:800;text-align:center}
+.cloze input.ok{background:var(--lime);color:var(--on-accent)} .cloze input.ko{border-color:var(--bad);animation:shake .3s}
+.levels{display:flex;gap:6px;margin:10px 0}
+.levels b{flex:1;text-align:center;font-family:var(--f-mono);font-size:10px;padding:5px 0;border:2px solid var(--line);border-radius:10px;background:var(--surface)}
+.levels b.on{background:var(--cyan);color:var(--on-accent)}
+
+/* game */
+.code{font-family:var(--f-display);font-weight:700;font-size:72px;letter-spacing:.08em;text-align:center;line-height:1;margin:6px 0;
+  text-shadow:4px 4px 0 var(--pink)}
+.qr{width:132px;height:132px;margin:8px auto;border:var(--bw) solid var(--line);border-radius:14px;background:
+  conic-gradient(var(--ink) 25%,transparent 0 50%,var(--ink) 0 75%,transparent 0) 0 0/22px 22px,var(--surface);padding:6px;position:relative}
+.qr::after{content:"";position:absolute;inset:44px;background:var(--surface);border:3px solid var(--ink);border-radius:6px}
+.players{display:flex;gap:10px;justify-content:center;margin:14px 0}
+.players div{text-align:center;font-family:var(--f-mono);font-size:10px;animation:rise .5s var(--ease-pop) both}
+.players div:nth-child(2){animation-delay:.15s}.players div:nth-child(3){animation-delay:.3s}
+.players .avatar{width:52px;height:52px;font-size:26px;margin-bottom:4px}
+.wait{animation:blink 1.2s steps(2) infinite}@keyframes blink{50%{opacity:.25}}
+
+/* desktop */
+.desk{border:3px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:8px 8px 0 var(--shadow);background:var(--bg);display:grid;grid-template-columns:72px 1fr;min-height:420px}
+.rail{background:var(--surface);border-right:var(--bw) solid var(--line);display:flex;flex-direction:column;align-items:center;gap:14px;padding:16px 0;font-size:20px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px 28px}
+.cols .col h5{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;margin-bottom:8px}
+.cols p{font-size:17px;line-height:1.7;max-width:62ch;margin-bottom:12px}
+.cols .col.en p{color:var(--ink-soft);font-size:16px}
+@media (max-width:760px){.desk{grid-template-columns:1fr}.rail{display:none}.cols{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
+  .marquee div{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="top">
+    <div>
+      <h1 class="brand">Révision <em>M2</em> ✦ Punk Study</h1>
+      <p class="sub">Maquette de référence v1 · polices rondes · formes abstraites · touche punk/gaming · bilingue FR+EN</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="theme">🌗 Thème</button>
+      <button class="btn primary" id="motion">⏸ Animations</button>
+    </div>
+  </header>
+
+  <h2 class="section-title">🎨 Tokens</h2>
+  <div class="tokens">
+    <div class="swatch card"><b style="background:var(--lime)"></b><span class="mono">lime · ISI1</span></div>
+    <div class="swatch card"><b style="background:var(--pink)"></b><span class="mono">pink · REC1</span></div>
+    <div class="swatch card"><b style="background:var(--violet)"></b><span class="mono">violet · INF4</span></div>
+    <div class="swatch card"><b style="background:var(--cyan)"></b><span class="mono">cyan · ISI5</span></div>
+    <div class="swatch card"><b style="background:var(--orange)"></b><span class="mono">orange · série</span></div>
+    <div class="swatch card"><b style="background:var(--yellow)"></b><span class="mono">yellow · termes</span></div>
+    <div class="swatch card"><b style="background:var(--bad)"></b><span class="mono">bad · erreur</span></div>
+    <div class="swatch card"><b style="background:var(--ink)"></b><span class="mono">ink</span></div>
+  </div>
+  <div class="fonts">
+    <div class="card"><span class="mono">Display · Fredoka</span><p style="font-family:var(--f-display);font-weight:700;font-size:34px;line-height:1.1">Validité interne</p></div>
+    <div class="card"><span class="mono">Lecture · Nunito</span><p style="font-size:17px;line-height:1.7">Une étude est solide quand on peut écarter les <span class="term">explications alternatives</span>.</p></div>
+    <div class="card"><span class="mono">HUD · Space Mono</span><p class="mono" style="font-size:18px;font-weight:700">⏱ 12:48 · 3/10 · +40 XP</p></div>
+  </div>
+
+  <h2 class="section-title">📱 Écrans mobiles <span class="sticker">cliquables</span></h2>
+  <div class="screens">
+
+    <!-- 1 ACCUEIL -->
+    <div>
+      <div class="label"><span>01</span> Accueil</div>
+      <div class="phone">
+        <svg class="blob" style="right:-70px;top:60px;width:230px" viewBox="-100 -100 200 200" aria-hidden="true"><path fill="var(--violet)" opacity=".35" d="M60,-58C76,-41,86,-20,85,-1C84,18,71,37,55,52C39,67,19,79,-3,82C-25,85,-50,79,-64,63C-78,47,-81,23,-79,1C-77,-21,-70,-42,-55,-58C-40,-74,-20,-85,0,-85C20,-85,44,-75,60,-58Z"/></svg>
+        <div class="status"><span>9:41</span><span>● ● ●</span></div>
+        <div class="scroll">
+          <div class="hud">
+            <div style="display:flex;gap:10px;align-items:center"><div class="avatar">🦊</div><div><div class="mono" style="color:var(--ink-soft)">salut</div><b style="font-family:var(--f-display);font-size:18px">renard_punk</b></div></div>
+            <div class="streak">🔥 5 J</div>
+          </div>
+          <div class="marquee"><div>REVISION MODE ON ✦ CONTRÔLES J-6 ✦ ISI1 · REC1 · INF4 ✦ NO PAIN NO GAIN ✦ REVISION MODE ON ✦ CONTRÔLES J-6 ✦ ISI1 · REC1 · INF4 ✦ NO PAIN NO GAIN ✦&nbsp;</div></div>
+          <div class="card today">
+            <span class="mono">À revoir aujourd'hui</span>
+            <div style="display:flex;align-items:end;justify-content:space-between;margin:6px 0 12px">
+              <div class="big">23</div><div class="mono" style="text-align:right">cartes<br>≈ 9 min</div>
+            </div>
+            <button class="btn primary block">C'est parti →</button>
+          </div>
+          <div class="courses">
+            <div class="card course" style="--course:var(--lime)"><span class="sticker">J-6</span><div class="dot">📐</div><h4>Ingénierie des exigences</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="mono">ISI1</span><div class="ring" style="--p:20">20%</div></div></div>
+            <div class="card course" style="--course:var(--pink)"><span class="sticker r">J-7</span><div class="dot">🔬</div><h4>Méthodes de recherche</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="mono">REC1</span><div class="ring" style="--p:55">55%</div></div></div>
+            <div class="card course" style="--course:var(--violet)"><span class="sticker">J-8</span><div class="dot">🧬</div><h4>Product Line Engineering</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="mono">INF4</span><div class="ring" style="--p:35">35%</div></div></div>
+            <div class="card course" style="--course:var(--cyan)"><div class="dot">🛡️</div><h4>Sécurité des SI</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="mono">ISI5</span><div class="ring" style="--p:0">0%</div></div></div>
+          </div>
+        </div>
+        <nav class="nav"><a class="on"><i>⌂</i>Accueil</a><a><i>✎</i>Réviser</a><a><i>🎮</i>Jouer</a><a><i>☺</i>Profil</a></nav>
+      </div>
+    </div>
+
+    <!-- 2 LECTEUR -->
+    <div>
+      <div class="label"><span>02</span> Cours narratif bilingue</div>
+      <div class="phone" style="--course:var(--pink)">
+        <div class="status"><span>9:41</span><span>● ● ●</span></div>
+        <div style="padding:4px 16px 0;position:relative;z-index:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span class="mono">← REC1 · Ch.5</span><span class="langt"><b>FR</b><b class="on">FR+EN</b><b>EN</b></span></div>
+          <div class="bar"><i style="width:38%"></i></div>
+        </div>
+        <div class="scroll reader">
+          <span class="sticker">Chapitre 5 · 12 min</span>
+          <h2>Ta recherche tient-elle debout ?</h2>
+          <svg class="squiggle" viewBox="0 0 120 12" aria-hidden="true"><path d="M2 8 Q 12 0 22 8 T 42 8 T 62 8 T 82 8 T 102 8 T 118 6"/></svg>
+          <div class="para">
+            <p class="fr">Léa a fini ses entretiens. Avant d'écrire sa conclusion, sa directrice lui pose une seule question : « Es-tu sûre que c'est bien <button class="term" data-pop>ta variable</button> qui explique le résultat ? » C'est la question de la <button class="term" data-pop>validité interne</button>.</p>
+            <p class="en">Before writing her conclusion, Léa must check her <b>internal validity</b>: is her variable really what explains the result?</p>
+          </div>
+          <div class="callout"><span class="mono">🎯 Piège d'examen</span>Validité <b>interne</b> = l'étude est bien menée. Validité <b>externe</b> = on peut généraliser. Ne les inverse pas !</div>
+          <div class="card pop" id="pop" hidden>
+            <div class="pair"><span class="chip" style="background:var(--yellow);color:var(--on-accent)">FR · validité interne</span><span class="chip" style="background:var(--pink);color:var(--on-accent)">EN · internal validity</span></div>
+            <p style="font-size:14px"><b>Déf.</b> Degré auquel l'étude contrôle les variables parasites et écarte les explications alternatives.</p>
+            <p style="font-size:13px;color:var(--ink-soft);margin-top:4px"><i>The study controls extraneous variables and rules out alternative explanations.</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 FLASHCARD -->
+    <div>
+      <div class="label"><span>03</span> Flashcards (FSRS)</div>
+      <div class="phone" style="--course:var(--violet)">
+        <svg class="blob" style="left:-90px;bottom:80px;width:240px" viewBox="-100 -100 200 200" aria-hidden="true"><path fill="var(--lime)" opacity=".35" d="M60,-58C76,-41,86,-20,85,-1C84,18,71,37,55,52C39,67,19,79,-3,82C-25,85,-50,79,-64,63C-78,47,-81,23,-79,1C-77,-21,-70,-42,-55,-58C-40,-74,-20,-85,0,-85C20,-85,44,-75,60,-58Z"/></svg>
+        <div class="status"><span>9:41</span><span>● ● ●</span></div>
+        <div class="scroll">
+          <div style="display:flex;justify-content:space-between"><span class="mono">INF4 · Flashcards</span><span class="mono">7 / 23</span></div>
+          <div class="bar" style="margin-top:8px"><i style="width:30%"></i></div>
+          <div class="flip" id="flip" role="button" tabindex="0" aria-label="Retourner la carte">
+            <div class="in">
+              <div class="face front card"><span class="sticker" style="background:#FFFDF8;align-self:flex-start">Question · FR</span><p class="q">Qu'est-ce que la <u>variabilité</u> dans une ligne de produits ?</p><span class="mono" style="opacity:.7">touche pour retourner ↻</span></div>
+              <div class="face back card"><span class="sticker" style="align-self:flex-start">Réponse</span>
+                <p style="font-size:16px;line-height:1.55"><b>FR</b> — Ce qui <b>change</b> d'un produit à l'autre de la ligne (par opposition à la communalité).</p>
+                <p style="font-size:15px;line-height:1.55;color:var(--ink-soft)"><b>EN</b> — <i>Variability</i> is what <b>differs</b> between products of the line (vs. <i>commonality</i>).</p></div>
+            </div>
+          </div>
+          <div class="fsrs">
+            <button>Encore<small>1 min</small></button><button>Difficile<small>8 min</small></button><button style="background:var(--lime);color:var(--on-accent)">Bien<small style="color:inherit">2 j</small></button><button>Facile<small>5 j</small></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 QUIZ -->
+    <div>
+      <div class="label"><span>04</span> Vrai / Faux justifié</div>
+      <div class="phone" style="--course:var(--lime)" id="quizPhone">
+        <div class="status"><span>9:41</span><span>● ● ●</span></div>
+        <div class="scroll">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span class="mono">ISI1 · Partiel 2013 · Q4</span><span class="sticker r" style="background:var(--orange)">⏱ 00:42</span></div>
+          <div class="card statement" style="margin-top:14px" id="stmt">
+            Dans KAOS, le lien de décomposition <b>OR</b> est formellement équivalent au <b>XOR</b>.
+            <p style="font-size:14px;font-weight:400;color:var(--ink-soft);margin-top:8px">EN · In KAOS, the OR-refinement link is formally equivalent to XOR.</p>
+          </div>
+          <div class="tf"><button class="btn" data-a="true">VRAI</button><button class="btn" data-a="false">FAUX</button></div>
+          <div class="card feedback" id="fb">
+            <span class="sticker" style="background:var(--lime)">Correct · FAUX</span>
+            <p style="font-size:14.5px;margin-top:10px"><b>FR</b> — OR signifie qu'<b>au moins un</b> sous-but suffit ; plusieurs peuvent être satisfaits. XOR exigerait <b>exactement un</b>.</p>
+            <p style="font-size:14px;color:var(--ink-soft);margin-top:6px"><b>EN</b> — OR means <i>at least one</i> sub-goal is enough; XOR would mean <i>exactly one</i>.</p>
+            <button class="btn primary block" style="margin-top:12px">Question suivante →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 ATELIER ANGLAIS -->
+    <div>
+      <div class="label"><span>05</span> Atelier anglais · niveau 2</div>
+      <div class="phone" style="--course:var(--cyan)">
+        <svg class="blob" style="right:-80px;bottom:40px;width:220px" viewBox="-100 -100 200 200" aria-hidden="true"><path fill="var(--pink)" opacity=".3" d="M60,-58C76,-41,86,-20,85,-1C84,18,71,37,55,52C39,67,19,79,-3,82C-25,85,-50,79,-64,63C-78,47,-81,23,-79,1C-77,-21,-70,-42,-55,-58C-40,-74,-20,-85,0,-85C20,-85,44,-75,60,-58Z"/></svg>
+        <div class="status"><span>9:41</span><span>● ● ●</span></div>
+        <div class="scroll">
+          <span class="mono">REC1 · Écrire en anglais</span>
+          <div class="levels"><b>1 ORDRE</b><b class="on">2 TROUS</b><b>3 ERREUR</b><b>4 LIBRE</b></div>
+          <p style="font-size:15px;margin:8px 0"><b>Consigne :</b> complète avec le terme technique exact.</p>
+          <div class="card cloze">Internal validity <input type="text" id="cz" aria-label="mot manquant" placeholder="…"> extraneous variables and rules out alternative explanations.</div>
+          <p style="font-size:13px;color:var(--ink-soft);margin:10px 2px">FR · La validité interne <i>contrôle</i> les variables parasites…</p>
+          <button class="btn primary block" id="czb">Vérifier</button>
+          <p class="mono" style="margin-top:10px;color:var(--ink-soft)">indice : verbe, 3ᵉ pers. sing. (c….)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 JEU -->
+    <div>
+      <div class="label"><span>06</span> Quiz Battle · salle</div>
+      <div class="phone" style="--course:var(--pink)">
+        <svg class="blob" style="left:-60px;top:40px;width:200px" viewBox="-100 -100 200 200" aria-hidden="true"><path fill="var(--cyan)" opacity=".35" d="M60,-58C76,-41,86,-20,85,-1C84,18,71,37,55,52C39,67,19,79,-3,82C-25,85,-50,79,-64,63C-78,47,-81,23,-79,1C-77,-21,-70,-42,-55,-58C-40,-74,-20,-85,0,-85C20,-85,44,-75,60,-58Z"/></svg>
+        <div class="status"><span>9:41</span><span>● ● ●</span></div>
+        <div class="scroll" style="text-align:center">
+          <span class="sticker">🎮 Quiz Battle · hôte</span>
+          <p class="mono" style="margin-top:16px">code de la salle</p>
+          <div class="code">K7PX</div>
+          <div class="qr" aria-label="QR code"></div>
+          <p class="mono wait">en attente des joueurs…</p>
+          <div class="players">
+            <div><div class="avatar">🦊</div>renard_punk</div>
+            <div><div class="avatar" style="background:var(--lime)">🐸</div>gr3nouille</div>
+            <div><div class="avatar" style="background:var(--cyan)">👾</div>byte_me</div>
+          </div>
+          <p class="mono" style="margin-bottom:10px">ISI1 + REC1 · 10 questions · 20 s</p>
+          <button class="btn primary block">Lancer la partie ⚡</button>
+          <button class="btn block" style="margin-top:10px">Mode passe-téléphone</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">🖥️ Lecteur sur grand écran <span class="sticker r">FR | EN</span></h2>
+  <div class="desk" style="--course:var(--pink)">
+    <div class="rail"><span>⌂</span><span>✎</span><span>🎮</span><span>☺</span></div>
+    <div>
+      <div style="padding:20px 28px 0"><span class="mono">REC1 · Chapitre 5</span><h3 style="font-family:var(--f-display);font-size:34px;line-height:1.1;margin-top:6px">Ta recherche tient-elle debout ?</h3><div class="bar" style="margin-top:12px;max-width:420px"><i style="width:38%"></i></div></div>
+      <div class="cols">
+        <div class="col"><h5>FRANÇAIS</h5><p>Une recherche est jugée sur quatre critères : l'<span class="term">originalité</span>, la <span class="term">pertinence</span>, la <span class="term">validité</span> et la <span class="term">reproductibilité</span>.</p><p>La validité se coupe en deux : <b>interne</b> (l'étude est bien menée) et <b>externe</b> (on peut généraliser).</p></div>
+        <div class="col en"><h5>ENGLISH</h5><p>Research is judged on four criteria: <span class="term">originality</span>, <span class="term">relevance</span>, <span class="term">validity</span> and <span class="term">reproducibility</span>.</p><p>Validity has two sides: <b>internal</b> (the study is well conducted) and <b>external</b> (findings can be generalised).</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{
+  const cur=root.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  root.dataset.theme=cur==='dark'?'light':'dark';
+};
+let paused=false;
+document.getElementById('motion').onclick=e=>{
+  paused=!paused;
+  document.querySelectorAll('*').forEach(el=>el.style.animationPlayState=paused?'paused':'');
+  e.currentTarget.textContent=paused?'▶ Animations':'⏸ Animations';
+};
+const flip=document.getElementById('flip');
+const toggle=()=>flip.classList.toggle('on');
+flip.onclick=toggle;flip.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}};
+document.querySelectorAll('[data-pop]').forEach(b=>b.onclick=()=>{const p=document.getElementById('pop');p.hidden=!p.hidden});
+const phone=document.getElementById('quizPhone');
+document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{
+  const ok=b.dataset.a==='false';
+  if(ok){
+    b.style.background='var(--lime)';b.style.color='var(--on-accent)';
+    document.getElementById('fb').classList.add('show');
+    const x=document.createElement('div');x.className='xp';x.textContent='+10 XP';phone.appendChild(x);setTimeout(()=>x.remove(),1000);
+  }else{
+    const s=document.getElementById('stmt');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake');
+    s.style.borderColor='var(--bad)';setTimeout(()=>s.style.borderColor='',600);
+  }
+});
+document.getElementById('czb').onclick=()=>{
+  const i=document.getElementById('cz');const v=i.value.trim().toLowerCase();
+  i.classList.remove('ok','ko');void i.offsetWidth;
+  i.classList.add(['controls','controls for'].includes(v)?'ok':'ko');
+};
+</script>
+</body>
+</html>
