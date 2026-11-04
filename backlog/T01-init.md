@@ -2,7 +2,7 @@
 id: T01
 title: "Initialiser le projet (Vite + React + TS + Tailwind)"
 lot: 0
-status: todo
+status: done
 depends: []
 agent: builder
 ---
@@ -28,14 +28,15 @@ Avoir un projet qui démarre, se teste et se vérifie avec une seule commande.
 8. `playwright.config.ts` (webServer = `npm run dev`, projet chromium mobile 390×844) + `tests/e2e/smoke.spec.ts` qui ouvre `/` et voit le titre.
 
 ## Critères d'acceptation
-- [ ] `npm install && npm run check` passe au vert
-- [ ] `npm run build` produit `dist/`
-- [ ] `npm run e2e` passe
-- [ ] Aucun fichier de `docs/`, `backlog/`, `content/`, `ressources/`, `.claude/` modifié
-- [ ] `npm run check` vert
+- [x] `npm install && npm run check` passe au vert
+- [x] `npm run build` produit `dist/`
+- [x] `npm run e2e` passe
+- [x] Aucun fichier de `docs/`, `backlog/`, `content/`, `ressources/`, `.claude/` modifié
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Design, routing, contenu.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+2026-11-04 : squelette Vite 8 + React 19 + Tailwind 4 + Vitest 5 + Playwright ; check, build et e2e verts.
+Écarts : TypeScript épinglé en ~6.0 (typescript-eslint 8 n'accepte pas TS 7) ; react-router résolu en 8.x (archi dit 7) ; ESLint avec @eslint/js + typescript-eslint (config flat) ; @testing-library/dom ajouté (peer de RTL) ; oxlint du scaffold non retenu.
