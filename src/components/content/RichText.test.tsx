@@ -12,7 +12,7 @@ const term: Term = {
 }
 const wrap = (ui: React.ReactNode) => (
   <ReaderContext.Provider
-    value={{ courseId: 'rec1', chapterId: 'c', glossary: new Map([[term.id, term]]) }}
+    value={{ courseId: 'rec1', chapterId: 'c', glossary: new Map([[term.id, term]]), quiz: new Map() }}
   >
     {ui}
   </ReaderContext.Provider>

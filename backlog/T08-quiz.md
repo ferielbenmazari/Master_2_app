@@ -2,7 +2,7 @@
 id: T08
 title: "Quiz Vrai/Faux justifié + QCM"
 lot: 1
-status: todo
+status: done
 depends: [T07]
 agent: builder
 ---
@@ -31,13 +31,16 @@ S'entraîner au format des partiels avec correction expliquée.
 5. Tests : logique de correction (mcq multi-réponses exacte), mélange stable avec graine.
 
 ## Critères d'acceptation
-- [ ] Les 10 items de REC1-05 jouables
-- [ ] « Refaire mes erreurs » ne repropose que les erreurs
-- [ ] Animations coupées en reduced-motion
-- [ ] `npm run check` vert
+- [x] Les 10 items de REC1-05 jouables
+- [x] « Refaire mes erreurs » ne repropose que les erreurs
+- [x] Animations coupées en reduced-motion
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Partiels chronométrés (T14).
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-04 : `src/features/quiz/` (QuizCard réutilisable, QuizRunner/QuizSession/QuizFinal, logique pure `quiz-logic`/`quiz-session`/`quiz-view` testée), `src/lib/shuffle.ts` (mélange avec graine), blocs `checkpoint` du lecteur jouables sur place (`Checkpoint.tsx`, langue de lecture prioritaire, sinon `trainLang`), lien « Revoir le passage du cours » (`lire?q=<quizId>`) depuis l'écran final.
+- Minuteur facultatif : pref `quizTimer` (0/15/30/60 s, défaut 0) réglable dans Profil ; temps écoulé = faux.
+- XP : +10 par bonne réponse, +5 dès le combo x2, affichage seulement (pas de magasin avant T12). Tests Vitest + e2e Playwright (parcours complet REC1-05, clavier, reduced-motion, checkpoint).
+- Écarts : un seul « essai » par question ; pas de liste d'erreurs persistée (la manche d'erreurs vit en session).

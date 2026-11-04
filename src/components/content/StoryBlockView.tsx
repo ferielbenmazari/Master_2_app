@@ -1,13 +1,12 @@
 import { Info, Lightbulb, Sparkles, TriangleAlert, type LucideIcon } from 'lucide-react'
-import { Link } from 'react-router'
 import Icon from '@/components/ui/Icon'
-import Panel from '@/components/ui/Panel'
 import ScrambleText from '@/components/ui/ScrambleText'
 import Squiggle from '@/components/ui/Squiggle'
 import type { StoryBlock } from '@/content/schema'
 import { UI } from '@/i18n/ui'
 import type { Layout } from '@/lib/reader'
 import { parseRich } from '@/lib/rich-text'
+import Checkpoint from './Checkpoint'
 import Bilingual from './Bilingual'
 import MermaidDiagram from './MermaidDiagram'
 import RichText from './RichText'
@@ -202,14 +201,6 @@ export default function StoryBlockView({ block, layout, episode, quizHref, table
       )
 
     case 'checkpoint':
-      return (
-        <Panel hi brackets className="flex flex-col gap-2">
-          <h3 className="display text-base">{UI.reader.checkpoint}</h3>
-          <p className="text-sm text-ink-soft">{UI.reader.checkpointText}</p>
-          <Link to={quizHref} className="btn self-start">
-            {UI.reader.checkpointGo}
-          </Link>
-        </Panel>
-      )
+      return <Checkpoint quizId={block.quizId} quizHref={quizHref} />
   }
 }

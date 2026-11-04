@@ -31,6 +31,14 @@ describe('prefs', () => {
     expect(loadPrefs().pseudo).toBe('Zoé')
   })
 
+  it('minuteur du quiz : désactivé par défaut, valeurs autorisées seulement', () => {
+    expect(loadPrefs().quizTimer).toBe(0)
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ quizTimer: 30 }))
+    expect(loadPrefs().quizTimer).toBe(30)
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ quizTimer: 7 }))
+    expect(loadPrefs().quizTimer).toBe(0)
+  })
+
   it('résout le thème explicite', () => {
     expect(resolveTheme('light')).toBe('light')
     expect(resolveTheme('dark')).toBe('dark')

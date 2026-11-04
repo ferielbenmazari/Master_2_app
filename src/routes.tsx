@@ -3,6 +3,7 @@ import AppLayout from '@/components/layout/AppLayout'
 import CourseScope from '@/components/layout/CourseScope'
 import { UI } from '@/i18n/ui'
 import ChapterHub from '@/pages/ChapterHub'
+import QuizRunner from '@/features/quiz/QuizRunner'
 import Course from '@/pages/Course'
 import Home from '@/pages/Home'
 import Profile from '@/pages/Profile'
@@ -11,7 +12,7 @@ import Soon from '@/pages/Soon'
 import Styleguide from '@/pages/Styleguide'
 import TitledSoon from '@/pages/TitledSoon'
 
-const CHAPTER_VIEWS = ['express', 'fiche', 'flashcards', 'quiz', 'exercices', 'anglais']
+const CHAPTER_VIEWS = ['express', 'fiche', 'flashcards', 'exercices', 'anglais']
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
 export default function AppRoutes() {
@@ -30,6 +31,7 @@ export default function AppRoutes() {
           <Route path="chapitre/:chapterId">
             <Route index element={<ChapterHub />} />
             <Route path="lire" element={<Reader />} />
+            <Route path="quiz" element={<QuizRunner />} />
             {CHAPTER_VIEWS.map((v) => (
               <Route key={v} path={v} element={<Soon />} />
             ))}

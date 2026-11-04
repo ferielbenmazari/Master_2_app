@@ -3,12 +3,17 @@ import type { CourseColor } from '@/lib/course-color'
 export type Theme = 'system' | 'light' | 'dark'
 export type LangMode = 'fr' | 'both' | 'en'
 
+/** Minuteur du quiz en secondes par question ; 0 = désactivé. */
+export type QuizTimer = 0 | 15 | 30 | 60
+export const QUIZ_TIMERS: readonly QuizTimer[] = [0, 15, 30, 60]
+
 export interface Prefs {
   pseudo: string
   avatar: CourseColor
   theme: Theme
   langMode: LangMode
   trainLang: 'fr' | 'en'
+  quizTimer: QuizTimer
 }
 
 export const PREFS_KEY = 'm2rev:prefs'
@@ -20,6 +25,7 @@ export const DEFAULT_PREFS: Prefs = {
   theme: 'system',
   langMode: 'both',
   trainLang: 'fr',
+  quizTimer: 0,
 }
 
 const THEMES: readonly Theme[] = ['system', 'light', 'dark']
@@ -37,6 +43,7 @@ export function loadPrefs(): Prefs {
       theme: THEMES.includes(r.theme as Theme) ? (r.theme as Theme) : DEFAULT_PREFS.theme,
       langMode: LANG_MODES.includes(r.langMode as LangMode) ? (r.langMode as LangMode) : DEFAULT_PREFS.langMode,
       trainLang: r.trainLang === 'en' ? 'en' : 'fr',
+      quizTimer: QUIZ_TIMERS.includes(r.quizTimer as QuizTimer) ? (r.quizTimer as QuizTimer) : DEFAULT_PREFS.quizTimer,
     }
   } catch {
     return { ...DEFAULT_PREFS }

@@ -45,6 +45,7 @@ const prefsSchema = z.object({
   theme: z.enum(['system', 'light', 'dark']),
   langMode: z.enum(['fr', 'both', 'en']),
   trainLang: z.enum(['fr', 'en']),
+  quizTimer: z.union([z.literal(0), z.literal(15), z.literal(30), z.literal(60)]).optional(),
 })
 
 const backupSchema = z.object({

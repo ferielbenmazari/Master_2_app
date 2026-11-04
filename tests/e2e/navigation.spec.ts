@@ -20,7 +20,7 @@ test('accueil → matière → chapitre → mode, en 2 taps depuis l’accueil',
   await expect(page.getByRole('list', { name: 'Modes de révision' }).getByRole('listitem')).toHaveCount(7)
 
   await page.getByRole('link', { name: /^Quiz \d+$/ }).click()
-  await expect(page.getByRole('heading', { name: 'Bientôt ici' })).toBeVisible()
+  await expect(page.getByRole('status', { name: 'Question 1 sur 10' })).toBeVisible()
 })
 
 test('matière sans chapitre : contenu en préparation', async ({ page }) => {

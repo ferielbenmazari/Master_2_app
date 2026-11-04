@@ -1,6 +1,6 @@
 import { BookOpen, ChevronLeft, Check } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router'
+import { Link, Navigate, useParams, useSearchParams } from 'react-router'
 import Bilingual from '@/components/content/Bilingual'
 import { ReaderContext } from '@/components/content/ReaderContext'
 import RichText from '@/components/content/RichText'
@@ -28,6 +28,8 @@ export default function Reader() {
   const course = getCourse(courseId)
   const known = getChapterIndex(courseId).some((c) => c.id === chapterId)
   const { prefs, setPrefs } = usePrefs()
+  const [search] = useSearchParams()
+  const target = search.get('q')
   const wide = useMediaQuery('(min-width: 1024px)')
   const [state, setState] = useState<{ id: string; chapter: Chapter } | null>(null)
   const [ratio, setRatio] = useState(0)
@@ -77,10 +79,17 @@ export default function Reader() {
   }, [chapterId, state?.id])
 
   const chapter = state?.id === chapterId ? state.chapter : null
+
+  // lien « revoir le passage » depuis le quiz : `?q=<quizId>` amène au checkpoint correspondant
+  useEffect(() => {
+    if (!chapter || !target) return
+    document.getElementById(`cp-${target}`)?.scrollIntoView({ block: 'center' })
+  }, [chapter, target])
   const glossary = useMemo(
     () => new Map((chapter?.glossary ?? []).map((t) => [t.id, t])),
     [chapter],
   )
+  const quiz = useMemo(() => new Map((chapter?.quiz ?? []).map((q) => [q.id, q])), [chapter])
   const tableNos = useMemo(() => {
     const m = new Map<StoryBlock, number>()
     for (const b of chapter?.story ?? []) if (b.type === 'table') m.set(b, m.size + 1)
@@ -109,7 +118,7 @@ export default function Reader() {
   }
 
   return (
-    <ReaderContext.Provider value={{ courseId, chapterId, glossary }}>
+    <ReaderContext.Provider value={{ courseId, chapterId, glossary, quiz }}>
       <article className="reader">
         <div className="reader-bar">
           <div className="mb-2 flex items-center justify-between gap-3">

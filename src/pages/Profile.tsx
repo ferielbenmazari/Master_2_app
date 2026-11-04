@@ -9,7 +9,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle'
 import Toast from '@/components/ui/Toast'
 import { UI } from '@/i18n/ui'
 import { exportAll, exportFilename, ImportError, importAll, resetAll } from '@/store/backup'
-import { AVATAR_COLORS } from '@/store/prefs'
+import { AVATAR_COLORS, QUIZ_TIMERS } from '@/store/prefs'
 import { usePrefs } from '@/store/PrefsProvider'
 
 const TRAIN_LANGS = [
@@ -121,6 +121,25 @@ export default function Profile() {
               </button>
             ))}
           </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <span className="text-sm text-ink-soft">{UI.quiz.timer}</span>
+          <div className="lang" role="radiogroup" aria-label={UI.quiz.timer} aria-describedby="quiz-timer-help">
+            {QUIZ_TIMERS.map((n) => (
+              <button
+                key={n}
+                type="button"
+                role="radio"
+                aria-checked={prefs.quizTimer === n}
+                onClick={() => setPrefs({ quizTimer: n })}
+              >
+                {n === 0 ? UI.quiz.timerOff : UI.quiz.timerSec(n)}
+              </button>
+            ))}
+          </div>
+          <span id="quiz-timer-help" className="w-full text-xs text-ink-soft">
+            {UI.quiz.timerHelp}
+          </span>
         </div>
       </Panel>
       <Panel className="flex flex-col gap-3">
