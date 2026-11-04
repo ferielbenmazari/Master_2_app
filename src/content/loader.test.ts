@@ -1,0 +1,38 @@
+import { describe, expect, it } from 'vitest'
+import { getChapterIndex, getCourse, getCourses, getExamIndex, getNotions, loadAllChapters, loadChapter, loadExam } from './loader'
+
+const REC1_05 = 'rec1-05-qualite-validite-ethique'
+
+describe('loader', () => {
+  it('liste les 4 matières', () => {
+    expect(getCourses().map((c) => c.id)).toEqual(['inf4', 'isi1', 'isi5', 'rec1'])
+    expect(getCourse('rec1')?.code).toBe('S3-REC1')
+    expect(getCourse('zzz')).toBeUndefined()
+  })
+
+  it('indexe les chapitres sans les charger', () => {
+    expect(getChapterIndex('rec1')).toEqual([
+      { id: REC1_05, courseId: 'rec1', order: 5, path: `/content/rec1/chapters/05-qualite-validite-ethique.json` },
+    ])
+    expect(getChapterIndex('isi1')).toEqual([])
+  })
+
+  it('charge un chapitre validé, avec cache', async () => {
+    const a = await loadChapter(REC1_05)
+    expect(a.courseId).toBe('rec1')
+    expect(a.quiz.length).toBeGreaterThanOrEqual(8)
+    expect(await loadChapter(REC1_05)).toBe(a)
+    expect(await loadAllChapters('rec1')).toHaveLength(1)
+  })
+
+  it('rejette un chapitre ou un examen inconnu', async () => {
+    await expect(loadChapter('rec1-99-nope')).rejects.toThrow(/introuvable/)
+    await expect(loadExam('rec1', 'nope')).rejects.toThrow(/introuvable/)
+    expect(getExamIndex('rec1')).toEqual([])
+  })
+
+  it('charge les notions, null si absentes', async () => {
+    expect((await getNotions('rec1'))?.notions.length).toBe(12)
+    expect(await getNotions('isi1')).toBeNull()
+  })
+})
