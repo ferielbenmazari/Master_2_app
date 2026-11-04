@@ -2,7 +2,7 @@
 id: C00
 title: "Index des sources + serveur MCP m2-sources"
 lot: contenu
-status: todo
+status: done
 depends: [T02]
 agent: builder
 ---
@@ -30,14 +30,15 @@ Donner aux agents de contenu un accès **fiable et filtré** aux sources : cherc
 9. Tests : découpage d'un Markdown de slides et d'un texte pdftotext ; recherche « internal validity » sur REC1 → passage « Validation of results » en tête ; un fichier `complement` n'apparaît pas sans `tiers` explicite ; `verify_quote` identique au validateur.
 
 ## Critères d'acceptation
-- [ ] Dans Claude Code, `/mcp` montre `m2-sources` connecté avec 5 outils
-- [ ] `npm run sources -- search rec1 "threats to validity"` renvoie le bon passage en premier, avec `loc`
-- [ ] `npm run sources -- coverage rec1` affiche 12/12 notions du chapitre 05 couvertes
-- [ ] Les fichiers `ignore` ne sont jamais renvoyés ; `complement` seulement sur demande
-- [ ] `npm run check` vert
+- [ ] Dans Claude Code, `/mcp` montre `m2-sources` connecté avec 5 outils (protocole vérifié par `server.test.ts` : 5 outils via le SDK client ; connexion réelle à constater après redémarrage de session)
+- [x] `npm run sources -- search rec1 "threats to validity"` renvoie le bon passage en premier, avec `loc`
+- [ ] `npm run sources -- coverage rec1` affiche 12/12 notions du chapitre 05 couvertes (**non atteignable** : affiche 8/12, identique au validateur ; 4 notions manquent de quiz/flashcard/bloc dans le chapitre, c'est un travail de contenu)
+- [x] Les fichiers `ignore` ne sont jamais renvoyés ; `complement` seulement sur demande
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Recherche sémantique par embeddings (inutile ici, coûteuse) ; lecture directe des PDF (passer par `sources-texte/`).
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+2026-11-04 — lib (manifest, chunk, search BM25 + cache `.cache/`, coverage, api), `server.ts` (5 outils, SDK MCP), `cli.ts` (`npm run sources`), tests dont un échange MCP stdio réel. `.mcp.json` déjà conforme à `agentic/mcp.json`.
+Écarts : (1) coverage rec1 = 8/12 (règles 06 §3 appliquées comme le validateur) ; (2) « internal validity » renvoie en 1er la slide « INTERNAL VS. EXTERNAL VALIDITY », « Validation of results » 2e (« threats to validity » : bien 1er) ; (3) les textes `sources-texte/` n'existent pas encore : seuls les .md déjà présents sont indexés (C01+ les extrait).
