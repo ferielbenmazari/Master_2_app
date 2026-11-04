@@ -2,13 +2,15 @@ import { Navigate, Route, Routes } from 'react-router'
 import AppLayout from '@/components/layout/AppLayout'
 import CourseScope from '@/components/layout/CourseScope'
 import { UI } from '@/i18n/ui'
+import ChapterHub from '@/pages/ChapterHub'
+import Course from '@/pages/Course'
 import Home from '@/pages/Home'
 import Profile from '@/pages/Profile'
 import Soon from '@/pages/Soon'
 import Styleguide from '@/pages/Styleguide'
 import TitledSoon from '@/pages/TitledSoon'
 
-const CHAPTER_VIEWS = ['lire', 'fiche', 'flashcards', 'quiz', 'exercices', 'anglais']
+const CHAPTER_VIEWS = ['express', 'lire', 'fiche', 'flashcards', 'quiz', 'exercices', 'anglais']
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
 export default function AppRoutes() {
@@ -21,11 +23,11 @@ export default function AppRoutes() {
         <Route path="jouer/*" element={<TitledSoon title={UI.arena.title} />} />
         <Route path="profil" element={<Profile />} />
         <Route path="matiere/:courseId" element={<CourseScope />}>
-          <Route index element={<Soon />} />
+          <Route index element={<Course />} />
           <Route path="glossaire" element={<Soon />} />
           <Route path="partiel/:examId" element={<Soon />} />
           <Route path="chapitre/:chapterId">
-            <Route index element={<Soon />} />
+            <Route index element={<ChapterHub />} />
             {CHAPTER_VIEWS.map((v) => (
               <Route key={v} path={v} element={<Soon />} />
             ))}

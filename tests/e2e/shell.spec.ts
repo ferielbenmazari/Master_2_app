@@ -49,7 +49,7 @@ test('barre du bas en mobile', async ({ page }) => {
   await bar.getByRole('link', { name: 'Réviser' }).click()
   await expect(page).toHaveURL(/#\/reviser$/)
   await page.goto('/#/matiere/rec1')
-  await expect(page.getByRole('heading', { name: 'Bientôt ici' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Méthodes de recherche')
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/course-mobile.png` })
 })
 

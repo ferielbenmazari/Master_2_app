@@ -2,7 +2,7 @@
 id: T06
 title: "Accueil, page matière, hub de chapitre"
 lot: 1
-status: todo
+status: done
 depends: [T05]
 agent: builder
 ---
@@ -23,13 +23,15 @@ Trouver en 2 taps n'importe quel chapitre et mode de révision.
 4. Les matières sans chapitre affichent « Contenu en préparation ».
 
 ## Critères d'acceptation
-- [ ] Les 4 matières de `content/` s'affichent sans code spécifique
-- [ ] Ajouter un dossier `content/test/course.json` fait apparaître une 5ᵉ matière (vérifié puis supprimé)
-- [ ] Captures fidèles à la maquette (mobile + desktop, clair + sombre)
-- [ ] `npm run check` vert
+- [x] Les 4 matières de `content/` s'affichent sans code spécifique
+- [x] Ajouter un dossier `content/test/course.json` fait apparaître une 5ᵉ matière (vérifié puis supprimé)
+- [x] Captures fidèles à la maquette (mobile + desktop, clair + sombre)
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Contenu des modes.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-04 : accueil (HUD, TypeLine, Mission du jour, cartes matières tilt), page matière (onglets, liste des chapitres), hub de chapitre (7 tuiles, cascade). Matières, icônes (liste blanche `src/lib/course-icon.ts`, repli BookOpen) et compteurs viennent du contenu via le loader.
+- `examDate` est dans le schéma (optionnel) mais absent des 4 course.json : pas de J-n ni de CONTRÔLE tant qu'il n'est pas renseigné (testé avec/sans via fixtures). `getDueCount()` = 0 (T09), rang/XP = 0, série calculée simplement depuis `getActivity()` (série complète = T12).
+- « 5ᵉ matière » vérifiée par fixture Vitest (loader mocké avec une matière `test`), sans créer de dossier dans `content/`. Route `express` ajoutée aux vues du chapitre (« Bientôt ici »). `fake-indexeddb/auto` ajouté à `src/test-setup.ts`.
