@@ -1,6 +1,6 @@
 # PLAN — ISI1 Ingénierie des exigences
 
-> Statut : **proposition à valider par l'utilisatrice** (étape 1 de `docs/04-pipeline-contenu.md`).
+> Statut : **validé par l'utilisatrice (2026-11-04)**.
 > ISI1 n'a pas de cours en Markdown → **extraction PDF obligatoire** (tâche C01) vers `sources-texte/isi1/`.
 
 ## Doublons écartés
