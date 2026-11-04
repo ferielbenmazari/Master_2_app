@@ -2,7 +2,7 @@
 id: T05
 title: "Stockage de la progression (Dexie) + export/import"
 lot: 0
-status: todo
+status: done
 depends: [T04]
 agent: builder
 ---
@@ -23,13 +23,16 @@ Mémoriser la progression sur l'appareil et pouvoir la sauvegarder/restaurer.
 5. Tests avec `fake-indexeddb` (dev) : aller-retour export → import identique.
 
 ## Critères d'acceptation
-- [ ] Export télécharge `revision-m2-<pseudo>-<AAAA-MM-JJ>.json`
-- [ ] Import restaure exactement
-- [ ] Données conservées après rechargement
-- [ ] `npm run check` vert
+- [x] Export télécharge `revision-m2-<pseudo>-<AAAA-MM-JJ>.json`
+- [x] Import restaure exactement
+- [x] Données conservées après rechargement
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Statistiques et série de jours (T12).
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-04 : `dexie` + `fake-indexeddb` (dev) ajoutés ; `src/store/{db,progress,backup}.ts` ; page /profil complète (pseudo, avatar, thème, langue du contenu, langue d'entraînement, export, import avec confirmation, réinitialisation à double confirmation).
+- Import : validation zod puis remplacement en une transaction Dexie (testé : échec en cours d'écriture = rollback, prefs inchangées). Réinitialisation vide aussi les prefs puis recharge la page (onboarding).
+- Pseudo : `trim` + refus du vide dans `loadPrefs`, `setPrefs` et l'import. Format de l'export : `{app, schemaVersion, exportedAt, prefs, tables}`.
+- Écart : `CardState` est un type minimal (T09 le raffinera). Les radios de langue d'entraînement s'appellent « Français / English » pour ne pas entrer en collision avec FR / EN du mode langue.

@@ -24,6 +24,13 @@ describe('prefs', () => {
     expect(loadPrefs()).toMatchObject({ pseudo: 'A', theme: 'system', langMode: 'both' })
   })
 
+  it('rejette un pseudo d’espaces seuls et rogne les autres', () => {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ pseudo: '   ' }))
+    expect(loadPrefs().pseudo).toBe('')
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ pseudo: '  Zoé ' }))
+    expect(loadPrefs().pseudo).toBe('Zoé')
+  })
+
   it('résout le thème explicite', () => {
     expect(resolveTheme('light')).toBe('light')
     expect(resolveTheme('dark')).toBe('dark')

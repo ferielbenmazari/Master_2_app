@@ -18,6 +18,8 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
   const setPrefs = useCallback((patch: Partial<Prefs>) => {
     setState((p) => {
       const next = { ...p, ...patch }
+      // Un pseudo vide ou d'espaces seuls est refusé : on garde l'ancien.
+      next.pseudo = patch.pseudo === undefined ? p.pseudo : patch.pseudo.trim() || p.pseudo
       savePrefs(next)
       return next
     })
