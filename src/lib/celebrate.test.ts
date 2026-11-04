@@ -23,6 +23,15 @@ describe('celebrate', () => {
     expect(confetti).not.toHaveBeenCalled()
   })
 
+  it('combo sans XP : pas de « +0 XP », le reste de la célébration est gardé', () => {
+    setEffectsLevel('full')
+    comboBurst(1, 0)
+    const c = document.querySelector('.combo')?.textContent
+    expect(c).toContain('Combo x1')
+    expect(c).not.toContain('XP')
+    expect(confetti).toHaveBeenCalledOnce()
+  })
+
   it('affiche flash, secousse, combo et confettis en full', () => {
     setEffectsLevel('full')
     const el = document.createElement('div')

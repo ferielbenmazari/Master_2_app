@@ -36,7 +36,7 @@ export function flashKo(el?: HTMLElement | null): void {
   }
 }
 
-/** « COMBO xN · +XP » qui explose ; confettis en mode `full`. No-op en `off`. */
+/** « COMBO xN · +XP » (XP masqué si 0) qui explose ; confettis en mode `full`. No-op en `off`. */
 export function comboBurst(n: number, xp: number): void {
   const level = getEffectsLevel()
   if (level === 'off') return
@@ -44,11 +44,15 @@ export function comboBurst(n: number, xp: number): void {
     const title = document.createElement('div')
     title.className = 'display'
     title.textContent = UI.celebrate.combo(n)
-    const gain = document.createElement('div')
-    gain.className = 'mono'
-    gain.style.color = 'var(--ink)'
-    gain.textContent = UI.celebrate.xp(xp)
-    el.append(title, gain)
+    el.append(title)
+    // pas de « +0 XP » tant qu'aucun magasin d'XP n'existe (T12)
+    if (xp > 0) {
+      const gain = document.createElement('div')
+      gain.className = 'mono'
+      gain.style.color = 'var(--ink)'
+      gain.textContent = UI.celebrate.xp(xp)
+      el.append(gain)
+    }
   })
   if (level === 'full') {
     const colors = ['--acid', '--coral', '--gold'].map(cssColor).filter(Boolean)

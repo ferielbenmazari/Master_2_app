@@ -2,7 +2,7 @@
 id: T07
 title: "Lecteur du cours narratif bilingue"
 lot: 1
-status: todo
+status: done
 depends: [T06]
 agent: builder
 ---
@@ -29,15 +29,18 @@ Lire un chapitre agréablement en FR et EN, avec le vocabulaire technique mis en
 6. Typo de lecture : Manrope 16/17 px, interligne 1.7, `max-width: 68ch`.
 
 ## Critères d'acceptation
-- [ ] Le chapitre REC1-05 se lit entièrement, tous types de blocs rendus
-- [ ] Chaque bloc sourcé affiche sa puce Source ; la feuille montre les citations exactes
-- [ ] Les 3 modes langue fonctionnent ; en `both` desktop les blocs FR/EN sont alignés
-- [ ] Popover des termes accessible au clavier (Entrée/Échap)
-- [ ] `mermaid` absent du bundle initial (vérifier `dist/assets`)
-- [ ] `npm run check` vert
+- [x] Le chapitre REC1-05 se lit entièrement, tous types de blocs rendus
+- [x] Chaque bloc sourcé affiche sa puce Source ; la feuille montre les citations exactes
+- [x] Les 3 modes langue fonctionnent ; en `both` desktop les blocs FR/EN sont alignés
+- [x] Popover des termes accessible au clavier (Entrée/Échap)
+- [x] `mermaid` absent du bundle initial (vérifier `dist/assets`)
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Checkpoints interactifs (T08).
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+2026-11-04 — Lecteur livré : `src/lib/rich-text.ts` (markdown inline -> arbre de nœuds, liste blanche, aucun `dangerouslySetInnerHTML` pour le contenu), `src/components/content/*` (RichText, TermChip, SourceChip + Sheet, Bilingual, StoryBlockView, MermaidDiagram), `src/pages/Reader.tsx`. Seul `dangerouslySetInnerHTML` : SVG Mermaid (strict + `sanitizeSvg`), testé avec un diagramme malveillant (Vitest + Playwright en navigateur réel).
+Écarts : REC1-05 ne contient aucun bloc `diagram` (7 types présents) : le rendu Mermaid est vérifié par test (mock + navigateur réel), pas sur ce chapitre. XP de fin de chapitre = stub 0 (`celebrate-read.ts`) jusqu'à T12. Popover du kit : focus pris à l'ouverture et rendu au déclencheur. Chunk `mermaid` séparé, absent de `index.html`.
+
+Corrections de revue (2026-11-04) : `[[termId]]` sans `|label` affiche désormais `term.fr` / `term.en` selon la langue du bloc (repli sur l'id si terme inconnu), tests FR/EN/inconnu ; `comboBurst` masque l'XP quand elle vaut 0 (constante `READ_XP` prête pour 30 en T12) ; citations des Sheets sans `lang` codé en dur ; tableaux numérotés réellement (Tableau 1, 2…).

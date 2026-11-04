@@ -12,7 +12,7 @@ type PopoverProps = {
   label: string
 }
 
-/** Bulle ancrée (définition d'un terme) ; se ferme avec Échap ou un clic à l'extérieur. */
+/** Bulle ancrée (définition d'un terme) ; prend le focus, se ferme avec Échap ou un clic à l'extérieur (focus rendu au déclencheur). */
 export default function Popover({ open, onClose, anchor, children, label }: PopoverProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [pos, setPos] = useState({ top: 0, left: 0 })
@@ -23,6 +23,17 @@ export default function Popover({ open, onClose, anchor, children, label }: Popo
     const width = ref.current.offsetWidth
     const left = Math.max(12, Math.min(a.left, window.innerWidth - width - 12))
     setPos({ top: a.bottom + 8, left })
+  }, [open, anchor])
+
+  // focus géré : la bulle prend le focus à l'ouverture, puis le rend au déclencheur à la fermeture
+  useEffect(() => {
+    if (!open) return
+    const previous = document.activeElement as HTMLElement | null
+    ref.current?.focus({ preventScroll: true })
+    return () => {
+      const a = anchor ?? previous
+      if (a?.isConnected) a.focus({ preventScroll: true })
+    }
   }, [open, anchor])
 
   useEffect(() => {
@@ -42,7 +53,7 @@ export default function Popover({ open, onClose, anchor, children, label }: Popo
 
   if (!open) return null
   return createPortal(
-    <div ref={ref} className="pop" role="dialog" aria-label={label} style={pos}>
+    <div ref={ref} className="pop" role="dialog" aria-label={label} tabIndex={-1} style={pos}>
       <Panel hi>{children}</Panel>
     </div>,
     document.body,

@@ -19,6 +19,9 @@ type Loader = () => Promise<unknown>
 const courseModules = import.meta.glob('/content/*/course.json', { eager: true, import: 'default' })
 const chapterModules = import.meta.glob('/content/*/chapters/*.json', { import: 'default' }) as Record<string, Loader>
 const examModules = import.meta.glob('/content/*/exams/*.json', { import: 'default' }) as Record<string, Loader>
+// Manifestes de sources : embarqués au build (petits), uniquement pour afficher un nom lisible de fichier.
+const sourceModules = import.meta.glob('/content/*/sources.json', { eager: true, import: 'default' }) as Record<string, unknown>
+
 const notionModules = import.meta.glob('/content/*/notions.json', { import: 'default' }) as Record<string, Loader>
 
 /** Entrée d'index : connue sans charger le fichier (déduite du chemin). */
@@ -121,4 +124,19 @@ export function getNotions(courseId: string): Promise<Notions | null> {
     const load = notionModules[`/content/${courseId}/notions.json`]
     return load ? NotionsSchema.parse(await load()) : null
   })
+}
+
+const sourceTitles = new Map<string, string>()
+for (const [path, json] of Object.entries(sourceModules)) {
+  const courseId = /^\/content\/([^/]+)\//.exec(path)?.[1]
+  const list = (json as { sources?: { file?: unknown; title?: unknown }[] } | null)?.sources
+  if (!courseId || !Array.isArray(list)) continue
+  for (const s of list) {
+    if (typeof s.file === 'string' && typeof s.title === 'string') sourceTitles.set(`${courseId}:${s.file}`, s.title)
+  }
+}
+
+/** Nom lisible d'un fichier source (titre de sources.json), à défaut le nom de fichier. */
+export function getSourceTitle(courseId: string, file: string): string {
+  return sourceTitles.get(`${courseId}:${file}`) ?? file.split('/').pop() ?? file
 }
