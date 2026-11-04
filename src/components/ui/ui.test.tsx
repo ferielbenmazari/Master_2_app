@@ -88,7 +88,7 @@ describe('kit UI : rendu', () => {
 
   it('LangToggle appelle onChange', () => {
     const onChange = vi.fn()
-    render(<LangToggle value="fr-en" onChange={onChange} />)
+    render(<LangToggle value="both" onChange={onChange} />)
     expect(screen.getByRole('radio', { name: 'FR+EN' })).toBeChecked()
     fireEvent.click(screen.getByRole('radio', { name: 'EN' }))
     expect(onChange).toHaveBeenCalledWith('en')

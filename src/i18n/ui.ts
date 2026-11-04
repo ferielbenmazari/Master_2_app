@@ -28,6 +28,37 @@ export const UI = {
   dialog: {
     close: 'Fermer',
   },
+  nav: {
+    label: 'Navigation principale',
+    base: 'Base',
+    review: 'Réviser',
+    arena: 'Arène',
+    profile: 'Profil',
+  },
+  soon: {
+    title: 'Bientôt ici',
+    text: 'Cette page arrive dans une prochaine étape.',
+    back: 'Retour à la base',
+  },
+  home: {
+    title: 'Base',
+    greeting: (pseudo: string) => `Salut ${pseudo}`,
+  },
+  review: { title: 'Réviser' },
+  arena: { title: 'Arène' },
+  profile: {
+    title: 'Profil',
+    theme: 'Thème',
+    langMode: 'Langue du contenu',
+  },
+  onboarding: {
+    title: 'Choisis ton pseudo',
+    pseudoLabel: 'Pseudo',
+    colorLabel: 'Couleur de ton avatar',
+    color: (c: string) => `Couleur ${c}`,
+    colors: { lime: 'vert', coral: 'corail', cyan: 'cyan', gold: 'or', orange: 'orange' },
+    submit: 'C’est parti',
+  },
   celebrate: {
     combo: (n: number) => `Combo x${n}`,
     xp: (n: number) => `+${n} XP`,

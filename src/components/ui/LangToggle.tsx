@@ -1,10 +1,10 @@
 import { UI } from '@/i18n/ui'
 
-export type LangMode = 'fr' | 'fr-en' | 'en'
+export type LangMode = 'fr' | 'both' | 'en'
 
 const OPTIONS: { value: LangMode; label: string }[] = [
   { value: 'fr', label: UI.lang.fr },
-  { value: 'fr-en', label: UI.lang.frEn },
+  { value: 'both', label: UI.lang.frEn },
   { value: 'en', label: UI.lang.en },
 ]
 

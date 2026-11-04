@@ -1,6 +1,13 @@
-import Styleguide from './pages/Styleguide'
+import { HashRouter } from 'react-router'
+import AppRoutes from './routes'
+import { PrefsProvider } from './store/PrefsProvider'
 
-// Temporaire (T03) : le kit UI est affiché tel quel jusqu'à la coquille de navigation (T04).
 export default function App() {
-  return <Styleguide />
+  return (
+    <PrefsProvider>
+      <HashRouter>
+        <AppRoutes />
+      </HashRouter>
+    </PrefsProvider>
+  )
 }
