@@ -1,0 +1,95 @@
+/* ============ TOKENS « ARENA WARM » — source de vérité (docs/02-design-system.md) ============ */
+@property --ang {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+:root {
+  --acid: #c8ff3d;
+  --coral: #ff6b5a;
+  --cyan: #3de3f0;
+  --gold: #ffc23d;
+  --orange: #ff8a3d;
+  --red: #ff4d5e;
+  --marker: #ffd23d;
+  --ok: #c8ff3d;
+  --bad: #ff4d5e;
+  --f-display: 'Unbounded', system-ui, sans-serif;
+  --f-body: 'Manrope', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --cut: 14px;
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* reflets (balayage des boutons et barres) */
+  --shine: color-mix(in srgb, white 45%, transparent);
+  --shine-hi: color-mix(in srgb, white 70%, transparent);
+}
+
+:root,
+[data-theme='dark'] {
+  --bg: #110e0c;
+  --bg-2: #171310;
+  --surface: #1f1a16;
+  --surface-2: #28221d;
+  --line: #3a3129;
+  --line-hi: #56493d;
+  --ink: #f6efe4;
+  --ink-soft: #b8ab9b;
+  --ink-dim: #857868;
+  --on-accent: #17130f;
+  --marker-a: 34%;
+  --aura: 0.2;
+  --streak: var(--orange);
+  --glow: 0 0 18px color-mix(in srgb, var(--course, var(--acid)) 55%, transparent);
+  --scan: rgba(255, 240, 220, 0.02);
+  --focus: var(--acid);
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: #f4efe6;
+  --bg-2: #ece5d9;
+  --surface: #fffdf8;
+  --surface-2: #f2ece1;
+  --line: #dcd2c2;
+  --line-hi: #b7aa95;
+  --ink: #17130f;
+  --ink-soft: #5b5044;
+  --ink-dim: #8a7d6c;
+  --on-accent: #17130f;
+  --marker-a: 80%;
+  --aura: 0.3;
+  --streak: #d9480f;
+  --glow: 0 0 0 transparent;
+  --scan: rgba(0, 0, 0, 0.02);
+  --focus: var(--ink);
+  color-scheme: light;
+}
+
+/* Exposition à Tailwind v4 (bg-surface, text-ink-soft, font-display…) */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-hi: var(--line-hi);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-dim: var(--ink-dim);
+  --color-on-accent: var(--on-accent);
+  --color-acid: var(--acid);
+  --color-coral: var(--coral);
+  --color-cyan: var(--cyan);
+  --color-gold: var(--gold);
+  --color-orange: var(--orange);
+  --color-red: var(--red);
+  --color-marker: var(--marker);
+  --color-course: var(--course, var(--acid));
+  --font-display: var(--f-display);
+  --font-body: var(--f-body);
+  --font-mono: var(--f-mono);
+}

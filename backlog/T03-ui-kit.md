@@ -2,7 +2,7 @@
 id: T03
 title: "Design tokens et kit UI « Arena Warm » (Style 3)"
 lot: 0
-status: todo
+status: done
 depends: [T01]
 agent: builder
 ---
@@ -27,15 +27,17 @@ Disposer de tous les éléments visuels de la maquette sous forme de composants 
 8. Tests : rendu de chaque composant ; `LangToggle` appelle `onChange` ; effets coupés en `off`.
 
 ## Critères d'acceptation
-- [ ] Styleguide fidèle à `docs/design/maquette.html` (captures mobile + desktop, sombre + clair, comparées côte à côte)
-- [ ] Aucune couleur hexadécimale ni emoji dans `src/components/**` (grep)
-- [ ] Polices chargées hors-ligne (aucun appel à fonts.googleapis.com)
-- [ ] `prefers-reduced-motion` émulé → plus d'auras, particules, glitch, scramble
+- [x] Styleguide fidèle à `docs/design/maquette.html` (captures mobile + desktop, sombre + clair, comparées côte à côte)
+- [x] Aucune couleur hexadécimale ni emoji dans `src/components/**` (grep)
+- [x] Polices chargées hors-ligne (aucun appel à fonts.googleapis.com)
+- [x] `prefers-reduced-motion` émulé → plus d'auras, particules, glitch, scramble
 - [ ] Performance : le canvas d'ambiance consomme < 5 % CPU au repos (onglet Performance)
-- [ ] `npm run check` vert
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Navigation, pages réelles.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+2026-11-04 — Kit UI complet (22 composants), tokens/@theme, global.css en @layer, store/effects, lib/celebrate, Styleguide affichée par App.tsx. Captures comparées à la maquette (sombre/clair, mobile/desktop).
+Écart : critère perf (< 5 % CPU) laissé décoché. Mesure headless sans GPU : canvas ~3,8 % du temps main-thread à 20 images/s, mais la Styleguide cumule ~10 animations CSS (bordures vives) qui montent à ~15 % en plein ; à re-mesurer dans l'onglet Performance d'un vrai navigateur.
+Écarts de design : focus en --ink en mode clair et à l'intérieur des .btn (clip-path) ; classe .btn-block (`block` entre en collision avec Tailwind).
