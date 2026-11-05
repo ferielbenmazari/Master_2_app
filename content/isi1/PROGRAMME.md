@@ -15,7 +15,7 @@ _Source : 1_IE Introduction · chaos report_
 ## Normes et certification
 _Source : 2_Certification · 3_ISO 29148_
 
-- [ ] IREB CPRE · ISO/IEC 29148 · IEEE 830 (structure du cahier des charges)
+- [ ] IREB CPRE · ISO/IEC 29148 · IEEE 830 (structure du cahier des charges) → ch.02 (IEEE 830 : seulement via la SRS de l'ISO 29148 qui l'intègre → ⚠ norme IEEE 830 elle-même absente des supports)
 
 ## Exigences non fonctionnelles
 _Source : 5_on NFRs_
