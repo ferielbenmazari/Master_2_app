@@ -26,24 +26,15 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Un feature model dessiné est joli, mais on ne peut pas **raisonner dessus** : « Graphical representation of models makes it impossible to directly reason on them ». On le transforme donc en code exécutable pour le faire raisonner par un solveur. C'est le fil rouge de ce chapitre : *transformer → vérifier → diagnostiquer → corriger*.",
-        "en": "A drawn feature model looks nice, but you cannot **reason on it** directly: graphical representation of models makes it impossible to directly reason on them. So we transform it into executable code and let a solver reason on it. This is the thread of the chapter: *transform → verify → diagnose → fix*."
+        "fr": "Un feature model dessiné est joli, mais on ne peut pas **raisonner dessus** : « Graphical representation of models makes it impossible to directly reason on them ». On le transforme donc en code exécutable pour le faire raisonner par un solveur. C'est le fil rouge de ce chapitre : *transformer → vérifier → diagnostiquer → corriger*. Une **transformation de modèle** précise comment produire des modèles cibles à partir de modèles sources. Formellement, une transformation simple définit comment générer un modèle Mb, conforme à un métamodèle MMb, à partir d'un modèle Ma conforme à un métamodèle MMa. L'exemple du prof (**Model2Text**) : un modèle MiniUML avec deux classes, `Person` et `Student` (qui hérite de `Person` et porte l'attribut `regNo: String`), devient du code MiniJava `class Student extends Person { private String regNo; … }`. Le métamodèle cible est ici une **grammaire** (`ClassDec ::= Modifier class Identifier extends Identifier ClassBody`). Le **cadre de transformation** (transformation framework) a quatre pièces : le *Model A* (lu par le moteur), son *Metamodel A*, le *Metamodel B*, et un bloc de règles « Mapping and transformation rules from concepts of Metamodel A to concepts of Metamodel B ». Le **Transformation Engine** lit A, exécute les règles et écrit *Model B*, conforme à *Metamodel B*.",
+        "en": "A drawn feature model looks nice, but you cannot **reason on it** directly: graphical representation of models makes it impossible to directly reason on them. So we transform it into executable code and let a solver reason on it. This is the thread of the chapter: *transform → verify → diagnose → fix*. A **model transformation** specifies how to produce target models from source models. Formally, a simple transformation defines how to generate a model Mb, conforming to a metamodel MMb, from a model Ma conforming to a metamodel MMa. The teacher's example (**Model2Text**): a MiniUML model with two classes, `Person` and `Student` (which inherits from `Person` and has the attribute `regNo: String`), becomes MiniJava code `class Student extends Person { private String regNo; … }`. Here the target metamodel is a **grammar**. The **transformation framework** has four parts: *Model A* (read by the engine), its *Metamodel A*, *Metamodel B*, and a block of rules: mapping and transformation rules from concepts of Metamodel A to concepts of Metamodel B. The **Transformation Engine** reads A, executes the rules and writes *Model B*, which conforms to *Metamodel B*."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 5",
           "quote": "Graphical representation of models makes it impossible to directly reason on them. Because of this, models are usually transformed to executable code in order to reason on them."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Une **transformation de modèle** précise comment produire des modèles cibles à partir de modèles sources. Formellement, une transformation simple définit comment générer un modèle Mb, conforme à un métamodèle MMb, à partir d'un modèle Ma conforme à un métamodèle MMa. L'exemple du prof (**Model2Text**) : un modèle MiniUML avec deux classes, `Person` et `Student` (qui hérite de `Person` et porte l'attribut `regNo: String`), devient du code MiniJava `class Student extends Person { private String regNo; … }`. Le métamodèle cible est ici une **grammaire** (`ClassDec ::= Modifier class Identifier extends Identifier ClassBody`).",
-        "en": "A **model transformation** specifies how to produce target models from source models. Formally, a simple transformation defines how to generate a model Mb, conforming to a metamodel MMb, from a model Ma conforming to a metamodel MMa. The teacher's example (**Model2Text**): a MiniUML model with two classes, `Person` and `Student` (which inherits from `Person` and has the attribute `regNo: String`), becomes MiniJava code `class Student extends Person { private String regNo; … }`. Here the target metamodel is a **grammar**."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 3",
@@ -63,16 +54,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 3",
           "quote": "ClassDec ::= Modifier class Identifier extends Identifier ClassBody"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Le **cadre de transformation** (transformation framework) a quatre pièces : le *Model A* (lu par le moteur), son *Metamodel A*, le *Metamodel B*, et un bloc de règles « Mapping and transformation rules from concepts of Metamodel A to concepts of Metamodel B ». Le **Transformation Engine** lit A, exécute les règles et écrit *Model B*, conforme à *Metamodel B*.",
-        "en": "The **transformation framework** has four parts: *Model A* (read by the engine), its *Metamodel A*, *Metamodel B*, and a block of rules: mapping and transformation rules from concepts of Metamodel A to concepts of Metamodel B. The **Transformation Engine** reads A, executes the rules and writes *Model B*, which conforms to *Metamodel B*."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 4",
@@ -84,6 +66,10 @@
           "quote": "Le **Transformation Engine** exécute (**Executes**) ces règles de transformation."
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-01"
     },
     {
       "type": "heading",
@@ -231,8 +217,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les **cardinalités de groupe** `<m..n>` sur un père F0 et ses fils F1…Fn s'écrivent, en 0/1 : `m × F0 ≤ F1 + … + Fn ≤ n × F0`. Si le père est absent (F0 = 0), tous les fils sont forcément à 0 ; s'il est présent, le nombre de fils choisis est entre m et n. Les **cardinalités individuelles** `[m..n]` se traitent de même, avec une instance par copie : `A ⇔ (m ≤ B1 + … + Bn ≤ n)`. Les **attributs** de feature sont des variables à domaine fini, liées à la feature par une équivalence : par exemple `Att2 ∈ {0, 2, 4, 16, 32}` avec `F1 ⇔ (Att2 > 0)`. La valeur 0 signifie « feature absente ».",
-        "en": "**Group cardinalities** `<m..n>` on a parent F0 and its children F1…Fn are written, in 0/1: `m × F0 ≤ F1 + … + Fn ≤ n × F0`. If the parent is absent (F0 = 0), all the children are necessarily 0; if it is present, the number of chosen children is between m and n. **Individual cardinalities** `[m..n]` work the same way, with one instance per copy: `A ⇔ (m ≤ B1 + … + Bn ≤ n)`. Feature **attributes** are finite-domain variables tied to the feature by an equivalence: for example `Att2 ∈ {0, 2, 4, 16, 32}` with `F1 ⇔ (Att2 > 0)`. The value 0 means “feature absent”."
+        "fr": "Les **cardinalités de groupe** `<m..n>` sur un père F0 et ses fils F1…Fn s'écrivent, en 0/1 : `m × F0 ≤ F1 + … + Fn ≤ n × F0`. Si le père est absent (F0 = 0), tous les fils sont forcément à 0 ; s'il est présent, le nombre de fils choisis est entre m et n. Les **cardinalités individuelles** `[m..n]` se traitent de même, avec une instance par copie : `A ⇔ (m ≤ B1 + … + Bn ≤ n)`. Les **attributs** de feature sont des variables à domaine fini, liées à la feature par une équivalence : par exemple `Att2 ∈ {0, 2, 4, 16, 32}` avec `F1 ⇔ (Att2 > 0)`. La valeur 0 signifie « feature absente ». Exercice du prof — **Movement Control System** : SpeedSensor `[1..1]`, PositionSensor `[0..4]`, Processor `[1..2]`, Internal Memory `[1..2]`, attribut `Size: {128, 512, 1024}`. Solution : une variable par instance (`PositionSensor1…4`, `Processor1,2`, `InternalMemory1,2`), des implications d'instance (`PositionSensor1 => PositionSensor`), des contraintes de cardinalité (`Processor => (1 <= Processor1 + Processor2 <= 2)`), et `Size ∈ {0, 128, 512, 1024}` avec `InternalMemory <=> Size > 0`.",
+        "en": "**Group cardinalities** `<m..n>` on a parent F0 and its children F1…Fn are written, in 0/1: `m × F0 ≤ F1 + … + Fn ≤ n × F0`. If the parent is absent (F0 = 0), all the children are necessarily 0; if it is present, the number of chosen children is between m and n. **Individual cardinalities** `[m..n]` work the same way, with one instance per copy: `A ⇔ (m ≤ B1 + … + Bn ≤ n)`. Feature **attributes** are finite-domain variables tied to the feature by an equivalence: for example `Att2 ∈ {0, 2, 4, 16, 32}` with `F1 ⇔ (Att2 > 0)`. The value 0 means “feature absent”. Teacher's exercise — **Movement Control System**: SpeedSensor `[1..1]`, PositionSensor `[0..4]`, Processor `[1..2]`, Internal Memory `[1..2]`, attribute `Size: {128, 512, 1024}`. Solution: one variable per instance, instance implications (`PositionSensor1 => PositionSensor`), cardinality constraints (`Processor => (1 <= Processor1 + Processor2 <= 2)`), and `Size ∈ {0, 128, 512, 1024}` with `InternalMemory <=> Size > 0`."
       },
       "src": [
         {
@@ -249,16 +235,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 12",
           "quote": "$Att2 \\in \\{0, 2, 4, 16, 32\\} \\wedge (F1 \\Leftrightarrow (Att2 > 0))$"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Exercice du prof — **Movement Control System** : SpeedSensor `[1..1]`, PositionSensor `[0..4]`, Processor `[1..2]`, Internal Memory `[1..2]`, attribut `Size: {128, 512, 1024}`. Solution : une variable par instance (`PositionSensor1…4`, `Processor1,2`, `InternalMemory1,2`), des implications d'instance (`PositionSensor1 => PositionSensor`), des contraintes de cardinalité (`Processor => (1 <= Processor1 + Processor2 <= 2)`), et `Size ∈ {0, 128, 512, 1024}` avec `InternalMemory <=> Size > 0`.",
-        "en": "Teacher's exercise — **Movement Control System**: SpeedSensor `[1..1]`, PositionSensor `[0..4]`, Processor `[1..2]`, Internal Memory `[1..2]`, attribute `Size: {128, 512, 1024}`. Solution: one variable per instance, instance implications (`PositionSensor1 => PositionSensor`), cardinality constraints (`Processor => (1 <= Processor1 + Processor2 <= 2)`), and `Size ∈ {0, 128, 512, 1024}` with `InternalMemory <=> Size > 0`."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 20",
@@ -307,6 +284,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-05"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Exercice GNU Prolog : générer, compter, détecter",
@@ -316,8 +297,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le prof donne un feature model F1…F12 (F2, F3, F4 obligatoires sous F1 ; F5, F6 optionnelles et F7 obligatoire sous F3 ; groupe `<1..2>` sur F8, F9, F10 sous F7 ; F11/F12 sous F4 ; `F8 mutex F2`, `F6 requires F12`, et `F9 ⇒ ¬((F5 ∧ F6) ∨ F11)`). Cinq questions : quel code ? comment générer les configurations ? quelle sémantique ? combien de produits ? quels problèmes ?",
-        "en": "The teacher gives a feature model F1…F12 (F2, F3, F4 mandatory under F1; F5, F6 optional and F7 mandatory under F3; a `<1..2>` group on F8, F9, F10 under F7; F11/F12 under F4; `F8 mutex F2`, `F6 requires F12`, and `F9 ⇒ ¬((F5 ∧ F6) ∨ F11)`). Five questions: which code? how to generate configurations? what semantics? how many products? which problems?"
+        "fr": "Le prof donne un feature model F1…F12 (F2, F3, F4 obligatoires sous F1 ; F5, F6 optionnelles et F7 obligatoire sous F3 ; groupe `<1..2>` sur F8, F9, F10 sous F7 ; F11/F12 sous F4 ; `F8 mutex F2`, `F6 requires F12`, et `F9 ⇒ ¬((F5 ∧ F6) ∨ F11)`). Cinq questions : quel code ? comment générer les configurations ? quelle sémantique ? combien de produits ? quels problèmes ? **1. Le code.** Un fait `productline(L)` : `L` est la liste des variables ; `fd_domain(L, 0, 1)` donne le domaine ; chaque lien devient une contrainte (`F1 #= F2` obligatoire, `F3 #>= F5` optionnelle, `F6 #==> F12` requires, `F2+F8 #=< 1` mutex, `F7 #=< F8+F9+F10` et `F8+F9+F10 #=< F7*2` pour `<1..2>`) ; et `fd_labeling(L)` termine le programme en donnant une valeur à chaque variable.",
+        "en": "The teacher gives a feature model F1…F12 (F2, F3, F4 mandatory under F1; F5, F6 optional and F7 mandatory under F3; a `<1..2>` group on F8, F9, F10 under F7; F11/F12 under F4; `F8 mutex F2`, `F6 requires F12`, and `F9 ⇒ ¬((F5 ∧ F6) ∨ F11)`). Five questions: which code? how to generate configurations? what semantics? how many products? which problems? **1. The code.** A fact `productline(L)`: `L` is the list of variables; `fd_domain(L, 0, 1)` gives the domain; each link becomes a constraint (`F1 #= F2` mandatory, `F3 #>= F5` optional, `F6 #==> F12` requires, `F2+F8 #=< 1` mutex, `F7 #=< F8+F9+F10` and `F8+F9+F10 #=< F7*2` for `<1..2>`); and `fd_labeling(L)` finishes the program by giving a value to each variable."
       },
       "src": [
         {
@@ -329,16 +310,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 13",
           "quote": "5. Are there some problems in the model? Which ones?"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**1. Le code.** Un fait `productline(L)` : `L` est la liste des variables ; `fd_domain(L, 0, 1)` donne le domaine ; chaque lien devient une contrainte (`F1 #= F2` obligatoire, `F3 #>= F5` optionnelle, `F6 #==> F12` requires, `F2+F8 #=< 1` mutex, `F7 #=< F8+F9+F10` et `F8+F9+F10 #=< F7*2` pour `<1..2>`) ; et `fd_labeling(L)` termine le programme en donnant une valeur à chaque variable.",
-        "en": "**1. The code.** A fact `productline(L)`: `L` is the list of variables; `fd_domain(L, 0, 1)` gives the domain; each link becomes a constraint (`F1 #= F2` mandatory, `F3 #>= F5` optional, `F6 #==> F12` requires, `F2+F8 #=< 1` mutex, `F7 #=< F8+F9+F10` and `F8+F9+F10 #=< F7*2` for `<1..2>`); and `fd_labeling(L)` finishes the program by giving a value to each variable."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 14",
@@ -369,8 +341,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "**2. Générer.** Créer `productLine.pl`, lancer `gprolog`, charger avec `consult('productline.pl').`, puis appeler `productline(L).` ; la touche `;` génère la solution suivante. **3. La sémantique** (l'ensemble des produits) : soit un par un avec `;`, soit d'un coup avec `findall(L, productline(L), Semantics)`. **4. Compter.** Soit on compte les solutions affichées, soit on ajoute `length` : `findall(L, productline(L), Semantics), length(Semantics, NumberOfProducts).` → `NumberOfProducts = 12`. Le modèle a donc **12 produits**.",
-        "en": "**2. Generate.** Create `productLine.pl`, start `gprolog`, load it with `consult('productline.pl').`, then call `productline(L).`; the `;` key generates the next solution. **3. The semantics** (the set of products): either one by one with `;`, or all at once with `findall(L, productline(L), Semantics)`. **4. Count.** Either count the printed solutions, or add `length`: `findall(L, productline(L), Semantics), length(Semantics, NumberOfProducts).` → `NumberOfProducts = 12`. The model therefore has **12 products**."
+        "fr": "**2. Générer.** Créer `productLine.pl`, lancer `gprolog`, charger avec `consult('productline.pl').`, puis appeler `productline(L).` ; la touche `;` génère la solution suivante. **3. La sémantique** (l'ensemble des produits) : soit un par un avec `;`, soit d'un coup avec `findall(L, productline(L), Semantics)`. **4. Compter.** Soit on compte les solutions affichées, soit on ajoute `length` : `findall(L, productline(L), Semantics), length(Semantics, NumberOfProducts).` → `NumberOfProducts = 12`. Le modèle a donc **12 produits**. **5. Les problèmes.** La feature `F8` n'est sélectionnée dans **aucune** configuration (F2 est obligatoire, F8 est exclusive avec F2). C'est une **dead feature** : présente dans le modèle, mais « it cannot be used in any product ». Le prof s'en sert pour introduire la vérification des modèles.",
+        "en": "**2. Generate.** Create `productLine.pl`, start `gprolog`, load it with `consult('productline.pl').`, then call `productline(L).`; the `;` key generates the next solution. **3. The semantics** (the set of products): either one by one with `;`, or all at once with `findall(L, productline(L), Semantics)`. **4. Count.** Either count the printed solutions, or add `length`: `findall(L, productline(L), Semantics), length(Semantics, NumberOfProducts).` → `NumberOfProducts = 12`. The model therefore has **12 products**. **5. The problems.** Feature `F8` is selected in **no** configuration (F2 is mandatory, F8 excludes F2). It is a **dead feature**: present in the model, but it cannot be used in any product. The teacher uses it to introduce the verification of models."
       },
       "src": [
         {
@@ -392,16 +364,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 17",
           "quote": "you generate all the solutions with `findall`"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**5. Les problèmes.** La feature `F8` n'est sélectionnée dans **aucune** configuration (F2 est obligatoire, F8 est exclusive avec F2). C'est une **dead feature** : présente dans le modèle, mais « it cannot be used in any product ». Le prof s'en sert pour introduire la vérification des modèles.",
-        "en": "**5. The problems.** Feature `F8` is selected in **no** configuration (F2 is mandatory, F8 excludes F2). It is a **dead feature**: present in the model, but it cannot be used in any product. The teacher uses it to introduce the verification of models."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 18",
@@ -430,6 +393,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-07"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Vérifier un modèle : pourquoi, et pourquoi c'est difficile",
@@ -439,8 +406,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "**Vérification** = trouver les défauts du modèle de ligne de produits (niveau domain engineering). Elle est essentielle : « The success of this development paradigm highly depends on the quality of the PLMs ». Un défaut non corrigé se propage aux produits ou freine l'évolution de la ligne, ce qui peut « drastically diminish the benefits of the product line strategy ».",
-        "en": "**Verification** = finding the defects of the product line model (domain engineering level). It is essential: the success of the paradigm highly depends on the quality of the PLMs. An uncorrected defect spreads to the products or hinders the evolution of the line, which can drastically diminish the benefits of the product line strategy."
+        "fr": "**Vérification** = trouver les défauts du modèle de ligne de produits (niveau domain engineering). Elle est essentielle : « The success of this development paradigm highly depends on the quality of the PLMs ». Un défaut non corrigé se propage aux produits ou freine l'évolution de la ligne, ce qui peut « drastically diminish the benefits of the product line strategy ». Trois raisons de la difficulté : la modélisation est **sujette aux erreurs** ; la vérification est un problème **NP-complet** ; et une spécification de ligne représente « not one, but a collection of products » définie implicitement, qui peut contenir des exigences contradictoires. Le quiz de complexité du prof : pour un algorithme en `2^n · n²`, la taille maximale traitable est n = 30, soit 2³⁰ · 30² = 966 367 641 600 pas de temps. Sur un système 10 fois plus rapide, on n'atteint que n ≈ 33 ; avec 100 fois plus rapide, la taille ne grandit presque pas : à cause de la croissance exponentielle, **acheter une machine plus puissante ne résout pas un problème NP-complet**.",
+        "en": "**Verification** = finding the defects of the product line model (domain engineering level). It is essential: the success of the paradigm highly depends on the quality of the PLMs. An uncorrected defect spreads to the products or hinders the evolution of the line, which can drastically diminish the benefits of the product line strategy. Three reasons for the difficulty: modelling is **error-prone**; verification is an **NP-complete** problem; and a line specification represents not one but a collection of products, defined implicitly, which may include contradictory requirements. The teacher's complexity quiz: for an algorithm in `2^n · n²`, the largest tractable size is n = 30, i.e. 2³⁰ · 30² = 966,367,641,600 time steps. On a 10× faster system you only reach n ≈ 33; with 100× faster the size barely grows: because of exponential growth, **a more powerful machine does not solve an NP-complete problem**."
       },
       "src": [
         {
@@ -457,16 +424,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 24",
           "quote": "inevitably spread to the products created from the product line or"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Trois raisons de la difficulté : la modélisation est **sujette aux erreurs** ; la vérification est un problème **NP-complet** ; et une spécification de ligne représente « not one, but a collection of products » définie implicitement, qui peut contenir des exigences contradictoires. Le quiz de complexité du prof : pour un algorithme en `2^n · n²`, la taille maximale traitable est n = 30, soit 2³⁰ · 30² = 966 367 641 600 pas de temps. Sur un système 10 fois plus rapide, on n'atteint que n ≈ 33 ; avec 100 fois plus rapide, la taille ne grandit presque pas : à cause de la croissance exponentielle, **acheter une machine plus puissante ne résout pas un problème NP-complet**.",
-        "en": "Three reasons for the difficulty: modelling is **error-prone**; verification is an **NP-complete** problem; and a line specification represents not one but a collection of products, defined implicitly, which may include contradictory requirements. The teacher's complexity quiz: for an algorithm in `2^n · n²`, the largest tractable size is n = 30, i.e. 2³⁰ · 30² = 966,367,641,600 time steps. On a 10× faster system you only reach n ≈ 33; with 100× faster the size barely grows: because of exponential growth, **a more powerful machine does not solve an NP-complete problem**."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 25",
@@ -498,6 +456,10 @@
           "quote": "La taille augmente très faiblement en raison de la croissance exponentielle"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-09"
     },
     {
       "type": "heading",
@@ -627,6 +589,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-11"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Vérification de conformité",
@@ -636,8 +602,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Définition (Paige et al. 2007) : en conformance checking, « it is checked that a model satisfies the constraints captured in the meta-model, i.e., that the model is indeed a valid instance of the meta-model ». Méthode du prof : représenter le **métamodèle FM** en CLP (`feature(IdFeature, Name, LIdAttributes)`, `root(IdFeature)`, `dependency(IdDependency, IdFeature1, IdFeature2, DependencyType)`, `groupCardinality(LIdDependencies, Min, Max)`…), convertir le feature model en **faits Prolog**, puis écrire une règle par critère.",
-        "en": "Definition (Paige et al. 2007): in conformance checking, it is checked that a model satisfies the constraints captured in the meta-model, i.e. that it is a valid instance of the meta-model. The teacher's method: represent the **FM metamodel** in CLP (`feature(...)`, `root(...)`, `dependency(...)`, `groupCardinality(...)`…), convert the feature model into **Prolog facts**, then write one rule per criterion."
+        "fr": "Définition (Paige et al. 2007) : en conformance checking, « it is checked that a model satisfies the constraints captured in the meta-model, i.e., that the model is indeed a valid instance of the meta-model ». Méthode du prof : représenter le **métamodèle FM** en CLP (`feature(IdFeature, Name, LIdAttributes)`, `root(IdFeature)`, `dependency(IdDependency, IdFeature1, IdFeature2, DependencyType)`, `groupCardinality(LIdDependencies, Min, Max)`…), convertir le feature model en **faits Prolog**, puis écrire une règle par critère. Exemple 1 — **unicité de la racine** : « product line models and product models should have one and only one root ». La règle `conformance_1` récupère toutes les racines avec `findall`, calcule leur nombre N et réussit si `N \\== 1`. Exemple 2 — **dépendances optionnelles dans un groupe** : les features d'une cardinalité de groupe ne doivent pas être obligatoires (`conformance_2` cherche une dépendance `mandatory` dont l'identifiant est dans un groupe).",
+        "en": "Definition (Paige et al. 2007): in conformance checking, it is checked that a model satisfies the constraints captured in the meta-model, i.e. that it is a valid instance of the meta-model. The teacher's method: represent the **FM metamodel** in CLP (`feature(...)`, `root(...)`, `dependency(...)`, `groupCardinality(...)`…), convert the feature model into **Prolog facts**, then write one rule per criterion. Example 1 — **root uniqueness**: product line models and product models should have one and only one root. The `conformance_1` rule gathers all roots with `findall`, computes their number N and succeeds if `N \\== 1`. Example 2 — **optional dependencies in group cardinalities**: the features in a group cardinality must not be mandatory (`conformance_2` looks for a `mandatory` dependency whose identifier is in a group)."
       },
       "src": [
         {
@@ -654,16 +620,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 35",
           "quote": "(8) dependency(dep1, fea1, fea3, optional)."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Exemple 1 — **unicité de la racine** : « product line models and product models should have one and only one root ». La règle `conformance_1` récupère toutes les racines avec `findall`, calcule leur nombre N et réussit si `N \\== 1`. Exemple 2 — **dépendances optionnelles dans un groupe** : les features d'une cardinalité de groupe ne doivent pas être obligatoires (`conformance_2` cherche une dépendance `mandatory` dont l'identifiant est dans un groupe).",
-        "en": "Example 1 — **root uniqueness**: product line models and product models should have one and only one root. The `conformance_1` rule gathers all roots with `findall`, computes their number N and succeeds if `N \\== 1`. Example 2 — **optional dependencies in group cardinalities**: the features in a group cardinality must not be mandatory (`conformance_2` looks for a `mandatory` dependency whose identifier is in a group)."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 36",
@@ -707,6 +664,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-12"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Vérification sémantique : modèle vide, faux, features mortes",
@@ -716,8 +677,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "La vérification sémantique cherche les défauts **non structurels**. Principe général : pour vérifier un PLM avec un solveur, on le transforme d'abord dans son langage (« The first step to verify PLMs with a solver is to transform them into the language of the solver »), puis on ajoute au besoin une **contrainte de vérification**.",
-        "en": "Semantic verification looks for **non-structural** defects. General principle: to verify a PLM with a solver, first transform it into the solver's language, then add, when needed, a **verification constraint**."
+        "fr": "La vérification sémantique cherche les défauts **non structurels**. Principe général : pour vérifier un PLM avec un solveur, on le transforme d'abord dans son langage (« The first step to verify PLMs with a solver is to transform them into the language of the solver »), puis on ajoute au besoin une **contrainte de vérification**. **Modèle vide (void)** : un modèle « that does not permit the configuration of any product ». Exemple UNIX : `Kernel` et `FileSystem` sont obligatoires sous la racine ; ajouter une exclusion mutuelle entre eux rend toute configuration impossible. Algorithme `nonVoidPLM(M)` : `Answer = getOneSolution(M)` ; si « false », écrire « Void PLM ». Pas de contrainte de vérification : le programme est déjà insatisfiable. **Modèle faux (false)** : un modèle qui n'a qu'**un seul produit** (`nonFalsePLM` exige `find(M, 2)`, au moins deux produits). Pas de contrainte de vérification propre : le défaut disparaît quand les features mortes et fausses optionnelles sont corrigées.",
+        "en": "Semantic verification looks for **non-structural** defects. General principle: to verify a PLM with a solver, first transform it into the solver's language, then add, when needed, a **verification constraint**. **Void model**: a model that does not permit the configuration of any product. UNIX example: `Kernel` and `FileSystem` are mandatory under the root; adding a mutual exclusion between them makes any configuration impossible. Algorithm `nonVoidPLM(M)`: `Answer = getOneSolution(M)`; if “false”, write “Void PLM”. No verification constraint is needed: the program is already unsatisfiable. **False model**: a model with only **one product** (`nonFalsePLM` requires `find(M, 2)`, at least two products). No dedicated verification constraint: the defect is solved once dead and false optional elements are fixed."
       },
       "src": [
         {
@@ -734,16 +695,7 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 54",
           "quote": "we need it as a Constraint program and some times we also need a \"verification constraint\""
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Modèle vide (void)** : un modèle « that does not permit the configuration of any product ». Exemple UNIX : `Kernel` et `FileSystem` sont obligatoires sous la racine ; ajouter une exclusion mutuelle entre eux rend toute configuration impossible. Algorithme `nonVoidPLM(M)` : `Answer = getOneSolution(M)` ; si « false », écrire « Void PLM ». Pas de contrainte de vérification : le programme est déjà insatisfiable. **Modèle faux (false)** : un modèle qui n'a qu'**un seul produit** (`nonFalsePLM` exige `find(M, 2)`, au moins deux produits). Pas de contrainte de vérification propre : le défaut disparaît quand les features mortes et fausses optionnelles sont corrigées.",
-        "en": "**Void model**: a model that does not permit the configuration of any product. UNIX example: `Kernel` and `FileSystem` are mandatory under the root; adding a mutual exclusion between them makes any configuration impossible. Algorithm `nonVoidPLM(M)`: `Answer = getOneSolution(M)`; if “false”, write “Void PLM”. No verification constraint is needed: the program is already unsatisfiable. **False model**: a model with only **one product** (`nonFalsePLM` requires `find(M, 2)`, at least two products). No dedicated verification constraint: the defect is solved once dead and false optional elements are fixed."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 43",
@@ -952,6 +904,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-14"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Diagnostic et correction",
@@ -1097,6 +1053,10 @@
           "quote": "| **Ren6** | 268 | 334 |"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-15"
     }
   ],
   "glossary": [
@@ -1402,7 +1362,538 @@
     }
   ],
   "flashcards": [],
-  "quiz": [],
+  "quiz": [
+    {
+      "id": "inf4-07-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l'exemple Model2Text du prof (MiniUML vers MiniJava), le métamodèle du modèle cible est une grammaire du langage de programmation.",
+        "en": "In the lecturer's Model2Text example (MiniUML to MiniJava), the metamodel of the target model is a grammar of the programming language."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la transformation génère du code MiniJava (class Student extends Person { … }) conforme à une grammaire (ClassDec ::= Modifier class Identifier extends Identifier ClassBody).",
+        "en": "TRUE: the transformation generates MiniJava code (class Student extends Person { … }) conforming to a grammar (ClassDec ::= Modifier class Identifier extends Identifier ClassBody)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 3",
+          "quote": "Formally, a simple model transformation has to define the way for generating a model Mb, conforming to a metamodel MMb, from a model Ma conforming to a metamodel MMa."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 3",
+          "quote": "ClassDec ::= Modifier class Identifier extends Identifier ClassBody"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-02",
+      "type": "mcq",
+      "question": {
+        "fr": "En domaine {0,1}, comment s'écrit la contrainte « F2 est optionnelle sous F1 » ?",
+        "en": "With variables in {0,1}, how is the constraint \"F2 is optional under F1\" written?"
+      },
+      "options": [
+        {
+          "fr": "F1 = F2",
+          "en": "F1 = F2"
+        },
+        {
+          "fr": "F1 ≥ F2",
+          "en": "F1 ≥ F2"
+        },
+        {
+          "fr": "F2 ≥ F1",
+          "en": "F2 ≥ F1"
+        },
+        {
+          "fr": "F1 + F2 ≤ 1",
+          "en": "F1 + F2 ≤ 1"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Optionnelle : F1 ≥ F2 (F2 ne peut être sélectionnée que si son père F1 l'est). F1 = F2 est l'obligatoire ; F2 ≥ F1 est le requires (F1 requires F2) ; F1 + F2 ≤ 1 est l'exclusion.",
+        "en": "Optional: F1 ≥ F2 (F2 can be selected only if its parent F1 is). F1 = F2 is mandatory; F2 ≥ F1 is requires (F1 requires F2); F1 + F2 ≤ 1 is exclusion."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 6",
+          "quote": "$F1 \\ge F2$"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 7",
+          "quote": "$F1 = F2$"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "En domaine {0,1}, la contrainte « F1 requires F2 » s'écrit F1 ≥ F2.",
+        "en": "With variables in {0,1}, the constraint \"F1 requires F2\" is written F1 ≥ F2."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : F1 requires F2 s'écrit F2 ≥ F1 (si F1 vaut 1, F2 doit valoir 1). F1 ≥ F2 est l'écriture de l'optionnelle F2 sous F1 : piège de symétrie.",
+        "en": "FALSE: F1 requires F2 is written F2 ≥ F1 (if F1 is 1, F2 must be 1). F1 ≥ F2 is the encoding of optional F2 under F1: a symmetry trap."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 8",
+          "quote": "$F2 \\ge F1$"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 6",
+          "quote": "$F1 \\ge F2$"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-04",
+      "type": "true_false",
+      "statement": {
+        "fr": "En domaine {0,1}, l'exclusion mutuelle de F1 et F2 s'écrit F1 + F2 ≤ 1.",
+        "en": "With variables in {0,1}, the mutual exclusion of F1 and F2 is written F1 + F2 ≤ 1."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la somme ne peut pas dépasser 1, donc F1 et F2 ne sont jamais sélectionnées ensemble. Équivalent : F1 × F2 = 0.",
+        "en": "TRUE: the sum cannot exceed 1, so F1 and F2 are never selected together. Equivalent: F1 × F2 = 0."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 9",
+          "quote": "$F1 + F2 \\le 1$"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 9",
+          "quote": "$F1 * F2 = 0$"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-05",
+      "type": "mcq",
+      "question": {
+        "fr": "Une cardinalité de groupe <m..n> porte sur un père F0 et ses fils F1…Fn. Comment s'écrit-elle correctement avec des variables 0/1 ?",
+        "en": "A group cardinality <m..n> applies to a parent F0 and its children F1…Fn. How is it correctly written with 0/1 variables?"
+      },
+      "options": [
+        {
+          "fr": "m ≤ F1 + … + Fn ≤ n",
+          "en": "m ≤ F1 + … + Fn ≤ n"
+        },
+        {
+          "fr": "m ≤ F0 ≤ n",
+          "en": "m ≤ F0 ≤ n"
+        },
+        {
+          "fr": "F0 = F1 + … + Fn",
+          "en": "F0 = F1 + … + Fn"
+        },
+        {
+          "fr": "m × F0 ≤ F1 + … + Fn ≤ n × F0",
+          "en": "m × F0 ≤ F1 + … + Fn ≤ n × F0"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Il faut multiplier les bornes par le père : si F0 = 0, tous les fils sont forcés à 0 ; si F0 = 1, il y a entre m et n fils. Sans le facteur F0, des fils seraient sélectionnables sans leur père.",
+        "en": "The bounds must be multiplied by the parent: if F0 = 0, all children are forced to 0; if F0 = 1, there are between m and n children. Without the F0 factor, children could be selected without their parent."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 10",
+          "quote": "Ou plus simplement : $m * F0 \\le F1 + F2 + \\dots + Fn \\le n * F0$"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-06",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l'exercice GNU Prolog du prof, la feature F8 appartient à un groupe <1..2> avec F9 et F10 : elle est donc sélectionnée dans au moins une configuration.",
+        "en": "In the lecturer's GNU Prolog exercise, feature F8 belongs to a <1..2> group with F9 and F10: it is therefore selected in at least one configuration."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : F8 est exclusive avec F2, qui est obligatoire. F8 n'est donc sélectionnée dans aucune configuration : c'est une dead feature, bien qu'elle figure dans le groupe.",
+        "en": "FALSE: F8 is exclusive with F2, which is mandatory. F8 is therefore selected in no configuration: it is a dead feature, even though it appears in the group."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 18",
+          "quote": "the feature `F8` is never selected, in any configuration"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 18",
+          "quote": "it cannot be used in any product"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-07",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans GNU Prolog, comment obtient-on le nombre de produits d'un feature model déjà traduit en prédicat productline(L) ?",
+        "en": "In GNU Prolog, how do you get the number of products of a feature model already translated into a predicate productline(L)?"
+      },
+      "options": [
+        {
+          "fr": "Avec fd_labeling(L), qui énumère toutes les configurations d'un coup",
+          "en": "With fd_labeling(L), which enumerates all configurations at once"
+        },
+        {
+          "fr": "Avec consult('productline.pl'), qui renvoie le nombre de solutions",
+          "en": "With consult('productline.pl'), which returns the number of solutions"
+        },
+        {
+          "fr": "Avec findall(L, productline(L), Semantics) puis length(Semantics, NumberOfProducts)",
+          "en": "With findall(L, productline(L), Semantics) then length(Semantics, NumberOfProducts)"
+        },
+        {
+          "fr": "Avec length(L, N) sur la liste des variables",
+          "en": "With length(L, N) on the variable list"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "findall collecte toutes les solutions (la sémantique) dans une liste, et length en donne la taille (12 dans l'exercice). fd_labeling donne une valeur aux variables pour une solution ; length(L, N) compte les variables, pas les produits.",
+        "en": "findall collects all solutions (the semantics) in a list, and length gives its size (12 in the exercise). fd_labeling assigns values for one solution; length(L, N) counts variables, not products."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 17",
+          "quote": "you generate all the solutions with `findall`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 17",
+          "quote": "NumberOfProducts = 12"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-08",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le quiz de complexité du prof montre qu'avec une machine 100 fois plus rapide, la taille traitable d'un problème NP-complet augmente fortement : la puissance de calcul suffit donc à passer à l'échelle.",
+        "en": "The lecturer's complexity quiz shows that with a machine 100 times faster, the tractable size of an NP-complete problem grows strongly: computing power is therefore enough to scale."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : à cause de la croissance exponentielle, la taille traitable augmente très faiblement (n passe de 30 à environ 33 avec une machine 10 fois plus rapide). Une machine plus puissante ne résout pas un problème NP-complet.",
+        "en": "FALSE: because of exponential growth, the tractable size grows very little (n goes from 30 to about 33 with a 10x faster machine). A more powerful machine does not solve an NP-complete problem."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 25",
+          "quote": "Taille maximale traitable : $n \\approx 33$"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 25",
+          "quote": "La taille augmente très faiblement en raison de la croissance exponentielle"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-09",
+      "type": "mcq",
+      "question": {
+        "fr": "Laquelle de ces affirmations n'est PAS une raison citée par le prof pour expliquer la difficulté de la vérification des modèles de lignes de produits ?",
+        "en": "Which of these statements is NOT a reason given by the lecturer to explain why verifying product line models is difficult?"
+      },
+      "options": [
+        {
+          "fr": "La modélisation est sujette aux erreurs",
+          "en": "Modelling is error-prone"
+        },
+        {
+          "fr": "Un feature model ne peut pas être traduit en programme par contraintes",
+          "en": "A feature model cannot be translated into a constraint program"
+        },
+        {
+          "fr": "La vérification est un problème NP-complet",
+          "en": "Verification is an NP-complete problem"
+        },
+        {
+          "fr": "La spécification représente implicitement une collection de produits, avec d'éventuelles exigences contradictoires",
+          "en": "The specification implicitly represents a collection of products, possibly with contradictory requirements"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Les trois raisons : modélisation sujette aux erreurs, NP-complétude, et collection de produits définie implicitement pouvant être contradictoire. La traduction en programme par contraintes est au contraire le moyen de vérifier.",
+        "en": "The three reasons: error-prone modelling, NP-completeness, and an implicitly defined collection of products that may be contradictory. Translating into a constraint program is, on the contrary, the means of verifying."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 25",
+          "quote": "Product line modeling is an error-prone activity"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 25",
+          "quote": "Product line verification is an NP-complete problem"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 25",
+          "quote": "A product line specification represents not one, but a collection of products that is defined implicitly and that may include contradictory requirements"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-10",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans la typologie du prof, la conformité du modèle à son métamodèle fait partie des critères sémantiques de justesse d'un modèle de ligne de produits.",
+        "en": "In the lecturer's typology, a model's conformance to its metamodel is one of the semantic correctness criteria of a product line model."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la justesse comprend deux familles distinctes : (1) les critères de **conformité** (structure), et (2) les critères **sémantiques** (expressiveness, error-free, redundancy-free).",
+        "en": "FALSE: correctness comprises two distinct families: (1) **conformance** criteria (structure), and (2) **semantic** criteria (expressiveness, error-free, redundancy-free)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 31",
+          "quote": "1. Conformance checking criteria"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 31",
+          "quote": "2. Semantics-related criteria"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-11",
+      "type": "mcq",
+      "question": {
+        "fr": "Un modèle de ligne de produits ne permet de configurer qu'un seul produit. Quel critère n'est pas respecté ?",
+        "en": "A product line model allows only one product to be configured. Which criterion is violated?"
+      },
+      "options": [
+        {
+          "fr": "Non-void",
+          "en": "Non-void"
+        },
+        {
+          "fr": "Non-dead artefacts",
+          "en": "Non-dead artefacts"
+        },
+        {
+          "fr": "Non-false",
+          "en": "Non-false"
+        },
+        {
+          "fr": "Non-redundant dependencies",
+          "en": "Non-redundant dependencies"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Un modèle « faux » n'a qu'un seul produit : nonFalsePLM exige find(M, 2), au moins deux produits. Non-void exige au moins un produit (un modèle vide n'en a aucun).",
+        "en": "A \"false\" model has only one product: nonFalsePLM requires find(M, 2), at least two products. Non-void requires at least one product (a void model has none)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 58",
+          "quote": "$\\text{nonFalsePLM}(M) \\Leftrightarrow \\text{productLineModel}(M) \\wedge \\text{find}(M, 2)$"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 43",
+          "quote": "A void PLM is defined as a model that does not permit the configuration of any product."
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-12",
+      "type": "true_false",
+      "statement": {
+        "fr": "En vérification de conformité en Prolog, une règle conformance_k qui réussit indique que le modèle est conforme au critère testé.",
+        "en": "In conformance checking in Prolog, a conformance_k rule that succeeds indicates that the model complies with the tested criterion."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la règle réussit quand elle trouve un défaut (par ex. N \\== 1 réussit si le nombre de racines n'est pas 1). Réussir = inconsistance détectée.",
+        "en": "FALSE: the rule succeeds when it finds a defect (e.g. N \\== 1 succeeds if the number of roots is not 1). Success = inconsistency detected."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 36",
+          "quote": "should have one and only one root"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 36",
+          "quote": "N \\== 1."
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-13",
+      "type": "mcq",
+      "question": {
+        "fr": "Pour vérifier qu'une feature F5 est morte (dead) avec un solveur, quelle contrainte de vérification ajoute-t-on au programme par contraintes ?",
+        "en": "To check with a solver that a feature F5 is dead, which verification constraint is added to the constraint program?"
+      },
+      "options": [
+        {
+          "fr": "Aucune : le programme est déjà insatisfiable",
+          "en": "None: the program is already unsatisfiable"
+        },
+        {
+          "fr": "F5 #= 0",
+          "en": "F5 #= 0"
+        },
+        {
+          "fr": "La négation de la dépendance testée",
+          "en": "The negation of the tested dependency"
+        },
+        {
+          "fr": "F5 #= 1",
+          "en": "F5 #= 1"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "On force l'élément à 1 : si le solveur répond « There is no solution », F5 ne peut apparaître dans aucun produit, donc elle est morte. F5 #= 0 sert à détecter une optionnelle fausse ; la négation, la redondance ; « aucune » vaut pour vide et faux.",
+        "en": "The element is forced to 1: if the solver answers \"There is no solution\", F5 can appear in no product, so it is dead. F5 #= 0 detects a false optional; negation, redundancy; \"none\" applies to void and false."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 55",
+          "quote": "we add the verification constraint: `F5 #= 1`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 45",
+          "quote": "An artefact is dead if it cannot appear in any product of the product line."
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-14",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour tester la redondance d'une dépendance, la contrainte de vérification ajoutée est la négation de la dépendance testée.",
+        "en": "To test the redundancy of a dependency, the verification constraint added is the negation of the tested dependency."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : par exemple 1-(F3*F8 #= 0) pour l'exclusion F3 excludes F8. Mort → on force à 1 ; faussement optionnelle → on force à 0 ; redondance → on nie la dépendance ; vide/faux → rien à ajouter.",
+        "en": "TRUE: for example 1-(F3*F8 #= 0) for the exclusion F3 excludes F8. Dead → force to 1; false optional → force to 0; redundancy → negate the dependency; void/false → nothing to add."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 55",
+          "quote": "the verification constraint is: `1-(F3*F8 #= 0)`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 55",
+          "quote": "the verif. constraint is: `F5 #= 0`"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-qz-15",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans le diagnostic du prof, effacer la dépendance « F8 requires F7 » du MUS rend le modèle non vide. Pourquoi cette correction est-elle pourtant insuffisante ?",
+        "en": "In the lecturer's diagnosis, erasing the dependency \"F8 requires F7\" from the MUS makes the model non-void. Why is this fix nevertheless insufficient?"
+      },
+      "options": [
+        {
+          "fr": "Le modèle reste vide, le solveur répond toujours « There is no solution »",
+          "en": "The model stays void, the solver still answers \"There is no solution\""
+        },
+        {
+          "fr": "Le modèle n'a plus qu'un seul produit : il est faux, donc inutile pour une ligne de produits",
+          "en": "The model has only one product left: it is false, hence useless for a product line"
+        },
+        {
+          "fr": "Le modèle devient non conforme à son métamodèle",
+          "en": "The model no longer conforms to its metamodel"
+        },
+        {
+          "fr": "Le modèle a désormais une racine multiple",
+          "en": "The model now has multiple roots"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Effacer ce requires donne une seule solution : le modèle est faux. Une correction n'est valable que si elle ne crée pas d'autre défaut ; après chaque réparation, il faut refaire toute la batterie de vérifications.",
+        "en": "Erasing this requires leaves a single solution: the model is false. A fix is valid only if it creates no other defect; after each repair, the whole battery of checks must be rerun."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 70",
+          "quote": "The PLM is false"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/7__ple.md",
+          "loc": "diapo 68",
+          "quote": "Minimal Unsatisfiable Subset"
+        }
+      ]
+    }
+  ],
   "exercises": [],
   "writing": []
 }
