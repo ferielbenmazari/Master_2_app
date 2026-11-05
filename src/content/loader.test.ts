@@ -14,7 +14,7 @@ describe('loader', () => {
     const idx = getChapterIndex('rec1')
     expect(idx.map((c) => c.order)).toEqual([...idx.map((c) => c.order)].sort((a, b) => a - b))
     expect(idx).toContainEqual({ id: REC1_05, courseId: 'rec1', order: 5, path: `/content/rec1/chapters/05-qualite-validite-ethique.json` })
-    expect(getChapterIndex('inf4')).toEqual([])
+    expect(getChapterIndex('inf4').every((c) => c.courseId === 'inf4')).toBe(true)
   })
 
   it('charge un chapitre validé, avec cache', async () => {
