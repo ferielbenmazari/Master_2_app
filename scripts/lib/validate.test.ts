@@ -17,7 +17,7 @@ const SRC_FILE = 'ressources/S3__REC1/Markdown/5_recmeth_5.md'
 
 const real = loadContentTree(root)
 const rec1 = real.courses.find((c) => c.dir === 'rec1')!
-const baseChapter = ChapterSchema.parse(rec1.chapters[0]!.data)
+const baseChapter = ChapterSchema.parse(rec1.chapters.find((c) => c.file.includes('05-'))!.data)
 const baseSources = SourcesSchema.parse(rec1.sources!.data)
 const baseNotions = NotionsSchema.parse(rec1.notions!.data)
 const clone = <T>(v: T): T => structuredClone(v)

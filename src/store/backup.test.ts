@@ -45,7 +45,7 @@ describe('backup', () => {
     const cases: [string, string][] = [
       ['{oups', 'JSON'],
       ['[]', 'valide'],
-      [JSON.stringify({ ...good, schemaVersion: 2 }), 'autre version'],
+      [JSON.stringify({ ...good, schemaVersion: 3 }), 'autre version'],
       [JSON.stringify({ ...good, tables: { ...good.tables, cards: [{ cardId: 1 }] } }), 'valide'],
       [JSON.stringify({ ...good, prefs: { ...good.prefs, pseudo: '   ' } }), 'valide'],
     ]
@@ -55,6 +55,36 @@ describe('backup', () => {
     }
     expect(await snapshot()).toEqual(before)
     expect(loadPrefs()).toEqual(prefs)
+  })
+
+  it('importe une sauvegarde T05 (schemaVersion 1, sans champs FSRS v2 ni newPerDay) sans perte', async () => {
+    const v1 = {
+      app: 'revision-m2',
+      schemaVersion: 1,
+      exportedAt: '2026-11-03T10:00:00.000Z',
+      prefs: { pseudo: 'Léa', avatar: 'lime', theme: 'dark', langMode: 'both', trainLang: 'fr' },
+      tables: {
+        cards: [{ cardId: 'old', due: '2026-11-05T00:00:00.000Z', stability: 2, difficulty: 5, reps: 1, lapses: 0, state: 2, last_review: '2026-11-01T00:00:00.000Z' }],
+        attempts: [{ id: 1, itemId: 'q1', kind: 'quiz', correct: true, at: '2026-11-02T10:00:00.000Z' }],
+        reading: [{ chapterId: 'c1', progress: 0.5 }],
+        activity: [{ date: '2026-11-02', count: 3 }],
+      },
+    }
+    const imported = await importAll(file(JSON.stringify(v1)))
+    expect(imported.newPerDay).toBe(20)
+    expect(await db.cards.toArray()).toEqual(v1.tables.cards)
+    expect(await db.attempts.toArray()).toEqual(v1.tables.attempts)
+    expect(await db.activity.toArray()).toEqual(v1.tables.activity)
+  })
+
+  it('exporte et réimporte les champs FSRS v2 et newPerDay', async () => {
+    const card = { cardId: 'n', due: '2026-11-05T00:00:00.000Z', stability: 1, difficulty: 5, reps: 1, lapses: 0, state: 1, last_review: '2026-11-04T09:00:00.000Z', scheduledDays: 0.5, learningStep: 1, introduced: '2026-11-04' }
+    await db.cards.put(card)
+    const blob = await exportAll({ ...prefs, newPerDay: 10 })
+    await db.cards.clear()
+    const imported = await importAll(blob)
+    expect(imported.newPerDay).toBe(10)
+    expect(await db.cards.toArray()).toEqual([card])
   })
 
   it('transaction atomique : un échec en cours d’écriture annule tout', async () => {

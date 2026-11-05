@@ -9,7 +9,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle'
 import Toast from '@/components/ui/Toast'
 import { UI } from '@/i18n/ui'
 import { exportAll, exportFilename, ImportError, importAll, resetAll } from '@/store/backup'
-import { AVATAR_COLORS, QUIZ_TIMERS } from '@/store/prefs'
+import { AVATAR_COLORS, NEW_PER_DAY_OPTIONS, QUIZ_TIMERS } from '@/store/prefs'
 import { usePrefs } from '@/store/PrefsProvider'
 
 const TRAIN_LANGS = [
@@ -139,6 +139,19 @@ export default function Profile() {
           </div>
           <span id="quiz-timer-help" className="w-full text-xs text-ink-soft">
             {UI.quiz.timerHelp}
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <span className="text-sm text-ink-soft">{UI.flashcards.newPerDay}</span>
+          <div className="lang" role="radiogroup" aria-label={UI.flashcards.newPerDay} aria-describedby="new-per-day-help">
+            {NEW_PER_DAY_OPTIONS.map((n) => (
+              <button key={n} type="button" role="radio" aria-checked={prefs.newPerDay === n} onClick={() => setPrefs({ newPerDay: n })}>
+                {n}
+              </button>
+            ))}
+          </div>
+          <span id="new-per-day-help" className="w-full text-xs text-ink-soft">
+            {UI.flashcards.newPerDayHelp}
           </span>
         </div>
       </Panel>

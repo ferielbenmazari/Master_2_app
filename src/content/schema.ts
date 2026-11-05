@@ -179,17 +179,17 @@ export const ChapterSchema = z
     glossary: z.array(TermSchema).min(6).max(20),
     notions: stringArray,
     keyPoints: z.array(KeyPointSchema).min(5).max(10),
-    flashcards: z.array(FlashcardSchema).min(8).max(25),
+    flashcards: z.array(FlashcardSchema).max(25),
     quiz: z.array(QuizItemSchema).min(8).max(20),
-    exercises: z.array(ExerciseSchema).min(2).max(6),
-    writing: z.array(WritingItemSchema).min(4).max(12),
+    exercises: z.array(ExerciseSchema).max(6),
+    writing: z.array(WritingItemSchema).max(12),
   })
   .superRefine((ch, ctx) => {
     const tf = ch.quiz.filter((q) => q.type === 'true_false').length
     if (tf * 2 < ch.quiz.length) {
       ctx.addIssue({ code: 'custom', path: ['quiz'], message: 'au moins 50 % des items du quiz doivent être true_false' })
     }
-    for (const kind of ['reorder', 'cloze', 'spot_error', 'free'] as const) {
+    for (const kind of ch.writing.length === 0 ? [] : (['reorder', 'cloze', 'spot_error', 'free'] as const)) {
       if (!ch.writing.some((w) => w.kind === kind)) {
         ctx.addIssue({ code: 'custom', path: ['writing'], message: `le kind "${kind}" doit apparaître au moins une fois` })
       }

@@ -7,6 +7,10 @@ export type LangMode = 'fr' | 'both' | 'en'
 export type QuizTimer = 0 | 15 | 30 | 60
 export const QUIZ_TIMERS: readonly QuizTimer[] = [0, 15, 30, 60]
 
+/** Nouvelles cartes introduites par jour (FSRS). */
+export const NEW_PER_DAY_OPTIONS: readonly number[] = [5, 10, 20, 30, 50]
+export const MAX_NEW_PER_DAY = 200
+
 export interface Prefs {
   pseudo: string
   avatar: CourseColor
@@ -14,6 +18,7 @@ export interface Prefs {
   langMode: LangMode
   trainLang: 'fr' | 'en'
   quizTimer: QuizTimer
+  newPerDay: number
 }
 
 export const PREFS_KEY = 'm2rev:prefs'
@@ -26,6 +31,7 @@ export const DEFAULT_PREFS: Prefs = {
   langMode: 'both',
   trainLang: 'fr',
   quizTimer: 0,
+  newPerDay: 20,
 }
 
 const THEMES: readonly Theme[] = ['system', 'light', 'dark']
@@ -44,6 +50,10 @@ export function loadPrefs(): Prefs {
       langMode: LANG_MODES.includes(r.langMode as LangMode) ? (r.langMode as LangMode) : DEFAULT_PREFS.langMode,
       trainLang: r.trainLang === 'en' ? 'en' : 'fr',
       quizTimer: QUIZ_TIMERS.includes(r.quizTimer as QuizTimer) ? (r.quizTimer as QuizTimer) : DEFAULT_PREFS.quizTimer,
+      newPerDay:
+        typeof r.newPerDay === 'number' && Number.isInteger(r.newPerDay) && r.newPerDay >= 0 && r.newPerDay <= MAX_NEW_PER_DAY
+          ? r.newPerDay
+          : DEFAULT_PREFS.newPerDay,
     }
   } catch {
     return { ...DEFAULT_PREFS }

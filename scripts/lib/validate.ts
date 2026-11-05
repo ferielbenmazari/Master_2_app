@@ -428,7 +428,8 @@ function warnLevels(ctx: Ctx, file: string, ch: Chapter): void {
   const high = count('apply', 'analyze')
   if (remember / n > 0.3) ctx.warn('W-level-remember', file, 'quiz', `${remember}/${n} questions "remember" (${Math.round((remember / n) * 100)} % > 30 %)`)
   if (high / n < 0.35) ctx.warn('W-level-apply-analyze', file, 'quiz', `apply + analyze = ${high}/${n} (${Math.round((high / n) * 100)} % < 35 %)`)
-  if (!ch.exercises.some((e) => e.level === 'analyze')) ctx.warn('W-level-exercise-analyze', file, 'exercises', 'aucun exercice de niveau "analyze"')
+  if (ch.flashcards.length === 0 || ch.exercises.length === 0 || ch.writing.length === 0) ctx.warn('W-essentiel', file, 'chapter', 'chapitre « essentiel » : flashcards, exercices ou atelier d\'écriture vides (à compléter avec /ajouter-cours)')
+  else if (!ch.exercises.some((e) => e.level === 'analyze')) ctx.warn('W-level-exercise-analyze', file, 'exercises', 'aucun exercice de niveau "analyze"')
 }
 
 // ------------------------------------------------------------------ R12 : questions évidentes

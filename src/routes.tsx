@@ -3,6 +3,8 @@ import AppLayout from '@/components/layout/AppLayout'
 import CourseScope from '@/components/layout/CourseScope'
 import { UI } from '@/i18n/ui'
 import ChapterHub from '@/pages/ChapterHub'
+import ChapterFlashcards from '@/features/flashcards/ChapterFlashcards'
+import ReviewPage from '@/features/flashcards/ReviewPage'
 import QuizRunner from '@/features/quiz/QuizRunner'
 import Course from '@/pages/Course'
 import Home from '@/pages/Home'
@@ -12,7 +14,7 @@ import Soon from '@/pages/Soon'
 import Styleguide from '@/pages/Styleguide'
 import TitledSoon from '@/pages/TitledSoon'
 
-const CHAPTER_VIEWS = ['express', 'fiche', 'flashcards', 'exercices', 'anglais']
+const CHAPTER_VIEWS = ['express', 'fiche', 'exercices', 'anglais']
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
 export default function AppRoutes() {
@@ -21,7 +23,7 @@ export default function AppRoutes() {
       <Route path="/styleguide" element={<Styleguide />} />
       <Route element={<AppLayout />}>
         <Route index element={<Home />} />
-        <Route path="reviser" element={<TitledSoon title={UI.review.title} />} />
+        <Route path="reviser" element={<ReviewPage />} />
         <Route path="jouer/*" element={<TitledSoon title={UI.arena.title} />} />
         <Route path="profil" element={<Profile />} />
         <Route path="matiere/:courseId" element={<CourseScope />}>
@@ -32,6 +34,7 @@ export default function AppRoutes() {
             <Route index element={<ChapterHub />} />
             <Route path="lire" element={<Reader />} />
             <Route path="quiz" element={<QuizRunner />} />
+            <Route path="flashcards" element={<ChapterFlashcards />} />
             {CHAPTER_VIEWS.map((v) => (
               <Route key={v} path={v} element={<Soon />} />
             ))}

@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { UI } from '@/i18n/ui'
 import { db, SCHEMA_VERSION } from './db'
-import { AVATAR_COLORS, DEFAULT_PREFS, loadPrefs, removePrefs, savePrefs, type Prefs } from './prefs'
+import { AVATAR_COLORS, DEFAULT_PREFS, MAX_NEW_PER_DAY, loadPrefs, removePrefs, savePrefs, type Prefs } from './prefs'
 import { localDate } from './progress'
 
 export class ImportError extends Error {
@@ -21,6 +21,10 @@ const cardSchema = z.object({
   lapses: z.number().int().nonnegative(),
   state: z.number().int().nonnegative(),
   last_review: isoDate.optional(),
+  // v2 : absents des sauvegardes v1
+  scheduledDays: z.number().nonnegative().optional(),
+  learningStep: z.number().int().nonnegative().optional(),
+  introduced: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
 })
 const attemptSchema = z.object({
   id: z.number().int().positive(),
@@ -46,11 +50,12 @@ const prefsSchema = z.object({
   langMode: z.enum(['fr', 'both', 'en']),
   trainLang: z.enum(['fr', 'en']),
   quizTimer: z.union([z.literal(0), z.literal(15), z.literal(30), z.literal(60)]).optional(),
+  newPerDay: z.number().int().min(0).max(MAX_NEW_PER_DAY).optional(),
 })
 
 const backupSchema = z.object({
   app: z.literal('revision-m2'),
-  schemaVersion: z.literal(SCHEMA_VERSION),
+  schemaVersion: z.union([z.literal(1), z.literal(SCHEMA_VERSION)]),
   exportedAt: isoDate,
   prefs: prefsSchema,
   tables: z.object({
@@ -105,7 +110,7 @@ export async function importAll(file: Blob): Promise<Prefs> {
   } catch {
     throw new ImportError(UI.backup.errCorrupt)
   }
-  if (typeof raw === 'object' && raw !== null && 'schemaVersion' in raw && raw.schemaVersion !== SCHEMA_VERSION) {
+  if (typeof raw === 'object' && raw !== null && 'schemaVersion' in raw && raw.schemaVersion !== 1 && raw.schemaVersion !== SCHEMA_VERSION) {
     throw new ImportError(UI.backup.errVersion)
   }
   const parsed = backupSchema.safeParse(raw)

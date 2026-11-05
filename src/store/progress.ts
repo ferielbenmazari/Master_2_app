@@ -1,9 +1,8 @@
-import { db, type Attempt, type CardState, type Reading, type Activity } from './db'
+import { db, localDay, type Attempt, type CardState, type Reading, type Activity } from './db'
 
 /** Date locale AAAA-MM-JJ (pas UTC). */
 export function localDate(d: Date = new Date()): string {
-  const p = (n: number) => String(n).padStart(2, '0')
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+  return localDay(d)
 }
 
 async function bump(date: string): Promise<void> {
@@ -59,10 +58,10 @@ export function getReading(chapterId: string): Promise<Reading | undefined> {
   return db.reading.get(chapterId)
 }
 
-export function putCard(card: CardState): Promise<void> {
+export function putCard(card: CardState, date: string = localDate()): Promise<void> {
   return db.transaction('rw', db.cards, db.activity, async () => {
     await db.cards.put(card)
-    await bump(localDate())
+    await bump(date)
   })
 }
 

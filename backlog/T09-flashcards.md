@@ -2,7 +2,7 @@
 id: T09
 title: "Flashcards à répétition espacée (FSRS)"
 lot: 1
-status: todo
+status: done
 depends: [T08]
 agent: builder
 ---
@@ -24,13 +24,15 @@ Mémoriser durablement le vocabulaire et les notions, avec une session « à rev
 5. Tests : une carte notée « Encore » revient avant une carte « Facile » ; persistance.
 
 ## Critères d'acceptation
-- [ ] Session `/reviser` fonctionnelle et vide quand tout est revu (EmptyState festif)
-- [ ] Le compteur de l'accueil se met à jour
-- [ ] Flip accessible au clavier
-- [ ] `npm run check` vert
+- [x] Session `/reviser` fonctionnelle et vide quand tout est revu (EmptyState festif)
+- [x] Le compteur de l'accueil se met à jour
+- [x] Flip accessible au clavier
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Statistiques détaillées.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-04 : `ts-fsrs` 6.0.0 (API `DefaultScheduler`, asynchrone ; l'ancienne API `fsrs()` est dépréciée), modèle FSRS-6, étapes 1 min/10 min, sans fuzz. `src/store/fsrs.ts` (review, previewIntervals, getDueCards, quota de nouvelles cartes par jour local), `src/features/flashcards/` (FlashcardDeck, file de session, routes chapitre et `/reviser`).
+- Schéma Dexie v2 (`SCHEMA_VERSION` = 2) : champs `scheduledDays`, `learningStep`, `introduced`, index `due`, migration des lignes v1 ; l'import accepte toujours les sauvegardes v1 (testé). Nouveau réglage `newPerDay` (défaut 20, profil, rétro-compatible).
+- Écart : `getDueCount()` charge tous les chapitres de toutes les matières (import lazy) pour connaître les ids existants.

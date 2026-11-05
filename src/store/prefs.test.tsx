@@ -33,6 +33,11 @@ describe('prefs', () => {
 
   it('minuteur du quiz : désactivé par défaut, valeurs autorisées seulement', () => {
     expect(loadPrefs().quizTimer).toBe(0)
+    expect(loadPrefs().newPerDay).toBe(20)
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ newPerDay: 10 }))
+    expect(loadPrefs().newPerDay).toBe(10)
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ newPerDay: -3 }))
+    expect(loadPrefs().newPerDay).toBe(20)
     localStorage.setItem(PREFS_KEY, JSON.stringify({ quizTimer: 30 }))
     expect(loadPrefs().quizTimer).toBe(30)
     localStorage.setItem(PREFS_KEY, JSON.stringify({ quizTimer: 7 }))
