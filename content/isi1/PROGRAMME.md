@@ -30,7 +30,7 @@ _Source : 7_IREB 2 · 8_RE fundamentals_
 ## Élicitation
 _Source : 12_IREB 3 · 20_Eliciting_
 
-- [ ] Techniques : interviews, questionnaires, brainstorming, focus groups, ateliers, fouille de documents, quick & dirty ethnography, maquettes
+- [ ] Techniques : interviews, questionnaires, brainstorming, focus groups, ateliers, fouille de documents, quick & dirty ethnography, maquettes → ch.05 (⚠ focus groups : seulement cités dans le support IREB 3, sans définition ; maquettes : via prototypes)
 
 ## Documenter les exigences
 _Source : 14_IREB 4 · Pohl-Rupp_
