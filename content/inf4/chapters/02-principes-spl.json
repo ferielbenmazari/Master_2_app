@@ -1,0 +1,913 @@
+{
+  "id": "inf4-02-principes-spl",
+  "courseId": "inf4",
+  "order": 2,
+  "title": {
+    "fr": "Les principes des lignes de produits logiciels",
+    "en": "Principles of software product lines"
+  },
+  "hook": {
+    "fr": "De la Ford T à la personnalisation de masse : pourquoi une plate-forme commune change l'économie du logiciel.",
+    "en": "From the Model T to mass customisation: why a common platform changes the economics of software."
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__INF4/mardown/2__software_ple.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ford, la chaîne… et l'impasse",
+        "en": "Ford, the assembly line… and the dead end"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autrefois, les biens étaient fabriqués à la main pour des clients individuels. Puis, dans l'automobile, Ford invente la chaîne de production : un marché de masse devient bien moins cher à servir qu'avec des produits artisanaux. Mais la chaîne réduit les possibilités de diversification.",
+        "en": "In the past, goods were handmade for individual customers. Then, in the car industry, Ford invented the assembly line: a mass market became far cheaper to serve than with craft-made products. But the assembly line reduced the possibilities for diversification."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Ligne de production",
+          "quote": "les biens étaient fabriqués à la main pour des clients individuels"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Ligne de production",
+          "quote": "l'invention de la chaîne de production par Ford"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Ligne de production",
+          "quote": "la chaîne de production a réduit les possibilités de diversification"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le logiciel connaît la même dichotomie : les logiciels **individuels** sont plutôt chers, les logiciels **standards** manquent d'une diversification suffisante.",
+        "en": "Software has the same split: **individual** software is rather expensive, while **standard** software lacks enough diversification."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Logiciel individuel et standard",
+          "quote": "Les produits logiciels individuels sont plutôt chers"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Logiciel individuel et standard",
+          "quote": "les produits logiciels standards manquent d'une diversification suffisante"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : individuel = cher (sur mesure) ; standard = pas assez varié (série). Aucun des deux n'est « le bon » : c'est précisément le problème que la ligne de produits résout.",
+        "en": "Exam trap: individual = expensive (tailor-made); standard = not varied enough (mass-produced). Neither is “the right one”: that is exactly the problem the product line solves."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Logiciel individuel et standard",
+          "quote": "Les produits logiciels individuels sont plutôt chers"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Logiciel individuel et standard",
+          "quote": "les produits logiciels standards manquent d'une diversification suffisante"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La personnalisation de masse",
+        "en": "Mass customisation"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Tout le monde ne veut pas la même voiture : certains voyagent seuls, d'autres en grande famille, en ville ou à la campagne. La demande de produits individualisés grandit : c'est la [[term-mass-customisation|personnalisation de masse]], c'est-à-dire la production à grande échelle de biens adaptés aux besoins individuels des clients.",
+        "en": "Not everyone wants the same car: some travel alone, others as a large family, in town or in the countryside. Demand for individualised products grows: this is [[term-mass-customisation|mass customisation]], i.e. large-scale production of goods adapted to the individual needs of customers."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.1 Personnalisation de masse",
+          "quote": "La personnalisation de masse est la production à grande échelle de biens adaptés aux besoins individuels des clients."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le schéma de Böckle (Fig. 1-1) l'oppose au « one product fits all » : en haut, un seul modèle (la Modèle T noire) face à des exigences divergentes → les ventes baissent ; en bas, plusieurs voitures différentes issues d'une architecture de famille → les ventes montent.",
+        "en": "Böckle's diagram (Fig. 1-1) contrasts it with “one product fits all”: at the top, a single model (the black Model T) facing diverging requirements → sales fall; at the bottom, several different cars built on a family architecture → sales rise."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.1 Personnalisation de masse",
+          "quote": "Produit unique pour tous vs. produits individuels"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Mais il y a un prix : pour l'entreprise, la personnalisation de masse signifie des investissements technologiques plus importants, donc des prix plus élevés et/ou des marges plus faibles. Réponse des constructeurs : introduire des plates-formes communes pour leurs différents types de voitures.",
+        "en": "But there is a price: for the company, mass customisation means larger technology investments, hence higher prices and/or lower margins. The carmakers' answer: introduce common platforms for their different types of cars."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.1 Personnalisation de masse",
+          "quote": "Pour l'entreprise, la personnalisation de masse signifie des investissements technologiques plus importants"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.1 Personnalisation de masse",
+          "quote": "ont commencé à introduire des plates-formes communes pour leurs différents types de voitures"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La plate-forme : 35 % contre −7 %",
+        "en": "The platform: +35% versus −7%"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Sur des périodes de trois ans, les entreprises à la meilleure stratégie de plate-forme ont augmenté leurs ventes de 35 %, alors que celles qui partaient de zéro pour chaque nouvelle série de voitures ont perdu 7 % de ventes.",
+        "en": "Over three-year periods, companies with the best platform strategy increased sales by 35%, while those starting from scratch for each new series of cars lost 7% of sales."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "les entreprises utilisant la meilleure stratégie de plate-forme ont augmenté leurs ventes de 35%"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "celles qui partaient de zéro pour chaque nouvelle série de voitures ont subi une perte de ventes de 7%"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autre exemple du prof : Fuji sort le Quicksnap (1987), le premier appareil photo jetable, et surprend Kodak. Kodak regagne le marché (70 % du marché américain en 1994) en construisant une série de modèles clairement distinguables sur une **plate-forme** commune, avec les mêmes composants et le même processus de fabrication. Autre image : les Post-it de 3M, plate-forme dont dérivent des produits individuels (logo d'entreprise, marque-pages).",
+        "en": "Another example: Fuji released the Quicksnap (1987), the first disposable camera, and surprised Kodak. Kodak won the market back (70% of the US market in 1994) by building a series of clearly distinguishable models on a common **platform**, with the same components and manufacturing process. Another image: 3M's Post-it notes, a platform from which individual products derive (company logo, bookmarks)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "une série de modèles d'appareils photo clairement distinguables a été construite sur une plate-forme commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "en 1994, il avait conquis 70% du marché américain"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "Les notes \"Post-It\" de 3M sont considérées comme une plate-forme"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Définition générale : une [[term-platform|plate-forme]] est toute base de technologies sur laquelle d'autres technologies ou processus sont construits. Le terme est utilisé dans divers contextes, il n'existe pas de définition commune ; cette définition englobe toutes sortes d'artefacts réutilisables.",
+        "en": "General definition: a [[term-platform|platform]] is any technology base on which other technologies or processes are built. The term is used in various contexts and there is no common definition; this one covers all kinds of reusable artefacts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "Une plate-forme est toute base de technologies sur laquelle d'autres technologies ou processus sont construits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "qui englobe toutes sortes d'artefacts réutilisables"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Plate-forme + personnalisation de masse = ligne de produits",
+        "en": "Platform + mass customisation = product line"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Combiner une plate-forme commune et la personnalisation de masse permet de réutiliser une base technologique commune tout en sortant des produits en accord étroit avec les souhaits des clients. Cette combinaison systématique, pour les systèmes et produits logiciels, s'appelle l'**ingénierie des lignes de produits logiciels**.",
+        "en": "Combining a common platform and mass customisation lets you reuse a common technology base while delivering products closely matching customer wishes. This systematic combination, for software systems and products, is called **software product line engineering**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.3 Combiner",
+          "quote": "La combinaison de la personnalisation de masse et d'une plate-forme commune nous permet de réutiliser une base de technologie commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.3 Combiner",
+          "quote": "que nous appelons ingénierie des lignes de produits logiciels"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "À retenir (formule à savoir) : ligne de produits = **plate-forme** + **personnalisation de masse**.",
+        "en": "To remember (formula to know): product line = **platform** + **mass customisation**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.3 Combiner",
+          "quote": "La combinaison de la personnalisation de masse et d'une plate-forme commune nous permet de réutiliser une base de technologie commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "en utilisant des plates-formes et la personnalisation de masse"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Produire une ligne : d'abord le commun, ensuite les différences",
+        "en": "Producing a line: common first, differences next"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "En ingénierie d'un système unique, les produits sont considérés comme indépendants. Avec une ligne de produits, on crée d'abord une plate-forme qui convient à toutes les voitures : elle comprend toutes les pièces communes (par exemple une boîte de vitesses applicable à toutes) et détermine les spécificités qui distinguent les produits. Créer la plate-forme, c'est se préparer à la personnalisation de masse.",
+        "en": "In single-system engineering, products are considered independent. With a product line, one first creates a platform that suits all the cars: it contains all the common parts (e.g. a gearbox usable in all cars) and determines the specifics that distinguish products. Creating the platform means preparing for mass customisation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.1 Création de la plate-forme",
+          "quote": "Dans l'ingénierie d'un système unique, les produits sont considérés comme des éléments indépendants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.1 Création de la plate-forme",
+          "quote": "créer la plate-forme implique de se préparer à la personnalisation de masse"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La stratégie : se concentrer d'abord sur ce qui est commun à tous les produits, puis sur ce qui est différent. La flexibilité intégrée permet ensuite de réutiliser ces artefacts dans différentes applications.",
+        "en": "The strategy: focus first on what is common to all products, then on what differs. The built-in flexibility then lets these artefacts be reused in different applications."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.1 Création de la plate-forme",
+          "quote": "La stratégie consiste d'abord à se concentrer sur ce qui est commun à tous les produits, puis sur ce qui est différent."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour cela, il faut identifier, tout au long du processus, où les produits diffèrent en fonctionnalités, exigences ou architecture. Cette flexibilité s'appelle la [[term-variability|variabilité]] dans le contexte des lignes de produits logiciels. Elle s'accompagne de **contraintes** : par exemple, pas de lave-glace arrière sur un cabriolet quand le toit est ouvert.",
+        "en": "For this, one must identify, throughout the process, where products differ in functionality, requirements or architecture. This flexibility is called [[term-variability|variability]] in the context of software product lines. It comes with **constraints**: e.g. no rear washer on a convertible when the roof is open."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "tout au long du processus, nous devons identifier où les produits diffèrent en termes de fonctionnalités, d'exigences ou d'architecture"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "Cette flexibilité est appelée \"variabilité\" dans le contexte des lignes de produits logiciels."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "pas de lave-glace arrière sur un cabriolet quand le toit est ouvert"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux conséquences : (1) les plates-formes sont vite partagées entre plusieurs lignes de produits, d'où la nécessité de gérer soigneusement la traçabilité entre plate-forme et produits dérivés ; (2) les produits ne sont plus indépendants, ce qui doit se refléter dans l'organisation (par exemple créer une unité responsable de la plate-forme), avec standardisation des procédures, flux de travail et technologies.",
+        "en": "Two consequences: (1) platforms are soon shared between several product lines, so traceability between platform and derived products must be carefully managed; (2) products are no longer independent, which must be reflected in the organisation (e.g. a unit responsible for the platform), with standardisation of procedures, workflows and technologies."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "il est devenu nécessaire de gérer soigneusement les informations de traçabilité entre une plate-forme et les produits qui en dérivent"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.3 Réorganisation de l'entreprise",
+          "quote": "Les produits ne peuvent plus être traités comme indépendants"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.3 Réorganisation de l'entreprise",
+          "quote": "créer une unité responsable de la plate-forme"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi se lancer ? Les motivations",
+        "en": "Why do it? The motivations"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Coûts.** L'entreprise fait un investissement initial pour créer la plate-forme, puis réduit les coûts par produit en réutilisant les artefacts. Au schéma Fig. 1-2, les courbes (systèmes uniques vs famille) se croisent au [[term-break-even|point mort]], situé à environ 3 systèmes pour le logiciel.",
+        "en": "**Costs.** The company makes an up-front investment to create the platform, then lowers per-product costs by reusing artefacts. In diagram Fig. 1-2, the curves (single systems vs system family) cross at the [[term-break-even|break-even point]], at about 3 systems for software."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "L'entreprise doit faire un investissement initial pour créer la plate-forme, mais cela réduit ensuite les coûts par produit en réutilisant les artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Qualité.** Les artefacts de la plate-forme sont testés dans de nombreux produits, ce qui augmente considérablement les chances de détecter et corriger les défauts.",
+        "en": "**Quality.** Platform artefacts are tested in many products, which considerably increases the chances of detecting and fixing defects."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.2 Amélioration de la qualité",
+          "quote": "Les artefacts de la plate-forme sont testés dans de nombreux produits"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.2 Amélioration de la qualité",
+          "quote": "augmente considérablement les chances de détecter les défauts et de les corriger"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Time to market.** Il est d'abord plus élevé, car il faut construire les artefacts communs ; une fois cet obstacle franchi, il est considérablement raccourci grâce à la réutilisation (Fig. 1-3).",
+        "en": "**Time to market.** It is initially higher, because common artefacts must be built first; once this hurdle is cleared, it is considerably shortened thanks to reuse (Fig. 1-3)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.3 Time to Market",
+          "quote": "Le délai de mise sur le marché est initialement plus élevé, car les artefacts communs doivent d'abord être construits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.3 Time to Market",
+          "quote": "une fois cet obstacle franchi, le délai est considérablement raccourci grâce à la réutilisation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Autres motivations :** moins d'effort de maintenance (une correction sur la plate-forme se propage à tous les produits), évolution organisée de toute la gamme, meilleure estimation des coûts, et pour les clients des produits adaptés, de meilleure qualité, à un prix raisonnable. La complexité croissante est aussi mieux gérée par la structure de la plate-forme et la réutilisation.",
+        "en": "**Other motivations:** less maintenance effort (a fix on the platform propagates to all products), organised evolution of the whole range, better cost estimation, and for customers tailored, higher-quality products at a reasonable price. Growing complexity is also better handled through platform structure and reuse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "Les corrections apportées à la plate-forme se propagent à tous les produits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "L'ajout d'artefacts à la plate-forme permet une évolution organisée de toute la gamme."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "La plate-forme fournit une base solide pour estimer les coûts de production."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "Les clients obtiennent des produits adaptés, de meilleure qualité, à un prix raisonnable"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "est réduite par la structure de la plate-forme et la réutilisation"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : la ligne de produits n'est **pas** gagnante dès le premier produit. Investissement initial et time to market plus élevés au départ ; le gain vient après le point mort (≈ 3 systèmes).",
+        "en": "Exam trap: the product line does **not** pay off from the first product. Up-front investment and time to market are higher at the start; the gain comes after the break-even point (≈ 3 systems)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "L'entreprise doit faire un investissement initial pour créer la plate-forme, mais cela réduit ensuite les coûts par produit en réutilisant les artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.3 Time to Market",
+          "quote": "Le délai de mise sur le marché est initialement plus élevé, car les artefacts communs doivent d'abord être construits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Et pour le logiciel ?",
+        "en": "And for software?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L'**ingénierie des lignes de produits logiciels** est un paradigme permettant de développer des applications logicielles (systèmes à forte composante logicielle et produits logiciels) en utilisant des plates-formes et la personnalisation de masse. Deux exigences : modéliser de manière commune les points communs et les différences (variabilité gérée), et restreindre la variation à des endroits précis pour qu'elle reste gérable et ne corrompe pas la structure du logiciel.",
+        "en": "**Software product line engineering** is a paradigm for developing software applications (software-intensive systems and software products) using platforms and mass customisation. Two requirements: model commonalities and differences together (managed variability), and restrict variation to specific places so that it stays manageable and does not corrupt the software structure."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "L'ingénierie des lignes de produits logiciels est un paradigme permettant de développer des applications logicielles"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "en utilisant des plates-formes et la personnalisation de masse"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "Il faut modéliser de manière commune les points communs et les différences."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "Il faut restreindre la variation à des endroits précis pour qu'elle reste gérable et ne corrompe pas la structure du logiciel."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Attention au mot « plate-forme » : dans l'industrie, il désigne souvent le matériel ou l'OS (ex. Symbian). Ici, une [[term-software-platform|plate-forme logicielle]] est un ensemble de sous-systèmes logiciels et d'interfaces formant une structure commune à partir de laquelle un ensemble de produits dérivés peut être développé et produit efficacement.",
+        "en": "Beware of the word “platform”: in industry it often means hardware or the OS (e.g. Symbian). Here, a [[term-software-platform|software platform]] is a set of software subsystems and interfaces forming a common structure from which a set of derived products can be developed and produced efficiently."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "Une plate-forme logicielle est un ensemble de sous-systèmes logiciels et d'interfaces qui forment une structure commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "à partir de laquelle un ensemble de produits dérivés peut être développé et produit efficacement"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "le mot plate-forme désigne souvent le matériel ou l'OS"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Prérequis :** technologies habilitantes (programmation orientée objet, composants, liaison tardive / late-binding) ; maturité des processus (CMMI, bonne ingénierie des exigences, modélisation) ; connaissance approfondie du domaine et stabilité du marché pour que l'investissement soit rentable.",
+        "en": "**Prerequisites:** enabling technologies (object-oriented programming, components, late-binding); process maturity (CMMI, good requirements engineering, modelling); deep domain knowledge and market stability for the investment to pay off."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "La programmation orientée objet, la technologie des composants et les techniques de liaison tardive (late-binding)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "Des processus comme le CMMI, une bonne ingénierie des exigences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "Une connaissance approfondie du domaine"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "une stabilité du marché sont indispensables pour que l'investissement soit rentable"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : « plate-forme » du livre ≠ matériel/OS. Plate-forme logicielle = sous-systèmes + interfaces formant une structure commune pour dériver des produits.",
+        "en": "Exam trap: the book's “platform” ≠ hardware/OS. Software platform = subsystems + interfaces forming a common structure to derive products."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "Une plate-forme logicielle est un ensemble de sous-systèmes logiciels et d'interfaces qui forment une structure commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "le mot plate-forme désigne souvent le matériel ou l'OS"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-mass-customisation",
+      "fr": "personnalisation de masse",
+      "en": "mass customisation",
+      "definition": {
+        "fr": "Production à grande échelle de biens adaptés aux besoins individuels des clients.",
+        "en": "Large-scale production of goods adapted to the individual needs of customers."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.1 Personnalisation de masse",
+          "quote": "La personnalisation de masse est la production à grande échelle de biens adaptés aux besoins individuels des clients."
+        }
+      ]
+    },
+    {
+      "id": "term-platform",
+      "fr": "plate-forme",
+      "en": "platform",
+      "definition": {
+        "fr": "Toute base de technologies sur laquelle d'autres technologies ou processus sont construits.",
+        "en": "Any technology base on which other technologies or processes are built."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "Une plate-forme est toute base de technologies sur laquelle d'autres technologies ou processus sont construits."
+        }
+      ]
+    },
+    {
+      "id": "term-variability",
+      "fr": "variabilité",
+      "en": "variability",
+      "definition": {
+        "fr": "Flexibilité des artefacts de la plate-forme : on identifie où les produits diffèrent en fonctionnalités, exigences ou architecture ; elle s'accompagne de contraintes.",
+        "en": "Flexibility of platform artefacts: we identify where products differ in functionality, requirements or architecture; it comes with constraints."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "tout au long du processus, nous devons identifier où les produits diffèrent en termes de fonctionnalités, d'exigences ou d'architecture"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "Cette flexibilité est appelée \"variabilité\" dans le contexte des lignes de produits logiciels."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "pas de lave-glace arrière sur un cabriolet quand le toit est ouvert"
+        }
+      ]
+    },
+    {
+      "id": "term-break-even",
+      "fr": "point mort (break-even)",
+      "en": "break-even point",
+      "definition": {
+        "fr": "Point où les courbes de coût des systèmes uniques et de la famille de systèmes se croisent (≈ 3 systèmes en logiciel) ; après lui, la famille coûte moins par système.",
+        "en": "Point where the cost curves of single systems and of the system family cross (≈ 3 systems for software); after it, the family costs less per system."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
+        }
+      ]
+    },
+    {
+      "id": "term-software-platform",
+      "fr": "plate-forme logicielle",
+      "en": "software platform",
+      "definition": {
+        "fr": "Ensemble de sous-systèmes logiciels et d'interfaces formant une structure commune à partir de laquelle des produits dérivés sont développés efficacement.",
+        "en": "A set of software subsystems and interfaces forming a common structure from which derived products can be developed efficiently."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "Une plate-forme logicielle est un ensemble de sous-systèmes logiciels et d'interfaces qui forment une structure commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "à partir de laquelle un ensemble de produits dérivés peut être développé et produit efficacement"
+        }
+      ]
+    },
+    {
+      "id": "term-spl-engineering",
+      "fr": "ingénierie des lignes de produits logiciels",
+      "en": "software product line engineering",
+      "definition": {
+        "fr": "Paradigme pour développer des applications logicielles en utilisant des plates-formes et la personnalisation de masse.",
+        "en": "A paradigm for developing software applications using platforms and mass customisation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "L'ingénierie des lignes de produits logiciels est un paradigme permettant de développer des applications logicielles"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "en utilisant des plates-formes et la personnalisation de masse"
+        }
+      ]
+    }
+  ],
+  "notions": [],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Individuel = cher ; standard = pas assez diversifié → besoin de personnalisation de masse (production à grande échelle de biens adaptés aux besoins individuels).",
+        "en": "Individual = expensive; standard = not diversified enough → need for mass customisation (large-scale production of goods adapted to individual needs)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Logiciel individuel et standard",
+          "quote": "Les produits logiciels individuels sont plutôt chers"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Logiciel individuel et standard",
+          "quote": "les produits logiciels standards manquent d'une diversification suffisante"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.1 Personnalisation de masse",
+          "quote": "La personnalisation de masse est la production à grande échelle de biens adaptés aux besoins individuels des clients."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Ligne de produits = plate-forme commune + personnalisation de masse ; on traite d'abord le commun, puis les différences.",
+        "en": "Product line = common platform + mass customisation; handle the common part first, then the differences."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.3 Combiner",
+          "quote": "La combinaison de la personnalisation de masse et d'une plate-forme commune nous permet de réutiliser une base de technologie commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.1 Création de la plate-forme",
+          "quote": "La stratégie consiste d'abord à se concentrer sur ce qui est commun à tous les produits, puis sur ce qui est différent."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Plate-forme : +35 % de ventes pour la meilleure stratégie de plate-forme vs −7 % pour ceux qui repartent de zéro ; exemples Kodak et Post-it.",
+        "en": "Platform: +35% sales for the best platform strategy vs −7% for those starting from scratch; Kodak and Post-it examples."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "les entreprises utilisant la meilleure stratégie de plate-forme ont augmenté leurs ventes de 35%"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "celles qui partaient de zéro pour chaque nouvelle série de voitures ont subi une perte de ventes de 7%"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "une série de modèles d'appareils photo clairement distinguables a été construite sur une plate-forme commune"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.2 Plates-formes",
+          "quote": "Les notes \"Post-It\" de 3M sont considérées comme une plate-forme"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Variabilité = flexibilité des artefacts, avec des contraintes (pas de lave-glace arrière sur un cabriolet toit ouvert).",
+        "en": "Variability = flexibility of artefacts, with constraints (no rear washer on a convertible with the roof open)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "Cette flexibilité est appelée \"variabilité\" dans le contexte des lignes de produits logiciels."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "pas de lave-glace arrière sur un cabriolet quand le toit est ouvert"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Coûts : investissement initial puis moins cher par produit ; point mort ≈ 3 systèmes ; time to market d'abord plus long puis raccourci.",
+        "en": "Costs: up-front investment then cheaper per product; break-even ≈ 3 systems; time to market first longer then shortened."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "L'entreprise doit faire un investissement initial pour créer la plate-forme, mais cela réduit ensuite les coûts par produit en réutilisant les artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.3 Time to Market",
+          "quote": "Le délai de mise sur le marché est initialement plus élevé, car les artefacts communs doivent d'abord être construits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.3 Time to Market",
+          "quote": "une fois cet obstacle franchi, le délai est considérablement raccourci grâce à la réutilisation"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Autres motivations : qualité, maintenance, évolution, complexité, estimation des coûts, bénéfices clients.",
+        "en": "Other motivations: quality, maintenance, evolution, complexity, cost estimation, customer benefits."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.2 Amélioration de la qualité",
+          "quote": "Les artefacts de la plate-forme sont testés dans de nombreux produits"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "Les corrections apportées à la plate-forme se propagent à tous les produits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "L'ajout d'artefacts à la plate-forme permet une évolution organisée de toute la gamme."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "La plate-forme fournit une base solide pour estimer les coûts de production."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.4 Motivations supplémentaires",
+          "quote": "Les clients obtiennent des produits adaptés, de meilleure qualité, à un prix raisonnable"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Conséquence organisationnelle : les produits ne sont plus indépendants (unité responsable de la plate-forme, standardisation, traçabilité).",
+        "en": "Organisational consequence: products are no longer independent (platform unit, standardisation, traceability)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.3 Réorganisation de l'entreprise",
+          "quote": "Les produits ne peuvent plus être traités comme indépendants"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.3 Réorganisation de l'entreprise",
+          "quote": "créer une unité responsable de la plate-forme"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.2 Introduction de la flexibilité",
+          "quote": "il est devenu nécessaire de gérer soigneusement les informations de traçabilité entre une plate-forme et les produits qui en dérivent"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "En logiciel : modéliser ensemble communs et différences, restreindre la variation à des endroits précis ; prérequis : OO/composants/late-binding, CMMI, expertise du domaine, marché stable.",
+        "en": "In software: model commonalities and differences together, restrict variation to specific places; prerequisites: OO/components/late-binding, CMMI, domain expertise, stable market."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "Il faut modéliser de manière commune les points communs et les différences."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4 Ingénierie des lignes de produits logiciels",
+          "quote": "Il faut restreindre la variation à des endroits précis pour qu'elle reste gérable et ne corrompe pas la structure du logiciel."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "La programmation orientée objet, la technologie des composants et les techniques de liaison tardive (late-binding)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "Des processus comme le CMMI, une bonne ingénierie des exigences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "Une connaissance approfondie du domaine"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "une stabilité du marché sont indispensables pour que l'investissement soit rentable"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}

@@ -12,7 +12,7 @@
 | # | Fichier | Titre de travail | Source (mardown/) | État |
 |---|---|---|---|---|
 | 01 | `01-variabilite.json` | Du sur-mesure à la ligne de produits : la variabilité | 1__introduction.md | à faire |
-| 02 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | à faire |
+| 02 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | cours rédigé (draft) |
 | 03 | `03-cadre-ple.json` | Le cadre PLE : domaine vs application, problème vs solution | 5__soft_ple_detailed.md + 6__ple.md | à faire |
 | 04 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | à faire |
 | 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/2) : exigences et variantes | 3__application_engineering.md (1re moitié) | à faire |

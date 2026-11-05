@@ -17,8 +17,8 @@ _Source : `1__introduction.md`_
 ## Principes des lignes de produits logiciels (Böckle)
 _Source : `2__software_ple.md`_
 
-- [ ] Principes de l'ingénierie des lignes de produits · produits personnalisés
-- [ ] Motivations · ingénierie des lignes de produits logiciels
+- [ ] Principes de l'ingénierie des lignes de produits · produits personnalisés → ch.02
+- [ ] Motivations · ingénierie des lignes de produits logiciels → ch.02
 
 ## Domain engineering : modèles de lignes de produits (slides)
 _Source : `5__soft_ple_detailed.md + 6__ple.md`_
