@@ -64,13 +64,13 @@ const lorem = (n: number): string => Array.from({ length: n }, (_, i) => `mot${i
 const L = (s: string): { fr: string; en: string } => ({ fr: s, en: s })
 
 describe('contenu actuel', () => {
-  it('l’exemple REC1-05 passe : 0 erreur, 143 citations (123 + 20 de notions.json)', () => {
+  it('le contenu actuel passe : 0 erreur', () => {
     const r = validateTree(real, readText)
     expect(errors(r)).toEqual([])
     expect(r.stats.courses).toBe(4)
-    expect(r.stats.chapters).toBe(1)
-    expect(r.stats.citations).toBe(143)
-    expect(formatSummary(r)).toMatch(/^✔ 4 matières · 1 chapitre · 143 citations vérifiées · couverture ★★★ \d+\/\d+/)
+    expect(r.stats.chapters).toBeGreaterThanOrEqual(1)
+    expect(r.stats.citations).toBeGreaterThanOrEqual(143)
+    expect(formatSummary(r)).toMatch(/^✔ 4 matières · \d+ chapitres? · \d+ citations vérifiées · couverture ★★★ \d+\/\d+/)
   })
   it('formate les messages comme spécifié', () => {
     const r = run((ch) => {

@@ -423,11 +423,14 @@ function checkExam(ctx: Ctx, cc: CourseCtx, file: string, ex: Exam): void {
 // ------------------------------------------------------------------ R12 : niveaux
 function warnLevels(ctx: Ctx, file: string, ch: Chapter): void {
   const n = ch.quiz.length
+  if (n === 0) {
+    ctx.warn('W-no-quiz', file, 'quiz', 'chapitre sans quiz (phase cours : à ajouter avec /quiz-essentiel)')
+  }
   const count = (...lv: string[]): number => ch.quiz.filter((q) => lv.includes(q.level)).length
   const remember = count('remember')
   const high = count('apply', 'analyze')
-  if (remember / n > 0.3) ctx.warn('W-level-remember', file, 'quiz', `${remember}/${n} questions "remember" (${Math.round((remember / n) * 100)} % > 30 %)`)
-  if (high / n < 0.35) ctx.warn('W-level-apply-analyze', file, 'quiz', `apply + analyze = ${high}/${n} (${Math.round((high / n) * 100)} % < 35 %)`)
+  if (n > 0 && remember / n > 0.3) ctx.warn('W-level-remember', file, 'quiz', `${remember}/${n} questions "remember" (${Math.round((remember / n) * 100)} % > 30 %)`)
+  if (n > 0 && high / n < 0.35) ctx.warn('W-level-apply-analyze', file, 'quiz', `apply + analyze = ${high}/${n} (${Math.round((high / n) * 100)} % < 35 %)`)
   if (ch.flashcards.length === 0 || ch.exercises.length === 0 || ch.writing.length === 0) ctx.warn('W-essentiel', file, 'chapter', 'chapitre « essentiel » : flashcards, exercices ou atelier d\'écriture vides (à compléter avec /ajouter-cours)')
   else if (!ch.exercises.some((e) => e.level === 'analyze')) ctx.warn('W-level-exercise-analyze', file, 'exercises', 'aucun exercice de niveau "analyze"')
 }

@@ -180,13 +180,13 @@ export const ChapterSchema = z
     notions: stringArray,
     keyPoints: z.array(KeyPointSchema).min(5).max(10),
     flashcards: z.array(FlashcardSchema).max(25),
-    quiz: z.array(QuizItemSchema).min(8).max(20),
+    quiz: z.array(QuizItemSchema).max(20),
     exercises: z.array(ExerciseSchema).max(6),
     writing: z.array(WritingItemSchema).max(12),
   })
   .superRefine((ch, ctx) => {
     const tf = ch.quiz.filter((q) => q.type === 'true_false').length
-    if (tf * 2 < ch.quiz.length) {
+    if (ch.quiz.length > 0 && tf * 2 < ch.quiz.length) {
       ctx.addIssue({ code: 'custom', path: ['quiz'], message: 'au moins 50 % des items du quiz doivent être true_false' })
     }
     for (const kind of ch.writing.length === 0 ? [] : (['reorder', 'cloze', 'spot_error', 'free'] as const)) {

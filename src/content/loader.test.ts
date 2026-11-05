@@ -11,9 +11,9 @@ describe('loader', () => {
   })
 
   it('indexe les chapitres sans les charger', () => {
-    expect(getChapterIndex('rec1')).toEqual([
-      { id: REC1_05, courseId: 'rec1', order: 5, path: `/content/rec1/chapters/05-qualite-validite-ethique.json` },
-    ])
+    const idx = getChapterIndex('rec1')
+    expect(idx.map((c) => c.order)).toEqual([...idx.map((c) => c.order)].sort((a, b) => a - b))
+    expect(idx).toContainEqual({ id: REC1_05, courseId: 'rec1', order: 5, path: `/content/rec1/chapters/05-qualite-validite-ethique.json` })
     expect(getChapterIndex('isi1')).toEqual([])
   })
 
@@ -22,7 +22,7 @@ describe('loader', () => {
     expect(a.courseId).toBe('rec1')
     expect(a.quiz.length).toBeGreaterThanOrEqual(8)
     expect(await loadChapter(REC1_05)).toBe(a)
-    expect(await loadAllChapters('rec1')).toHaveLength(1)
+    expect(await loadAllChapters('rec1')).toHaveLength(getChapterIndex('rec1').length)
   })
 
   it('rejette un chapitre ou un examen inconnu', async () => {
