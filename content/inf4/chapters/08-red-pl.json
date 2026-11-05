@@ -126,6 +126,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-01"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Le terrain : les automates d'analyse sanguine de Stago",
@@ -214,6 +218,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-03"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "RED-PL : élicitation, matching, arbitrage",
@@ -296,6 +304,10 @@
           "quote": "Le second arbitre ces exigences afin de dériver un ensemble cohérent d'exigences qui soit optimal"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-05"
     },
     {
       "type": "heading",
@@ -394,6 +406,10 @@
           "quote": "Tant que l'arbre contient des exigences optionnelles et alternatives non marquées, une décision doit être prise"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-08"
     },
     {
       "type": "heading",
@@ -586,6 +602,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-11"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "L'étude de cas Stago : maximiser le revenu sous budget",
@@ -665,6 +685,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-13"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Limites et ouverture : de l'ILP à la programmation par contraintes",
@@ -723,6 +747,10 @@
           "quote": "Delimitation de la variabilité (*Variability bounding*) : Les approches génératives"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-08-qz-15"
     }
   ],
   "glossary": [
@@ -1001,7 +1029,513 @@
     }
   ],
   "flashcards": [],
-  "quiz": [],
+  "quiz": [
+    {
+      "id": "inf4-08-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Parmi les limites de la sélection d'exigences, « solution-driven » signifie que le choix du client peut être biaisé par des fonctionnalités déjà implémentées dans des produits existants.",
+        "en": "Among the limits of requirements selection, \"solution-driven\" means the customer's choice may be biased by features already implemented in existing products."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : choisir parmi des modèles prédéfinis, qui correspondent le plus souvent à des fonctionnalités déjà implémentées, peut influencer les parties prenantes. Ne pas confondre avec « customer training » (comprendre les modèles) et « customer overwhelm » (submergé par toute la collection).",
+        "en": "TRUE: choosing among predefined models, which mostly match already-implemented features, can influence stakeholders. Do not confuse with \"customer training\" (understanding the models) and \"customer overwhelm\" (swamped by the whole collection)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "1. Introduction",
+          "quote": "Exigences orientées solution (Solution-driven)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "1. Introduction",
+          "quote": "Formation du client (Customer training)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "1. Introduction",
+          "quote": "Surcharge du client (Customer overwhelm)"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-02",
+      "type": "true_false",
+      "statement": {
+        "fr": "Chez Stago, un instrument qui implémente la micro-filtration ne doit pas implémenter la mesure photométrique : c'est un lien mutex du modèle d'exigences.",
+        "en": "At Stago, an instrument that implements micro-filtration must not implement photometric measurement: this is a mutex link of the requirements model."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c'est le lien mutex Micro filter / Photometric de la figure 2. Il ne faut pas le confondre avec l'alternative Centrifuge / Micro-filter (un seul des deux processus de séparation à la fois).",
+        "en": "TRUE: this is the Micro filter / Photometric mutex link of figure 2. Do not confuse it with the Centrifuge / Micro-filter alternative (only one separation process at a time)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "2. Énoncé du problème",
+          "quote": "un instrument qui implémente la micro-filtration ne doit pas implémenter la mesure photométrique"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-03",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans le modèle d'exigences de Stago, « Centrifuge » et « Micro-filter » forment un groupe avec cardinalité : un seul est implémenté à la fois. De quel type d'exigences s'agit-il ?",
+        "en": "In Stago's requirements model, \"Centrifuge\" and \"Micro-filter\" form a group with cardinality: only one is implemented at a time. Which type of requirements is this?"
+      },
+      "options": [
+        {
+          "fr": "Obligatoires",
+          "en": "Mandatory"
+        },
+        {
+          "fr": "Optionnelles",
+          "en": "Optional"
+        },
+        {
+          "fr": "Alternatives",
+          "en": "Alternatives"
+        },
+        {
+          "fr": "Mutex",
+          "en": "Mutex"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Trois types d'exigences : obligatoires, optionnelles et alternatives (avec cardinalité UML sur le groupe). Mutex et requires sont des liens, pas des types d'exigences.",
+        "en": "Three requirement types: mandatory, optional and alternative (with UML cardinality on the group). Mutex and requires are links, not requirement types."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "2. Fig. 2",
+          "quote": "Il existe trois types d'exigences : obligatoires (ex. *'Load products'*), optionnelles (ex. *'Separate constituents'*) et alternatives"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "2. Énoncé du problème",
+          "quote": "Tous les instruments sont capables de mettre en œuvre ces processus, cependant un seul d'entre eux est implémenté à la fois dans un instrument donné"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-04",
+      "type": "true_false",
+      "statement": {
+        "fr": "RED-PL est une amélioration de la sélection : le client coche ses exigences directement dans le modèle de la ligne de produits, avec un meilleur outillage.",
+        "en": "RED-PL is an improved selection: the customer ticks requirements directly in the product line model, with better tooling."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : RED-PL remplace la sélection par la dérivation, qui prend en compte les besoins originaux des parties prenantes : élicitation, matching avec la PL, puis dérivation de l'ensemble optimal.",
+        "en": "FALSE: RED-PL replaces selection with derivation, which takes the stakeholders' original needs into account: elicitation, matching with the PL, then derivation of the optimal set."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "1. Introduction",
+          "quote": "Les approches existantes reposent sur un processus de modélisation de la variabilité des exigences suivi d'un processus de sélection d'exigences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3. L'approche RED-PL",
+          "quote": "Dériver l'ensemble optimal d'exigences produit, en tenant compte des contraintes des utilisateurs et de l'entreprise"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-05",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans RED-PL, quel processus laisse encore des décisions à prendre sur les exigences optionnelles et alternatives non marquées ?",
+        "en": "In RED-PL, which process still leaves decisions to be made on unmarked optional and alternative requirements?"
+      },
+      "options": [
+        {
+          "fr": "L'élicitation auprès des utilisateurs",
+          "en": "Elicitation from users"
+        },
+        {
+          "fr": "Le matching : il extrait un fragment du modèle mais ne tranche pas",
+          "en": "Matching: it extracts a model fragment but does not decide"
+        },
+        {
+          "fr": "L'arbitrage, qui n'a besoin d'aucune décision",
+          "en": "Trade-off, which needs no decision"
+        },
+        {
+          "fr": "La capitalisation par le Domain Engineer",
+          "en": "Capitalisation by the Domain Engineer"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Après le matching, tant que le fragment contient des exigences optionnelles et alternatives non marquées, une décision doit être prise : c'est le rôle de l'arbitrage, qui tranche.",
+        "en": "After matching, as long as the fragment contains unmarked optional and alternative requirements, a decision must be made: that is the role of the trade-off, which decides."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "Tant que l'arbre contient des exigences optionnelles et alternatives non marquées, une décision doit être prise"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "1. Introduction",
+          "quote": "La négociation et l'arbitrage sont enfin supportés dans RED-PL pour éliciter des exigences produit optimales tout en maximisant la réutilisation"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-06",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une exigence utilisateur qui ne se trouve pas dans le modèle de la PL est nécessairement une nouvelle exigence, à ajouter au modèle avec ses liens vers les anciennes.",
+        "en": "A user requirement not found in the PL model is necessarily a new requirement, to be added to the model with its links to the old ones."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ce peut aussi être la même exigence formulée autrement ; un consensus doit alors être établi sur la formulation.",
+        "en": "FALSE: it may also be the same requirement expressed differently; a consensus on the wording must then be reached."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "Ce sont de nouvelles exigences et elles doivent être ajoutées au modèle de la PL ainsi que les liens entre elles et par rapport aux anciennes exigences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "Ce sont les mêmes exigences exprimées différemment, et un consensus doit alors être établi sur la formulation de l'exigence"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "L'analyse de similitude de niveau profond s'appuie sur la similitude lexicale, c'est-à-dire sur l'emploi du même terme.",
+        "en": "Deep-level similarity analysis relies on lexical similarity, i.e. the use of the same term."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la similitude lexicale est de niveau surface. Le niveau profond utilise une proximité structurelle et sémantique.",
+        "en": "FALSE: lexical similarity is surface level. Deep level uses structural and semantic proximity."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "Deux types de techniques d'analyse de similitude peuvent être utilisés : de niveau de surface (*surface level*) et de niveau profond (*deep level*)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "les techniques de niveau profond utilisent une proximité structurelle et sémantique"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-08",
+      "type": "mcq",
+      "question": {
+        "fr": "Après le matching, le fragment contient des exigences non désirées, obligatoires et variables. Lesquelles appellent une décision d'arbitrage ?",
+        "en": "After matching, the fragment contains unwanted, mandatory and variable requirements. Which ones call for a trade-off decision?"
+      },
+      "options": [
+        {
+          "fr": "Les obligatoires, incluses d'office",
+          "en": "Mandatory ones, included automatically"
+        },
+        {
+          "fr": "Les non désirées, marquées explicitement",
+          "en": "Unwanted ones, explicitly marked"
+        },
+        {
+          "fr": "Les exigences traçables et vérifiables",
+          "en": "Traceable and verifiable requirements"
+        },
+        {
+          "fr": "Les optionnelles et alternatives non marquées",
+          "en": "Unmarked optional and alternative ones"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Seules les exigences variables (optionnelles/alternatives) non marquées restent à trancher. Les non désirées sont déjà marquées, les obligatoires sont incluses d'office.",
+        "en": "Only unmarked variable (optional/alternative) requirements remain to be settled. Unwanted ones are already marked, mandatory ones are included automatically."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "Non désirées, elles doivent alors être explicitement marquées comme telles"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.1 Le processus d'appariement",
+          "quote": "Tant que l'arbre contient des exigences optionnelles et alternatives non marquées, une décision doit être prise"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-09",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l'arbitrage, la somme des poids d'un groupe d'exigences alternatives doit être égale à 1.",
+        "en": "In the trade-off, the sum of the weights of a group of alternative requirements must equal 1."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : un poids de 0 signifie « ne doit pas être sélectionnée », 1 « doit être incluse » ; pour un groupe d'alternatives, la somme des poids vaut 1.",
+        "en": "TRUE: a weight of 0 means \"must not be selected\", 1 \"must be included\"; for an alternatives group, the weights sum to 1."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.2 Le processus d'arbitrage",
+          "quote": "La somme des poids d'un groupe d'exigences alternatives doit être égale à 1"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.2 Le processus d'arbitrage",
+          "quote": "Un poids de 0 signifie que l'exigence ne doit pas être sélectionnée, un poids de 1 signifie qu'elle doit être incluse"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-10",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans le modèle ILP de RED-PL, comment s'écrit la dépendance « R_a requires R_b » ?",
+        "en": "In RED-PL's ILP model, how is the dependency \"R_a requires R_b\" written?"
+      },
+      "options": [
+        {
+          "fr": "R_a ≤ R_b",
+          "en": "R_a ≤ R_b"
+        },
+        {
+          "fr": "R_b ≤ R_a",
+          "en": "R_b ≤ R_a"
+        },
+        {
+          "fr": "R_a = R_b",
+          "en": "R_a = R_b"
+        },
+        {
+          "fr": "R_a + R_b ≤ 1",
+          "en": "R_a + R_b ≤ 1"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Requires : R_a ≤ R_b (si a est sélectionnée, b aussi). R_b ≤ R_a est la sous-exigence optionnelle ; R_a = R_b la composition ; R_a + R_b ≤ 1 le mutex.",
+        "en": "Requires: R_a ≤ R_b (if a is selected, so is b). R_b ≤ R_a is the optional sub-requirement; R_a = R_b composition; R_a + R_b ≤ 1 mutex."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.2 Le processus d'arbitrage",
+          "quote": "Cinq types de dépendances peuvent être considérés : composition, nécessite (*requires*), composition optionnelle, exclusion, et alternative"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.2 Tableau 1",
+          "quote": "Tableau 1. Récapitulation des dépendances d'exigences et de leur représentation dans le modèle ILP"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-11",
+      "type": "true_false",
+      "statement": {
+        "fr": "Des cinq types de dépendances du modèle ILP, le type « alternative » a dû être créé pour traiter la sémantique spécifique des notations de PL.",
+        "en": "Of the five dependency types in the ILP model, the \"alternative\" type had to be created to handle the specific semantics of PL notations."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : les quatre autres existaient chez Akkar (combinaison, implication, exclusion) ; le cinquième type a été créé pour les notations de modélisation d'exigences de PL.",
+        "en": "TRUE: the other four existed in Akkar's work (combination, implication, exclusion); the fifth type was created for PL requirements modelling notations."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.2 Le processus d'arbitrage",
+          "quote": "le cinquième type a dû être créé pour traiter la sémantique spécifique des notations de modélisation d'exigences de PL"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-12",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l'étude de cas Stago, l'arbitrage a minimisé le revenu sous une limite de coût minimale.",
+        "en": "In the Stago case study, the trade-off minimised revenue under a minimum cost limit."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l'équipe a retenu l'objectif de maximiser le revenu en tenant compte d'une limitation globale des coûts (Total cost ≤ 97).",
+        "en": "FALSE: the team chose to maximise revenue subject to a global cost limit (Total cost ≤ 97)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.3 L'étude de cas",
+          "quote": "soit maximiser le revenu en tenant compte d'une limitation globale des coûts"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.3 Figure 4",
+          "quote": "Total cost <= 97"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-13",
+      "type": "mcq",
+      "question": {
+        "fr": "Avec la limite Total cost ≤ 97 (Fig. 4), quelle fonctionnalité optionnelle le solveur abandonne-t-il ?",
+        "en": "With the Total cost ≤ 97 limit (Fig. 4), which optional feature does the solver drop?"
+      },
+      "options": [
+        {
+          "fr": "La technique de mesure",
+          "en": "The measurement technique"
+        },
+        {
+          "fr": "La séparation des constituants",
+          "en": "Constituent separation"
+        },
+        {
+          "fr": "Le chargement des produits",
+          "en": "Product loading"
+        },
+        {
+          "fr": "La centrifugation",
+          "en": "Centrifugation"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Le solveur retient R1, R2, R3, R7, R8, R9, R11 (revenu 93) et abandonne la séparation des constituants (R4, R5, R6, optionnelle).",
+        "en": "The solver keeps R1, R2, R3, R7, R8, R9, R11 (revenue 93) and drops constituent separation (R4, R5, R6, optional)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.3 Figure 4",
+          "quote": "Total cost <= 97"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.3 Figure 4",
+          "quote": "[1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1]"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-14",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les auteurs jugent l'ILP bien adapté aux grands systèmes et recommandent donc de le conserver tel quel.",
+        "en": "The authors consider ILP well suited to large systems and therefore recommend keeping it as is."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l'ILP semblait ne pas passer à l'échelle ; l'article suggère la Programmation par Contraintes, plus flexible et scalable (lien avec le chapitre 07).",
+        "en": "FALSE: ILP seemed not to scale; the paper suggests Constraint Programming, more flexible and scalable (link with chapter 07)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.3 L'étude de cas",
+          "quote": "la technique ILP semblait ne pas être passable à l'échelle"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "3.3 L'étude de cas",
+          "quote": "telle que la Programmation par Contraintes (*Constraint Programming*)"
+        }
+      ]
+    },
+    {
+      "id": "inf4-08-qz-15",
+      "type": "mcq",
+      "question": {
+        "fr": "En quoi RED-PL se distingue-t-il des travaux connexes sur la dérivation ?",
+        "en": "How does RED-PL differ from related work on derivation?"
+      },
+      "options": [
+        {
+          "fr": "Il utilise la transformation de modèles pour instancier les produits",
+          "en": "It uses model transformation to instantiate products"
+        },
+        {
+          "fr": "Il applique des design patterns comme Abstract Factory",
+          "en": "It applies design patterns such as Abstract Factory"
+        },
+        {
+          "fr": "Il dérive les exigences à partir des besoins et choix des utilisateurs",
+          "en": "It derives requirements from users' needs and choices"
+        },
+        {
+          "fr": "Il délimite la variabilité par génération de code",
+          "en": "It bounds variability through code generation"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Les travaux connexes traitent la dérivation surtout en conception et implémentation (transformation de modèles, design patterns, variability bounding) ; RED-PL traite la dérivation des exigences.",
+        "en": "Related work mostly tackles derivation in design and implementation (model transformation, design patterns, variability bounding); RED-PL addresses requirements derivation."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "4. Travaux connexes",
+          "quote": "les questions de dérivation sont principalement abordées en termes de conception et d'implémentation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/4__overview.md",
+          "loc": "4. Travaux connexes",
+          "quote": "Transformation de modèles : Les modèles statiques et dynamiques sont instanciés pour les produits à partir des modèles de PL"
+        }
+      ]
+    }
+  ],
   "exercises": [],
   "writing": []
 }
