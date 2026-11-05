@@ -56,7 +56,7 @@ _Source : `7__ple.md`_
 ## RED-PL (article)
 _Source : `4__overview.md`_
 
-- [ ] Problème (contexte Stago) · approche RED-PL : matching et arbitrage · étude de cas
+- [ ] Problème (contexte Stago) · approche RED-PL : matching et arbitrage · étude de cas → ch.08
 
 ## Exercice ILP
 _Source : `EPI/5__configuration ILP(1).xlsx`_
