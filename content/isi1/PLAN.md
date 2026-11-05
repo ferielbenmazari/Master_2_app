@@ -20,7 +20,7 @@
 | 06 | `06-documenter-les-exigences.json` | Documenter les exigences | 14_IREB CPRE (4) · 15_Pohl-Rupp chap 4-5 · 21_Pohl-Rupp | cours rédigé (draft) |
 | 07 | `07-agilite.json` | Exigences et méthodes agiles | 13_agile methods | cours rédigé (draft) |
 | 08 | `08-grands-referentiels.json` | Gérer de grands référentiels d'exigences en langage naturel | 16_managing large repositories of NL requirements | cours rédigé |
-| 09 | `09-fondements-theoriques.json` | Les « 4 coins sombres » et les Problem Frames | 17_four dark corners · 18_Problem Frames | à faire |
+| 09 | `09-fondements-theoriques.json` | Les « 4 coins sombres » et les Problem Frames | 17_four dark corners · 18_Problem Frames | cours rédigé (draft) |
 
 ## Notions des annales à couvrir (contrôle de couverture)
 Identifiant unique & traçabilité · modèle de **Kano** (must-have, exciters) · **i*** (soft goals) · **KAOS** (AND/OR, raffinement) · **cas d'utilisation** (erreurs de modélisation) · **cadre tridimensionnel de Pohl** (spécification, représentation, accord) · **AHP** · **triage** · revues · approche top-down / bottom-up · NFR qui s'affinent · outils (Excel, Word, wiki, Quality Center).

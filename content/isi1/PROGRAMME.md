@@ -57,7 +57,7 @@ _Source : 13_agile methods_
 ## Grands référentiels et fondements
 _Source : 16 · 17 · 18_
 
-- [ ] Référentiels d'exigences en langage naturel · four dark corners · Problem Frames → ch.08 (référentiels d'exigences en langage naturel) ; four dark corners et Problem Frames → ch.09 (à venir)
+- [ ] Référentiels d'exigences en langage naturel · four dark corners · Problem Frames → ch.08 (référentiels d'exigences en langage naturel) ; four dark corners et Problem Frames → ch.09
 
 ## IA, éthique, gouvernance
 _Source : (annale 4, Deadbot)_
