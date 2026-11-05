@@ -19,18 +19,16 @@ _Source : `ressources/S3__REC1/Markdown/1_recmeth_1.md`_
 ## Cours 2 — Research project, question, hypothesis
 _Source : `ressources/S3__REC1/Markdown/2_recmeth_2.md`_
 
-- [ ] Steps in conducting a research project (7 étapes) · thèse M2 phases TS1/TS2
-- [ ] What is a problem? · practical vs research problems (+ exercice)
-- [ ] Research question : définition · « complex, specific and relevant »
-- [ ] Strong RQ check list (focused, researchable, feasible, complex…)
-- [ ] Exemples Jane (fisheye navigator) et Joe (UML) · discussion
-- [ ] Hidden assumptions / ambiguous terms
-- [ ] Kinds of RQ (+ exercice)
-- [ ] Research hypothesis · how to define · variables (+ exercices Jane/Joe)
-- [ ] Conceptual framework · variables · predictors, mediators, moderators
-- [ ] Exemple TAM (theoretical framework, extended)
-
-## Cours 3 — Working with scientific literature
+- [ ] Steps in conducting a research project (7 étapes) · thèse M2 phases TS1/TS2 → ch.02
+- [ ] What is a problem? · practical vs research problems (+ exercice) → ch.02
+- [ ] Research question : définition · « complex, specific and relevant » → ch.02
+- [ ] Strong RQ check list (focused, researchable, feasible, complex…) → ch.02
+- [ ] Exemples Jane (fisheye navigator) et Joe (UML) · discussion → ch.02
+- [ ] Hidden assumptions / ambiguous terms → ch.02
+- [ ] Kinds of RQ (+ exercice) → ch.02
+- [ ] Research hypothesis · how to define · variables (+ exercices Jane/Joe) → ch.02
+- [ ] Conceptual framework · variables · predictors, mediators, moderators → ch.02
+- [ ] Exemple TAM (theoretical framework, extended) → ch.02## Cours 3 — Working with scientific literature
 _Source : `ressources/S3__REC1/Markdown/3_recmeth_3.md`_
 
 - [ ] Literature review types (preliminary, state of the art, background, related work)
