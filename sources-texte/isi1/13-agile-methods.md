@@ -1,8 +1,7 @@
-<!-- Source: ressources/S3__ISI1/EPI/13_agile methods.pdf | pdftotext -layout | 6 pages -->
-
-<!-- Page 1 -->
-
        SOFTWARE DEVELOPMENT
+
+
+
 
                            Get Ready for
                            Agile Methods,
@@ -11,7 +10,10 @@
                             software development methods polar opposites, synthesizing the two can
                             provide developers with a comprehensive spectrum of tools and options.
 
+
                                     aced with the conflicting pressures of accel-     I believe that both agile and plan-driven ap-
+
+
 
                            F
      Barry Boehm
@@ -47,10 +49,7 @@
                            national air traffic control.                            and toward the more responsible agile methods.
 
 64                    Computer                                                                                 0018-9162/02/$17.00 © 2002 IEEE
-
-<!-- Page 2 -->
-
-                                                            Ongoing Debate
+                                                            Ongoing Debate
 
                                                               In the Software Management column in Computer’s September and
                                                            November 2001 issues, Jim Highsmith and Alistair Cockburn summa-
@@ -112,10 +111,7 @@ likely to get a design-by-committee mess. A signif-       have succeeded with mi
 icant consideration here is the unavoidable statis-       junior people, as have plan-driven projects. The
 
                                                                                                               January 2002                  65
-
-<!-- Page 3 -->
-
-                              main difference is that agile methods derive        this, the traditional emphasis on having complete,
+                              main difference is that agile methods derive        this, the traditional emphasis on having complete,
                               much of their agility by relying on the tacit       consistent, precise, testable, and traceable require-
      Agile methods derive     knowledge embodied in the team, rather than         ments will encounter difficult to insurmountable
      much of their agility    writing the knowledge down in plans.7               requirements-update problems. Yet this emphasis
@@ -172,12 +168,12 @@ icant consideration here is the unavoidable statis-       junior people, as have
                         requirements change at a much higher rate than            Dumpty back together again.
 
 66                 Computer
-
-<!-- Page 4 -->
-
-                                                                                   High P(L): inadequate plans
+                                                                                   High P(L): inadequate plans
                                                                                    High S(L): major problems                   High P(L): plan breakage, delay
                                                                                    (oversights, delays, rework)                High S(L): value capture delays
+
+
+
 
                                                                 RE = P(L) × S(L)
 Size
@@ -238,10 +234,7 @@ Jim Highsmith’s Adaptive Software Development13                The red curve i
 book describe ways for combining agile and plan-            RE from market share erosion caused by delays in
 
                                                                                                                                    January 2002                  67
-
-<!-- Page 5 -->
-
-      Table 1. Home ground for agile and plan-driven methods.
+      Table 1. Home ground for agile and plan-driven methods.
       Home-ground area                         Agile methods                                          Plan-driven methods
       Developers                               Agile, knowledgeable, collocated, and collaborative    Plan-oriented; adequate skills; access to external knowledge
       Customers                                Dedicated, knowledgeable, collocated, collaborative,   Access to knowledgeable, collaborative, representative, and
@@ -252,11 +245,14 @@ book describe ways for combining agile and plan-            RE from market share
       Size                                     Smaller teams and products                             Larger teams and products
       Primary objective                        Rapid value                                            High assurance
 
+
+
                                                                                                                The blue curve in Figure 2 shows the sum of the
                                                                                                             risk exposures from inadequate plans and market
                                                                                                             share erosion. The very low and very high invest-
                                                                                                             ments in plans have high overall risk exposures,
                                                                                                             and the sweet spot when overall risk exposure is
+
 
          RE = P(L) × S(L)
                             Low S(L):                    Mainstream
@@ -285,6 +281,7 @@ book describe ways for combining agile and plan-            RE from market share
                                                                                                                Figure 4 shows the corresponding RE profile for
                                                   Mainstream                                                a company in the plan-driven home ground, with
 
+
          RE = P(L) × S(L)
                                                     sweet
                                                      spot                                                   a more stable product line of larger, more safety-
@@ -311,10 +308,7 @@ book describe ways for combining agile and plan-            RE from market share
                                           competitors capture most of the market share.                     ground profile except for highly volatile user inter-
 
 68                                  Computer
-
-<!-- Page 6 -->
-
-face requirements, you can use risk-driven specifi-      References
+face requirements, you can use risk-driven specifi-      References
 cations4 to document those requirements that pose         1. J. Highsmith and A. Cockburn, “Agile Software
 a high risk if they remain unspecified, such as crit-        Development: The Business of Innovation,” Com-
 ical message formats, but to avoid documenting               puter, Sept. 2001, pp. 120-122.
@@ -363,6 +357,8 @@ electronic commerce; air traffic control; and dis-           2001).
 tributed, mobile, semiautomated, network-centric
 military or medical systems. ■
 
+
+
 Acknowledgments
   This work was supported by the National
 Science Foundation, the Department of Defense
@@ -371,3 +367,4 @@ Affiliates of the USC Center for Software Engi-          ern California Center f
 neering, http://sunset.usc.edu.                          Contact him at boehm@sunset.usc.edu.
 
                                                                                                               January 2002   69
+

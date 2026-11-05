@@ -1,29 +1,16 @@
-<!-- Source: ressources/S3__ISI1/EPI/14_IREB CPRE (4 - Documents des Exigences).pdf | pdftotext -layout | 25 pages -->
-
-<!-- Page 1 -->
-
 Requirements Engineering (IV)
 
      Training for the IREB CPRE
        Foundation Level test
         Prof. Camille Salinesi
-
-<!-- Page 2 -->
-
-2h
+2h
 
 EU 4 – REQUIREMENTS
 DOCUMENTATION
-
-<!-- Page 3 -->
-
-                   Terms
+                   Terms
 • Requirements Document,
 • Requirements Specification
-
-<!-- Page 4 -->
-
-               A few myths that hurt
+               A few myths that hurt
 ⚫   “requirements are known”
 ⚫   “requirements don’t change”
 ⚫   “only technical requirements are
@@ -38,21 +25,19 @@ DOCUMENTATION
 ⚫   “the requirements descriptions
     are independent from other
     descriptions”
+Requirements exchange models
 
-<!-- Page 5 -->
-
-Requirements exchange models
 
          Oral communication
                               Formal requirements models
                                  (UML/SySML modeller)
 
+
+
+
   Written requirements
       (Excel, Word)
-
-<!-- Page 6 -->
-
-            Different ways to document
+            Different ways to document
                    requirements
           Oral                As a written data          As an information
 
@@ -71,10 +56,7 @@ managements, etc)            ones                     • Facilitates
                              is shared and
                              communication is
                              easier
-
-<!-- Page 7 -->
-
-       Requirements documentation
+       Requirements documentation
        « as an information system »
 Call for                                       Design
                       Initial Requ                               Detailed
@@ -94,10 +76,7 @@ tender                                        document
                                                   specifications
                                Architecture                                    Helps
                                 document
-
-<!-- Page 8 -->
-
-       Requirements documentation:
+       Requirements documentation:
               two dimension
 External structure            Internal structure
 •   The different kinds of    • The different kinds of
@@ -109,10 +88,7 @@ External structure            Internal structure
                                 documents
                               • The internal organisation of
                                 the document
-
-<!-- Page 9 -->
-
-Requirements repository structure
+Requirements repository structure
         (Source : AFIS)
                                                                          Source
                                                                1
@@ -139,14 +115,12 @@ Requirements repository structure
 
            1                                           n
 
+
   Verification                               Product                                      n
                                                                                                          Risk
  Description                      Nature: terminal/enabling                                     Description
  Means                            Type: fonction/Physical component…                            Severity: weak .. strong
-
-<!-- Page 10 -->
-
-                Use standards for structuring
+                Use standards for structuring
                       reqts documents
 • Easy way to structure documentation
 • Provides a reference structure for requirements-related
@@ -157,10 +131,7 @@ Requirements repository structure
    – Training stakeholders
    – Provides easy acces to information (eg for tests)
    – Reuse
-
-<!-- Page 11 -->
-
-Intrenal structuring ofan SRS :
+Intrenal structuring ofan SRS :
             IEEE 830
      1 Introduction
          Purpose of the requirements document
@@ -179,12 +150,11 @@ Intrenal structuring ofan SRS :
          non-functional requirements
          interface requirements
                                                      …
-
-<!-- Page 12 -->
-
-           External structuring of SRS :
+           External structuring of SRS :
                 IEEE 1233 (SyRS)
                      Requirements document
+
+
 
                          System requirements          Project plan
                      specification (IEEE1233- SyRS)
@@ -193,31 +163,36 @@ Intrenal structuring ofan SRS :
  HW     Mechanical      Software requirements               management
 spec.     spec.       specification (IEEE 830 SRS)              plan
 
+
                          Software Architecture                Test plan
                              Specification
+
 
                                                                 etc.
                       Specification of Interfaces
 
+
+
+
                                   Etc.
-
-<!-- Page 13 -->
-
-Quality criteria for a requirements
+Quality criteria for a requirements
              document
 
                   Complete
 
+
+
                   Consistent
+
 
              Clear, modifiable and
              extensible structure
-
-<!-- Page 14 -->
-
-                         Organize a review
+                         Organize a review
                                                     Are there missing requirements?
                                      Completness:
+
+
+
 
                                                                       Are their
                      Modifiability                    Consistency     requirements
@@ -231,10 +206,7 @@ requirements?
                                                     Is the requirements document
                                         bility
                                                     easy to interpret?
-
-<!-- Page 15 -->
-
-           Other verifications
+           Other verifications
 • Unique: no redundancy
 • Annotated: each requirements has all the needed
   information (context, priority, release, etc)
@@ -244,14 +216,13 @@ requirements?
   elsewhere
 • Traced : author, source and justification are
   documented
-
-<!-- Page 16 -->
-
-                      Define a
+                      Define a
                 dictionnary/glossary
 
              Terms
                           Acronyms
+
+
 
      Shared
 understainding of
@@ -259,11 +230,10 @@ understainding of
     business
   terminology
 
+
+
                           Synonyms
-
-<!-- Page 17 -->
-
-                         Good practice
+                         Good practice
       – provide a simple, precise and intelligible definition for each relevant
         term in the field, and a list of accepted synonyms.
       – choose a term for an object, and stick to it (e.g. "handset", "mobile",
@@ -271,14 +241,14 @@ understainding of
       – The glossary should be "appropriated" by all stakeholders.
       – and accessible to all (e.g. in the form of a "wiki").
 
+
+
+
                            Fondamentaux de l'Ingénierie des
                            Exigences, J1, Sept. & Oct. 2011, Mastère
 10/09/2011                                                                  Page 17
                            MSI, École Centrale Paris
-
-<!-- Page 18 -->
-
-    Inconsistencies and conflicts risks
+    Inconsistencies and conflicts risks
 
 • Terminology clash due to synonymes
   – Eg: « base screen » =« idle screen »
@@ -286,22 +256,19 @@ understainding of
 • Designation clash due to homonyms
   – Eg : « ring tone » = « sms bip » + « wake up tone »
     + « telephone ring », etc
-
-<!-- Page 19 -->
-
-                               Complete
+                               Complete
 ⚫   The specification contains everything the product is supposed to do
 ⚫   The requirements defined represent exactly the needs of the users
 ⚫   It is difficult to verify completeness:
+
+
+
 
         Inspect those               Define the                Do not leave a
        present to find               system's               "to be completed
        those who are               behavior with              later" section
            absent.               respect to all I/O            (incomplete)
-
-<!-- Page 20 -->
-
-    Complete with elicitation techniques
+    Complete with elicitation techniques
 ⚫ Interviews
 ⚫ Questionnaires
 
@@ -318,10 +285,7 @@ understainding of
 
   dirty ethnography)
 ⚫ etc
-
-<!-- Page 21 -->
-
-          Complete by exploring in both
+          Complete by exploring in both
                    directions
 Bottom up                        Top down
 • Questioning the existing       • Using analogical reasoning
@@ -334,10 +298,7 @@ Bottom up                        Top down
 • Ask the question of why (of    • Recombine
   the project, the system, the
   organization, etc.)
-
-<!-- Page 22 -->
-
-             Keep quality criteria in mind
+             Keep quality criteria in mind
 ⚫       Standard IEEE 830   •   Other
     −   Unambiguous              ⚫  Annotated
     −   Complete                 ⚫  Real
@@ -346,23 +307,24 @@ Bottom up                        Top down
     −   Editable                 ⚫  Testable
     −   Traceable                ⚫  Building
     −   Usable
+                  No need to overdo it!
 
-<!-- Page 23 -->
-
-                  No need to overdo it!
 
   Costs   Cost of Quality                             Cost of non-quality
 
+
+
+
                                Sweet spot
+
+
+
 
                                                               Failures
 
 Coût de la fiabilité des systèmes
 Source: « Le marketing des SI », Guillaume Puiseux, Eyrolles 2008
-
-<!-- Page 24 -->
-
-Stability issue: the « requirements drift »
+Stability issue: the « requirements drift »
                             Misalignment with known
                             requirements when the project
                             does not know how to take
@@ -371,15 +333,16 @@ Stability issue: the « requirements drift »
   Requirements
   Qty
 
+
+
+
                                                                  Time
+
 
    Start of the   Delivery of the                      Go live
    requirements   specifications, start of
    analysis       development
-
-<!-- Page 25 -->
-
-         Takaway: Design your requirements
+         Takaway: Design your requirements
                   documentation!
    • Many standards exist (e.g. IEEE 830-1998 SRS
      and IEEE 1233-1998 SysRS)
@@ -394,3 +357,5 @@ Stability issue: the « requirements drift »
 
 Fondamentaux de l'Ingénierie des Exigences, J1, Sept. & Oct. 2011, Mastère MSI, École Centrale Paris   10/09/201
 www.exibri.com                                                                                                     Page 25
+                                                                                                       1
+

@@ -1,8 +1,5 @@
-<!-- Source: ressources/S3__ISI1/EPI/15_Requirements_Engineering (Pohl - Rupp) chap 4-5.pdf | pdftotext -layout | 28 pages -->
-
-<!-- Page 1 -->
-
 4         Documenting Requirements
+
 
 In requirements engineering, information that has been established or worked out
 during different activities must be documented. Among this information are, for
@@ -10,6 +7,7 @@ example, protocols of interviews and reports of validation or agreement
 activities, but also change requests. The main and most important documentation
 task in requirements engineering, though, is to document the requirements for the
 system in a suitable manner.
+
 
 4.1     Document Design
 
@@ -24,6 +22,8 @@ techniques such as state diagrams.
  A requirements specification is a systematically represented collection of requirements, typically for a
  system or component, that satisfies given criteria.
 
+
+
 Reasons for the documentation
 
 During the life cycle of a requirements document, many people are trusted with the
@@ -31,10 +31,7 @@ documentation. During communication, the documentation has a goal-oriented and
 supporting role. The main reasons for documenting requirements are as follows:
 
 Central role of requirements
-
-<!-- Page 2 -->
-
-      Requirements are the basis of the system development. Requirements of any
+      Requirements are the basis of the system development. Requirements of any
       kind influence the analysis, design, implementation, and test phases directly
       and indirectly. The quality of a requirement or of a requirements document
       has a strong impact on the progress of the project and therefore on its
@@ -64,14 +61,13 @@ employees almost never share the same understanding of a subject matter.
 Therefore, requirements should be documented in a way that they meet the quality
 demands of all involved.
 
+
 4.2     Types of Documentation
 
 Requirements for a system can be documented in three different perspectives. In
 practice, natural language as well as conceptual models are used to this end, or
+oftentimes, an advantageous combination of both is employed.
 
-<!-- Page 3 -->
-
-oftentimes, an advantageous combination of both is employed.
 
 4.2.1   The Three Perspectives of Requirements
 
@@ -104,13 +100,11 @@ Behavioral perspective:
     effects of the system analyzed that represent events in the system context of a
     different system).
 
+
 4.2.2   Requirements Documentation using Natural Language
 
 Advantages of using natural language
-
-<!-- Page 4 -->
-
-Natural language, particularly prose, is the most commonly applied documentation
+Natural language, particularly prose, is the most commonly applied documentation
 form for requirements in practice. In contrast to other documentation forms, prose
 has a striking advantage: No stakeholder has to learn a new notation. In addition,
 language can be used for miscellaneous purposes—the requirements engineer can
@@ -123,6 +117,7 @@ allow requirements to be ambiguous, and requirements of different types and
 perspectives are in danger of being unintentionally mixed up during
 documentation. In that case, it is difficult to isolate information pertaining to a
 certain perspective amidst all of the requirements in natural language.
+
 
 4.2.3    Requirements Documentation using Conceptual Models
 
@@ -146,10 +141,7 @@ Overview of system functions
      of the functionalities of the specified system. A use case describes which
      functions are offered to the user by the system and how these functions relate
      to other external interacting entities. However, use cases do not describe the
-
-<!-- Page 5 -->
-
-    responsibilities that the functions have in detail (see section 6.3).
+    responsibilities that the functions have in detail (see section 6.3).
 
 Structural data modeling and structuring of terms
 
@@ -174,6 +166,7 @@ Event-driven behavior
     conditions that trigger a state transition, and effects of the system in its
     environment.
 
+
 4.2.4   Hybrid Requirements Documents
 
 Combined use of documentation types
@@ -185,14 +178,12 @@ document, the perspective on the system, and the documented knowledge, suitable
 documentation types are selected. Typically, documents contain a combination of
 natural language and conceptual models. The combination allows the
 disadvantages of both documentation types to be decreased by means of the
-
-<!-- Page 6 -->
-
-strengths of the other documentation type, and combining documentation types
+strengths of the other documentation type, and combining documentation types
 exploits the advantages of both. For instance, models can be amended or
 complemented by natural language comments and natural language requirements
 and natural language glossaries can be summarized and their dependencies can be
 depicted clearly by making use of models.
+
 
 4.3     Document Structures
 
@@ -201,6 +192,7 @@ Requirements documents contain a magnitude of different information. These must
 be well structured for the reader. In order to do that, one can make use of
 standardized document structures or individually define a custom document
 structure.
+
 
 4.3.1    Standardized Document Structures
 
@@ -223,10 +215,7 @@ predetermined. Using standard outlines has the following advantages:
 It must be noted that these structures must be tailored with regard to the specific
 project properties to meet the respective constraints. In the following paragraphs,
 three of the most widely used standardized document structures are introduced.
-
-<!-- Page 7 -->
-
-Rational Unified Process
+Rational Unified Process
 
      The Rational Unified Process (RUP) [Kruchten 2001]is usually used for
 software systems that are developed using object-oriented methods. The client
@@ -264,10 +253,7 @@ document:
     The Customer Requirements Specification, known in the German original as
     Lastenheft, is created by the customer and describes all of the demands to the
     contractor regarding the subject of the contract, i.e., deliveries and services.
-
-<!-- Page 8 -->
-
-    In addition, in many cases, demands of the users, including all constraints to
+    In addition, in many cases, demands of the users, including all constraints to
     the system and the development process, are documented. Therefore, the
     Customer Requirements Specification usually describes what is made for
     what.
@@ -277,12 +263,14 @@ document:
     Therefore, the System Requirements Specification is a refinement of the
     requirements and constraints of the Customer Requirements Specification.
 
+
 4.3.2   Customized Standard Contents
 
 The minimum content
 As described in section 4.3.1, standardized document structures are adapted with
 regard to the specific project conditions. The following issues should be
 addressed by any chosen structure.
+
 
 Introduction
 
@@ -302,10 +290,7 @@ allows gaining a quick overview of the system.
     References:2 All documents that are referenced by the requirements
     document are listed herein.
     Overview: At the end of the introductory chapter, the content and structure of
-
-<!-- Page 9 -->
-
-     the following sections of the requirements document should be explained
+     the following sections of the requirements document should be explained
      briefly.
 
 General Overview
@@ -337,14 +322,12 @@ Requirements
 
 This part contains functional requirements as well as quality requirements.
 
+
 Appendices
 
 In the appendices, additional information that completes the document can be
 documented. For example, the appendices can include additional documents
-
-<!-- Page 10 -->
-
-regarding the user characteristics, standards, conventions, or background
+regarding the user characteristics, standards, conventions, or background
 information regarding the requirements document.
 
 Index
@@ -352,6 +335,7 @@ Index
 The index typically contains a table of contents (i.e., a structure of the chapters)
 and an index directory. In highly dynamic requirements documents, this may be a
 highly critical section that must be kept up-to-date.
+
 
 4.4     Using Requirements Documents
 
@@ -380,10 +364,7 @@ different tasks:
       requirements, or a result of an error in implementation.
       Contract management: The requirements document is the prime subject of a
       contract between a client and a contractor in many cases.
-
-<!-- Page 11 -->
-
-4.5     Quality Criteria for Requirements Documents
+4.5     Quality Criteria for Requirements Documents
 
 To become a basis for the subsequent processes, the requirements document must
 meet certain quality criteria. According to the ISO/IEC/IEEE standard
@@ -398,6 +379,7 @@ Overall, a requirements document shall fulfil the following quality criteria:
       Completeness
       Traceability
 
+
 4.5.1     Unambiguity and Consistency
 
 Quality of individual requirements is a prerequisite.
@@ -410,6 +392,7 @@ aspect of unambiguity pertains to the unique identification of a requirements
 document or a requirement among the set of all requirements documents or
 requirements in a development project (see section 8.5).
 
+
 4.5.2     Clear Structure
 
 Allows for selective reading
@@ -418,16 +401,14 @@ In order to guarantee that the requirements document is readable by any
 stakeholder, it should be appropriately comprehensive and clearly structured.
 Unfortunately, no clear-cut suggestions can be made regarding the appropriate
 comprehensiveness of a requirements document. A very comprehensive
-
-<!-- Page 12 -->
-
-requirements document with a good structure can be just as appropriate as a less
+requirements document with a good structure can be just as appropriate as a less
 comprehensive document because a clear structure will allow the reader to skip
 parts that are not relevant to him. An unstructured or badly structured requirements
 document of the same high level of comprehensiveness would not be appropriate
 because the document must be read in its entirety in order for a stakeholder to be
 able to identify parts that are relevant to her. A good starting point is the standard
 structures described in section 4.3.1.
+
 
 4.5.3 Modifiability and Extendibility
 
@@ -438,6 +419,7 @@ that are changed, altered, added, or removed as a project progresses. As a resul
 the structure of requirements documents should be easy to modify and extend. The
 requirements documents of a project should be subject to the project’s version
 control management.
+
 
 4.5.4 Completeness
 
@@ -456,12 +438,10 @@ Evidence, reference, and sources are formal necessities.
 should be appropriately labeled. Another important aspect is that consistent
 reference and index directories must exist. Also, definitions and norm reference
 that denote specific terms must be included in any requirements document. The
-
-<!-- Page 13 -->
-
-comprehensiveness of a requirements document is a challenge during requirements
+comprehensiveness of a requirements document is a challenge during requirements
 engineering. Often, a compromise must be found between the time resources
 available and the completeness of the requirements documents.
+
 
 4.5.5     Traceability
 
@@ -473,6 +453,7 @@ plans, or design plans). These documents could have been created in previous
 development phases, in subsequent development phases, or concurrently with the
 requirements documents. Among other things, traceability supports change
 management (see section 8.4).
+
 
 4.6     Quality Criteria for Requirements
 
@@ -495,10 +476,7 @@ Each documented requirement should fulfil the following quality criteria:
       with regard to all other requirements, i.e., the requirements must not
       contradict one another, regardless of their level of detail or documentation
       type. In addition, a requirement must be formulated in a way that allows for
-
-<!-- Page 14 -->
-
-     consistency with itself, i.e., the requirement may not contradict itself.
+     consistency with itself, i.e., the requirement may not contradict itself.
      Verifiable: [ISO/IEC/IEEE 29148:2011] A requirement must be described in
      a way that allows for verification. That means that tests or measurements can
      be carried out that provide evidence of the functionality demanded by the
@@ -535,14 +513,12 @@ Along with quality criteria for requirements, there are two fundamental rules th
 enhance the readability of requirements:
 
      Short sentences and short paragraphs: As human short-term memory is
-
-<!-- Page 15 -->
-
-      very limited, circumstances that belong together should be described in no
+      very limited, circumstances that belong together should be described in no
       more than seven sentences.
       Formulate only one requirement per sentence: Formulate requirements
       using active voice and use only one process verb. Long, complicated
       interlaced sentences must be avoided.
+
 
 4.7     Glossary
 
@@ -575,10 +551,7 @@ universal, inter-project glossary. The additional effort of creating such a glos
 will pay off in future projects. For certain domains, collections of term definitions
 already exist and are publicly accessible. These may serve as the foundation for
 the definition of specific glossaries. For example, in [IEEE 610.12-1990], typical
-
-<!-- Page 16 -->
-
-terms of software engineering are defined.
+terms of software engineering are defined.
 
 Rules for Using a Glossary
 
@@ -614,14 +587,12 @@ Since creating a glossary is absolutely mandatory, the following must be noted:
      The entries in the glossary should have a consistent structure: All entries
      in the glossary must be structured in the same way. In order to support a
      consistent documentation, it is advisable to use a template for glossary
-
-<!-- Page 17 -->
-
-       definitions. In addition to the definition and the meaning of a term, the
+       definitions. In addition to the definition and the meaning of a term, the
        template should specify possible synonyms and homonyms.
 
 To reduce the effort of aligning terms with one another, it is advisable to start with
 the creation of the glossary early on in the project.
+
 
 4.8       Summary
 
@@ -635,15 +606,14 @@ has proven to be suitable for that purpose. These are completed by inserting
 project-specific requirements written in natural language in conjunction with
 conceptual requirements models.
 
+
 1.   This section can also be treated as an appendix to the document.
 2.   This section can also be treated as an appendix to the document.
 3.   Strictly speaking, this statement holds true only for the requirements document of the next system release
      (see section 8.5.3).
-
-<!-- Page 18 -->
-
-5       Documenting Requirements in
+5       Documenting Requirements in
         Natural Language
+
 
 Elicited requirements for the system to be developed are frequently documented
 using natural language. Natural language has the advantage that it (allegedly) does
@@ -652,6 +622,7 @@ not require preparation time in order to be read and understood by stakeholders
 sense that it can be used to describe any circumstances. However, there are some
 problems associated with the use of natural language for requirements
 documentation.
+
 
 5.1    Effects of Natural Language
 
@@ -669,10 +640,8 @@ as a requirement). During such a process (i.e., perception and representation of
 information), so-called “transformational effects” occur that show different
 characteristics with every human but may occur in all humans [Bandler and
 Grinder 1975, Bandler 1994].
+Figure 5-1 Transformational effects in perception and representation of knowledge
 
-<!-- Page 19 -->
-
-Figure 5-1 Transformational effects in perception and representation of knowledge
 
 Transformational effects
 The fact that transformational effects adhere to certain rules can be exploited by
@@ -687,6 +656,7 @@ for requirements engineering:
       Incompletely specified conditions
       Incompletely specified process verbs
 
+
 5.1.1      Nominalization
 
 Reduction of processes
@@ -694,12 +664,11 @@ By means of nominalization, a (sometimes long-lasting) process is converted into
 a (singular) event. All information necessary to accurately describe the process is
 thereby lost. The process word transmit turns into the noun transmission. Other
 typical examples of nominalization are the terms input, booking, and acceptance.
-
-<!-- Page 20 -->
-
- Example 5-1: Nominalization
+ Example 5-1: Nominalization
  “In case of a system crash, a restart of the system shall be performed.”
  The terms system crash and restart each describe a process that ought to be analyzed more precisely.
+
+
 
 Define processes completely.
 Per se, there are no arguments against the use of nominalized terms to describe
@@ -714,6 +683,7 @@ been defined in sufficient detail in another part of the requirements document a
 whether they are clear for all stakeholders. If this is not the case, another
 requirement or a glossary entry must be created.
 
+
 5.1.2      Nouns without Reference Index
 
 Nouns with missing reference
@@ -726,14 +696,15 @@ message, the data, or the function.
  Example 5-2: Nouns without reference indices
  The data shall be displayed to the user on the terminal.
 
+
 The following questions arise: What data exactly? Which user exactly? Which
 terminal exactly? If this information is amended, the requirement might thus read
 as follows:
-
-<!-- Page 21 -->
-
- Example 5-3: Nouns with added reference indices
+ Example 5-3: Nouns with added reference indices
  The system shall display the billing data to the registered user on the terminal she is logged in to.
+
+
+
 
 5.1.3      Universal Quantifiers
 
@@ -754,8 +725,10 @@ nothing.
  Example 5-4: Universal quantifiers
  The system shall show all data sets in every submenu.
 
+
 In this case, the following question must be asked: Really in every submenu?
 Really all data sets?
+
 
 5.1.4      Incompletely Specified Conditions
 
@@ -763,10 +736,7 @@ Identify and clarify condition structures.
 
 Incompletely specified conditions are another indicator of a potential loss of
 information. Requirements that contain conditions specify the behavior that must
-
-<!-- Page 22 -->
-
-occur when the condition is met. In addition, they must specify what behavior must
+occur when the condition is met. In addition, they must specify what behavior must
 occur if the condition is not met (the part that is often missing). Especially in
 complex conditional structures, decision tables can be invaluable tools to find
 unspecified variants of conditions or actions. Trigger words are, for instance,
@@ -774,6 +744,7 @@ if . . . then, in case, whether, and depending on.
 
  Example 5-5: Incompletely specified condition
  The restaurant system shall offer all beverages to a registered guest over the age of 20 years.
+
 
 At least one aspect remains unspecified in the example above: Which beverages
 shall be offered to a guest that is 20 years or younger? Clarifying this question
@@ -783,6 +754,9 @@ may lead to extending the requirement as follows:
  The restaurant system shall offer
  All alcohol-free beverages to any registered user younger than 21 years
  All beverages including all alcoholic beverages to any user over the age of 20
+
+
+
 
 5.1.5      Incompletely Specified Process Verbs
 
@@ -798,15 +772,14 @@ much less frequent with these types of words than with verbs, it is often hard t
 recognize.
 
 Avoid passive voice.
-
-<!-- Page 23 -->
-
-    The use of incompletely specified process words can mostly be avoided or
+    The use of incompletely specified process words can mostly be avoided or
 kept to a minimum if requirements are formulated using the active voice rather
 than the passive voice.
 
  Example 5-7: Requirement using the passive voice
  To log a user in, the login data is entered.
+
+
 
 Use active voice.
 In this requirement using passive voice, it is unclear who enters the login data. It
@@ -816,6 +789,9 @@ using the active voice, at least the agent or person responsible must be include
 
  Example 5-8: Requirement using active voice
  The system must allow the user to enter his user name and password using the keyboard of the terminal.
+
+
+
 
 5.2      Requirement Construction using Templates
 
@@ -829,14 +805,13 @@ and at low costs.
  Definition 5-1: Requirements Template
  A requirements template is a blueprint for the syntactic structure of individual requirements.
 
+
 In order to achieve lexical clearness in the documentation as well, it is wise to
 use requirements templates in conjunction with project glossaries (see section
 4.7).
     The following is a step-by-step description of the correct application of
+requirements templates.
 
-<!-- Page 24 -->
-
-requirements templates.
 
 Step 1: Determine the Legal Obligation
 
@@ -858,6 +833,7 @@ system behavior by means of a requirement is to be described in step 2.
     Since process words determine semantics, they must be defined as clearly as
 possible and be used as consistently as possible (see section 4.7).
 
+
 Step 3: Characterize the Activity of a System
 
 For functional requirements, the system activity can be classified as one of three
@@ -869,17 +845,18 @@ relevant types:
      Interface requirement: The system performs a process depending on a third
      party (e.g., another system). The system is passive and waits for an external
      event.
-
-<!-- Page 25 -->
-
-In step 3, any kind of system activity that is specified by a requirement of the
+In step 3, any kind of system activity that is specified by a requirement of the
 system is documented using exactly one of three requirements templates. These
 requirements templates are described in more detail in the following sections.
     After performing steps 1 through 3, the structure of the requirement has been
 developed (see figure 5-2). The words that are written in angle brackets must be
 replaced accordingly.
 
+
+
+
 Figure 5-2 The core of a requirement and its legal obligation
+
 
 Type 1:
 Autonomous system activity
@@ -898,10 +875,7 @@ User interaction
     If the system provides a functionality to a user (for example, by means of an
 input interface), or the system directly interacts with a user, requirements are
 constructed using template type 2:
-
-<!-- Page 26 -->
-
-    THE SYSTEM SHALL/SHOULD/WILL/MAY provide <whom?> with the
+    THE SYSTEM SHALL/SHOULD/WILL/MAY provide <whom?> with the
                      ability to <process verb>
 
 The user that interacts with the system is integrated into the requirement through
@@ -916,6 +890,7 @@ following template has proven itself as well suited:
 
      THE SYSTEM SHALL/SHOULD/WILL/MAY be able to <process verb>
 
+
 Step 4: Insert Objects
 
 Complete process verbs.
@@ -926,11 +901,11 @@ For instance, the requirements template for the process verb print is amended by
 the information of what is being printed and where it is printed. The amendment
 can be seen in figure 5-3.
 
+
+
+
 Figure 5-3 Principle of a complete requirements template without conditions
-
-<!-- Page 27 -->
-
-Step 5: Determine Logical and Temporal Conditions
+Step 5: Determine Logical and Temporal Conditions
 
 Add conditions.
 
@@ -944,13 +919,18 @@ described and should therefore be avoided. In step 5, quality requirements that
 describe the conditions under which a requirement is fulfilled are added to the
 beginning of a requirement as a subordinate clause.
 
+
+
+
 Figure 5-4 The complete requirements template with conditions
+
 
 Requirements templates should be used when project members show interest in a
 formal development process. Style and creativity are harshly limited when
 requirements templates are used. Experience shows it is best not to make the use
 of requirements templates compulsory, but to offer training on the method and treat
 it as a supplemental tool.
+
 
 5.3     Summary
 
@@ -961,11 +941,9 @@ any circumstance, and the fact that no prior knowledge is necessary regarding th
 notation. On the other hand, there are a number of disadvantages that arise from
 the fact that natural language requirements are not formalized, e.g., ambiguity.
 Since project members interpret requirements differently due to differences in
-
-<!-- Page 28 -->
-
-their respective knowledge, social background, and experiences, using natural
+their respective knowledge, social background, and experiences, using natural
 language for requirements documentation often leads to misunderstanding in
 practice. These disadvantages can be minimized during requirements
 documentation—for example, by making use of requirements templates and by
 checking the requirements against linguistic effects.
+

@@ -1,14 +1,12 @@
-<!-- Source: ressources/S3__ISI1/EPI/20_Eliciting requirements.pdf | pdftotext -layout | 16 pages -->
-
-<!-- Page 1 -->
-
 3        Eliciting Requirements
+
 
 A core activity of requirements engineering is the elicitation of requirements for
 the system to be developed. The basis for requirements elicitation is the
 knowledge that has been gained during requirements engineering about the system
 context of the system to be developed, which comprises the requirements sources
 that are to be analyzed and queried.
+
 
 3.1     Requirements Sources
 
@@ -29,10 +27,7 @@ There are three different kinds of requirements sources:
       competing systems. By giving the stakeholders a chance to try the system out,
       they can gain an impression of the current system and can request extensions
       or changes based on their impressions.
-
-<!-- Page 2 -->
-
-3.1.1 Stakeholders and Their Significance
+3.1.1 Stakeholders and Their Significance
 
 Significance of stakeholders
 
@@ -63,16 +58,14 @@ stakeholder elicitation is often suggestions of relevant stakeholders that are m
 by management or by domain experts, for example. On the basis of these
 suggestions, relevant stakeholders can be identified.
 
+
 3.1.2 Handling Stakeholders in the Project
 
 Managing stakeholders
 
 It can often be observed in practice that a lot of stakeholders are involved in
 complex and “difficult” projects. Due to limited resources, the stakeholders that
-
-<!-- Page 3 -->
-
-are the most suitable for requirements elicitation must be carefully selected. To
+are the most suitable for requirements elicitation must be carefully selected. To
 document the stakeholders in the development process, it makes sense to use
 tables and spreadsheets that contain (at least) the following data: name, function
 (role), additional personal and contact data, temporal and spatial availability
@@ -109,10 +102,7 @@ Obligations and privileges of the stakeholders
     A number of obligations and privileges result from the agreement with the
 stakeholders.
 The requirements engineer
-
-<!-- Page 4 -->
-
-      speaks the language of the stakeholders,
+      speaks the language of the stakeholders,
       becomes thoroughly familiar with the application domain,
       creates a requirements document,
       is able to get work results across (e.g., by means of diagrams and graphs),
@@ -145,12 +135,10 @@ activities that are to be performed in collaboration with the stakeholders. This
 organization and the type of communication are significantly influenced by the
 elicitation techniques that can be used during requirements engineering.
 
+
 3.2     Requirements Categorization According to the Kano
         Model
-
-<!-- Page 5 -->
-
-Influence of the requirements on satisfaction
+Influence of the requirements on satisfaction
 
 Knowing the importance of a requirement for the satisfaction of the stakeholders
 is very helpful for requirements elicitation. Along with the respective properties
@@ -167,10 +155,8 @@ following three categories [Kano et al. 1984]:
 As time goes by, delighters turn into satisfiers and dissatisfiers as the user
 becomes accustomed to the properties of the system. When eliciting requirements,
 all three categories must be considered.
+Figure 3-1 Graphical representation of the Kano model
 
-<!-- Page 6 -->
-
-Figure 3-1 Graphical representation of the Kano model
 
 Dissatisfiers
 
@@ -197,6 +183,7 @@ value is recognized only when the stakeholder can try out the system for herself
 the requirements engineer proposes them. Creativity techniques are best suited to
 elicit delighters.
 
+
 3.3     Elicitation Techniques
 
 Requirements elicitation: no universal method
@@ -207,10 +194,8 @@ and when a technique can be applied depends on the given conditions. Applying
 the technique consciously and in a fashion appropriate to the situation at hand
 allows for tailoring the requirements elicitation process which takes into account
 project constraints so that requirements may be elicited as completely and
+comprehensibly as possible.
 
-<!-- Page 7 -->
-
-comprehensibly as possible.
 
 3.3.1    Types of Elicitation Techniques
 
@@ -247,10 +232,7 @@ important to determine the type of requirement, the desired level of detail, and
 experience of the requirements engineer and the interviewees with different
 elicitation techniques.
     Social, group-dynamic, and cognitive capabilities of the stakeholders also
-
-<!-- Page 8 -->
-
-influence the choice of suitable elicitation techniques significantly. Another
+influence the choice of suitable elicitation techniques significantly. Another
 influence factor is whether the elicited knowledge is explicit (consciously known)
 by each individual stakeholder or if it is implicit or unconscious (i.e., covert).
 
@@ -286,11 +268,9 @@ the risks inherent to the project. Weaknesses and pitfalls of a particular techn
 can be balanced out through the use of another technique whose strong points lie
 where the first technique may have deficits.
 
+
 3.3.2    Survey Techniques
-
-<!-- Page 9 -->
-
-Eliciting explicit knowledge
+Eliciting explicit knowledge
 
 Survey techniques aim at eliciting as precise and unbiased statements as possible
 from stakeholders regarding their requirements. All survey techniques assume that
@@ -328,11 +308,9 @@ Questionnaire
      knowledge of the domain in question and the psychological guidelines for
      creating questionnaires. In addition, as opposed to interviews, questionnaires
      do not provide immediate feedback between the surveyor and the surveyed,
-
-<!-- Page 10 -->
-
-    so it becomes apparent that questions were forgotten or badly formulated
+    so it becomes apparent that questions were forgotten or badly formulated
     only once the questionnaires have been evaluated.
+
 
 3.3.3   Creativity Techniques
 
@@ -368,10 +346,7 @@ Brainstorming paradox
     events that must not occur are collected. Afterward, the group develops
     measures to prevent the events collected earlier from happening. Through
     this process, participants often realize which actions may entail negative
-
-<!-- Page 11 -->
-
-    results. With this method, risks can be identified early on and
+    results. With this method, risks can be identified early on and
     countermeasures can be developed. Advantages and disadvantages of this
     technique are identical to those of classic brainstorming.
 
@@ -405,13 +380,11 @@ Analogy technique
     technique is applied in the open, the stakeholders know the real problem
     space as well as the analogy.
 
+
 3.3.4   Document-centric Techniques
 
 Document-centric techniques reuse solutions and experiences made with existing
-
-<!-- Page 12 -->
-
-systems. When a legacy system is replaced, this technique ensures that the entire
+systems. When a legacy system is replaced, this technique ensures that the entire
 functionality of the legacy system can be identified. Document-centric techniques
 should be combined with other elicitation techniques so that the validity of the
 elicited requirements can be determined and new requirements for the new system
@@ -449,11 +422,9 @@ Reuse
     Reuse: Requirements that have been previously compiled and brought up to a
     certain quality standard can be reused. In order to do that, the requirements
     are stored in a database, for instance, and kept available at the required level
-
-<!-- Page 13 -->
-
-     of detail for reuse. Through reuse, the costs involved with the elicitation
+     of detail for reuse. Through reuse, the costs involved with the elicitation
      procedures can be significantly reduced.
+
 
 3.3.5    Observation Techniques
 
@@ -489,10 +460,7 @@ Field observation
 
      Field observation: The requirements engineer is on location with the
      specialist or the users of the system and observes and documents the
-
-<!-- Page 14 -->
-
-    processes and operational procedures that they carry out. Using these
+    processes and operational procedures that they carry out. Using these
     observations, she formulates the requirements. Often, this can be further
     aided by audio and video recordings. This technique is well suited for
     operational procedures that are difficult to express verbally, but it can only
@@ -509,6 +477,7 @@ Apprenticing
     power between the requirements engineer and the respective specialist is
     reversed because the stakeholder now adopts the role of the “master” that has
     the knowledge the apprentice is yet lacking.
+
 
 3.3.6   Support Techniques
 
@@ -529,10 +498,7 @@ Workshops
     workshop [Gottesdiener 2002].
 
 CRC cards
-
-<!-- Page 15 -->
-
-      With the CRC technique (CRC stands for Class Responsibility
+      With the CRC technique (CRC stands for Class Responsibility
       Collaboration), context aspects and their respective attributes and properties
       are denoted on index cards. Requirements are then formulated using these
       cards.
@@ -564,16 +530,15 @@ Prototypes for illustration
       prototypes are frequently used in practice to find additional functional
       requirements.
 
+
 3.4     Summary
 
 Requirements elicitation is a core activity in requirements engineering. Aside
 from documents and legacy systems, stakeholders are the main sources for
 requirements. It is important to initially agree upon mutual rights and
-
-<!-- Page 16 -->
-
-responsibilities of the stakeholders and the requirements engineer in order to
+responsibilities of the stakeholders and the requirements engineer in order to
 facilitate communication and cooperation and to successfully integrate the
 stakeholders into the elicitation process. The choice of the right elicitation
 technique for the respective project is made by the requirements engineer based
 on the given cultural, organizational, and domain-specific constraints.
+

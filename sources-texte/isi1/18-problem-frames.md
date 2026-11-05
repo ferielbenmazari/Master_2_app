@@ -1,13 +1,14 @@
-<!-- Source: ressources/S3__ISI1/EPI/18_Problem Frames.pdf | pdftotext -layout | 10 pages -->
-
-<!-- Page 1 -->
-
                                                Information and Software Technology 47 (2005) 903–912
                                                                                                                   www.elsevier.com/locate/infsof
+
+
+
 
                                 Problem frames and software engineering
                                                                Michael Jackson
                                                 The Open University, Milton Keynes, MK7 6AA, England
+
+
 
 Abstract
 
@@ -21,6 +22,8 @@ back the evolution of normal design practice in some areas.
 q 2005 Elsevier B.V. All rights reserved.
 
 Keywords: Problem frame; Software; Problems
+
+
 
 1. Introduction                                                                 The participants assumed implicitly that the phrase
                                                                              software engineering was to be narrowly interpreted, to
@@ -51,10 +54,7 @@ and has been widely accepted ever since.                                        
 engineering interchangeably.                                                 aeronautical engineering in the first half of the 20th century
 0950-5849/$ - see front matter q 2005 Elsevier B.V. All rights reserved.     when the field was being established by researchers and
 doi:10.1016/j.infsof.2005.08.004                                             practitioners. He gives illuminating detail of five case
-
-<!-- Page 2 -->
-
-904                                M. Jackson / Information and Software Technology 47 (2005) 903–912
+904                                M. Jackson / Information and Software Technology 47 (2005) 903–912
 
 studies including the problems of aerofoil design, a series of                            a             Problem        b
                                                                             Machine                                            Requirement
@@ -113,10 +113,7 @@ generalised problem diagram in Fig. 1.                                 problems 
    The machine interacts with the problem world at an                  path in a graph, or beating the world champion at chess or
 interface of shared phenomena a. Typically, these phenom-              go. Nor can such problems be brought within the scope of
 ena are events and states, controlled either by the problem            PF by a gratuitous reification—for example, by stipulating
-
-<!-- Page 3 -->
-
-                                   M. Jackson / Information and Software Technology 47 (2005) 903–912                             905
+                                   M. Jackson / Information and Software Technology 47 (2005) 903–912                             905
 
 a physical representation of the integer or graph or                   it derives a reduced problem in which the phenomena b and
 chessboard in a disk file. In some problems, such as the               the problem world do not appear at all. A problem of
@@ -175,10 +172,7 @@ proceeds, using the given properties W, to devise a machine            goal was 
 behaviour specification S. We may call such a process full             symbol manipulation machines. The ‘pleasantness
 problem reduction: starting from a problem involving the               problem’—that is, obtaining the functional specification—
 phenomena a and b and the problem world properties,                    was for others to address. Computer scientists and software
-
-<!-- Page 4 -->
-
-906                                M. Jackson / Information and Software Technology 47 (2005) 903–912
+906                                M. Jackson / Information and Software Technology 47 (2005) 903–912
 
 developers should restrict their attention to the ‘correctness         of the development project in hand, these descriptions are
 problem’, and should address it by formal mathematical                 standard reference material.
@@ -236,10 +230,7 @@ phere. The problem world properties of interest are then               from basi
 location-independent properties, and do not demand a fresh             and solution have been firmly established by long and
 explicit description of roadways or of the atmosphere for              successful experience. Vincenti gives the example of
 each new car or aircraft design. Rather than ad hoc products           automobile design:
-
-<!-- Page 5 -->
-
-                                    M. Jackson / Information and Software Technology 47 (2005) 903–912                           907
+                                    M. Jackson / Information and Software Technology 47 (2005) 903–912                           907
 
 Automobile designers of today usually (but not invariably)              † In a WorkPieces problem a User edits a WorkPiece such
 assume without much thinking about it that their vehicle                  as a text or graphic document. The requirement is that
@@ -297,10 +288,7 @@ diagram of Fig. 1, capture classes of software development              frame co
 problems whose software solutions take the form of                      because the given properties W of each problem domain d
 individual programs or, at most, very small systems of                  must be separately described, and these descriptions must
 programs. For example:                                                  be combined with each other and with the specification
-
-<!-- Page 6 -->
-
-908                                M. Jackson / Information and Software Technology 47 (2005) 903–912
+908                                M. Jackson / Information and Software Technology 47 (2005) 903–912
 
 S and requirement R in a way that respects the connectivity            problem domains. Breakage and reliability do not arise for
 of the frame diagram and the control of shared phenomena.              lexical domains; information deficit does not arise for
@@ -358,10 +346,8 @@ raise reliability concerns. Breakage is not a concern in               speed and
 WorkPieces problems. To a significant extent the set of                    In the design of solutions for problems fitting
 concerns that must be addressed, and the detail of each                elementary problem frames the need for incremental
 concern, depend on the characteristics of the frame’s                  quantitative improvement may be present, but is usually
+                                           M. Jackson / Information and Software Technology 47 (2005) 903–912                                909
 
-<!-- Page 7 -->
-
-                                           M. Jackson / Information and Software Technology 47 (2005) 903–912                                909
 
                                Real
                                                                                     also what arrangement of parts will best allow it to work in
@@ -424,11 +410,10 @@ understood not only how the device should work but                              
 
                                                                                               Display
 
+
+
                                                                Fig. 3. A standard decomposition.
-
-<!-- Page 8 -->
-
-910                                M. Jackson / Information and Software Technology 47 (2005) 903–912
+910                                M. Jackson / Information and Software Technology 47 (2005) 903–912
 
 of success. The problem is to design something that will               behaviour specification and problem world description.
 function well enough to warrant further development.” The              Until this point, the identification and treatment of the
@@ -486,10 +471,7 @@ resolved.                                                                join an
 here is that treatment of the composition concerns should be             a member whose membership has only one week to run
 deferred until each subproblem has been identified and                   borrow a book for two weeks? What if a borrower
 analysed to the point of obtaining a satisfactory machine                resigns from membership before returning the book?
-
-<!-- Page 9 -->
-
-                                   M. Jackson / Information and Software Technology 47 (2005) 903–912                            911
+                                   M. Jackson / Information and Software Technology 47 (2005) 903–912                            911
 
 † Conflict. The requirements of two subproblems that                   a standard decomposition into sequential processes is
   cause change in the same domain may sometimes                        expected, and the architectural decision has been made to
@@ -547,10 +529,7 @@ the idea of an architectural frame or AFrame is introduced             knowledge
 as an elaboration of the problem frame diagram to                          Specialisation is essential to the growth of knowledge
 accommodate an early architectural decision. One of their              because it allows experience to be accumulated effectively
 examples is a Transformation problem frame in which                    and systematically. The accumulation of experience
-
-<!-- Page 10 -->
-
-912                                        M. Jackson / Information and Software Technology 47 (2005) 903–912
+912                                        M. Jackson / Information and Software Technology 47 (2005) 903–912
 
 and knowledge demands a conceptual structure within which                      [10] Carl A Gunter, Elsa L Gunter, Michael Jackson and Pamela Zave; A
 it can be evaluated and stored, and from which it can be                            Reference Model for Requirements and Specifications; Proceedings of
@@ -628,3 +607,4 @@ References
  [9] Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides;                  Know It: Analytical Studies from Aeronautical History; The
      Design Patterns: Elements of Object-Oriented Software; Addison-                Johns Hopkins University Press, Baltimore, paperback edition,
      Wesley, 1994.                                                                  1993.
+

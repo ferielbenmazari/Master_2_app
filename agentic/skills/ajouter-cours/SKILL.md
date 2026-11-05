@@ -21,14 +21,24 @@ Agent **content-extractor** (extraction) pour les sources sans texte. `npm run s
 ## 3. Analyse (si `notions.json` absent ou partiel)
 Agent **course-analyst**. Montrer : notions par importance et par chapitre, les ★★★, formats d'examen, incertitudes. **Attendre la validation.** Commit `content(<id>): carte des notions et profil du prof`.
 
-## 4. Chapitres — un à la fois, dans l'ordre de priorité
-Pour chaque ligne « à faire » du PLAN (ou seulement `[nn]`) :
-1. **content-author** : « Rédige le chapitre <nn> de <id>. »
+## 4. Chapitres — **le cours de tous les chapitres d'abord, les quiz ensuite**
+Périmètre : `content/<id>/PROGRAMME.md` (lignes `[x]`/`[ ]` + ajouts, jamais `[-]`) et `ressources/S3__<ID>/NOTES/` si présent.
+
+**4a. Cours** — pour chaque chapitre, dans l'ordre de priorité :
+1. **content-author** : « Rédige le COURS du chapitre <nn> de <id> (story, glossary, keyPoints ; quiz vide), aligné sur PROGRAMME.md, compléments selon docs/06 §2 bis. »
 2. **fact-checker** : « Vérifie content/<id>/chapters/<fichier>. »
-3. **content-reviewer** : « Relis content/<id>/chapters/<fichier>. »
-4. Si le reviewer n'a pas pu passer en `reviewed` : un seul aller-retour supplémentaire (author ou fact-checker selon le problème), puis s'arrêter et exposer le blocage.
-5. `npm run validate:content` + `npm run sources -- coverage <id>`, PLAN → « fait », commit `content(<id>): chapitre <nn> — <titre>`, puis `git pull --rebase && git push`.
-6. Une ligne à l'utilisatrice : chapitre dispo, nb de corrections du fact-checker, couverture.
+3. **content-reviewer** : « Relis le cours de content/<id>/chapters/<fichier> : alignement avec PROGRAMME.md (chaque ligne retenue traitée), exemples du prof, clarté, rythme. »
+4. `npm run validate:content`, PROGRAMME → ` → ch.<nn>` sur les lignes couvertes, commit `content(<id>): cours du chapitre <nn>` + push.
+
+**4b. Quiz** — seulement quand **tous** les chapitres ont leur cours :
+1. **content-author** : « Ajoute les quiz et checkpoints du chapitre <nn> (format du prof, docs/06 §5). »
+2. **fact-checker** sur les quiz (bonnes réponses, distracteurs).
+3. **content-reviewer** : difficulté, test de l'étudiant pressé, style du prof → `status: "reviewed"`.
+4. Commit `content(<id>): quiz du chapitre <nn>` + push.
+
+**4c. Le reste** (flashcards, exercices, atelier anglais) — après les contrôles ou sur demande.
+
+Garde-fou : un seul aller-retour supplémentaire par chapitre en cas de blocage, puis exposer le problème.
 
 ## 5. Partiels
 Pour chaque ligne Partiels du PLAN : author (mode partiel) → fact-checker → reviewer → validate → commit `content(<id>): partiel <slug>`.

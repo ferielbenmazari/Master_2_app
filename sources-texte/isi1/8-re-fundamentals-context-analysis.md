@@ -1,13 +1,11 @@
-<!-- Source: ressources/S3__ISI1/EPI/8_RE fundamentals - context analysis.pdf | pdftotext -layout | 8 pages -->
-
-<!-- Page 1 -->
-
 2         System and Context Boundaries
+
 
 The requirements for a system to be developed do not simply exist, they have to
 be elicited. The purpose of defining the system and context boundaries in
 requirements engineering is to identify the part of the environment that influences
 the requirements for the system to be developed.
+
 
 2.1     System Context
 
@@ -27,13 +25,12 @@ called the system context.
  The system context is the part of the system environment that is relevant for the definition as well as the
  understanding of the requirements of a system to be developed.
 
+
+
 Context aspects in the system context
 
 Among others, the following possible aspects of reality influence the context of a
-
-<!-- Page 2 -->
-
-system:
+system:
 
       People (stakeholders or groups of stakeholders)
       Systems in operation (other technical systems or hardware)
@@ -64,16 +61,14 @@ likelihood of incorrect interpretation of the requirement. Therefore, a purpose-
 driven documentation of the system context or information about the system
 context is of particular importance.
 
+
 2.2     Defining System and Context Boundaries
 
 It is within the responsibility of the requirements engineer to define the system
 context properly. In order to do so, it is necessary to separate the system context
 from the system to be developed as well as from the parts of reality that are
 irrelevant for the system (see figure 2-1):
-
-<!-- Page 3 -->
-
-      Defining the system boundary: When defining the system boundary, a
+      Defining the system boundary: When defining the system boundary, a
       decision has to be made: Which aspects pertain to the system to be
       developed and which aspects belong in the system context?
       Defining the context boundary: When defining the context boundary, the
@@ -81,7 +76,11 @@ irrelevant for the system (see figure 2-1):
       have a relation to the system to be developed) and which aspects are part of
       the irrelevant environment?
 
+
+
+
 Figure 2-1 System and context boundary of a system
+
 
 System and context boundaries define the system context.
 
@@ -89,6 +88,7 @@ Thus, system and context boundaries define the system context. The system contex
 comprises all aspects that are relevant with regard to the requirements for the
 system to be developed. These aspects cannot be altered or modified by the
 system development process.
+
 
 2.2.1      Defining the System Boundary
 
@@ -102,10 +102,7 @@ system boundary as follows:
  The system boundary separates the system to be developed from its environment; i.e., it separates the part
  of the reality that can be modified or altered by the development process from aspects of the environment
  that cannot be changed or modified by the development process.
-
-<!-- Page 4 -->
-
-All aspects that are within the system boundary can thus be altered during system
+All aspects that are within the system boundary can thus be altered during system
 development. For instance, an existing system that consists of hardware and
 software components and is supposed to be replaced by the new system can be
 within the system boundary. Aspects within the system context can be business
@@ -115,7 +112,11 @@ context of a system. The system context consists of other systems, groups of
 stakeholders that in some way use the interfaces of the system to be developed,
 and additional requirements sources and their interrelations.
 
+
+
+
 Figure 2-2 Types of aspects within the system context
+
 
 Sources and sinks as the starting point
 
@@ -131,10 +132,7 @@ Interfaces: interaction between system and environment
 
 Sources and sinks interact with the system to be developed via system interfaces.
 Using these interfaces, the system provides its functionality to the environment,
-
-<!-- Page 5 -->
-
-monitors the environment, influences parameters of the environment, and controls
+monitors the environment, influences parameters of the environment, and controls
 operations of the environment. Depending on the type of the respective source or
 sink, the system needs different interface types (e.g., human–machine interface,
 hardware interface, or software interface). The interface type in turn may also
@@ -166,14 +164,12 @@ developed or not. In this situation, it is not clear which aspects belong to the
 system and can thus be changed or modified and which aspects belong to the
 system context. This causes a corresponding shift of the gray zone between system
 and system context (see figure 2-3).
-
-<!-- Page 6 -->
-
-Figure 2-3 Gray zone of the system boundary
+Figure 2-3 Gray zone of the system boundary
 
 The gray zone shifts, for instance, when interfaces are attributed to the system
 boundary and the gray zone is extended to comprise aspects of the environment
 that concern these interfaces.
+
 
 2.2.2      Defining the Context Boundary
 
@@ -187,6 +183,8 @@ The context boundary can be defined as follows:
  irrelevant part, i.e., the part that does not influence the system to be developed and, thus, does not have to
  be considered during requirements engineering.
 
+
+
 Concretion and shift of the context boundary
 
 At the beginning of the requirements engineering process, frequently only part of
@@ -196,16 +194,17 @@ engineering, it is necessary to concretize the boundary between system context a
 irrelevant environment by analyzing relevant aspects within the environment with
 regard to their relationships to the system. Besides the system boundary, the
 context boundary typically also shifts during requirements engineering. For
-
-<!-- Page 7 -->
-
-instance, it may be possible that a law directive that was considered to be
+instance, it may be possible that a law directive that was considered to be
 relevant for the system to be developed no longer impacts the system or is no
 longer considered relevant. The system context is therefore reduced ( in figure
 2-4). If a new law directive is identified that influences the system, the system
 context is extended accordingly ( in figure 2-4).
 
+
+
+
 Figure 2-4 Gray zone between system context and irrelevant environment
+
 
 Gray zone between system context and irrelevant environment
 
@@ -224,10 +223,7 @@ which it is unclear whether they have a relation to the system or not. In contra
 the gray zone between the system and the system context that must be resolved in
 the course of requirements engineering, it is not necessary to resolve the gray zone
 between the system context and the irrelevant environment entirely.
-
-<!-- Page 8 -->
-
-2.3    Documenting the System Context
+2.3    Documenting the System Context
 
 In order to document the system context (especially the system and context
 boundaries), “use case” diagrams [Jacobson et al. 1992] (see sections 4.2.3 and
@@ -240,6 +236,7 @@ relationships to the system are modeled. To model the system context, UML class
 diagrams [OMG 2007] (see section 6.5.2) may also be used. In order to document
 the system context of a system as thoroughly as possible, typically several
 documentation forms are used.
+
 
 2.4    Summary
 
@@ -260,3 +257,4 @@ as well as other systems that, for instance, interact with the system to be
 developed. Defining the system and context boundaries successfully is the
 foundation for a systematic elicitation of requirements for the system to be
 developed.
+

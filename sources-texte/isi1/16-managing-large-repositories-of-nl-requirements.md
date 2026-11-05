@@ -1,7 +1,3 @@
-<!-- Source: ressources/S3__ISI1/EPI/16_managing large repositories of NL requirements.pdf | pdftotext -layout | 26 pages -->
-
-<!-- Page 1 -->
-
 10 Managing Large Repositories of Natural Language
 Requirements
 
@@ -19,6 +15,7 @@ natural language requirements and present a survey of research aimed at giving
 support in the engineering and management of natural language requirements.
 Keywords: Large-scale requirements management, Linguistic engineering, Natu-
 ral language processing, Relationships, Redundancy, Duplicates.
+
 
 10.1 Introduction
 
@@ -44,10 +41,7 @@ lated monolithic requirements specifications. The new challenge of managing
 enormous amounts of requirements that continuously must be analyzed, re-
 analyzed and consolidated is generally left untouched. This is also reflected by
 current requirements management tools, which do provide the functionality to as-
-
-<!-- Page 2 -->
-
-220    Natt och Dag and Gervasi
+220    Natt och Dag and Gervasi
 
 sign links between requirements, but give no assistance in the actual matching of
 thousands of incoming requirements with those already analyzed. Requirements
@@ -74,6 +68,7 @@ ity between requirements as a means for identifying semantically related require
 ments. In Sects. 5 through 7 we present three case studies conducted at three soft-
 ware developing companies, while Sect. 8 concludes the chapter.
 
+
 10.2 The Role of Natural Language Requirements
 
 A recent survey supports our own research experience that requirements to a very
@@ -92,10 +87,7 @@ x NL is the primary communication language, which is shared by all stakeholders
 x Requirements engineering (RE) is a social and evolutionary process where re-
   quirements are elicited and specified at different levels of abstraction at differ-
   ent points in the development process. NL is universal, meaning that it can be
-
-<!-- Page 3 -->
-
-                     10 Managing Large Repositories of Natural Language         221
+                     10 Managing Large Repositories of Natural Language         221
 
   used to talk about arbitrary domains and at arbitrary levels of abstraction. Many
   formal languages do not have this strength.
@@ -141,13 +133,11 @@ nonnegotiable requests by key customers.
 already pointed out in the introduction, the most apparent solutions (reducing the
 inflow of requirements or adding personnel) are not satisfying. Another approach
 has therefore been examined, which aims at supporting requirements analysis ac-
-
-<!-- Page 4 -->
-
-222    Natt och Dag and Gervasi
+222    Natt och Dag and Gervasi
 
 tivities through automation. The proposed solution is to use the techniques from
 natural language processing (NLP) [26].
+
 
 10.3 State of the Research Addressing NL Requirements
 
@@ -181,6 +171,7 @@ pollution in the data is treated (e.g. misspellings and non-information carrying
 characters). A combination of different techniques would likely be the most re-
 warding and the research surveyed provides an excellent basis for this acquisition.
 
+
 10.3.1 Domain and Requirements Understanding
 
 A central task in domain and requirements understanding is to identify and under-
@@ -188,10 +179,7 @@ stand domain concepts, also called domain abstractions. Domain abstractions are
 general concepts that are formed to represent common features of specific in-
 stances in the domain. Domain abstractions make communication more efficient
 within the domain, but developers must nevertheless take into account not only the
-
-<!-- Page 5 -->
-
-                      10 Managing Large Repositories of Natural Language          223
+                      10 Managing Large Repositories of Natural Language          223
 
 general concept, but also the specific instances, in order to fully understand the
 abstractions. Domain abstractions are typically represented in NL through sets of
@@ -213,6 +201,7 @@ user tool). The results suggest that the tools are effective in helping to ident
 analyze domain abstractions. This is further supported by a later study by Sawyer
 and Cosh [47] where ontology charts of key entities are produced using colloca-
 tion analysis.
+
 
 10.3.2 Requirements Verification and Validation
 
@@ -238,10 +227,7 @@ model’s industrial applicability. Fantechi et al. [13] have applied both the t
 Fabbrini et al. and SATC to evaluate the quality of 100 use cases. They conclude
 that although the techniques may support quality evaluation, they are not sufficient
 to completely address correctness and consistency. Cybulski and Reed [6, 7] de-
-
-<!-- Page 6 -->
-
-224    Natt och Dag and Gervasi
+224    Natt och Dag and Gervasi
 
 scribe an elicitation method and a supporting management tool that help in analyz-
 ing and refining requirements A set of NLP components are used to force the re-
@@ -287,10 +273,7 @@ to use NLP techniques to extract relevant sentences from and identify inconsiste
 cies within large requirements corpora. The approach uses shallow parsing and
 contextual exploration networks, based on the presence of certain textual markers
 in the text. It has not yet been evaluated.
-
-<!-- Page 7 -->
-
-                      10 Managing Large Repositories of Natural Language          225
+                      10 Managing Large Repositories of Natural Language          225
 
 10.3.3 Requirements Management
 
@@ -331,14 +314,12 @@ cient management of elicited, invented and implemented requirements. Any tech-
 nique that may support requirements maintenance and management activities,
 even if partially, can be expected to be warmly accepted in industry.
 
+
 10.4 Requirements Similarity
 
 In this section we introduce a fundamental concept in our discussion, that of re-
 quirements similarity. As we will see in the following, a number of problems in
-
-<!-- Page 8 -->
-
-226    Natt och Dag and Gervasi
+226    Natt och Dag and Gervasi
 
 the management of large volumes of requirements can be solved or at least allevi-
 ated by using a measure of how similar two requirements are. Naturally, many dif-
@@ -381,10 +362,8 @@ the lexical constituents of a requirement as tokenization, and each word (in thi
 tensive definition) is called a token. In the upcoming case studies, a token is re-
 garded as sequence of letters and/or digits. Any other characters are regarded as
 delimiters and thus discarded.
+                      10 Managing Large Repositories of Natural Language                 227
 
-<!-- Page 9 -->
-
-                      10 Managing Large Repositories of Natural Language                 227
 
                                             ¦ w ( v )  w (v )
                                              i
@@ -398,6 +377,8 @@ delimiters and thus discarded.
                                                                  i
                                                                          r       i
                                                                                      2
+
+
 
                               Fig. 10.1 The Cosine measure
    Tokens can be further processed in various ways. Most typically, tokens are re-
@@ -440,10 +421,7 @@ how they treat different lengths of the compared requirements. In Case 2 and 3,
 the Cosine measure was selected as it was considered to generally perform better
 than the other two. This measure got its name from calculating the cosine of the
 angle between the vectors that represent the requirements in a vector-space model.
-
-<!-- Page 10 -->
-
-228    Natt och Dag and Gervasi
+228    Natt och Dag and Gervasi
 
 Formally, given two requirements, p and r, we have that the similarity between p
 and r is given by the formula in Fig. 10.1 (An example of applying the measure
@@ -460,6 +438,7 @@ of calculating similarity between requirements has been evaluated. For the evalu
 tion we utilize the widely adopted measures of recall, precision, and accuracy.
 Since their usage and interpretation is dependent on the application we leave the
 definitions and explanations of the measures to each individual case.
+
 
 10.5 Case 1: Keeping the Repository in Shape
 
@@ -488,13 +467,11 @@ requirements. When a requirement is a pure duplicate, no further action is taken
 ments repository unendingly increases in size, these activities are causing conges-
 tion in the requirements process [24]. Automated support in this situation, using
 similarity measures to identify duplicates, is suggested to help avoiding deteriora-
-
-<!-- Page 11 -->
-
-                      10 Managing Large Repositories of Natural Language           229
+                      10 Managing Large Repositories of Natural Language           229
 
 tion of the repository and enable a quicker way of checking arriving requirements
 against the ones stored in the repository.
+
 
 10.5.1 Case Study Requirements Data
 
@@ -505,6 +482,7 @@ signed the status ‘duplicate’). Example requirements may be found in [40].
 Table 10.2 Number of requirements in the database.
  New      Assigned     Classified   Implemented      Rejected    Duplicates    Total
  406      428          601          252              103         130           1,920
+
 
 10.5.2 Evaluation
 
@@ -535,10 +513,7 @@ compared to the Cosine measure and may thus be discarded. The best choice be-
 tween the Jaccard and the Cosine measure is not obvious. The Cosine gives higher
 recall but lower precision than Jaccard. The choice would thus depend on the ap-
 plication.
-
-<!-- Page 12 -->
-
-230          Natt och Dag and Gervasi
+230          Natt och Dag and Gervasi
 
    The low precision at threshold level 0+ may at first seem very discouraging.
 However to properly evaluate the feasibility of the approach in an industrial set-
@@ -555,9 +530,12 @@ graph in which the nodes correspond to requirements and edges correspond to
 pairs of requirements (ri,rj) with sim(ri,rj)Ůt.
           100%
 
+
           90%
 
+
           80%
+
 
           70%
                                                                                                                                                          Accuracy, Dice
@@ -573,13 +551,18 @@ pairs of requirements (ri,rj) with sim(ri,rj)Ůt.
                                                                                                                                                          Precision, Cosine
           30%
 
+
           20%
 
+
           10%
+
 
            0%
                  0+                     0.125           0.250           0.375       0.500         0.625         0.750             0.875       1.0
                                                                                  Threshold
+
+
 
                                                    Fig. 10.2 Performance of the similarity measures
 
@@ -588,24 +571,25 @@ pairs of requirements (ri,rj) with sim(ri,rj)Ůt.
 
                                80                                  80                              80                                80
 
+
                                60                                  60                              60                                60
 
                  # clusters
                                40                                  40                              40                                40
 
+
                                20                                  20                              20                                20
+
 
                                 0                                   0                               0                                 0
                                     0       20         40                1 2 3 4 5 6 7 8 9 10             1    2 3 4 5                    1    2 3 4 5
                                           cluster size                       cluster size                     cluster size                    cluster size
 
+
 Fig. 10.3 Requirements cluster distribution using the cosine measure on the Summary and
 the Description fields. The three leftmost graphs show the number of clusters of different
 sizes for various thresholds compared to the actual cluster distribution on the right
-
-<!-- Page 13 -->
-
-                      10 Managing Large Repositories of Natural Language               231
+                      10 Managing Large Repositories of Natural Language               231
 
    The cluster distributions at three different threshold levels are shown in Fig.
 10.3. The last graph shows the cluster distribution for the actual duplicates found
@@ -649,10 +633,8 @@ the several thousand potential suggestions. In an industrial setting it is bette
 have a few extra suggestions that may be discarded rather than missing any actual
 duplicates. Stated differently, it is (to a certain extent) of greater interest to in-
 crease recall at the expense of precision.
+232    Natt och Dag and Gervasi
 
-<!-- Page 14 -->
-
-232    Natt och Dag and Gervasi
 
 10.6 Case 2: Linking Customer Wishes to Product Requirements
 
@@ -696,10 +678,7 @@ words-based search (as in the original process) for further options. Our expecta
 tion is that relevant suggestions will be provided faster this way than if a human
 would have to select several different search terms and, for each of these, search
 through the database.
-
-<!-- Page 15 -->
-
-                      10 Managing Large Repositories of Natural Language         233
+                      10 Managing Large Repositories of Natural Language         233
 
 10.6.1 Case Study Requirements Data
 
@@ -746,10 +725,7 @@ significantly affected by occasional typing errors in the requirements. The inve
 gation also showed that the two sets of requirements (MRs and BRs) have very
 similar composition in terms of statistical features. A more detailed comparison
 can be obtained by considering the two lists of distinct term occurrences, ranked
-
-<!-- Page 16 -->
-
-234     Natt och Dag and Gervasi
+234     Natt och Dag and Gervasi
 
 by frequency. The two lists have a 4,660 terms intersection (most of them in the
 topmost ranking positions); 1,899 terms only occur in BRs, with 8,234 terms only
@@ -760,6 +736,7 @@ a good indication that a shared lexicon is being used in the two kinds of requir
 ments. This is not surprising, as both MRs and BRs are discussing issues in a re-
 stricted domain. In turn, this gives support to our assumption that in this context
 lexical similarity can be a good approximation for semantic similarity.
+
 
 10.6.2 Evaluation
 
@@ -794,26 +771,34 @@ adapted procedure to compute it:
 3. Calculate the overall recall for a top list of size n as the ratio between the num-
    ber of correct links identified among the top n ones and the total number of cor-
    rect links
+                             10 Managing Large Repositories of Natural Language                             235
 
-<!-- Page 17 -->
+                            1
 
-                             10 Managing Large Repositories of Natural Language                             235
 
                            0.9
 
+
                            0.8
+
 
                            0.7
 
+
                            0.6
+
 
                   Recall   0.5
 
+
                            0.4
+
 
                            0.3
 
+
                            0.2
+
 
                            0.1                                 term weight = term frequency
                                                                term weight = 1 + log (term frequency)
@@ -821,6 +806,7 @@ adapted procedure to compute it:
                             0
                                  1             10           100                1,000               10,000
                                                        Top-List Size
+
 
                                      Fig. 10.4 Recall for linking a MR to BRs
 
@@ -852,10 +838,7 @@ x Some of the linked BRs and MRs seemed to us to describe completely different
    On the positive side, Fig. 10.4 shows that, for a very reasonable top list size of
 10, we reach a recall of 51%, which is good considering the pragmatic approach
 taken and the impact on the saving of time that could be made in industry.
-
-<!-- Page 18 -->
-
-236    Natt och Dag and Gervasi
+236    Natt och Dag and Gervasi
 
     To get an impression of the time that could be saved, we can make a rough es-
 timate based on the statistics presented and on another measure reflecting how
@@ -882,6 +865,7 @@ time saved can be spent in increasing the level of coverage, by examining more
 candidates, or devoted to other RE activities if the coverage attained is deemed ac-
 ceptable.
 
+
 10.7 Case 3: Managing Redundant Customer Requests
 
 Sony Ericsson Mobile Communications AB (SEMC) develops mobile phones for
@@ -901,10 +885,7 @@ each major operator, in different document formats (PDF, Excel, MSWord, etc)
 and at different times. The main specification technique for the RFI requirements
 is feature style, i.e. function specification in natural language [30]. The KAM
 passes the RFI on to a Bid Support Specialist (BSS), who reviews the RFI from a
-
-<!-- Page 19 -->
-
-                         10 Managing Large Repositories of Natural Language                      237
+                         10 Managing Large Repositories of Natural Language                      237
 
        Operator A
                                                                        Area of Expertise (AoE)
@@ -920,7 +901,11 @@ passes the RFI on to a Bid Support Specialist (BSS), who reviews the RFI from a
           RFI
            RFI
 
+
+
+
                  Fig. 10.5 The request for information process at Sony Ericsson
+
 
 market point of view and decides which products shall be considered when deal-
 ing with the RFI. The BSS then passes the documents on to the coordinator, who
@@ -953,10 +938,7 @@ cases where requirement IDs have been reused and where requirements have been
 changed without indication. Current requirements management tools give no
 automated assistance in merging thousands of requirements. Furthermore, it is of-
 ten the case that the same and very similar requirements occur in the RFIs from
-
-<!-- Page 20 -->
-
-238    Natt och Dag and Gervasi
+238    Natt och Dag and Gervasi
 
 different operators. Consequently, there is much unnecessary redundant work re-
 quired by the AoE.
@@ -987,6 +969,7 @@ support in the RFI process as explained above. Furthermore, it has been suggeste
 that the similarity measuring techniques are used to clean the repository by identi-
 fying duplicates as described in Case 1.
 
+
 10.7.1 Evaluation
 
 The technique of using lexical similarity for matching incoming requirements to
@@ -1002,10 +985,8 @@ quirements. Instead, indication on potential time to be saved using the proposed
 approach was made by comparing the work and performance of experts and non-
 experts and let the expert’s judgment decide if the approach is worthwhile. For the
 case where requirement only were checked for similarity, an expert performed the
+                     10 Managing Large Repositories of Natural Language           239
 
-<!-- Page 21 -->
-
-                     10 Managing Large Repositories of Natural Language           239
 
  Table 10.5 Evaluation results from Sony Ericsson
                                  Manual          # identical   Semi-automatic
@@ -1050,16 +1031,14 @@ semi-automatic approach did give relevant support to be valuable in the process.
 an understanding of the non-expert’s lacking domain knowledge, it was concluded
 that it was worthwhile to proceed with further studies, which are now in progress.
 The lack of a streamlined, user-friendly support tool was identified as a perform-
-
-<!-- Page 22 -->
-
-240    Natt och Dag and Gervasi
+240    Natt och Dag and Gervasi
 
 ance killer when using the semi-automatic approach. The next logical step is thus
 the development of a tool that interactively supports the initial check for similar
 requirements. It has been estimated that 20% of the time spent on checking the
 products’ compliance to the RFIs may be saved. Even a lower expectation moti-
 vates further investigations and improvements.
+
 
 10.8 Conclusions
 
@@ -1099,10 +1078,7 @@ could be supported by the approach:
 x Requirements tracing. For several purposes, a requirements traceability matrix
   should be maintained. A study by Hayes et al. suggests using similarity measur-
   ing techniques for easy “after-the-fact” requirements tracing [22].
-
-<!-- Page 23 -->
-
-                       10 Managing Large Repositories of Natural Language              241
+                       10 Managing Large Repositories of Natural Language              241
 
 x Defect tracking. As new defects are reported, a similarity check can help testers
   to identify if similar defects have been reported earlier, and avoid spending
@@ -1115,6 +1091,7 @@ available and may be successfully adapted and further exploited. With the increa
 in the amount of information written in natural language that large software devel-
 opment companies need to manage, taking advantage of these techniques is defi-
 nitely worthwhile.
+
 
 References
 
@@ -1150,10 +1127,7 @@ References
     language requirements quality: benefits of the use of an automatic tool. In: Proceedings
     of the NASA Goddard Space Flight Center Software Engineering Workshop, Los
     Alamitos, pp.97–105
-
-<!-- Page 24 -->
-
-242     Natt och Dag and Gervasi
+242     Natt och Dag and Gervasi
 
 13. Fantechi A, Gnesi S, Lami G, Maccari A (2003) Application of linguistic techniques for
     use case analysis. Requirements Engineering 8: 161–170
@@ -1201,10 +1175,7 @@ References
     London, pp.57–89
 32. Macias B, Pulman SG (1995) A method for controlling the production of specifications
     in natural language. The Computer Journal 38: 310–318
-
-<!-- Page 25 -->
-
-                       10 Managing Large Repositories of Natural Language              243
+                       10 Managing Large Repositories of Natural Language              243
 
 33. Manning CD, Schütze H (2001) Foundations of statistical natural language processing.
     MIT Press, Cambridge
@@ -1252,16 +1223,14 @@ References
     ing using scenarios. J Computing and Information, 2: 1110–1132
 51. Sutton DC (2000) Linguistic problems with requirements and knowledge elicitation.
     Requirements Engineering 5: 114–124
-
-<!-- Page 26 -->
-
-244    Natt och Dag and Gervasi
+244    Natt och Dag and Gervasi
 
 52. Wieringa R, Ebert C (2004) RE'03: Practical requirements engineering solutions. IEEE
     Software 21(2): 16–18
 53. Wilson WM, Rosenberg LH, Hyatt LE (1996) Automated quality analysis of natural
     language requirement specifications. In: Proceedings of the 14th Annual Pacific
     Northwest Software Quality Conference, Portland, pp.140–151
+
 
 Author Biography
 
@@ -1278,3 +1247,4 @@ University of Technology, Sydney. His main interests are in requirements engi-
 neering, natural language processing, specification techniques, and design and
 evaluation of distributed algorithms. He received his MSc and PhD in Computer
 Science from the University of Pisa.
+

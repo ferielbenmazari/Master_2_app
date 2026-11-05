@@ -1,17 +1,7 @@
-<!-- Source: ressources/S3__ISI1/EPI/6_ChaosManifesto2013.pdf | pdftotext -layout | 52 pages -->
-
-<!-- Page 1 -->
-
 CHAOS MANIFESTO 2013
      Think Big, Act Small
-
-<!-- Page 2 -->
-
-THE CHAOS MANIFESTO
-
-<!-- Page 3 -->
-
-                                                                              TABLE OF CONTENTS
+THE CHAOS MANIFESTO
+                                                                              TABLE OF CONTENTS
 
 PREFACE
 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
@@ -38,11 +28,13 @@ Tools and Infrastructure        . . . . . . . . . . . . . . . . . . . . . . . . 
 
 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .45
 
+
+
+
                                                                                      THE CHAOS MANIFESTO
-
-<!-- Page 4 -->
-
-     PREFACE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+     PREFACE
                                       CHAOS Manifesto 2013: Think Big, Act Small is a subset of the online version of the
                                         CHAOS Chronicles, known as the CHAOS Knowledge Center (CKC). This version of
                                           the CHAOS Manifesto focuses on small projects and is based on the CKC version
@@ -79,11 +71,13 @@ Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
                        a diverse number of vertical industries and organizations. Participants are made up of a variety of
                        CIOs, VPs, directors, and PMO project managers.
 
+
+
+
                        THE CHAOS MANIFESTO
-
-<!-- Page 5 -->
-
-                                                                                                INTRODUCTION
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                                                INTRODUCTION
 The 2012 CHAOS results show another increase
 in project success rates, with 39% of all projects
                                                                                      CHAOS RESOLUTION
@@ -129,6 +123,7 @@ but more “chief enabling officer.” As chief enabling officer, the executive 
 he or she provides the support, resources, and guidance to allow the project team to be successful. This
 is the reason for our Executive Sponsor Appraisal (ESA).
 
+
                                                                                                                           RESOLUTION
 
                               2004            2006             2008              2010             2012                 Project resolution
@@ -137,11 +132,12 @@ is the reason for our Executive Sponsor Appraisal (ESA).
                                                                                                                          2004 to 2012.
      Challenged               53%              46%              44%               42%              43%
 
+
+
                                                                                      THE CHAOS MANIFESTO                                      1
-
-<!-- Page 6 -->
-
-     OVERRUNS AND FEATURES
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+     OVERRUNS AND FEATURES
 
      Time and cost                            100
 
@@ -164,6 +160,8 @@ is the reason for our Executive Sponsor Appraisal (ESA).
                                             TIME         84%                72%               79%               71%                74%
                                             COST         56%                47%               54%               46%                59%
                                        FEATURES          64%                68%               67%               74%                69%
+
+
 
                        Determining the relationship of project overruns to features delivered is an analytical process. An
                        analyst reviews each challenged project. This year’s figures show a slight increase in both cost and
@@ -200,11 +198,13 @@ is the reason for our Executive Sponsor Appraisal (ESA).
                        successful completed project. Small projects deliver a valuable result that is actually used to create
                        a return on investment (ROI). This is the purpose for the Standish OptiMix Solution and Clinic.
 
+
+
+
      2                 THE CHAOS MANIFESTO
-
-<!-- Page 7 -->
-
-FACTORS OF SUCCESS FOR SMALL PROJECTS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+FACTORS OF SUCCESS FOR SMALL PROJECTS
 The current 2013 Factors of Success in the                                     Factors of Success                                        Points
 CKC are unchanged from 2012. We have                                           Executive management support                                20
 developed a special version of the Factors                                     User involvement                                            15
@@ -245,6 +245,8 @@ and the collaboration of the stakeholders and team                            Or
 members. Project management expertise accounts for                            much on tools for a project’s success. We give this
 12 small project success points out of 100.                                   factor only 1 small project success point.
 
+
+
    The first five success factors focus on the execution of small project skills, and provide the greatest benefit for
    success. The first three success factors account for 50% of the points while all five account for three-quarters of the
    points. The last five success factors help, but provide the least benefit for success, with a total of 25 points out of
@@ -252,11 +254,11 @@ members. Project management expertise accounts for                            mu
    each of these points. The main body of this report outlines the CHAOS 100 Best Practices for Small Projects or what
    we call Success Points for Small Projects.
 
+
                                                                                      THE CHAOS MANIFESTO                                      3
-
-<!-- Page 8 -->
-
-                       THINK BIG, ACT SMALL
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       THINK BIG, ACT SMALL
                        The New York City Automated Payroll (NYCAP) System started in 1999 and was declared completed
                        in 2011. The budget and original estimate was $66 million. When the project was declared
                        completed, the total cost was an astounding $360-plus million, or 5.5 times the original budget.
@@ -292,6 +294,8 @@ members. Project management expertise accounts for                            mu
                        project, your budget, and your job. Throughout the CHAOS Manifesto 2013 we will attempt to show
                        you how you can optimize your projects successfully.
 
+
+
      CHAOS RESOLUTION BY LARGE AND SMALL PROJECTS
      Project resolution for the                      Small Projects                                 Large Projects                    Successful
      calendar year 2012 in the
@@ -307,11 +311,13 @@ members. Project management expertise accounts for                            mu
      million in labor content.                      76%
                                                                                                   38%
 
+
+
+
      4                 THE CHAOS MANIFESTO
-
-<!-- Page 9 -->
-
-                  SUCCESS FACTOR ONE: EXECUTIVE MANAGEMENT SUPPORT
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                  SUCCESS FACTOR ONE: EXECUTIVE MANAGEMENT SUPPORT
 
 All projects need to have a committed executive sponsor or product owner
 who supports the project and takes responsibility for the outcome. Lesson One in
@@ -346,6 +352,7 @@ Kill switches are always recommended to prevent runaway projects. Small projects
 natural kill switch, which is the end of the funding. For many small projects, a single kill switch
 might be appropriate.
 
+
                                                                SKILL LEVEL OF THE EXECUTIVE SPONSOR
 
                                                         Highly          Moderately               Poorly                   Respondents were
@@ -365,11 +372,13 @@ might be appropriate.
      outstanding effort
      In giving a celebration party                        6%         44%            27%            22%
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                      5
-
-<!-- Page 10 -->
-
-       10 CHAOS SUCCESS POINTS FOR
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR
        EXECUTIVE MANAGEMENT SUPPORT FOR SMALL PROJECTS
        Point 1: Simple Vision
        With small projects, the vision may be part of a large program, and therefore the simple vision should be
@@ -403,6 +412,8 @@ might be appropriate.
        the organization with the ability to reduce processes and governance, thus improving the executive
        sponsor understanding.
 
+
+
            RESOLUTION BY GOAL
                                                                                     20%
            The chart shows the resolution
@@ -412,11 +423,13 @@ might be appropriate.
            strategy.                                                                                                     Failed
                                                            78%                                                           Challenged
 
+
+
+
      6                 THE CHAOS MANIFESTO
-
-<!-- Page 11 -->
-
-                                                                             SKILL LEVEL OF THE EXECUTIVE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                             SKILL LEVEL OF THE EXECUTIVE
                                                                                                                                 CIOs were
                                              Very                              Somewhat             Not
                                                                                                                             asked to rate
@@ -431,17 +444,21 @@ might be appropriate.
 
            Motivation                         19%                56%               14%               11%
 
+
+
        Point 6: Measurements
        Executive sponsors need an easy and visual way to measure progress. Successful project completion
        is contingent upon reaching specified goals. The closer the goal, the easier it is to reach. In football the
        goalposts are 100 yards apart. All the players and fans can see the goalposts and note how progress is
        measured. Small projects have similar attributes.
 
+
        Point 7: Negotiate
        The scope defines the boundaries of the project, such as the business functions and organizations
        impacted, as well as the constraints, such as deadlines, budget ceilings, and other assumptions.
        Negotiation between team members, stakeholders, and the executive sponsor on scope is a major part
        of all projects. It takes a skilled executive sponsor to negotiate scope for small projects.
+
 
        Point 8: The Plan
        The smaller the project, the smaller the plan and the easier it is for the executive sponsor to absorb.
@@ -450,12 +467,14 @@ might be appropriate.
        have diagrams or pictures illustrating how the parts fit together. The expected cost, ROI, and time to
        successful completion should be included as part of the solution summary.
 
+
        Point 9: Kill Switch
        The purpose of a kill switch is to prevent death-march projects, which are all too common. With a death-
        march project, no one, including the executive sponsor, has the courage to stop it. Small projects
        have a built-in kill switch, and because they are small the impact of stopping them is much less to the
        organization. Like all projects, small projects need to have business triggers, technical triggers, and
        investment triggers.
+
 
        Point 10: Celebrate
        It’s important to celebrate success. The executive sponsor should cultivate an atmosphere of
@@ -464,11 +483,13 @@ might be appropriate.
        a good time to praise accomplishments. Small projects give the executive sponsor more opportunities to
        celebrate.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                      7
-
-<!-- Page 12 -->
-
-                       EXECUTIVE SPONSOR APPRAISAL
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       EXECUTIVE SPONSOR APPRAISAL
                        In 2012, we launched a new research center dedicated to the advancement and understanding of
                        the role of the executive sponsor within IT projects. This center will provide focus on this particular
                        subject. Our first item for this new center is the Executive Sponsor Appraisal. The ESA measures
@@ -497,6 +518,7 @@ might be appropriate.
                        sponsor’s score. The fourth page lists the three skills with the narrative that IT can use to help
                        increase the executive sponsor’s score.
 
+
      ESA REPORT EXAMPLE
      This is an excerpt
                                      Measurements                                   Skill Level                        Benchmark
@@ -518,11 +540,11 @@ might be appropriate.
                                      Value insight                                  Poorly skilled                     Bottom 20%
                                      Overall                                        Moderately skilled                 Average
 
+
      8                 THE CHAOS MANIFESTO
-
-<!-- Page 13 -->
-
-                                                   SUCCESS FACTOR TWO: USER INVOLVEMENT
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                   SUCCESS FACTOR TWO: USER INVOLVEMENT
 
 Projects are performed to build products and solutions for people to use. We call these
 people our users. Lesson Two in the CHAOS Knowledge Center outlines the skills
@@ -556,6 +578,8 @@ create and maintain a platform for clear communications. Small projects reduce t
 communications, thus improving communications. In general, small projects are good for user
 involvement.
 
+
+
                                6%                                                                                       TRADE-OFFS
                                              14%
                                                                                                                            IT executives were
@@ -570,11 +594,13 @@ involvement.
                                                                                                                               on features and
                                                                                                                          functions trade-offs.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                      9
-
-<!-- Page 14 -->
-
-       10 CHAOS SUCCESS POINTS FOR
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR
        USER INVOLVEMENT IN SMALL PROJECTS
        Point 1: Identification
        Small projects make it easier to find and coordinate subject matter experts since the scope is much
@@ -603,6 +629,8 @@ involvement.
        They provide tangible inspection and allow the user to see progress, which makes them more likely to
        provide the effort and time to make it to the next steppingstone.
 
+
+
            IDENTIFICATION OF THE USER
            IT executives
                                                                        Very                     Somewhat            Not
@@ -622,11 +650,13 @@ involvement.
                                         user’s availability for         11%          25%            29%             35%           2.0
                                         project participation
 
+
+
+
      10                THE CHAOS MANIFESTO
-
-<!-- Page 15 -->
-
-                                                                       POSTMORTEM USER INVOLVEMENT
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                       POSTMORTEM USER INVOLVEMENT
                                                                                                                       IT executives were
                                              Highly                        Somewhat            Not
                                                                                                                              asked to rate
@@ -638,6 +668,9 @@ involvement.
             Feedback and input                42%              49%              2%               7%                    user involvement.
             Consensus building                10%              41%              31%             18%
             Rapport                            7%              41%              47%              5%
+
+
+
 
        Point 5: Schooling
        Schooling is the teaching, learning, and transfer of information to and from the project team and to and
@@ -673,11 +706,13 @@ involvement.
        team greater ability to gain empathy. Project teams that can not only walk in the users’ shoes, but also
        feel the ground beneath their feet will be tuned in.
 
+
+
+
                                                                                       THE CHAOS MANIFESTO                                    11
-
-<!-- Page 16 -->
-
-                       PHORSIGHT
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       PHORSIGHT
                        In the November 2012 DARTS (Demand Assessment Requirements Tracking Survey), we asked 300
                        CIOs, “What does complexity mean for you in a project context?” Sixty-three percent said it means
                        how complicated the project is, while another 31% said it means the level of uncertainty for the
@@ -724,11 +759,13 @@ involvement.
                        of projects within a case. Behind the complexity constraint we have developed risk algorithms that
                        were derived from the CHAOS database.
 
+
+
+
      12                THE CHAOS MANIFESTO
-
-<!-- Page 17 -->
-
-                                                           SUCCESS FACTOR THREE: OPTIMIZATION
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                           SUCCESS FACTOR THREE: OPTIMIZATION
 
 The essence of small projects is small scope. The Standish Group defines a small
 project as one that has a total labor cost of less than $1 million. We do not count
@@ -757,6 +794,9 @@ used to total the deliverables and services to be provided from the small projec
 project scope includes a list of deliverables. All time and cost estimates are based on the scope of
 the project.
 
+
+
+
                                 6%
                                               11%                                                  SMALL PROJECT VALUE
                      8%
@@ -771,11 +811,13 @@ the project.
                                                                                               High
                    45%                                                                        Very high
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    13
-
-<!-- Page 18 -->
-
-       10 CHAOS SUCCESS POINTS FOR
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR
        OPTIMIZING SCOPE FOR SMALL PROJECTS
        Point 1: Scope
        Scope defines a small project. The key to managing scope and keeping it small is to create a priority
@@ -802,6 +844,9 @@ the project.
        difference between an expectation and reality. Satisfaction is the positive difference between an
        expectation and reality.
 
+
+
+
            CONTAINING PROJECT SCOPE
            IT executives
                                                                      Very                     Somewhat            Not
@@ -821,11 +866,13 @@ the project.
                                       measuring feature-               21%          20%           56%              3%           2.2
                                       function benefits
 
+
+
+
      14                THE CHAOS MANIFESTO
-
-<!-- Page 19 -->
-
-                                                                        POSTMORTEM OPTIMIZING SCOPE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                        POSTMORTEM OPTIMIZING SCOPE
                                                                                                                      IT executives were
                                              Very                           Somewhat             Not
                                                                                                                             asked to rate
@@ -838,6 +885,7 @@ the project.
                                                                                                                      dealing with scope
            Risk mitigation                     43%             31%              16%               10%                      management.
            Feature prioritization              41%             33%              13%               13%
+
 
        Point 5: Butterfly Effect
        Small projects make a big impact. The reason they make a big impact is because they get completed,
@@ -877,22 +925,29 @@ the project.
        be rated, ranked, and balanced for value, risk, goal, and capability. The true optimization feature of OptiMix
        allows you to optimize for these four constraints together.
 
+
+
+
                                                                                       THE CHAOS MANIFESTO                                   15
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+     OPTIMIZING SCOPE
 
-<!-- Page 20 -->
 
-     OPTIMIZING SCOPE
+
 
      This graphic above is the output of a project case with 10 requirements (features and functions) and a
      budget of $1 million The project case was optimized for maximum gain with calculated risk The cost of all
      features and functions is more than $2 million. The graphic below shows what happens when you have a
      conflicting dependence.
 
+
+
+
      16                THE CHAOS MANIFESTO
-
-<!-- Page 21 -->
-
-                                                SUCCESS FACTOR FOUR: SKILLED RESOURCES
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                SUCCESS FACTOR FOUR: SKILLED RESOURCES
 
 Having skilled resources for a project means having the right people doing the right
 things at the right time. Factor Four in this manifesto examines the need to have
@@ -927,6 +982,8 @@ resources is to ask for a proof of concept and show results early. A project wit
 strongly committed stakeholders, a good project manager, and a good plan overlaid on proficient
 resources has a good chance of success.
 
+
+
                                            4%
                                10%                                                       SMALL PROJECT CAPABILITY
                                                                                                                      Reported goals of small
@@ -942,11 +999,11 @@ resources has a good chance of success.
                                                                                                 Gifted
                                            33%
 
+
                                                                                      THE CHAOS MANIFESTO                                    17
-
-<!-- Page 22 -->
-
-       10 CHAOS SUCCESS POINTS FOR
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR
        SKILLED RESOURCES FOR SMALL PROJECTS
        Point 1: Competency
        It is essential for small projects that the team’s skills match the project’s requirements. To ensure
@@ -981,6 +1038,8 @@ resources has a good chance of success.
        current technology upgrades. Training should meet several objectives; for example, the skills taught need
        to be utilized on current projects.
 
+
+
            TEAM CAPABILITY
            IT executives were                                                 Very                     Somewhat           Not
            asked to rate and                                                 Difficult    Difficult     Difficult       Difficult    Rank
@@ -999,11 +1058,13 @@ resources has a good chance of success.
                                           and well-trained team                 8%          34%            52%             6%         2.0
                                           members
 
+
+
+
      18                THE CHAOS MANIFESTO
-
-<!-- Page 23 -->
-
-                                                                     POSTMORTEM SKILLED RESOURCES
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                     POSTMORTEM SKILLED RESOURCES
                                                                                                                       IT executives were
                                                Very                           Somewhat             Not
                                              Important       Important        Important         Important                    asked to rate
@@ -1015,6 +1076,8 @@ resources has a good chance of success.
                                                                                                                        skilled resources.
            Turnover and depth                    12%             21%              47%               20%
            Problem solving                       41%             41%               8%               10%
+
+
 
        Point 6: Mentoring
        Small projects offer many opportunities for mentoring; for example, developers can be paired to work
@@ -1052,11 +1115,13 @@ resources has a good chance of success.
        World Trade Center attacks. This elite team killed Bin Laden and carried his body back to the U.S. Navy
        for confirmation.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                     19
-
-<!-- Page 24 -->
-
-                       MATCH ENGINE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       MATCH ENGINE
                        You can optimize six different ways using OptiMix to create a work stack. These optimization
                        techniques are: maximize value, minimize risk, maximize value with a calculated risk, goals,
                        capabilities, and what we call “true.” The true method creates the work stack based on all the
@@ -1065,26 +1130,38 @@ resources has a good chance of success.
                        OptiMix by creating a resource database and then matching the best small projects with the best
                        available resources.
 
+
+
+
      What Should I Do Now?
 
+
                                              Administration                                  Microprojects
+
 
         User Interface
 
                                                                                              Dependencies
                                                   Resources
 
+
+
+
                                                                          Stack Engine
+
 
                                                                          Match Engine
 
+
                                                                                                                Do This Now!
 
+
+
+
      20                THE CHAOS MANIFESTO
-
-<!-- Page 25 -->
-
-                                                              SUCCESS FACTOR FIVE: PM EXPERTISE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                              SUCCESS FACTOR FIVE: PM EXPERTISE
 
 Experience, seasoned, and talented project managers can handle multiple small
 projects. Therefore, handling lots of small projects is not a big burden for project
@@ -1119,6 +1196,9 @@ innate skill that can only be improved by education and experience. A project ma
 or does not. The Standish Group has a number of PM assessment and appraisal services to test the skills of a
 PM. One of these services is a PM Bonding appraisal that asks 25 questions. The outcome is a four-page report.
 
+
+
+
                                                                                                           PMI CERTIFICATION
 
         40%                                                                                                                      Shown is the
@@ -1131,14 +1211,17 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
 
         10%
 
+
           0%
                       2008                2009                 2010                2011                 2012
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    21
-
-<!-- Page 26 -->
-
-       10 CHAOS SUCCESS POINTS FOR
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR
        PM EXPERTISE FOR SMALL PROJECTS
        Point 1: Basic
        The PM should have basic project or process management skills. In small projects the PM should be
@@ -1171,6 +1254,8 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
        communication. Such stakeholder communication allows you to continue on the journey to portray
        success in the face of constant change.
 
+
+
            EXECUTIVE SPONSOR BONDING
            IT executives were                                              Very                     Somewhat           Not
            asked to rate the                                              Difficult    Difficult     Difficult       Difficult      Rank
@@ -1189,11 +1274,13 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
                                                                              6%          26%            36%            32%           2.3
                                      executive sponsor
 
+
+
+
      22                THE CHAOS MANIFESTO
-
-<!-- Page 27 -->
-
-                                                                                 POSTMORTEM PM EXPERTISE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                                 POSTMORTEM PM EXPERTISE
                                                                                                                             IT executives
                                                   Very                          Somewhat             Not
                                                                                                                               were asked
@@ -1207,11 +1294,15 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
            Progress tracking                       35%             47%               8%               10%                  PM expertise.
            Business understanding                  27%             64%               7%                2%
 
+
+
+
        Point 6: Ownership
        The executive sponsor or product owner says what to do, but the PM owns the process of how to do it. It’s
        especially important for small projects to foster the sense of pride and accomplishment that comes with
        ownership of a project. Ownership for the PM is taking the responsibility of making sure that all tasks are
        done, and done well.
+
 
        Point 7: Bad News Bearers
        Inside of small projects bad news travels fast, perhaps even faster than usual because of the size. One of
@@ -1219,11 +1310,13 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
        be true. The later bad news is presented, the harder it is to overcome embellished and ingrained beliefs.
        Most people will not just discard what they believe to be true unless they have good reasons.
 
+
        Point 8: Business Understanding
        A good grasp of the business operations improves critical communication and translation among software
        designers, developers, users, and executive sponsors. A PM needs to be able to envision project
        components and how the parts incorporate into the business as a whole. The PM needs to have a view of
        the project resources, how those resources come together, and how to help the business.
+
 
        Point 9: Judgment
        Calvin Coolidge, 30th President of United States, enjoyed a habit of making good judgments throughout
@@ -1231,17 +1324,22 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
        mind a vast quantity of information within a comparatively short time, but the ability to form judgments
        requires the severe discipline of hard work and the tempering heat of experience and maturity.
 
+
        Point 10: Seasoned
        Failure is the best teacher. A PM with previous failed and challenged projects could well be the best
        candidate for the next important project. Mistakes teach us a great deal if we can accept them as learning
        experiences. These experiences will help a PM learn how to control his or her resources and know what
        project details could be trouble if not corrected in time.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                     23
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+     SINGLE PROJECT APPRAISAL REPORT EXAMPLE
 
-<!-- Page 28 -->
 
-     SINGLE PROJECT APPRAISAL REPORT EXAMPLE
 
              PM expertise represents a total of 6 possible success points or possible score. The average of the projects
              in the CHAOS database matching your new payment system profile is 4.16. This is your benchmark or
@@ -1254,6 +1352,8 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
              expertise is qualified PMPs. However, it goes beyond the skills of the PM to the organizational environment.
              The environment must recognize and give authority to the project manager’s skill and expertise. Project
              managers must be able to manage down, across, and up throughout the life of the project.
+
+
 
               Questions                                                  Possible Score           CHAOS Score            IBEX Score
               1. Rate the project manager’s ability to execute
@@ -1293,15 +1393,20 @@ PM. One of these services is a PM Bonding appraisal that asks 25 questions. The 
               10. Rate the project manager’s experience.                        0.60                    0.40                 0.51
               Total                                                             6.00                    4.16                 5.01
 
+
+
+
          NOTE: This is an excerpt from a Single Project Appraisal (SPA) report on the results of our PM expertise
          analysis for a project larger than $1 million in labor cost. We changed both the company and project
          names for confidentiality. IBEX is the fictitious company and payment system is the fictitious project.
 
+
+
+
      24                THE CHAOS MANIFESTO
-
-<!-- Page 29 -->
-
-                                                               SUCCESS FACTOR SIX: AGILE PROCESS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                               SUCCESS FACTOR SIX: AGILE PROCESS
 
 Size of a project trumps methodology. The agile process benefits from small projects.
 Overall, small projects have a better success rate than agile projects and waterfall
@@ -1338,6 +1443,7 @@ Quickness and velocity are vital to an agile process, and that encompasses feedb
 major advantage of the agile process is the closeness of the executive sponsor, or in agile terms,
 the owner. The owner’s role is to own the responsibility for the resolution of the project.
 
+
                                                                      AGILE V. WATERFALL SMALL PROJECTS
                      Agile                                        Waterfall                                                  The charts show
                                                                                                     Successful
@@ -1354,11 +1460,13 @@ the owner. The owner’s role is to own the responsibility for the resolution of
 
                        6%                                                8%
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    25
-
-<!-- Page 30 -->
-
-       10 CHAOS SUCCESS POINTS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS
        FOR THE AGILE PROCESS FOR SMALL PROJECTS
        Point 1: Iterative
        The iterative development style is the ultimate in small projects. Basically, iterative development consists
@@ -1394,6 +1502,7 @@ the owner. The owner’s role is to own the responsibility for the resolution of
        within the project team that includes plans, steppingstones, test scripts, technical advice, feedback,
        change requests, and other action items.
 
+
            ITERATIVE PROCESS
            IT executives were                                              Highly                     Somewhat          Not
            asked to rate and                                             Important     Important      Important      Important     Rank
@@ -1409,11 +1518,13 @@ the owner. The owner’s role is to own the responsibility for the resolution of
 
                                        Deploying story features             14%           53%            32%             1%         2.1
 
+
+
+
      26                THE CHAOS MANIFESTO
-
-<!-- Page 31 -->
-
-                                                                               POSTMORTEM AGILE PROCESS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                               POSTMORTEM AGILE PROCESS
                                                                                                                       IT executives were
                                            Very                               Somewhat              Not
                                          Important          Important         Important          Important                  asked to rate
@@ -1426,6 +1537,9 @@ the owner. The owner’s role is to own the responsibility for the resolution of
            Rapid feedback                   29%                20%                22%               29%
            Merciless pruning                 4%                24%                39%               33%
 
+
+
+
        Point 6: Agile Style
        You need to create your own agile style. There are two ways to do so. First, you can simply adopt a pure
        methodology from one of the standard types. This is the fastest, safest, and easiest way since it has
@@ -1433,11 +1547,13 @@ the owner. The owner’s role is to own the responsibility for the resolution of
        not fit into your environment. So the second approach is to take the parts you like from each standard
        methodology and even add your own things. We did that with our Innovation Center concept.
 
+
        Point 7: Rapid Feedback
        Quickness and velocity are vital to an agile process that encompasses feedback. It should be rapid. It
        is a fact of life that you can only digest small bits of information at one time. This fits perfectly into the
        agile process. In order to do this you must set up a structure that everyone understands and is easily
        implemented, and that only looks at small accomplishments such as steppingstones.
+
 
        Point 8: Retrospective
        Knowing how to execute and get value from retrospectives can provide short- and long-term improvement.
@@ -1446,11 +1562,13 @@ the owner. The owner’s role is to own the responsibility for the resolution of
        microproject. These meetings are inward-focused feedback versus external rapid feedback. The meeting
        should be short and structured, with a facilitator.
 
+
        Point 9: Merciless Pruning
        Before development begins is the cheapest place to cut out duplication and low-value features and
        functions. This calls for merciless pruning. The fact is, only 20% of built features and functions get used,
        so cutting requirements in half and then half again will get us closer to full utilization. What you are really
        doing is refactoring specifications so they are cleaner and easier to develop and implement.
+
 
        Point 10: Pipeline
        The Liberty ship was a 440-foot merchant ship that would bring supplies, equipment, and troops to the
@@ -1459,11 +1577,13 @@ the owner. The owner’s role is to own the responsibility for the resolution of
        pipelining system. Once this system got going it was possible to launch three ships a day. One ship was
        completed from start to finish in less than a work week.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    27
-
-<!-- Page 32 -->
-
-OptiMix has several features that help out in the agile process and allow you to keep projects small. First, you can
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+OptiMix has several features that help out in the agile process and allow you to keep projects small. First, you can
 optimize for requirements and make sure that the project does not go over $1 million in labor cost. As you progress
 through the project you can use this feature to continue to hone the requirements by adding or subtracting features
 and functions so that you never go over budget. Second, you can optimize for microprojects; in agile terminology this
@@ -1474,11 +1594,13 @@ exclusion/inclusion constraints.
 The following graphic shows the output of a steppingstone case using story cards, with a total budget of 5,000 story
 card points and 400 points per steppingstone/iteration:
 
+
+
+
      28                THE CHAOS MANIFESTO
-
-<!-- Page 33 -->
-
-                           SUCCESS FACTOR SEVEN: CLEAR BUSINESS OBJECTIVES
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                           SUCCESS FACTOR SEVEN: CLEAR BUSINESS OBJECTIVES
 
 Clarity and focus are essential for most successful projects. However, small projects
 can have a little more ambiguity and risk since they have a very short life cycle. They
@@ -1510,6 +1632,9 @@ strike the right balance between governance and autonomy while having clear busi
 The lag time between ideas and execution can cause organizations to be less responsive and to
 lose their competitive edge.
 
+
+
+
                                           4%
                                                      7%                                              SMALL PROJECT GOAL
                   22%                                                                                                               The chart
@@ -1525,11 +1650,13 @@ lose their competitive edge.
 
                        41%                                                                           Precise
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    29
-
-<!-- Page 34 -->
-
-       10 CHAOS SUCCESS POINTS FOR CLEAR BUSINESS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR CLEAR BUSINESS
        OBJECTIVES FOR SMALL PROJECTS
        Point 1: Same Page
        Larger projects often do not have a common goal. In fact, most of the time they have conflicting goals.
@@ -1563,6 +1690,8 @@ lose their competitive edge.
        cases, the elements are easy to manage and track. For anyone who has to monitor progress, these
        events are manageable.
 
+
+
            SAME PAGE
            IT executives
                                                                              Very                   Somewhat          Not
@@ -1579,11 +1708,13 @@ lose their competitive edge.
                                          same page
            same page.
 
+
+
+
      30                THE CHAOS MANIFESTO
-
-<!-- Page 35 -->
-
-                                                                                CLEAR BUSINESS OBJECTIVES
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                                CLEAR BUSINESS OBJECTIVES
                                                                                                                            IT executives
                                                  Very                          Somewhat              Not
                                                Important       Important       Important          Important          were asked to rate
@@ -1597,11 +1728,15 @@ lose their competitive edge.
                                                                                                                               objectives.
            Value measurements                     17%             43%              23%               17%
 
+
+
+
        Point 6: Return on Investment
        The value from a project investment does not provide a return until a solution is implemented. One of the
        biggest benefits from small projects is the return on value is sooner rather than later. So not only does a
        small project have a much greater chance of success, and therefore you will get a return, but you will get
        that return quicker.
+
 
        Point 7: Collaboration
        Even for small projects, collaboration starts with listening to the stakeholders. Randy Fujishin, author of
@@ -1609,10 +1744,12 @@ lose their competitive edge.
        for Seek, Observe, Ask, and Relate. He suggests that you actively seek out what people are thinking, then
        observe their reaction, ask questions, and relate what you heard from them to connect to the wider group.
 
+
        Point 8: Peer Review
        Peer reviews are another one of those events that drive up cost and time for small projects. It is a luxury
        that should be avoided and used only for larger projects. However, the project team should seek out and
        review similar small projects to study any problems encountered so they might avoid them.
+
 
        Point 9: Too Many Cooks
        A six-person IBM team set out to create the Practitioner Support Network. The team built the database
@@ -1622,17 +1759,20 @@ lose their competitive edge.
        him or her to that case and the accompanying solution. IBM’s payback and return on investment was less
        than one year.
 
+
        Point 10: Black Tie
        The key to a formal process is having the right amount of formality. Too little and the project gets derailed;
        too much and the project gets bogged down by the bureaucracy. There are lots of small project formal
        processes and methods, such as the agile process. With the agile process the requirements document is
        replaced by user stories and the project plan is variable.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    31
-
-<!-- Page 36 -->
-
-                       COLLABORATE ON DECISIONS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       COLLABORATE ON DECISIONS
                        Small projects are all about speed, but you still collaborate on important decisions. A decision
                        pipeline is a method to allow the right people at the right time to make decisions quickly and easily.
                        It is also a method to engage more people in the decision process. The Standish Group Dezider
@@ -1653,6 +1793,9 @@ lose their competitive edge.
                        Goal: is setting a target for both timing and participation. It is important that each decision is made
                        at the right level with the people who have the right roles and responsibilities.
 
+
+
+
      DEZIDER ANSWER TYPES
      Dezider has five answer types: direct, private conversation, yes/no, multiple choice, and star rating.
 
@@ -1669,11 +1812,13 @@ lose their competitive edge.
               5) Star rating provides the ability to rate an item from 1 to 5. Star rating also allows for
                  comments and feedback.
 
+
+
+
      32                THE CHAOS MANIFESTO
-
-<!-- Page 37 -->
-
-                                           SUCCESS FACTOR EIGHT: EMOTIONAL MATURITY
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                           SUCCESS FACTOR EIGHT: EMOTIONAL MATURITY
 
 Emotional maturity is having the skills to be self-aware, socially aware, self-managed,
 and to manage relationships. These are all important skills for a small project
@@ -1708,6 +1853,8 @@ being conducted by Standish Group today. The book is fictional in nature, but it
 that the Five Deadly Sins (emotional immaturity) are inherent in nearly every project, and if you look
 closely enough, in nearly every organization.
 
+
+
                                   4%
                       8%                                                                                  TRUSTWORTHINESS
                                                                                                                                IT executives
@@ -1722,11 +1869,13 @@ closely enough, in nearly every organization.
                                                                                             Truthful
                  55%
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    33
-
-<!-- Page 38 -->
-
-       10 CHAOS SUCCESS POINTS FOR EMOTIONAL MATURITY
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR EMOTIONAL MATURITY
        FOR SMALL PROJECTS
        Point 1: Overambition
        It is hard to have overambition when doing small projects. The contained scope of small projects brings
@@ -1761,6 +1910,7 @@ closely enough, in nearly every organization.
        They should be ingrained in the corporate culture. Users, stakeholders, and project teams must adhere
        and agree to a code of standards.
 
+
            MASTERING OVERCOMING ARROGANCE
            IT executives
            were asked to
@@ -1776,11 +1926,13 @@ closely enough, in nearly every organization.
                                          Overcoming arrogance                  1%         30%            31%            38%         2.3
            arrogance.                    Setting contingencies                 7%         43%            37%            13%         2.2
 
+
+
+
      34                THE CHAOS MANIFESTO
-
-<!-- Page 39 -->
-
-                                                           POSTMORTEM ON EMOTIONAL MATURITY
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                           POSTMORTEM ON EMOTIONAL MATURITY
                                                                                                                             IT executives
                                                 Very                           Somewhat             Not
                                                                                                                           were asked to
@@ -1793,6 +1945,9 @@ closely enough, in nearly every organization.
                                                                                                                               information
            Abstinence                              4%             34%              43%               19%                   on emotional
            Fraudulence                            31%             14%              33%               22%                         maturity.
+
+
+
 
        Point 6: Community
        If your small program philosophy is a series of related small projects, then it is a good idea to create
@@ -1827,11 +1982,15 @@ closely enough, in nearly every organization.
        us at The Standish Group are frequent customers of Starbucks and can attest to these five principles in action.
        What is truly amazing is how they have been able to scale and maintain these principles across the globe.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                     35
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+     RAPID PERFORMANCE MEASUREMENT REPORT EXAMPLE
 
-<!-- Page 40 -->
 
-     RAPID PERFORMANCE MEASUREMENT REPORT EXAMPLE
 
            Emotional maturity represents a total of 12 success points or possible score. The average score of the
            organizations in the CHAOS database matching your project profile is 7.85. This is your RPM benchmark or
@@ -1844,6 +2003,7 @@ closely enough, in nearly every organization.
            success. The organization should have a keen respect for the importance of emotional maturity and work to
            improve your skills in this area.
 
+
             Questions                                                          Possible Score       CHAOS Score          IBEX Score
 
             1. Rate the project team’s skill in overcoming
@@ -1854,9 +2014,11 @@ closely enough, in nearly every organization.
                                                                                      1.20                0.59                0.31
                arrogance for this project.
 
+
             3. Rate the project team’s skill in overcoming
                                                                                      1.20                0.77                0.39
                ignorance for this project.
+
 
             4. Rate the project team’s skill in overcoming
                                                                                      1.20                0.74                0.31
@@ -1878,6 +2040,7 @@ closely enough, in nearly every organization.
                                                                                      1.20                0.78                0.51
                awareness within this project.
 
+
             9. Rate your skills in objectivity and transparency
                                                                                      1.20                0.83                0.42
                within this project.
@@ -1888,15 +2051,20 @@ closely enough, in nearly every organization.
 
             Total                                                                    6.00                7.85                4.53
 
+
+
+
            NOTE: This is an excerpt from a Rapid Performance Measurement (RPM) report on the results of our
            emotional maturity analysis. We changed the company name for confidentiality. International Banking
            Exchange (IBEX) is our fictitious company we use for examples.
 
+
+
+
      36                THE CHAOS MANIFESTO
-
-<!-- Page 41 -->
-
-                                                                     SUCCESS FACTOR NINE: EXECUTION
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                     SUCCESS FACTOR NINE: EXECUTION
 
 Execution is the act of taking a project to completion based upon a plan. In general, it is
 easier to bring a small project to completion than a large one. It is even easier when
@@ -1933,6 +2101,7 @@ and reasonable given a set of skills and resources. Incentives could increase th
 success and set in motion the situation to exceed expectations. It is always better for the project
 team to meet or exceed stakeholder expectations.
 
+
                               5%
                                                                                                                     SMALL TEAMS
                                                                                                                                      The chart
@@ -1943,11 +2112,13 @@ team to meet or exceed stakeholder expectations.
                                                                                                                              for calendar year
                                                       67%                              Failed                                           2012.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    37
-
-<!-- Page 42 -->
-
-       10 CHAOS SUCCESS POINTS FOR
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR
        EXECUTION OF SMALL PROJECTS
        Point 1: Rules
        Even card games have rules and there is no difference for small projects. Rules are established standards,
@@ -1983,6 +2154,7 @@ team to meet or exceed stakeholder expectations.
        change management process. A single change can disrupt a short time box or the direction of a project,
        leading to disappointment.
 
+
            FIRST PRINCIPLES
            IT executives were                                                      Very                     Somewhat           Not
            asked to rate the                                                      Difficult    Difficult     Difficult       Difficult
@@ -2001,11 +2173,13 @@ team to meet or exceed stakeholder expectations.
                                                                                     13%          23%            42%            22%
                                                the resolution
 
+
+
+
      38                THE CHAOS MANIFESTO
-
-<!-- Page 43 -->
-
-                                                                                        POSTMORTEM EXECUTION
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                                        POSTMORTEM EXECUTION
                                                                                                                             IT executives
                                                 Very                           Somewhat             Not
                                                                                                                               were asked
@@ -2021,6 +2195,8 @@ team to meet or exceed stakeholder expectations.
            management                                                                                                          execution.
            Change management                      51%             39%              4%                6%
 
+
+
        Point 6: Connecting the Dots
        Small projects make it easier to have a single vision. However, the vision is seen through the prism
        of the individual team member and stakeholder. Through analogies, common vocabulary, and trends
@@ -2028,11 +2204,13 @@ team to meet or exceed stakeholder expectations.
        project. A common vocabulary helps everyone speak and listen in a single voice. And trends help people
        see value in the project.
 
+
        Point 7: Decision Pipeline
        James Surowiecki’s book, The Wisdom of Crowds, promotes the idea that you can use group thinking to
        make decisions that are often better than expert opinions. We, of course, agree with this method. Wisdom
        of crowds has been the premise for The Standish Group since our inception. It is also the premise behind
        the Dezider, a decision pipeline solution that helps a small project get big results.
+
 
        Point 8: Net Value Analysis
        You must optimize gain and mitigate risk to effectively manage net value for small projects. Start with
@@ -2041,6 +2219,7 @@ team to meet or exceed stakeholder expectations.
        requirements. Consider them as options and assign a cost, gain, and risk to each of them. Then decide
        their value.
 
+
        Point 9: First Principles
        The vision has to be from the top down, because you always have to come back to the reason you are
        doing the project in the first place. This starts from first principles—the most important goals. The three
@@ -2048,17 +2227,20 @@ team to meet or exceed stakeholder expectations.
        These principles then become metrics and are measurable, and that leads to processes that can be
        predictive and quantified.
 
+
        Point 10: Lipstick
        Return on investment and value assessments can take a long time to create. In the end they are generally
        little more than an educated guess. Our approach is to assess value from high to low. We have collected
        data on thousands of projects and assigned average value weights. We use this research to create the
        value assignment in the OptiMix. This is not only good enough for small projects, but for all projects.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                     39
-
-<!-- Page 44 -->
-
-                       RELATIVITY
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       RELATIVITY
                        Relativity is the process of measuring each of the projects or requirements within an OptiMix case
                        against each other. In a balanced case, each of the four major constraints will have a normal
                        distribution. For our normal distribution we use 10% at the extreme end, 20% in the middle areas,
@@ -2068,13 +2250,17 @@ team to meet or exceed stakeholder expectations.
                        very easy. Goal and capability have similar ranges. The following graph shows the balance screens
                        from the OptiMix.
 
+
+
      BALANCE SCREENS
 
+
+
+
      40                THE CHAOS MANIFESTO
-
-<!-- Page 45 -->
-
-                                SUCCESS FACTOR TEN: TOOLS AND INFRASTRUCTURE
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                SUCCESS FACTOR TEN: TOOLS AND INFRASTRUCTURE
 
 When it comes to tools and infrastructure for small projects, less is more. Fewer project
 management tools and fewer infrastructure options help small projects get done
@@ -2110,6 +2296,8 @@ items and provide rapid feedback on the execution of those items. Optimization a
 and decision process of which items to budget and execute. It also helps when budgets get cut or
 costs need to be reduced. Optimization maximizes the value of your portfolio of investments.
 
+
+
                                          24%
                                                                                              VALUE (ROI) EVALUATIONS
                                                                                                                                  IT executives
@@ -2125,13 +2313,16 @@ costs need to be reduced. Optimization maximizes the value of your portfolio of 
                                                                                                                                   evaluations.
                                                                                       Do not know
 
+
+
                        72%
 
+
+
                                                                                      THE CHAOS MANIFESTO                                    41
-
-<!-- Page 46 -->
-
-       10 CHAOS SUCCESS POINTS FOR TOOLS AND
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+       10 CHAOS SUCCESS POINTS FOR TOOLS AND
        INFRASTRUCTURE FOR SMALL PROJECTS
        Point 1: Resource Management
        Small projects may create an additional burden for resource management. Resource management is
@@ -2168,6 +2359,7 @@ costs need to be reduced. Optimization maximizes the value of your portfolio of 
        a different approach in our Innovation Center, where you do not estimate or budget projects. We call it
        breadbasket budgeting, and the idea is to fund activities, not projects (please see page 48).
 
+
            OPTIMIZATION TOOL SKILLS
            IT executives
                                                                           Very                       Somewhat          Not
@@ -2189,11 +2381,13 @@ costs need to be reduced. Optimization maximizes the value of your portfolio of 
                                                                            21%           53%            18%             8%          2.0
                                      projects for the portfolio
 
+
+
+
      42                THE CHAOS MANIFESTO
-
-<!-- Page 47 -->
-
-                                                                                                 POSTMORTEM TOOLS
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                                                 POSTMORTEM TOOLS
                                                                                                                             IT executives
                                                 Very                           Somewhat             Not
                                                                                                                               were asked
@@ -2206,6 +2400,8 @@ costs need to be reduced. Optimization maximizes the value of your portfolio of 
                                                                                                                           information on
            Vendor management                      10%             29%              43%               18%                the use of tools.
            Optimization                           16%             42%              28%               14%
+
+
 
        Point 6: Software Quality
        Generally, small projects offer the organization a higher-quality output since the time between creation and
@@ -2241,11 +2437,13 @@ costs need to be reduced. Optimization maximizes the value of your portfolio of 
        relativity and research. In terms of relativity, the ROI and risk assessments are based on the comparison
        to the items in the optimization case. Our balance feature ensures proper distribution across the case.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                     43
-
-<!-- Page 48 -->
-
-                       PROJECT PORTFOLIO OPTIMIZATION
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       PROJECT PORTFOLIO OPTIMIZATION
                        The problem with portfolio management is that it is hard and error-prone. It also is not easily
                        optimized. Calculating costs, albeit difficult, is understood. Calculating return on investment is less
                        understood and much more difficult. It can take months to create valid ROI, and more than 75%
@@ -2271,11 +2469,13 @@ costs need to be reduced. Optimization maximizes the value of your portfolio of 
                        total cost of all 10 projects is $6 million, while the total budget is $4 million. We have optimized for
                        maximum gain with a calculated risk.
 
+
+
+
      44                THE CHAOS MANIFESTO
-
-<!-- Page 49 -->
-
-                                                                                                      IN SUMMARY
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                                                                                                      IN SUMMARY
 Very few large projects perform well to the project management triple constraints of cost, time, and
 scope. In contrast to small projects, which have a greater than 70% chance of performing well, a
 large project has virtually no chance of coming in on time, on budget, and within scope, which is The
@@ -2323,11 +2523,13 @@ these three IBM consultants was budgeted at $1.8 million per year.
                                                                                                                             than $1 million in
                                                                                                                                     labor cost.
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    45
-
-<!-- Page 50 -->
-
-                       In contrast, the State of Minnesota began its SACWIS project in 1999 with eight people. They
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       In contrast, the State of Minnesota began its SACWIS project in 1999 with eight people. They
                        concentrated on creating a standard infrastructure for collecting data and relied heavily on user
                        involvement to minimize requirements and focus on the essential ones. They used no consultants,
                        but instead found vendors that would partner with them when additional skills were required. Phase
@@ -2362,6 +2564,8 @@ these three IBM consultants was budgeted at $1.8 million per year.
                        minimal acceptable product. This should provide 80% of the benefit a large project would produce at
                        a fraction of the cost.
 
+
+
                                                                                                                   7%
      LARGE PROJECT RESOLUTION IN BANKING
 
@@ -2374,11 +2578,13 @@ these three IBM consultants was budgeted at $1.8 million per year.
      more than $10 million                                                                                                      49%
      in labor costs.                                        Failed
 
+
+
+
      46                THE CHAOS MANIFESTO
-
-<!-- Page 51 -->
-
-Maybe you are not ready to
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+Maybe you are not ready to
 take the full leap to a small                                                                                      PROJECT VALUE
 project philosophy. Maybe
 you just do not believe it will                    56%                                     2%                                    IT executives
@@ -2431,6 +2637,9 @@ want to be assigned to the                                                      
 Innovation Center.                                                                                        Accurate
                                                                                         1%
 
+
+
+
                                                                                  POST-PROJECT VALUE EVALUATION
                                     15%
                  18%
@@ -2447,11 +2656,13 @@ Innovation Center.                                                              
                 46%
                                                                      After the projected payback period
 
+
+
+
                                                                                      THE CHAOS MANIFESTO                                    47
-
-<!-- Page 52 -->
-
-                       INNOVATION CENTER
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+                       INNOVATION CENTER
                        The Standish Group has spent many years on the evaluation and assessment of operational and
                        development centers throughout the world. Our research leads us to believe that the optimal
                        development center should have at least 25 people, but no more than 75. Of course this is a
@@ -2483,6 +2694,8 @@ Innovation Center.                                                              
                        accountability. The agile process allows for rapid delivery. In theory, it hopes to align development
                        closer to the users’ needs by continuous collaboration and delivery of a concrete product.
 
+
+
      INNOVATION FUNNEL
 
      Shown is The
@@ -2491,4 +2704,10 @@ Innovation Center.                                                              
      using an Innovation
      Funnel concept.
 
+
+
+
      48                THE CHAOS MANIFESTO
+Copyright © 2013. The CHAOS Manifesto is protected by copyright and is the sole property of The Standish Group International, Incorporated. It may not
+under any circumstances be retransmitted in any form, repackaged in any way, or resold through any media. All rights reserved.
+

@@ -1,13 +1,14 @@
-<!-- Source: ressources/S3__ISI1/EPI/3_ISOIEC CD 29148.pdf | pdftotext -layout | 81 pages -->
-
-<!-- Page 1 -->
-
                                        ISO/IEC JTC1/SC7
                                        Software and Systems Engineering
                                        Secretariat: CANADA (SCC)
 
+
+
+
                                                                       ISO/IEC JTC1/SC7 N4447
                                                                                               2009-08-05
+
+
 
 Document Type          Combined CD Registration and CD Ballot
                        Combined CD Registration and CD Ballot, WD 29148, Software
@@ -37,19 +38,23 @@ No. of Pages           80
 Note                         Please vote using the ISO Electronic Balloting Facilities
                                                  (Resolution 937)
 
+
+
+
                              Address reply to: ISO/IEC JTC1/SC7 Secretariat
                École de technologie supérieure – Departement of Software and IT Engineering
                        1100 Notre Dame Ouest, Montréal, Québec Canada H3C 1K3
                                           secretariat@jtc1-sc7.org
 
                                             www.jtc1-sc7.org
+© ISO/IEC 2009 – All rights reserved
 
-<!-- Page 2 -->
 
-© ISO/IEC 2009 – All rights reserved
+
 
                                                                  ISO/IEC TC JTC 1/SC 7 N            XXXX
                                                                                                 Date: 2009-06-20
+
 
                                                                                             ISO/IEC CD 29148
 
@@ -57,9 +62,15 @@ Note                         Please vote using the ISO Electronic Balloting Faci
 
                                                                                                  Secretariat: SCC
 
+
+
+
 Software and systems engineering — Life cycle processes —
 Requirements engineering
 Élément introductif — Élément central — Élément complémentaire
+
+
+
 
                                                      Warning
 
@@ -69,14 +80,19 @@ change without notice and may not be referred to as an International Standard.
 Recipients of this draft are invited to submit, with their comments, notification of any relevant patent rights of
 which they are aware and to provide supporting documentation.
 
+
+
+
 Document type: International Standard
 Document subtype:
 Document stage: (30) Committee
 Document language: E
 
 STD Version 2.1c2
+ISO/IEC CD 29148
 
-<!-- Page 3 -->
+
+
 
                                                Copyright notice
      This ISO document is a working draft or committee draft and is copyright-protected by ISO. While the
@@ -95,11 +111,17 @@ STD Version 2.1c2
 
      Violators may be prosecuted.
 
-ii                                                                                 © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 4 -->
+
+
+ii                                                                                 © ISO/IEC 2009 – All rights reserved
+                                                                                                                                         ISO/IEC CD 29148
+
+
+
 
 Contents                                                                                                                                                         Page
+
 
 Foreword ............................................................................................................................................................. v
 Introduction ........................................................................................................................................................ vi
@@ -150,9 +172,12 @@ Introduction ...................................................................
 7.2         General ................................................................................................................................................. 31
 7.2.1       Stakeholder requirement specification (StRS) ................................................................................. 31
 
-© ISO/IEC 2009 – All rights reserved                                                                                                                                   iii
 
-<!-- Page 5 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                                                                                   iii
+ISO/IEC CD 29148
+
+
 
 7.2.2       System requirements specification .................................................................................................. 31
 7.2.3       Software requirements specification ................................................................................................ 33
@@ -199,9 +224,14 @@ C.2   Requirements analysis Process.............................................
 C.3   Other technical requirements-related processes ............................................................................ 72
 Bibliography ..................................................................................................................................................... 74
 
-iv                                                                                                                      © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 6 -->
+
+
+iv                                                                                                                      © ISO/IEC 2009 – All rights reserved
+                                                                                                ISO/IEC CD 29148
+
+
+
 
 Foreword
 ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies
@@ -226,9 +256,14 @@ Subcommittee SC 7, Software and Systems Engineering.
 This second/third/... edition cancels and replaces the first/second/... edition (), [clause(s) / clause(s) / table(s) /
 figure(s) / annex(es)] of which [has / have] been technically revised.
 
-© ISO/IEC 2009 – All rights reserved                                                                                 v
 
-<!-- Page 7 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                 v
+ISO/IEC CD 29148
+
+
+
 
 Introduction
 This International Standard provides a unified treatment of the processes and products involved in
@@ -259,14 +294,19 @@ result of harmonization of the following sources:
 
      ISO/IEC 24765 (draft), Systems and software engineering -- Vocabulary
 
+
+
+
 vi                                                                              © ISO/IEC 2009 – All rights reserved
+COMMITTEE DRAFT                                                                         ISO/IEC CD 29148
 
-<!-- Page 8 -->
 
-COMMITTEE DRAFT                                                                         ISO/IEC CD 29148
+
 
 Software and systems engineering — Life cycle processes —
 Requirements engineering
+
+
 
 1    Scope
 
@@ -299,6 +339,7 @@ This International Standard is applicable to
      developed during the application of requirements engineering processes, conforms to ISO/IEC
      15289:xxxx.
 
+
 2    Conformance
 
  2.1 Intended Usage
@@ -309,9 +350,13 @@ definition of the content and recommendations for the format of the documentatio
 that result from the implementation of these processes. Users of this International Standard can claim
 conformance to the process provisions or to the documentation provisions, or both.
 
-© ISO/IEC 2009 – All rights reserved                                                                       1
 
-<!-- Page 9 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                       1
+ISO/IEC CD 29148
+
+
 
  2.2 Conformance to processes
 
@@ -331,6 +376,7 @@ A claim of full conformance to this International Standard is equivalent to clai
 requirements-engineering-related processes of ISO/IEC 15288 and ISO/IEC 12207 cited in clause 6 and to
 the content requirements of the information products in clause 7 of this International Standard.
 
+
 3   Normative references
 The following referenced documents are indispensable for the application of this document. For dated
 references, only the edition cited applies. For undated references, the latest edition of the referenced
@@ -342,6 +388,7 @@ ISO/IEC 15288:2008, Systems and software engineering – System life cycle proce
 
 ISO/IEC 15289, Systems and software engineering – Content of systems and software life cycle process
 information products (Documentation)
+
 
 4   Terms and definitions
 
@@ -366,9 +413,13 @@ black box
 a system or element whose inputs, outputs, and general function are known but whose contents or
 implementation are unknown or irrelevant
 
-2                                                                                   © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 10 -->
+
+
+2                                                                                   © ISO/IEC 2009 – All rights reserved
+                                                                                                  ISO/IEC CD 29148
+
+
 
 4.1.4
 baseline
@@ -429,9 +480,13 @@ all system elements, an essential enabler to systems engineering practice
 
 [INCOSE SEHbk 3.1]
 
-© ISO/IEC 2009 – All rights reserved                                                                                    3
 
-<!-- Page 11 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                    3
+ISO/IEC CD 29148
+
+
 
 4.1.14
 level of abstraction
@@ -494,9 +549,12 @@ system requirements specification
 SyRS
 a structured collection of information that embodies the requirements of the system
 
-4                                                                                        © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 12 -->
+
+4                                                                                        © ISO/IEC 2009 – All rights reserved
+                                                                                                      ISO/IEC CD 29148
+
+
 
 4.1.24
 stakeholder
@@ -548,6 +606,7 @@ NOTE        Verification in a system life cycle context is a set of activities t
 against the required characteristics for that product. This may include, but is not limited to, specified requirements, design
 description and the system itself.
 
+
  4.2 Symbols and abbreviations
 
 BRS             Business Requirements Specification (Also defined as Stakeholder Requirements Specification)
@@ -557,9 +616,13 @@ HIS             Human Systems Integration
 OpsCon          Operational Concept
 RTM             Requirements Traceability Matrix
 
-© ISO/IEC 2009 – All rights reserved                                                                                         5
 
-<!-- Page 13 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                         5
+ISO/IEC CD 29148
+
+
 
 SRS           Software Requirements Specification
 StRS          Stakeholder Requirements Specification
@@ -619,9 +682,11 @@ This International Standard serves as a basis for a common set of best practices
 to apply to the systems and software technical processes in order to achieve the ultimate goal of delivering the
 product.
 
-6                                                                                  © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 14 -->
+6                                                                                  © ISO/IEC 2009 – All rights reserved
+                                                                                               ISO/IEC CD 29148
+
+
 
 5.2.3    Well-formed requirements
 
@@ -672,6 +737,7 @@ requirements on the system/software development project
     EXAMPLE: At sea state 1 [Condition], the minimum keep out range shall be no less than [Action] 7.8
     nautical miles – [Value].
 
+
                                        Figure 1 — Examples of Requirement Syntax
 
 Conditions are measurable qualitative or quantitative attributes that are stipulated for a requirement. They
@@ -679,9 +745,13 @@ further qualify a requirement that is needed, and provide attributes that permit
 and stated in a manner that can be validated and verified. Conditions may limit the options open to a designer.
 It is important to define the need without imposing unnecessary bounds on the solution space.
 
-© ISO/IEC 2009 – All rights reserved                                                                               7
 
-<!-- Page 15 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                               7
+ISO/IEC CD 29148
+
+
 
 Constraints are limitations or implied requirements that constrain the design solution or implementation of the
 systems engineering process, are not changeable by the performing activity, and are generally non-allocable.
@@ -741,9 +811,12 @@ Each requirement should possess the following characteristics:
 There are certain characteristics that need to be considered for the set of requirements rather than for any
 individual requirement. This will ensure that the set of requirements collectively provide for a feasible solution
 
-8                                                                                     © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 16 -->
+
+8                                                                                     © ISO/IEC 2009 – All rights reserved
+                                                                                           ISO/IEC CD 29148
+
+
 
 that meets the stakeholder intentions and constraints. Each set of requirements should possess the following
 characteristics:
@@ -801,9 +874,13 @@ often used that should be avoided:
 
 -   Loopholes (such as "if possible", "as appropriate", "as applicable")
 
-© ISO/IEC 2009 – All rights reserved                                                                          9
 
-<!-- Page 17 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                          9
+ISO/IEC CD 29148
+
+
 
 Document and validate all assumptions made regarding a requirement. The assumptions and other supporting
 information may be included in a rationale statement/attribute associated with a requirement or in an
@@ -863,9 +940,13 @@ NOTE        Additional guidance on risk analysis can be found in ISO/IEC 16085, 
      •    Functional. Functional requirements describe the system or system element functions or tasks that
           must be performed.
 
-10                                                                                    © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 18 -->
+
+
+10                                                                                    © ISO/IEC 2009 – All rights reserved
+                                                                                                  ISO/IEC CD 29148
+
+
 
      •     Performance. A requirement that defines the extent or how well, and under what conditions, a
            function or task is to be performed. These are quantitative requirements of system performance and
@@ -923,9 +1004,13 @@ information with admissible quality is used prior to applying the next process o
 interest. In this case iteration adds value to the system to which the processes are being used. The iterative
 application of processes is illustrated in Figure 2.
 
-© ISO/IEC 2009 – All rights reserved                                                                                  11
 
-<!-- Page 19 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                  11
+ISO/IEC CD 29148
+
+
 
                               Stakeholder Requirements
                                   Definition Process                       Applied to
@@ -939,6 +1024,7 @@ application of processes is illustrated in Figure 2.
                                                                                          application of same
                                                                                               processes
 
+
                                     Figure 2 — Iterative application of processes
 
 5.3.1.2     Recursive application of processes
@@ -948,6 +1034,9 @@ system elements within the system structure, the application form is referred to
 from one application are used as inputs to the next lower (or higher) system in the system structure to arrive at
 a more detailed or mature set of outcomes. Such an approach adds value to successive systems in the
 system structure. Figure 3 illustrates the recursive application of processes to systems from the top down.
+
+
+
 
                               Stakeholder Requirements
                                   Definition Process                      Applied to
@@ -983,9 +1072,13 @@ process and proceeds in parallel with the definition of the system architecture.
 iterations between the requirements analysis and architectural design processes to resolve trade-offs between
 the requirements and architecture (see Figure 2).
 
-12                                                                                                © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 20 -->
+
+
+12                                                                                                © ISO/IEC 2009 – All rights reserved
+                                                                                          ISO/IEC CD 29148
+
+
 
 One of the main objectives of architectural design is to determine how to partition the system; that is, how to
 identify which requirements should be allocated to which system elements. As system elements are defined,
@@ -1012,6 +1105,7 @@ properly known. If this occurs then a sensitivity analysis of the solution to re
 carried out, and a plan established to collect the rest of the requirements. If "assumed" values for
 requirements are made, these should be clearly noted with ‘TBR’ and plans put in place to review and resolve
 the values.
+
 
 6    Processes
 
@@ -1045,9 +1139,13 @@ to the relevant section in this International Standard. Tables C-1 and C-2 ident
 processes and their applicable activities in requirements engineering. Table C-3 identifies other technical
 activities related to requirements engineering.
 
-© ISO/IEC 2009 – All rights reserved                                                                         13
 
-<!-- Page 21 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                         13
+ISO/IEC CD 29148
+
+
 
  6.2 Stakeholder requirements definition process
 
@@ -1094,13 +1192,19 @@ This activity consists of the following tasks:
 
                                                                                     [ISO/IEC 15288:2008, 6.4.1.3 a) 1)]
 
+
+
 Requirements elicited from a stakeholder will be dependent on the role, responsibility, and position of the
 stakeholder in the organization. Identify stakeholders who have strong influence on business decisions such
 as goals, strategies, operations, and the target system.
 
-14                                                                                           © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 22 -->
+
+
+14                                                                                           © ISO/IEC 2009 – All rights reserved
+                                                                                                   ISO/IEC CD 29148
+
+
 
        2)    Elicit stakeholder requirements from the identified stakeholders.
 
@@ -1120,6 +1224,8 @@ as goals, strategies, operations, and the target system.
        ISO PAS 18152, A specification for the process assessment of human-system issues.
 
                                                                                   [ISO/IEC 15288:2008, 6.4.1.3 a) 2)]
+
+
 
 In a typical system, there will be many sources of requirements and it is essential that all potential sources are
 identified and evaluated for their impact on the system. Some of the common sources of requirements and
@@ -1159,9 +1265,13 @@ issues that need to be dealt with are:
     may be conditioned by the structure, culture and internal politics of the organization. In general, new
     software systems should not force unplanned change to the business process.
 
-© ISO/IEC 2009 – All rights reserved                                                                                    15
 
-<!-- Page 23 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                    15
+ISO/IEC CD 29148
+
+
 
 Requirements elicitation is an iterative activity. Consider several different techniques for identifying
 requirements during the elicitation task to better accommodate the diverse set of requirements sources,
@@ -1213,15 +1323,20 @@ This activity consists of the following tasks:
 
                                                                                [ISO/IEC 15288:2008, 6.4.1.3 b) 1)]
 
+
 Constraints are one type of requirement. They may be imposed by:
 -    External or organization stakeholders and may include engineering plans, technical performance
      measures, technical maturity, regulations, or life cycle costs.
 
 -    External, interacting, or enabling systems.
 
-16                                                                                     © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 24 -->
+
+
+16                                                                                     © ISO/IEC 2009 – All rights reserved
+                                                                                                    ISO/IEC CD 29148
+
+
 
 -   Activities from other life cycle phases and technical activities such as Transition, Operation, and
     Maintenance.
@@ -1247,6 +1362,7 @@ isolation).
        on users that could affect system use or constrain its design are analyzed when applicable.
 
                                                                                   [ISO/IEC 15288:2008, 6.4.1.3 b) 2)]
+
 
 Use scenarios to define the concept documents – bound the range of anticipated uses of system products, the
 intended operational environment and interfacing systems, platforms or products. Scenarios help identify
@@ -1276,9 +1392,13 @@ customer, user, and supplier.
          design process for interactive systems.
                                                                                   [ISO/IEC 15288:2008, 6.4.1.3 b) 3)]
 
-© ISO/IEC 2009 – All rights reserved                                                                                     17
 
-<!-- Page 25 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                     17
+ISO/IEC CD 29148
+
+
 
 Consideration of human systems integration (HSI) is an important concept within systems engineering. HSI
 focuses on the human, an integral element of every system, over the system life cycle. It promotes a total
@@ -1295,6 +1415,7 @@ define characteristics of the user interface or front end analyses to determine 
 NOTE      ISO 9241-11:1998 has been replaced by ISO 9241-210, Ergonomics of human-system interaction - part 210:
 Human-cantered design for interactive systems.
 
+
       4) Specify health, safety, security, environment and other stakeholder requirements and functions
       that relate to critical qualities.
 
@@ -1309,6 +1430,8 @@ Human-cantered design for interactive systems.
       mandatory or relevant.
                                                                                  [ISO/IEC 15288:2008, 6.4.1.3 b) 4)]
 
+
+
 Critical qualities are aspects of the system that are essential to ensure the integrity of the system and its
 operating environment.
 
@@ -1322,6 +1445,8 @@ This activity consists of the following tasks:
       incongruous or unverifiable requirements.
                                                                                     [ISO/IEC 15288:2008, 6.4.1.3 c) 1)]
 
+
+
 Requirements should be analyzed for the characteristics defined in clauses 5.2.4 and 5.2.5. Requirements
 should be prioritized and may be classified as described in clause 5.2.7. The use of checklists or standard
 templates helps in the review process.
@@ -1330,13 +1455,18 @@ templates helps in the review process.
       NOTE This includes requirements that cannot be realized or are impractical to achieve.
                                                                                     [ISO/IEC 15288:2008, 6.4.1.3 c) 2)]
 
+
+
 It is important to continue to perform requirements negotiation during the analysis and allocation of
 requirements, because conflicts will occur. Negotiation might be needed among stakeholders requiring
 mutually incompatible features, or due to conflicts between desired performance requirements, constraints,
 
-18                                                                                       © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 26 -->
+
+18                                                                                       © ISO/IEC 2009 – All rights reserved
+                                                                                                  ISO/IEC CD 29148
+
+
 
 available budget, and delivery schedule. In most cases, it is necessary to consult with the stakeholder(s) to
 reach a consensus on an appropriate tradeoff. It is often important for contractual reasons that such decisions
@@ -1354,10 +1484,14 @@ requirements analysis task.
        requirements.
                                                                                     [ISO/IEC 15288:2008, 6.4.1.3 c) 3)]
 
+
+
        4)    Establish with stakeholders that their requirements are expressed correctly.
        NOTE This includes confirming that stakeholder requirements are comprehensible to originators and that the
        resolution of conflict in the requirements has not corrupted or compromised stakeholder intentions.
                                                                                     [ISO/IEC 15288:2008, 6.4.1.3 c) 4)]
+
+
 
 It is normal for there to be one or more formally scheduled points in the requirements engineering process
 where the requirements are validated. The objective is to identify any problems before resources are
@@ -1380,6 +1514,7 @@ the requirements, including technical reviews, inspections, and walk-throughs.
 
 NOTE         Additional guidance on reviews can be found in IEEE Std 1028, Software reviews.
 
+
        5) Record the stakeholder requirements in a form suitable for requirements management through the
        life cycle and beyond.
        NOTE These records establish the stakeholder requirements baseline, and retain changes of need and their origin
@@ -1387,12 +1522,18 @@ NOTE         Additional guidance on reviews can be found in IEEE Std 1028, Softw
        knowledge for requirements for subsequent system entities.
                                                                                     [ISO/IEC 15288:2008, 6.4.1.3 c) 5)]
 
+
+
 Consideration should be given to using requirements management tools, especially for more complex projects.
 These tools generally consist of a database with capabilities to trace linkages between requirements to show
 
-© ISO/IEC 2009 – All rights reserved                                                                                  19
 
-<!-- Page 27 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                  19
+ISO/IEC CD 29148
+
+
 
 relationships. A requirements management tool is intended to facilitate and support the systematic managing
 of requirements throughout the project life cycle.
@@ -1431,6 +1572,8 @@ criticality of the requirements. Additional information on requirements categori
 
                                                                                    [ISO/IEC 15288:2008, 6.4.1.3 c) 6)]
 
+
+
 An initial requirements traceability matrix should be established and maintained to document how the formal
 requirements are intended to meet the stakeholder objectives and achieve stakeholder agreement.
 Stakeholder requirements need to be captured, traced, and maintained throughout the system life cycle and
@@ -1440,6 +1583,7 @@ Standard under task 3.
 
 NOTE        Additional guidance on placing information under configuration control can be found in ISO/IEC 15288, clause
 6.3.5, Configuration management process.
+
 
  6.3 Requirements analysis process
 
@@ -1451,9 +1595,12 @@ of desired services into a technical view of a required product that could deliv
 This process builds a representation of a future system that will meet stakeholder requirements and that, as
 far as constraints permit, does not imply any specific implementation. It results in measurable system
 
-20                                                                                     © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 28 -->
+
+20                                                                                     © ISO/IEC 2009 – All rights reserved
+                                                                                                   ISO/IEC CD 29148
+
+
 
 requirements that specify, from the supplier’s perspective, what characteristics it is to possess and with what
 magnitude in order to satisfy stakeholder requirements.
@@ -1486,6 +1633,9 @@ This activity consists of the following tasks:
 
                                                                                      [ISO/IEC 15288:2008, 6.4.2.3 a) 1)]
 
+
+
+
         2)   Define each function that the system is required to perform.
         NOTE 1 This includes how well the system, including its operators, is required to perform that function, the
         conditions under which the system is to be capable of performing the function, the conditions under which the system
@@ -1497,15 +1647,22 @@ This activity consists of the following tasks:
         description of the desired system requirements.
                                                                                      [ISO/IEC 15288:2008, 6.4.2.3 a) 2)]
 
-© ISO/IEC 2009 – All rights reserved                                                                                   21
 
-<!-- Page 29 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                   21
+ISO/IEC CD 29148
+
+
 
        3) Define necessary implementation constraints that are introduced by stakeholder requirements or are
        unavoidable solution limitations.
       NOTE This includes the implementation decisions that are allocated from design at higher levels in the structure of
       the system.
                                                                                    [ISO/IEC 15288:2008, 6.4.2.3 a) 3)]
+
+
+
 
        4) Define technical and quality in use measures that enable the assessment of technical
        achievement.
@@ -1515,6 +1672,8 @@ This activity consists of the following tasks:
       associated with any non-compliance. ISO/IEC 15939 provides a process to identify, define and use appropriate
       measures. The ISO/IEC 9126 series of standards provides relevant quality measures.
                                                                                 [ISO/IEC 15288:2008, 6.4.2.3 a) 4)]
+
+
 
 Technical measures are used to provide insight into the progress of the system or system elements in
 achieving the technical parameters specified in the requirements. These include Measures of Performance
@@ -1536,6 +1695,8 @@ specified context of use in a realistic system environment.
       environment factors using, as appropriate, applicable security standards.
                                                                                 [ISO/IEC 15288:2008, 6.4.2.3 a) 5)]
 
+
+
 Review all requirements for the characteristics of a good requirement and good set of requirements as
 described in sub-clauses 5.2.4 and 5.2.5.
 
@@ -1551,9 +1712,13 @@ that are important as part of the Requirements Analysis Process may include:
      level system requirements from the domain perspective, along with background information about the
      overall objectives for the system, its target environment and a statement of the constraints, assumptions
 
-22                                                                                      © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 30 -->
+
+
+22                                                                                      © ISO/IEC 2009 – All rights reserved
+                                                                                                 ISO/IEC CD 29148
+
+
 
     and non-functional requirements. It may include conceptual models designed to illustrate the system
     context, usage scenarios, the principal domain entities, data, information and workflows.
@@ -1598,6 +1763,8 @@ This activity consists of the following tasks:
        regarding the attributes and qualities of good requirements.
                                                                                 [ISO/IEC 15288:2008, 6.4.2.3 b) 1)]
 
+
+
 The classifications in clause 5.2.7 may help with this task. The "plan verification" process of ISO/IEC 15288,
 should be used for the definition, planning, and execution of requirements verification (ISO/IEC 15288:2008,
 clause 6.4.6.3 a).
@@ -1609,9 +1776,13 @@ clause 6.4.6.3 a).
        necessary and sufficient input to other processes, in particular architectural design.
                                                                                 [ISO/IEC 15288:2008, 6.4.2.3 b) 2)]
 
-© ISO/IEC 2009 – All rights reserved                                                                                 23
 
-<!-- Page 31 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                 23
+ISO/IEC CD 29148
+
+
 
 Requirements validation ensures that stakeholder requirements have been correctly transformed into system
 requirements. Various techniques may be used, including stakeholder reviews, prototyping, modeling and
@@ -1667,13 +1838,17 @@ or standards or may offer compelling advantages to the analysis of certain criti
       appropriate data repository that permits traceability to stakeholder needs and architectural design.
                                                                             [ISO/IEC 15288:2008, 6.4.2.3 b) 3)]
 
+
 Requirements tracing is concerned with recovering the source of requirements and predicting the effects of
 requirements. The traceability should include interface requirements. Tracing is fundamental to performing
 coverage analysis (to ensure that all stakeholder requirements are met in the design and that each low-level
 
-24                                                                                  © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 32 -->
+
+24                                                                                  © ISO/IEC 2009 – All rights reserved
+                                                                                            ISO/IEC CD 29148
+
+
 
 requirement is justified); compliance analysis (to document that stakeholder requirements have been
 satisfied); and impact analysis when requirements change. A requirement should be traceable down to lower-
@@ -1702,6 +1877,7 @@ which it was informed. Bi-directional traceability is a technique that can be us
 
                                                                             [ISO/IEC 15288:2008, 6.4.2.3 b) 4)]
 
+
 This information must be configuration controlled. The ancillary information recorded along with the
 requirements may include additional information such as a summary rationale for each requirement and a
 change history, along with the requirements categorization information described in clause 5.2.7. Once again,
@@ -1722,13 +1898,20 @@ This activity consists of the following tasks:
     system architecture. Generate derived requirements as needed for the allocations.
                                                                             [ISO/IEC 15288:2008, 6.4.3.3 a) 2)]
 
+
+
+
     3) Define and document the interfaces between system elements and at the system boundary with external
     systems.
                                                                        [ISO/IEC 15288:2008, 6.4.3.3 a) 3)]
 
-© ISO/IEC 2009 – All rights reserved                                                                          25
 
-<!-- Page 33 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                          25
+ISO/IEC CD 29148
+
+
 
 An architectural design solution is defined in terms of the requirements for the set of system elements from
 which the system is configured. Establish and maintain the traceability between requirements and the
@@ -1749,6 +1932,8 @@ This activity consists of the following tasks:
         iii) Integration of human performance into systems and their operation.
                                                                             [ISO/IEC 15288:2008, 6.4.3.3 b) 2)]
 
+
+
 NOTE         Additional guidance on architectural design can be found in ISO/IEC 15288, clause 6.4.3, Architectural design
 process.
 
@@ -1767,6 +1952,8 @@ This activity consists of the following tasks:
     steps that progressively build confidence in compliance of the fully configured product.
                                                                                   [ISO/IEC 15288:2008, 6.4.6.3 a) 2)]
 
+
+
 This activity is facilitated by initially associating a verification method as requirements are created. Verification
 methods may be documented in a verification statement. A verification method defines how (including success
 criteria and closure approach), where and when each requirement's compliance will be proven for customer
@@ -1784,9 +1971,13 @@ all of the following content considerations:
 
 -     Where - Specify any unique venue and environment needed for the verification activity
 
-26                                                                                        © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 34 -->
+
+
+26                                                                                        © ISO/IEC 2009 – All rights reserved
+                                                                                                      ISO/IEC CD 29148
+
+
 
 There are four standard verification methods to use to obtain the objective evidence that the requirements
 have been fulfilled: inspection, analysis or simulation, demonstration, and test.
@@ -1842,13 +2033,18 @@ This activity consists of the following tasks:
   verification actions and outcomes are made.
                                                                                     [ISO/IEC 15288:2008, 6.4.6.3 b) 2)]
 
+
+
 The Requirements Traceability Matrix (RTM) is frequently used as a single point of accountability for tracing a
 requirement back to the source of the requirement and forward through the life cycle to assess that the
 requirement has been met. In an RTM, verification methods and information are associated with the
 
-© ISO/IEC 2009 – All rights reserved                                                                                        27
 
-<!-- Page 35 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                                        27
+ISO/IEC CD 29148
+
+
 
 requirements to indicate how the system or system element will be verified to show it meets the requirements.
 As the system moves through the life cycle phases, traceability of the requirements to the work products
@@ -1874,12 +2070,15 @@ This activity consists of the following task:
   attitudes, experience and subjective tests that comprise customer satisfaction.
                                                                                   [ISO/IEC 15288:2008, 6.4.8.3 a) 2)]
 
+
+
 System validation is subject to approval by the project authority and key stakeholders. This process is invoked
 during the Stakeholders Requirements Definition Process to confirm that the requirements properly reflect the
 stakeholder needs and to establish validation criteria, i.e. that the right system has been built. Results are
 documented in an updated Requirements Traceability Matrix (RTM)
 
 NOTE         Additional guidance on validation can be found in ISO/IEC 15288, clause 6.4.8, Validation process.
+
 
  6.5 Requirements management
 
@@ -1905,9 +2104,13 @@ However, care must be exercised in making requirements changes during design and
 some may be unavoidable, excessive uncontrolled changes can result in "requirements creep" that can result
 in cost overruns, schedule delays, design errors, buyer dissatisfaction, or even cancellation of the project.
 
-28                                                                                        © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 36 -->
+
+
+28                                                                                        © ISO/IEC 2009 – All rights reserved
+                                                                                               ISO/IEC CD 29148
+
+
 
 6.5.1    Change management
 
@@ -1963,9 +2166,13 @@ their uses.
 
 NOTE         Clause 6.3.7 of ISO/IEC 15288 and ISO/IEC 12207 provides additional information on measurement process.
 
-© ISO/IEC 2009 – All rights reserved                                                                              29
 
-<!-- Page 37 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                              29
+ISO/IEC CD 29148
+
+
 
 7      Information items
 
@@ -1979,6 +2186,9 @@ presented in defining the required content.
 NOTE: ISO/IEC 15289, Systems and Software Engineering – Content of systems and software life cycle process
 information products, provides guidance on identifying and planning the specific information items to be produced during
 systems and software life cycles.
+
+
+
 
     External Environment         Enterprise Environment
     market trends                policies & procedures                         Business Operation
@@ -1997,6 +2207,9 @@ systems and software life cycles.
                                                                        Operational
                                                   Requirement
                                                                        Requirement
+
+
+
 
                       Figure 4 — Typical Requirement Types According to System Scope
 
@@ -2023,9 +2236,13 @@ be used to specify software requirements where the system is only comprised of s
 used for lower-tire software requirements that are software specific elements of a system or system element.
 An example of the sequence of requirements processes and specifications is illustrated in Figure 5.
 
-30                                                                                     © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 38 -->
+
+
+30                                                                                     © ISO/IEC 2009 – All rights reserved
+                                                                                                         ISO/IEC CD 29148
+
+
 
  External Environment         Enterprise Environment
 
@@ -2049,6 +2266,9 @@ An example of the sequence of requirements processes and specifications is illus
                                                                                                Req.             Software
                                                                                    needs      Process       SRS
                                                                                             (software)
+
+
+
 
            Figure 5 — Example of the Sequence of Requirements Processes and Specifications
 
@@ -2089,9 +2309,12 @@ the technical community who will specify and build the system. The collection of
 the specification and its representation acts as the bridge between the two groups and must be
 understandable by both the customer and the technical community. One of the most difficult tasks in the
 
-© ISO/IEC 2009 – All rights reserved                                                                                       31
 
-<!-- Page 39 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                                       31
+ISO/IEC CD 29148
+
+
 
 creation of a system is that of communicating to all of the subgroups within both groups, especially in one
 document. This type of communication generally requires different formalisms and languages.
@@ -2143,9 +2366,13 @@ presentations is traceable to a common source of system requirements information
 made aware that this structured collection of information remains the one definitive source for resolving
 ambiguities in the particular presentation chosen.
 
-32                                                                              © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 40 -->
+
+
+32                                                                              © ISO/IEC 2009 – All rights reserved
+                                                                                             ISO/IEC CD 29148
+
+
 
 This International Standard also makes a clear distinction between the system requirements (what the system
 must do) contained in the SyRS and process requirements (how to construct the system) that should be
@@ -2202,9 +2429,12 @@ a)   A Table of Contents
 
 b)   A List of Figures
 
-© ISO/IEC 2009 – All rights reserved                                                                            33
 
-<!-- Page 41 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                            33
+ISO/IEC CD 29148
+
+
 
 c)   A List of Tables
 
@@ -2262,9 +2492,13 @@ The goal and objective clause of the StRS shall define enterprise level decision
 achieved by the new business and consequently the system to be developed or changed. Specifically, the
 goals and objectives are expressed as follows:
 
-34                                                                                © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 42 -->
+
+
+34                                                                                © ISO/IEC 2009 – All rights reserved
+                                                                                              ISO/IEC CD 29148
+
+
 
 a)   Goal - tends to be longer term, and defined qualitatively rather than quantitatively. It should be narrow -
      focused enough that objectives can be defined for it.
@@ -2322,9 +2556,13 @@ quantity, which likely be succeeded in functional requirements in the SyRS and S
 shall be uniquely named and numbered, and shall be referenced in the description of business processes in
 clause 7.3.3.1.1.
 
-© ISO/IEC 2009 – All rights reserved                                                                          35
 
-<!-- Page 43 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                          35
+ISO/IEC CD 29148
+
+
 
 7.3.3.1.3    Business operational constraints (section 3.1.3 of the StRS)
 
@@ -2380,9 +2618,13 @@ the system. A scenario shall be described for an activity or a series of activit
 supported by the system. The scenario shall be uniquely named and numbered, and shall be referenced in the
 description of the business processes in 7.3.3.1.1.
 
-36                                                                                © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 44 -->
+
+
+36                                                                                © ISO/IEC 2009 – All rights reserved
+                                                                                                  ISO/IEC CD 29148
+
+
 
  7.4 System requirements specification (SyRS) document
 
@@ -2438,9 +2680,13 @@ the SyRS.
 The system overview clause of the SyRS shall describe at a general level the major elements of the system,
 to include human elements, and how they interact.
 
-© ISO/IEC 2009 – All rights reserved                                                                                  37
 
-<!-- Page 45 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                  37
+ISO/IEC CD 29148
+
+
 
 7.4.2     General system description (section 2 of the SyRS)
 
@@ -2499,9 +2745,12 @@ applicable under each capability, condition and constraint.
 The construction clause of the SyRS shall include the environmental (mechanical, electrical, chemical)
 characteristics of where the system will be installed. For example, the weight limits of the system, moments of
 
-38                                                                                      © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 46 -->
+
+38                                                                                      © ISO/IEC 2009 – All rights reserved
+                                                                                          ISO/IEC CD 29148
+
+
 
 inertia, dimensional and volume limitations, crew space, operator station layout, ingress, egress, and access
 for maintenance should be specified here.
@@ -2558,9 +2807,13 @@ of information that it receives, generates, or exports. Examples include types a
 system is required to receive and store, any proprietary or other protections levied on the information the
 system deals with, and what backup and archiving requirements exist for the information.
 
-© ISO/IEC 2009 – All rights reserved                                                                         39
 
-<!-- Page 47 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                         39
+ISO/IEC CD 29148
+
+
 
 7.4.3.5     System operations (section 3.5 of the SyRS)
 
@@ -2620,9 +2873,12 @@ The system interfaces clause of the SyRS shall specify requirements for interfac
 and their external capabilities, including all its users, both human and other systems. The characteristics of
 interfaces to systems under development, or future systems, shall be included.
 
-40                                                                                 © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 48 -->
+
+40                                                                                 © ISO/IEC 2009 – All rights reserved
+                                                                                            ISO/IEC CD 29148
+
+
 
 The system interfaces clause of the SyRS shall define any interdependencies or constraints associated with
 the interfaces should also be identified (e.g., communication protocols, special devices, standards, fixed
@@ -2679,9 +2935,13 @@ The definitions, acronyms, and abbreviations clause of the SRS shall provide the
 acronyms, and abbreviations required to properly interpret the SRS. This information may be provided by
 reference to one or more appendixes in the SRS or by reference to other documents.
 
-© ISO/IEC 2009 – All rights reserved                                                                           41
 
-<!-- Page 49 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                           41
+ISO/IEC CD 29148
+
+
 
 7.5.1.4     References (section 1.4 of the SRS)
 
@@ -2737,9 +2997,13 @@ a)   System interfaces;
 
 b)   User interfaces;
 
-42                                                                                 © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 50 -->
+
+
+42                                                                                 © ISO/IEC 2009 – All rights reserved
+                                                                                                      ISO/IEC CD 29148
+
+
 
 c)   Hardware interfaces;
 
@@ -2798,9 +3062,13 @@ d)   Version number;
 
 e)   Source.
 
-© ISO/IEC 2009 – All rights reserved                                                                                      43
 
-<!-- Page 51 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                      43
+ISO/IEC CD 29148
+
+
 
 For each interface the software interfaces clause of the SRS shall specify:
 a)   Discussion of the purpose of the interfacing software as related to this software product.
@@ -2857,9 +3125,13 @@ b)   Textual or graphical methods can be used to show the different functions an
      diagram is not intended to show a design of a product, but simply shows the logical relationships among
      variables.
 
-44                                                                                 © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 52 -->
+
+
+44                                                                                 © ISO/IEC 2009 – All rights reserved
+                                                                                                 ISO/IEC CD 29148
+
+
 
 7.5.2.3     User characteristics (section 2.3 of the SRS)
 
@@ -2918,9 +3190,13 @@ sufficient to enable testers to test that the system satisfies those requirement
 Every stated requirement in the specific requirements clause of the SRS shall be externally perceivable by
 users, operators, or other external systems.
 
-© ISO/IEC 2009 – All rights reserved                                                                          45
 
-<!-- Page 53 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                          45
+ISO/IEC CD 29148
+
+
 
 The specific requirements clause of the SRS shall at a minimum contain a description of every input (stimulus)
 into the system, every output (response) from the system, and all functions performed by the system in
@@ -2979,9 +3255,12 @@ b)   Exact sequence of operations
 
 c)   Responses to abnormal situations, including
 
-46                                                                                 © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 54 -->
+
+46                                                                                 © ISO/IEC 2009 – All rights reserved
+                                                                                         ISO/IEC CD 29148
+
+
 
      1)        Overflow
 
@@ -3038,9 +3317,12 @@ c)   Accessing capabilities;
 
 d)   Data entities and their relationships;
 
-© ISO/IEC 2009 – All rights reserved                                                                          47
 
-<!-- Page 55 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                          47
+ISO/IEC CD 29148
+
+
 
 e)   Integrity constraints;
 
@@ -3099,9 +3381,12 @@ e)   Restrict communications between some areas of the program;
 
 f)   Check data integrity for critical variables.
 
-48                                                                                  © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 56 -->
+
+48                                                                                  © ISO/IEC 2009 – All rights reserved
+                                                                                           ISO/IEC CD 29148
+
+
 
 7.5.3.6.4     Maintainability
 
@@ -3160,9 +3445,13 @@ classes.
 A feature is an externally desired service by the system that may require a sequence of inputs to effect the
 desired result. For example, in a telephone system, features include local call, call forwarding, and conference
 
-© ISO/IEC 2009 – All rights reserved                                                                          49
 
-<!-- Page 57 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                          49
+ISO/IEC CD 29148
+
+
 
 call. Each feature is generally described in a sequence of stimulus-response pairs. When organizing this
 section by feature, the outline in clause B.5 should be used.
@@ -3220,14 +3509,19 @@ include
 When appendices are included, the SRS shall explicitly state whether or not the appendixes are to be
 considered part of the requirements.
 
-50                                                                                © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 58 -->
+
+50                                                                                © ISO/IEC 2009 – All rights reserved
+                                                                                             ISO/IEC CD 29148
+
+
 
                                                   Annex A
                                                (informative)
 
                                          Operational Concept
+
+
 
 A.1 Overview
 An Operational Concept describes what the system will do (not how it will do it) and why (rationale). A OpsCon
@@ -3246,6 +3540,7 @@ required of the system; setting of priorities for the requirements.
 A separate OpsCon document enables the engineering team during development of the SyRS to focus more
 on the technical community and the vocabulary and knowledge base of the system developers, testers and
 maintainers.
+
 
 A.2 Operational concept document (OpsCon) document
 This clause describes each of the essential elements of a OpsCon document. Each version of a OpsCon
@@ -3275,9 +3570,12 @@ to which this OpsCon applies. If related OpsCon documents for an overall system 
 hierarchical or network manner, the position of this document relative to other OpsCon documents should be
 described.
 
-© ISO/IEC 2009 – All rights reserved                                                                             51
 
-<!-- Page 59 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                             51
+ISO/IEC CD 29148
+
+
 
 A.2.1.2   Document overview (Section 1.2 of the OpsCon)
 
@@ -3336,9 +3634,13 @@ to accomplish them. The modes of operation, classes of users, and interfaces to 
 define the scope of the proposed system, which are summarized in this clause and defined in greater detail in
 subsequent clauses.
 
-52                                                                                 © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 60 -->
+
+
+52                                                                                 © ISO/IEC 2009 – All rights reserved
+                                                                                              ISO/IEC CD 29148
+
+
 
 A.2.3.2     Operational policies and constraints (Section 3.2 of the OpsCon document)
 
@@ -3391,9 +3693,12 @@ of the current system should be described.
 The author(s) of a OpsCon document should organize the information in this clause as appropriate to the
 system or situation, as long as a clear description of the existing system is achieved. If parts of the
 
-© ISO/IEC 2009 – All rights reserved                                                                             53
 
-<!-- Page 61 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                             53
+ISO/IEC CD 29148
+
+
 
 descriptions are voluminous, they can be included in an appendix or incorporated by reference. An example of
 material that might be included in an appendix would be a data dictionary. An example of material to be
@@ -3455,9 +3760,13 @@ This clause describes the support concepts and support environment for the curre
 support agency or agencies; facilities; equipment; support software; repair or replacement criteria;
 maintenance levels and cycles; and storage, distribution, and supply methods.
 
-54                                                                                  © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 62 -->
+
+
+54                                                                                  © ISO/IEC 2009 – All rights reserved
+                                                                                            ISO/IEC CD 29148
+
+
 
 A.2.4 Justification for and nature of changes (Section 4 of the OpsCon)
 
@@ -3512,9 +3821,13 @@ A.2.4.3     Priorities among changes (Section 4.3 of the OpsCon)
 This clause identifies priorities among the desired changes and new features. Each change should be
 classified as essential, desirable, or optional. Desirable and optional changes should be prioritized within their
 
-© ISO/IEC 2009 – All rights reserved                                                                           55
 
-<!-- Page 63 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                           55
+ISO/IEC CD 29148
+
+
 
 classes. If there is no existing system on which to base changes, this clause should classify and prioritize the
 features of the proposed system.
@@ -3575,9 +3888,12 @@ techniques proposed to achieve those goals. The modes of operation, classes of u
 operational environment define the scope of the proposed system, which are summarized in this clause and
 defined in greater detail in subsequent clauses.
 
-56                                                                                © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 64 -->
+
+56                                                                                © ISO/IEC 2009 – All rights reserved
+                                                                                              ISO/IEC CD 29148
+
+
 
 A.2.5.2     Operational policies and constraints (Section 5.2 of the OpsCon)
 
@@ -3629,9 +3945,13 @@ The author(s) of a OpsCon should organize the information in this clause as appr
 situation, as long as a clear description of the proposed system is achieved. If parts of the description are
 voluminous, they can be included in an appendix or incorporated by reference. An example of material that
 
-© ISO/IEC 2009 – All rights reserved                                                                           57
 
-<!-- Page 65 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                           57
+ISO/IEC CD 29148
+
+
 
 might be included in an appendix would be a data dictionary. An example of material to be included by
 reference might be a detailed manual of operation policies and procedures for the proposed system.
@@ -3670,6 +3990,7 @@ education, background, skill level, activities, and envisioned modes of interact
 
 A.2.5.5.3     Interactions among user classes (Section 5.5.3 of the OpsCon)
 
+
 This clause describes interactions among the various user classes that may be involved with the proposed
 system. In particular, interaction among user groups, operators, and maintainers should be described.
 Interactions that will occur among the users of the proposed system, and between users and non-users, both
@@ -3689,9 +4010,13 @@ This clause describes the support concepts and support environment for the propo
 support agency or agencies; facilities; equipment; support software; repair or replacement criteria;
 maintenance levels and cycles; and storage, distribution, and supply methods.
 
-58                                                                                   © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 66 -->
+
+
+58                                                                                   © ISO/IEC 2009 – All rights reserved
+                                                                                             ISO/IEC CD 29148
+
+
 
 A.2.6 Operational scenarios (Section 6 of the OpsCon)
 
@@ -3750,9 +4075,12 @@ on the user, development, and support or maintenance agency or agencies during o
 system. These impacts may include the following:
 - Interfaces with primary or alternate computer operating centres;
 
-© ISO/IEC 2009 – All rights reserved                                                                             59
 
-<!-- Page 67 -->
+
+© ISO/IEC 2009 – All rights reserved                                                                             59
+ISO/IEC CD 29148
+
+
 
 - Changes in procedure;
 - Use of new data sources;
@@ -3801,9 +4129,13 @@ the benefits should be related to deficiencies identified in 4.1 of the OpsCon.
 - Deleted capabilities. Unused, obsolete, confusing, or dangerous capabilities removed.
 - Improved performance. Better response time, reduced storage requirements, improved quality, etc.
 
-60                                                                                  © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 68 -->
+
+
+60                                                                                  © ISO/IEC 2009 – All rights reserved
+                                                                                           ISO/IEC CD 29148
+
+
 
 A.2.8.2     Disadvantages and limitations (Section 8.2 of the OpsCon)
 
@@ -3844,14 +4176,20 @@ updated during the processes of concept analysis and development of the OpsCon d
 unnecessary work due to misinterpretations, all definitions should be reviewed and agreed upon by all
 involved parties.
 
-© ISO/IEC 2009 – All rights reserved                                                                          61
 
-<!-- Page 69 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                          61
+ISO/IEC CD 29148
+
+
 
                                                   Annex B
                                                (Informative)
 
                     Software Requirement Specification Templates
+
+
 
 B.1 Template of SRS Section 3 organized by mode: Version 1
      3. Specific requirements
@@ -3882,6 +4220,7 @@ B.1 Template of SRS Section 3 organized by mode: Version 1
      3.5 Software system attributes
      3.6 Other requirements
 
+
 B.2 Template of SRS Section 3 organized by mode: Version 2
      3. Specific requirements
      3.1. Functional requirements
@@ -3889,9 +4228,12 @@ B.2 Template of SRS Section 3 organized by mode: Version 2
                3.1.1.1 External interfaces
                         3.1.1.1.1 User interfaces
 
-62                                                             © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 70 -->
+
+62                                                             © ISO/IEC 2009 – All rights reserved
+                                                                 ISO/IEC CD 29148
+
+
 
                            3.1.1.1.2 Hardware interfaces
                            3.1.1.1.3 Software interfaces
@@ -3911,6 +4253,7 @@ B.2 Template of SRS Section 3 organized by mode: Version 2
      3.2 Design constraints
      3.3 Software system attributes
      3.4 Other requirements
+
 
 B.3 Template of SRS Section 3 organized by user class
      3. Specific requirements
@@ -3938,13 +4281,17 @@ B.3 Template of SRS Section 3 organized by user class
                    3.2.m.n Functional requirement m.n
      3.3 Performance requirements
 
-© ISO/IEC 2009 – All rights reserved                                          63
 
-<!-- Page 71 -->
+
+© ISO/IEC 2009 – All rights reserved                                          63
+ISO/IEC CD 29148
+
+
 
      3.4 Design constraints
      3.5 Software system attributes
      3.6 Other requirements
+
 
 B.4 Template of SRS Section 3 organized by object
      3. Specific requirements
@@ -3978,6 +4325,7 @@ B.4 Template of SRS Section 3 organized by object
      3.5 Software system attributes
      3.6 Other requirements
 
+
 B.5 Template of SRS Section 3 organized by feature
      3. Specific requirements
      3.1 External interface requirements
@@ -3985,9 +4333,11 @@ B.5 Template of SRS Section 3 organized by feature
          3.1.2 Hardware interfaces
          3.1.3 Software interfaces
 
-64                                                                          © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 72 -->
+64                                                                          © ISO/IEC 2009 – All rights reserved
+                                                                ISO/IEC CD 29148
+
+
 
           3.1.4 Communications interfaces
      3.2 System features
@@ -4013,6 +4363,7 @@ B.5 Template of SRS Section 3 organized by feature
      3.5 Software system attributes
      3.6 Other requirements
 
+
 B.6 Template of SRS Section 3 organized by stimulus
      3. Specific requirements
      3.1 External interface requirements
@@ -4034,9 +4385,12 @@ B.6 Template of SRS Section 3 organized by stimulus
           3.2.m Stimulus m
                    3.2.m.1 Functional requirement m.1
 
-© ISO/IEC 2009 – All rights reserved                                         65
 
-<!-- Page 73 -->
+
+© ISO/IEC 2009 – All rights reserved                                         65
+ISO/IEC CD 29148
+
+
 
                 .
                 .
@@ -4046,6 +4400,7 @@ B.6 Template of SRS Section 3 organized by stimulus
      3.4 Design constraints
      3.5 Software system attributes
      3.6 Other requirements
+
 
 B.7 Template of SRS Section 3 organized by functional hierarchy
      3. Specific requirements
@@ -4080,9 +4435,13 @@ B.7 Template of SRS Section 3 organized by functional hierarchy
                   3.2.2.2.1 Input data entities
                   3.2.2.2.2 Algorithm or formula of process
 
-66                                                            © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 74 -->
+
+
+66                                                            © ISO/IEC 2009 – All rights reserved
+                                                                  ISO/IEC CD 29148
+
+
 
                       3.2.2.2.3 Affected data entities
             .
@@ -4128,14 +4487,18 @@ B.7 Template of SRS Section 3 organized by functional hierarchy
                       3.2.4.q.4 Precision/Accuracy
                       3.2.4.q.5 Range
 
-© ISO/IEC 2009 – All rights reserved                                           67
 
-<!-- Page 75 -->
+
+© ISO/IEC 2009 – All rights reserved                                           67
+ISO/IEC CD 29148
+
+
 
      3.3 Performance requirements
      3.4 Design constraints
      3.5 Software system attributes
      3.6 Other requirements
+
 
 B.8 Template of SRS Section 3 showing multiple organizations
 3. Specific requirements
@@ -4174,14 +4537,20 @@ B.8 Template of SRS Section 3 showing multiple organizations
 3.5 Software system attributes
 3.6 Other requirements
 
-68                                                              © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 76 -->
+
+
+68                                                              © ISO/IEC 2009 – All rights reserved
+                                                                                   ISO/IEC CD 29148
+
+
 
                                              Annex C
                                           (Informative)
 
                Process Mapping from ISO/IEC 15288 and ISO/IEC 12207
+
+
 
 C.1 Stakeholder requirements definition process
 Table C-1 identifies the activities involved in the stakeholder requirements definition process and the
@@ -4189,9 +4558,13 @@ applicable subclause in Clause 6 with additional application guidance. The detai
 ISO/IEC 15288 and ISO/IEC 12207 have some different headings and language, but have been aligned to
 match the equivalent processes.
 
-© ISO/IEC 2009 – All rights reserved                                                                69
 
-<!-- Page 77 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                69
+ISO/IEC CD 29148
+
+
 
 ISO/IEC 15288 Section                                   ISO/IEC 12207 Section                                         ISO/IEC
                                                                                                                        29148
@@ -4261,9 +4634,13 @@ life cycle and beyond.                                  1)    The project shall 
                                                         requirements in a form suitable for requirements
                                                         management through the life cycle and beyond.
 
-70                                                                                           © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 78 -->
+
+
+70                                                                                           © ISO/IEC 2009 – All rights reserved
+                                                                                                           ISO/IEC CD 29148
+
+
 
 ISO/IEC 15288 Section                                     ISO/IEC 12207 Section                                     ISO/IEC
                                                                                                                      29148
@@ -4274,9 +4651,11 @@ the sources of stakeholder need.                          requirements traceabil
      Table C-A.1 — A.A.Mapping of 15288, 12207, and 29148 clauses on Stakeholder Requirements
                                          Definition Process
 
+
 C.2 Requirements analysis Process
 Table C-2 identifies the activities involved in the requirements analysis process and the applicable subclause
 in Clause 6 with additional application guidance.
+
 
 ISO/IEC 15288                                             ISO/IEC 12207                                             ISO/IEC
                                                                                                                      29148
@@ -4324,9 +4703,14 @@ requirements to address the needs and expectations.
 3) Demonstrate traceability between the system            Note: [see 6.4.2.3.2 a) above]                             6.3.3.2 3)
 requirements and the stakeholder requirements.
 
-© ISO/IEC 2009 – All rights reserved                                                                                          71
 
-<!-- Page 79 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                                                          71
+ISO/IEC CD 29148
+
+
+
 
 ISO/IEC 15288                                           ISO/IEC 12207                                                 ISO/IEC
                                                                                                                        29148
@@ -4335,6 +4719,7 @@ of system requirements together with the
 associated rationale, decisions and assumptions.
 
      Table C-A.2 — Mapping of 15288, 12207, and 29148 clauses on Requirements Analysis Process
+
 
 C.3 Other technical requirements-related processes
 Table C-3 identifies requirements activities in other technical processes and the applicable subclause in
@@ -4383,9 +4768,13 @@ to the specified design requirements.                   a) Test coverage of syst
                                                         b) Conformance to expected results;
                                                         c) Feasibility of operation and maintenance.
 
-72                                                                                           © ISO/IEC 2009 – All rights reserved
 
-<!-- Page 80 -->
+
+
+72                                                                                           © ISO/IEC 2009 – All rights reserved
+                                                                                ISO/IEC CD 29148
+
+
 
 ISO/IEC 15288                                          ISO/IEC 12207                      ISO/IEC
                                                                                            29148
@@ -4397,11 +4786,16 @@ of services to stakeholder requirements.
 
         Table C-A.3 — Mapping of 15288, 12207, and 29148 clauses on Other Technical Processes
 
-© ISO/IEC 2009 – All rights reserved                                                              73
 
-<!-- Page 81 -->
+
+
+© ISO/IEC 2009 – All rights reserved                                                              73
+ISO/IEC CD 29148
+
+
 
                                             Bibliography
+
 
 Bibliography
 [1] ISO/IEC 9126-1, Software engineering – Product Quality – Part 1 Quality model
@@ -4450,4 +4844,8 @@ Bibliography
 
 [19] Systems Engineering Handbook, Version 3.1, International Council on Systems Engineering, August 2007
 
+
+
+
 74                                                                            © ISO/IEC 2009 – All rights reserved
+

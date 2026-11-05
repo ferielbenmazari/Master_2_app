@@ -1,12 +1,10 @@
-<!-- Source: ressources/S3__ISI1/EPI/5_on NFRs.pdf | pdftotext -layout | 6 pages -->
-
-<!-- Page 1 -->
-
                                  On Non-Functional Requirements
+
 
                                             Martin Glinz
                       Department of Informatics, University of Zurich, Switzerland
                                           glinz@ifi.uzh.ch
+
 
                       Abstract                              requirements concerning the functionality of a system
                                                             and other requirements.
@@ -53,10 +51,7 @@ paper ends with a discussion of these concepts.             3. Where is the prob
 ample [7], [11], [12]), we find a distinction between       sentation problems.
 
 Proceedings of the 15th IEEE International Requirements Engineering Conference, Delhi, India.
-
-<!-- Page 2 -->
-
-Table 1. Definitions of the term non-functional requirement(s) (listed in alphabetical order of sources)
+Table 1. Definitions of the term non-functional requirement(s) (listed in alphabetical order of sources)
 Source                   Definition
 Antón [1]                Describe the nonbehavioral aspects of a system, capturing the properties and constraints under
                          which a system must operate.
@@ -89,6 +84,7 @@ tional Requirements [22] specific behaviors.
 Wikipedia: Requirements Requirements which impose constraints on the design or implementation (such as performance
 Analysis [23]            requirements, quality standards, or design constraints).
 
+
 3.1. Definition problems                                           ance and constraints. On the other hand, in the defini-
                                                                    tion by Davis [3], every non-functional requirement is
    When analyzing the definitions in Table 1, we find              an attribute of the system.
@@ -111,10 +107,7 @@ and Antón [1] exclude them.                                        among the ex
    Attribute is a term that is used both with a broad and          striction should be. For example, IEEE 830-1998 [7] or
 a narrow meaning. In IEEE 830-1998 [7], attributes are             Jacobson, Booch and Rumbaugh [10] restrict the
 a collection of specific qualities, excluding perform-             meaning of constraint to design constraints and physi-
-
-<!-- Page 3 -->
-
-cal constraints. Others, for example the definition in      non-functional requirements. Davis [3] regards them as
+cal constraints. Others, for example the definition in      non-functional requirements. Davis [3] regards them as
 the Wikipedia article on requirements analysis [23], do     qualities and uses Boehm’s quality tree [2] as a sub-
 not treat constraints as a sub-category of non-func-        classification for non-functional requirements. The
 tional requirements, but consider every non-functional      IEEE standard 830-1998 on Software Requirements
@@ -170,10 +163,7 @@ which is so vague that it could mean almost anything.       the documentation of
                                                             prominent example for this documentation style. In
    When analyzing the definitions given in Table 1, we      IEEE 830-1998 [7], seven of the eight proposed SRS
 also find rather divergent concepts for sub-classifying     templates also separate the functional requirements
-
-<!-- Page 4 -->
-
-completely from the non-functional ones. On the other       requirement’ and ‘non-functional requirement’ is too
+completely from the non-functional ones. On the other       requirement’ and ‘non-functional requirement’ is too
 hand, when documenting requirements in a use-case-          radical. When practicing requirements engineering,
 oriented style according to the Rational Unified Proc-      there is a need to distinguish functional concerns from
 ess [10], non-functional requirements are attached to       other, “non-functional” concerns and there is also a
@@ -229,10 +219,7 @@ Figure 1. A faceted classification of requirements             A specific qualit
                                                             meeting the functional requirements.
    However, when using this classification it turned           A constraint is a requirement that constrains the
 out that the idea of getting rid of the terms ‘functional   solution space beyond what is necessary for meeting
-
-<!-- Page 5 -->
-
-the given functional, performance, and specific quality               the system does  functional requirement; How the
+the given functional, performance, and specific quality               the system does  functional requirement; How the
 requirements.                                                         system behaves  non-functional requirement’ [4] is
     An attribute is a performance requirement or a spe-               too coarse and leads to mis-classifications when attrib-
 cific quality requirement.                                            utes and constraints are represented functionally or
@@ -294,10 +281,7 @@ functional, performance, specific quality, or constraint.             accelerato
 the task of classifying a given requirement becomes                   software for such a detector, one of the first answers a physicist typi-
 easier and less ambiguous. The often heard rule ‘What                 cally would give would be that the system must be able to cope with
                                                                       the data volume. However, this is a performance requirement.
-
-<!-- Page 6 -->
-
-guage [13], [14] where we identify a dominant func-            [4]  X. Franch (1998). Systematic Formulation of Non-
+guage [13], [14] where we identify a dominant func-            [4]  X. Franch (1998). Systematic Formulation of Non-
 tional concern and decompose the system model hier-                 Functional Characteristics of Software. Proc. 3rd Int'l
 archically according to the structure of this concern.              Conf. Requirements Engineering (ICRE’98). 174-181.
 All other concerns are modeled as aspects of this pri-         [5] M. Glinz (2005). Rethinking the Notion of Non-Func-
@@ -362,3 +346,4 @@ References                                                     [20] I. Sommervil
       ference on Software Engineering. 592-605.                [23] Wikipedia: Requirements Analysis http://en.wikipedia.org
 [3]   A. Davis (1993). Software Requirements: Objects, Func-        /wiki/Requirements_analysis (visited 2007-07-05)
       tions and States. Prentice Hall.
+

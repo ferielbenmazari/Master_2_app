@@ -1,7 +1,3 @@
-<!-- Source: ressources/S3__ISI1/EPI/4_chaos-report.pdf | pdftotext -layout | 8 pages -->
-
-<!-- Page 1 -->
-
          THE STANDISH GROUP REPORT
   © The Standish Group 1995. Reprinted here for sole academic purposes with written
                        permission from The Standish Group.
@@ -12,6 +8,9 @@ they used too much stone, and as a result, far too much labor to build. Over the
   have learned to build bridges more efficiently, using fewer materials and less labor to
                                 perform the same task."
                             Tom Clancy (The Sum of All Fears)
+
+
+
 
 INTRODUCTION
 In 1986, Alfred Spector, president of Transarc Corporation, co-authored a paper comparing
@@ -40,6 +39,7 @@ identify: -
    •   The major factors that cause software projects to fail
    •   The key ingredients that can reduce project failures
 
+
 FAILURE RECORD
 In the United States, we spend more than $250 billion each year on IT application development
 of approximately 175,000 projects. The average cost of a development project for a large
@@ -48,11 +48,11 @@ $434,000. A great many of these projects will fail. Software development project
 and we can no longer imitate the three monkeys -- hear no failures, see no failures, speak no
 failures.
 
+
+
+
 Chaos Report                                                                                    1
-
-<!-- Page 2 -->
-
-The Standish Group research shows a staggering 31.1% of projects will be cancelled before
+The Standish Group research shows a staggering 31.1% of projects will be cancelled before
 they ever get completed. Further results indicate 52.7% of projects will cost 189% of their
 original estimates. The cost of these failures and overruns are just the tip of the proverbial
 iceberg. The lost opportunity costs are not measurable, but could easily be in the trillions of
@@ -80,6 +80,7 @@ feel that there are more failures currently than just five years ago. The good n
 50% feel there are fewer or the same number of failures today than there were five and ten
 years ago.
 
+
 METHODOLOGY
 The survey made by The Standish Group was as thorough as possible, short of the
 unreachable goal of surveying every company with MIS in the country. The results are based on
@@ -104,11 +105,11 @@ For purposes of the study, projects were classified into three resolution types:
 Overall, the success rate was only 16.2%, while challenged projects accounted for 52.7%, and
 impaired (cancelled) for 31.1%.
 
+
+
+
 Chaos Report                                                                                    2
-
-<!-- Page 3 -->
-
-FAILURE STATISTICS
+FAILURE STATISTICS
 The Standish Group further segmented these results by large, medium and small companies. A
 large company is any company with greater than $500 million dollars in revenue per year, a
 medium company is defined as having $200 million to $500 million in yearly revenue, and a
@@ -157,11 +158,11 @@ Under 20%                 13.9%
 201 - 400%                11.2%
 Over 400%                 1.1%
 
+
+
+
 Chaos Report                                                                                    3
-
-<!-- Page 4 -->
-
-Content Deficiencies
+Content Deficiencies
 For challenged projects, more than a quarter were completed with only 25% to 49% of
 originally-specified features and functions. On average, only 61% of originally specified features
 and functions were available on these projects. Large companies have the worst record with
@@ -177,6 +178,7 @@ Less Than 25%             4.6%
 
 Currently, the 365 companies have a combined 3,682 applications under development. Only
 431 or 12% of these projects are on-time and on-budget.
+
 
 SUCCESS/FAILURE PROFILES
 The most important aspect of the research is discovering why projects fail. To do this, The
@@ -214,11 +216,10 @@ Project Challenged Factors                                                % of R
 10. New Technology                                                        3.7%
 Other                                                                     23.0%
 
+
+
 Chaos Report                                                                                    4
-
-<!-- Page 5 -->
-
-Opinions about why projects are impaired and ultimately cancelled ranked incomplete
+Opinions about why projects are impaired and ultimately cancelled ranked incomplete
 requirements and lack of user involvement at the top of the list.
 
 Project Impaired Factors                                                  % of Responses
@@ -244,6 +245,7 @@ Somewhat More Failures                       21%                       29%
 No Change                                    11%                       23%
 Somewhat Fewer Failures                      19%                       23%
 Significantly Fewer Failures                 22%                       8%
+
 
 FOCUS GROUPS
 To augment the survey results, The Standish Group conducted four focus groups with IT
@@ -273,11 +275,9 @@ even more scathing comment on politics: "Sometimes you have to make a decision y
 like. Even against your own nature. You say well, it's wrong, but you make that decision
 anyway. It's like taking a hammer to your toe. It hurts."
 
+
 Chaos Report                                                                                     5
-
-<!-- Page 6 -->
-
-Bob, the Director of MIS at a hospital, commented on external factors contributing to project
+Bob, the Director of MIS at a hospital, commented on external factors contributing to project
 failure. "Our biggest problem is competing priorities," he said. "We just had a reorganization
 today. So now that's going to sap all the resources. And explaining to senior management that,
 'Well, it's really taking us the time we said it was going to take. But because you've reorganized
@@ -294,6 +294,7 @@ The comment most indicative of the chaos in project development came from Sid, a
 manager at an insurance company. "The project was two years late and three years in
 development," he said. "We had thirty people on the project. We delivered an application the
 user didn't need. They had stopped selling the product over a year before."
+
 
 CASE STUDIES
 For further insight into failure and success, The Standish Group looked carefully at two famous
@@ -326,11 +327,11 @@ The DMV project was not rocket science. There are much harder applications than 
 licenses and registrations. But because of internal state politics, unclear objectives, and poor
 planning, the project was doomed from the start.
 
+
+
+
 Chaos Report                                                                                      6
-
-<!-- Page 7 -->
-
-American Airlines
+American Airlines
 Early in 1994, American Airlines settled their lawsuit with Budget Rent-A-Car, Marriott Corp. and
 Hilton Hotels after the $165 million CONFIRM car rental and hotel reservation system project
 collapsed into chaos.
@@ -375,11 +376,11 @@ implement a client-server architecture that maximizes the potential of this arch
 Executive leadership, a well-communicated plan, and a skilled diverse team provided the
 foundation for Banco Itamarati to achieve their long-term goal, potentially ahead of schedule.
 
+
+
+
 Chaos Report                                                                                     7
-
-<!-- Page 8 -->
-
-CASE STUDY CONCLUSIONS
+CASE STUDY CONCLUSIONS
 The study of each project included adding up success points on the "success potential" chart.
 
                                                               CONFIR
@@ -401,6 +402,7 @@ With only 10 success points, the DMV project had virtually no chance of success.
 success points, Hyatt's reservation project had all the right ingredients for success. With only 29
 success points, the CONFIRM project had little chance of success. With 85, Itamarati, while not
 as assured as Hyatt, started with a high success probability.
+
 
 THE BRIDGE TO SUCCESS
 Notwithstanding, this study is hardly in-depth enough to provide a real solution to such a
@@ -427,4 +429,8 @@ in either luck or failure. If you begin with luck, you learn nothing but arrogan
 begin with failure and learn to evaluate it, you also learn to succeed. Failure begets knowledge.
 Out of knowledge you gain wisdom, and it is with wisdom that you can become truly successful.
 
+
+
+
 Chaos Report                                                                                      8
+

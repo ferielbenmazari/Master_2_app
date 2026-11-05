@@ -1,126 +1,27 @@
-<!-- Source: ressources/S3__ISI1/EPI/2_Certification.pdf | pdftotext -layout | 9 pages -->
-
-<!-- Page 1 -->
-
-Les
-  schémas
-  d
-  certification
-  en
-
-   Ingénierie
-  des
-  Exigences
-
-                  Camille
-  Salinesi
-
-         Université
-  Paris
-  1
-  Panthéon
-  -­‐
-  Sorbonne
-
-<!-- Page 2 -->
-
-                                    Certifications
-
-•   IREB:
-  CPRE
-  «
-  Certified
-  Professional
-  in
-  Requirements
-  Engineering
-  »
-
-     – hGp://cms.specief.org/conc/index.php/ireb/
-
-     – hGp://www.ireb.org/en/
-
-•   IIBA
-  (International
-  Institute
-  of
-  Business
-  Analysis)
-
-    hGp://www.iiba.org/babok-­‐guide/Agile-­‐Extension-­‐to-­‐the-­‐BABOK-­‐Guide-­‐IIBA.aspx
-
-•   CFTL:
-  REQB
-  «
-  Requirements
-  Engineering
-  Qualification
-  Board
-  »
-
-•   Agile
-  Requirement
-  Institute:
-  «
-  Certified
-  Agile
-  Requirements
-  Expert
-  »
-
-  hGp://agile-­‐requirements-­‐institute.org
-
-•   PMI:
-  «
-  BA
-  certificate
-
-  »
-
-    hGp://www.pmi.org/Certification/PMI-­‐Professional-­‐in-­‐Business-­‐Analysis-­‐PMI-­‐
-    PBA.aspx
-
-•   UXQB
-  :
-  «Ccertification
-  on
-  User
-  Experience
-  »
-
-    hGp://www.uxqb.org/en/
-
-•   iSQI
-  :
-  «
-  Agile
-  Business
-  Analysis
-  »
-  certification
-
-    hGps://www.isqi.org/de/certview.html?CertificateID=51
-
-•   ISPMA
-  (International
-  So]ware
-  Product
-  Management
-  Association)
-
-•   BCS
-  :
-  British
-  Computer
-  Society
-
-<!-- Page 3 -->
-
-L’IREB
-
-<!-- Page 4 -->
-
-The IREB – Engaged RE professionals
+Les	  schémas	  d	  cer,ﬁca,on	  en	  
+   Ingénierie	  des	  Exigences	  
+                  Camille	  Salinesi	  
+         Université	  Paris	  1	  Panthéon	  -­‐	  Sorbonne	  
+                                    Cer,ﬁca,ons	  
+•   IREB:	  CPRE	  «	  Cer,ﬁed	  Professional	  in	  Requirements	  Engineering	  »	  
+     – hGp://cms.specief.org/conc/index.php/ireb/	  
+     – hGp://www.ireb.org/en/	  
+•   IIBA	  (Interna,onal	  Ins,tute	  of	  Business	  Analysis)	  
+    hGp://www.iiba.org/babok-­‐guide/Agile-­‐Extension-­‐to-­‐the-­‐BABOK-­‐Guide-­‐IIBA.aspx	  
+•   CFTL:	  REQB	  «	  Requirements	  Engineering	  Qualiﬁca,on	  Board	  »	  
+•   Agile	  Requirement	  Ins,tute:	  «	  Cer,ﬁed	  Agile	  Requirements	  Expert	  »	  	  
+    	  hGp://agile-­‐requirements-­‐ins,tute.org	  
+•   PMI:	  «	  BA	  cer,ﬁcate	  	  »	  
+    hGp://www.pmi.org/Cer,ﬁca,on/PMI-­‐Professional-­‐in-­‐Business-­‐Analysis-­‐PMI-­‐
+    PBA.aspx	  
+•   UXQB	  :	  «Ccer,ﬁca,on	  on	  User	  Experience	  »	  
+    hGp://www.uxqb.org/en/	  
+•   iSQI	  :	  «	  Agile	  Business	  Analysis	  »	  cer,ﬁca,on	  
+    hGps://www.isqi.org/de/certview.html?Cer,ﬁcateID=51	  
+•   ISPMA	  (Interna,onal	  So]ware	  Product	  Management	  Associa,on)	  
+•   BCS	  :	  Bri,sh	  Computer	  Society	  
+L’IREB	  
+The IREB – Engaged RE professionals
 
      International Requirements Engineering Board (IREB)
        Members of the board
@@ -138,14 +39,13 @@ The IREB – Engaged RE professionals
          • Translations of the artifacts: English, French, German, Polish,
            Spanish, Portuguese (Brazil)
          • Publishing of articles, textbooks and references
-
-<!-- Page 5 -->
-
-The CPRE
+                                                                             4	  
+The CPRE
 
     The principles of the certification
 
               IREB GmbH   Training Providers
+
 
        International
        Requirements       IREB GmbH
@@ -153,18 +53,19 @@ The CPRE
         Engineering                              Exam candidates
        Board (IREB)
 
+
               IREB GmbH
 
                           Certification Bodies
 
+
         Allocation of tasks to clearly separated and independent
         organizations ensures fairness and neutrality.
-
-<!-- Page 6 -->
-
-The CPRE - The goals
+                                                                   5	  
+The CPRE - The goals
 
       Goals of the CPRE
+
 
         establish a common terminology in RE
         provide international accepted techniques
@@ -173,9 +74,11 @@ The CPRE - The goals
          RE
         improve the current practice of RE
 
-<!-- Page 7 -->
 
-The CPRE
+
+
+                                                              6	  
+The CPRE
 
     Certified Professional for Requirements Engineering
 
@@ -188,9 +91,12 @@ The CPRE
       CPRE Foundation Level
        • accessible to everyone, as there are no prerequisites
 
-<!-- Page 8 -->
 
-The CPRE - Three level certification program
+
+
+                                                                 7	  
+The CPRE - Three level certification program
+
 
                          CPRE Advanced Level
                          • Mastering and using methods and
@@ -200,16 +106,18 @@ The CPRE - Three level certification program
                     AL      •   Requirements Modeling
                             •   Requirements Management – in work
 
+
+
+
                  CPRE Foundation Level
            FL    • Fundamental understanding of domain,
                    methodology and available techniques
 
                 Most important education in RE worldwide
                 - besides university education!
+                                                                             8	  
+The CPRE - Foundation Level        FL
 
-<!-- Page 9 -->
-
-The CPRE - Foundation Level        FL
 
         Fundamental understanding of RE
         Languages
@@ -221,3 +129,9 @@ The CPRE - Foundation Level        FL
           • English
           • German
             Portuguese (Brazil)
+
+
+
+
+                                                                      9	  
+

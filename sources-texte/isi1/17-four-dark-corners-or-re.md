@@ -1,7 +1,3 @@
-<!-- Source: ressources/S3__ISI1/EPI/17_four dark corners or RE.pdf | pdftotext -layout | 30 pages -->
-
-<!-- Page 1 -->
-
 Four Dark Corners of Requirements
 Engineering
 PAMELA ZAVE
@@ -9,6 +5,7 @@ AT&T Research
 and
 MICHAEL JACKSON
 AT&T Research and MAJ Consulting Limited
+
 
 Research in requirements engineering has produced an extensive body of knowledge, but there
 are four areas in which the foundation of the discipline seems weak or obscure. This article
@@ -26,6 +23,9 @@ tions—methodologies
 General Terms: Theory, Verification
 Additional Key Words and Phrases: Control of actions, domain knowledge, implementation
 bias, refinement of requirements
+
+
+
 
 1. INTRODUCTION
 There was a time when the epigram “requirements say what the system
@@ -47,10 +47,7 @@ and / or a fee.
 © 1997 ACM 1049-331X/97/0100 –0001 $03.50
 
                ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997, Pages 1–30.
-
-<!-- Page 2 -->
-
-2      •     Pamela Zave and Michael Jackson
+2      •     Pamela Zave and Michael Jackson
 
    Despite this progress, we have identified four areas in which the founda-
 tion of the discipline seems weak or obscure. This article attempts to shine
@@ -93,15 +90,15 @@ current and future approaches to requirements engineering.
 does not cover the sociological aspects of requirements engineering, such as
 how to communicate with customers or resolve their conflicts.
 
+
 1
  Throughout this article we use “system” only to refer to a general artifact that might have
 both manual and automatic components, such as an “airline reservation system.” Whenever
 we are referring to the computer-based artifact that is the target of software development, we
 use the more precise term “machine.”
 
-<!-- Page 3 -->
-
-                             Four Dark Corners of Requirements Engineering                 •     3
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                             Four Dark Corners of Requirements Engineering                 •     3
 
   There are many additional motivations and ramifications not covered in
 this article [Jackson 1995b]. Although this article uses many brief and
@@ -151,9 +148,8 @@ because it is highly overloaded in computing. It also carries the unfortunate co
 the logic is real and important, while any correspondence it might have to the world is casual
 and incidental.
 
-<!-- Page 4 -->
-
-4      •     Pamela Zave and Michael Jackson
+             ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+4      •     Pamela Zave and Michael Jackson
 
 quantities of interest and their mathematical representations must be
 carefully defined” and claims to have demonstrated that “the use of prose in
@@ -201,10 +197,8 @@ goal has been stated too narrowly. Is not the real goal to ensure the
 profitability of the zoo? Should they consider other ways of improving
 profits, such as cutting costs? What if there is more money to be made by
 closing the zoo and selling the land? And what is the goal of profit? If the
-
-<!-- Page 5 -->
-
-                           Four Dark Corners of Requirements Engineering                 •     5
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •     5
 
 goal of profit is the happiness of the zoo owner, would religion or devotion
 to family be more effective? Obviously there is something wrong here.
@@ -252,10 +246,8 @@ how it does it. More precisely, requirements are supposed to describe what
 is observable at the interface between the environment and the machine,
 and nothing else about the machine. To say anything else about the
 machine is regarded as implementation bias.
-
-<!-- Page 6 -->
-
-6      •     Pamela Zave and Michael Jackson
+           ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+6      •     Pamela Zave and Michael Jackson
 
    State is used frequently in specifications and specification languages.
 Very few machines are simple or specialized enough to be specified entirely
@@ -303,10 +295,8 @@ brings freedom from implementation bias into conflict with maintainabil-
 ity.
   Lamport’s solution to the problem of implementation bias focuses on the
 exact relationship between the specification and an implementation that
-
-<!-- Page 7 -->
-
-                           Four Dark Corners of Requirements Engineering                 •     7
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •     7
 
 satisfies it [Lamport 1989]. In his method, the machine has an unspecified
 state space S. Each state component c i used in the specification is actually
@@ -323,6 +313,7 @@ mentation states can map to the same specification state. This accommo-
 dates the realistic situation in which a single specification action is
 implemented by dozens or even thousands of separate implementation
 actions.
+
 
 3.2 Requirements Exist Only in the Environment
 A portion of the real world becomes the “environment” of a development
@@ -354,10 +345,8 @@ the implementation.
    Some of our examples are given in Gries and Schneider’s equational logic
 [Gries and Schneider 1993]. Time and temporal properties are encoded in
 logic as follows [Zave and Jackson 1993].
-
-<!-- Page 8 -->
-
-8      •     Pamela Zave and Michael Jackson
+           ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+8      •     Pamela Zave and Michael Jackson
 
   We assume that actions are atomic and sequential. They are represented
 by distinct individuals satisfying the predicate action(a). The binary pred-
@@ -406,10 +395,8 @@ for which predicate R(i) holds. The “accumulation” of      is a conjunction;
 the “accumulation” of   is a disjunction; and the “accumulation” of 1 is an
 arithmetic sum. We have also extended earlier to cover pauses as well as
 actions.
-
-<!-- Page 9 -->
-
-                           Four Dark Corners of Requirements Engineering                 •     9
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •     9
 
   An important optative property of this environment is that a withdrawal
 request leads to a withdrawal payout, provided that the requested amount
@@ -458,10 +445,8 @@ portions of the real world. Given the thin spread of domain knowledge
 contribution.
    Another consequence of the difference concerns designations. Obviously,
 an implemented machine often maintains internal state that mimics the
-
-<!-- Page 10 -->
-
-10      •      Pamela Zave and Michael Jackson
+           ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+10      •      Pamela Zave and Michael Jackson
 
 current environment state. The imitation is usually imperfect, however,
 because there may be delay, errors, and factors in the real world that the
@@ -510,10 +495,8 @@ difficulties.
 A sufficiently expressive requirements language must provide for the
 declaration of a finite collection of “action types.” These action types
 partition all possible actions.
-
-<!-- Page 11 -->
-
-                           Four Dark Corners of Requirements Engineering                 •      11
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •      11
 
    Each action type is either “environment controlled” or “machine con-
 trolled,” indicating which agent controls, performs, or takes responsibility
@@ -565,7 +548,8 @@ performed by the environment, and there is no other relevant agent to perform it
 “active/passive” terminology is properly centered on the environment, but unfortunately the
 meaning of these words is much harder to remember.
 
-<!-- Page 12 -->
+             ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                                                                                                                                                                                                                                 12
 
                                                                                                                                                                                                                                   •
                                                                                                                                                       Table I.
@@ -573,6 +557,7 @@ meaning of these words is much harder to remember.
                                                                                                                  Indicative Statement (assumption, domain knowledge)                Optative Statement (requirement)
 
                                                                                                                  Liveness Property                         Safety Property                            Liveness Property
+
 
                                                                                          Constrained action     (G2) A push leads to   (G1) Pushes and enters alternate.     (G5) Enters do not   (L2) A begin-group-
                                                                                            is environment-        an enter.              (L1) Begin-group-waiting[floor,       outnumber pays.      waiting[floor, direction]
@@ -586,6 +571,8 @@ meaning of these words is much harder to remember.
                                                                                            (jointly               leads to a                                                   occur.
                                                                                                                                                                                                                                  Pamela Zave and Michael Jackson
 
+
+
                                                                                            observable)            request[floor,
                                                                                                                   direction] action.
                                                                                          Constrained action                            (L5) Motor-ups and motor-downs        (G3) Locks and       (L6) A request[floor,
@@ -598,14 +585,14 @@ meaning of these words is much harder to remember.
                                                                                                                                                                                not occur.
 ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
 
+
+
+
                                                                                                                                                                                (G7) Locks and
                                                                                                                                                                                unlocks do not
                                                                                                                                                                                occur when
                                                                                                                                                                                inappropriate.
-
-<!-- Page 13 -->
-
-                           Four Dark Corners of Requirements Engineering                 •      13
+                           Four Dark Corners of Requirements Engineering                 •      13
 
 one state having no out-transition on at least one action type in its
 vocabulary. It asserts that in a state with missing out-transitions, actions
@@ -656,11 +643,14 @@ or enter a randomly chosen state. The only way to avoid problems is to
 considered, however, we see that the only legal exit from the nonaccepting state in G2 is an
 enter.
 
-<!-- Page 14 -->
+             ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+14      •      Pamela Zave and Michael Jackson
 
-14      •      Pamela Zave and Michael Jackson
+
+
 
                          Fig. 1.   Some properties of the gate complex.
+
 
 ensure that (G3) lock and unlock actions alternate strictly, as the hardware
 expects them to do. This safety constraint on locks and unlocks is optative
@@ -677,13 +667,15 @@ forced to pay for the privilege of entering. Forcing the alternation of enters
 and pays would be too restrictive, however, because a teacher should be
 able to pay at once for a whole classful of students and then lead them in
 without interruption. The correct property is that the accumulated number
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                             Four Dark Corners of Requirements Engineering                 •      15
 
-<!-- Page 15 -->
 
-                             Four Dark Corners of Requirements Engineering                 •      15
+
 
 Fig. 2. Some properties of the lift complex. Each diagram represents a set of distinct
 automata, one for each distinct value of [floor, direction].
+
 
 of enters never exceeds the accumulated number of pays. This is a safety
 constraint on enter actions (G5).
@@ -708,11 +700,11 @@ enforced by an effective lift controller.
   A request[floor, direction] action occurs when a waiting person pushes the
 indicated request button. Because we cannot expect the lift to serve a group
 
+5
     Lift action types are more complex. They have arguments or attributes, shown in brackets.
 
-<!-- Page 16 -->
-
-16      •      Pamela Zave and Michael Jackson
+               ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+16      •      Pamela Zave and Michael Jackson
 
 without knowing that it is waiting, we must assume about the environment
 that (L3) a begin-group-waiting action leads to a corresponding request
@@ -761,10 +753,8 @@ them.
    Any specification method will provide for optative constraints on ma-
 chine-controlled actions (the lower-right corner of Table I) because they
 describe what the machine must do. But optative constraints on environ-
-
-<!-- Page 17 -->
-
-                           Four Dark Corners of Requirements Engineering                 •      17
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •      17
 
 ment-controlled actions (the upper-right corner of Table I) are also impor-
 tant because many of the true requirements reside there and are enforced
@@ -807,6 +797,7 @@ method it is possible to say that these two variables cannot be true at the
 same time, but in no version is it possible to say that when Train becomes
 true, it stays true for at least 300 seconds.
 
+
 6
   Again, this is only the most common interpretation, and others are possible [Jackson 1996].
 7
@@ -815,9 +806,8 @@ and the SCR method have common roots in the early version of the A-7 method [Hen
 1980; Parnas and Clements 1986], but the two have now diverged and are quite different with
 respect to the issues discussed in this article.
 
-<!-- Page 18 -->
-
-18      •      Pamela Zave and Michael Jackson
+             ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+18      •      Pamela Zave and Michael Jackson
 
    As a result of this deficiency, Atlee and Gannon specify this crucial
 information as a constraint on the machine. The specified machine is in
@@ -866,10 +856,8 @@ recommended expressive capabilities. Each agent has specific actions that
 it can perform. Typically some agents represent the environment while
 some represent the machine, and environment agents are not limited to
 those that interact directly with the machine. If the agent formalism is also
-
-<!-- Page 19 -->
-
-                           Four Dark Corners of Requirements Engineering                 •      19
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •      19
 
 a deontic logic [Jeremaes et al. 1986], then permissions and obligations are
 like safety and liveness in our example—it must be possible to assert them
@@ -920,9 +908,8 @@ denne et al. 1993; Dobson et al. 1994; Feather 1987; 1994; Feather et al.
 principle may not be implementable in practice—for instance, because all of the available
 computers are too slow.
 
-<!-- Page 20 -->
-
-20      •      Pamela Zave and Michael Jackson
+             ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+20      •      Pamela Zave and Michael Jackson
 
 1991; Mostow 1983; Swartout and Balzer 1982]. Thus we are characterizing
 the possible results of their explorations, not the explorations themselves.
@@ -930,6 +917,7 @@ the possible results of their explorations, not the explorations themselves.
 directly from R to S. Requirements that are not implementable fail to be so
 for three general reasons. We shall discuss these reasons in the next three
 subsections, followed by a subsection of comparisons to related ideas.
+
 
 5.1 Environment Constraint
 Some requirements are not directly implementable because the only way to
@@ -970,12 +958,14 @@ possible to determine syntactically whether a requirement is a specification
 or not and to refine it (if the environment allows) to a property that is
 obviously a specification. For example, in Figure 3 the requirement R
 constrains both ec (an environment-controlled action type) and mc (a
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                        Four Dark Corners of Requirements Engineering                 •      21
 
-<!-- Page 21 -->
 
-                        Four Dark Corners of Requirements Engineering                 •      21
+
 
                         Fig. 3.   An easy example of refinement.
+
 
 machine-controlled action type). Provided that the domain knowledge K
 holds, then R can be satisfied by the specification S, which clearly con-
@@ -1007,10 +997,8 @@ ena) and is therefore a specification.
      ((1m u ( a u ; deposit(a, m) ` earlier(a, p)) ; m) 2
      (1m u ( a u ; withdrawal-payout(a, m) ` earlier(a, p)) ; m));
    ( a9 u ; withdrawal-payout(a9, m) ` earlier(a, a9)))
-
-<!-- Page 22 -->
-
-22      •      Pamela Zave and Michael Jackson
+          ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+22      •      Pamela Zave and Michael Jackson
 
 In the presence of the indicative equivalence between the balance and the
 action expression, it can be proved that the above property satisfies the
@@ -1054,14 +1042,13 @@ process is a shared action, and the ending of the process is not, then the
 machine can estimate the ending time from a description of the physical
 process including elapsed time.
 
+
 5.3 Future Reference
 Some requirements are not directly implementable because they are stated
 in terms of the future. For example, consider the liveness requirement in a
 switching environment that, whenever the telephone user has dialed the
-
-<!-- Page 23 -->
-
-                         Four Dark Corners of Requirements Engineering                 •      23
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                         Four Dark Corners of Requirements Engineering                 •      23
 
 last digit, eventually a connect-to-ringback or connect-to-busytone or con-
 nect-to-errortone action occurs. In other words, the tone must be produced
@@ -1109,10 +1096,8 @@ and floor arrivals) and the behavior of groups of people waiting for the lift
 to arrive.
    “Soft” requirements as discussed by Yu et al. [1995] are “soft” for two
 reasons. They may be vague and imprecise, such as requirements that a
-
-<!-- Page 24 -->
-
-24      •      Pamela Zave and Michael Jackson
+           ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+24      •      Pamela Zave and Michael Jackson
 
 system be “secure,” “reliable,” or “easy to use.” Until they are precise
 enough to be formalized, our description of refinement is not relevant to
@@ -1159,10 +1144,8 @@ Here are brief definitions of the major terms we have used:
  environment as we would like it to be because of the machine.
 —A shared action is an action in the environment in which the machine
  also participates.
-
-<!-- Page 25 -->
-
-                         Four Dark Corners of Requirements Engineering                 •      25
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                         Four Dark Corners of Requirements Engineering                 •      25
 
 —An unshared action is an action in the environment in which the machine
  does not participate.
@@ -1209,16 +1192,15 @@ its users should be able to augment or supplement it as necessary.
 (1) Each atomic term must be designated or defined. This means that
     everything said is said about the environment, since all atomic terms
     are grounded in the environment.
-
-<!-- Page 26 -->
-
-26      •      Pamela Zave and Michael Jackson
+           ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+26      •      Pamela Zave and Michael Jackson
 
                                              Table II.
 
                                Environment-Controlled                   Machine-Controlled
        Shared                               X                                     X
        Unshared                             X
+
 
 (2) Table II characterizes all relevant actions of the environment. Each
     action type must be identified as belonging to exactly one of the
@@ -1260,10 +1242,8 @@ might be. At the same time, the results of Alpern and Schneider [1987]
 show that it is equivalent to a large number of separate safety (“in state S,
 actions of type A cannot occur”) and liveness (“in state S, an action of type
 A or B must eventually occur”) properties.
-
-<!-- Page 27 -->
-
-                         Four Dark Corners of Requirements Engineering                 •      27
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                         Four Dark Corners of Requirements Engineering                 •      27
 
   There is no reason whatsoever why an executable notation cannot obey
 the first three rules; it is only necessary to ensure that its states and
@@ -1309,15 +1289,14 @@ verification is necessary to establish the satisfaction result.
 occurs when there is some redundancy among the various parts to be
 shown consistent—a natural-enough occurrence in large specifications,
 with reuse, multiple views, etc. In the presence of redundancy, the state-
-
-<!-- Page 28 -->
-
-28      •      Pamela Zave and Michael Jackson
+           ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+28      •      Pamela Zave and Michael Jackson
 
 ments made during the course of requirements engineering are not all
 independent, and some are implied by others. A proof that some statements
 imply others necessarily establishes the consistency of the consequences
 with the antecedents.
+
 
 ACKNOWLEDGMENTS
 We are grateful for the helpful comments of Joanne Atlee, Martin Feather,
@@ -1369,9 +1348,8 @@ HEITMEYER, C., LABAW, B., AND KISKIS, D. 1995b. Consistency checking of SCR-styl
 HENINGER, K. L. 1980. Specifying software requirements for complex systems: New tech-
   niques and their application. IEEE Trans. Softw. Eng. 6, 1 (Jan.), 2–13.
 
-<!-- Page 29 -->
-
-                           Four Dark Corners of Requirements Engineering                 •      29
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+                           Four Dark Corners of Requirements Engineering                 •      29
 
 HOARE, C. A. R. 1985. Communicating Sequential Processes. Prentice-Hall International,
   Chichester, U.K.
@@ -1430,9 +1408,8 @@ VAN SCHOUWEN, A. J., PARNAS, D. L., AND MADEY, J. 1992. Documentation of require
 WING, J. M. 1990. A specifier’s introduction to formal methods. IEEE Comput. 23, 9 (Sept.),
   8 –24.
 
-<!-- Page 30 -->
-
-30      •      Pamela Zave and Michael Jackson
+             ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+30      •      Pamela Zave and Michael Jackson
 
 WORDSWORTH, J. B. 1992. Software Development with Z: A Practical Approach to Formal
   Methods in Software Engineering. Addison-Wesley, Reading, Mass.
@@ -1445,3 +1422,9 @@ ZAVE, P. AND JACKSON, M. 1993. Conjunction as composition. ACM Trans. Softw. Eng
   Methodol. 2, 4 (Oct.), 379 – 411.
 
 Received May 1995; revised October 1995 and May 1996; accepted August 1996
+
+
+
+
+ACM Transactions on Software Engineering and Methodology, Vol. 6, No. 1, January 1997.
+

@@ -15,6 +15,12 @@ Tu écris le contenu de révision d'un chapitre (ex. `isi1` chapitre `03`) ou d'
 5. La ligne du chapitre dans `PLAN.md`, puis **toutes** ses sources (`read_source`).
 6. Les `glossary[].id` déjà utilisés dans la matière (réutiliser les mêmes ids).
 
+## Priorités (décision de l'utilisatrice, 2026-11-05)
+1. **Le cours d'abord, aligné sur la classe** : périmètre = lignes `[x]`/`[ ]` de `content/<id>/PROGRAMME.md` (+ « Vu en classe mais absent ») et notes de `ressources/S3__<ID>/NOTES/` si elles existent ; ignorer `[-]`. Couvrir chaque ligne retenue avec soin, en reprenant les exemples du prof.
+2. **Les quiz ensuite**, une fois les cours de **tous** les chapitres de la matière rédigés (sauf si l'orchestrateur demande explicitement un chapitre complet).
+3. Flashcards, exercices, atelier anglais et partiels en dernier.
+**Compléments** : autorisés seulement pour éclairer une notion vue en classe, puisés dans les sources `lecture`/`complement` de la matière, cités, dans un `callout` `tip` « **Pour aller plus loin** — », ≤ 20 % du chapitre (docs/06 §2 bis). Jamais de connaissance générale non sourcée.
+
 ## Méthode « citation d'abord »
 Pour chaque fait que tu vas écrire : trouve le passage (`search_sources`), copie la citation exacte dans `src`, **puis** rédige. Jamais l'inverse. Si tu ne trouves pas de passage, tu n'écris pas le fait. Vérifie au fil de l'eau avec `verify_quote`.
 

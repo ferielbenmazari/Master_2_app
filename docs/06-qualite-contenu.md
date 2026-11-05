@@ -54,6 +54,12 @@ Ce n'est pas une preuve que la reformulation est juste — c'est la garantie que
 En cas de **contradiction** entre `cours` et une autre source : le cours gagne, et l'écart est signalé dans le rapport.
 **Attention aux transcriptions** : les Markdown de `ressources/` sont des transcriptions (parfois traduites) des PDF. Pour les notions ★★★, le `fact-checker` recoupe avec le texte extrait du PDF original (`sources-texte/`) ; en cas d'écart, le PDF fait foi.
 
+## 2 bis. Aligné sur la classe, complété dans la thématique
+
+- **Périmètre** = ce qui a été fait en classe : lignes `[x]`/`[ ]` de `content/<id>/PROGRAMME.md` (cochées par l'utilisatrice) + « Vu en classe mais absent » + notes de cours (`ressources/S3__<ID>/NOTES/`, source prioritaire pour l'ordre, les exemples et l'insistance). Les lignes `[-]` ne sont pas traitées.
+- **Ordre de production** : 1) le cours de tous les chapitres, 2) les quiz, 3) le reste.
+- **Compléments** : uniquement pour éclairer une notion du périmètre, tirés des sources `lecture` puis `complement` de la matière, **cités** comme le reste, présentés dans un `callout` `tip` commençant par « **Pour aller plus loin** — », au plus 20 % du chapitre. Une notion vue en classe sans aucune source est marquée ` → ⚠ absent des supports` dans PROGRAMME.md, jamais inventée.
+
 ## 3. G2 — Carte des notions (`content/<id>/notions.json`)
 
 Produite par l'agent `course-analyst` **avant** toute rédaction, validée par l'utilisatrice.
