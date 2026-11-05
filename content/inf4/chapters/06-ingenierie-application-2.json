@@ -48,6 +48,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-06-qz-01"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Conception d'application : spécialiser l'architecture de référence",
@@ -224,6 +228,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "inf4-06-qz-04"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Effort et coût des variants",
@@ -322,6 +330,10 @@
           "quote": "additional costs may be acceptable to the organisation since the new feature can also be reused within future applications of the product line"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-06-qz-06"
     },
     {
       "type": "heading",
@@ -465,6 +477,10 @@
           "quote": "the problem report has to be taken over by domain engineering for fixing"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-06-qz-10"
     },
     {
       "type": "heading",
@@ -751,6 +767,10 @@
           "quote": "A thorough test, even of reused code, is necessary due to dependencies between reused and application-specific parts."
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-06-qz-14"
     }
   ],
   "glossary": [
@@ -990,7 +1010,442 @@
     }
   ],
   "flashcards": [],
-  "quiz": [],
+  "quiz": [
+    {
+      "id": "inf4-06-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le livre, la conception d'application a pour but principal de produire l'architecture d'application, et la réalisation d'application de développer des applications pouvant être testées puis mises sur le marché avec une qualité suffisante.",
+        "en": "According to the book, application design mainly aims to produce the application architecture, and application realisation to develop applications that can be tested and brought to market with sufficient quality."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : conception → architecture d'application ; réalisation → applications testables et commercialisables ; test → qualité suffisante de l'application testée.",
+        "en": "TRUE: design → application architecture; realisation → testable, marketable applications; testing → sufficient quality of the application under test."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.1",
+          "quote": "The main goal of the application design sub-process is to produce the application architecture."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.1",
+          "quote": "The goal of application realisation is to develop applications that can be tested and brought to the market after ensuring a sufficient quality."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-02",
+      "type": "true_false",
+      "statement": {
+        "fr": "L'architecture d'application est une généralisation de l'architecture de référence produite par la conception de domaine.",
+        "en": "The application architecture is a generalisation of the reference architecture produced by domain design."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c'est une **spécialisation** de l'architecture de référence : les architectes d'application lient la variabilité de la référence et y ajoutent les changements propres à l'application.",
+        "en": "FALSE: it is a **specialisation** of the reference architecture: application architects bind the reference's variability and add application-specific changes."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.1",
+          "quote": "The application architecture is a specialisation of the reference architecture developed in domain design."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.1",
+          "quote": "Application architects bind the variability of the reference architecture and introduce application-specific changes according to the application requirements specification."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une nouvelle application exige l'authentification par scan de l'iris, qu'aucun produit de la ligne ne gère : l'architecte d'application doit alors reconcevoir l'ensemble de l'architecture de référence.",
+        "en": "A new application requires iris-scan authentication, which no product in the line supports: the application architect must then redesign the whole reference architecture."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l'architecte exerce ses responsabilités (abstraction, modélisation, simulation, prototypage) uniquement pour les parties propres à l'application, car l'architecture de référence contient déjà beaucoup de décisions réutilisables. Ici, il ajoute des abstractions « iris map » et « iris pattern ».",
+        "en": "FALSE: the architect carries out their responsibilities (abstraction, modelling, simulation, prototyping) only for the application-specific parts, since the reference architecture already holds many reusable decisions. Here, they add \"iris map\" and \"iris pattern\" abstractions."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.2",
+          "quote": "However, all those activities have to be performed only for the application-specific parts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.2",
+          "quote": "The reference architecture includes a lot of decisions that can be reused in application engineering."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.2",
+          "quote": "The architect adds new abstractions such as"
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-04",
+      "type": "mcq",
+      "question": {
+        "fr": "Selon le livre, lier les variants dans l'architecture de référence est un travail plus ou moins facile. De quoi cela dépend-il ?",
+        "en": "According to the book, binding variants in the reference architecture is more or less easy. What does this depend on?"
+      },
+      "options": [
+        {
+          "fr": "De la taille de l'équipe d'architectes d'application",
+          "en": "The size of the application architects' team"
+        },
+        {
+          "fr": "Du langage de programmation choisi pour la réalisation",
+          "en": "The programming language chosen for realisation"
+        },
+        {
+          "fr": "De la qualité de l'architecture de référence, notamment la traçabilité entre la variabilité des exigences de domaine et celle de l'architecture",
+          "en": "The quality of the reference architecture, notably the traceability between domain requirements variability and architecture variability"
+        },
+        {
+          "fr": "Du nombre de plug-ins déjà déployés chez les clients",
+          "en": "The number of plug-ins already deployed at customers"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "La qualité de l'architecture de référence détermine si la liaison est facile : intégration de la personnalisation de masse (styles, patterns), abstractions utilisées (points de variation et variants), et traçabilité entre variabilité des exigences et de l'architecture.",
+        "en": "The quality of the reference architecture determines whether binding is easy: how mass customisation is integrated (styles, patterns), the abstractions used (variation points and variants), and traceability between requirements and architecture variability."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.2.2",
+          "quote": "The quality of the reference architecture determines whether this is an easy job."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.2.2",
+          "quote": "The traceability between variability in domain requirements artefacts and the reference architecture."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Quand un variant conçu pour une application est repris dans le domaine, l'application a servi de banc d'essai (test bed) : si la gestion de produit décide de l'intégrer, c'est l'architecte de domaine qui refond les artefacts pour les rendre réutilisables.",
+        "en": "When a variant designed for an application is taken over into the domain, the application served as a test bed: if product management decides to integrate it, the domain architect redesigns the artefacts to make them reusable."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : les artefacts sont souvent d'abord produits pour une seule application ; une fois intégrés au domaine, l'artefact réutilisable remplace l'artefact d'origine, ce qui réduit ce qu'il faut maintenir.",
+        "en": "TRUE: artefacts are often first produced for a single application; once integrated into the domain, the reusable artefact replaces the original one, which reduces what must be maintained."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.3",
+          "quote": "In many cases the artefacts are first produced for a single application. This is a test bed for the domain architect."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.3",
+          "quote": "This reduces the amount of application-specific artefacts that have to be maintained."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-06",
+      "type": "mcq",
+      "question": {
+        "fr": "Un variant est réalisé par des composants spécifiques à l'application qui n'utilisent que des interfaces du domaine. Dans quelle catégorie de coût se range-t-il ?",
+        "en": "A variant is realised by application-specific components that use only domain interfaces. Which cost category does it fall into?"
+      },
+      "options": [
+        {
+          "fr": "A : coût faible, le variant est réalisé dans la plateforme",
+          "en": "A: low cost, the variant is realised in the platform"
+        },
+        {
+          "fr": "B : coût et effort modérés",
+          "en": "B: moderate cost and effort"
+        },
+        {
+          "fr": "C : coût élevé, nouvelles interfaces à réaliser",
+          "en": "C: high cost, new interfaces to be realised"
+        },
+        {
+          "fr": "D : changements trop importants pour l'architecture de référence",
+          "en": "D: changes too large for the reference architecture"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Catégorie B : composants spécifiques fournissant et utilisant seulement des interfaces du domaine → effort encore modéré. Les nouvelles interfaces et grandes parties de structure font passer en C ; un nouveau framework au-delà de la référence, en D.",
+        "en": "Category B: specific components providing and using only domain interfaces → effort still moderate. New interfaces and large structure parts move it to C; a new framework beyond the reference, to D."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.4",
+          "quote": "When the application-specific components provide and use only domain-specific interfaces, the development cost and effort are still moderate (category B, see Section 15.4.4)."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "Parmi les facteurs de coût d'un variant, tester un nouveau composant coûte plus d'effort que tester un composant réutilisé, car il faut créer de nouveaux cas de test.",
+        "en": "Among the cost factors of a variant, testing a new component takes more effort than testing a reused one, since new test cases have to be created."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : les tests des composants et configurations réutilisés sont moins coûteux ; pour les nouveaux composants, de nouveaux cas de test doivent être créés.",
+        "en": "TRUE: tests of reused components and configurations are cheaper; for new components, new test cases have to be created."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.4",
+          "quote": "Tests to be performed on new components - this takes more effort, since new test cases have to be created."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-08",
+      "type": "true_false",
+      "statement": {
+        "fr": "En réalisation d'application, les composants de domaine sont réutilisés sans changement, tandis que leurs interfaces comportent des points de variation internes qu'il faut lier, par exemple par des paramètres.",
+        "en": "In application realisation, domain components are reused without changes, while their interfaces have internal variation points to be bound, for example through parameters."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c'est l'inverse. Les **interfaces** sont réutilisées sans changement, mais les **composants** ont souvent des points de variation internes à lier (par exemple par liaison de paramètres).",
+        "en": "FALSE: it is the other way round. **Interfaces** are reused without changes, but **components** often have internal variation points to bind (e.g. by parameter binding)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.2",
+          "quote": "Interfaces are reused without changes, but components often have internal variation points, which have to be bound."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.2",
+          "quote": "Variants within a component can be selected, for instance, by parameter bindings."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-09",
+      "type": "true_false",
+      "statement": {
+        "fr": "Quand un composant propre à l'application pourrait intéresser le domaine, le développeur d'application doit le rendre réutilisable pendant la réalisation d'application.",
+        "en": "When an application-specific component could be of interest to the domain, the application developer must make it reusable during application realisation."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : rendre un composant réutilisable n'intéresse pas le développeur d'application, concentré sur une seule application. Si le composant est intégré au domaine, c'est la réalisation de domaine qui s'en charge.",
+        "en": "FALSE: making a component reusable is not of interest to the application developer, who focuses on a single application. If the component is integrated into the domain, domain realisation takes care of it."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.3",
+          "quote": "Application-specific components are realised just as in single-system engineering."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.3",
+          "quote": "Making application-specific components reusable is not of interest for the application developer whose focus is on a single application only."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-10",
+      "type": "true_false",
+      "statement": {
+        "fr": "Lors de la construction de l'application, seules les connexions connues statiquement peuvent être liées hors ligne (au link) ; les autres connexions sont liées plus tard, à l'initialisation sur la machine cible.",
+        "en": "When building the application, only statically known connections can be linked off-line (at link time); other connections are bound later, at initialisation on the target machine."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : les plug-ins savent statiquement à quel composant se connecter, pas l'inverse. La variabilité peut être liée à la compilation, au link ou au déploiement selon le mécanisme de configuration.",
+        "en": "TRUE: plug-ins know statically which component to connect to, not the other way round. Variability can be bound at compile, link or deployment time depending on the configuration mechanism."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.4",
+          "quote": "Since only statically known connections can be linked off-line, they are the only ones that are bound before loading the software on the target machine."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "17.4",
+          "quote": "Component variants have to be compiled, linked, and deployed on the actual hardware."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-11",
+      "type": "mcq",
+      "question": {
+        "fr": "Le chauffage automatique exige les fenêtres automatiques. Le testeur vérifie que toute application incluant le chauffage automatique contient aussi le variant « fenêtres automatiques ». De quel test s'agit-il ?",
+        "en": "Automatic heating requires automatic windows. The tester checks that any application including automatic heating also contains the \"automatic windows\" variant. Which test is this?"
+      },
+      "options": [
+        {
+          "fr": "Le test d'absence de variant",
+          "en": "The variant absence test"
+        },
+        {
+          "fr": "Le commonality test",
+          "en": "The commonality test"
+        },
+        {
+          "fr": "L'extension test",
+          "en": "The extension test"
+        },
+        {
+          "fr": "Le test de dépendances d'application",
+          "en": "The application dependency test"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "C'est le test de dépendances d'application : il vérifie la conformité aux dépendances de contrainte (requires/excludes) et de variabilité (mandatory, [min..max]). Le test d'absence vérifie plutôt qu'il n'y a pas de variants non prévus.",
+        "en": "This is the application dependency test: it checks conformance to constraint (requires/excludes) and variability (mandatory, [min..max]) dependencies. The absence test rather checks that there are no unintended variants."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Hence, the application dependency test checks whether the application also contains the automatic windows variant."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-12",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le test d'absence de variant vérifie que les variants obligatoires du modèle de variabilité sont bien présents dans l'application.",
+        "en": "The variant absence test checks that the mandatory variants of the variability model are present in the application."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le test d'absence vérifie que l'application n'inclut pas de variants qui n'étaient pas prévus. Vérifier qu'un variant « mandatory » n'est pas absent relève du test de dépendances d'application.",
+        "en": "FALSE: the absence test checks that the application does not include variants that were not meant to be included. Checking that a \"mandatory\" variant is not missing belongs to the application dependency test."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the absence of variants violates any restrictions"
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-13",
+      "type": "true_false",
+      "statement": {
+        "fr": "Même pour la partie commune d'un composant, les cas de test unitaire du domaine sont rejoués pendant le test d'application, car on ne sait pas si le plug-in se comporte correctement pour la configuration de capteurs de cette application.",
+        "en": "Even for the common part of a component, the domain unit test cases are re-executed during application testing, as it is not known whether the plug-in behaves correctly for this application's sensor configuration."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : un composant inchangé peut échouer dans le contexte d'une application avec sa sélection de variants (variables partagées, héritage) : les tests du domaine sont donc rejoués.",
+        "en": "TRUE: an unchanged component can fail in the context of an application with its selection of variants (shared variables, inheritance): domain tests are therefore re-run."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "The domain unit test cases are reexecuted during application testing, as it is still unclear whether the plug-in component behaves correctly for the particular configuration of sensors required for the application."
+        }
+      ]
+    },
+    {
+      "id": "inf4-06-qz-14",
+      "type": "mcq",
+      "question": {
+        "fr": "Le test système doit vérifier que l'application sous test contient exactement trois serrures magnétiques. De quel test s'agit-il ?",
+        "en": "The system test must verify that the application under test contains exactly three magnetic door locks. Which test is it?"
+      },
+      "options": [
+        {
+          "fr": "Le commonality test",
+          "en": "The commonality test"
+        },
+        {
+          "fr": "Le variant test",
+          "en": "The variant test"
+        },
+        {
+          "fr": "Le modification test",
+          "en": "The modification test"
+        },
+        {
+          "fr": "L'extension test",
+          "en": "The extension test"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Le variant test vérifie que tous les variants sélectionnés font partie de l'application et se comportent correctement. Le commonality test rejoue les tests des exigences communes ; modification : exigences adaptées ; extension : exigences nouvelles.",
+        "en": "The variant test verifies that all selected variants are part of the application and behave correctly. The commonality test replays tests of common requirements; modification: adapted requirements; extension: new requirements."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application under test contains exactly three magnetic door locks."
+        }
+      ]
+    }
+  ],
   "exercises": [],
   "writing": []
 }
