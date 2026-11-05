@@ -8,13 +8,13 @@
 ## Cours 1 — Introduction to research
 _Source : `ressources/S3__REC1/Markdown/1_recmeth_1.md`_
 
-- [ ] What is research? · empirical vs theoretical research
-- [ ] Basic vs applied research
-- [ ] Scientific research · elements of the scientific method
-- [ ] Methods in empirical research (SE / IS)
-- [ ] Forms of research · primary vs secondary studies
-- [ ] Exercise (cours 1)
-- [ ] Assignment : présentation d'une méthodologie (questions à traiter)
+- [ ] What is research? · empirical vs theoretical research → ch.01
+- [ ] Basic vs applied research → ch.01
+- [ ] Scientific research · elements of the scientific method → ch.01
+- [ ] Methods in empirical research (SE / IS) → ch.01
+- [ ] Forms of research · primary vs secondary studies → ch.01
+- [ ] Exercise (cours 1) → ch.01
+- [ ] Assignment : présentation d'une méthodologie (questions à traiter) → ch.01
 
 ## Cours 2 — Research project, question, hypothesis
 _Source : `ressources/S3__REC1/Markdown/2_recmeth_2.md`_
