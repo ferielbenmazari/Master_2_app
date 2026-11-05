@@ -40,12 +40,12 @@ _Source : `ressources/S3__REC1/Markdown/3_recmeth_3.md`_
 ## Cours 4 — Empirical studies: choose and justify
 _Source : `ressources/S3__REC1/Markdown/4_recmeth_4.md`_
 
-- [ ] Overview of methodologies (primary : survey, experiment, POC, case study, action research, interviews · secondary : SLR, SMS, MLR)
-- [ ] Choosing your method : what / where / how / why · constraints to feasibility
-- [ ] Method selection matrix and decision trees
-- [ ] Data collection and analysis methods · analysis vs location map
-- [ ] Examples of method matching (+ exercices 1-2, Jane & Joe revisited)
-- [ ] Follow your protocol and report · validate your findings
+- [ ] Overview of methodologies (primary : survey, experiment, POC, case study, action research, interviews · secondary : SLR, SMS, MLR) → ch.04
+- [ ] Choosing your method : what / where / how / why · constraints to feasibility → ch.04
+- [ ] Method selection matrix and decision trees → ch.04
+- [ ] Data collection and analysis methods · analysis vs location map → ch.04
+- [ ] Examples of method matching (+ exercices 1-2, Jane & Joe revisited) → ch.04
+- [ ] Follow your protocol and report · validate your findings → ch.04
 
 ## Cours 5 — Quality, validation, ethics, reporting
 _Source : `ressources/S3__REC1/Markdown/5_recmeth_5.md`_

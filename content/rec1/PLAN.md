@@ -14,7 +14,7 @@
 | 01 | `01-introduction-recherche.json` | C'est quoi, faire de la recherche ? | Markdown/1_recmeth_1.md | à faire |
 | 02 | `02-projet-de-recherche.json` | Les étapes d'un projet de recherche (et du mémoire) | Markdown/2_recmeth_2.md | cours rédigé (draft) |
 | 03 | `03-litterature-scientifique.json` | Travailler avec la littérature (revues, SLR) | Markdown/3_recmeth_3.md | cours rédigé (draft) |
-| 04 | `04-choisir-sa-methode.json` | Choisir et justifier sa méthode empirique | Markdown/4_recmeth_4.md | à faire |
+| 04 | `04-choisir-sa-methode.json` | Choisir et justifier sa méthode empirique | Markdown/4_recmeth_4.md | cours rédigé (draft) |
 | 05 | `05-qualite-validite-ethique.json` | Ta recherche tient-elle debout ? | Markdown/5_recmeth_5.md | **fait (exemple de référence)** |
 
 ## Partiels
