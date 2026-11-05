@@ -41,9 +41,9 @@ _Source : `8__ple.md`_
 _Source : `3__application_engineering.md`_
 
 - [ ] Application requirements engineering · communication de la variabilité · requirements deltas → ch.05
-- [ ] Application design · binding of variants · configuration
-- [ ] Application realisation · configuration
-- [ ] Differences from single-system engineering → ch.05 (exigences ; design/réalisation → ch.06 à venir)
+- [ ] Application design · binding of variants · configuration → ch.06
+- [ ] Application realisation · configuration → ch.06
+- [ ] Differences from single-system engineering → ch.05 (exigences ; design/réalisation/test → ch.06)
 
 ## Transformation, vérification, diagnostic
 _Source : `7__ple.md`_
