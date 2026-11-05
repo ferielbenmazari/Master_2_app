@@ -25,7 +25,7 @@ _Source : 5_on NFRs_
 ## Analyse du contexte
 _Source : 7_IREB 2 · 8_RE fundamentals_
 
-- [ ] Contexte du système, parties prenantes, frontières
+- [ ] Contexte du système, parties prenantes, frontières → ch.04
 
 ## Élicitation
 _Source : 12_IREB 3 · 20_Eliciting_

@@ -1,0 +1,1102 @@
+{
+  "id": "isi1-04-analyse-du-contexte",
+  "courseId": "isi1",
+  "order": 4,
+  "title": {
+    "fr": "Analyser le contexte du système : contexte, frontières, parties prenantes",
+    "en": "Analysing the system context: context, boundaries, stakeholders"
+  },
+  "hook": {
+    "fr": "Pourquoi un système validé peut échouer en production, et comment deux frontières et une zone grise t'aident à l'éviter.",
+    "en": "Why a validated system can still fail in operation, and how two boundaries and a grey zone help you avoid it."
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+    "sources-texte/isi1/8-re-fundamentals-context-analysis.md"
+  ],
+  "status": "draft",
+  "notions": [],
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Un système n'est jamais seul",
+        "en": "A system is never alone"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi un système qui passe tous les tests de validation peut-il quand même échouer en production ? Parce que les exigences ne tombent pas du ciel : elles viennent de l'**environnement**. Le support du cours pose quatre idées : un système fait toujours partie d'un environnement ; cet environnement influence fortement ses exigences ; le **contexte du système** en est la partie pertinente ; et « les exigences n'existent que dans un contexte ».",
+        "en": "Why can a system that passes every validation test still fail in operation? Because requirements do not fall from the sky: they come from the **environment**. The course slides set out four ideas: a system is always part of an environment; this environment influences its requirements significantly; the **system context** is the relevant part of it; and “requirements only exist in a context”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The system context",
+          "quote": "A system is always part of an environment"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The system context",
+          "quote": "The system context is the relevant part of the"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The system context",
+          "quote": "Requirements only exist in a context"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Définition.** Le *contexte du système* est la partie de l'environnement du système qui est pertinente pour la définition **et** la compréhension des exigences du système à développer.",
+        "en": "**Definition.** The *system context* is the part of the system environment that is relevant for the definition as well as the understanding of the requirements of a system to be developed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-1",
+          "quote": "The system context is the part of the system environment that is relevant for the definition as well as the"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Concrètement, on anticipe le système **en fonctionnement** pour repérer tout ce qui, dans le monde réel, a un lien avec lui. Cinq types d'aspects reviennent : des **personnes** (parties prenantes ou groupes), des **systèmes en opération** (autres systèmes techniques ou matériel), des **processus** (techniques, physiques ou métier), des **événements** (techniques ou physiques) et des **documents** (lois, normes, documentation du système).",
+        "en": "In practice, you anticipate the system **in operation** to spot everything in the real world that is related to it. Five types of aspects come up: **people** (stakeholders or groups of stakeholders), **systems in operation** (other technical systems or hardware), **processes** (technical or physical processes, business processes), **events** (technical or physical) and **documents** (e.g. laws, standards, system documentation)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.1 System Context",
+          "quote": "it is anticipated what the system will be like once it becomes"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.1 System Context",
+          "quote": "People (stakeholders or groups of stakeholders)"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.1 System Context",
+          "quote": "Documents (e.g., laws, standards, system documentation)"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "**Piège d'examen — le contexte oublié.** Si le contexte est mal ou incomplètement pris en compte, on obtient des exigences incomplètes ou erronées. Le système fonctionne alors sur de mauvaises bases, ce qui est « souvent la raison » des échecs en exploitation. Pire : ces erreurs passent souvent la validation (qui vérifie la conformité aux exigences *spécifiées*) et n'apparaissent qu'en opération, parfois avec des conséquences catastrophiques.",
+        "en": "**Exam trap — the forgotten context.** If the system context is wrongly or incompletely considered, you get incomplete or erroneous requirements. The system then runs on faulty foundations, which is “often the reason” for failure in operation. Worse: these errors often go undetected by validation (which checks conformity to the *specified* requirements) and only show up in operation, sometimes with catastrophic consequences."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Consequence of erroneous or incomplete context consideration",
+          "quote": "it may result in incomplete or erroneous requirements"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Consequence of erroneous or incomplete context consideration",
+          "quote": "often remain undetected during the validation procedures"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi documenter le contexte ? Parce qu'une exigence est définie **pour un contexte précis** et ne peut être interprétée correctement que par rapport à lui. Plus on comprend pourquoi tel système du contexte est l'origine d'une exigence, moins on risque de la mal interpréter.",
+        "en": "Why document the context? Because a requirement is defined **for a specific context** and can only be interpreted correctly with regard to it. The better you understand why a given system in the context is the origin of a requirement, the lower the risk of misinterpreting it."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "System context and requirement context",
+          "quote": "A requirement is therefore defined for a specific"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "System context and requirement context",
+          "quote": "The better the context of a requirement is understood"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Deux frontières, pas une",
+        "en": "Two boundaries, not one"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le rôle de l'ingénieur des exigences est de définir correctement le contexte. Pour cela il trace **deux frontières** : la **frontière du système** (qu'est-ce qui appartient au système à développer, qu'est-ce qui appartient à son contexte ?) et la **frontière du contexte** (qu'est-ce qui appartient au contexte, c'est-à-dire a un lien avec le système, et qu'est-ce qui relève de l'environnement non pertinent ?).",
+        "en": "The requirements engineer is responsible for defining the context properly. To do so, they draw **two boundaries**: the **system boundary** (which aspects pertain to the system to be developed and which belong in the system context?) and the **context boundary** (which aspects pertain to the system context, i.e. have a relation to the system, and which are part of the irrelevant environment?)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.2 Defining System and Context Boundaries",
+          "quote": "It is within the responsibility of the requirements engineer to define the system"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.2 Defining System and Context Boundaries",
+          "quote": "Which aspects pertain to the system to be"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.2 Defining System and Context Boundaries",
+          "quote": "Which aspects pertain to the system context"
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  subgraph E[Environnement non pertinent]\n    subgraph K[Contexte du système]\n      subgraph Sy[Système à développer]\n      end\n    end\n  end",
+      "caption": {
+        "fr": "Les deux frontières (figure 2-1 du support) : frontière du système (intérieur) et frontière du contexte (milieu).",
+        "en": "The two boundaries (figure 2-1 of the material): system boundary (inner) and context boundary (middle)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Figure 2-1",
+          "quote": "Figure 2-1 System and context boundary of a system"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Définition — frontière du système.** Elle sépare le système à développer de son environnement : d'un côté ce que le processus de développement **peut modifier**, de l'autre ce qu'il **ne peut pas** changer.",
+        "en": "**Definition — system boundary.** It separates the system to be developed from its environment: on one side what the development process **can modify**, on the other what it **cannot** change."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-2",
+          "quote": "The system boundary separates the system to be developed from its environment"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Définition — frontière du contexte.** Elle sépare la partie **pertinente** de l'environnement de la partie **non pertinente**, celle qui n'influence pas le système et qu'on n'a donc pas à considérer pendant l'ingénierie des exigences.",
+        "en": "**Definition — context boundary.** It separates the **relevant** part of the environment from the **irrelevant** part, which does not influence the system and therefore need not be considered during requirements engineering."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-3",
+          "quote": "The context boundary separates the relevant part of the environment of a system to be developed from the"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Retiens la conséquence de la frontière du système : tout ce qui est **dedans** peut être modifié pendant le développement (par exemple un système existant, matériel et logiciel, que le nouveau système doit remplacer). Tout ce qui est **dans le contexte** ne peut pas être modifié par le développement et peut imposer des **contraintes** au système.",
+        "en": "Note the consequence of the system boundary: everything **inside** can be altered during development (for instance an existing hardware-and-software system that the new system is meant to replace). Everything **in the context** cannot be altered by development and may impose **constraints** on the system."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.2.1 Defining the System Boundary",
+          "quote": "All aspects that are within the system boundary can thus be altered during system"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.4 Summary",
+          "quote": "thus cannot be altered during development and may provide constraints for the system to be developed"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen — ne pas confondre.** La frontière du **système** sépare ce qu'on peut modifier de ce qu'on ne peut pas ; la frontière du **contexte** sépare ce qui est pertinent de ce qui ne l'est pas. Définir la frontière du système fixe le **périmètre** (*scope*) du système. Retiens aussi les trois termes du support : *System Context*, *System Boundary*, *Context Boundary*.",
+        "en": "**Exam trap — do not mix them up.** The **system** boundary separates what can be modified from what cannot; the **context** boundary separates what is relevant from what is not. Defining the system boundary fixes the **scope** of the system. Also remember the three terms from the slides: *System Context*, *System Boundary*, *Context Boundary*."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.4 Summary",
+          "quote": "When the system boundaries are defined, the scope of the system is determined"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Terms and definitions to remember",
+          "quote": "System Boundary"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La zone grise : une frontière qui bouge",
+        "en": "The grey zone: a boundary that moves"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "À quel moment sait-on exactement où s'arrête le système ? Souvent… à la fin de l'ingénierie des exigences. Au début, des interfaces ou des fonctions désirées ne sont connues que partiellement, voire pas du tout : cette séparation floue entre le système et son contexte s'appelle la **zone grise**. Le support donne l'exemple de « payer par carte bancaire » : le système doit-il implémenter cette fonction, ou existe-t-il dans le contexte un autre système de « traitement des paiements » à réutiliser ?",
+        "en": "When do you know exactly where the system stops? Often… at the end of requirements engineering. At the start, some interfaces or desired functions are only partially known, or not known at all: this initially vague separation between the system and its context is called the **grey zone**. The material gives the example “pay by credit card”: should the system implement this function, or is there another system in the context, “payment processing”, that should be used?"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Gray zone between system and system context",
+          "quote": "the system boundary is not precisely defined until the end of the"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Gray zone between system and system context",
+          "quote": "We refer to this initially vague separation of the system"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Gray zone between system and system context",
+          "quote": "whether the system should implement a certain function"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La zone grise **entre le système et son contexte** doit être résolue au cours de l'ingénierie des exigences. La frontière peut se déplacer *dans* la zone grise, et la zone grise elle-même peut se déplacer, par exemple quand on ne sait pas si certaines activités d'un processus métier seront implémentées ou supportées par le système. Le support résume : on doit ajuster la frontière (*adjustments will be needed*).",
+        "en": "The grey zone **between the system and its context** must be resolved during requirements engineering. The boundary may shift *within* the grey zone, and the grey zone itself may shift, for example when it is unclear whether certain activities of a business process will be implemented or supported by the system. The slides sum it up: adjustments will be needed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Adjusting the gray zone",
+          "quote": "The system boundary may not only shift within the gray zone"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Adjusting the gray zone",
+          "quote": "whether certain activities of a"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "System boundary",
+          "quote": "Adjustments will be needed"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La frontière du **contexte** bouge aussi. Une directive légale jugée pertinente peut cesser de l'être : le contexte se **réduit**. Si on en découvre une nouvelle qui influence le système, le contexte s'**étend**. Il existe là aussi une zone grise (aspects dont on ignore s'ils ont un lien avec le système), mais — différence importante — celle-ci n'a **pas besoin d'être entièrement résolue**.",
+        "en": "The **context** boundary also moves. A legal directive that was considered relevant may stop being so: the context is **reduced**. If a new one that influences the system is identified, the context is **extended**. Here too there is a grey zone (aspects for which it is unclear whether they relate to the system), but — an important difference — it **does not need to be resolved entirely**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Concretion and shift of the context boundary",
+          "quote": "a law directive that was considered to be"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Concretion and shift of the context boundary",
+          "quote": "new law directive is identified that influences the system"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Resolving and shifting of the gray zone",
+          "quote": "it is not necessary to resolve the gray zone"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Critère",
+          "en": "Criterion"
+        },
+        {
+          "fr": "Zone grise système / contexte",
+          "en": "Grey zone system / context"
+        },
+        {
+          "fr": "Zone grise contexte / environnement non pertinent",
+          "en": "Grey zone context / irrelevant environment"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Contenu",
+            "en": "Content"
+          },
+          {
+            "fr": "Fonctions et interfaces dont on ignore si elles appartiennent au système ou au contexte",
+            "en": "Functions and interfaces unclear as to whether they belong to the system or the context"
+          },
+          {
+            "fr": "Aspects de l'environnement dont on ignore s'ils ont un lien avec le système",
+            "en": "Aspects of the environment unclear as to whether they relate to the system"
+          }
+        ],
+        [
+          {
+            "fr": "À résoudre ?",
+            "en": "To be resolved?"
+          },
+          {
+            "fr": "Oui, au cours de l'ingénierie des exigences",
+            "en": "Yes, in the course of requirements engineering"
+          },
+          {
+            "fr": "Pas entièrement",
+            "en": "Not entirely"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Gray zone between system and system context",
+          "quote": "We refer to this initially vague separation of the system"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Resolving and shifting of the gray zone",
+          "quote": "In contrast to"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Resolving and shifting of the gray zone",
+          "quote": "it is not necessary to resolve the gray zone"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Interfaces, sources et puits",
+        "en": "Interfaces, sources and sinks"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Comment repérer les interactions entre le système et son environnement ? Avec les **sources** (elles fournissent des entrées au système) et les **puits** (*sinks* : ils reçoivent ses sorties). Ce sont des (groupes de) parties prenantes ou des systèmes existants, techniques ou non.",
+        "en": "How do you spot the interactions between the system and its environment? With **sources** (they provide inputs for the system) and **sinks** (they receive outputs from the system). They are (groups of) stakeholders or existing systems, technical or not."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Sources and sinks as the starting point",
+          "quote": "Sources provide inputs"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Sources and sinks as the starting point",
+          "quote": "Sinks receive outputs from the system"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Sources and sinks as the starting point",
+          "quote": "Existing systems (both technical and nontechnical systems)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Sources et puits dialoguent avec le système par des **interfaces**. Par elles, le système fournit ses fonctionnalités, surveille l'environnement, influence ses paramètres et en contrôle des opérations. Selon la source ou le puits, l'interface est homme-machine, matérielle ou logicielle — et ce type d'interface peut lui-même imposer des **contraintes** ou devenir une nouvelle **source d'exigences**.",
+        "en": "Sources and sinks interact with the system through **interfaces**. Through them, the system provides its functionality, monitors the environment, influences its parameters and controls its operations. Depending on the source or sink, the interface is human–machine, hardware or software — and the interface type may itself impose **constraints** or become an additional **source of requirements**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Interfaces: interaction between system and environment",
+          "quote": "Sources and sinks interact with the system to be developed via system interfaces"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Interfaces: interaction between system and environment",
+          "quote": "monitors the environment, influences parameters of the environment"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Interfaces: interaction between system and environment",
+          "quote": "The interface type in turn may also"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Structurer le contexte : 4 facettes, 3 aspects",
+        "en": "Structuring the context: 4 facets, 3 aspects"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours (d'après Pohl 2010) propose deux principes pour structurer le contexte : **diviser le contexte en facettes**, puis **classer les aspects dans les facettes**. Il y a quatre facettes : **Subject** (objets et événements à représenter dans le système), **Usage** (comment des personnes et d'autres systèmes utilisent le système), **IT** (environnement opérationnel/technique : composants physiques et logiciels, processus et stratégies SI) et **Development** (tout ce qui influence les procédures de développement).",
+        "en": "The course (after Pohl 2010) offers two principles to structure the context: **divide the context into facets**, then **classify aspects within facets**. There are four facets: **Subject** (objects and events that need to be represented in the system), **Usage** (how people and other systems use the system), **IT** (operating/technical environment: physical and software components, IS processes and strategies) and **Development** (all aspects that influence development procedures)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Principles of structuration of the context",
+          "quote": "Devide the context into facets"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Principles of structuration of the context",
+          "quote": "Classify aspects within facets"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "Objects and events that need to be represented in"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "how people and other systems use the system"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "all aspects that influence development procedures"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans chaque facette on cherche **trois aspects** : les **sources d'exigences** (parties prenantes, documents, autres systèmes), les **objets du contexte** (personnes et artefacts à considérer pendant l'ingénierie des exigences) et les **propriétés et relations** (comment les choses et les personnes du contexte sont reliées entre elles). Cela donne une grille 4 × 3.",
+        "en": "In each facet you look for **three aspects**: **requirements sources** (stakeholders, documents, other systems), **objects of the context** (people and artefacts that should be considered during RE) and **properties and relationships** (how things and people in the context relate to each other). This gives a 4 × 3 grid."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "3 aspects in each facet",
+          "quote": "Requirements sources"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "3 aspects in each facet",
+          "quote": "People and artefacts that should be"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "3 aspects in each facet",
+          "quote": "How things and poeple in the context relate to"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Facette",
+          "en": "Facet"
+        },
+        {
+          "fr": "Question guide",
+          "en": "Guiding question"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Subject",
+            "en": "Subject"
+          },
+          {
+            "fr": "Quels objets et événements le système doit-il représenter ?",
+            "en": "Which objects and events must the system represent?"
+          }
+        ],
+        [
+          {
+            "fr": "Usage",
+            "en": "Usage"
+          },
+          {
+            "fr": "Qui (personnes, autres systèmes) utilise le système, et comment ?",
+            "en": "Who (people, other systems) uses the system, and how?"
+          }
+        ],
+        [
+          {
+            "fr": "IT",
+            "en": "IT"
+          },
+          {
+            "fr": "Dans quel environnement technique et opérationnel fonctionnera-t-il ?",
+            "en": "In which technical and operating environment will it run?"
+          }
+        ],
+        [
+          {
+            "fr": "Development",
+            "en": "Development"
+          },
+          {
+            "fr": "Qu'est-ce qui influence la façon de le développer ?",
+            "en": "What influences how it is developed?"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "Objects and events that need to be represented in"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "how people and other systems use the system"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "operating/technical environment"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "all aspects that influence development procedures"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Documenter le contexte et ses parties prenantes",
+        "en": "Documenting the context and its stakeholders"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les exigences dépendent du contexte : connaissance du domaine, règles et processus métier, organisation, stratégie de l'entreprise, lois, normes, autres systèmes, technologie. Attention : ce peuvent être des **hypothèses sur le futur**. Pour documenter le contexte (surtout les frontières), on utilise souvent des **diagrammes de cas d'utilisation** (acteurs : personnes ou autres systèmes, et leurs relations d'usage avec le système) ou des **diagrammes de flux de données** (sources et puits de flux de données, de matière, d'énergie, d'argent…). Les **diagrammes de classes UML** sont possibles aussi ; en pratique on combine plusieurs formes.",
+        "en": "Requirements depend on the context: domain knowledge, business rules and processes, the organisation, the corporate strategy, laws, norms, standards, other systems, technology. Careful: these can be **assumptions about the future**. To document the context (especially the boundaries), **use case diagrams** (actors — people or other systems — and their usage relationships to the system) or **data flow diagrams** (sources and sinks of data, material, energy, money flows…) are often used. **UML class diagrams** may also be used; in practice several forms are combined."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Document the context",
+          "quote": "Be careful, they can be assumptions"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "“use case” diagrams"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "actors (such as people or other systems) in the system environment"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "UML class"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "typically several"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les **parties prenantes** font partie du contexte. Le cours montre le « *stakeholder diagram* » d'Ian Alexander (2005) sur un projet de jeu vidéo : autour du produit (le jeu) on place le système, le système englobant, un système en interface, l'environnement élargi, et des rôles comme le joueur (bénéficiaire fonctionnel / opérateur normal), l'opérateur de maintenance, le directeur, l'actionnaire (bénéficiaire financier), le chef de produit (acheteur), le développeur, le concurrent (partie prenante *négative*), le régulateur, les médias, le politicien. Le diagramme montre surtout les **pressions** entre eux : faire un jeu agréable, faire du profit, innover, réguler l'imagerie violente et sexuelle.",
+        "en": "**Stakeholders** are part of the context. The course shows Ian Alexander's “stakeholder diagram” (2005) on a video game project: around the product (the game) you place the system, the containing system, an interfacing system, the wider environment, and roles such as the player (functional beneficiary / normal operator), the maintenance operator, the director, the shareholder (financial beneficiary), the product manager (purchaser), the developer, the competitor (*negative* stakeholder), the regulator, the media, the politician. The diagram mostly shows the **pressures** among them: make the game enjoyable, make a profit, innovate, regulate violent and sexual imagery."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Stakeholders",
+          "quote": "Example : influences amongt stakeholders"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Stakeholders",
+          "quote": "The Containing"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Stakeholders",
+          "quote": "Politician"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Stakeholders",
+          "quote": "Pressure to"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Stakeholders",
+          "quote": "regulate violent"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen — les cas d'utilisation.** Le cours donne un *Do / Don't*. **À faire** : identifier les acteurs, identifier leurs buts, « réifier » (services fournis par le système), traiter les cas complémentaires (nominaux). **À éviter** : le CRUD, les « Manage », mélanger les niveaux de détail, y mettre les cas alternatifs (non nominaux, exceptions…).",
+        "en": "**Exam trap — use cases.** The course gives a *Do / Don't*. **Do**: identify actors, identify their goals, reify (services provided by the system), complementary (nominal) cases. **Don't**: CRUD, “Manage”, mixing up levels of detail, alternative cases (non-nominal cases, exceptions, etc.)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify their goals"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Mix up levels of details"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Alternative cases"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ne rien oublier dans le contexte",
+        "en": "Forgetting nothing in the context"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Quels éléments du contexte oublie-t-on le plus souvent ? Le support « Don't forget » en dresse la liste : connaissance du domaine, connaissances tacites et exigences implicites, lois/normes/standards, contraintes, évolution du contexte, exigences de projet, systèmes associés, exigences orthogonales, interfaces avec d'autres systèmes et interopérabilité, intégration de l'existant (*legacy*). Et des **hypothèses** sur le marché, l'environnement physique, l'environnement métier (organisation, processus, règles) et les utilisateurs (compétences, attentes, besoins).",
+        "en": "Which elements of the context are most often forgotten? The “Don't forget” slide lists them: domain knowledge, tacit knowledge and implicit requirements, law/norms/standards, constraints, context evolution, project requirements, associated systems, orthogonal requirements, interfaces with other systems and interoperability issues, legacy integration issues. And **assumptions** about the market, the physical environment, the business environment (organisation, process, rules) and users (skills, expectations, needs)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Domain knowledge"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Tacit knowledge and implicit"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Orthogonal requirements"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Legacy integration issues"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Users (skills, expectations,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les **mauvaises hypothèses** surviennent soit parce que les auteurs des exigences n'ont pas accès à assez d'information, soit parce que l'information n'existe pas, par exemple sur les besoins, buts, objectifs, contraintes, missions, concept d'opération, budget, calendrier, management/organisation.",
+        "en": "**Bad assumptions** occur either because requirement authors do not have access to sufficient information or because the information does not exist, for example about needs, goals, objectives, constraints, missions, operations concept, budget, schedule, management/organisation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Bad assumptions",
+          "quote": "occur either because requirement authors do not"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Bad assumptions",
+          "quote": "Operations Concept"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour décrire ce contexte, le cours liste des outils : le **dictionnaire du domaine** (termes — acteurs, ressources, tâches, informations, règles —, acronymes, définitions, références, auteur), les **modèles de domaine** (description formalisée du monde réel, partagée par tous, jamais implémentée, avec une notation comme E/R ou BPMN — exemple : commande, ligne de commande, article, stock), les **ontologies** (réseau formel de concepts et règles logiques) et l'**analyse de l'existant** (*legacy analysis*), qui exploite les exigences déjà documentées mais demande un regard critique (pratiques : archéologie du système, lecture « par perspective », réutilisation d'exigences). On peut aussi analyser **coûts et performance** (temps d'exécution des processus, goulots d'étranglement, taux d'erreurs) et pratiquer l'**ethnographie « quick and dirty »**.",
+        "en": "To describe this context, the course lists tools: the **domain dictionary** (terms — actors, resources, tasks, information, rules —, acronyms, definitions, references, author), **domain models** (formalized description of the real world, shared by all, never implemented, with a notation such as E/R or BPMN — example: order, order line, item, stock), **ontologies** (formal network of concepts and logical rules) and **legacy analysis**, which exploits requirements already documented but needs a critical view (practices: system archaeology, perspective-based reading, requirements reuse). You can also run **cost and performance analysis** (process execution time, bottlenecks, error rates) and practise **“quick and dirty” ethnography**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Domain dictionary",
+          "quote": "Acronyms,"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Domain models",
+          "quote": "Formalized description of"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Domain models",
+          "quote": "Not implemented (abstract"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Ontologies",
+          "quote": "Formal network of concepts"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Legacy analysis",
+          "quote": "Understand the current"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Legacy analysis",
+          "quote": "Needs critical view"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Legacy analysis",
+          "quote": "System archeology"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Cost and performance analysis",
+          "quote": "Process execution"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "« quick and dirty » Ethnography",
+          "quote": "quick and dirty"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**À retenir (take away du cours).** Commence par comprendre le contexte : discute-le, décris-le, élimine le « gras », anticipe ses évolutions, cherche ses impacts sur les exigences. Le contexte, c'est le fondement de toute élicitation systématique.",
+        "en": "**Take away (from the course).** Start by understanding the context: discuss it, describe it, eliminate the “fat”, foresee its evolutions, look for its impacts on the requirements. The context is the foundation of any systematic elicitation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Take away",
+          "quote": "Start by understanding the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Take away",
+          "quote": "Eliminate the “fat”"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.4 Summary",
+          "quote": "Defining the system and context boundaries successfully is the"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-system-context",
+      "fr": "contexte du système",
+      "en": "system context",
+      "definition": {
+        "fr": "Partie de l'environnement du système qui est pertinente pour la définition et la compréhension de ses exigences.",
+        "en": "The part of the system environment that is relevant for the definition and understanding of its requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-1",
+          "quote": "The system context is the part of the system environment that is relevant for the definition as well as the"
+        }
+      ]
+    },
+    {
+      "id": "term-system-boundary",
+      "fr": "frontière du système",
+      "en": "system boundary",
+      "definition": {
+        "fr": "Sépare le système à développer de son environnement : ce que le développement peut modifier de ce qu'il ne peut pas modifier.",
+        "en": "Separates the system to be developed from its environment: what the development process can modify from what it cannot."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-2",
+          "quote": "The system boundary separates the system to be developed from its environment"
+        }
+      ]
+    },
+    {
+      "id": "term-context-boundary",
+      "fr": "frontière du contexte",
+      "en": "context boundary",
+      "definition": {
+        "fr": "Sépare la partie pertinente de l'environnement de la partie non pertinente, qu'on n'a pas à considérer pendant l'ingénierie des exigences.",
+        "en": "Separates the relevant part of the environment from the irrelevant part, which need not be considered during requirements engineering."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-3",
+          "quote": "The context boundary separates the relevant part of the environment of a system to be developed from the"
+        }
+      ]
+    },
+    {
+      "id": "term-grey-zone",
+      "fr": "zone grise",
+      "en": "grey zone",
+      "definition": {
+        "fr": "Séparation initialement floue entre le système et son contexte (ou entre le contexte et l'environnement non pertinent).",
+        "en": "The initially vague separation between the system and its context (or between the context and the irrelevant environment)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Gray zone between system and system context",
+          "quote": "We refer to this initially vague separation of the system"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Yet another grey zone",
+          "quote": "grey zone"
+        }
+      ]
+    },
+    {
+      "id": "term-source-sink",
+      "fr": "source et puits",
+      "en": "source and sink",
+      "definition": {
+        "fr": "Une source fournit des entrées au système ; un puits reçoit ses sorties.",
+        "en": "A source provides inputs for the system; a sink receives outputs from the system."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Sources and sinks as the starting point",
+          "quote": "Sources provide inputs"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Sources and sinks as the starting point",
+          "quote": "Sinks receive outputs from the system"
+        }
+      ]
+    },
+    {
+      "id": "term-interface",
+      "fr": "interface du système",
+      "en": "system interface",
+      "definition": {
+        "fr": "Point d'interaction entre le système et les sources et puits de son environnement (homme-machine, matérielle, logicielle).",
+        "en": "The point of interaction between the system and the sources and sinks of its environment (human–machine, hardware, software)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Interfaces: interaction between system and environment",
+          "quote": "Sources and sinks interact with the system to be developed via system interfaces"
+        }
+      ]
+    },
+    {
+      "id": "term-facets",
+      "fr": "facettes du contexte",
+      "en": "context facets",
+      "definition": {
+        "fr": "Quatre facettes (Subject, Usage, IT, Development) dans lesquelles on classe les aspects du contexte.",
+        "en": "Four facets (Subject, Usage, IT, Development) in which context aspects are classified."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "Objects and events that need to be represented in"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Principles of structuration of the context",
+          "quote": "Classify aspects within facets"
+        }
+      ]
+    },
+    {
+      "id": "term-domain-model",
+      "fr": "modèle de domaine",
+      "en": "domain model",
+      "definition": {
+        "fr": "Description formalisée du monde réel, partagée par tous, qui n'est pas implémentée.",
+        "en": "A formalized description of the real world, shared by all and not implemented."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Domain models",
+          "quote": "Formalized description of"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Domain models",
+          "quote": "Not implemented (abstract"
+        }
+      ]
+    }
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Le contexte du système est la partie pertinente de l'environnement ; les exigences n'existent que dans un contexte.",
+        "en": "The system context is the relevant part of the environment; requirements only exist in a context."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The system context",
+          "quote": "Requirements only exist in a context"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-1",
+          "quote": "The system context is the part of the system environment that is relevant for the definition as well as the"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Deux frontières : celle du système (modifiable / non modifiable) et celle du contexte (pertinent / non pertinent).",
+        "en": "Two boundaries: the system boundary (modifiable / not modifiable) and the context boundary (relevant / irrelevant)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-2",
+          "quote": "The system boundary separates the system to be developed from its environment"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-3",
+          "quote": "The context boundary separates the relevant part of the environment of a system to be developed from the"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La zone grise système/contexte doit être résolue pendant l'ingénierie des exigences ; celle du contexte/environnement non pertinent n'a pas à l'être entièrement.",
+        "en": "The system/context grey zone must be resolved during requirements engineering; the context/irrelevant environment one need not be resolved entirely."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Resolving and shifting of the gray zone",
+          "quote": "it is not necessary to resolve the gray zone"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Gray zone between system and system context",
+          "quote": "the system boundary is not precisely defined until the end of the"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un contexte mal ou incomplètement pris en compte donne des exigences erronées, souvent détectées seulement en opération.",
+        "en": "A wrongly or incompletely considered context yields erroneous requirements, often detected only in operation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Consequence of erroneous or incomplete context consideration",
+          "quote": "it may result in incomplete or erroneous requirements"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Consequence of erroneous or incomplete context consideration",
+          "quote": "often remain undetected during the validation procedures"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sources et puits communiquent avec le système par des interfaces, qui peuvent imposer des contraintes.",
+        "en": "Sources and sinks communicate with the system via interfaces, which may impose constraints."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Interfaces: interaction between system and environment",
+          "quote": "The interface type in turn may also"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le contexte se structure en 4 facettes (Subject, Usage, IT, Development) × 3 aspects (sources d'exigences, objets, propriétés et relations).",
+        "en": "The context is structured in 4 facets (Subject, Usage, IT, Development) × 3 aspects (requirements sources, objects, properties and relationships)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "The 4 facets of the context",
+          "quote": "how people and other systems use the system"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "3 aspects in each facet",
+          "quote": "Requirements sources"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "On documente le contexte avec des diagrammes de cas d'utilisation, de flux de données, de classes, et souvent plusieurs à la fois.",
+        "en": "The context is documented with use case, data flow or class diagrams, often several together."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "typically several"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}
