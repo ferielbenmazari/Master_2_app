@@ -23,10 +23,10 @@ _Source : `2__software_ple.md`_
 ## Domain engineering : modèles de lignes de produits (slides)
 _Source : `5__soft_ple_detailed.md + 6__ple.md`_
 
-- [ ] Représentation extensive (matrice, breakdown structure) vs intensive · scalabilité
-- [ ] Feature models FODA : feature, mandatory/optional, XOR, group cardinalities
-- [ ] Sémantique d'un feature model (ensemble des produits valides, comptage)
-- [ ] Requires / mutex (cross-tree constraints)
+- [ ] Représentation extensive (matrice, breakdown structure) vs intensive · scalabilité → ch.03
+- [ ] Feature models FODA : feature, mandatory/optional, XOR, group cardinalities → ch.03
+- [ ] Sémantique d'un feature model (ensemble des produits valides, comptage) → ch.03
+- [ ] Requires / mutex (cross-tree constraints) → ch.03
 
 ## Domain requirements engineering (Pohl ch.10)
 _Source : `8__ple.md`_

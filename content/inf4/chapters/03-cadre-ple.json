@@ -1,0 +1,1336 @@
+{
+  "id": "inf4-03-cadre-ple",
+  "courseId": "inf4",
+  "order": 3,
+  "title": {
+    "fr": "Le cadre PLE : décrire la famille avec un feature model",
+    "en": "The PLE framework: describing the family with a feature model"
+  },
+  "hook": {
+    "fr": "10^21 produits ne se listent pas : comment décrire toute une famille en un seul arbre ?",
+    "en": "10^21 products cannot be listed: how do you describe a whole family in a single tree?"
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+    "ressources/S3__INF4/mardown/6__ple.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pour la famille, pas pour un produit",
+        "en": "For the family, not for one product"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le chapitre précédent posait le cadre : l'**ingénierie de domaine** (*Domain Engineering* = ingénierie **pour** la réutilisation) d'un côté, l'**ingénierie d'application** (**avec** réutilisation) de l'autre ; et, en travers, l'**espace du problème** (analyse & exigences) face à l'**espace de la solution** (architecture, composants & implémentation). Ici, on zoome sur la bande du haut : le domaine.",
+        "en": "The framework has two axes: **Domain Engineering** (engineering *for* reuse) versus **Application Engineering** (engineering *with* reuse), and **Problem Space** (analysis & requirements) versus **Solution Space** (architecture, components & implementation). This chapter zooms on the top band: the domain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 1",
+          "quote": "Ingénierie de domaine / pour la réutilisation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 1",
+          "quote": "Ingénierie d'application / avec réutilisation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 1",
+          "quote": "Espace du problème / Analyse & Exigences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 1",
+          "quote": "Espace de la solution / Architecture, Composants & Implémentation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le slogan du cours : « *Domain Engineering: it's all about the family* ». On ne conçoit pas un produit, on conçoit la famille. Trois activités : **Analysis** (identifier la variabilité présente dans la ligne de produits), **Design** (développer une architecture et un plan de production), **Implementation** (développer toutes les features en pensant à la composabilité). Ce chapitre traite surtout de la première : comment *écrire* la variabilité.",
+        "en": "The course slogan: “*Domain Engineering: it's all about the family*”. You design the family, not one product. Three activities: **Analysis** (identify the variability present in the product line), **Design** (develop an architecture and production plan), **Implementation** (develop all features with composability in mind). This chapter is mostly about the first one: how to *write down* variability."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 5",
+          "quote": "Domain Engineering: it's all about the family"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 5",
+          "quote": "Identify the variability present in the product line"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 5",
+          "quote": "Develop an architecture and production plan"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 5",
+          "quote": "Develop all features with composability in mind"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le fil rouge de cette partie : *comment spécifier un modèle de ligne de produits (PLM)* ? Quatre familles de langages sont citées : Feature Models, OVM, DOPLER et les modèles par contraintes. Les **feature models** (FODA) sont ceux qu'on étudie à fond ici.",
+        "en": "The thread of this part: *how do we specify a product line model (PLM)?* Four language families are listed: Feature Models, OVM, DOPLER and constraint-based models. **Feature models** (FODA) are the ones studied in depth here."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 3",
+          "quote": "Some languages to specify PLMs"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 3",
+          "quote": "Feature Models"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 3",
+          "quote": "Constraint-based product line models"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Première tentative : tout lister (représentation extensive)",
+        "en": "First attempt: list everything (extensive representation)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Premier exemple du prof : des appareils de mesure et de diagnostic médical automatisé, en trois variantes — **Basic**, **Medium**, **Enriched**. On les décrit dans une **matrice** : chaque colonne est un produit, chaque ligne un composant, chaque case une quantité.",
+        "en": "The teacher's first example: automated medical measurement and diagnostic devices in three variants: **Basic**, **Medium**, **Enriched**. They are described in a **matrix**: each column is a product, each row a component, each cell a quantity."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "Chaque colonne représente une variante de produit spécifique (Basic, Medium, Enriched)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "chaque ligne liste la quantité exacte de chaque composant"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Composant",
+          "en": "Component"
+        },
+        {
+          "fr": "Basic",
+          "en": "Basic"
+        },
+        {
+          "fr": "Medium",
+          "en": "Medium"
+        },
+        {
+          "fr": "Enriched",
+          "en": "Enriched"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Chronometric reaction measure",
+            "en": "Chronometric reaction measure"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "2",
+            "en": "2"
+          }
+        ],
+        [
+          {
+            "fr": "Photometric reaction measure",
+            "en": "Photometric reaction measure"
+          },
+          {
+            "fr": "0",
+            "en": "0"
+          },
+          {
+            "fr": "0",
+            "en": "0"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          }
+        ],
+        [
+          {
+            "fr": "Barcode productID",
+            "en": "Barcode productID"
+          },
+          {
+            "fr": "0",
+            "en": "0"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          }
+        ],
+        [
+          {
+            "fr": "RFID product ID",
+            "en": "RFID product ID"
+          },
+          {
+            "fr": "0",
+            "en": "0"
+          },
+          {
+            "fr": "0",
+            "en": "0"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          }
+        ],
+        [
+          {
+            "fr": "Manual product ID",
+            "en": "Manual product ID"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          }
+        ],
+        [
+          {
+            "fr": "External system PID",
+            "en": "External system PID"
+          },
+          {
+            "fr": "0",
+            "en": "0"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "Chronometric reaction measure | 1 | 1 | 2"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "Photometric reaction measure | 0 | 0 | 1"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "Barcode productID | 0 | 1 | 1"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "RFID product ID | 0 | 0 | 1"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "Manual product ID | 1 | 1 | 1"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "External system PID | 0 | 1 | 1"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Même information en **breakdown structure** : une décomposition produit par produit (ex. *Basic* = 1 Chronometric reaction measure + 1 Manual product ID ; *Advanced* contient 2 RFID product ID). Dans les deux cas, chaque produit est défini individuellement par la liste exhaustive de ses composants : c'est de l'énumération **extensive**.",
+        "en": "The same information as a **breakdown structure**: a product-by-product decomposition (e.g. *Basic* = 1 Chronometric reaction measure + 1 Manual product ID; *Advanced* contains 2 RFID product ID). Either way, each product is defined individually by an exhaustive list of its components: this is **extensive** enumeration."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 7",
+          "quote": "Chaque produit est défini individuellement par la liste exhaustive de ses fonctionnalités et composants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 7",
+          "quote": "2 RFID product ID"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "C'est une forme d'énumération explicite/extensive."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les avantages annoncés : **Big picture** (vision claire de ce qui est attendu), **Completeness** (couverture des variantes fonctionnelles et physiques), **Consistency** (pas de duplication d'exigences : on définit exigences communes et spécifiques), **Easy to maintain** (au niveau système et au niveau feature).",
+        "en": "The announced benefits: **Big picture** (clear vision of what is expected), **Completeness** (coverage of functional & physical variants), **Consistency** (avoid duplicating requirements by defining common & specific ones), **Easy to maintain** (at system and at feature level)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 8",
+          "quote": "clear vision of what is expected"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 8",
+          "quote": "coverage of functional & physical variants"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 8",
+          "quote": "avoid duplication of requirements by defining common & specific requirements"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 8",
+          "quote": "Easy to maintain"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le mur de l'explosion combinatoire",
+        "en": "The combinatorial wall"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Puis le prof pose la question qui casse tout : *« How do you specify a product line of 10^21 products with 1000 components ? »*. Avec la matrice, comment gérer les composants communs, représenter les contraintes transversales (*cross-tree constraints*), intégrer facilement de nouveaux composants, créer de nouveaux produits ? Énumérer un par un 10^21 produits est impossible : c'est le **problème de scalabilité**.",
+        "en": "Then the teacher asks the question that breaks everything: *“How do you specify a product line of 10^21 products with 1000 components ?”*. With a matrix, how do you handle common components, represent cross-tree constraints, easily add new components, create new products? Listing 10^21 products one by one is impossible: this is the **scalability issue**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 9",
+          "quote": "How do you specify a product line of $10^{21}$ products with 1000 components ?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 9",
+          "quote": "How to identify/represent the cross-tree constraints?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 9",
+          "quote": "Il est impossible d'énumérer un par un $10^{21}$ produits."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : la représentation extensive est **simple et lisible** (c'est son intérêt) mais **ne passe pas à l'échelle**. Ne pas répondre « elle est fausse » : elle est inexploitable face à l'explosion combinatoire.",
+        "en": "Exam trap: the extensive representation is **simple and readable** (its strength) but **does not scale**. Do not answer “it is wrong”: it becomes unusable in the face of combinatorial explosion."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 9",
+          "quote": "devient totalement inexploitable face à l'explosion combinatoire"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 8",
+          "quote": "clear vision of what is expected"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La parade : décrire par les règles (représentation intensive)",
+        "en": "The way out: describe by rules (intensive representation)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux niveaux à ne pas confondre. Au niveau **domaine**, les **Product Line Models (PLMs)** utilisent une représentation **intensive** : des règles, contraintes et modèles génériques qui permettent de générer implicitement tous les produits valides sans les énumérer. Au niveau **produit**, les **Product Models (PMs)** sont **extensifs** : les configurations dérivées, par ex. P1 = {A, B, C}, P2 = {A, B}, P3 = {A, C}.",
+        "en": "Two levels not to be confused. At **domain** level, **Product Line Models (PLMs)** use an **intensive** representation: generic rules, constraints and models from which all valid products are implicitly generated without listing them. At **product** level, **Product Models (PMs)** are **extensive**: the derived configurations, e.g. P1 = {A, B, C}, P2 = {A, B}, P3 = {A, C}."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Product Line Models (PLMs): Intensive representation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Product Models (PMs): Extensive representation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "permettant de générer implicitement tous les produits valides sans les énumérer"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Représentation explicite des instances dérivées"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**Feature Models** (Kang et al. 1990, Czarnecki et al. 2005, Schobbens et al. 2007, Michel et al. 2011)",
+          "en": "**Feature Models** (Kang et al. 1990, Czarnecki et al. 2005, Schobbens et al. 2007, Michel et al. 2011)"
+        },
+        {
+          "fr": "**OVM** (Pohl et al. 2005) : points de variation et variantes",
+          "en": "**OVM** (Pohl et al. 2005): variation points and variants"
+        },
+        {
+          "fr": "**DOPLER** (Dhungana et al. 2006, 2010) : modèle de décision relié à des artefacts",
+          "en": "**DOPLER** (Dhungana et al. 2006, 2010): decision model linked to assets"
+        },
+        {
+          "fr": "**Constraint-based** (Salinesi et al. 2010, 2011), ex. `domain([A, B, C], 0, 1)`, `B <= A`, `C <= A`",
+          "en": "**Constraint-based** (Salinesi et al. 2010, 2011), e.g. `domain([A, B, C], 0, 1)`, `B <= A`, `C <= A`"
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Feature Models (Kang et al. 1990, Czarnecki et al. 2005, Schobbens et al. 2007, Michel et al. 2011)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "OVM (Pohl et al. 2005)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "DOPLER (Dhungana et al. 2006, 2010)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Constraint-based (Salinesi et al. 2010, 2011)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "domain([A, B, C], 0, 1)"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "FODA : l'exemple de la voiture",
+        "en": "FODA: the car example"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le premier feature model du cours est celui de FODA (*Feature-Oriented Domain Analysis*, Kang et al., SEI, Carnegie Mellon, 1990). Racine : **Car**. Features obligatoires : **Transmission** et **Horsepower**. Feature optionnelle : **Air conditioning**. Sous Transmission, deux alternatives : **Manual** ou **Automatic**. S'y ajoutent une **rationale** (« Manual more fuel efficient ») et une **composition rule** (« Air conditioning requires Horsepower > 100 »).",
+        "en": "The first feature model in the course is the FODA one (*Feature-Oriented Domain Analysis*, Kang et al., SEI, Carnegie Mellon, 1990). Root: **Car**. Mandatory features: **Transmission** and **Horsepower**. Optional feature: **Air conditioning**. Under Transmission, two alternatives: **Manual** or **Automatic**. Add a **rationale** (“Manual more fuel efficient”) and a **composition rule** (“Air conditioning requires Horsepower > 100”)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "Mandatory features: `Transmission`, `Horsepower`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "Optional feature: `Air conditioning`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "Alternative features: `Manual`, `Automatic`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 11",
+          "quote": "Manual more fuel efficient"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 11",
+          "quote": "Air conditioning requires Horsepower > 100"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 11",
+          "quote": "Feature-Oriented Domain Analysis (FODA) Feasibility Study"
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "graph TD\n  Car --> Transmission\n  Car --> Horsepower\n  Car -.-> AC[\"Air conditioning (optional)\"]\n  Transmission -->|XOR| Manual\n  Transmission -->|XOR| Automatic",
+      "caption": {
+        "fr": "Le feature model FODA de la voiture : trait plein = obligatoire, pointillé = optionnel.",
+        "en": "The FODA car feature model: solid line = mandatory, dotted = optional."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "Mandatory features: `Transmission`, `Horsepower`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "Optional feature: `Air conditioning`"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La **sémantique** d'un feature model, c'est l'ensemble des configurations valides qu'il autorise. Ici, 4 produits : C1 = {Car, Transmission, Manual, Horsepower}, C2 = {Car, Transmission, Automatic, Horsepower}, C3 et C4 = les mêmes avec Horsepower > 100 et Air conditioning.",
+        "en": "The **semantics** of a feature model is the set of valid configurations it allows. Here, 4 products: C1 = {Car, Transmission, Manual, Horsepower}, C2 = {Car, Transmission, Automatic, Horsepower}, C3 and C4 = the same ones with Horsepower > 100 and Air conditioning."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "La sémantique d'un modèle de fonctionnalités correspond à l'ensemble des configurations valides de produits qu'il autorise"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 11",
+          "quote": "Horsepower > 100"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 11",
+          "quote": "Air conditioning"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Qu'est-ce qu'une feature ?",
+        "en": "What is a feature?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Définition du cours (Czarnecki & Eisenecker, 2000) : « A feature is an essential abstraction of a functionality or product characteristic relevant to stakeholders ». Une feature peut être **abstraite ou concrète**, **commune ou variable**.",
+        "en": "Course definition (Czarnecki & Eisenecker, 2000): “A feature is an essential abstraction of a functionality or product characteristic relevant to stakeholders”. A feature can be **abstract or concrete**, **common or variable**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "A feature is an essential abstraction of a functionality or product characteristic relevant to stakeholders"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "abstract vs concrete"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "common vs variable"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce que ce n'est **pas** : une classe, une fonction, un aspect. Feature = caractéristiques **externes** (vs détails internes), besoins **orientés utilisateur** (vs préoccupations de développeur, de solution et de qualité), **intentions** (vs solutions prescrites).",
+        "en": "What it is **not**: a class, a function, an aspect. Feature = **external** characteristics (vs internal details), **user-oriented** needs (vs developer, solution and quality concerns), **intentions** (vs prescribed solutions)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "External characteristics VS Internal details"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "User-oriented needs VS developer, solution and quality concerns"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "Intentions VS prescribed solutions"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Lire un diagramme FODA : obligatoire, optionnel, XOR",
+        "en": "Reading a FODA diagram: mandatory, optional, XOR"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le diagramme FODA est un **arbre** : la **racine** est le concept principal de la ligne de produits, les **nœuds** sont les features (concrètes ou abstraites), et les arêtes sont des relations « composed of » (raffinement / décomposition). Dans le dialecte FODA, **rond plein = obligatoire**, **rond vide = optionnel**.",
+        "en": "A FODA diagram is a **tree**: the **root** is the main concept of the product line, **nodes** are features (concrete or abstract), and edges are “composed of” relationships (refinement / decomposition). In the FODA dialect, **filled circle = mandatory**, **empty circle = optional**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 13",
+          "quote": "Root: main concept of the PL"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 13",
+          "quote": "refinement / decomposition"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 37",
+          "quote": "FODA** | Arbre | Rond plein | Rond vide"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Exemple 1** : racine F1 ; enfants obligatoires F2, F3, F4 ; sous F3 : F5 (optionnelle), F6 (optionnelle), F7 (obligatoire). F1, F2, F3, F4, F7 figurent dans tous les produits ; F5 et F6 sont présentes ou absentes indépendamment, soit 2² = **4 produits**.",
+        "en": "**Example 1**: root F1; mandatory children F2, F3, F4; under F3: F5 (optional), F6 (optional), F7 (mandatory). F1, F2, F3, F4, F7 are in every product; F5 and F6 are independently present or absent, giving 2² = **4 products**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "doivent figurer dans tous les produits"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "peuvent être absentes ou présentes indépendamment"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "donnant $2^2 = 4$ combinaisons"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Alternative (XOR)** entre F11 et F12 sous F4 : exactement une feature du groupe est sélectionnée. On retire les combinaisons sans F11 ni F12, et celles avec les deux. Résultat : **8 produits** (les 4 précédents × {F11 ou F12}).",
+        "en": "**Alternative (XOR)** between F11 and F12 under F4: exactly one feature of the group is selected. Combinations with neither F11 nor F12, or with both, are removed. Result: **8 products** (the previous 4 × {F11 or F12})."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 16",
+          "quote": "Exactement une feature parmi le groupe doit être sélectionnée."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 17",
+          "quote": "Ensemble des 8 produits valides"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Cardinalité de groupe** `<1..1>` sous F7 sur F8, F9, F10 : nombre min/max de features sélectionnables dans le groupe. Ici, exactement une des trois → 8 configurations avec F8, 8 avec F9, 8 avec F10 : **24 produits**.",
+        "en": "**Group cardinality** `<1..1>` under F7 over F8, F9, F10: min/max number of selectable features in the group. Here exactly one of three → 8 configurations with F8, 8 with F9, 8 with F10: **24 products**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 18",
+          "quote": "Nombre min/max de caractéristiques sélectionnables dans le groupe."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 19",
+          "quote": "Ensemble des 24 produits valides"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 19",
+          "quote": "8 configurations avec F8"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 19",
+          "quote": "8 configurations avec F9"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 19",
+          "quote": "8 configurations avec F10"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "À retenir : chaque élément du diagramme **filtre** l'espace des produits — optionnel ×2, XOR garde « exactement un », cardinalité `<m..n>` garde entre m et n enfants.",
+        "en": "Remember: each diagram element **filters** the product space — optional ×2, XOR keeps “exactly one”, cardinality `<m..n>` keeps between m and n children."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "peuvent être absentes ou présentes indépendamment"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 16",
+          "quote": "Exactement une feature parmi le groupe doit être sélectionnée."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 28",
+          "quote": "entre $m$ et $n$ features enfants doivent être sélectionnées"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Au-delà de l'arbre : requires, mutex, contraintes complexes",
+        "en": "Beyond the tree: requires, mutex, complex constraints"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les **cross-tree constraints** relient des features de branches différentes. **F6 requires F12** : toute configuration contenant F6 doit contenir F12, donc F6 avec F11 est éliminée. **F2 mutex F8** : F2 et F8 ne peuvent jamais être présentes ensemble.",
+        "en": "**Cross-tree constraints** link features in different branches. **F6 requires F12**: any configuration containing F6 must contain F12, so F6 with F11 is eliminated. **F2 mutex F8**: F2 and F8 can never be present together."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 20",
+          "quote": "Schéma avec contraintes inter-branches (Cross-tree constraints)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 22",
+          "quote": "doit impérativement contenir `F12`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 22",
+          "quote": "Les configurations ayant `F6` avec `F11` sont éliminées."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 21",
+          "quote": "Toutes les configurations contenant simultanément `F2` et `F8` sont éliminées/invalides."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un feature model peut aussi porter des **contraintes complexes** en logique, ex. **F9 ⟹ ¬(F5 ∧ F6)** : si F9 est sélectionnée, il est interdit de sélectionner à la fois F5 et F6.",
+        "en": "A feature model can also carry **complex constraints** in logic, e.g. **F9 ⟹ ¬(F5 ∧ F6)**: if F9 is selected, selecting both F5 and F6 is forbidden."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 24",
+          "quote": "Si la feature `F9` est sélectionnée, alors il est interdit de sélectionner simultanément `F5` et `F6`."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "L'exercice du prof : de 8192 à 46",
+        "en": "The teacher's exercise: from 8192 to 46"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Exercice « Manual Analysis of FODA model » : racine F1 ; F2 (obligatoire) avec F8 (optionnel), F9 (obligatoire), F10 (optionnel) ; sous F9, cardinalité `<1..1>` sur F13, F14, F15 ; F3 (optionnel) ; F4 (optionnel) avec XOR F11/F12 ; F5 (obligatoire) ; F7 (optionnel). Dépendances : F10 mutex F3, F12 mutex F7, F15 requires F11 ; contraintes : F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7. Trois questions : (1) construire au moins 12 produits ; (2) espace des combinaisons possibles ; (3) combien le modèle en autorise réellement.",
+        "en": "Exercise “Manual Analysis of FODA model”: root F1; F2 with F8 (optional), F9 (mandatory), F10 (optional); under F9, cardinality `<1..1>` over F13, F14, F15; F3 (optional); F4 (optional) with XOR F11/F12; F5 (mandatory); F7 (optional). Dependencies: F10 mutex F3, F12 mutex F7, F15 requires F11; constraints: F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7. Three questions: (1) build at least 12 products; (2) the space of possible combinations; (3) how many the model really allows."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "Construct at least 12 unique products from this model."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "What is the space of possible combinations with these features?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "How many are actually allowed by the model?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "`F15 requires F11`"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Corrigé : l'espace brut vaut **2¹³ = 8192** combinaisons ; le modèle n'en autorise que **46**. La structure, les cardinalités de groupe, les `requires`/`mutex` et les contraintes booléennes réduisent drastiquement l'espace des solutions.",
+        "en": "Solution: the raw space is **2¹³ = 8192** combinations; the model only allows **46**. The structure, group cardinalities, `requires`/`mutex` and Boolean constraints drastically shrink the solution space."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: $2^{13} = 8192$ combinations"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: 46 produits valides."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 27",
+          "quote": "réduisent drastiquement l'espace des solutions de 8192 à seulement 46 produits valides"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : le nombre de produits ≠ 2^n. Pour compter, on **part de la structure** (obligatoire/optionnel/XOR/cardinalité) puis on **retire** ce que `requires`, `mutex` et les contraintes booléennes interdisent. Réponse du prof : 8192 → 46.",
+        "en": "Exam trap: number of products ≠ 2^n. To count, **start from the structure** (mandatory/optional/XOR/cardinality), then **remove** what `requires`, `mutex` and Boolean constraints forbid. Teacher's answer: 8192 → 46."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: 46 produits valides."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 27",
+          "quote": "réduisent drastiquement l'espace des solutions de 8192 à seulement 46 produits valides"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Dialectes, extensions… et limites",
+        "en": "Dialects, extensions… and limits"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Il existe plusieurs **dialectes** : FODA (arbre, original), FORM, FOPLE, FeatuRSEB, GP, Bosch, FORE. Dans FORE, *requires* est une flèche orientée, *excludes* une flèche bidirectionnelle, et la cardinalité de groupe `<m..n>` impose, si le parent est sélectionné, entre m et n enfants.",
+        "en": "There are several **dialects**: FODA (tree, original), FORM, FOPLE, FeatuRSEB, GP, Bosch, FORE. In FORE, *requires* is a directed arrow, *excludes* a bidirectional arrow, and group cardinality `<m..n>` forces, if the parent is selected, between m and n children."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 37",
+          "quote": "Version originale pionnière"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 28",
+          "quote": "Excludes"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 28",
+          "quote": "Si `F0` est sélectionné, entre $m$ et $n$ features enfants doivent être sélectionnées."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Concepts ajoutés au dialecte FODA : **cardinalités individuelles** (nombre de fois qu'une feature peut apparaître dans une configuration), **attributs** (caractéristiques mesurables avec nom, domaine et valeur au moment de la configuration), **contraintes complexes** (booléennes, arithmétiques, symboliques).",
+        "en": "Concepts added to the FODA dialect: **individual cardinalities** (number of times a feature can occur in a configuration), **attributes** (measurable characteristics with a name, a domain and a value at configuration time), **complex constraints** (Boolean, arithmetic, symbolic)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 29",
+          "quote": "Number of times a feature can occur in a configuration"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 29",
+          "quote": "Specific measurable characteristics of a feature, with a name, a domain and a value at a given configuration time"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 29",
+          "quote": "Boolean, Arithmetic, Symbolic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Mais les feature models ont des **problèmes**. L'exemple du *Braking System* le montre : confusion entre structure physique et décision de configuration ; ambiguïté entre décomposition (« partie de ») et sous-typage (« est un ») ; ambiguïtés entre cardinalités d'éléments `[0..2]`, cardinalités de groupe `<1..2>` et contraintes `includes`/`excludes`.",
+        "en": "But feature models have **problems**. The *Braking System* example shows it: confusion between physical structure and configuration decision; ambiguity between decomposition (“part of”) and subtyping (“is a”); ambiguities between element cardinalities `[0..2]`, group cardinalities `<1..2>` and `includes`/`excludes` constraints."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 32",
+          "quote": "Mélange entre structures physiques et décisions de configuration"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 32",
+          "quote": "Ambiguïté entre relation de composition"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 32",
+          "quote": "Conflits ou ambiguïtés sémantiques entre cardinalités d'éléments"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-domain-engineering",
+      "fr": "ingénierie de domaine",
+      "en": "domain engineering",
+      "definition": {
+        "fr": "Ingénierie pour la réutilisation : analyse, conception et implémentation de la famille de produits.",
+        "en": "Engineering for reuse: analysis, design and implementation of the product family."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 2",
+          "quote": "Domain engineering = Engineering for reuse"
+        }
+      ]
+    },
+    {
+      "id": "term-extensive",
+      "fr": "représentation extensive",
+      "en": "extensive representation",
+      "definition": {
+        "fr": "Chaque produit est défini individuellement par la liste exhaustive de ses composants (matrice, breakdown structure) ; ne passe pas à l'échelle.",
+        "en": "Each product is defined individually by an exhaustive list of its components (matrix, breakdown structure); does not scale."
+      },
+      "pitfall": {
+        "fr": "Niveau produit (PM), pas niveau domaine.",
+        "en": "Product level (PM), not domain level."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 7",
+          "quote": "Chaque produit est défini individuellement par la liste exhaustive de ses fonctionnalités et composants."
+        }
+      ]
+    },
+    {
+      "id": "term-intensive",
+      "fr": "représentation intensive",
+      "en": "intensive representation",
+      "definition": {
+        "fr": "Règles, contraintes et modèles génériques qui génèrent implicitement tous les produits valides sans les énumérer.",
+        "en": "Generic rules, constraints and models that implicitly generate all valid products without listing them."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "permettant de générer implicitement tous les produits valides sans les énumérer"
+        }
+      ]
+    },
+    {
+      "id": "term-plm",
+      "fr": "modèle de ligne de produits (PLM)",
+      "en": "product line model (PLM)",
+      "definition": {
+        "fr": "Modèle du niveau domaine, en représentation intensive (feature model, OVM, DOPLER, modèle par contraintes).",
+        "en": "Domain-level model, in intensive representation (feature model, OVM, DOPLER, constraint-based model)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Product Line Models (PLMs): Intensive representation"
+        }
+      ]
+    },
+    {
+      "id": "term-feature",
+      "fr": "feature (caractéristique)",
+      "en": "feature",
+      "definition": {
+        "fr": "Abstraction essentielle d'une fonctionnalité ou caractéristique du produit, pertinente pour les parties prenantes.",
+        "en": "An essential abstraction of a functionality or product characteristic relevant to stakeholders."
+      },
+      "pitfall": {
+        "fr": "Caractéristique externe, pas détail interne (classe, fonction, aspect).",
+        "en": "External characteristic, not internal detail (class, function, aspect)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "A feature is an essential abstraction of a functionality or product characteristic relevant to stakeholders"
+        }
+      ]
+    },
+    {
+      "id": "term-foda",
+      "fr": "FODA",
+      "en": "FODA",
+      "definition": {
+        "fr": "Feature-Oriented Domain Analysis (Kang et al., SEI, 1990) : le premier dialecte de feature models, sous forme d'arbre.",
+        "en": "Feature-Oriented Domain Analysis (Kang et al., SEI, 1990): the first feature-model dialect, tree-shaped."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 11",
+          "quote": "Feature-Oriented Domain Analysis (FODA) Feasibility Study"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 37",
+          "quote": "Version originale pionnière"
+        }
+      ]
+    },
+    {
+      "id": "term-mandatory-optional",
+      "fr": "feature obligatoire / optionnelle",
+      "en": "mandatory / optional feature",
+      "definition": {
+        "fr": "Dans FODA : rond plein = obligatoire (dans tous les produits où le parent est présent) ; rond vide = optionnelle.",
+        "en": "In FODA: filled circle = mandatory; empty circle = optional."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 37",
+          "quote": "FODA** | Arbre | Rond plein | Rond vide"
+        }
+      ]
+    },
+    {
+      "id": "term-xor",
+      "fr": "alternative (XOR)",
+      "en": "alternative (XOR)",
+      "definition": {
+        "fr": "Exactement une feature du groupe doit être sélectionnée.",
+        "en": "Exactly one feature of the group must be selected."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 16",
+          "quote": "Exactement une feature parmi le groupe doit être sélectionnée."
+        }
+      ]
+    },
+    {
+      "id": "term-group-cardinality",
+      "fr": "cardinalité de groupe",
+      "en": "group cardinality",
+      "definition": {
+        "fr": "Nombre min/max de features sélectionnables dans un groupe, notée `<m..n>`.",
+        "en": "Min/max number of selectable features in a group, written `<m..n>`."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 18",
+          "quote": "Nombre min/max de caractéristiques sélectionnables dans le groupe."
+        }
+      ]
+    },
+    {
+      "id": "term-cross-tree",
+      "fr": "contrainte transversale (requires / mutex)",
+      "en": "cross-tree constraint (requires / mutex)",
+      "definition": {
+        "fr": "Contrainte entre features de branches différentes : *requires* (A impose B) ou *mutex* (A et B jamais ensemble).",
+        "en": "Constraint between features in different branches: *requires* (A forces B) or *mutex* (A and B never together)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 22",
+          "quote": "doit impérativement contenir `F12`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 21",
+          "quote": "Toutes les configurations contenant simultanément `F2` et `F8` sont éliminées/invalides."
+        }
+      ]
+    },
+    {
+      "id": "term-fm-semantics",
+      "fr": "sémantique d'un feature model",
+      "en": "feature model semantics",
+      "definition": {
+        "fr": "L'ensemble des configurations valides de produits que le modèle autorise.",
+        "en": "The set of valid product configurations the model allows."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 11",
+          "quote": "La sémantique d'un modèle de fonctionnalités correspond à l'ensemble des configurations valides de produits qu'il autorise"
+        }
+      ]
+    }
+  ],
+  "notions": [],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Domain engineering = ingénierie pour la réutilisation ; 3 activités : Analysis, Design, Implementation.",
+        "en": "Domain engineering = engineering for reuse; 3 activities: Analysis, Design, Implementation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 2",
+          "quote": "Domain engineering = Engineering for reuse"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 5",
+          "quote": "Develop all features with composability in mind"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Extensif (matrice, breakdown structure) = simple mais non scalable (10^21 produits) ; intensif = règles qui génèrent les produits.",
+        "en": "Extensive (matrix, breakdown structure) = simple but not scalable (10^21 products); intensive = rules that generate the products."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 9",
+          "quote": "Il est impossible d'énumérer un par un $10^{21}$ produits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "permettant de générer implicitement tous les produits valides sans les énumérer"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "PLM (domaine) = intensif ; PM (produit) = extensif. Langages de PLM : feature models, OVM, DOPLER, contraintes.",
+        "en": "PLM (domain) = intensive; PM (product) = extensive. PLM languages: feature models, OVM, DOPLER, constraints."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Product Line Models (PLMs): Intensive representation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Product Models (PMs): Extensive representation"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Une feature = abstraction essentielle d'une fonctionnalité pertinente pour les parties prenantes (caractéristique externe).",
+        "en": "A feature = essential abstraction of a functionality relevant to stakeholders (external characteristic)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "A feature is an essential abstraction of a functionality or product characteristic relevant to stakeholders"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 12",
+          "quote": "External characteristics VS Internal details"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "FODA : arbre ; obligatoire (rond plein), optionnel (rond vide), XOR (exactement un), cardinalité de groupe `<m..n>`.",
+        "en": "FODA: tree; mandatory (filled circle), optional (empty circle), XOR (exactly one), group cardinality `<m..n>`."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 37",
+          "quote": "FODA** | Arbre | Rond plein | Rond vide"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 16",
+          "quote": "Exactement une feature parmi le groupe doit être sélectionnée."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 18",
+          "quote": "Nombre min/max de caractéristiques sélectionnables dans le groupe."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sémantique = ensemble des produits valides ; exemples du cours : 4 produits, puis 8 (XOR), puis 24 (cardinalité `<1..1>`).",
+        "en": "Semantics = the set of valid products; course examples: 4 products, then 8 (XOR), then 24 (`<1..1>` cardinality)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "donnant $2^2 = 4$ combinaisons"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 17",
+          "quote": "Ensemble des 8 produits valides"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 19",
+          "quote": "Ensemble des 24 produits valides"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Contraintes transversales : requires (F6 → F12), mutex (F2 / F8), contraintes booléennes (F9 ⟹ ¬(F5 ∧ F6)).",
+        "en": "Cross-tree constraints: requires (F6 → F12), mutex (F2 / F8), Boolean constraints (F9 ⟹ ¬(F5 ∧ F6))."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 22",
+          "quote": "doit impérativement contenir `F12`"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 21",
+          "quote": "Toutes les configurations contenant simultanément `F2` et `F8` sont éliminées/invalides."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 24",
+          "quote": "Si la feature `F9` est sélectionnée, alors il est interdit de sélectionner simultanément `F5` et `F6`."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Exercice du prof : 2^13 = 8192 combinaisons brutes, 46 produits réellement valides.",
+        "en": "Teacher's exercise: 2^13 = 8192 raw combinations, 46 truly valid products."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: $2^{13} = 8192$ combinations"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: 46 produits valides."
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}
