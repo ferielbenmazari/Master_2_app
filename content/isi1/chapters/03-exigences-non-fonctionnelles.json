@@ -1,0 +1,1111 @@
+{
+  "id": "isi1-03-exigences-non-fonctionnelles",
+  "courseId": "isi1",
+  "order": 3,
+  "title": {
+    "fr": "Exigences non fonctionnelles : définir, classer, documenter",
+    "en": "Non-functional requirements: defining, classifying, documenting"
+  },
+  "hook": {
+    "fr": "Pourquoi « non fonctionnelle » fait débat, comment Glinz classe les exigences par préoccupation, et comment les documenter.",
+    "en": "Why “non-functional” starts arguments, how Glinz classifies requirements by concern, and how to document them."
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "sources-texte/isi1/5-on-nfrs.md"
+  ],
+  "status": "draft",
+  "notions": [],
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "« Non fonctionnelle » : le mot qui fâche",
+        "en": "“Non-functional”: the word that starts arguments"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Envie de lancer un débat enflammé entre spécialistes de l'ingénierie des exigences ? Parle-leur d'**exigences non fonctionnelles**. Le terme est utilisé depuis plus de vingt ans, et pourtant il n'y a toujours pas de consensus sur leur nature ni sur la manière de les documenter. Seul point d'accord unanime : elles sont **importantes** et peuvent être **critiques** pour le succès d'un projet. C'est le point de départ de l'article de Martin Glinz (université de Zurich), notre support.",
+        "en": "Want to start a heated debate among requirements engineers? Talk to them about **non-functional requirements**. The term has been used for more than twenty years, yet there is still no consensus on their nature or on how to document them. The one unanimous point: they are **important** and can be **critical** for the success of a project. This is the starting point of Martin Glinz's paper (University of Zurich), our course material."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "1. Introduction",
+          "quote": "If you want to trigger a hot debate among a group of"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Abstract",
+          "quote": "unanimous consensus that non-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "1. Introduction",
+          "quote": "no consensus about the nature of non-functional"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Du côté **fonctionnel**, tout est plus calme. Les définitions suivent deux fils qui se recouvrent largement. Premier fil, la **fonction** : une exigence fonctionnelle dit « ce que le système doit faire ». Second fil, le **comportement** : elle décrit les aspects comportementaux du système, c'est-à-dire entrées (stimuli), sorties (réponses) et relations entre les deux.",
+        "en": "On the **functional** side, things are calmer. Definitions follow two threads that largely overlap. First thread, **function**: a functional requirement says “what the system should do”. Second thread, **behavior**: it describes the behavioral aspects of the system, i.e. inputs (stimuli), outputs (responses) and the relationships between them."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "2. Defining the term",
+          "quote": "There is a rather broad consensus about how to de-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "2. Defining the term",
+          "quote": "what the system should do"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "2. Defining the term",
+          "quote": "describe the behavioral aspects of"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour les non fonctionnelles, rien de tel. Glinz rassemble des définitions de la littérature dans un tableau : elles se contredisent ou se recoupent mal. Voici un échantillon.",
+        "en": "For non-functional requirements, nothing of the kind. Glinz gathers definitions from the literature in a table: they contradict each other or overlap badly. Here is a sample."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "Table 1. Definitions of the term non-functional requirement(s)"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Auteur",
+          "en": "Author"
+        },
+        {
+          "fr": "Idée de la définition",
+          "en": "Idea of the definition"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Antón",
+            "en": "Antón"
+          },
+          {
+            "fr": "Aspects **non comportementaux** : propriétés et contraintes sous lesquelles le système doit opérer.",
+            "en": "**Nonbehavioral** aspects: properties and constraints under which a system must operate."
+          }
+        ],
+        [
+          {
+            "fr": "Davis",
+            "en": "Davis"
+          },
+          {
+            "fr": "Les **attributs globaux** du système (portabilité, fiabilité, efficacité, testabilité, modifiabilité…).",
+            "en": "The **overall attributes** of the system (portability, reliability, efficiency, testability, modifiability…)."
+          }
+        ],
+        [
+          {
+            "fr": "Wiegers",
+            "en": "Wiegers"
+          },
+          {
+            "fr": "Une propriété ou une caractéristique, ou une contrainte à respecter, **autre qu'un comportement observable**.",
+            "en": "A property or characteristic, or a constraint, **other than an observable system behavior**."
+          }
+        ],
+        [
+          {
+            "fr": "Robertson & Robertson",
+            "en": "Robertson & Robertson"
+          },
+          {
+            "fr": "Une propriété ou qualité que le produit doit avoir : apparence, vitesse, précision.",
+            "en": "A property or quality the product must have: appearance, speed, accuracy."
+          }
+        ],
+        [
+          {
+            "fr": "Kotonya & Sommerville",
+            "en": "Kotonya & Sommerville"
+          },
+          {
+            "fr": "Exigences qui ne concernent pas la fonctionnalité : restrictions sur le produit **et sur le processus**, contraintes externes.",
+            "en": "Requirements not concerned with functionality: restrictions on the product **and on the development process**, external constraints."
+          }
+        ],
+        [
+          {
+            "fr": "Mylopoulos, Chung & Nixon",
+            "en": "Mylopoulos, Chung & Nixon"
+          },
+          {
+            "fr": "Exigences **globales** (coût, performance, fiabilité, maintenabilité, portabilité, robustesse) ; « pas de définition formelle ni de liste complète ».",
+            "en": "**Global** requirements (cost, performance, reliability, maintainability, portability, robustness); “no formal definition or complete list”."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "Describe the nonbehavioral aspects of a system, capturing the properties and constraints under"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "The required overall attributes of the system, including portability, reliability, efficiency, human"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "other than an observable system behavior."
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "A property, or quality, that the product must have, such as an appearance, or a speed or accuracy"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "restrictions on the product being developed and the development process, and they specify external"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 1",
+          "quote": "There is not a formal definition or a"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi les définitions divergent",
+        "en": "Why the definitions diverge"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Glinz range les problèmes en trois familles : **définition**, **classification** et **représentation**. Premier problème, la définition : toutes les définitions reposent sur les mêmes mots (*propriété ou caractéristique, attribut, qualité, contrainte, performance*), mais personne n'est d'accord sur ce qu'ils désignent. Les contraintes sont-elles des propriétés ? Jacobson, Booch et Rumbaugh disent oui ; Wiegers et Antón disent non.",
+        "en": "Glinz sorts the problems into three families: **definition**, **classification** and **representation**. First, definition: all definitions build on the same words (*property or characteristic, attribute, quality, constraint, performance*), but nobody agrees on what they denote. Are constraints properties? Jacobson, Booch and Rumbaugh say yes; Wiegers and Antón say no."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3. Where is the problem?",
+          "quote": "definition problems, classification problems and repre-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "property or characteristic, attribute,"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "Rumbaugh [10] include them, others, e.g. Wiegers [21]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deuxième désaccord : la **portée**. Pour Mylopoulos et Davis, une non fonctionnelle est **globale** par définition (« exigences globales », « attributs d'ensemble »), donc séparée des fonctionnelles — le modèle Volere les range dans deux sections de premier niveau distinctes. Jacobson, Booch et Rumbaugh, eux, admettent des NFR **locales** (la plupart des exigences de performance) à côté de NFR globales (sécurité, fiabilité).",
+        "en": "Second disagreement: **scope**. For Mylopoulos and Davis, a non-functional requirement is **global** by definition (“global requirements”, “overall attributes”), hence completely separate from functional ones — the Volere template documents them in two separate top-level sections. Jacobson, Booch and Rumbaugh admit **local** NFRs (most performance requirements) next to global ones (security, reliability)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "non-functional requirements have, by definition, a"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "In the Volere template [18]"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "there are both local non-functional"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Troisième désaccord : le **périmètre**. La plupart des définitions ne parlent que des exigences *système* (ou produit) et excluent les exigences de projet et de processus ; Kotonya et Sommerville, eux, rangent les exigences de projet parmi les non fonctionnelles.",
+        "en": "Third disagreement: **perimeter**. Most definitions only deal with *system* (or product) requirements and exclude project and process requirements; Kotonya and Sommerville, however, count project requirements as non-functional."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "Most definitions refer to system requirements (also"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "Sommerville [11], project requirements are considered"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Des définitions franchement ratées.** Le glossaire SCREEN range la défaillance et la reprise après panne parmi les propriétés non fonctionnelles, alors que ce sont clairement des questions fonctionnelles. Ncube définit les NFR comme « les propriétés comportementales… » (une coquille, selon Glinz, mais passée inaperçue dans une thèse). Pire : la définition de Wikipédia est si vague qu'elle « pourrait signifier presque n'importe quoi ».",
+        "en": "**Some plainly misconceived definitions.** The SCREEN glossary lists failure and recovery as non-functional properties, although they are clearly functional issues. Ncube defines NFRs as “the behavioral properties…” (a typo, according to Glinz, but one that went unnoticed in a PhD thesis). Worst: the Wikipedia definition is so vague it “could mean almost anything”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "lists failure and recovery as non-functional"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "Ncube [17] even defines non-functional requirements"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "which is so vague that it could mean almost anything."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège de vocabulaire.** Toute exigence, même fonctionnelle, peut être vue comme une *qualité* (ISO 9000 : degré auquel un ensemble de caractéristiques inhérentes satisfait des exigences) ou comme une *contrainte* (elle réduit l'espace des solutions possibles). Dans les définitions des NFR, ces mots ont donc un **sens restreint**. Méfie-toi des affirmations du type « toute exigence est… » : sans précision, elles ne distinguent rien.",
+        "en": "**Vocabulary trap.** Every requirement, even a functional one, can be seen as a *quality* (ISO 9000: degree to which a set of inherent characteristics fulfils requirements) or as a *constraint* (it constrains the space of possible solutions). In NFR definitions these words therefore have a **restricted meaning**. Beware of claims like “every requirement is…”: without qualification they distinguish nothing."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "can be regarded as a quality, because, according to ISO"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "straint, because it constrains the space of potential"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "its meaning is restricted to a set of specific qualities"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Classer, représenter : les deux autres problèmes",
+        "en": "Classifying and representing: the other two problems"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Classification.** Chaque auteur découpe les NFR à sa façon. La norme IEEE 830 distingue interfaces externes, performance, attributs (fiabilité, disponibilité, sécurité…) et contraintes de conception. Sommerville parle d'exigences de produit, d'organisation et externes. Autre confusion : on mélange trois notions à séparer — le **genre** (fonction, qualité, contrainte…), la **représentation** et la **satisfaction** (*dure* ou *souple*).",
+        "en": "**Classification.** Each author slices NFRs in a different way. IEEE 830 distinguishes external interfaces, performance, attributes (reliability, availability, security…) and design constraints. Sommerville speaks of product, organizational and external requirements. Another confusion: three notions are mixed that should be separated — the **kind** (function, quality, constraint…), the **representation** and the **satisfaction** (*hard* vs *soft*)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "external interface requirements, per-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "requirements, organizational requirements and external"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "(should a given requirement be"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "representation (see below), and satisfaction (hard vs."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Représentation.** Le même besoin de sécurité peut s'écrire de trois façons. (1) « Le système doit empêcher tout accès non autorisé aux données client » : non fonctionnelle. (2) « La probabilité d'un accès non autorisé réussi doit être inférieure à 10⁻⁵ » : toujours non fonctionnelle. (3) « La base de données n'accorde l'accès qu'aux utilisateurs authentifiés par nom et mot de passe » : une exigence **fonctionnelle**… qui reste une exigence de sécurité. Moralité de Glinz : le genre d'une exigence dépend de la façon dont on la représente.",
+        "en": "**Representation.** The same security need can be written in three ways. (1) “The system shall prevent any unauthorized access to the customer data”: non-functional. (2) “The probability for successful access by an unauthorized person shall be smaller than 10⁻⁵”: still non-functional. (3) “The database shall grant access only to users authorized by user name and password”: a **functional** requirement… that is still a security requirement. Glinz's moral: the kind of a requirement depends on the way we represent it."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "“The system shall prevent any unauthorized access to"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "smaller than 10-5”, this is still a non-functional re-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "database shall grant access to the cus-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "In a nutshell, the kind of a requirement"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège sur le raffinement.** Dans cet exemple, c'est une exigence **non fonctionnelle** (sécurité) qui, en s'affinant, devient une exigence **fonctionnelle**. Les annales de la classe posent la question dans les deux sens : « les NFR peuvent s'affiner en exigences fonctionnelles » (2013) et « les exigences fonctionnelles peuvent s'affiner en exigences non fonctionnelles » (2014). Relis le sens de la flèche avant de répondre.",
+        "en": "**Refinement trap.** In this example it is a **non-functional** (security) requirement that becomes a **functional** one when refined. Past exams ask the question in both directions: “NFRs can be refined into functional requirements” (2013) and “functional requirements can be refined into non-functional requirements” (2014). Re-read the direction of the arrow before answering."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "requirement to “The database shall grant access to the cus-"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "Question 7",
+          "quote": "s'affiner en exigences fonctionnelles"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "Question 7",
+          "quote": "Les exigences fonctionnelles peuvent s'affiner en exigences non fonctionnelles"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dernier souci de représentation : **où documenter** les NFR ? Volere et sept des huit modèles de SRS de l'IEEE 830 séparent complètement fonctionnel et non fonctionnel. Avec les cas d'utilisation du Rational Unified Process, on **rattache** les NFR au cas concerné, et seules les NFR globales restent à part, comme « exigences supplémentaires ». Reste le cas intermédiaire — une NFR qui ne touche qu'un sous-ensemble de cas (ex. : communication sécurisée pour certains cas seulement) : les gabarits classiques échouent, il faut des **liens de traçabilité** explicites.",
+        "en": "Last representation worry: **where to document** NFRs? Volere and seven of the eight SRS templates of IEEE 830 completely separate functional from non-functional. With Rational Unified Process use cases, NFRs are **attached** to the relevant use case, and only global NFRs are kept apart as “supplementary requirements”. Remains the in-between case — an NFR concerning only a subset of use cases (e.g. secure communication for some of them only): classic templates fail, explicit **traceability links** are needed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "In IEEE 830-1998 [7], seven of the eight proposed SRS"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "use case as far as possible. Only the remaining (global)"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "must be handled by setting explicit traceability links."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La solution de Glinz : classer par préoccupation",
+        "en": "Glinz's solution: classify by concern"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Première idée : une **classification à facettes** où les termes « fonctionnel » et « non fonctionnel » n'apparaissent plus. On sépare quatre facettes : le **genre**, la **représentation**, la **satisfaction** et le **rôle**. Avantages : (i) c'est la *représentation* — pas le genre — qui détermine comment vérifier une exigence ; (ii) genre et satisfaction étant découplés, une exigence fonctionnelle n'est pas toujours « dure » ni une NFR toujours « souple » ; (iii) le rôle distingue exigences système (prescriptives) et exigences de domaine (normatives ou supposées).",
+        "en": "First idea: a **faceted classification** in which the terms “functional” and “non-functional” no longer appear. Four facets are separated: **kind**, **representation**, **satisfaction** and **role**. Advantages: (i) it is the *representation* — not the kind — that determines how to verify a requirement; (ii) decoupling kind and satisfaction reflects that functional requirements are not always hard and NFRs not always soft; (iii) the role distinguishes (prescriptive) system requirements from (normative or assumptive) domain requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.1. A faceted classification",
+          "quote": "Separating the concepts of kind, representation,"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.1. A faceted classification",
+          "quote": "(i) It is the representation of a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.1. A faceted classification",
+          "quote": "(ii) Decoupling the kind and satisfaction facets reflects"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.1. A faceted classification",
+          "quote": "(iii) The role facet allows a clear distinction of (pre-"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Représentation",
+          "en": "Representation"
+        },
+        {
+          "fr": "Type de vérification",
+          "en": "Type of verification"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Opérationnelle",
+            "en": "Operational"
+          },
+          {
+            "fr": "Revue, test ou vérification formelle",
+            "en": "Review, test or formal verification"
+          }
+        ],
+        [
+          {
+            "fr": "Quantitative",
+            "en": "Quantitative"
+          },
+          {
+            "fr": "Mesure (au moins sur une échelle ordinale)",
+            "en": "Measurement (at least on an ordinal scale)"
+          }
+        ],
+        [
+          {
+            "fr": "Qualitative",
+            "en": "Qualitative"
+          },
+          {
+            "fr": "Pas de vérification directe : jugement subjectif des parties prenantes, prototypes, ou indirectement par raffinement de buts / métriques dérivées",
+            "en": "No direct verification: subjective stakeholder judgment, prototypes, or indirectly by goal refinement / derived metrics"
+          }
+        ],
+        [
+          {
+            "fr": "Déclarative",
+            "en": "Declarative"
+          },
+          {
+            "fr": "Revue",
+            "en": "Review"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Table 2. Representation determines verification [5]"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Operational    Review, test or formal verification"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Quantitative   Measurement (at least on an ordinal scale)"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Qualitative    No direct verification. May be done by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Mais en pratique, supprimer les deux termes s'est avéré trop radical : on a besoin de distinguer le fonctionnel du reste. Glinz définit donc une **préoccupation** (*concern*) : un sujet d'intérêt dans un système. Selon son objet, c'est une préoccupation **fonctionnelle** (comportement attendu : réaction aux stimuli, fonctions et données nécessaires), de **performance** (temps, vitesse, volume, débit) ou de **qualité** (une qualité de la liste de l'ISO/IEC 9126).",
+        "en": "But in practice, dropping both terms proved too radical: we do need to distinguish functional concerns from the others. Glinz therefore defines a **concern**: a matter of interest in a system. Depending on its matter of interest it is a **functional** concern (expected behavior: reaction to stimuli, required functions and data), a **performance** concern (timing, speed, volume, throughput) or a **quality** concern (a quality of the kind enumerated in ISO/IEC 9126)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.1. A faceted classification",
+          "quote": "out that the idea of getting rid of the terms"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A concern is a matter of interest in a sys-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "matter of interest is timing, speed, volume or through-"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L'ensemble des exigences du système est alors **partitionné** en quatre : exigences **fonctionnelles**, de **performance**, de **qualité spécifique** et **contraintes**. Une *contrainte* restreint l'espace des solutions au-delà de ce qui est nécessaire pour satisfaire les trois autres types. Un **attribut** est une exigence de performance ou de qualité spécifique. Et pour qui tient au vieux terme : une **exigence non fonctionnelle** est *un attribut ou une contrainte* du système. Les exigences de projet et de processus sont distinguées dès la racine.",
+        "en": "The set of all system requirements is then **partitioned** into four: **functional**, **performance**, **specific quality** requirements, and **constraints**. A *constraint* restricts the solution space beyond what is necessary to meet the other three types. An **attribute** is a performance or specific quality requirement. And for those who want to keep the old term: a **non-functional requirement** is *an attribute of or a constraint on* a system. Project and process requirements are separated at the root level."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. The set of all requirements of a system is"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "A constraint is a requirement that constrains the"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "An attribute is a performance requirement or a spe-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A non-functional requirement is an attrib-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "should be distinguished at the root level and not in a"
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TD\n  R[Exigence] --> Pj[Exigence de projet]\n  R --> S[Exigence système]\n  R --> Pr[Exigence de processus]\n  S --> F[Exigence fonctionnelle]\n  S --> A[Attribut]\n  S --> C[Contrainte]\n  A --> Perf[Exigence de performance]\n  A --> Q[Exigence de qualité spécifique]",
+      "caption": {
+        "fr": "Taxonomie de Glinz (figure 2) : une exigence non fonctionnelle = un attribut ou une contrainte.",
+        "en": "Glinz's taxonomy (figure 2): a non-functional requirement = an attribute or a constraint."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Figure 2",
+          "quote": "Figure 2. A concern-based taxonomy of require-"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Pourquoi la performance a sa propre catégorie ?** Parce que sa mesure n'est a priori pas difficile : on s'accorde à la mesurer en temps, en volume et en volume par unité de temps. Pour tout autre attribut (« -ilités » : fiabilité, utilisabilité, sécurité, portabilité, maintenabilité…), il n'existe pas de mesure admise : éliciter une qualité spécifique implique donc de **s'entendre avec les parties prenantes sur la façon de la mesurer**.",
+        "en": "**Why does performance get its own category?** Because measuring it is not difficult a priori: there is a broad consensus to measure it in terms of time, volume and volume per unit of time. For any other attribute (“-ilities”: reliability, usability, security, portability, maintainability…) there are no such agreed measures: eliciting a specific quality therefore implies **agreeing with stakeholders on how to measure it**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "formance requirements are typically treated separately"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "volume per unit of time. For any other attribute, there"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "how to measure these qualities."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Appliquer la taxonomie : quatre questions dans l'ordre",
+        "en": "Applying the taxonomy: four questions, in order"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour classer une exigence, Glinz pose **quatre questions, à appliquer dans cet ordre** : « Cette exigence est-elle énoncée parce qu'on doit spécifier… » (1) du comportement, des données, des entrées ou des réactions du système, quelle que soit la façon de le faire → **fonctionnelle** ; (2) des restrictions de temps, de vitesse de traitement, de volume de données ou de débit → **performance** ; (3) une qualité précise que le système doit avoir → **qualité spécifique** ; (4) toute autre restriction sur ce que le système doit faire, comment, ou une solution imposée → **contrainte**.",
+        "en": "To classify a requirement, Glinz asks **four questions, applied in this order**: “Was this requirement stated because we need to specify…” (1) some of the system's behavior, data, input or reaction to input, regardless of how it is done → **functional**; (2) restrictions about timing, processing or reaction speed, data volume or throughput → **performance**; (3) a specific quality the system or a component shall have → **specific quality**; (4) any other restriction about what the system shall do, how, or any prescribed solution → **constraint**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "Table 3. Classification rules"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... some of the system’s behavior, data, Functional"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... restrictions about timing, processing Performance"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... a specific quality that the system or a Specific"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... any other restriction about what the Constraint"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège : la règle « quoi / comment ».** On entend souvent « ce que le système fait = fonctionnel ; comment il se comporte = non fonctionnel ». Glinz juge cette règle **trop grossière** : elle classe mal les attributs et contraintes représentés fonctionnellement, ou très importants. Exemple de la note de bas de page : pour le logiciel de traitement des détecteurs de physique des particules, la première réponse à « que doit faire le système ? » est « absorber le volume de données » — or c'est une exigence de **performance**.",
+        "en": "**Trap: the “what / how” rule.** One often hears “what the system does = functional; how it behaves = non-functional”. Glinz judges this rule **too coarse**: it misclassifies attributes and constraints represented functionally, or very important ones. Footnote example: for the data-processing software of a particle-physics detector, the first answer to “what shall the system do?” is “cope with the data volume” — yet that is a **performance** requirement."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "The often heard rule ‘What"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "too coarse and leads to mis-classifications when attrib-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "the data volume. However, this is a performance requirement."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dernière touche : où ranger les **interfaces** (catégorie à part dans les normes IEEE) ? Dans la taxonomie de Glinz, une exigence d'interface se classe selon la préoccupation qu'elle porte : fonctionnelle, performance, qualité spécifique ou contrainte. Autre atout : la classification d'une exigence reste **invariante** quand elle est raffinée ou modifiée, tant que sa préoccupation reste la même.",
+        "en": "Last touch: where do **interfaces** (a separate category in IEEE standards) go? In Glinz's taxonomy an interface requirement is classified by the concern it pertains to: functional, performance, specific quality or constraint. Another asset: the classification of a requirement stays **invariant** under refinement and change as long as its concern remains the same."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "classified according to the concern it pertains to as"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "remains invariant under refinement and change as"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Documenter les NFR : l'approche par aspects",
+        "en": "Documenting NFRs: the aspect-oriented approach"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une fois les exigences fonctionnelles structurées (gabarit ou modèle), comment structurer les NFR ? Les ranger en sous-types dans un gabarit aide, mais ne suffit pas, notamment pour les attributs et contraintes **ni totalement locaux ni totalement globaux** : ils concernent certaines parties du système seulement. Glinz propose une **représentation orientée aspects** : chaque préoccupation est modélisée séparément.",
+        "en": "Once functional requirements are structured (template or model), how do we structure NFRs? Sorting them into sub-kinds in a template helps but is clearly not enough, particularly for attributes and constraints that are **neither completely local nor fully global**: they concern some specific parts of the system. Glinz proposes an **aspect-oriented representation**: every concern is modeled separately."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "As soon as we structure the functional requirements"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "An aspect-oriented representation of requirements,"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "concerns [15] allows every concern to be modeled"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "En pratique, il y a presque toujours une préoccupation **dominante**, typiquement fonctionnelle, que les autres « traversent ». Le modèle est donc décomposé hiérarchiquement selon la préoccupation dominante, et les autres préoccupations sont des **aspects** de ce modèle primaire. Un attribut ou une contrainte **globale** s'attache à la **racine** de la hiérarchie ; un attribut qui ne touche que certaines parties s'attache exactement à ces parties par des relations de jointure. Résultat : la documentation et la **traçabilité** des NFR s'en trouvent allégées.",
+        "en": "In practice there is almost always a **dominant** concern, typically a functional one, crosscut by the others. The model is therefore decomposed hierarchically along the dominant concern, and all other concerns are modeled as **aspects** of this primary model. A **global** attribute or constraint is attached to the **root** of the hierarchy; one that restricts only some parts is attached exactly to those parts through join relationships. Result: the documentation and **traceability** problems of NFRs are alleviated."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "dominant concern, which is typically a functional one."
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "archically according to the structure of this concern."
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "straints are attached to the root of the decomposition"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "the documentation and traceability"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — Glinz précise que ce travail est surtout **théorique** : sa validation dépendra de l'intérêt que d'autres chercheurs y trouveront, et l'utilité pratique reste à explorer. Ne le présente donc pas à l'examen comme une norme appliquée, mais comme une **proposition** de la littérature.",
+        "en": "**Going further** — Glinz stresses that this work is mainly **theoretical**: its validation depends on how useful other researchers find it, and its practical usefulness remains to be explored. So do not present it in an exam as an applied standard, but as a **proposal** from the literature."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "As this is mainly theoretical work, the validation of"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "The systematic exploration of the practical useful-"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-fr",
+      "fr": "exigence fonctionnelle",
+      "en": "functional requirement",
+      "definition": {
+        "fr": "Exigence qui porte sur une préoccupation fonctionnelle : le comportement attendu du système (réaction aux stimuli d'entrée, fonctions et données nécessaires).",
+        "en": "A requirement that pertains to a functional concern: the expected behavior of the system (reaction to input stimuli, required functions and data)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2",
+          "quote": "A functional requirement is a requirement that"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "A concern is a functional or behavioral concern if"
+        }
+      ]
+    },
+    {
+      "id": "term-nfr",
+      "fr": "exigence non fonctionnelle (NFR)",
+      "en": "non-functional requirement (NFR)",
+      "definition": {
+        "fr": "Selon Glinz : un attribut du système ou une contrainte sur le système. Le terme n'a pas de définition consensuelle dans la littérature.",
+        "en": "According to Glinz: an attribute of or a constraint on a system. The term has no consensual definition in the literature."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A non-functional requirement is an attrib-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "1. Introduction",
+          "quote": "no consensus about the nature of non-functional"
+        }
+      ]
+    },
+    {
+      "id": "term-concern",
+      "fr": "préoccupation",
+      "en": "concern",
+      "definition": {
+        "fr": "Sujet d'intérêt dans un système ; sa nature (comportement, temps/volume, qualité) détermine le genre des exigences qui s'y rapportent.",
+        "en": "A matter of interest in a system; its nature (behavior, timing/volume, quality) determines the kind of the requirements that pertain to it."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A concern is a matter of interest in a sys-"
+        }
+      ]
+    },
+    {
+      "id": "term-perf",
+      "fr": "exigence de performance",
+      "en": "performance requirement",
+      "definition": {
+        "fr": "Exigence portant sur une préoccupation de temps, de vitesse, de volume ou de débit.",
+        "en": "A requirement pertaining to a concern about timing, speed, volume or throughput."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "matter of interest is timing, speed, volume or through-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "A performance requirement is a requirement that"
+        }
+      ]
+    },
+    {
+      "id": "term-quality",
+      "fr": "exigence de qualité spécifique",
+      "en": "specific quality requirement",
+      "definition": {
+        "fr": "Exigence portant sur une qualité du système autre que le respect des exigences fonctionnelles (fiabilité, utilisabilité, sécurité, portabilité, maintenabilité…).",
+        "en": "A requirement pertaining to a quality concern other than the quality of meeting the functional requirements (reliability, usability, security, portability, maintainability…)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "A specific quality requirement is a requirement that"
+        }
+      ]
+    },
+    {
+      "id": "term-constraint",
+      "fr": "contrainte",
+      "en": "constraint",
+      "definition": {
+        "fr": "Exigence qui restreint l'espace des solutions au-delà de ce qui est nécessaire pour satisfaire les exigences fonctionnelles, de performance et de qualité spécifique.",
+        "en": "A requirement that constrains the solution space beyond what is necessary for meeting the given functional, performance and specific quality requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "A constraint is a requirement that constrains the"
+        }
+      ]
+    },
+    {
+      "id": "term-attribute",
+      "fr": "attribut",
+      "en": "attribute",
+      "definition": {
+        "fr": "Dans la taxonomie de Glinz : une exigence de performance ou de qualité spécifique.",
+        "en": "In Glinz's taxonomy: a performance requirement or a specific quality requirement."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "An attribute is a performance requirement or a spe-"
+        }
+      ]
+    },
+    {
+      "id": "term-facet",
+      "fr": "classification à facettes",
+      "en": "faceted classification",
+      "definition": {
+        "fr": "Classification qui sépare le genre, la représentation, la satisfaction (dure/souple) et le rôle d'une exigence, sans les termes « fonctionnel » / « non fonctionnel ».",
+        "en": "A classification that separates the kind, representation, satisfaction (hard/soft) and role of a requirement, without the terms “functional” / “non-functional”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.1. A faceted classification",
+          "quote": "Separating the concepts of kind, representation,"
+        }
+      ]
+    },
+    {
+      "id": "term-aspect",
+      "fr": "représentation orientée aspects",
+      "en": "aspect-oriented representation",
+      "definition": {
+        "fr": "Représentation où chaque préoccupation est modélisée séparément ; les NFR sont des aspects rattachés aux éléments du modèle primaire qu'elles concernent (la racine si elles sont globales).",
+        "en": "A representation where every concern is modeled separately; NFRs are aspects attached to the elements of the primary model they concern (the root if global)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "allows every concern to be modeled"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "straints are attached to the root of the decomposition"
+        }
+      ]
+    }
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Pas de consensus sur la définition des NFR, mais consensus sur leur importance : elles peuvent être critiques pour le projet.",
+        "en": "No consensus on the definition of NFRs, but a consensus on their importance: they can be critical for the project."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Abstract",
+          "quote": "unanimous consensus that non-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "1. Introduction",
+          "quote": "no consensus about the nature of non-functional"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Trois familles de problèmes : définition, classification, représentation.",
+        "en": "Three families of problems: definition, classification, representation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3. Where is the problem?",
+          "quote": "definition problems, classification problems and repre-"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le genre d'une exigence dépend de sa représentation : la même exigence de sécurité peut être non fonctionnelle ou fonctionnelle selon sa formulation.",
+        "en": "The kind of a requirement depends on its representation: the same security requirement can be non-functional or functional depending on its wording."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "In a nutshell, the kind of a requirement"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La représentation détermine la vérification : opérationnelle (revue/test), quantitative (mesure), qualitative (pas de vérification directe), déclarative (revue).",
+        "en": "Representation determines verification: operational (review/test), quantitative (measurement), qualitative (no direct verification), declarative (review)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Table 2. Representation determines verification [5]"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Quantitative   Measurement (at least on an ordinal scale)"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Taxonomie de Glinz : exigences fonctionnelles, de performance, de qualité spécifique, contraintes ; attribut = performance ou qualité spécifique ; NFR = attribut ou contrainte.",
+        "en": "Glinz's taxonomy: functional, performance, specific quality requirements and constraints; attribute = performance or specific quality; NFR = attribute or constraint."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. The set of all requirements of a system is"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "An attribute is a performance requirement or a spe-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A non-functional requirement is an attrib-"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les exigences de projet et de processus se distinguent des exigences système dès la racine, elles ne sont pas des NFR.",
+        "en": "Project and process requirements are distinguished from system requirements at the root level; they are not NFRs."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "should be distinguished at the root level and not in a"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Classer une exigence : appliquer dans l'ordre les quatre questions (fonctionnel, performance, qualité spécifique, contrainte).",
+        "en": "Classifying a requirement: apply the four questions in order (functional, performance, specific quality, constraint)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "Table 3. Classification rules"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Représentation orientée aspects : NFR globales attachées à la racine, NFR partielles attachées aux seules parties concernées ; la traçabilité est facilitée.",
+        "en": "Aspect-oriented representation: global NFRs attached to the root, partial NFRs attached only to the parts concerned; traceability is eased."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.3. Aspect-oriented representation",
+          "quote": "straints are attached to the root of the decomposition"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "the documentation and traceability"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}

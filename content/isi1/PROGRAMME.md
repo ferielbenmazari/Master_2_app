@@ -20,7 +20,7 @@ _Source : 2_Certification · 3_ISO 29148_
 ## Exigences non fonctionnelles
 _Source : 5_on NFRs_
 
-- [ ] NFR : définition, raffinement, rôle de critère de choix
+- [ ] NFR : définition, raffinement, rôle de critère de choix → ch.03 (définition, classification, raffinement NFR→FR) ; ⚠ « rôle de critère de choix » absent des supports (seulement dans l'énoncé d'annale 2013)
 
 ## Analyse du contexte
 _Source : 7_IREB 2 · 8_RE fundamentals_
