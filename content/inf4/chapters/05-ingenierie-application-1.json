@@ -1,0 +1,1175 @@
+{
+  "id": "inf4-05-ingenierie-application-1",
+  "courseId": "inf4",
+  "order": 5,
+  "title": {
+    "fr": "Ingénierie d'application (1/2) : exigences et variantes",
+    "en": "Application engineering (1/2): requirements and variants"
+  },
+  "hook": {
+    "fr": "Un client demande une application à partir de la ligne : que réutilise-t-on, que doit-on adapter, et à quel prix ?",
+    "en": "A customer orders an application from the line: what is reused, what must be adapted, and at what cost?"
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__INF4/mardown/3__application_engineering.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Dériver une application : que reste-t-il à écrire ?",
+        "en": "Deriving an application: what is left to write?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le domaine a déjà produit des exigences communes et variables. Alors, pour **une** application précise, que reste-t-il à faire ? L'[[term-are|ingénierie des exigences d'application]] a pour but de recueillir et documenter les exigences de cette application tout en **réutilisant au maximum** les artefacts d'exigences du domaine. C'est ce qui porte l'objectif global de la ligne : un haut niveau de réutilisation des artefacts de domaine.",
+        "en": "The domain has already produced common and variable requirements. So, for **one** specific application, what is left to do? [[term-are|Application requirements engineering]] aims to elicit and document the requirements of that application while **reusing as much as possible** the domain requirements artefacts. This carries the overall goal of the line: a high degree of domain artefact reuse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "The goal of application requirements engineering is to elicit and to document the requirements artefacts for a particular application and at the same time reuse, as much as possible, the domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "The reuse of domain requirements artefacts for each application supports the overall goal of obtaining a high degree of domain artefact reuse."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Qui parle à qui ? Les **chefs de produit** définissent les grandes fonctionnalités selon leur stratégie de marché ; les **clients** veulent une application qui répond à leurs besoins à un prix abordable. Quand le client est inconnu (cas le plus courant), chefs de produit et experts marketing le représentent. Dans tous les cas, on lui **communique** les communalités et la variabilité externe pour qu'il juge ce que la ligne peut couvrir.",
+        "en": "Who talks to whom? **Product managers** define the major features based on their market strategy; **customers** want an application that meets their needs at an affordable price. When customers are not personally known (the more common case), product managers and marketing experts represent them. Either way, the commonality and external variability are **communicated** so they can judge what the line can cover."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "Product managers determine the major features of the applications in the product portfolio based on their market and product (line) strategy."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "Customers demand an application that satisfies their individual needs at an affordable price."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "product managers and marketing experts represent the customer as stakeholder of the application requirements engineering sub-process"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le livre distingue **deux catégories d'applications** selon le degré de réutilisation. Catégorie 1 : toutes ses exigences sont un **sous-ensemble** des exigences du domaine — il suffit de les présenter et de choisir. Catégorie 2 : certaines exigences **n'existent pas** dans le domaine — il faut détecter et documenter les écarts, les [[term-delta|deltas d'exigences]].",
+        "en": "The book distinguishes **two application categories** by degree of reuse. Category 1: all its requirements are a **subset** of the domain requirements — you just present them and select. Category 2: some requirements are **not part** of the domain — differences, the [[term-delta|requirements deltas]], must be detected and documented."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "The first category comprises applications which have only requirements artefacts that are a subset of the domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "The second category comprises applications which have requirements artefacts that are not part of the domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "the differences or deltas between domain requirements artefacts and application requirements artefacts have to be detected and documented"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : un delta n'est pas gratuit. « Requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application » : l'écart d'exigence se paie dans toutes les phases suivantes, donc dans le prix.",
+        "en": "**Exam trap**: a delta is not free. Requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "Requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les flux autour de ce sous-processus (Fig. 15-2) : (1) la gestion de produit lui donne les **fonctionnalités d'application** ; (2) il lui suggère des fonctionnalités ajoutées ou modifiées ; (3) l'ingénierie de domaine lui fournit le **modèle de variabilité** et les artefacts communs et variables ; (4) il lui renvoie des demandes d'exigences supplémentaires ; (5) il livre la **spécification des exigences d'application** à la conception ; (6) la conception lui renvoie l'**évaluation de l'effort** des deltas.",
+        "en": "The flows around this sub-process (Fig. 15-2): (1) product management gives it the **application features**; (2) it suggests additional or altered features; (3) domain engineering provides the **variability model** and common and variable artefacts; (4) it sends back requests for additional requirements; (5) it delivers the **application requirements specification** to design; (6) design returns the **effort evaluation** of deltas."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-2",
+          "quote": "1 (Depuis Product Management) : Application features."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-2",
+          "quote": "3 (Depuis Domain Requirements Engineering) : Variability model, Common and variable requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-2",
+          "quote": "5 (Vers Application Design) : Application requirements specification."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-2",
+          "quote": "6 (Depuis Application Design) : Effort evaluation of requirements deltas."
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "graph LR\n  PM[\"Product Management\"] -->|\"(1) application features\"| ARE[\"Application Requirements Engineering\"]\n  ARE -->|\"(2) features supplémentaires / modifiées\"| PM\n  DRE[\"Domain Requirements Engineering\"] -->|\"(3) modèle de variabilité + artefacts communs et variables\"| ARE\n  ARE -->|\"(4) demandes + exigences à intégrer au domaine\"| DRE\n  ARE -->|\"(5) spécification des exigences d'application\"| AD[\"Application Design\"]\n  AD -->|\"(6) évaluation de l'effort des deltas\"| ARE",
+      "caption": {
+        "fr": "Figure 15-2 : flux numérotés (1) à (6) autour de l'ingénierie des exigences d'application.",
+        "en": "Figure 15-2: numbered flows (1) to (6) around application requirements engineering."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-2",
+          "quote": "6 (Depuis Application Design) : Effort evaluation of requirements deltas."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une exigence d'application peut aussi **remonter** au domaine : si elle correspond à un vrai besoin du domaine (et pas d'une seule application), elle est transmise à l'ingénierie des exigences de domaine. Mais avant intégration, une **décision** doit être prise côté ingénierie de domaine.",
+        "en": "An application requirement can also **flow back** to the domain: if it addresses an actual need of the domain (not of a single application), it is passed to domain requirements engineering. But before integration, a **decision** must be made within domain engineering."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1.2",
+          "quote": "If application-specific requirements address actual needs of the domain, they might be integrated into the domain artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1.2",
+          "quote": "Before these artefacts can be integrated into the product line, a decision within the domain engineering process has to be made"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Trois activités, deux types d'exigences",
+        "en": "Three activities, two kinds of requirements"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le livre ne distingue pas l'origine du besoin (gestion de produit, client…) : ce sont des **exigences des parties prenantes** (*stakeholder requirements*), celles qu'elles « s'attendent à voir satisfaites » par l'application. Mais, à cause des arbitrages, elles ne sont pas forcément identiques aux **exigences d'application** (*application requirements*), qui « spécifient complètement » une application de la ligne.",
+        "en": "The book does not distinguish the origin of the need (product management, customer…): these are **stakeholder requirements**, those the stakeholders expect to be fulfilled by the application. But because of trade-offs they are not necessarily identical to the **application requirements**, which completely specify a product line application."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Stakeholder requirements are requirements that stakeholders state for a particular application, i.e. requirements that the stakeholders expect to be fulfilled by the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Application requirements are requirements that completely specify a particular product line application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "the initial stakeholder requirements are not necessarily identical with the resulting application requirements"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Face à une exigence de partie prenante, trois issues : elle est **complètement**, **partiellement**, ou **pas du tout** satisfaite par des exigences d'application. L'ingénieur d'exigences la met en correspondance avec les artefacts de domaine : si l'un la satisfait, il est **réutilisé** tel quel ; sinon, il faut un effort d'adaptation et un arbitrage.",
+        "en": "A stakeholder requirement has three possible outcomes: **completely**, **partially**, or **not at all** fulfilled by application requirements. The requirements engineer maps it to domain artefacts: if one satisfies it, it is **reused** as is; otherwise adaptation effort and a trade-off are needed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "The stakeholder requirement can be completely fulfilled by an application requirement or set of application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "The stakeholder requirement can be partially fulfilled by an application requirement or set of application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "The stakeholder requirement cannot be fulfilled by any application requirement or set of application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "In case a specific domain requirements artefact satisfies a particular stakeholder requirement, the domain requirements artefact can be reused."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Trois **activités essentielles** structurent le sous-processus : (1) **communiquer** la communalité et la variabilité externe de la ligne ; (2) **évaluer les deltas** entre exigences de domaine et d'application ; (3) **documenter** les exigences d'application. Le modèle de variabilité orthogonal joue un rôle central dans la première : il permet de présenter à la partie prenante les points de variation, variants et dépendances pertinents.",
+        "en": "Three **essential activities** structure the sub-process: (1) **communicating** the product line's commonality and external variability; (2) **evaluating deltas** between domain and application requirements; (3) **documenting** the application requirements. The orthogonal variability model plays a central role in the first: it lets the requirements engineer present the relevant variation points, variants and dependencies to the stakeholder."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "the following three activities are essential:"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "1. Communicating the commonality and external variability of the product line"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "2. Evaluating deltas between domain and application requirements"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "3. Documentation of application requirements"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "The orthogonal variability model plays a central role in this activity"
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "graph LR\n  DA[\"Modèle de variabilité + artefacts de domaine\"] -->|\"(1) communication\"| SH[\"Partie prenante\"]\n  SH -->|\"(2) exigences\"| ARE[\"Ingénieur d'exigences\"]\n  ARE -->|\"(3) effort estimé des deltas\"| SH\n  SH -->|\"(4) décision d'arbitrage\"| ARE\n  ARE --> SPEC[\"Spécification des exigences d'application\"]",
+      "caption": {
+        "fr": "D'après la Fig. 15-3 : échanges avec la partie prenante.",
+        "en": "After Fig. 15-3: exchanges with the stakeholder."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-3",
+          "quote": "1 (Vers le stakeholder) : Variability model, Common and variable domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-3",
+          "quote": "4 (Depuis le stakeholder) : Trade-off decision."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : ne pas confondre **exigences de partie prenante** (ce qu'on demande) et **exigences d'application** (ce qui sera réellement spécifié, après arbitrage). La première peut être revue à la baisse si le delta coûte trop cher.",
+        "en": "**Exam trap**: do not confuse **stakeholder requirements** (what is asked) with **application requirements** (what will actually be specified after trade-offs). The first can be scaled down if the delta costs too much."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Due to trade-off decisions made in the application requirements engineering process"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "the stakeholders may decide that their requirement should only be partially fulfilled by the application or not fulfilled at all"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Présenter la variabilité à un client",
+        "en": "Presenting variability to a customer"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Comment parle-t-on de variabilité à quelqu'un qui n'est pas ingénieur ? On part des **points de variation**, au plus haut niveau d'abstraction. Pour chacun, on communique : (1) ses variants, les dépendances de variabilité et les choix alternatifs ; (2) les points de variation ou variants dépendants, en suivant les dépendances de contrainte.",
+        "en": "How do you talk about variability to a non-engineer? Start from the **variation points**, at the topmost level of abstraction. For each, communicate: (1) its variants, the variability dependencies and the alternative choices; (2) dependent variation points or variants, by following the constraint dependencies."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "typically starts with the variation points that provide the topmost level of abstraction"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "Communicating the variants related to the variation point as well as the variability dependencies and the alternative choices defined for the variation point."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "Communicating dependent variation points and/or variants by following the existing constraint dependencies."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Exemple du livre (15-1)** : deux points de variation, « security standard » (basic / advanced) et « authentication » (password / fingerprint). Le client s'intéresse à l'authentification : la ligne offre deux mécanismes, **exactement un** doit être choisi. Si c'est « password », le point de variation « security standard » doit **aussi** être lié : basic ou advanced.",
+        "en": "**Book example (15-1)**: two variation points, 'security standard' (basic / advanced) and 'authentication' (password / fingerprint). The stakeholder is interested in authentication: the line offers two mechanisms, **exactly one** must be selected. If 'password', the variation point 'security standard' must **also** be bound: basic or advanced."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "Exactly one of these has to be selected: authentication via 'Password' or authentication via 'fingerprint'."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "The stakeholder has to select either 'basic' or 'advanced' security."
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "graph TD\n  VP1[\"VP Authentication\"] --- V1[\"V Password\"]\n  VP1 --- V2[\"V Fingerprint\"]\n  VP2[\"VP Security Standard\"] --- V3[\"V Basic\"]\n  VP2 --- V4[\"V Advanced\"]\n  V1 -.->|\"requires_v_vp\"| VP2",
+      "caption": {
+        "fr": "Figure 15-4 : points de variation « authentication » et « security standard » (choix alternatif dans chacun).",
+        "en": "Figure 15-4: variation points 'authentication' and 'security standard' (alternative choice in each)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-4",
+          "quote": "Une ligne pointillée étiquetée \"requires_v_vp\" relie la variante \"Password\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Si le client veut plus de détails, on suit les **liens de traçabilité** du variant vers les artefacts d'exigences : le cas d'utilisation « authentication by password », ou les exigences de sécurité des variants *basic* (mot de passe ≥ 5 caractères) et *advanced* (≥ 10 caractères avec caractères spéciaux, changement tous les 3 mois). La vue « fonctionnalités » sert la vue de gestion ; les exigences à base de modèles donnent une vue plus détaillée, orientée solution.",
+        "en": "If the stakeholder wants more detail, follow the **traceability links** from the variant to the requirements artefacts: the use case 'authentication by password', or the security requirements of the *basic* (password of at least 5 characters) and *advanced* (at least 10 characters with special characters, changed every 3 months) variants. The features give a management view; model-based requirements give a more detailed, solution-oriented view."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-2",
+          "quote": "the requirements engineer finds the use case 'authentication by password'"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-5",
+          "quote": "the length of the password shall be at least 5 characters."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-5",
+          "quote": "the password shall consist of at least 10 characters and has to include special characters"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.2",
+          "quote": "the features related to the variant under consideration are used to provide a management view"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour enchaîner, deux stratégies : prendre le prochain point de variation **de plus haut niveau** non encore traité (on lie d'abord ce qui touche les propriétés grossières de l'application), ou, si un artefact est associé à plusieurs variants, présenter **tous ces variants** d'un coup.",
+        "en": "To move on, two strategies: take the next **topmost** variation point not yet considered (coarse-grained properties get bound first), or, if an artefact is associated with several variants, present **all those variants** at once."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.2",
+          "quote": "Thus the variation points that may affect coarse-grained properties of the resulting application are bound first."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.2",
+          "quote": "the requirements engineer can communicate all associated variants and thereby bind the variability related to the considered artefact"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Résultat de la communication : une **classification** des exigences de partie prenante. (a) Celles satisfaites en **liant la variabilité** déjà définie dans le domaine : les artefacts sont documentés tels quels comme exigences d'application. (b) Celles qui **ne correspondent à aucun artefact** de domaine : il y a un delta, à analyser.",
+        "en": "Result of the communication: a **classification** of stakeholder requirements. (a) Those satisfied by **binding the variability** already defined in the domain: the artefacts are documented as application requirements. (b) Those that **do not correspond to any** domain artefact: a delta exists, to be analysed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "The result of the communication activity is a classification of stakeholder requirements:"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "Stakeholder requirements that can be satisfied by binding variability defined in domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "Stakeholder requirements that do not correspond to domain requirements artefacts."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : dans le cas de l'exemple, le choix alternatif signifie **exactement un** des deux mécanismes, pas les deux, pas aucun ; et choisir *password* **impose** de lier le point de variation « security standard ». Savoir lire ces deux informations sur le schéma est typique d'une question.",
+        "en": "**Exam trap**: in the example, the alternative choice means **exactly one** of the two mechanisms, not both, not none; and choosing *password* **forces** binding the variation point 'security standard'. Reading both pieces of information off the diagram is a typical question."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "The product line provides two authentication mechanisms."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Quand le client demande ce que la ligne ne propose pas",
+        "en": "When the customer asks for what the line does not offer"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Comment mesure-t-on un delta ? Le but de l'analyse est d'aider à décider si le delta sera **réalisé** ou non pour l'application. On regarde trois impacts : sur le **modèle de variabilité**, sur les **artefacts d'exigences**, sur l'**architecture**. Au niveau du modèle de variabilité, deux types de deltas : modifier une variabilité **externe existante** (nouveau variant, dépendance changée) ou transformer une partie **invariante** en partie variable (nouveau point de variation).",
+        "en": "How is a delta measured? The goal of the analysis is to support the decision on whether the delta will be **realised** for the application. Three impacts are examined: on the **variability model**, on the **requirements artefacts**, on the **architecture**. At variability model level, two types of delta: modifying **existing external variability** (new variant, changed dependency) or turning an **invariant** part into a variable one (new variation point)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4",
+          "quote": "The main goal of delta analysis is to support the decision on whether the deltas should be realised for the application or not."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.1",
+          "quote": "Part of the existing external variability has to be modified"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.1",
+          "quote": "An invariant part must be turned into a variable part"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Cas fréquents sur les dépendances : le client **rejette un variant obligatoire**, choisit un **nombre de variants hors de la plage** du choix alternatif, choisit deux variants liés par *exclude*, ou n'en choisit **qu'un** de deux liés par *requires*. Et pour un variant dont il veut changer le contenu, on **définit un nouveau variant** : l'original et le modifié restent sélectionnables.",
+        "en": "Frequent dependency cases: the stakeholder **rejects a mandatory variant**, selects **a different number of variants than the range** of an alternative choice permits, selects two variants related by *exclude*, or selects **only one** of two variants related by *requires*. And to change an existing variant, a **new variant** is defined: both the original and the changed one remain selectable."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.2",
+          "quote": "The stakeholder rejects a mandatory variant."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.2",
+          "quote": "The stakeholder selects a different number of variants than the range of an alternative choice permits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.2",
+          "quote": "The stakeholder selects two variants that are related by an \"exclude\" dependency."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.2",
+          "quote": "The stakeholder selects only one out of two variants that are related by a \"requires\" dependency."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.2",
+          "quote": "Thus, the two variants (the original one and the changed one) are selectable."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Trois exemples du livre.** 15-3 : le système domotique doit prévenir le propriétaire par SMS → on ajoute le variant « SMS information ». 15-4 : le client veut toute combinaison d'authentifications, y compris aucune → on **supprime le choix alternatif**, d'où deux dépendances optionnelles indépendantes (même résultat avec la plage [0..2]). 15-5 : un mécanisme commun d'interface locale doit devenir variable → nouveau point de variation « home security interface », *local* obligatoire, *remote* optionnel.",
+        "en": "**Three book examples.** 15-3: the home automation system must notify the owner by SMS → add the variant 'SMS information'. 15-4: the customer wants any combination of authentications, including none → **remove the alternative choice**, giving two independent optional dependencies (same result with range [0..2]). 15-5: a common local-interface mechanism must become variable → new variation point 'home security interface', *local* mandatory, *remote* optional."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-3",
+          "quote": "This delta can be realised by adding the new variant 'SMS information'"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-4",
+          "quote": "the alternative choice is removed resulting in two independent optional variability dependencies"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-4",
+          "quote": "the same result could be achieved by defining the range [0..2] for the alternative choice"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-5",
+          "quote": "Local access must be available in each home automation system while the remote variant is optional."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Impact sur les **artefacts d'exigences** : un nouveau variant ou point de variation change des artefacts (ex. 15-6 : le diagramme de séquence est adapté, l'acteur « acoustic signal » est remplacé par « owner »). Une dépendance modifiée change les **combinaisons permises** : si le choix alternatif est supprimé (ex. 15-7), il faut des artefacts décrivant chaque combinaison — aucune, une, ou les deux authentifications.",
+        "en": "Impact on **requirements artefacts**: a new variant or variation point changes artefacts (ex. 15-6: the sequence diagram is adapted, the actor 'acoustic signal' is replaced by 'owner'). A modified dependency changes the **permitted combinations**: if the alternative choice is removed (ex. 15-7), artefacts must describe each combination — none, one, or both authentications."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-6",
+          "quote": "The variability model delta is incorporated into the new scenario by changing the scenario elements that deal with the acoustic signal in the original scenario."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.3",
+          "quote": "Changes to variability dependencies may lead to restrictions on the permissible combinations of variants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-7",
+          "quote": "requirements artefacts are needed that describe each combination of variants: no authentication, one kind of authentication, or both"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Combien ça coûte ? Les catégories A à D",
+        "en": "How much will it cost? Categories A to D"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Impact sur l'**architecture** : l'architecte d'application évalue l'effort pour (a) la **référence d'architecture**, (b) les **composants**, (c) la **maintenance**, grâce aux liens de traçabilité exigences-conception du domaine. Il classe le delta en **quatre catégories** : **A** aucun effort ; **B** effort modéré (changements locaux, ex. un composant) ; **C** effort élevé (changements globaux : beaucoup de composants ou d'interfaces) ; **D** effort trop élevé (aucune réalisation économiquement raisonnable dans la ligne).",
+        "en": "Impact on the **architecture**: the application architect evaluates the effort for (a) the **product line architecture**, (b) the **components**, (c) **maintenance**, using the traceability links from domain requirements to domain design. The delta falls into **four categories**: **A** no effort; **B** moderate effort (local changes, e.g. single components); **C** high effort (global changes: many components or interfaces); **D** too high (no economically reasonable realisation within the line)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The adaptation effort for the product line architecture."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The realisation effort for the components."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The maintenance effort. The variability model delta and the associated requirements artefact deltas are provided to the application architect"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "Category A - No adaptation effort: A particular variability model delta belongs to this category if no adaptation of the reference architecture is needed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "only local architectural adaptations are required, e.g. changes to single components"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "A change is considered to be global if, for example, a significant number of components and/or interfaces have to be changed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "no economically reasonable realisation of the delta is possible within the software product line"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Delta",
+          "en": "Delta"
+        },
+        {
+          "fr": "Catégories possibles (Table 15-1)",
+          "en": "Possible categories (Table 15-1)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1. Nouveau variant",
+            "en": "1. New variant"
+          },
+          {
+            "fr": "A, B",
+            "en": "A, B"
+          }
+        ],
+        [
+          {
+            "fr": "2. Adaptation des dépendances de variabilité",
+            "en": "2. Adaptation of variability dependencies"
+          },
+          {
+            "fr": "A, B, C",
+            "en": "A, B, C"
+          }
+        ],
+        [
+          {
+            "fr": "3. Adaptation des dépendances de contrainte",
+            "en": "3. Adaptation of constraint dependencies"
+          },
+          {
+            "fr": "B, C, D",
+            "en": "B, C, D"
+          }
+        ],
+        [
+          {
+            "fr": "4. Nouveau point de variation",
+            "en": "4. New variation point"
+          },
+          {
+            "fr": "B, C, D",
+            "en": "B, C, D"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 1. New variant | X | X | | |"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 3. Adaptation of constraint dependencies | | X | X | X |"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 4. New variation point | | X | X | X |"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 2. Adaptation of variability dependencies | X | X | X | |"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les exemples du livre : *optional → alternative* = catégorie A (essentiellement de la **configuration** : interdire les configurations avec les deux variants) ; supprimer un *exclude* posé pour des raisons technologiques peut être D ; un nouveau point de variation « sequential / parallel processing » est D si tous les composants devraient être retravaillés pour l'accès parallèle et la synchronisation.",
+        "en": "The book's examples: *optional → alternative choice* = category A (mainly **configuration**: prohibit configurations that include both variants); deleting an *exclude* dependency that exists for technological reasons can be D; a new variation point 'sequential / parallel processing' is D if all components would have to be reengineered for parallel access and synchronisation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-8",
+          "quote": "A change from \"optional\" to \"alternative choice\" may lead to essentially zero adaptation effort, because it is mainly a matter of configuration"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-8",
+          "quote": "The deletion of an \"exclude\" dependency might lead to a very large change in the architectural structure, e.g. if the dependency exists for technological reasons."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-8",
+          "quote": "all components would have to be reengineered to enable parallel access and synchronisation"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : la Table 15-1 n'attribue pas une catégorie à un type de delta, elle donne une **plage** possible. Un nouveau variant ne peut être que A ou B ; un nouveau point de variation ou une dépendance de contrainte modifiée peut aller jusqu'à **D**.",
+        "en": "**Exam trap**: Table 15-1 does not assign one category to a delta type; it gives a possible **range**. A new variant can only be A or B; a new variation point or a modified constraint dependency can go up to **D**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 1. New variant | X | X | | |"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 4. New variation point | | X | X | X |"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Avec le retour de la conception sur l'effort, la partie prenante a **quatre options** : (1) **réaliser** le delta ; (2) **adapter son exigence** (une « solution à 80 % ») et réutiliser les artefacts sans changement ; (3) adapter à la fois l'exigence et les artefacts — exigence **partiellement** satisfaite ; (4) **renoncer** à cause de l'effort élevé.",
+        "en": "With design's feedback on effort, the stakeholder has **four options**: (1) **realise** the delta; (2) **adapt the requirement** (an '80% solution') and reuse artefacts unchanged; (3) adapt both the requirement and the artefacts — requirement **partially** fulfilled; (4) **give up** because of the high effort."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The stakeholder adapts the requirement (which means the stakeholder might only get an 80% solution)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "i.e. the stakeholder requirement is partially fulfilled."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The stakeholder decides that the requirement should not be realised due to the high adaptation effort"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le modèle de variabilité aide à trouver un compromis. **Ex. 15-9** : le client veut consulter l'état de la serrure par téléphone mobile, la ligne ne l'offre que par Internet → soit il insiste (effort selon la catégorie), soit il accepte la solution Internet (effort très faible, réutilisation complète). **Ex. 15-10** : il veut une barrière photo-électrique extérieure ; la ligne propose « outdoor motion detection » ; l'ingénieur montre les alternatives « camera surveillance » et « motion detection ».",
+        "en": "The variability model helps find a compromise. **Ex. 15-9**: the customer wants the door lock status by mobile phone, the line only offers it over the Internet → either insist (effort depends on the category) or accept the Internet solution (very small effort, complete reuse). **Ex. 15-10**: they want an outdoor photo-electric guard; the line offers 'outdoor motion detection'; the engineer presents the alternatives 'camera surveillance' and 'motion detection'."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-9",
+          "quote": "Accepting the Internet solution and giving up the requirement regarding the mobile phone."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-9",
+          "quote": "this stakeholder requirement can be fulfilled completely by reusing domain artefacts"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-10",
+          "quote": "The engineer presents two alternatives with regard to home security: 'camera surveillance' and 'motion detection'."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Documenter, et en quoi c'est différent d'un système unique",
+        "en": "Documenting, and how it differs from single-system engineering"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le résultat : la **spécification des exigences d'application**, base des autres sous-processus. Elle contient cinq choses : (1) les artefacts d'exigences d'application correspondant aux artefacts de domaine, **avec traces** ; (2) le **modèle de variabilité d'application** (variants choisis, liaisons) ; (3) les **deltas du modèle de variabilité**, avec traces vers les éléments d'origine ; (4) la **relation** entre artefacts d'exigences et variants sélectionnés ; (5) les **deltas d'exigences**, avec traces vers les artefacts de domaine d'origine.",
+        "en": "The result: the **application requirements specification**, the basis of the other sub-processes. It contains five things: (1) the application requirements artefacts corresponding to domain artefacts, **with traces**; (2) the **application variability model** (selected variants, bindings); (3) the **variability model deltas**, with traces to the original elements; (4) the **relation** between requirements artefacts and selected variants; (5) the **requirements deltas**, with traces to the original domain artefacts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "The specification is the basis for the other application engineering sub-processes and defines all application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "The application variability model"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "The variability model deltas including the traces to the original variability model elements"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "The requirements deltas including the traces to the original domain requirements artefacts"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi tracer ? Les traces vers le domaine sont « un moyen essentiel » de soutenir la réutilisation en conception, réalisation et test d'application. Les liaisons de variabilité fournissent la base pour déduire les liaisons dans l'**architecture de référence**, les **composants** et les **artefacts de test** ; les traces des artefacts modifiés permettent à l'architecte de retrouver et d'adapter les artefacts d'architecture correspondants.",
+        "en": "Why trace? The traces to domain artefacts are an essential means to support reuse in application design, realisation and testing. The variability bindings are the basis for deriving the bindings in the **reference architecture**, the **components** and the **test artefacts**; traces from modified artefacts let the architect find and adapt the corresponding architecture artefacts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "are an essential means to support the reuse of domain artefacts in application design, application realisation, and application testing"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "provide the basis for deriving the bindings for the variation points in the reference architecture, in the components, and in the test artefacts"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Vs. ingénierie d'un système unique (élicitation, validation, négociation, documentation + gestion continue des exigences), la ligne ajoute **quatre activités** : la **communication de la variabilité externe**, l'**évaluation de l'effort de réalisation des deltas**, la **documentation des exigences d'application** (avec traçabilité), la **documentation des liaisons de variabilité** (résultat : le modèle de variabilité d'application).",
+        "en": "Compared with single-system engineering (elicitation, validation, negotiation, documentation + continuous requirements management), the product line adds **four activities**: **communicating external variability**, **evaluating the realisation effort of deltas**, **documenting application requirements** (with traceability), **documenting variability bindings** (result: the application variability model)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.6",
+          "quote": "includes four major activities that differ from requirements engineering activities in single-system engineering"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.6",
+          "quote": "The evaluation of the realisation effort for requirements deltas"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.6",
+          "quote": "The documentation of variability bindings"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.6",
+          "quote": "The result of this activity is the application variability model."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : ne pas confondre le **modèle de variabilité de domaine** (tous les variants possibles) et le **modèle de variabilité d'application** (variants sélectionnés, liaisons, plus les éventuels deltas). Le second est le résultat de la documentation des liaisons.",
+        "en": "**Exam trap**: do not confuse the **domain variability model** (all possible variants) with the **application variability model** (selected variants, bindings, plus any deltas). The second is the result of documenting variability bindings."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "This part of the documentation describes the application variability model with the selected variants, i.e. with the variability bindings."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.6",
+          "quote": "The goal of this activity is to document the bindings of the variation points defined in the domain variability model."
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-are",
+      "fr": "ingénierie des exigences d'application",
+      "en": "application requirements engineering",
+      "definition": {
+        "fr": "Sous-processus qui élicite et documente les exigences d'une application particulière tout en réutilisant au maximum les artefacts d'exigences du domaine.",
+        "en": "Sub-process that elicits and documents the requirements of a particular application while reusing the domain requirements artefacts as much as possible."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "The goal of application requirements engineering is to elicit and to document the requirements artefacts for a particular application and at the same time reuse, as much as possible, the domain requirements artefacts."
+        }
+      ]
+    },
+    {
+      "id": "term-stakeholder-req",
+      "fr": "exigences des parties prenantes",
+      "en": "stakeholder requirements",
+      "definition": {
+        "fr": "Exigences que les parties prenantes énoncent pour une application particulière et qu'elles s'attendent à voir satisfaites.",
+        "en": "Requirements that stakeholders state for a particular application and expect to be fulfilled by the application."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Stakeholder requirements are requirements that stakeholders state for a particular application, i.e. requirements that the stakeholders expect to be fulfilled by the application."
+        }
+      ]
+    },
+    {
+      "id": "term-app-req",
+      "fr": "exigences d'application",
+      "en": "application requirements",
+      "definition": {
+        "fr": "Exigences qui spécifient complètement une application particulière de la ligne de produits.",
+        "en": "Requirements that completely specify a particular product line application."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Application requirements are requirements that completely specify a particular product line application."
+        }
+      ]
+    },
+    {
+      "id": "term-delta",
+      "fr": "delta d'exigences",
+      "en": "requirements delta",
+      "definition": {
+        "fr": "Différence entre les artefacts d'exigences de domaine et ceux d'application, quand une exigence de partie prenante ne peut être satisfaite par les artefacts de domaine ; elle entraîne un effort d'adaptation.",
+        "en": "Difference between domain and application requirements artefacts, arising when a stakeholder requirement cannot be satisfied by domain artefacts; it causes adaptation effort."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "the differences or deltas between domain requirements artefacts and application requirements artefacts have to be detected and documented"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Deltas between domain and application requirements occur when stakeholder requirements cannot be completely satisfied by domain requirements artefacts."
+        }
+      ]
+    },
+    {
+      "id": "term-vm-delta",
+      "fr": "delta du modèle de variabilité",
+      "en": "variability model delta",
+      "definition": {
+        "fr": "Différence entre le modèle de variabilité de domaine et celui d'application : modification de la variabilité externe existante, ou transformation d'une partie invariante en partie variable.",
+        "en": "Difference between the domain and the application variability model: modification of existing external variability, or turning an invariant part into a variable one."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.1",
+          "quote": "Variability model deltas are differences between the domain variability model"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.1",
+          "quote": "An invariant part must be turned into a variable part"
+        }
+      ]
+    },
+    {
+      "id": "term-arch-cat",
+      "fr": "catégories d'adaptation architecturale (A-D)",
+      "en": "architectural adaptation categories (A-D)",
+      "definition": {
+        "fr": "Quatre catégories d'effort d'adaptation de l'architecture de référence : A aucun, B modéré, C élevé, D trop élevé.",
+        "en": "Four categories of effort to adapt the reference architecture: A none, B moderate, C high, D too high."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "We distinguish between the following four categories of architectural adaptation:"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "Category D - Too high adaptation effort:"
+        }
+      ]
+    },
+    {
+      "id": "term-app-spec",
+      "fr": "spécification des exigences d'application",
+      "en": "application requirements specification",
+      "definition": {
+        "fr": "Spécification complète de l'application : exigences réutilisées du domaine, modèle de variabilité d'application et deltas d'exigences. Elle sert de base à la conception d'application.",
+        "en": "Complete specification of the application: requirements reused from the domain, application variability model and requirements deltas. It is the basis for application design."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1.3",
+          "quote": "The main output of application requirements engineering is the application requirements specification"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1.3",
+          "quote": "It includes the application variability model, which is derived from the domain variability model, the requirements artefacts that are reused from the domain artefacts, and the requirements deltas."
+        }
+      ]
+    },
+    {
+      "id": "term-app-vm",
+      "fr": "modèle de variabilité d'application",
+      "en": "application variability model",
+      "definition": {
+        "fr": "Modèle décrivant la variabilité de l'application avec les variants sélectionnés, c'est-à-dire les liaisons de variabilité.",
+        "en": "Model describing the application's variability with the selected variants, i.e. the variability bindings."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "This part of the documentation describes the application variability model with the selected variants, i.e. with the variability bindings."
+        }
+      ]
+    }
+  ],
+  "notions": [],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "L'ingénierie des exigences d'application dérive les exigences d'**une** application en réutilisant au maximum les artefacts de domaine ; elle a trois activités : communiquer la variabilité, évaluer les deltas, documenter.",
+        "en": "Application requirements engineering derives the requirements of **one** application reusing domain artefacts as much as possible; it has three activities: communicate variability, evaluate deltas, document."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "reuse, as much as possible, the domain requirements artefacts"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "the following three activities are essential:"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Une exigence de partie prenante est satisfaite complètement, partiellement ou pas du tout ; si aucun artefact de domaine ne la couvre, il y a un **delta** qui coûte dans toutes les phases suivantes.",
+        "en": "A stakeholder requirement is fulfilled completely, partially or not at all; if no domain artefact covers it, a **delta** arises that costs effort in all following phases."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "The stakeholder requirement can be partially fulfilled by an application requirement or set of application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1",
+          "quote": "Requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "On communique la variabilité à partir des points de variation de plus haut niveau, puis les variants, dépendances et artefacts liés par traçabilité (ex. password ⇒ security standard).",
+        "en": "Variability is communicated starting from the topmost variation points, then variants, dependencies and artefacts linked by traceability (e.g. password ⇒ security standard)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "typically starts with the variation points that provide the topmost level of abstraction"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Deltas de modèle : nouveau variant, dépendance modifiée, ou nouveau point de variation (commun devenu variable). Impact : modèle de variabilité → artefacts d'exigences → architecture (catégories A à D).",
+        "en": "Model deltas: new variant, modified dependency, or new variation point (common made variable). Impact: variability model → requirements artefacts → architecture (categories A to D)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4",
+          "quote": "We analyse the deltas caused by application requirements with respect to the variability model, domain requirements artefacts, and the application architecture."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "Category D - Too high adaptation effort:"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Après estimation de l'effort, la partie prenante réalise le delta, adapte son exigence (solution à 80 %), la satisfait partiellement, ou y renonce.",
+        "en": "After the effort estimate, the stakeholder realises the delta, adapts the requirement (80% solution), fulfils it partially, or gives it up."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "the stakeholder might only get an 80% solution"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "due to the high adaptation effort"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La spécification des exigences d'application contient artefacts réutilisés, modèle de variabilité d'application, deltas et traces vers le domaine ; quatre activités la distinguent d'un système unique.",
+        "en": "The application requirements specification contains reused artefacts, application variability model, deltas and traces to the domain; four activities distinguish it from single-system engineering."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "The application requirements specification includes:"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.6",
+          "quote": "includes four major activities that differ from requirements engineering activities in single-system engineering"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}

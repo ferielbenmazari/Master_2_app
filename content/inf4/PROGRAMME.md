@@ -40,10 +40,10 @@ _Source : `8__ple.md`_
 ## Application engineering (Pohl ch.15-17)
 _Source : `3__application_engineering.md`_
 
-- [ ] Application requirements engineering · communication de la variabilité · requirements deltas
+- [ ] Application requirements engineering · communication de la variabilité · requirements deltas → ch.05
 - [ ] Application design · binding of variants · configuration
 - [ ] Application realisation · configuration
-- [ ] Differences from single-system engineering
+- [ ] Differences from single-system engineering → ch.05 (exigences ; design/réalisation → ch.06 à venir)
 
 ## Transformation, vérification, diagnostic
 _Source : `7__ple.md`_
