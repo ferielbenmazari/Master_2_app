@@ -5,7 +5,7 @@ import Popover from '@/components/ui/Popover'
 import type { Term } from '@/content/schema'
 import { UI } from '@/i18n/ui'
 import { useReader } from './ReaderContext'
-import RichText from './RichText'
+import TermDetail from './TermDetail'
 import { SourcesSheet } from './SourceChip'
 
 /** Terme technique surligné ; au tap / Entrée → définition FR+EN, exemple, piège, source. */
@@ -78,30 +78,7 @@ export default function TermChip({
       </button>
       <Popover open={open} onClose={close} anchor={anchor} label={UI.reader.termOpen(term.fr)}>
         <div id={popId} className="flex flex-col gap-2">
-          <div className="flex flex-wrap gap-1.5">
-            <span className="tag">
-              {UI.reader.termFr} · {term.fr}
-            </span>
-            <span className="tag" style={{ '--course': 'var(--cyan)' } as React.CSSProperties}>
-              {UI.reader.termEn} · {term.en}
-            </span>
-          </div>
-          <p className="text-sm leading-normal">
-            <RichText noTerms text={term.definition.fr} />
-          </p>
-          <p className="text-[13px] leading-normal text-ink-soft" lang="en">
-            <RichText noTerms lang="en" text={term.definition.en} />
-          </p>
-          {term.example && (
-            <p className="text-[13px] leading-normal">
-              <b>{UI.reader.termExample}.</b> <RichText noTerms text={term.example.fr} />
-            </p>
-          )}
-          {term.pitfall && (
-            <p className="text-[13px] leading-normal">
-              <b>{UI.reader.termPitfall}.</b> <RichText noTerms text={term.pitfall.fr} />
-            </p>
-          )}
+          <TermDetail term={term} />
           <div className="flex justify-between gap-2">
             <button
               type="button"
