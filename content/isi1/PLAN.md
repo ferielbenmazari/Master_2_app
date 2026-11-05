@@ -19,7 +19,7 @@
 | 05 | `05-elicitation.json` | Éliciter les exigences | 12_IREB CPRE (3) · 20_Eliciting requirements | à faire |
 | 06 | `06-documenter-les-exigences.json` | Documenter les exigences | 14_IREB CPRE (4) · 15_Pohl-Rupp chap 4-5 · 21_Pohl-Rupp | cours rédigé (draft) |
 | 07 | `07-agilite.json` | Exigences et méthodes agiles | 13_agile methods | cours rédigé (draft) |
-| 08 | `08-grands-referentiels.json` | Gérer de grands référentiels d'exigences en langage naturel | 16_managing large repositories of NL requirements | à faire |
+| 08 | `08-grands-referentiels.json` | Gérer de grands référentiels d'exigences en langage naturel | 16_managing large repositories of NL requirements | cours rédigé |
 | 09 | `09-fondements-theoriques.json` | Les « 4 coins sombres » et les Problem Frames | 17_four dark corners · 18_Problem Frames | à faire |
 
 ## Notions des annales à couvrir (contrôle de couverture)
