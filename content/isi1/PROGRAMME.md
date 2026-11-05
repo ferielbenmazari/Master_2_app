@@ -35,8 +35,8 @@ _Source : 12_IREB 3 · 20_Eliciting_
 ## Documenter les exigences
 _Source : 14_IREB 4 · Pohl-Rupp_
 
-- [ ] Gabarits · qualité des exigences (compréhensibilité, vérifiabilité…) · glossaire · niveaux d'abstraction
-- [ ] Identifiant unique et traçabilité · revues (ambiguïté, incohérence, sur/sous-spécification)
+- [ ] Gabarits · qualité des exigences (compréhensibilité, vérifiabilité…) · glossaire · niveaux d'abstraction → ch.06 (niveaux d'abstraction : via V-Model Lastenheft/Pflichtenheft et traçabilité multi-niveaux ; aucune règle explicite « pas de niveaux mélangés » dans les supports)
+- [ ] Identifiant unique et traçabilité · revues (ambiguïté, incohérence, sur/sous-spécification) → ch.06 (⚠ « sur/sous-spécification » : terme absent des supports, seulement dans l'énoncé d'annale ; ambiguïté et incohérence traitées)
 
 ## Modèles de buts et cas d'utilisation
 _Source : (annales)_

@@ -1,0 +1,1561 @@
+{
+  "id": "isi1-06-documenter-les-exigences",
+  "courseId": "isi1",
+  "order": 6,
+  "title": {
+    "fr": "Documenter les exigences : gabarits, qualité, glossaire, traçabilité, revues",
+    "en": "Documenting requirements: templates, quality, glossary, traceability, reviews"
+  },
+  "hook": {
+    "fr": "Une exigence mal écrite coûte cher : comment rédiger et contrôler un cahier des charges que tout le monde comprend de la même façon ?",
+    "en": "A badly written requirement is expensive: how do you write and check a requirements document that everyone understands the same way?"
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+    "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+    "sources-texte/isi1/3-isoiec-cd-29148.md"
+  ],
+  "status": "draft",
+  "notions": [],
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi écrire les exigences ?",
+        "en": "Why write requirements down?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Imagine un client qui, six mois après la signature, affirme : « Ce n'était pas ce que nous avions demandé. » Sans document, c'est parole contre parole. Le cours donne quatre raisons de **documenter** : les exigences sont la base du développement, elles ont une portée juridique, elles sont complexes, et elles doivent rester accessibles à tous.",
+        "en": "Imagine a client who says, six months after signing: \"That is not what we asked for.\" Without a document, it is one word against another. The course gives four reasons to **document**: requirements are the basis of development, they have legal relevance, they are complex, and they must stay accessible to everyone."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.1 Reasons for the documentation",
+          "quote": "Requirements are the basis of the system development."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.1 Reasons for the documentation",
+          "quote": "Requirements have a legal relevance."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le support IREB (Salinesi) distingue trois façons de documenter : l'**oral** (la plus fréquente, mais difficile à gérer en traçabilité et en gestion de configuration), l'**écrit** (tableaux Excel, gabarits) et l'**information** (référentiel et modèles formels), qui améliore la traçabilité et facilite la synchronisation. Il propose de voir la documentation « comme un système d'information » et la structure selon **deux dimensions** : structure externe (les documents et leurs relations) et structure interne (les types d'information à l'intérieur).",
+        "en": "The IREB course (Salinesi) distinguishes three ways to document: **oral** (most frequent, but hard to manage for traceability and configuration management), **written** (Excel tables, templates) and **as information** (repository and formal models), which improves traceability and eases synchronization. It views documentation \"as an information system\" with **two dimensions**: external structure (the documents and their relationships) and internal structure (the kinds of information inside)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Different ways to document requirements",
+          "quote": "Easy to make mistakes"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Different ways to document requirements",
+          "quote": "• Improves traceability"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Requirements documentation: two dimension",
+          "quote": "External structure Internal structure"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen — les mythes.** Le prof liste des mythes qui font mal : « les exigences sont connues », « elles ne changent pas », « seules les exigences techniques sont à décrire », « les exigences sont spécifiées par les cas d'utilisation ». Tous sont faux : si une affirmation de ce type apparaît dans un V/F, c'est un FAUX à corriger.",
+        "en": "**Exam trap — the myths.** The professor lists myths that hurt: \"requirements are known\", \"requirements don't change\", \"only technical requirements are to be described\", \"the requirements are specified by the use cases\". All are false: if such a statement shows up in a True/False question, it is FALSE and must be corrected."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "A few myths that hurt",
+          "quote": "only technical requirements are to be described"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "A few myths that hurt",
+          "quote": "the requirements are specified by the use cases"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — Pohl & Rupp : en langue naturelle, personne n'a de notation à apprendre, mais elle autorise l'ambiguïté et mélange facilement les types d'exigences. Les modèles conceptuels sont plus compacts et moins ambigus, mais demandent une formation. Les documents réels sont donc **hybrides** : langue naturelle + modèles, chacun compensant les faiblesses de l'autre.",
+        "en": "**Going further** — Pohl & Rupp: natural language needs no new notation, but it allows ambiguity and easily mixes requirement types. Conceptual models are more compact and less ambiguous, but need training. Real documents are therefore **hybrid**: natural language plus models, each offsetting the other's weaknesses."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.2.2 Requirements Documentation using Natural Language",
+          "quote": "No stakeholder has to learn a new notation."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.2.3 Requirements Documentation using Conceptual Models",
+          "quote": "conceptual models offer a decreased degree of ambiguity"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.2.4 Hybrid Requirements Documents",
+          "quote": "Typically, documents contain a combination of natural language and conceptual models."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les gabarits : structurer le document, puis la phrase",
+        "en": "Templates: structuring the document, then the sentence"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un cahier des charges vide, par où commencer ? Le prof recommande de **ne pas inventer sa structure** mais d'utiliser une norme. Le support IREB donne la structure interne d'une SRS selon l'**IEEE 830**, et Pohl & Rupp décrivent la structure de l'ISO/IEC/IEEE 29148 en cinq parties.",
+        "en": "An empty requirements document: where do you start? The professor recommends **not inventing your own structure** but using a standard. The IREB course gives the internal structure of an SRS according to **IEEE 830**, and Pohl & Rupp describe the ISO/IEC/IEEE 29148 structure in five parts."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Use standards for structuring reqts documents",
+          "quote": "Provides a reference structure for requirements-related artefacts"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.3.1 Standardized Document Structures",
+          "quote": "The standard structure suggests dividing the requirements document into five parts with regard to their subject matter"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "IEEE 830 (SRS)",
+          "en": "IEEE 830 (SRS)"
+        },
+        {
+          "fr": "Contenu",
+          "en": "Content"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1. Introduction",
+            "en": "1. Introduction"
+          },
+          {
+            "fr": "But du document, périmètre du produit, définitions/acronymes, références, vue d'ensemble",
+            "en": "Purpose, scope of the product, definitions/acronyms, references, overview"
+          }
+        ],
+        [
+          {
+            "fr": "2. Description générale",
+            "en": "2. General description"
+          },
+          {
+            "fr": "Perspective produit, fonctions, caractéristiques des utilisateurs, contraintes générales, hypothèses et dépendances",
+            "en": "Product perspective, functions, user characteristics, general constraints, assumptions and dependencies"
+          }
+        ],
+        [
+          {
+            "fr": "3. Exigences spécifiques",
+            "en": "3. Specific requirements"
+          },
+          {
+            "fr": "Exigences fonctionnelles, non fonctionnelles et d'interface",
+            "en": "Functional, non-functional and interface requirements"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Internal structuring of an SRS : IEEE 830",
+          "quote": "Purpose of the requirements document Scope of the product"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Internal structuring of an SRS : IEEE 830",
+          "quote": "General description Product perspective Product functions User characteristics General constraints"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Internal structuring of an SRS : IEEE 830",
+          "quote": "functional requirements non-functional requirements interface requirements"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen.** L'annale 3 affirme : « la section *exigences spécifiques* est composée de trois sous-parties : exigences fonctionnelles, non fonctionnelles et d'interface ». C'est exactement le plan IEEE 830 ci-dessus — retiens-le tel quel.",
+        "en": "**Exam trap.** Past exam 3 states: \"the *specific requirements* section has three sub-parts: functional, non-functional and interface requirements\". This is exactly the IEEE 830 outline above — remember it as is."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°11",
+          "quote": "la section « exigences spécifiques » d'un cahier des charges est composée de trois sous-parties"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi une structure standard ? Le support IREB répond : mieux rédiger, **repérer les trous et les combler**, former les parties prenantes, accéder facilement à l'information (par exemple pour les tests) et réutiliser. Pohl & Rupp ajoutent qu'un plan standard permet même une **vérification automatique** (de complétude par exemple) — mais qu'il doit être adapté au projet.",
+        "en": "Why a standard structure? The IREB course answers: better authoring, **finding the blanks and filling the gaps**, training stakeholders, easy access to information (for tests, say) and reuse. Pohl & Rupp add that a standard outline even allows **automatic verification** (of completeness, for example) — but it must be tailored to the project."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Use standards for structuring reqts documents",
+          "quote": "Finding the blanks and filling the gaps"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.3.1 Standardized Document Structures",
+          "quote": "Standard outlines allow for automatic verification of requirements documents (e.g., with regard to completeness)."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.3.1 Standardized Document Structures",
+          "quote": "these structures must be tailored with regard to the specific project properties"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le gabarit de phrase : cinq étapes",
+        "en": "The sentence template: five steps"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Même avec un bon plan, chaque exigence peut être mal écrite. Le **gabarit** (*requirements template*) est un « plan de construction de la structure syntaxique d'une exigence individuelle ». Il aide à obtenir qualité et non-ambiguïté syntaxique à faible coût, et se combine avec un glossaire pour la clarté du vocabulaire.",
+        "en": "Even with a good outline, each requirement can be badly written. A **requirements template** is \"a blueprint for the syntactic structure of individual requirements\". It helps achieve quality and syntactic unambiguousness at low cost, and works together with a glossary for lexical clarity."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.2 Requirement Construction using Templates",
+          "quote": "A requirements template is a blueprint for the syntactic structure of individual requirements."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.2 Requirement Construction using Templates",
+          "quote": "Templates support the author in achieving high quality and syntactic unambiguousness in optimal time and at low costs."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Étape",
+          "en": "Step"
+        },
+        {
+          "fr": "Ce qu'on décide",
+          "en": "What you decide"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1. Obligation",
+            "en": "1. Obligation"
+          },
+          {
+            "fr": "Degré d'obligation juridique, exprimé par les verbes modaux **shall, should, will, may**.",
+            "en": "Degree of legal obligation, expressed with the modal verbs **shall, should, will, may**."
+          }
+        ],
+        [
+          {
+            "fr": "2. Cœur",
+            "en": "2. Core"
+          },
+          {
+            "fr": "Le processus : une activité, décrite **uniquement par un verbe**.",
+            "en": "The process: an activity, described **only by a verb**."
+          }
+        ],
+        [
+          {
+            "fr": "3. Type d'activité",
+            "en": "3. Activity type"
+          },
+          {
+            "fr": "Autonome (*THE SYSTEM SHALL… <verbe>*), interaction avec l'utilisateur (*… provide <whom?> with the ability to <verbe>*) ou interface (*… be able to <verbe>*) — un seul gabarit parmi trois.",
+            "en": "Autonomous (*THE SYSTEM SHALL… <process verb>*), user interaction (*… provide <whom?> with the ability to <process verb>*) or interface (*… be able to <process verb>*) — exactly one of three templates."
+          }
+        ],
+        [
+          {
+            "fr": "4. Objets",
+            "en": "4. Objects"
+          },
+          {
+            "fr": "Compléter le verbe avec les objets manquants (quoi, où…).",
+            "en": "Complete the verb with the missing objects (what, where…)."
+          }
+        ],
+        [
+          {
+            "fr": "5. Conditions",
+            "en": "5. Conditions"
+          },
+          {
+            "fr": "Conditions logiques (**if**) ou temporelles (**as soon as**), placées en début de phrase.",
+            "en": "Logical (**if**) or temporal (**as soon as**) conditions, put at the start of the sentence."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 1: Determine the Legal Obligation",
+          "quote": "you can use the modal verbs shall, should, will, and may"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 2: The Requirement Core",
+          "quote": "Processes are activities and may only be described using verbs."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 3: Characterize the Activity of a System",
+          "quote": "any kind of system activity that is specified by a requirement of the system is documented using exactly one of three requirements templates"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 4: Insert Objects",
+          "quote": "potentially missing objects and supplements of objects (adverbials) are identified and added to the requirement"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 5: Determine Logical and Temporal Conditions",
+          "quote": "we choose the temporal conjunction as soon as for temporal conditions and the conditional conjunction if for logical conditions"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Type 2: User interaction",
+          "quote": "provide <whom?> with the ability to <process verb>"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "**Piège d'examen — « when » et « peut ».** Pohl & Rupp déconseillent la conjonction *when*, car on ne sait pas si la condition est logique ou temporelle. De même, « le système **peut** permettre… » (*may*) exprime une exigence seulement *souhaitable*, pas obligatoire : ne le confonds pas avec « doit » (*shall*). Enfin, le cours précise que le gabarit limite style et créativité : il vaut mieux le proposer avec une formation que l'imposer.",
+        "en": "**Exam trap — \"when\" and \"may\".** Pohl & Rupp advise against the conjunction *when*, because it is unclear whether the condition is logical or temporal. Likewise, \"the system **may** allow…\" expresses only a *desirable* requirement, not a mandatory one: do not confuse it with *shall*. Finally, the course notes that templates limit style and creativity: better to offer them with training than to make them compulsory."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 5: Determine Logical and Temporal Conditions",
+          "quote": "The conjunction when makes not clear whether a temporal or a logical condition is described and should therefore be avoided."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 1: Determine the Legal Obligation",
+          "quote": "urgently recommended requirements, future requirements, and desirable requirements"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.2 Requirement Construction using Templates",
+          "quote": "Style and creativity are harshly limited when requirements templates are used."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen.** L'annale 3 propose : « Les gabarits d'exigences peuvent être utilisés afin de garantir qu'aucune information n'est oubliée. » Distingue bien les deux gabarits : le **plan du document** aide à « trouver les trous » (IREB) ; le **gabarit de phrase** sert à compléter verbe, objets et conditions (étapes 4 et 5). Aucun ne *garantit* l'exhaustivité du besoin : celle-ci reste difficile à vérifier (épisode 5).",
+        "en": "**Exam trap.** Past exam 3 offers: \"Requirements templates can be used to guarantee that no information is forgotten.\" Keep the two kinds of template apart: the **document outline** helps \"find the blanks\" (IREB); the **sentence template** completes verb, objects and conditions (steps 4 and 5). Neither *guarantees* that the needs are exhaustive: completeness stays hard to verify (episode 5)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°9",
+          "quote": "Les gabarits d'exigences peuvent être utilisés afin de garantir qu'aucune information n'est oubliée"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Complete",
+          "quote": "It is difficult to verify completeness"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Une bonne exigence, un bon document : les critères de qualité",
+        "en": "A good requirement, a good document: quality criteria"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux niveaux de qualité à ne pas mélanger. Pour le **document**, la norme ISO 29148 demande qu'il soit complet et cohérent ; Pohl & Rupp en tirent cinq critères : non-ambiguïté et cohérence, structure claire, modifiabilité et extensibilité, complétude, traçabilité. Pour chaque **exigence** prise isolément, la liste est plus longue.",
+        "en": "Two levels of quality that must not be mixed. For the **document**, ISO 29148 requires it to be complete and consistent; Pohl & Rupp derive five criteria: unambiguity and consistency, clear structure, modifiability and extendibility, completeness, traceability. For each **individual requirement**, the list is longer."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.5 Quality Criteria for Requirements Documents",
+          "quote": "a requirements document shall be complete and consistent"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.5 Quality Criteria for Requirements Documents",
+          "quote": "Unambiguity and consistency Clear structure Modifiability and extendibility Completeness Traceability"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Critère (requirement)",
+          "en": "Criterion"
+        },
+        {
+          "fr": "Question à se poser",
+          "en": "Question to ask"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Convenue (*agreed*)",
+            "en": "Agreed"
+          },
+          {
+            "fr": "Correcte et nécessaire de l'avis de toutes les parties prenantes ?",
+            "en": "Correct and necessary in the opinion of all stakeholders?"
+          }
+        ],
+        [
+          {
+            "fr": "Non ambiguë",
+            "en": "Unambiguous"
+          },
+          {
+            "fr": "Tous les lecteurs arrivent-ils à la même compréhension, une seule ?",
+            "en": "Do all readers reach the same, single understanding?"
+          }
+        ],
+        [
+          {
+            "fr": "Cohérente",
+            "en": "Consistent"
+          },
+          {
+            "fr": "Ne contredit ni les autres exigences, ni elle-même ?",
+            "en": "Does it contradict neither the other requirements nor itself?"
+          }
+        ],
+        [
+          {
+            "fr": "Vérifiable",
+            "en": "Verifiable"
+          },
+          {
+            "fr": "Peut-on faire des tests ou des mesures qui prouvent la fonctionnalité demandée ?",
+            "en": "Can tests or measurements provide evidence of the demanded functionality?"
+          }
+        ],
+        [
+          {
+            "fr": "Réalisable",
+            "en": "Feasible"
+          },
+          {
+            "fr": "Faisable malgré les contraintes organisationnelles, légales, techniques ou financières ?",
+            "en": "Implementable given organizational, legal, technical or financial constraints?"
+          }
+        ],
+        [
+          {
+            "fr": "Traçable",
+            "en": "Traceable"
+          },
+          {
+            "fr": "Peut-on retrouver son origine, sa réalisation et ses liens avec les autres documents ?",
+            "en": "Can its origin, realization and relation to other documents be retraced?"
+          }
+        ],
+        [
+          {
+            "fr": "Complète",
+            "en": "Complete"
+          },
+          {
+            "fr": "Décrit-elle entièrement la fonctionnalité ? Sinon, marquée « tbd » ?",
+            "en": "Does it fully describe the functionality? If not, is it marked \"tbd\"?"
+          }
+        ],
+        [
+          {
+            "fr": "Compréhensible",
+            "en": "Understandable"
+          },
+          {
+            "fr": "Lisible par chaque partie prenante ; termes strictement définis ?",
+            "en": "Comprehensible to each stakeholder; terms strictly defined?"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "A requirement is agreed upon if it is correct and necessary in the opinion of all stakeholders."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "A requirement that is unambiguously documented can be understood in only one way."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "In addition, a requirement must be formulated in a way that allows for consistency with itself"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "tests or measurements can be carried out that provide evidence of the functionality demanded by the requirement"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "It must be possible to implement each requirement given the organizational, legal, technical, or financial constraints."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "A requirement is traceable if its origin as well as its realization and its relation to other documents can be retraced."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "Requirements that are yet incomplete must be specially marked"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "Requirements must be comprehensible to each stakeholder."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La **compréhensibilité** repose sur deux règles de base. D'abord des phrases et des paragraphes courts : la mémoire à court terme est très limitée, donc au plus sept phrases pour ce qui va ensemble. Ensuite **une seule exigence par phrase**, à la voix active et avec un seul verbe de processus. L'ISO 29148 dit la même chose autrement : une exigence « concise » ne contient qu'une exigence, sans conjonction.",
+        "en": "**Understandability** rests on two basic rules. First, short sentences and paragraphs: short-term memory is very limited, so no more than seven sentences for things that belong together. Second, **one requirement per sentence**, in the active voice with a single process verb. ISO 29148 says the same differently: a \"concise\" requirement includes only one requirement, with no conjunctions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "circumstances that belong together should be described in no more than seven sentences"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "Formulate requirements using active voice and use only one process verb."
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.6 Characteristics of individual requirements",
+          "quote": "The requirement statement includes only one requirement with no use of conjunctions."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Fil rouge : les exigences R1 à R5 de l'annale",
+        "en": "Running example: requirements R1 to R5 from the past exam"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Exigence de l'annale",
+          "en": "Exam requirement"
+        },
+        {
+          "fr": "Défaut à repérer",
+          "en": "Defect to spot"
+        },
+        {
+          "fr": "Règle du cours",
+          "en": "Course rule"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "R2 — « Le système doit permettre de créer une commande, de la modifier et de la supprimer. »",
+            "en": "R2 — \"The system must allow creating, modifying and deleting an order.\""
+          },
+          {
+            "fr": "Trois exigences en une phrase (composée)",
+            "en": "Three requirements in one sentence (compound)"
+          },
+          {
+            "fr": "Une seule exigence par phrase",
+            "en": "One requirement per sentence"
+          }
+        ],
+        [
+          {
+            "fr": "R3 — « Le système peut permettre de choisir le matériel selon l'un des critères suivants… »",
+            "en": "R3 — \"The system may allow choosing the equipment according to one of the following criteria…\""
+          },
+          {
+            "fr": "Verbe modal « peut » : obligation faible",
+            "en": "Modal verb \"may\": weak obligation"
+          },
+          {
+            "fr": "Étape 1 du gabarit : shall / should / will / may",
+            "en": "Template step 1: shall / should / will / may"
+          }
+        ],
+        [
+          {
+            "fr": "R4 — « Toutes les commandes seront enregistrées dans un datawarehouse… »",
+            "en": "R4 — \"All orders will be recorded in a data warehouse…\""
+          },
+          {
+            "fr": "Solution technique imposée (datawarehouse) ; quantificateur « toutes »",
+            "en": "Technical solution imposed (data warehouse); quantifier \"all\""
+          },
+          {
+            "fr": "Solutions décrites ailleurs (indépendance de la conception)",
+            "en": "Solutions described elsewhere (design independence)"
+          }
+        ],
+        [
+          {
+            "fr": "R5 — « Le système doit être facile à utiliser. »",
+            "en": "R5 — \"The system must be easy to use.\""
+          },
+          {
+            "fr": "Non vérifiable (« facile » n'est pas mesurable)",
+            "en": "Not verifiable (\"easy\" is not measurable)"
+          },
+          {
+            "fr": "Vérifiable : tests ou mesures possibles",
+            "en": "Verifiable: tests or measurements possible"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "B. Spécification d'exigences, R2",
+          "quote": "Le système doit permettre de créer une commande, de la modifier et de la supprimer."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "B. Spécification d'exigences, R3",
+          "quote": "Le système peut permettre de choisir le matériel selon l'un des critères suivants"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "B. Spécification d'exigences, R4",
+          "quote": "Toutes les commandes seront enregistrées dans un datawarehouse"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "B. Spécification d'exigences, R5",
+          "quote": "Le système doit être facile à utiliser."
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Design independentant : solutions described elsewhere"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen — R1.** « Les caractéristiques du chantier sont les suivantes : type de bâtiment, utilisation, et nombre de pièces. » n'est pas une exigence (aucun « le système doit ») : c'est une description. L'ISO 29148 demande d'inclure les définitions comme des énoncés déclaratifs, **pas comme des exigences** — leur place est dans le glossaire. Dans ta copie : nomme le défaut, explique-le, puis réécris au format « Le système doit… » vérifiable.",
+        "en": "**Exam trap — R1.** \"The characteristics of the site are: type of building, use, and number of rooms.\" is not a requirement (no \"the system must\"): it is a description. ISO 29148 says to include definitions as declarative statements, **not as requirements** — they belong in the glossary. In your answer: name the defect, explain it, then rewrite in a verifiable \"The system must…\" form."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "B. Spécification d'exigences, R1",
+          "quote": "Les caractéristiques du chantier sont les suivantes : type de bâtiment, utilisation, et nombre de pièces."
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.6 Requirement statements",
+          "quote": "Also, include definitions as declarative statements, not requirements."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le glossaire : un seul mot, un seul sens",
+        "en": "The glossary: one word, one meaning"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un téléphone peut s'appeler *handset*, *mobile*, *terminal*, *TE*… Et « ring tone » peut désigner un bip de SMS, une sonnerie de réveil ou la sonnerie d'appel. Pohl & Rupp le disent : une cause fréquente de conflits est que les participants **interprètent différemment les termes**. Le remède est un **glossaire** commun.",
+        "en": "A phone can be called *handset*, *mobile*, *terminal*, *TE*… And \"ring tone\" can mean an SMS beep, a wake-up tone or the telephone ring. Pohl & Rupp state it: a frequent cause of conflicts is that the people involved **interpret terms differently**. The cure is a shared **glossary**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "A frequent cause for conflicts in requirements engineering is that the people that are involved in the development process have different interpretations of terms."
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Define a dictionnary/glossary — Good practice",
+          "quote": "choose a term for an object, and stick to it"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Inconsistencies and conflicts risks",
+          "quote": "Designation clash due to homonyms"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "des **termes techniques** propres au contexte",
+          "en": "context-specific **technical terms**"
+        },
+        {
+          "fr": "des **abréviations et acronymes**",
+          "en": "**abbreviations and acronyms**"
+        },
+        {
+          "fr": "des **concepts courants** qui ont un sens particulier dans le contexte",
+          "en": "**everyday concepts** with a special meaning in the given context"
+        },
+        {
+          "fr": "des **synonymes** : termes différents, même sens",
+          "en": "**synonyms**: different terms with the same meaning"
+        },
+        {
+          "fr": "des **homonymes** : même terme, sens différents",
+          "en": "**homonyms**: identical terms with different meanings"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "Context-specific technical terms Abbreviations and acronyms Everyday concepts that have a special meaning in the given context"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "Synonyms, i.e., different terms with the same meaning"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "Homonyms, i.e., identical terms with different meanings"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un glossaire n'est utile que s'il est **vivant**. Pohl & Rupp posent des règles de gestion : il est géré de façon centrale (un seul glossaire valide), quelqu'un en est responsable, il est maintenu pendant tout le projet, accessible à tous, d'usage **obligatoire**, il cite les sources des termes, il est approuvé par les parties prenantes et ses entrées ont toutes la même structure (avec synonymes et homonymes possibles). Le mieux est de le commencer tôt.",
+        "en": "A glossary is only useful if it is **alive**. Pohl & Rupp set management rules: it is centrally managed (only one valid glossary), someone is responsible for it, it is maintained throughout the project, accessible to all, **mandatory** to use, it cites the sources of terms, it is approved by stakeholders and all entries share the same structure (with possible synonyms and homonyms). It is best to start early."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "At any time, there must be only one valid glossary, which must also be centrally accessible."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "One particular individual must be assigned with the task of maintaining the glossary"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "All involved personnel must be obliged to exclusively use the terms and term definitions as they have been defined in the glossary."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "The glossary should contain the sources of the terms"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "it is advisable to start with the creation of the glossary early on in the project"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen — homonymes.** L'annale 3 écrit : « Il est parfaitement acceptable d'employer dans un projet des termes homonymes, dès l'instant que tout cela est clairement défini dans le glossaire de projet. » Raisonne avec le cours : le glossaire *recense* les homonymes, ses entrées ont une structure fixe qui prévoit synonymes **et** homonymes, et sa raison d'être est de supprimer les interprétations divergentes — mais le support IREB classe les homonymes parmi les **risques d'incohérence**. Justifie ta réponse avec ces deux faces.",
+        "en": "**Exam trap — homonyms.** Past exam 3 states: \"It is perfectly acceptable to use homonymous terms in a project as long as everything is clearly defined in the project glossary.\" Reason with the course: the glossary *lists* homonyms, its entries follow a fixed structure covering synonyms **and** homonyms, and its purpose is to remove diverging interpretations — but the IREB course counts homonyms among the **inconsistency risks**. Justify your answer with both sides."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°15",
+          "quote": "Il est parfaitement acceptable d'employer dans un projet des termes homonymes"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "the template should specify possible synonyms and homonyms"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Inconsistencies and conflicts risks",
+          "quote": "Designation clash due to homonyms"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Identifiant unique, traçabilité et niveaux d'abstraction",
+        "en": "Unique identifier, traceability and levels of abstraction"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans l'annale 3, le prof cite un blog sur l'exigence « un débit minimum de 25 images par seconde sera proposé 7 jours sur 7 ». Selon l'auteur, l'analyste doit d'abord **l'identifier de manière unique** comme exigence et lui donner un **titre**, de préférence lui aussi identifiant unique. Si ce titre est difficile à trouver, c'est le signe d'un **flou sémantique** : mieux vaut reformuler. Puis il doit se demander si le responsable de la vérification pourra **vérifier** cette exigence sur le système.",
+        "en": "In past exam 3, the professor quotes a blog about the requirement \"a minimum throughput of 25 images per second will be provided 7 days a week\". According to the author, the analyst must first **identify it uniquely** as a requirement and give it a **title**, preferably also a unique identifier. If that title is hard to find, it signals **semantic vagueness**: better to reword it. Then the analyst must ask whether the person in charge of verification will be able to **verify** it on the system."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "D. Réflexion",
+          "quote": "un débit minimum de 25 images par seconde sera proposé 7 jours sur 7"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "D. Réflexion",
+          "quote": "Cette recherche de titre, si elle est difficile indique le flou sémantique associé à l'assertion"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "D. Réflexion",
+          "quote": "sera en mesure de vérifier cela sur le système"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Que doit-on savoir d'un **identifiant** ? L'ISO 29148 est précise : chaque exigence est identifiée de façon unique (numéro, étiquette, mnémonique…), l'identifiant aide au suivi des exigences, et une fois attribué il **ne change jamais** (même si l'exigence change) et n'est **jamais réutilisé** (même si l'exigence est supprimée). Pour l'annale 3, l'identifiant sert à la **traçabilité**, au partage, à la gestion de configuration et à la classification.",
+        "en": "What must you know about an **identifier**? ISO 29148 is precise: each requirement is uniquely identified (number, name tag, mnemonic…), identifiers aid requirements tracing, and once assigned the identifier is **never changed** (even if the requirement changes) and **never reused** (even if the requirement is deleted). For past exam 3, the identifier serves **traceability**, sharing, configuration management and classification."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7 Requirements attributes",
+          "quote": "Each requirement should be uniquely identified"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7 Requirements attributes",
+          "quote": "Unique identifiers aid in requirements tracing."
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7 Requirements attributes",
+          "quote": "it is never changed (even if the identified requirement changes) nor is it reused (even if the identified requirement is deleted)"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°1",
+          "quote": "À la fois pour des raisons de traçabilité, mais aussi de partage, de gestion de configuration, et de classification."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La **traçabilité** relie une exigence à son origine, à sa réalisation et aux autres documents. Grâce aux identifiants, on connecte les exigences dérivées d'autres exigences d'un niveau différent : un but du système peut être suivi **à travers tous les niveaux d'abstraction**, de la conception à l'implémentation et aux tests. Elle soutient la gestion du changement. Le support IREB exige que chaque exigence soit « tracée » : auteur, source et justification documentés.",
+        "en": "**Traceability** links a requirement to its origin, its realization and other documents. Thanks to identifiers, you connect requirements derived from others at a different level: a system goal can be followed **through all levels of abstraction**, from design to implementation and test. It supports change management. The IREB course demands that each requirement be \"traced\": author, source and justification documented."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "requirements that are derived from other requirements on a different level of the specification can be connected"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "a system goal can be traced through all levels of abstraction, from design to implementation and test"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.5.5 Traceability",
+          "quote": "Among other things, traceability supports change management"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Traced : author, source and justification are documented"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Concrètement, les **niveaux d'abstraction** apparaissent dans le modèle V allemand : le cahier des charges client (*Lastenheft*) décrit les exigences du client ; le cahier des charges système (*Pflichtenheft*) en est un **raffinement** qui contient les propositions de réalisation du prestataire. L'ISO 29148 ajoute que chaque exigence se trace vers le haut (besoin des parties prenantes, exigence de niveau supérieur) et vers le bas (exigences de niveau inférieur).",
+        "en": "In practice, **levels of abstraction** appear in the German V-Model: the customer requirements specification (*Lastenheft*) describes the customer's demands; the system requirements specification (*Pflichtenheft*) is a **refinement** containing the contractor's implementation suggestions. ISO 29148 adds that each requirement is traced upwards (stakeholder need, higher-tier requirement) and downwards (lower-tier requirements)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.3.1 Standardized Document Structures",
+          "quote": "Therefore, the System Requirements Specification is a refinement of the requirements and constraints of the Customer Requirements Specification."
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.6 Characteristics of individual requirements",
+          "quote": "Each requirement should be traced upwards to specific documented stakeholder statement(s) of need, higher tier requirement, or other source"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.6 Characteristics of individual requirements",
+          "quote": "Each requirement should also be traced downwards to the specific requirements in the lower tier requirements specification"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen.** L'annale 3 affirme : « Il ne faut jamais que les exigences d'un même cahier des charges soient spécifiées à différents niveaux d'abstraction. » Le mot « jamais » est un signal d'alerte (quantificateur universel, voir épisode 6) : le cours organise justement les exigences sur plusieurs niveaux reliés par la traçabilité. Une autre affirmation à retenir : un **modèle d'échange global** décrit les exigences, leurs attributs **et** leurs dépendances avec d'autres artefacts (moyens de vérification, produit, compromis, condition, risque, justifications, sources).",
+        "en": "**Exam trap.** Past exam 3 states: \"The requirements of a single requirements document must never be specified at different levels of abstraction.\" The word \"never\" is a warning sign (universal quantifier, see episode 6): the course organizes requirements precisely on several levels linked by traceability. Another statement to remember: a **global exchange model** describes requirements, their attributes **and** their dependencies with other artefacts (verification means, product, compromise, condition, risk, justifications, sources)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°16",
+          "quote": "Il ne faut jamais que les exigences d'un même cahier des charges soient spécifiées à différents niveaux d'abstraction"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°12",
+          "quote": "moyens de vérification, produit, compromis, condition, risque, justifications, sources"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les revues : traquer les défauts avant le code",
+        "en": "Reviews: hunting defects before the code"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Comment vérifier un document d'exigences ? Le support IREB dit : **organiser une revue**, avec quatre questions. *Complétude* : manque-t-il des exigences ? *Cohérence* : y en a-t-il qui se contredisent ? *Modifiabilité* : sera-t-il facile de changer les exigences ? *Compréhensibilité* : le document est-il facile à interpréter ? L'annale 3 résume : une revue identifie les erreurs courantes, comme l'ambiguïté et l'incohérence.",
+        "en": "How do you verify a requirements document? The IREB course says: **organize a review**, with four questions. *Completeness*: are there missing requirements? *Consistency*: do some contradict each other? *Modifiability*: will it be easy to change the requirements? *Comprehensibility*: is the document easy to interpret? Past exam 3 sums it up: a review identifies common errors, such as ambiguity and inconsistency."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Organize a review",
+          "quote": "Are there missing requirements?"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Organize a review",
+          "quote": "Will it be easy to change the requirements?"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Questions de cours, n°8",
+          "quote": "On peut chercher à vérifier les exigences en organisant des revues."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Autre vérification (IREB)",
+          "en": "Other check (IREB)"
+        },
+        {
+          "fr": "Signification",
+          "en": "Meaning"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Unique",
+            "en": "Unique"
+          },
+          {
+            "fr": "Pas de redondance",
+            "en": "No redundancy"
+          }
+        ],
+        [
+          {
+            "fr": "Annotée",
+            "en": "Annotated"
+          },
+          {
+            "fr": "Chaque exigence a toute l'information utile (contexte, priorité, version…)",
+            "en": "Each requirement has all needed information (context, priority, release, etc.)"
+          }
+        ],
+        [
+          {
+            "fr": "Organisée",
+            "en": "Organized"
+          },
+          {
+            "fr": "Une place pour chaque exigence, chaque exigence à sa place",
+            "en": "A place for each requirement, each requirement in its place"
+          }
+        ],
+        [
+          {
+            "fr": "Indépendante de la conception",
+            "en": "Design independent"
+          },
+          {
+            "fr": "Les solutions sont décrites ailleurs",
+            "en": "Solutions are described elsewhere"
+          }
+        ],
+        [
+          {
+            "fr": "Tracée",
+            "en": "Traced"
+          },
+          {
+            "fr": "Auteur, source et justification documentés",
+            "en": "Author, source and justification documented"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Unique: no redundancy Annotated: each requirements has all the needed information"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Annotated: each requirements has all the needed information (context, priority, release, etc)"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Organized: a place for each requirements and each requirements at its place"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Design independentant : solutions described elsewhere"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Traced : author, source and justification are documented"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La complétude est la plus difficile : « The specification contains everything the product is supposed to do », et on ne peut pas vérifier l'absence par simple lecture. Le support recommande de ne laisser aucune section « à compléter plus tard », et de **compléter par des techniques d'élicitation** (interviews, questionnaires, brainstorming, observation de terrain, prototypes…, voir chapitre 05). Pour chaque fonction, il faut décrire toutes les entrées, tous les facteurs d'influence et toutes les réactions attendues, notamment les cas d'erreur et d'exception. Mais attention : « No need to overdo it! » — il existe un **point d'équilibre** entre coût de la qualité et coût de la non-qualité.",
+        "en": "Completeness is the hardest: \"The specification contains everything the product is supposed to do\", and absence cannot be checked by simply reading. The course recommends leaving no \"to be completed later\" section, and **completing with elicitation techniques** (interviews, questionnaires, brainstorming, field observation, prototyping…, see chapter 05). For each function, you must describe all inputs, influencing factors and required reactions, notably error and exception cases. But beware: \"No need to overdo it!\" — there is a **sweet spot** between the cost of quality and the cost of non-quality."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Complete",
+          "quote": "The specification contains everything the product is supposed to do"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Complete",
+          "quote": "It is difficult to verify completeness"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Complete with elicitation techniques",
+          "quote": "Complete with elicitation techniques"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.5.4 Completeness",
+          "quote": "This comprises describing error and exception cases in particular."
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Keep quality criteria in mind",
+          "quote": "No need to overdo it!"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Costs: Cost of Quality / Cost of non-quality",
+          "quote": "Cost of Quality Cost of non-quality Sweet spot"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Cinq défauts de langage à repérer en relecture (l'ambiguïté du langage naturel)",
+        "en": "Five language defects to spot when reviewing (the ambiguity of natural language)"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Effet",
+          "en": "Effect"
+        },
+        {
+          "fr": "Exemple du cours",
+          "en": "Course example"
+        },
+        {
+          "fr": "Question à poser",
+          "en": "Question to ask"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Nominalisation",
+            "en": "Nominalization"
+          },
+          {
+            "fr": "« In case of a system crash, a restart of the system shall be performed. »",
+            "en": "\"In case of a system crash, a restart of the system shall be performed.\""
+          },
+          {
+            "fr": "Quel processus se cache derrière « crash » et « restart » ?",
+            "en": "Which process hides behind \"crash\" and \"restart\"?"
+          }
+        ],
+        [
+          {
+            "fr": "Nom sans référence",
+            "en": "Noun without reference index"
+          },
+          {
+            "fr": "« The data shall be displayed to the user on the terminal. »",
+            "en": "\"The data shall be displayed to the user on the terminal.\""
+          },
+          {
+            "fr": "Quelles données ? Quel utilisateur ? Quel terminal ?",
+            "en": "What data? Which user? Which terminal?"
+          }
+        ],
+        [
+          {
+            "fr": "Quantificateur universel",
+            "en": "Universal quantifier"
+          },
+          {
+            "fr": "« The system shall show all data sets in every submenu. »",
+            "en": "\"The system shall show all data sets in every submenu.\""
+          },
+          {
+            "fr": "Vraiment dans tous les sous-menus ? Tous les jeux de données ?",
+            "en": "Really in every submenu? Really all data sets?"
+          }
+        ],
+        [
+          {
+            "fr": "Condition incomplète",
+            "en": "Incompletely specified condition"
+          },
+          {
+            "fr": "« …offer all beverages to a registered guest over the age of 20 years. »",
+            "en": "\"…offer all beverages to a registered guest over the age of 20 years.\""
+          },
+          {
+            "fr": "Et pour un client de 20 ans ou moins ?",
+            "en": "What about a guest aged 20 or younger?"
+          }
+        ],
+        [
+          {
+            "fr": "Verbe de processus incomplet",
+            "en": "Incompletely specified process verb"
+          },
+          {
+            "fr": "« To log a user in, the login data is entered. »",
+            "en": "\"To log a user in, the login data is entered.\""
+          },
+          {
+            "fr": "Qui saisit ? Où ? Comment ? (passer à la voix active)",
+            "en": "Who enters it? Where? How? (switch to active voice)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.1 Nominalization",
+          "quote": "In case of a system crash, a restart of the system shall be performed."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.2 Nouns without Reference Index",
+          "quote": "The data shall be displayed to the user on the terminal."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.3 Universal Quantifiers",
+          "quote": "The system shall show all data sets in every submenu."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.4 Incompletely Specified Conditions",
+          "quote": "The restaurant system shall offer all beverages to a registered guest over the age of 20 years."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.5 Incompletely Specified Process Verbs",
+          "quote": "To log a user in, the login data is entered."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1 Effects of Natural Language",
+          "quote": "natural language is inherently ambiguous and statements in natural language can often be interpreted in multiple ways"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.3 Summary",
+          "quote": "by checking the requirements against linguistic effects"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "**Piège d'examen — mots déclencheurs.** Les quantificateurs universels se repèrent par *never, always, no, none, every, all, some, nothing*. Les conditions incomplètes par *if… then, in case, whether, depending on* : on doit aussi dire ce qui se passe quand la condition **n'est pas** remplie (une table de décision aide). Ces mots sont aussi des pièges dans les énoncés V/F de l'annale.",
+        "en": "**Exam trap — trigger words.** Universal quantifiers are spotted by *never, always, no, none, every, all, some, nothing*. Incomplete conditions by *if… then, in case, whether, depending on*: you must also say what happens when the condition is **not** met (a decision table helps). These words are also traps in the True/False statements of past exams."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.3 Universal Quantifiers",
+          "quote": "Universal quantifiers can be easily identified through trigger words such as never, always, no, none, every, all, some, or nothing."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.4 Incompletely Specified Conditions",
+          "quote": "they must specify what behavior must occur if the condition is not met"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1.4 Incompletely Specified Conditions",
+          "quote": "decision tables can be invaluable tools to find unspecified variants of conditions or actions"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-requirements-document",
+      "fr": "document / spécification des exigences",
+      "en": "requirements document / specification",
+      "definition": {
+        "fr": "Collection d'exigences représentée de façon systématique, typiquement pour un système ou un composant, qui satisfait des critères donnés.",
+        "en": "A systematically represented collection of requirements, typically for a system or component, that satisfies given criteria."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Terms",
+          "quote": "Requirements Document, Requirements Specification"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Definition 4-1",
+          "quote": "A requirements specification is a systematically represented collection of requirements, typically for a system or component, that satisfies given criteria."
+        }
+      ]
+    },
+    {
+      "id": "term-glossary",
+      "fr": "glossaire",
+      "en": "glossary",
+      "definition": {
+        "fr": "Collection de définitions de termes (termes techniques, abréviations, concepts courants à sens particulier, synonymes, homonymes), commune à tous les participants du projet.",
+        "en": "A collection of term definitions (technical terms, abbreviations, everyday concepts with a special meaning, synonyms, homonyms), shared by everyone involved in the project."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Define a dictionnary/glossary — Good practice",
+          "quote": "provide a simple, precise and intelligible definition for each relevant term in the field, and a list of accepted synonyms"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "A glossary is a collection of term definitions"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "Context-specific technical terms Abbreviations and acronyms Everyday concepts that have a special meaning in the given context"
+        }
+      ]
+    },
+    {
+      "id": "term-synonym",
+      "fr": "synonyme",
+      "en": "synonym",
+      "definition": {
+        "fr": "Termes différents ayant le même sens.",
+        "en": "Different terms with the same meaning."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Inconsistencies and conflicts risks",
+          "quote": "Terminology clash due to synonymes"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "Synonyms, i.e., different terms with the same meaning"
+        }
+      ]
+    },
+    {
+      "id": "term-homonym",
+      "fr": "homonyme",
+      "en": "homonym",
+      "definition": {
+        "fr": "Termes identiques ayant des sens différents.",
+        "en": "Identical terms with different meanings."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Inconsistencies and conflicts risks",
+          "quote": "Designation clash due to homonyms"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.7 Glossary",
+          "quote": "Homonyms, i.e., identical terms with different meanings"
+        }
+      ]
+    },
+    {
+      "id": "term-verifiable",
+      "fr": "exigence vérifiable",
+      "en": "verifiable requirement",
+      "definition": {
+        "fr": "Exigence décrite de façon à permettre des tests ou des mesures qui prouvent la fonctionnalité demandée.",
+        "en": "A requirement described so that tests or measurements can provide evidence of the functionality it demands."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.6 Characteristics of individual requirements",
+          "quote": "Each requirement should have the means to prove that the system satisfies the specified"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "tests or measurements can be carried out that provide evidence of the functionality demanded by the requirement"
+        }
+      ]
+    },
+    {
+      "id": "term-traceable",
+      "fr": "exigence traçable",
+      "en": "traceable requirement",
+      "definition": {
+        "fr": "Exigence dont on peut retrouver l'origine, la réalisation et les liens avec d'autres documents, notamment grâce à des identifiants uniques.",
+        "en": "A requirement whose origin, realization and relation to other documents can be retraced, notably through unique identifiers."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Other verifications",
+          "quote": "Traced : author, source and justification are documented"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "A requirement is traceable if its origin as well as its realization and its relation to other documents can be retraced."
+        }
+      ]
+    }
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "On documente les exigences car elles sont la base du développement, ont une portée juridique, sont complexes et doivent rester accessibles.",
+        "en": "Requirements are documented because they are the basis of development, have legal relevance, are complex and must stay accessible."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.1 Reasons for the documentation",
+          "quote": "Requirements are the basis of the system development."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.1 Reasons for the documentation",
+          "quote": "Requirements must be accessible to all involved parties."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un plan standard (IEEE 830 : introduction, description générale, exigences spécifiques) aide à rédiger, à repérer les trous et à réutiliser ; le gabarit de phrase se construit en cinq étapes (obligation, cœur, type, objets, conditions).",
+        "en": "A standard outline (IEEE 830: introduction, general description, specific requirements) helps authoring, finding gaps and reuse; the sentence template is built in five steps (obligation, core, type, objects, conditions)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Use standards for structuring reqts documents",
+          "quote": "Finding the blanks and filling the gaps"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Step 5: Determine Logical and Temporal Conditions",
+          "quote": "we choose the temporal conjunction as soon as for temporal conditions and the conditional conjunction if for logical conditions"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Une bonne exigence est convenue, non ambiguë, cohérente, vérifiable, réalisable, traçable, complète et compréhensible, avec une seule exigence par phrase.",
+        "en": "A good requirement is agreed, unambiguous, consistent, verifiable, feasible, traceable, complete and understandable, with one requirement per sentence."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "tests or measurements can be carried out that provide evidence of the functionality demanded by the requirement"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "Formulate requirements using active voice and use only one process verb."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le glossaire est unique, géré, obligatoire et approuvé ; il recense synonymes et homonymes pour éviter les interprétations divergentes.",
+        "en": "The glossary is single, managed, mandatory and approved; it lists synonyms and homonyms to avoid diverging interpretations."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "At any time, there must be only one valid glossary, which must also be centrally accessible."
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Rules for Using a Glossary",
+          "quote": "All involved personnel must be obliged to exclusively use the terms and term definitions as they have been defined in the glossary."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Chaque exigence a un identifiant unique, jamais modifié ni réutilisé, qui permet la traçabilité à travers les niveaux d'abstraction.",
+        "en": "Each requirement has a unique identifier, never changed nor reused, which enables traceability across levels of abstraction."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7 Requirements attributes",
+          "quote": "it is never changed (even if the identified requirement changes) nor is it reused (even if the identified requirement is deleted)"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "4.6 Quality Criteria for Requirements",
+          "quote": "a system goal can be traced through all levels of abstraction, from design to implementation and test"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Une revue vérifie complétude, cohérence, modifiabilité et compréhensibilité, et traque cinq défauts de langage : nominalisation, nom sans référence, quantificateur universel, condition et verbe incomplets.",
+        "en": "A review checks completeness, consistency, modifiability and comprehensibility, and hunts five language defects: nominalization, noun without reference, universal quantifier, incomplete condition and process verb."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Organize a review",
+          "quote": "Are there missing requirements?"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "5.1 Effects of Natural Language",
+          "quote": "Incompletely specified process verbs"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}
