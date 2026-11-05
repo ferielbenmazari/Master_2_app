@@ -48,10 +48,10 @@ _Source : `3__application_engineering.md`_
 ## Transformation, vérification, diagnostic
 _Source : `7__ple.md`_
 
-- [ ] Model-to-text transformation · transformation framework
-- [ ] Feature models → constraint programming (optional, mandatory, requires, excludes, cardinalités, attributs)
-- [ ] Exercices GNU Prolog (configurations, nombre de produits, problèmes du modèle)
-- [ ] Vérification des PLM : pourquoi, difficulté (NP-complétude), critères structurels
+- [ ] Model-to-text transformation · transformation framework → ch.07
+- [ ] Feature models → constraint programming (optional, mandatory, requires, excludes, cardinalités, attributs) → ch.07
+- [ ] Exercices GNU Prolog (configurations, nombre de produits, problèmes du modèle) → ch.07
+- [ ] Vérification des PLM : pourquoi, difficulté (NP-complétude), critères structurels → ch.07
 
 ## RED-PL (article)
 _Source : `4__overview.md`_
@@ -61,7 +61,7 @@ _Source : `4__overview.md`_
 ## Exercice ILP
 _Source : `EPI/5__configuration ILP(1).xlsx`_
 
-- [ ] Configuration par programmation linéaire en nombres entiers
+- [ ] Configuration par programmation linéaire en nombres entiers → ⚠ tableur sans citation possible (réservé aux exercices)
 
 ## Vu en classe mais absent
 - 

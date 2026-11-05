@@ -17,7 +17,7 @@
 | 04 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | cours rédigé (draft) |
 | 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/2) : exigences et variantes | 3__application_engineering.md (1re moitié) | cours rédigé (draft) |
 | 06 | `06-ingenierie-application-2.json` | Ingénierie d'application (2/2) : architecture, réalisation, tests | 3__application_engineering.md (2e moitié) | draft |
-| 07 | `07-transformation-verification.json` | Transformation de modèles, vérification et diagnostic | 7__ple.md | à faire |
+| 07 | `07-transformation-verification.json` | Transformation de modèles, vérification et diagnostic | 7__ple.md | cours rédigé (draft) |
 | 08 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | à faire |
 
 Ressource d'exercice : `EPI/5__configuration ILP(1).xlsx` (configuration par programmation linéaire en nombres entiers) → exercices du chapitre 07 ou 08.
