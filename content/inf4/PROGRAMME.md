@@ -31,11 +31,11 @@ _Source : `5__soft_ple_detailed.md + 6__ple.md`_
 ## Domain requirements engineering (Pohl ch.10)
 _Source : `8__ple.md`_
 
-- [ ] Activités et défis · exigences communes vs variables
-- [ ] Analyse de communalité (matrice applications-exigences, priorités, check-lists)
-- [ ] Analyse de variabilité
-- [ ] Points de variation, variants, dépendances de variabilité et de contrainte (OVM)
-- [ ] Exemple complet · différences avec un système unique
+- [ ] Activités et défis · exigences communes vs variables → ch.04
+- [ ] Analyse de communalité (matrice applications-exigences, priorités, check-lists) → ch.04
+- [ ] Analyse de variabilité → ch.04
+- [ ] Points de variation, variants, dépendances de variabilité et de contrainte (OVM) → ch.04
+- [ ] Exemple complet · différences avec un système unique → ch.04
 
 ## Application engineering (Pohl ch.15-17)
 _Source : `3__application_engineering.md`_
