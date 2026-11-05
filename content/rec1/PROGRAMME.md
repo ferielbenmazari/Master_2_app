@@ -28,13 +28,14 @@ _Source : `ressources/S3__REC1/Markdown/2_recmeth_2.md`_
 - [ ] Kinds of RQ (+ exercice) → ch.02
 - [ ] Research hypothesis · how to define · variables (+ exercices Jane/Joe) → ch.02
 - [ ] Conceptual framework · variables · predictors, mediators, moderators → ch.02
-- [ ] Exemple TAM (theoretical framework, extended) → ch.02## Cours 3 — Working with scientific literature
+- [ ] Exemple TAM (theoretical framework, extended) → ch.02
+## Cours 3 — Working with scientific literature
 _Source : `ressources/S3__REC1/Markdown/3_recmeth_3.md`_
 
-- [ ] Literature review types (preliminary, state of the art, background, related work)
-- [ ] Tools for literature review · copyright and access
-- [ ] Organise your literature review
-- [ ] Use literature to find a problem / RQ (+ exercices 1-3 : finding/improving a RQ, hypothesis)
+- [ ] Literature review types (preliminary, state of the art, background, related work) → ch.03
+- [ ] Tools for literature review · copyright and access → ch.03
+- [ ] Organise your literature review → ch.03
+- [ ] Use literature to find a problem / RQ (+ exercices 1-3 : finding/improving a RQ, hypothesis) → ch.03
 
 ## Cours 4 — Empirical studies: choose and justify
 _Source : `ressources/S3__REC1/Markdown/4_recmeth_4.md`_
