@@ -8,11 +8,11 @@
 ## Introduction et variabilité
 _Source : `1__introduction.md`_
 
-- [ ] Variabilité : communalité vs variabilité (jeu des gardes britanniques)
-- [ ] De l'artisanat à l'ingénierie et la personnalisation de masse
-- [ ] Mécanismes de réutilisation (1960-2000)
-- [ ] Framework PLE (domain vs application, problem vs solution space)
-- [ ] Bénéfices et coûts de la PLE
+- [ ] Variabilité : communalité vs variabilité (jeu des gardes britanniques) → ch.01
+- [ ] De l'artisanat à l'ingénierie et la personnalisation de masse → ch.01
+- [ ] Mécanismes de réutilisation (1960-2000) → ch.01
+- [ ] Framework PLE (domain vs application, problem vs solution space) → ch.01
+- [ ] Bénéfices et coûts de la PLE → ch.01
 
 ## Principes des lignes de produits logiciels (Böckle)
 _Source : `2__software_ple.md`_

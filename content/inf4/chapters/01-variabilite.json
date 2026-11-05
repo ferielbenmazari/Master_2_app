@@ -1,0 +1,1087 @@
+{
+  "id": "inf4-01-variabilite",
+  "courseId": "inf4",
+  "order": 1,
+  "title": {
+    "fr": "Du sur-mesure à la ligne de produits : la variabilité",
+    "en": "From tailor-made to product lines: variability"
+  },
+  "hook": {
+    "fr": "Deux gardes britanniques, un magasin de sandwichs et une Ford T : pourquoi le logiciel a besoin de lignes de produits.",
+    "en": "Two British guards, a sandwich shop and a Ford Model T: why software needs product lines."
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__INF4/mardown/1__introduction.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Deux gardes, un même uniforme… ou presque",
+        "en": "Two guards, one uniform… or almost"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Imagine deux dessins côte à côte. Deux gardes britanniques. Joue au jeu des sept différences : lequel des deux est « le bon » ?",
+        "en": "Picture two drawings side by side. Two British guards. Play spot-the-difference: which one is the “right” one?"
+      },
+      "narrative": true
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les deux gardes portent le même uniforme rouge, le même pantalon noir et font le même mouvement de marche. Pourtant, des options sous-jacentes les distinguent : taille du chapeau, nez, moustache, bouton, gants, rayures, ombre. Le prof utilise ce jeu comme métaphore des produits d'une même ligne.",
+        "en": "Both guards wear the same red uniform, the same black trousers and do the same marching movement. Yet underlying options set them apart: hat size, nose, moustache, button, gloves, stripes, shadow. The teacher uses this game as a metaphor for the products of one product line."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Ils portent le même uniforme rouge, le même pantalon noir et font le même mouvement de marche."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Communalité, variabilité, dépendances",
+        "en": "Commonality, variability, dependencies"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce qui est partagé par tous les gardes — une veste, un chapeau, deux yeux, la jambe droite levée — c'est la [[term-commonality|communalité]]. Ce qui change d'un garde à l'autre — taille du chapeau, type de moustache, couleur des rayures — c'est la [[term-variability|variabilité]].",
+        "en": "What all guards share — a jacket, a hat, two eyes, the right leg raised — is the [[term-commonality|commonality]]. What changes from one guard to another — hat size, type of moustache, colour of the stripes — is the [[term-variability|variability]]."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Ils se distinguent par des caractéristiques variables"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Mais on ne peut pas choisir n'importe quoi n'importe comment : les caractéristiques peuvent être liées. Ce sont les [[term-dependency|dépendances]]. L'exemple du cours : un grand chapeau projette une grande ombre.",
+        "en": "But you cannot pick anything freely: features can be linked. These are [[term-dependency|dependencies]]. The course example: a big hat casts a big shadow."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : ne confonds pas les trois mots. Communalité = ce qui est pareil pour tous ; variabilité = ce qui peut changer ; dépendance = un choix qui en impose (ou en interdit) un autre.",
+        "en": "Exam trap: do not mix up the three words. Commonality = what is the same for all; variability = what can change; dependency = one choice that forces (or forbids) another."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Ils se distinguent par des caractéristiques variables"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le magasin de sandwichs",
+        "en": "The sandwich shop"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deuxième exemple du prof : « Declarative Sandwiches, Inc. ». Le client coche, sur un menu, le type de pain, la viande, les légumes et les sauces. Tout le monde achète « un sandwich », mais presque personne n'achète le même.",
+        "en": "Second example from the teacher: “Declarative Sandwiches, Inc.” The customer ticks, on a menu, the type of bread, the meat, the vegetables and the sauces. Everyone buys “a sandwich”, but almost nobody buys the same one."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Un menu de composition de sandwichs avec des cases à cocher pour le type de pain, la viande, les légumes et les sauces."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce schéma illustre l'[[term-problem-space|espace du problème]] : analyser les types de sandwichs, identifier les points communs et les différences. Et la « conception » : les recettes et procédures pour chaque combinaison.",
+        "en": "This diagram illustrates the [[term-problem-space|problem space]]: analysing the types of sandwiches, identifying commonalities and differences. And the “design”: the recipes and procedures for each combination."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "analyser les types de sandwichs, identifier les points communs et les différences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "les recettes et procédures pour chaque combinaison"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "À retenir : la variabilité se décrit côté problème (ce que le client peut choisir) avant de se réaliser côté solution (recettes, code).",
+        "en": "Remember: variability is described on the problem side (what the customer can choose) before it is realised on the solution side (recipes, code)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "analyser les types de sandwichs, identifier les points communs et les différences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "les recettes et procédures pour chaque combinaison"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "De l'artisan à la chaîne… puis au sur-mesure de masse",
+        "en": "From craftsman to assembly line… then to mass customisation"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L'[[term-craft|artisanat]], c'est le point de départ : des outils primitifs taillés à la main, une occupation spécialisée. Puis viennent les lignes de production : utilisées à Venise au 12e siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de la Ford T (1908-1927).",
+        "en": "[[term-craft|Craft]] is the starting point: primitive hand-made tools, a specialised occupation. Then come production lines: used in Venice in the 12th century (shipyards with specialised roles), then popularised by the Ford Model T line (1908-1927)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Outils primitifs taillés à la main, occupation spécialisée."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Utilisées à Venise au 12ème siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de production de la Ford T (1908-1927)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Leur limite : elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure), alors que l'industrie du logiciel y est habituée.",
+        "en": "Their limit: they cannot deliver individualised (tailor-made) products, whereas the software industry is used to them."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure) comme l'industrie du logiciel en a l'habitude."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L'ingénierie logicielle, elle, est née à la conférence de Garmisch en 1968, pour « industrialiser la production de logiciels ». Dijkstra (1969) et Parnas (1976) ont introduit l'idée que les programmes devraient être conçus comme des « familles » partageant des propriétés communes étendues.",
+        "en": "Software engineering was born at the Garmisch conference in 1968, to “industrialise software production”. Dijkstra (1969) and Parnas (1976) introduced the idea that programs should be designed as “families” sharing extended common properties."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Née à la conférence de Garmisch en 1968"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "partageant des propriétés communes étendues"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé : c'est la [[term-mass-customization|personnalisation de masse]]. Le schéma du cours sépare l'espace du problème et l'espace de la solution, et relie [[term-domain-engineering|ingénierie du domaine]], [[term-product-engineering|ingénierie du produit]] et « adaptation engineering ».",
+        "en": "Software is everywhere, so it must be mass-produced BUT customised: this is [[term-mass-customization|mass customisation]]. The course diagram separates the problem space from the solution space, and links [[term-domain-engineering|domain engineering]], [[term-product-engineering|product engineering]] and “adaptation engineering”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "L'ingénierie du domaine crée les actifs de base réutilisables, et l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L'ingénierie du domaine crée les actifs de base réutilisables ; l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis.",
+        "en": "Domain engineering creates the reusable core assets; product engineering assembles them to configure a specific product meeting a precise need."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "L'ingénierie du domaine crée les actifs de base réutilisables, et l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Avant la ligne de produits : quatre façons de réutiliser (1960-2000)",
+        "en": "Before product lines: four ways to reuse (1960-2000)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**1. La duplication (copier/coller).** Les exigences, le design et le code sont simplement copiés/collés d'un projet à l'autre. Avantage : c'est simple, sans effets collatéraux. Inconvénients : très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste.",
+        "en": "**1. Duplication (copy/paste).** Requirements, design and code are simply copied/pasted from one project to the next. Advantage: simple, no side effects. Drawbacks: very hard to evolve, nightmarish maintenance, purely opportunistic reuse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Les mécanismes de réutilisation",
+          "quote": "où les exigences, le design et le code sont simplement copiés/collés d'un projet à l'autre"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Duplication",
+          "quote": "Simple, pas d'effets collatéraux."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Duplication",
+          "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**2. Les deltas (Δ).** Un produit de référence sert de base (Baseline 1), puis des modifications (Δ) donnent les Baselines 2 et 3. Efficace pour des modifications simples sur des bases stables. Mais : pas de gouvernance globale, un bug corrigé dans la base est difficile à propager, et la complexité explose avec le nombre de variantes.",
+        "en": "**2. Deltas (Δ).** A reference product serves as a base (Baseline 1), then modifications (Δ) give Baselines 2 and 3. Efficient for simple modifications on stable bases. But: no global governance, a bug fixed in the base is hard to propagate, and complexity explodes with the number of variants."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Un produit de référence sert de base (Baseline 1)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Efficace pour des modifications simples sur des bases stables."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Si on corrige un bug dans la base, il est difficile de le propager."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Explosion de la complexité avec le nombre de variantes."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Exemple cité par le prof : l'accident de la fusée Ariane 5, illustration d'une réutilisation de code sans test approprié dans un nouveau contexte.",
+        "en": "Example cited by the teacher: the Ariane 5 rocket accident, an illustration of code reuse without proper testing in a new context."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "L'accident de la fusée Ariane 5 est cité comme exemple de réutilisation de code sans test approprié dans un nouveau contexte"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**3. La gestion de configuration.** Un arbre de développement : un système divisé en modules et sous-modules, gérés par des fichiers (Makefiles) et des versions. Utile pour un seul produit évolutif, mais la compatibilité et les aspects transversaux deviennent difficiles à gérer pour toute une famille de produits.",
+        "en": "**3. Configuration management.** A development tree: a system split into modules and sub-modules, managed by files (Makefiles) and versions. Useful for a single evolving product, but compatibility and cross-cutting aspects become hard to manage for a whole product family."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Gestion de configuration",
+          "quote": "Utile pour un seul produit évolutif, mais gestion difficile de la compatibilité et des aspects transversaux pour toute une famille de produits."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**4. La réutilisation par composants.** Le schéma montre un composant « Checkout » lié à un composant « CardProcessing ». Cela sépare bien les responsabilités (boîte noire), mais il n'y a pas de vision stratégique d'assemblage : les règles d'assemblage se perdent, sans garantie sur les effets de bord.",
+        "en": "**4. Component-based reuse.** The diagram shows a “Checkout” component linked to a “CardProcessing” component. It separates responsibilities well (black box), but there is no strategic view of assembly: assembly rules get lost, with no guarantee about side effects."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Composants",
+          "quote": "Sépare bien les responsabilités (boîte noire), mais il n'y a pas de vision stratégique d'assemblage"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Composants",
+          "quote": "les règles d'assemblage se perdent, pas de garantie sur les effets de bord"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "Ce que la ligne de produits apporte en plus : une vue intégrée, une conception explicite pour la réutilisation, une qualité gérée au niveau de la famille entière, et une prescription de la façon d'assembler stratégiquement les composants.",
+        "en": "What the product line adds: an integrated view, design explicitly for reuse, quality managed at the level of the whole family, and a prescription of how to assemble components strategically."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Conclusion sur les lignes de produits",
+          "quote": "la ligne de produits offre une vue intégrée, conçoit explicitement pour la réutilisation, gère la qualité au niveau de la famille globale et prescrit comment assembler stratégiquement les composants."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le framework PLE : le schéma central",
+        "en": "The PLE framework: the central diagram"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "C'est le cœur du cours. Le schéma est une matrice : en haut le Domain Engineering, en bas le Product Engineering ; à gauche le Problem Definition, à droite le Problem Solution. Au centre, le « Configuration Process ».",
+        "en": "This is the heart of the course. The diagram is a matrix: Domain Engineering on top, Product Engineering at the bottom; Problem Definition on the left, Problem Solution on the right. In the centre, the “Configuration Process”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**En haut (domaine)** : on analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model).",
+        "en": "**On top (domain)**: we analyse the market, model ALL possible variations (Variability Model) and code the reusable components (Components Model)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**En bas (produit)** : un client veut une application spécifique. On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini.",
+        "en": "**At the bottom (product)**: a customer wants a specific application. Their requirements are selected in the variability model (Configuration), which automatically derives the architecture and assembles the components to create the finished product."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le SEI résume cela en trois activités essentielles qui doivent interagir de manière itérative : le développement des actifs de base (Core Asset Development), le développement des produits (Product Development) et la gestion (Management).",
+        "en": "The SEI sums this up in three essential activities that must interact iteratively: Core Asset Development, Product Development and Management."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Développement des actifs de base (Core Asset Development), Développement des produits (Product Development), et la Gestion (Management)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "qui doivent interagir de manière itérative"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : « domaine » = haut du schéma = on prépare pour TOUS les produits ; « produit » = bas du schéma = on configure UN produit. Et ne confonds pas les axes : problème (gauche) / solution (droite).",
+        "en": "Exam trap: “domain” = top of the diagram = we prepare for ALL products; “product” = bottom = we configure ONE product. And do not mix up the axes: problem (left) / solution (right)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi s'embêter ? Les bénéfices",
+        "en": "Why bother? The benefits"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les résultats observés dans l'industrie sont majeurs : productivité améliorée jusqu'à 10x, qualité augmentée jusqu'à 10x, coûts diminués de 60 %, temps de mise sur le marché (time to market) réduit de 98 %.",
+        "en": "Results observed in industry are major: productivity improved up to 10x, quality increased up to 10x, costs reduced by 60%, time to market reduced by 98%."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Productivité : Améliorée jusqu'à 10x."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Qualité : Augmentée jusqu'à 10x."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Coûts : Diminués de 60%."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Temps de mise sur le marché (Time to market) : Réduit de 98%."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Trois exemples industriels cités. **CelsiusTech** (systèmes navals complexes) : 70 %+ de réutilisation, le ratio coût matériel/logiciel s'est inversé. **Hewlett Packard** (imprimantes) : temps de développement réduit de 67 %, avec 5x plus de produits sortis. **Baxter** (médical) : réduction massive des erreurs et gains financiers directs grâce à la vérification de l'ingénierie de domaine.",
+        "en": "Three industrial examples are cited. **CelsiusTech** (complex naval systems): 70%+ reuse, the hardware/software cost ratio was inverted. **Hewlett Packard** (printers): development time reduced by 67%, with 5x more products released. **Baxter** (medical): massive error reduction and direct financial gains thanks to verification of domain engineering."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Exemples industriels",
+          "quote": "Systèmes navals complexes. 70%+ de réutilisation, le ratio coût matériel/logiciel s'est inversé."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Exemples industriels",
+          "quote": "Imprimantes. Temps de développement réduit de 67%, avec 5x plus de produits sortis."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Exemples industriels",
+          "quote": "Secteur médical. Réduction massive des erreurs et gains financiers directs grâce à la vérification de l'ingénierie de domaine."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le prix à payer : la courbe d'investissement",
+        "en": "The price to pay: the investment curve"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le développement classique a un coût linéaire par produit. La ligne de produits a un coût initial (« Big bang ») beaucoup plus élevé, pour créer la base, mais le coût marginal par produit supplémentaire est presque plat. Les deux courbes se croisent au point de rentabilité (« break even »).",
+        "en": "Classic development has a linear cost per product. The product line has a much higher initial cost (“Big bang”), to create the base, but the marginal cost per additional product is almost flat. The two curves cross at the [[term-break-even|break-even]] point."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "le développement classique a un coût linéaire par produit"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "mais le coût marginal par produit supplémentaire est presque plat"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "Les deux lignes se croisent au point de rentabilité"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autrement dit : dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable.",
+        "en": "In other words: as soon as a certain number of products (often 3 or 4) are developed, the approach becomes massively profitable."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le surcoût initial recouvre la conception, l'analyse des variations, la formation du personnel et la mise en place d'outils robustes. En échange : réutilisation massive des exigences, de l'architecture, du code et des tests, et accès à de nouveaux marchés en quelques mois au lieu de quelques années.",
+        "en": "The initial overhead covers design, analysis of variations, staff training and setting up robust tooling. In exchange: massive reuse of requirements, architecture, code and tests, and the ability to target new markets in months instead of years."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Coûts vs bénéfices",
+          "quote": "La PLE oblige à un surcoût initial de conception, d'analyse des variations, de formation du personnel et de mise en place d'outils robustes."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Coûts vs bénéfices",
+          "quote": "En échange, elle offre la réutilisation massive des exigences, de l'architecture, du code et des tests, permettant de cibler de nouveaux marchés en quelques mois au lieu de quelques années."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : la PLE n'est PAS rentable pour un seul produit. Elle coûte plus cher au départ ; le gain vient de la multiplication des produits (souvent 3 ou 4).",
+        "en": "Exam trap: PLE is NOT profitable for a single product. It costs more at the start; the gain comes from multiplying products (often 3 or 4)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "mais le coût marginal par produit supplémentaire est presque plat"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-commonality",
+      "fr": "communalité",
+      "en": "commonality",
+      "definition": {
+        "fr": "Ce que les produits (ou les gardes) ont en commun : leurs caractéristiques communes.",
+        "en": "What products (or guards) have in common: their shared characteristics."
+      },
+      "example": {
+        "fr": "Tous les gardes ont une veste, un chapeau, deux yeux, la jambe droite levée.",
+        "en": "All guards have a jacket, a hat, two eyes, the right leg raised."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
+        }
+      ]
+    },
+    {
+      "id": "term-variability",
+      "fr": "variabilité",
+      "en": "variability",
+      "definition": {
+        "fr": "Ce qui distingue les produits les uns des autres : leurs caractéristiques variables.",
+        "en": "What distinguishes products from one another: their variable characteristics."
+      },
+      "example": {
+        "fr": "Taille du chapeau, type de moustache, couleur des rayures.",
+        "en": "Hat size, type of moustache, colour of the stripes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Ils se distinguent par des caractéristiques variables"
+        }
+      ]
+    },
+    {
+      "id": "term-dependency",
+      "fr": "dépendance",
+      "en": "dependency",
+      "definition": {
+        "fr": "Lien entre des caractéristiques : le choix de l'une est lié à celui d'une autre.",
+        "en": "A link between characteristics: the choice of one is tied to the choice of another."
+      },
+      "example": {
+        "fr": "Un grand chapeau projette une grande ombre.",
+        "en": "A big hat casts a big shadow."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
+        }
+      ]
+    },
+    {
+      "id": "term-craft",
+      "fr": "artisanat",
+      "en": "craft",
+      "definition": {
+        "fr": "Production d'objets avec des outils primitifs taillés à la main, par une occupation spécialisée.",
+        "en": "Producing objects with primitive hand-made tools, as a specialised occupation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Outils primitifs taillés à la main, occupation spécialisée."
+        }
+      ]
+    },
+    {
+      "id": "term-mass-customization",
+      "fr": "personnalisation de masse",
+      "en": "mass customization",
+      "definition": {
+        "fr": "Produire en masse MAIS de façon personnalisée : c'est ce que demande un logiciel présent partout.",
+        "en": "Producing in mass BUT customised: what software, being everywhere, demands."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé."
+        }
+      ]
+    },
+    {
+      "id": "term-problem-space",
+      "fr": "espace du problème",
+      "en": "problem space",
+      "definition": {
+        "fr": "Côté « problème » : analyser les types de produits, identifier les points communs et les différences (par opposition à l'espace de la solution : conception, recettes, composants).",
+        "en": "The “problem” side: analysing the types of products, identifying commonalities and differences (as opposed to the solution space: design, recipes, components)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "analyser les types de sandwichs, identifier les points communs et les différences"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+        }
+      ]
+    },
+    {
+      "id": "term-domain-engineering",
+      "fr": "ingénierie du domaine",
+      "en": "domain engineering",
+      "definition": {
+        "fr": "Partie haute du framework PLE : on analyse le marché, on modélise toutes les variations possibles (Variability Model) et on code les composants réutilisables (Components Model).",
+        "en": "Top part of the PLE framework: analyse the market, model all possible variations (Variability Model) and code the reusable components (Components Model)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "L'ingénierie du domaine crée les actifs de base réutilisables, et l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        }
+      ]
+    },
+    {
+      "id": "term-product-engineering",
+      "fr": "ingénierie du produit",
+      "en": "product engineering",
+      "definition": {
+        "fr": "Partie basse du framework PLE : un client veut une application spécifique ; on sélectionne ses exigences dans le modèle de variabilité (configuration), ce qui dérive l'architecture et assemble les composants.",
+        "en": "Bottom part of the PLE framework: a customer wants a specific application; their requirements are selected in the variability model (configuration), which derives the architecture and assembles the components."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ]
+    },
+    {
+      "id": "term-ple",
+      "fr": "ligne de produits (PLE)",
+      "en": "product line engineering (PLE)",
+      "definition": {
+        "fr": "Approche offrant une vue intégrée, conçue explicitement pour la réutilisation, qui gère la qualité au niveau de la famille et prescrit comment assembler stratégiquement les composants.",
+        "en": "An approach offering an integrated view, designed explicitly for reuse, managing quality at the family level and prescribing how to assemble components strategically."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Conclusion sur les lignes de produits",
+          "quote": "la ligne de produits offre une vue intégrée, conçoit explicitement pour la réutilisation, gère la qualité au niveau de la famille globale et prescrit comment assembler stratégiquement les composants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "1. Introduction",
+          "quote": "Aider à intégrer l'ingénierie des lignes de produits (Product Line Engineering - PLE) dans les pratiques de développement et de recherche."
+        }
+      ]
+    },
+    {
+      "id": "term-copy-paste-reuse",
+      "fr": "réutilisation par duplication",
+      "en": "copy/paste reuse",
+      "definition": {
+        "fr": "Exigences, design et code copiés/collés d'un projet à l'autre : simple, mais maintenance cauchemardesque et réutilisation opportuniste.",
+        "en": "Requirements, design and code copied/pasted from one project to another: simple, but nightmarish maintenance and opportunistic reuse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Les mécanismes de réutilisation",
+          "quote": "où les exigences, le design et le code sont simplement copiés/collés d'un projet à l'autre"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Duplication",
+          "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
+        }
+      ]
+    },
+    {
+      "id": "term-delta-reuse",
+      "fr": "réutilisation par deltas",
+      "en": "delta-based reuse",
+      "definition": {
+        "fr": "Un produit de référence (Baseline 1) sert de base ; des modifications (Δ) créent les autres baselines. Pas de gouvernance globale, complexité qui explose avec les variantes.",
+        "en": "A reference product (Baseline 1) serves as base; modifications (Δ) create the other baselines. No global governance, complexity exploding with variants."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Un produit de référence sert de base (Baseline 1)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Explosion de la complexité avec le nombre de variantes."
+        }
+      ]
+    },
+    {
+      "id": "term-core-assets",
+      "fr": "actifs de base",
+      "en": "core assets",
+      "definition": {
+        "fr": "Éléments réutilisables créés par l'ingénierie du domaine ; leur développement (Core Asset Development) est l'une des trois activités essentielles du SEI.",
+        "en": "Reusable elements created by domain engineering; their development (Core Asset Development) is one of the three essential SEI activities."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "L'ingénierie du domaine crée les actifs de base réutilisables, et l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Développement des actifs de base (Core Asset Development), Développement des produits (Product Development), et la Gestion (Management)."
+        }
+      ]
+    },
+    {
+      "id": "term-break-even",
+      "fr": "point de rentabilité",
+      "en": "break-even point",
+      "definition": {
+        "fr": "Point où se croisent la courbe de coût du développement classique (linéaire par produit) et celle de la ligne de produits (coût initial élevé, coût marginal presque plat).",
+        "en": "Point where the cost curve of classic development (linear per product) crosses that of the product line (high initial cost, almost flat marginal cost)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "le développement classique a un coût linéaire par produit"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "mais le coût marginal par produit supplémentaire est presque plat"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "Les deux lignes se croisent au point de rentabilité"
+        }
+      ]
+    }
+  ],
+  "notions": [],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Communalité = ce qui est commun à tous les produits ; variabilité = ce qui varie ; dépendances = liens entre caractéristiques (grand chapeau → grande ombre).",
+        "en": "Commonality = what is common to all products; variability = what varies; dependencies = links between characteristics (big hat → big shadow)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Ils se distinguent par des caractéristiques variables"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La personnalisation de masse : le logiciel doit être produit en masse MAIS personnalisé ; les lignes de production classiques (Venise, Ford T) ne livrent pas de sur-mesure.",
+        "en": "Mass customisation: software must be mass-produced BUT customised; classic production lines (Venice, Ford T) cannot deliver tailor-made products."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. Personnalisation de masse",
+          "quote": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure) comme l'industrie du logiciel en a l'habitude."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "L'ingénierie logicielle naît à Garmisch en 1968 ; Dijkstra (1969) et Parnas (1976) introduisent l'idée de programmes conçus comme des familles.",
+        "en": "Software engineering was born at Garmisch in 1968; Dijkstra (1969) and Parnas (1976) introduced the idea of programs designed as families."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Née à la conférence de Garmisch en 1968"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "partageant des propriétés communes étendues"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Quatre mécanismes de réutilisation (1960-2000) : duplication, deltas, gestion de configuration, composants — chacun avec ses limites.",
+        "en": "Four reuse mechanisms (1960-2000): duplication, deltas, configuration management, components — each with its limits."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Duplication",
+          "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Deltas",
+          "quote": "Explosion de la complexité avec le nombre de variantes."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Gestion de configuration",
+          "quote": "Utile pour un seul produit évolutif, mais gestion difficile de la compatibilité et des aspects transversaux pour toute une famille de produits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Composants",
+          "quote": "les règles d'assemblage se perdent, pas de garantie sur les effets de bord"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La ligne de produits offre une vue intégrée, conçoit explicitement pour la réutilisation, gère la qualité au niveau de la famille et prescrit l'assemblage stratégique des composants.",
+        "en": "The product line offers an integrated view, designs explicitly for reuse, manages quality at the family level and prescribes strategic assembly of components."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Conclusion sur les lignes de produits",
+          "quote": "la ligne de produits offre une vue intégrée, conçoit explicitement pour la réutilisation, gère la qualité au niveau de la famille globale et prescrit comment assembler stratégiquement les composants."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Framework PLE : domaine (haut) = modèle de variabilité + composants ; produit (bas) = configuration qui dérive l'architecture et assemble les composants ; axes problème (gauche) / solution (droite).",
+        "en": "PLE framework: domain (top) = variability model + components; product (bottom) = configuration that derives the architecture and assembles the components; problem (left) / solution (right) axes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les trois activités du SEI, itératives : développement des actifs de base, développement des produits, gestion.",
+        "en": "The three iterative SEI activities: core asset development, product development, management."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Développement des actifs de base (Core Asset Development), Développement des produits (Product Development), et la Gestion (Management)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "qui doivent interagir de manière itérative"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Bénéfices observés : productivité et qualité jusqu'à 10x, coûts −60 %, time to market −98 %.",
+        "en": "Observed benefits: productivity and quality up to 10x, costs −60%, time to market −98%."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Productivité : Améliorée jusqu'à 10x."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Qualité : Augmentée jusqu'à 10x."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Coûts : Diminués de 60%."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Bénéfices et coûts",
+          "quote": "Temps de mise sur le marché (Time to market) : Réduit de 98%."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Coût initial élevé (« Big bang »), coût marginal presque plat ; rentable dès 3 ou 4 produits (point de rentabilité).",
+        "en": "High initial cost (“Big bang”), almost flat marginal cost; profitable from 3 or 4 products (break-even point)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "mais le coût marginal par produit supplémentaire est presque plat"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "Les deux lignes se croisent au point de rentabilité"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}
