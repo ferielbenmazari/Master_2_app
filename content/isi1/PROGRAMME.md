@@ -52,7 +52,7 @@ _Source : (annales)_
 ## Agilité
 _Source : 13_agile methods_
 
-- [ ] Exigences et méthodes agiles
+- [ ] Exigences et méthodes agiles → ch.07
 
 ## Grands référentiels et fondements
 _Source : 16 · 17 · 18_
