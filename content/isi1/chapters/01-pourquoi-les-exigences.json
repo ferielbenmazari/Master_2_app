@@ -1,0 +1,1241 @@
+{
+  "id": "isi1-01-pourquoi-les-exigences",
+  "courseId": "isi1",
+  "order": 1,
+  "title": {
+    "fr": "Pourquoi les projets échouent (et ce que l’IE y peut)",
+    "en": "Why projects fail (and what RE can do about it)"
+  },
+  "hook": {
+    "fr": "1 projet sur 2 échoue, souvent à cause des exigences : chiffres du Standish Group, causes du prof, défauts types et vocabulaire de base.",
+    "en": "1 project in 2 fails, often because of requirements: Standish Group figures, the teacher’s causes, typical defects and core vocabulary."
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "sources-texte/isi1/1-ie-introduction.md",
+    "sources-texte/isi1/4-chaos-report.md",
+    "sources-texte/isi1/6-chaosmanifesto2013.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "« Ce n’est pas ce que je voulais… »",
+        "en": "\"That is not what I wanted…\""
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Imagine la scène : le projet est livré, le client ouvre le système et dit : « Ce n’est pas ce que je voulais… », « Ça ne sert à rien… », « Je vous avais dit que je voulais ça ! ». Le prof les appelle les phrases qu’« on entend trop souvent ». Elles ont toutes la même origine : on a mal compris, mal écrit ou mal partagé ce que le système devait faire. C’est le terrain de l’[[term-exigence|ingénierie des exigences]] (IE).",
+        "en": "Picture the scene: the project is delivered, the client opens the system and says: \"That is not what I wanted…\", \"It is useless…\", \"I told you I wanted this!\". The teacher calls these the sentences \"we hear far too often\". They all share one origin: what the system must do was misunderstood, badly written or badly shared. This is the ground of [[term-exigence|requirements engineering]] (RE)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Ce qu’on entend trop souvent",
+          "quote": "Ce n ’est pas ce que je voulais… » « Ca ne sert à rien... » « Comment je fais ça ?»"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Ce qu’on entend trop souvent",
+          "quote": "Je vous avais dis que je voulais ça"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les chiffres : un projet sur deux échoue",
+        "en": "The numbers: one project in two fails"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le constat du cours tient en une phrase : **1 projet sur 2 échoue, et dans 80 % des cas parce que le système ne répond pas aux attentes des usagers**. Deux études sont citées en appui. Standish (1995) : 8 000 projets, 350 entreprises américaines — **un tiers des projets jamais terminés** et la moitié seulement partiellement réussis ; sa conclusion : « *Poor requirements are major source of failures* ». ESI (1996) : 3 800 organisations dans 17 pays européens — **plus de 50 %** des problèmes perçus sont liés à la **spécification des exigences**.",
+        "en": "The course puts it in one sentence: **1 project in 2 fails, and in 80% of cases because the system does not meet users’ expectations**. Two studies back it up. Standish (1995): 8,000 projects, 350 US companies — **one third of projects never completed** and half only partially successful; its conclusion: \"*Poor requirements are major source of failures*\". ESI (1996): 3,800 organisations in 17 European countries — **more than 50%** of perceived problems relate to **requirements specification**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": "1 projet sur 2 échoue Dans 80% des cas parce que le système ne répond pas aux acentes des usagers"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": "8000 projects, 350 US companies : 1/3 of projects never completed & 50% succeeded only par=ally"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": ">50% perceived problems are related to requirements speciﬁcaMon (ESI96) 3800 organisa=ons in 17 European countries"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**À retenir pour l’examen** : les deux chiffres du cours — Standish 95 (8 000 projets, 350 entreprises, 1/3 jamais terminés, 50 % partiellement réussis) et ESI 96 (3 800 organisations, 17 pays, > 50 % des problèmes liés à la spécification des exigences).",
+        "en": "**Exam reminder**: the two figures from the course — Standish 95 (8,000 projects, 350 companies, 1/3 never completed, 50% only partially successful) and ESI 96 (3,800 organisations, 17 countries, > 50% of problems tied to requirements specification)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": "8000 projects, 350 US companies : 1/3 of projects never completed & 50% succeeded only par=ally"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": ">50% perceived problems are related to requirements speciﬁcaMon (ESI96) 3800 organisa=ons in 17 European countries"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le rapport CHAOS de 1995 : trois issues possibles",
+        "en": "The 1995 CHAOS report: three possible outcomes"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours s’appuie sur le rapport CHAOS du Standish Group. Son point de départ est un constat qui fait réfléchir : quand un pont s’écroule, on enquête et on écrit un rapport ; dans l’informatique, les échecs sont « cachés, ignorés ou rationalisés » — et on refait les mêmes erreurs. Le rapport classe donc chaque projet dans l’une de **trois catégories** (« resolution types »).",
+        "en": "The course relies on the Standish Group’s CHAOS report. Its starting point is thought-provoking: when a bridge falls down, it is investigated and a report is written; in computing, failures are \"covered up, ignored, and/or rationalized\" — so we keep making the same mistakes. The report therefore sorts each project into one of **three categories** (\"resolution types\")."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Introduction",
+          "quote": "When a bridge falls down, it is investigated and a report is written on the cause of the failure. This is not so in the computer industry where failures are covered up, ignored, and/or rationalized."
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        {
+          "fr": "**Type 1 — réussi (*success*)** : terminé dans les délais et le budget, avec toutes les fonctions initialement spécifiées.",
+          "en": "**Type 1 — success**: completed on time and on budget, with all features and functions as initially specified."
+        },
+        {
+          "fr": "**Type 2 — mis en difficulté (*challenged*)** : terminé et opérationnel, mais en dépassement de budget et de délai, avec moins de fonctions que prévu.",
+          "en": "**Type 2 — challenged**: completed and operational but over budget, over the time estimate, and with fewer features and functions than originally specified."
+        },
+        {
+          "fr": "**Type 3 — compromis (*impaired*)** : le projet est **annulé** en cours de développement.",
+          "en": "**Type 3 — impaired**: the project is **cancelled** at some point during the development cycle."
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Methodology",
+          "quote": "Resolution Type 1, or project success: The project is completed on-time and on-budget, with all features and functions as initially specified."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Methodology",
+          "quote": "Resolution Type 2, or project challenged: The project is completed and operational but over-budget, over the time estimate, and offers fewer features and functions than originally specified."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Methodology",
+          "quote": "Resolution Type 3, or project impaired: The project is cancelled at some point during the development cycle."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Résultat de 1995 : seulement **16,2 %** de projets réussis, **52,7 %** « challenged » et **31,1 %** annulés. Les projets « challenged » coûtent en moyenne **189 %** de l’estimation initiale, avec **222 %** du délai prévu, et ne livrent que **61 %** des fonctions spécifiées. Chez les grandes entreprises, seuls 9 % des projets réussissent.",
+        "en": "1995 result: only **16.2%** of projects succeeded, **52.7%** were challenged and **31.1%** were cancelled. Challenged projects cost on average **189%** of the original estimate, take **222%** of the planned time, and deliver only **61%** of the specified features. In large companies, only 9% of projects succeed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Methodology",
+          "quote": "Overall, the success rate was only 16.2%, while challenged projects accounted for 52.7%, and impaired (cancelled) for 31.1%."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Failure statistics",
+          "quote": "The average across all companies is 189% of the original cost estimate."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Failure statistics",
+          "quote": "The average overrun is 222% of the original time estimate."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Failure statistics",
+          "quote": "On average, only 61% of originally specified features and functions were available on these projects."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Failure statistics",
+          "quote": "Only 9% of projects in large companies were successful."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce qui fait réussir… et ce qui fait échouer",
+        "en": "What makes projects succeed… and fail"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les directeurs informatiques interrogés placent trois facteurs en tête du succès : l’**implication des utilisateurs** (15,9 %), le **soutien de la direction** (13,9 %) et un **énoncé clair des exigences** (13,0 %). Pour les projets en difficulté, le trio s’inverse : **manque d’apport des utilisateurs** (12,8 %), **exigences incomplètes** (12,3 %) et **exigences changeantes** (11,8 %). Pour les projets annulés, ce sont les exigences incomplètes et le manque d’implication des utilisateurs qui arrivent en tête. Trois fois sur trois, les exigences sont dans le podium.",
+        "en": "The IT executives surveyed put three factors at the top of success: **user involvement** (15.9%), **executive management support** (13.9%) and a **clear statement of requirements** (13.0%). For challenged projects the trio flips: **lack of user input** (12.8%), **incomplete requirements** (12.3%) and **changing requirements** (11.8%). For cancelled projects, incomplete requirements and lack of user involvement come first. Three times out of three, requirements are on the podium."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Success/Failure profiles",
+          "quote": "The three major reasons that a project will succeed are user involvement, executive management support, and a clear statement of requirements."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Success/Failure profiles",
+          "quote": "1. Lack of User Input 12.8% 2. Incomplete Requirements & Specifications 12.3% 3. Changing Requirements & Specifications 11.8%"
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Success/Failure profiles",
+          "quote": "Opinions about why projects are impaired and ultimately cancelled ranked incomplete requirements and lack of user involvement at the top of the list."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux études de cas illustrent le contraste. **Hyatt** (système de réservation) : « tous les bons ingrédients » — implication des utilisateurs, soutien de la direction, énoncé clair des exigences, bonne planification, petits jalons ; le projet a fini en avance, sous le budget. **CONFIRM** (American Airlines, 165 M$ de projet effondré) : exigences incomplètes, utilisateurs peu impliqués et exigences changeant sans cesse. Le Standish Group attribue des « points de succès » à chaque critère : 100 pour Hyatt, 29 pour CONFIRM, et seulement 10 pour le DMV californien (annulé après 45 M$ dépensés).",
+        "en": "Two case studies show the contrast. **Hyatt** (reservation system): \"all the right ingredients\" — user involvement, executive support, a clear statement of requirements, proper planning, small milestones; it finished ahead of schedule and under budget. **CONFIRM** (American Airlines, the $165 million project that collapsed): incomplete requirements, lack of user involvement and constantly changing requirements. The Standish Group gives \"success points\" per criterion: 100 for Hyatt, 29 for CONFIRM, and only 10 for the California DMV (cancelled after $45 million had been spent)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Hyatt Hotels",
+          "quote": "This new reservation system was ahead of schedule, under budget, with extra features"
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "American Airlines",
+          "quote": "after the $165 million CONFIRM car rental and hotel reservation system project collapsed into chaos"
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "California DMV",
+          "quote": "By 1993, after $45 million dollars had already been spent, the project was cancelled."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Hyatt Hotels",
+          "quote": "Hyatt had all the right ingredients for success: user involvement, executive management support, a clear statement of requirements, proper planning, and small project milestones."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "American Airlines",
+          "quote": "Other major causes included an incomplete statement of requirements, lack of user involvement, and constant changing of requirements and specifications."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Case study conclusions",
+          "quote": "With only 10 success points, the DMV project had virtually no chance of success. With 100 success points, Hyatt's reservation project had all the right ingredients for success."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Case study conclusions",
+          "quote": "With only 29 success points, the CONFIRM project had little chance of success."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Et aujourd’hui ? Le Chaos Manifesto 2013",
+        "en": "And today? The 2013 Chaos Manifesto"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le *CHAOS Manifesto* (étude 2012) montre une amélioration : **39 %** de projets réussis, **43 %** « challenged » et **18 %** en échec. Attention au piège : ici, « *failed* » veut dire **annulé avant la fin ou livré et jamais utilisé** — la définition a donc changé par rapport à 1995. Le point bas de ces cinq dernières études était 2004, avec seulement 29 % de succès. Le rapport l’explique par un meilleur sponsor exécutif (plutôt « *chief enabling officer* » que PDG), davantage de projets plus petits et agiles, moins de cascade.",
+        "en": "The *CHAOS Manifesto* (2012 results) shows improvement: **39%** successful projects, **43%** challenged and **18%** failed. Beware the trap: here \"*failed*\" means **cancelled prior to completion or delivered and never used** — so the definition changed compared with 1995. The low point of the last five study periods was 2004, with only 29% successful. The report credits better executive sponsors (more \"*chief enabling officer*\" than CEO), more small and agile projects, and fewer waterfall projects."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Introduction",
+          "quote": "(cancelled prior to completion or delivered and never used)"
+        },
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Introduction",
+          "quote": "The low point in the last five study periods was 2004, in which only 29% of the projects were successful."
+        },
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Introduction",
+          "quote": "The role of an executive sponsor is not so much chief executive officer, but more “chief enabling officer.”"
+        },
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Introduction",
+          "quote": "we have seen an increase in the number of smaller projects and agile projects. Further, we have seen a decrease in waterfall projects."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autre chiffre qui parle d’exigences : selon l’analyse, **20 %** des fonctions sont utilisées souvent et **50 %** quasiment jamais ou jamais. Conclusion du rapport : se concentrer sur les 20 % de fonctions qui apportent 80 % de la valeur, et réduire le périmètre, est « non seulement valide, mais prudent ». Enfin, les petits projets ont plus de 70 % de chances de succès, contre presque aucune pour un grand projet livré dans le délai, le budget et le périmètre.",
+        "en": "Another figure that speaks about requirements: the analysis suggests **20%** of features are used often and **50%** hardly ever or never. The report’s conclusion: focusing on the 20% of features that give 80% of the value, and reducing scope, is \"not only a valid strategy, but a prudent one\". Finally, small projects have more than a 70% chance of success, against virtually none for a large project delivered on time, on budget and within scope."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Overruns and features",
+          "quote": "Our analysis suggests that 20% of features are used often and 50% of features are hardly ever or never used."
+        },
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Overruns and features",
+          "quote": "focusing on the 20% of the features that give you 80% of the value will maximize the investment in software development and improve overall user satisfaction."
+        },
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Overruns and features",
+          "quote": "In contrast to small projects, which have more than a 70% chance of success, a large project has virtually no chance of coming in on time, on budget, and within scope"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi ça arrive : les causes selon le prof",
+        "en": "Why it happens: the causes according to the teacher"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof pose d’abord des vérités qui fâchent : le client ne sait jamais ce qu’il veut avant de l’avoir vu, il ne sait pas l’exprimer, l’informaticien ne le comprend pas, le client ne comprend pas l’informaticien, et **ce que le client veut n’est pas ce qu’il voulait**. Puis il liste quatre causes de fond : des démarches **centrées sur la solution**, des **utilisateurs non consultés**, des **maîtrises d’œuvre qui se substituent aux maîtrises d’ouvrage**, et des **besoins supposés connus**.",
+        "en": "The teacher first states some uncomfortable truths: the client never knows what they want before seeing it, cannot express it, the IT person does not understand the client, the client does not understand the IT person, and **what the client wants is not what they wanted**. It then lists four root causes: **solution-centred** approaches, **users not consulted**, **the MOE (builder side) replacing the MOA (business side)**, and **needs assumed to be known**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Sachant que",
+          "quote": "Le client ne sais jamais ce qu’il veut avant de l'avoir vu"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Sachant que",
+          "quote": "Ce que le client veut n’est pas ce qu’il voulait"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Quelques causes",
+          "quote": "Démarches centrées sur la solu=on Utilisateurs non consultés Maîtrises d'oeuvres se subs=tuant aux maîtrises d'ouvrages Besoins supposés connus"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**MOA / MOE.** Le cours préconise que la modélisation du besoin soit faite par la MOA (le métier), « de sorte que le métier soit maître de ses propres concepts » — mais la MOE doit intervenir, par exemple pour introduire les contraintes de la plate-forme informatique. Attention au vocabulaire : le prof signale que nulle part dans le monde on ne parle d’AMOA ni de MOA/MOE, et qu’il n’y a pas de bonne traduction de « cahier des charges » en anglais — d’où l’intérêt d’employer des termes standard.",
+        "en": "**MOA / MOE.** The course recommends that the modelling of the need be done by the MOA (the business), \"so that the business remains master of its own concepts\" — but the MOE must step in, for instance to introduce the constraints of the IT platform. Mind the vocabulary: the teacher points out that nowhere else in the world do people speak of AMOA or MOA/MOE, and that \"cahier des charges\" has no good English translation — hence the value of standard terms."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Substitutions MOE/MOA",
+          "quote": "Il est préférable que la modélisation du besoin soit réalisée par la MOA de sorte que le mé=er soit maître de ses propres concepts"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Causes spécifiques à la francophonie",
+          "quote": "nul part dans le monde on ne parle d'AMOA, ou de MOA / MOE"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Causes spécifiques à la francophonie",
+          "quote": "Il n’y a pas de bonne traduc=on du terme \"cahier des charges » en anglais"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une phrase d’Alan Davis résume l’attitude à éviter : « *If you believe that you know the requirements better than the customer, you are part of the problem, not the solution.* » Et une autre, de F. Brooks, rappelle où est la vraie difficulté : décider précisément **quoi** construire. D’où l’opposition du cours : *do the system right* (bien construire le système) contre *do the right system* (construire le bon système). Les exigences, c’est la deuxième.",
+        "en": "A sentence by Alan Davis sums up the attitude to avoid: \"*If you believe that you know the requirements better than the customer, you are part of the problem, not the solution.*\" Another one, by F. Brooks, reminds us where the real difficulty lies: deciding precisely **what** to build. Hence the course’s opposition: *do the system right* versus *do the right system*. Requirements are about the second."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Alan Davis",
+          "quote": "If you believe that you know the requirements becer than the customer, you are part of the problem, not the solu=on."
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "F. Brooks",
+          "quote": "The hardest single part of building a soCware system is deciding precisely what to build"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Do the system right",
+          "quote": "« do the system right » VS « do the right system »"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autres causes avancées : se concentrer sur le « quoi » et le « comment » au lieu du **« pourquoi »** (buts de l’entreprise mal compris), des **confusions** (demande ≠ nécessité, caractéristique de produit ≠ besoin, exigence ≠ solution mise en œuvre) et des **mythes** (« les besoins sont connus et stables », « il suffit d’interroger les clients », « le client est roi », « c’est le chef qui sait »).",
+        "en": "Other causes put forward: focusing on the \"what\" and the \"how\" instead of the **\"why\"** (business goals poorly understood), **confusions** (request ≠ necessity, product feature ≠ need, requirement ≠ implemented solution) and **myths** (\"needs are known and stable\", \"just ask the customers\", \"the customer is king\", \"the boss knows\")."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Causes",
+          "quote": "Focus sur le « quoi » et le « comment » (concep=on, développement) au lieu du « pourquoi »"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Causes — Confusions",
+          "quote": "Demande <> Nécessité Caractéris=que de produit <> Besoins Exigence <> Solu=on mise en oeuvre"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Causes — Mythes",
+          "quote": "Les besoins sont connus et stables"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Causes — Mythes",
+          "quote": "Il suﬃt d'interroger les clients/u=lisateurs"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Une exigence de mauvaise qualité, ça ressemble à quoi ?",
+        "en": "What does a poor-quality requirement look like?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours donne cinq défauts à repérer dans un texte d’exigences — c’est un réflexe d’examen : le [[term-bruit|bruit]] (information non pertinente), le [[term-silence|silence]] (des éléments du problème absents), la [[term-surspecification|surspécification]] (éléments caractéristiques de la solution), l’[[term-ambiguite|ambiguïté]] (plusieurs interprétations) et la **terminologie incohérente**.",
+        "en": "The course gives five defects to spot in a requirements text — an exam reflex: [[term-bruit|noise]] (irrelevant information), [[term-silence|silence]] (missing elements of the problem), [[term-surspecification|over-specification]] (elements characteristic of the solution), [[term-ambiguite|ambiguity]] (several interpretations) and **inconsistent terminology**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Bruit (présence d'informa=on non relevantes)"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Silence (absence d'éléments du problème)"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "SurspéciﬁcaMon (présence d'éléments caractéris=ques de la solu=on)"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Ambigüité (plusieurs interpréta=ons) Terminologie incohérente"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Défaut",
+          "en": "Defect"
+        },
+        {
+          "fr": "Conséquence citée dans le cours",
+          "en": "Consequence given in the course"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Bruit",
+            "en": "Noise"
+          },
+          {
+            "fr": "Exigence inutile, qui fait perdre du temps",
+            "en": "Useless requirement that wastes time"
+          }
+        ],
+        [
+          {
+            "fr": "Silence",
+            "en": "Silence"
+          },
+          {
+            "fr": "Élément de solution non justifié, développements inutiles",
+            "en": "Unjustified solution element, useless development"
+          }
+        ],
+        [
+          {
+            "fr": "Surspécification",
+            "en": "Over-specification"
+          },
+          {
+            "fr": "Choix non justifiés, solutions sous-optimales",
+            "en": "Unjustified choices, sub-optimal solutions"
+          }
+        ],
+        [
+          {
+            "fr": "Ambiguïté",
+            "en": "Ambiguity"
+          },
+          {
+            "fr": "Solution non déterministe, désaccords sur la qualité",
+            "en": "Non-deterministic solution, disagreements about quality"
+          }
+        ],
+        [
+          {
+            "fr": "Terminologie incohérente",
+            "en": "Inconsistent terminology"
+          },
+          {
+            "fr": "Difficulté d’interprétation, efforts de lecture démesurés",
+            "en": "Hard to interpret, disproportionate reading effort"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences",
+          "quote": "Exigence inuMle ou qui n’apporte aucune informaMon"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences",
+          "quote": "Élément de soluMon non jusMﬁé"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences",
+          "quote": "Choix non jusMﬁés, soluMon sous opMmales"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences",
+          "quote": "SoluMon non déterministe, désaccords sur la qualité"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences",
+          "quote": "Diﬃculté d'interprétaMon Eﬀorts de lecture démesurés"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le prix des erreurs : effet tunnel et effet levier",
+        "en": "The price of mistakes: tunnel effect and leverage effect"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Plus on découvre tard une erreur d’exigence, plus elle coûte cher à réparer : le cours parle d’**effet tunnel ET effet levier**, avec une « explosion combinatoire du nombre d’erreurs ». Autre chiffre à connaître : **50 à 70 %** des budgets SI sont affectés à la **maintenance** (le TCO, c’est la maintenance !). Dernier rappel : le cycle en V a été mis au point dès 1966 et formalisé vers 1970 ; son modèle initial ne contenait pas les retours en arrière, ajoutés ensuite.",
+        "en": "The later a requirements error is found, the more it costs to fix: the course speaks of a **tunnel effect AND a leverage effect**, with a \"combinatorial explosion of the number of errors\". Another figure to know: **50 to 70%** of IS budgets go to **maintenance** (TCO means maintenance!). One more reminder: the V-cycle was devised as early as 1966 and formalised around 1970; its initial model did not contain the feedback loops added later."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquence",
+          "quote": "Eﬀet tunel ET eﬀet levier"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquence",
+          "quote": "Explosion combinatoire du nombre d’erreurs"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "TCO",
+          "quote": "De 50% à 70% des budgets SI sont aﬀectés à la maintenance"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Cycle en V",
+          "quote": "Mis au point dès 1966, puis formalisé aux alentours de 1970."
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Cycle en V",
+          "quote": "Le modèle ini=al ne contenait pas les retours qui ont été ajoutés ultérieurement"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Tout le monde est perdant. Les acquéreurs n’en ont pas pour leur argent ; les utilisateurs ne sont pas aidés, voire pire ; les chefs d’entreprise trouvent le SI trop rigide ; les chefs de projet jouent leur carrière ; les développeurs perdent leur temps ; les formateurs et la maintenance doivent « essuyer les plâtres des promesses non tenues ».",
+        "en": "Everyone loses. Buyers do not get their money’s worth; users are not helped, or worse; business leaders find the IS too rigid; project managers risk their careers; developers waste their time; trainers and maintenance staff have to clean up after unkept promises."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences — frustration des parties prenantes",
+          "quote": "Acquéreurs : n’en ont pas pour leur argent"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences — frustration des parties prenantes",
+          "quote": "Développeurs : perdent leur temps"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquences — frustration des parties prenantes",
+          "quote": "Chefs de projet : jouent leur carrière"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "**Piège : l’outil ne remplace pas la méthode.** Le cours liste des outils d’IE (par exemple Caliber RM) puis cite : « *A fool with a tool is still just a fool* ». Un outil sans méthode est une cause d’échec, pas une solution.",
+        "en": "**Trap: a tool does not replace a method.** The course lists RE tools (for example Caliber RM) then quotes: \"*A fool with a tool is still just a fool*\". A tool without a method is a cause of failure, not a solution."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Outil sans méthode",
+          "quote": "OuMls Caliber RM"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Outil sans méthode",
+          "quote": "A fool with a tool is s=ll just a fool"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le vocabulaire : qu’est-ce qu’une exigence ?",
+        "en": "The vocabulary: what is a requirement?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour S. Robertson, une [[term-exigence|exigence]] est « quelque chose que le produit doit faire ou une qualité qu’il doit avoir ». La définition « officielle » du cours est celle de l’IEEE 610.12 : une **condition ou aptitude requise par un utilisateur** pour résoudre un problème ou atteindre un objectif, qui doit être rencontrée ou possédée par un système (ou un composant) pour satisfaire un contrat, un standard, une spécification ou tout autre document formel.",
+        "en": "For S. Robertson, a [[term-exigence|requirement]] is \"something the product must do or a quality it must have\". The course’s \"official\" definition is IEEE 610.12: a **condition or capability required by a user** to solve a problem or achieve an objective, that must be met or possessed by a system (or a component) to satisfy a contract, a standard, a specification or any other formally imposed document."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Quelques définitions",
+          "quote": "Quelque chose que le produit doit faire ou une qualité qu’il doit avoir"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Selon IEEE 610.12",
+          "quote": "Condi&on ou ap&tude Requise par un u=lisateur pour résoudre un problème ou aceindre un objec&f"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Selon IEEE 610.12",
+          "quote": "pour sa=sfaire à un contrat, un standard, une spéciﬁca=on ou tout autre document composé formellement"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi c’est important : pour le **management**, c’est le fondement de la planification, du suivi et de la traçabilité ; pour le **business**, de l’alignement avec la stratégie et de la satisfaction client ; pour le **légal**, une composante des accords et des contrats ; pour l’**ingénierie**, la justification des choix de design et la qualité.",
+        "en": "Why it matters: for **management**, it is the basis for planning, tracking and traceability; for **business**, for alignment with strategy and customer satisfaction; for **legal**, a component of agreements and contracts; for **engineering**, it justifies design choices and quality."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Pourquoi est-ce important ?",
+          "quote": "Management: Fondement pour la planiﬁca=on, l’exécu=on, le suivi et l’évalua=on de projet, traçabilité"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Pourquoi est-ce important ?",
+          "quote": "Légal: Composante d’accords, de commandes, de contrat de service"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Pourquoi est-ce important ?",
+          "quote": "Ingénierie: Déﬁni=on fondée du système, jus=ﬁca=on des choix de design"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La typologie des exigences",
+        "en": "The typology of requirements"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours distingue plusieurs familles, et un exemple pour chacune. Une exigence **fonctionnelle** décrit un service attendu du système ; une exigence **non fonctionnelle** décrit une qualité non directement implémentable (performance, sécurité, fiabilité, flexibilité, ergonomie) ; une **contrainte** ne définit pas le système mais réduit l’espace des solutions ; une **hypothèse** concerne l’environnement ; une exigence **de processus** concerne le développement et la livraison ; une exigence **légale** est imposée par la loi, une norme ou un standard.",
+        "en": "The course distinguishes several families, with one example for each. A **functional** requirement describes a service expected from the system; a **non-functional** requirement describes a quality that cannot be directly implemented (performance, security, reliability, flexibility, usability); a **constraint** does not define the system but reduces the solution space; an **assumption** concerns the environment; a **process** requirement concerns development and delivery; a **legal** requirement is imposed by law, a norm or a standard."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie",
+          "quote": "services acendus de la part du système"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie",
+          "quote": "Qualités non directement implémentables Performance, Sécurité, Fiabilité, Flexibilité, Ergonomie"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Contraintes",
+          "quote": "Ne déﬁnissent pas le système, mais réduisent l’espace des solu=ons possible"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Hypothèses",
+          "quote": "Rela=ves à « l’environnement » du système construit"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences de processus",
+          "quote": "Concernent les processus de développement et de livraison."
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences légales",
+          "quote": "Imposées par Loi Norme Standard"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Famille",
+          "en": "Family"
+        },
+        {
+          "fr": "Exemple du cours",
+          "en": "Example from the course"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Contrainte",
+            "en": "Constraint"
+          },
+          {
+            "fr": "« le système doit fonctionner avec la technologie O »",
+            "en": "\"the system must work with technology O\""
+          }
+        ],
+        [
+          {
+            "fr": "Fonction requise",
+            "en": "Required function"
+          },
+          {
+            "fr": "« le système doit identifier les anciens clients »",
+            "en": "\"the system must identify former customers\""
+          }
+        ],
+        [
+          {
+            "fr": "Qualité requise",
+            "en": "Required quality"
+          },
+          {
+            "fr": "« la capacité d’enregistrement du système doit être 120 % supérieure à la quantité de données à enregistrer »",
+            "en": "\"the system’s storage capacity must be 120% greater than the quantity of data to be stored\""
+          }
+        ],
+        [
+          {
+            "fr": "Exigence légale",
+            "en": "Legal requirement"
+          },
+          {
+            "fr": "« le système doit protéger les données clients »",
+            "en": "\"the system must protect customer data\""
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "le système doit fonc=onner avec la technologie O"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "le système doit iden=ﬁer les anciens clients"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "la capacité d'enregistrement du système doit être 120% supérieure à la quan=té de données à enregistrer"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "le système doit protéger les données clients"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d’examen — demande ≠ besoin ≠ développement.** Toute demande ne correspond pas nécessairement à un besoin ; toute exigence doit correspondre à un besoin ; tout besoin ne fera pas nécessairement l’objet d’un développement.",
+        "en": "**Exam trap — request ≠ need ≠ development.** Not every request corresponds to a need; every requirement must correspond to a need; not every need will necessarily be developed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Demandes, Besoins",
+          "quote": "Toute demande ne correspond pas nécessairement à un besoin"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Demandes, Besoins",
+          "quote": "Toute exigence doit"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Demandes, Besoins",
+          "quote": "Tout besoin ne fera pas"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce que le cours demande de retenir",
+        "en": "What the course asks you to take away"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le *take-away* du prof : les projets dépassent encore et toujours, en grande majorité, coûts et délais ; clients et utilisateurs ne sont pas satisfaits ; c’est principalement dû à une mauvaise ingénierie des exigences ; les problèmes, leurs causes et leurs conséquences sont **connus** ; des méthodes, techniques et outils existent, et leur efficacité dans différentes situations est scientifiquement prouvée.",
+        "en": "The teacher’s take-away: projects still overrun costs and deadlines in the large majority of cases; customers and users are not satisfied; this is mainly due to poor requirements engineering; the problems, their causes and consequences are **known**; methods, techniques and tools exist, and their efficacy in different situations is scientifically proven."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Take-away",
+          "quote": "Les projets dépassent encore et toujours dans une large majorité les coûts et les délais"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Take-away",
+          "quote": "Principalement en raison d’une mauvaise ingénierie des exigences"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Take-away",
+          "quote": "Leur eﬃcacité dans diﬀérentes situa=ons est scien=ﬁquement prouvée"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Devoir maison du prof.** Identifier un projet en échec dans son entreprise et documenter : la nature du projet, les problèmes rencontrés (étiologie), les causes profondes (diagnostics) et ce qu’il aurait fallu faire selon ses interlocuteurs. Consigne soulignée : « centrez IE ! » — les causes doivent être cherchées du côté des exigences.",
+        "en": "**The teacher’s homework.** Identify a failed project in your company and document: the nature of the project, the problems encountered (aetiology), the root causes (diagnostics) and what should have been done according to the people involved. Underlined instruction: \"focus on RE!\" — look for causes on the requirements side."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Devoir Maison",
+          "quote": "Iden=ﬁez un projet en situa=on d’echec dans votre entreprise"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Devoir Maison",
+          "quote": "Les problèmes rencontrés (é=ologie) Les causes profondes (diagnos=ques)"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Devoir Maison",
+          "quote": "Acen=on : centrez IE !"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-exigence",
+      "fr": "exigence",
+      "en": "requirement",
+      "definition": {
+        "fr": "Condition ou aptitude requise par un utilisateur pour résoudre un problème ou atteindre un objectif, qui doit être possédée par un système ou un composant pour satisfaire un contrat, un standard ou une spécification (IEEE 610.12).",
+        "en": "A condition or capability required by a user to solve a problem or achieve an objective, that must be possessed by a system or component to satisfy a contract, a standard or a specification (IEEE 610.12)."
+      },
+      "example": {
+        "fr": "« Le système doit identifier les anciens clients. »",
+        "en": "\"The system must identify former customers.\""
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Selon IEEE 610.12",
+          "quote": "Condi&on ou ap&tude Requise par un u=lisateur pour résoudre un problème ou aceindre un objec&f"
+        }
+      ]
+    },
+    {
+      "id": "term-fr",
+      "fr": "exigence fonctionnelle (FR)",
+      "en": "functional requirement (FR)",
+      "definition": {
+        "fr": "Service attendu de la part du système.",
+        "en": "A service expected from the system."
+      },
+      "example": {
+        "fr": "« Le système doit identifier les anciens clients. »",
+        "en": "\"The system must identify former customers.\""
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie",
+          "quote": "services acendus de la part du système"
+        }
+      ]
+    },
+    {
+      "id": "term-nfr",
+      "fr": "exigence non fonctionnelle (NFR)",
+      "en": "non-functional requirement (NFR)",
+      "definition": {
+        "fr": "Qualité non directement implémentable : performance, sécurité, fiabilité, flexibilité, ergonomie.",
+        "en": "A quality that cannot be directly implemented: performance, security, reliability, flexibility, usability."
+      },
+      "example": {
+        "fr": "« La capacité d’enregistrement doit être 120 % supérieure à la quantité de données à enregistrer. »",
+        "en": "\"The storage capacity must be 120% greater than the quantity of data to be stored.\""
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie",
+          "quote": "Qualités non directement implémentables Performance, Sécurité, Fiabilité, Flexibilité, Ergonomie"
+        }
+      ]
+    },
+    {
+      "id": "term-contrainte",
+      "fr": "contrainte",
+      "en": "constraint",
+      "definition": {
+        "fr": "Elle ne définit pas le système mais réduit l’espace des solutions possibles : contraintes de projet (coût, délai), techniques (matériel, OS, langage…) ou organisationnelles (fournisseur, sous-traitant).",
+        "en": "It does not define the system but reduces the space of possible solutions: project constraints (cost, deadline), technical (hardware, OS, language…) or organisational (supplier, subcontractor)."
+      },
+      "example": {
+        "fr": "« Le système doit fonctionner avec la technologie O. »",
+        "en": "\"The system must work with technology O.\""
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Contraintes",
+          "quote": "Ne déﬁnissent pas le système, mais réduisent l’espace des solu=ons possible"
+        }
+      ]
+    },
+    {
+      "id": "term-hypothese",
+      "fr": "hypothèse",
+      "en": "assumption",
+      "definition": {
+        "fr": "Élément relatif à l’environnement du système construit : domaine, environnement physique, acteurs et utilisateurs, organisation.",
+        "en": "An element relating to the environment of the system being built: domain, physical environment, actors and users, organisation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Hypothèses",
+          "quote": "Rela=ves à « l’environnement » du système construit Domaine Environnement physique Acteurs, utilisateurs Organisa=on"
+        }
+      ]
+    },
+    {
+      "id": "term-bruit",
+      "fr": "bruit",
+      "en": "noise",
+      "definition": {
+        "fr": "Défaut d’un texte d’exigences : présence d’information non pertinente. Conséquence : des exigences inutiles qui font perdre du temps.",
+        "en": "A defect in a requirements text: presence of irrelevant information. Consequence: useless requirements that waste time."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Bruit (présence d'informa=on non relevantes)"
+        }
+      ]
+    },
+    {
+      "id": "term-silence",
+      "fr": "silence",
+      "en": "silence",
+      "definition": {
+        "fr": "Défaut d’un texte d’exigences : absence d’éléments du problème. Conséquence : des éléments de solution non justifiés et des développements inutiles.",
+        "en": "A defect in a requirements text: absence of elements of the problem. Consequence: unjustified solution elements and useless development."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Silence (absence d'éléments du problème)"
+        }
+      ]
+    },
+    {
+      "id": "term-surspecification",
+      "fr": "surspécification",
+      "en": "over-specification",
+      "definition": {
+        "fr": "Défaut d’un texte d’exigences : présence d’éléments caractéristiques de la solution. Conséquence : des choix non justifiés et des solutions sous-optimales.",
+        "en": "A defect in a requirements text: presence of elements characteristic of the solution. Consequence: unjustified choices and sub-optimal solutions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "SurspéciﬁcaMon (présence d'éléments caractéris=ques de la solu=on)"
+        }
+      ]
+    },
+    {
+      "id": "term-ambiguite",
+      "fr": "ambiguïté",
+      "en": "ambiguity",
+      "definition": {
+        "fr": "Défaut d’un texte d’exigences : plusieurs interprétations possibles. Conséquence : une solution non déterministe et des désaccords sur la qualité.",
+        "en": "A defect in a requirements text: several possible interpretations. Consequence: a non-deterministic solution and disagreements about quality."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Ambigüité (plusieurs interpréta=ons) Terminologie incohérente"
+        }
+      ]
+    },
+    {
+      "id": "term-processus",
+      "fr": "exigence de processus",
+      "en": "process requirement",
+      "definition": {
+        "fr": "Exigence qui concerne les processus de développement et de livraison : coûts, marketing, ventes et distribution, organisation, compétences, logistique, documentation, maintenance.",
+        "en": "A requirement that concerns development and delivery processes: costs, marketing, sales and distribution, organisation, skills, logistics, documentation, maintenance."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences de processus",
+          "quote": "Concernent les processus de développement et de livraison."
+        }
+      ]
+    },
+    {
+      "id": "term-legale",
+      "fr": "exigence légale",
+      "en": "legal requirement",
+      "definition": {
+        "fr": "Exigence imposée par une loi, une norme, un standard ou tout autre document qui s’impose au projet sans remise en cause possible.",
+        "en": "A requirement imposed by a law, a norm, a standard or any other document that applies to the project without possible challenge."
+      },
+      "example": {
+        "fr": "« Le système doit protéger les données clients. »",
+        "en": "\"The system must protect customer data.\""
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences légales",
+          "quote": "Ou tout autre document qui s'impose au projet sans remise en cause possible"
+        }
+      ]
+    }
+  ],
+  "notions": [],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "1 projet sur 2 échoue, dans 80 % des cas parce que le système ne répond pas aux attentes des usagers ; Standish 95 : 1/3 des projets jamais terminés, 50 % partiellement réussis ; ESI 96 : > 50 % des problèmes liés à la spécification des exigences.",
+        "en": "1 project in 2 fails, in 80% of cases because the system does not meet users’ expectations; Standish 95: 1/3 of projects never completed, 50% partially successful; ESI 96: > 50% of problems tied to requirements specification."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": "1 projet sur 2 échoue Dans 80% des cas parce que le système ne répond pas aux acentes des usagers"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Constats",
+          "quote": "8000 projects, 350 US companies : 1/3 of projects never completed & 50% succeeded only par=ally"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "CHAOS 1995 : trois issues — réussi (16,2 %), challenged (52,7 %), impaired/annulé (31,1 %). Trois facteurs de succès : implication des utilisateurs, soutien de la direction, énoncé clair des exigences.",
+        "en": "CHAOS 1995: three outcomes — success (16.2%), challenged (52.7%), impaired/cancelled (31.1%). Three success factors: user involvement, executive support, a clear statement of requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Methodology",
+          "quote": "Overall, the success rate was only 16.2%, while challenged projects accounted for 52.7%, and impaired (cancelled) for 31.1%."
+        },
+        {
+          "file": "sources-texte/isi1/4-chaos-report.md",
+          "loc": "Success/Failure profiles",
+          "quote": "The three major reasons that a project will succeed are user involvement, executive management support, and a clear statement of requirements."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Chaos Manifesto 2013 (données 2012) : 39 % de succès, 43 % challenged, 18 % d’échecs — « failed » = annulé ou livré et jamais utilisé ; 20 % des fonctions servent souvent, 50 % presque jamais.",
+        "en": "Chaos Manifesto 2013 (2012 data): 39% success, 43% challenged, 18% failed — \"failed\" = cancelled or delivered and never used; 20% of features are used often, 50% hardly ever."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Introduction",
+          "quote": "(cancelled prior to completion or delivered and never used)"
+        },
+        {
+          "file": "sources-texte/isi1/6-chaosmanifesto2013.md",
+          "loc": "Overruns and features",
+          "quote": "Our analysis suggests that 20% of features are used often and 50% of features are hardly ever or never used."
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Causes citées par le prof : démarches centrées sur la solution, utilisateurs non consultés, MOE se substituant à la MOA, besoins supposés connus ; « do the right system », pas seulement « do the system right ».",
+        "en": "Causes cited by the teacher: solution-centred approaches, users not consulted, MOE replacing MOA, needs assumed to be known; \"do the right system\", not just \"do the system right\"."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Quelques causes",
+          "quote": "Démarches centrées sur la solu=on Utilisateurs non consultés Maîtrises d'oeuvres se subs=tuant aux maîtrises d'ouvrages Besoins supposés connus"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Do the system right",
+          "quote": "« do the system right » VS « do the right system »"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Cinq défauts d’un texte d’exigences : bruit, silence, surspécification, ambiguïté, terminologie incohérente.",
+        "en": "Five defects of a requirements text: noise, silence, over-specification, ambiguity, inconsistent terminology."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Bruit (présence d'informa=on non relevantes)"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Mauvaise qualité des exigences",
+          "quote": "Ambigüité (plusieurs interpréta=ons) Terminologie incohérente"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Typologie : exigences fonctionnelles, non fonctionnelles, contraintes, hypothèses, exigences de processus, exigences légales — chacune avec un exemple du cours.",
+        "en": "Typology: functional requirements, non-functional requirements, constraints, assumptions, process requirements, legal requirements — each with a course example."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Contraintes",
+          "quote": "Ne déﬁnissent pas le système, mais réduisent l’espace des solu=ons possible"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences légales",
+          "quote": "Imposées par Loi Norme Standard"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un mauvais traitement des exigences coûte de plus en plus cher à réparer (effet tunnel et effet levier) ; 50 à 70 % des budgets SI vont à la maintenance ; un outil sans méthode ne sauve rien.",
+        "en": "Mishandled requirements become ever more expensive to fix (tunnel and leverage effect); 50 to 70% of IS budgets go to maintenance; a tool without a method saves nothing."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Conséquence",
+          "quote": "Explosion combinatoire du nombre d’erreurs"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "TCO",
+          "quote": "De 50% à 70% des budgets SI sont aﬀectés à la maintenance"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Outil sans méthode",
+          "quote": "A fool with a tool is s=ll just a fool"
+        }
+      ]
+    }
+  ],
+  "flashcards": [],
+  "quiz": [],
+  "exercises": [],
+  "writing": []
+}

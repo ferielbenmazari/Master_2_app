@@ -10,7 +10,7 @@
 ## Pourquoi les projets échouent
 _Source : 1_IE Introduction · chaos report_
 
-- [ ] Introduction à l'IE · Chaos report / Chaos manifesto
+- [ ] Introduction à l'IE · Chaos report / Chaos manifesto → ch.01
 
 ## Normes et certification
 _Source : 2_Certification · 3_ISO 29148_
