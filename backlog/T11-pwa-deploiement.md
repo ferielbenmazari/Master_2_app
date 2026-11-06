@@ -2,7 +2,7 @@
 id: T11
 title: "PWA hors-ligne + déploiement Cloudflare Pages  ★ JALON MVP"
 lot: 1
-status: todo
+status: done
 depends: [T09, T10]
 agent: builder
 ---
@@ -27,10 +27,10 @@ Installer l'app sur téléphone, l'utiliser sans réseau, et la partager par une
 7. e2e : charger l'app, passer hors-ligne (`context.setOffline(true)`), recharger, ouvrir REC1-05 → OK.
 
 ## Critères d'acceptation
-- [ ] Lighthouse mobile : PWA installable, Performance ≥ 85
-- [ ] Test e2e hors-ligne vert
-- [ ] Build déployable tel quel sur Cloudflare Pages (preset Vite, sortie `dist`)
-- [ ] `npm run check` vert
+- [x] Lighthouse mobile : PWA installable (manifeste, SW, icônes vérifiés par e2e) ; Performance ≥ 85 **non atteint : 0,75-0,80 accepté pour le MVP** (décision utilisatrice)
+- [x] Test e2e hors-ligne vert
+- [x] Build déployable tel quel sur Cloudflare Pages (preset Vite, sortie `dist`)
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Notifications push.
@@ -38,4 +38,7 @@ Notifications push.
 > 2026-11-06 (revue) : T20 retiré des dépendances — on met en ligne d'abord, l'Express suivra (voir `backlog/SPRINT.md`).
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+2026-11-06 — PWA (vite-plugin-pwa, autoUpdate, précache complet), icônes (scripts/make-icons.ts), toast de mise à jour, workflows GitHub (check + gh-pages désactivé), Node 24, docs de déploiement, e2e hors-ligne.
+Écarts : Lighthouse mobile Performance 0,75-0,80 (seuil 0,85, variance ~0,05) ; bundle d'entrée ~535 Ko (react-dom, router, zod, dexie). Routes en lazy, polices préchargées, SW enregistré après `load`. Accepté pour le MVP, optimisation notée dans IDEES.md.
+Toast de mise à jour testé en unitaire seulement (autoUpdate recharge la page ; drapeau sessionStorage). Score « PWA » absent de Lighthouse 13 : installabilité vérifiée par e2e.
+`tests/e2e/flashcards.spec.ts:23` instable (préexistant).

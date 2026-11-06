@@ -40,4 +40,4 @@ Astuce : une session pour l'app (`/next-task` en boucle), une autre en parallèl
 3. `git push` → l'app en ligne se met à jour toute seule.
 
 ## Mettre en ligne / prêter à un ami
-Voir `docs/05-deploiement.md` (Cloudflare Pages, gratuit, compatible repo privé).
+Voir `docs/05-deploiement.md` (Cloudflare Pages : preset Vite, sortie `dist`, `NODE_VERSION=24`, gratuit, compatible repo privé). Node ≥ 24 (`.nvmrc`). Icônes PWA : `npm run icons`.

@@ -36,9 +36,11 @@ describe('routes', () => {
     expect(screen.getByRole('heading', { name: 'Bientôt ici' })).toBeInTheDocument()
   })
 
-  it('le styleguide reste accessible', () => {
+  it('le styleguide reste accessible', async () => {
     renderAt('/styleguide')
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('M2 // Arena')
+    expect(await screen.findByRole('heading', { level: 1 }, { timeout: 8000 })).toHaveTextContent(
+      'M2 // Arena',
+    )
   })
 
   it('onboarding affiché sans pseudo', () => {

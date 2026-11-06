@@ -1,5 +1,6 @@
 /** Textes d'interface (français). Le contenu de cours vient des JSON, jamais d'ici. */
 export const UI = {
+  pwa: { updated: 'Nouvelle version disponible : l’app vient de se mettre à jour.' },
   theme: {
     toLight: 'Mode jour',
     toDark: 'Mode nuit',

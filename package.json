@@ -1,6 +1,9 @@
 {
   "name": "revision-m2",
   "private": true,
+  "engines": {
+    "node": ">=24"
+  },
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,6 +12,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "validate:content": "tsx scripts/validate-content.ts",
+    "icons": "tsx scripts/make-icons.ts",
     "sources": "tsx tools/sources-mcp/cli.ts",
     "lint": "eslint .",
     "e2e": "playwright test",
@@ -52,6 +56,7 @@
     "typescript": "~6.0",
     "typescript-eslint": "^8.72.1",
     "vite": "^8.3.5",
+    "vite-plugin-pwa": "^2.0.0",
     "vitest": "^5.0.5"
   }
 }

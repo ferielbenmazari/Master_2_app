@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { currentStreak } from '@/lib/streak'
-import { getDueCount } from './due'
 import { getActivity, getReading } from './progress'
 
 /** Chapitres lus (finishedAt présent) parmi `chapterIds`. */
@@ -9,7 +8,11 @@ export function useReadChapters(chapterIds: string[]): Set<string> {
   const [read, setRead] = useState<Set<string>>(new Set())
   useEffect(() => {
     let live = true
-    Promise.all((key ? key.split('|') : []).map(async (id) => ((await getReading(id))?.finishedAt ? id : null))).then((ids) => {
+    Promise.all(
+      (key ? key.split('|') : []).map(async (id) =>
+        (await getReading(id))?.finishedAt ? id : null,
+      ),
+    ).then((ids) => {
       if (live) setRead(new Set(ids.filter((x): x is string => x !== null)))
     })
     return () => {
@@ -23,9 +26,13 @@ export function useDueCount(): number {
   const [n, setN] = useState(0)
   useEffect(() => {
     let live = true
-    getDueCount().then((v) => live && setN(v))
+    // Compter les cartes charge tous les chapitres : on attend que la page soit affichée et inactive.
+    const run = () =>
+      void import('./due').then(({ getDueCount }) => getDueCount()).then((v) => live && setN(v))
+    const id = window.setTimeout(run, 1200)
     return () => {
       live = false
+      clearTimeout(id)
     }
   }, [])
   return n
@@ -35,7 +42,9 @@ export function useStreak(): number {
   const [n, setN] = useState(0)
   useEffect(() => {
     let live = true
-    getActivity().then((rows) => live && setN(currentStreak(rows.filter((r) => r.count > 0).map((r) => r.date))))
+    getActivity().then(
+      (rows) => live && setN(currentStreak(rows.filter((r) => r.count > 0).map((r) => r.date))),
+    )
     return () => {
       live = false
     }
