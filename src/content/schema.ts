@@ -175,7 +175,7 @@ export const ChapterSchema = z
     estimatedMinutes: z.number().positive(),
     sources: stringArray,
     status: z.enum(['draft', 'reviewed']),
-    story: z.array(StoryBlockSchema).min(12).max(40),
+    story: z.array(StoryBlockSchema).min(12).max(60),
     glossary: z.array(TermSchema).min(6).max(20),
     notions: stringArray,
     keyPoints: z.array(KeyPointSchema).min(5).max(10),

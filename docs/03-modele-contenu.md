@@ -47,7 +47,7 @@ interface Chapter {
   estimatedMinutes: number;   // temps de lecture de l'histoire
   sources: string[];          // chemins relatifs au repo (ressources/… ou sources-texte/…)
   status: "draft" | "reviewed";
-  story: StoryBlock[];        // 12 à 40 blocs
+  story: StoryBlock[];        // 12 à 60 blocs (checkpoints inclus)
   glossary: Term[];           // 6 à 20 termes
   notions: string[];          // ids de notions.json couverts par ce chapitre
   keyPoints: KeyPoint[];      // 5 à 10 → fiche synthèse
