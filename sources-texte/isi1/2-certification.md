@@ -1,23 +1,23 @@
-Les	  schémas	  d	  cer,ﬁca,on	  en	  
+Les	  schémas	  d	  cer,fica,on	  en	  
    Ingénierie	  des	  Exigences	  
                   Camille	  Salinesi	  
          Université	  Paris	  1	  Panthéon	  -­‐	  Sorbonne	  
-                                    Cer,ﬁca,ons	  
-•   IREB:	  CPRE	  «	  Cer,ﬁed	  Professional	  in	  Requirements	  Engineering	  »	  
+                                    Cer,fica,ons	  
+•   IREB:	  CPRE	  «	  Cer,fied	  Professional	  in	  Requirements	  Engineering	  »	  
      – hGp://cms.specief.org/conc/index.php/ireb/	  
      – hGp://www.ireb.org/en/	  
 •   IIBA	  (Interna,onal	  Ins,tute	  of	  Business	  Analysis)	  
     hGp://www.iiba.org/babok-­‐guide/Agile-­‐Extension-­‐to-­‐the-­‐BABOK-­‐Guide-­‐IIBA.aspx	  
-•   CFTL:	  REQB	  «	  Requirements	  Engineering	  Qualiﬁca,on	  Board	  »	  
-•   Agile	  Requirement	  Ins,tute:	  «	  Cer,ﬁed	  Agile	  Requirements	  Expert	  »	  	  
+•   CFTL:	  REQB	  «	  Requirements	  Engineering	  Qualifica,on	  Board	  »	  
+•   Agile	  Requirement	  Ins,tute:	  «	  Cer,fied	  Agile	  Requirements	  Expert	  »	  	  
     	  hGp://agile-­‐requirements-­‐ins,tute.org	  
-•   PMI:	  «	  BA	  cer,ﬁcate	  	  »	  
-    hGp://www.pmi.org/Cer,ﬁca,on/PMI-­‐Professional-­‐in-­‐Business-­‐Analysis-­‐PMI-­‐
+•   PMI:	  «	  BA	  cer,ficate	  	  »	  
+    hGp://www.pmi.org/Cer,fica,on/PMI-­‐Professional-­‐in-­‐Business-­‐Analysis-­‐PMI-­‐
     PBA.aspx	  
-•   UXQB	  :	  «Ccer,ﬁca,on	  on	  User	  Experience	  »	  
+•   UXQB	  :	  «Ccer,fica,on	  on	  User	  Experience	  »	  
     hGp://www.uxqb.org/en/	  
-•   iSQI	  :	  «	  Agile	  Business	  Analysis	  »	  cer,ﬁca,on	  
-    hGps://www.isqi.org/de/certview.html?Cer,ﬁcateID=51	  
+•   iSQI	  :	  «	  Agile	  Business	  Analysis	  »	  cer,fica,on	  
+    hGps://www.isqi.org/de/certview.html?Cer,ficateID=51	  
 •   ISPMA	  (Interna,onal	  So]ware	  Product	  Management	  Associa,on)	  
 •   BCS	  :	  Bri,sh	  Computer	  Society	  
 L’IREB	  

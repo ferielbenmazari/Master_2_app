@@ -71,7 +71,7 @@ describe('contenu actuel', () => {
     expect(r.stats.chapters).toBeGreaterThanOrEqual(1)
     expect(r.stats.citations).toBeGreaterThanOrEqual(143)
     expect(formatSummary(r)).toMatch(/^✔ 4 matières · \d+ chapitres? · \d+ citations vérifiées · couverture ★★★ \d+\/\d+/)
-  })
+  }, 60_000) // ~7 s : 5000+ citations à vérifier
   it('formate les messages comme spécifié', () => {
     const r = run((ch) => {
       ch.quiz[2]!.src[0]!.quote = 'phrase totalement inventée qui ne figure nulle part ici'
