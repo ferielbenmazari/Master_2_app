@@ -2,7 +2,7 @@
 id: C04
 title: "REC1 — analyse, chapitres 01 à 04, partiel blanc"
 lot: contenu
-status: todo
+status: doing
 depends: [C00]
 agent: /ajouter-cours rec1
 ---
@@ -21,3 +21,4 @@ Lancer `/ajouter-cours rec1` dans Claude Code (session Sonnet). Peut tourner **d
 - [ ] 1 partiel blanc
 
 ## Journal
+2026-11-06 (revue) : cours + quiz des 5 chapitres (11-14 questions chacun) ; seul le 05 est `reviewed`. **Reste** : `sources.json` à valider, `notions.json` limité au ch. 05 (12 notions ; ★★★ non couvertes : 2), flashcards/exercices/atelier des ch. 01-04, partiel blanc.

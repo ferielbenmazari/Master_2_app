@@ -14,7 +14,9 @@ Tu es payé·e pour **trouver des erreurs**. Pars du principe que le fichier en 
    - la bonne réponse d'un quiz est **indiscutablement** juste selon le cours, et chaque distracteur est **indiscutablement** faux ;
    - la justification d'un V/F corrige exactement l'erreur de l'énoncé ;
    - les corrigés d'exercices et d'examens sont justes, complets, et les calculs refaits à la main ;
-   - les termes EN sont ceux du cours (pas de synonymes inventés).
+   - les termes EN sont ceux du cours (pas de synonymes inventés) — pour une source traduite, ceux du **PDF original** ;
+   - chaque `src` **porte** l'affirmation (sinon : la remplacer ou la retirer) et fait ≥ 4 mots (viser 6-25) ;
+   - aucune citation tirée d'une « Description et explication du schéma » (texte généré dans les transcriptions).
 3. Notions ★★★ (`notions.json`) : si la source citée est une **transcription** (`transcriptionOf` dans sources.json), recoupe avec le texte extrait du PDF original (`sources-texte/`). Le PDF fait foi.
 4. Corrige directement. Si une affirmation n'a pas de source → supprime-la (ou marque le paragraphe `narrative: true` s'il s'agit de pure mise en scène sans fait).
 

@@ -24,7 +24,8 @@ description: PHASE 1 (prioritaire) - rédige le COURS d'un chapitre (histoire en
    - Bilingue FR + EN (B2, termes exacts du cours).
 3. **Compléments dans la thématique** (docs/06 §2 bis) : seulement si une notion vue en classe reste floue ou incomplète dans les supports. Les puiser **uniquement** dans les sources `lecture` puis `complement` du `sources.json` de la matière (jamais de connaissance générale non sourcée), les citer, et les mettre dans un `callout` `tip` commençant par « **Pour aller plus loin** — ». ≤ 20 % du chapitre, jamais à la place du contenu de cours.
 4. **Rien sans citation** : chaque fait a son `src` (citation exacte vérifiée). Écrire `story`, `glossary`, `keyPoints` ; `quiz`, `flashcards`, `exercises`, `writing` = `[]` ; `status: "draft"`.
-5. `npm run validate:content` → 0 erreur.
+5. `npm run validate:content` → 0 erreur **et**, sur ce chapitre : 0 citation < 4 mots (viser 6-25 mots qui portent le fait), 0 paragraphe > 90 mots, chapitre ≤ 15 min (sinon le découper en deux fichiers), listes ≤ 7 items.
+   - Sources **traduites** (Markdown dont `transcriptionOf` pointe vers un PDF anglais, ex. INF4) : les termes EN du `glossary` et de la version EN viennent du **PDF original** (`sources-texte/`), jamais d'une retraduction. Ne jamais citer une « Description et explication du schéma » (texte généré, pas les mots du prof).
 6. **Relecture qualité (dans la session)** : relire chaque bloc face à sa citation (même sens, rien d'ajouté) ; vérifier que chaque ligne retenue du PROGRAMME est traitée ; couper le remplissage.
 7. Dans `PROGRAMME.md` : ` → ch.<nn>` au bout de chaque ligne couverte ; ` → ⚠ absent des supports` si une ligne vue en classe n'a aucune source (ne rien inventer).
 8. `git add -A && git commit -m "content(<id>): cours du chapitre <nn> — <titre>" && git pull --rebase && git push`.

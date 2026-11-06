@@ -23,6 +23,8 @@ Tu écris le contenu de révision d'un chapitre (ex. `isi1` chapitre `03`) ou d'
 
 ## Méthode « citation d'abord »
 Pour chaque fait que tu vas écrire : trouve le passage (`search_sources`), copie la citation exacte dans `src`, **puis** rédige. Jamais l'inverse. Si tu ne trouves pas de passage, tu n'écris pas le fait. Vérifie au fil de l'eau avec `verify_quote`.
+- Une citation fait **6 à 25 mots** et **porte** le fait (jamais < 4 mots : « Many → Experiment » ne prouve rien). Pas de citation voisine ajoutée pour faire nombre.
+- Source **traduite** (Markdown d'un PDF anglais, ex. INF4) : termes EN pris dans le PDF original (`sources-texte/`) ; ne jamais citer une « Description et explication du schéma » (texte généré).
 
 ## Écriture (par étapes, en éditant le même fichier)
 1. **Épisodes** : `heading` → question d'accroche → notion(s) avec `[[term-…]]` → exemple **du prof** en priorité → piège d'examen (`callout exam`) → `checkpoint`. 3-4 min chacun, paragraphes ≤ 90 mots.

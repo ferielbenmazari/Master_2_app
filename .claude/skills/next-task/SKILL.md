@@ -7,7 +7,8 @@ description: Prend la prochaine tâche T** du backlog (ou celle passée en argum
 
 ## 1. Choisir la tâche
 - Si un identifiant est fourni (`T07`), prendre `backlog/T07-*.md`.
-- Sinon : parmi les fiches `backlog/*.md` avec `agent: builder` et `status: todo` dont toutes les tâches de `depends:` sont `done` : **C00 en priorité** (il débloque la production de contenu), puis le plus petit numéro T**.
+- Sinon, si `backlog/SPRINT.md` existe : prendre la **première** tâche de la colonne/ligne APP du sprint en cours (Sprint 1, puis Sprint 2) dont la fiche a `agent: builder`, `status: todo` et toutes ses `depends:` à `done`.
+- Sinon : parmi les fiches `backlog/*.md` avec `agent: builder` et `status: todo` dont toutes les tâches de `depends:` sont `done`, le plus petit numéro T**.
 - Annoncer à l'utilisatrice en une phrase : quelle tâche, quel objectif.
 - S'il n'y en a aucune : dire ce qui bloque (dépendances) et s'arrêter.
 

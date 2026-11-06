@@ -2,7 +2,7 @@
 id: C05
 title: "INF4 — analyse, chapitres 01 à 08, partiel blanc"
 lot: contenu
-status: todo
+status: doing
 depends: [C00]
 agent: /ajouter-cours inf4
 ---
@@ -22,3 +22,4 @@ Lancer `/ajouter-cours inf4` dans Claude Code (session Sonnet). Peut tourner **d
 - [ ] 1 partiel blanc
 
 ## Journal
+2026-11-06 (revue) : cours + quiz des 8 chapitres (13-15 questions chacun), tous `draft`. **Reste** : `sources.json` à valider, PDF non extraits et termes EN parfois retraduits → **C09** ; pas de `notions.json` ni de `PROFIL-PROF.md` ; INF4-06 fait 20 min (à découper) ; alertes quiz 04 et 05 → C07.

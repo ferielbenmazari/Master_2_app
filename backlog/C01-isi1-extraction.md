@@ -2,7 +2,7 @@
 id: C01
 title: "ISI1 — sources, extraction et analyse (notions + profil du prof)"
 lot: contenu
-status: todo
+status: doing
 depends: [C00]
 agent: /ajouter-cours isi1 (étapes 1 à 3)
 ---
@@ -23,3 +23,4 @@ Lancer `/ajouter-cours isi1 (étapes 1 à 3)` dans Claude Code (session Sonnet).
 - [ ] Validation de l'utilisatrice sur les notions ★★★ et le profil
 
 ## Journal
+2026-11-06 (revue) : `sources.json` validé et 16 PDF extraits dans `sources-texte/isi1/` (texte abîmé : `=`/`M` à la place de « ti », voir C08). **Reste** : `notions.json` ISI1 (absent), `PROFIL-PROF.md` encore « première version » (sections 4-6 à compléter avec les supports).
