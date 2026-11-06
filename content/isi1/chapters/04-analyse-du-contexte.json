@@ -128,6 +128,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-01"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Deux frontières, pas une",
@@ -241,6 +245,10 @@
           "quote": "System Boundary"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-03"
     },
     {
       "type": "heading",
@@ -386,6 +394,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-05"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Interfaces, sources et puits",
@@ -439,6 +451,10 @@
           "quote": "The interface type in turn may also"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-07"
     },
     {
       "type": "heading",
@@ -583,6 +599,10 @@
       ]
     },
     {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-08"
+    },
+    {
       "type": "heading",
       "text": {
         "fr": "Documenter le contexte et ses parties prenantes",
@@ -686,6 +706,10 @@
           "quote": "Alternative cases"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-10"
     },
     {
       "type": "heading",
@@ -825,6 +849,10 @@
           "quote": "Defining the system and context boundaries successfully is the"
         }
       ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-12"
     }
   ],
   "glossary": [
@@ -1096,7 +1124,461 @@
     }
   ],
   "flashcards": [],
-  "quiz": [],
+  "quiz": [
+    {
+      "id": "isi1-04-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le contexte du système est la partie de l'environnement du système qui est pertinente pour la définition et la compréhension des exigences : le cours résume que « les exigences n'existent que dans un contexte ».",
+        "en": "The system context is the part of the system environment that is relevant for the definition and understanding of the requirements: the course sums it up as \"requirements only exist in a context\"."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c'est la définition 2-1 du support. Le contexte n'est donc pas tout l'environnement, mais seulement sa partie **pertinente**.",
+        "en": "TRUE: this is definition 2-1 of the course material. The context is therefore not the whole environment, only its **relevant** part."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "The system context is the relevant part of the",
+          "loc": "The system context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Requirements only exist in a context",
+          "loc": "The system context"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "The system context is the part of the system environment that is relevant for the definition as well as the",
+          "loc": "Definition 2-1"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-02",
+      "type": "mcq",
+      "question": {
+        "fr": "Un système passe tous ses tests de validation, mais échoue en exploitation parce qu'une loi applicable n'a jamais été prise en compte. Quelle explication correspond au cours ?",
+        "en": "A system passes all its validation tests but fails in operation because an applicable law was never taken into account. Which explanation matches the course?"
+      },
+      "options": [
+        {
+          "fr": "Les tests étaient insuffisants : une meilleure validation aurait sûrement détecté ce défaut.",
+          "en": "The tests were insufficient: better validation would surely have caught this defect."
+        },
+        {
+          "fr": "La loi relève de l'environnement non pertinent : elle n'avait pas à être considérée.",
+          "en": "The law belongs to the irrelevant environment: it did not have to be considered."
+        },
+        {
+          "fr": "Un contexte mal pris en compte a produit des exigences erronées, non détectées à la validation.",
+          "en": "A poorly considered context produced erroneous requirements, undetected at validation."
+        },
+        {
+          "fr": "La loi aurait dû être placée à l'intérieur de la frontière du système à développer.",
+          "en": "The law should have been placed inside the boundary of the system to be developed."
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Un contexte incomplet donne des exigences **incomplètes ou erronées** ; or la validation vérifie la conformité aux exigences *spécifiées*, donc ces erreurs **restent souvent non détectées** jusqu'à l'exploitation. Les lois font partie des **documents** du contexte.",
+        "en": "An incomplete context yields **incomplete or erroneous** requirements; validation checks conformity to the *specified* requirements, so these errors **often remain undetected** until operation. Laws are part of the context's **documents**."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "it may result in incomplete or erroneous requirements",
+          "loc": "Consequence of erroneous or incomplete context consideration"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "often remain undetected during the validation procedures",
+          "loc": "Consequence of erroneous or incomplete context consideration"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "Documents (e.g., laws, standards, system documentation)",
+          "loc": "2.1 System Context"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "La frontière du contexte sépare ce que le processus de développement peut modifier de ce qu'il ne peut pas modifier, tandis que la frontière du système sépare la partie pertinente de l'environnement de la partie non pertinente.",
+        "en": "The context boundary separates what the development process can change from what it cannot, whereas the system boundary separates the relevant part of the environment from the irrelevant part."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : les deux définitions sont **inversées**. La frontière du **système** sépare ce qui peut être modifié de ce qui ne le peut pas ; la frontière du **contexte** sépare le pertinent du non pertinent.",
+        "en": "FALSE: the two definitions are **swapped**. The **system** boundary separates what can be changed from what cannot; the **context** boundary separates the relevant from the irrelevant."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "The system boundary separates the system to be developed from its environment",
+          "loc": "Definition 2-2"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "The context boundary separates the relevant part of the environment of a system to be developed from the",
+          "loc": "Definition 2-3"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-04",
+      "type": "mcq",
+      "question": {
+        "fr": "Une entreprise remplace son ancien logiciel de facturation (matériel et logiciel) par un nouveau système. Une loi impose des mentions sur les factures. Où placer ces deux éléments ?",
+        "en": "A company replaces its old invoicing software (hardware and software) with a new system. A law requires specific mentions on invoices. Where should these two elements be placed?"
+      },
+      "options": [
+        {
+          "fr": "l'ancien système dans le contexte, la loi à l'intérieur de la frontière du système",
+          "en": "the old system in the context, the law inside the system boundary"
+        },
+        {
+          "fr": "l'ancien système et la loi dans le contexte, car ils existent avant le projet",
+          "en": "the old system and the law in the context, because they exist before the project"
+        },
+        {
+          "fr": "l'ancien système et la loi à l'intérieur de la frontière du système, pour tout maîtriser",
+          "en": "the old system and the law inside the system boundary, to control everything"
+        },
+        {
+          "fr": "l'ancien système dans le système (modifiable), la loi dans le contexte",
+          "en": "the old system inside the system (modifiable), the law in the context"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Ce qui est **dans** la frontière du système peut être modifié pendant le développement (par exemple le système existant à remplacer) ; ce qui est **dans le contexte** ne peut pas l'être et peut imposer des **contraintes** (la loi).",
+        "en": "What lies **within** the system boundary can be altered during development (e.g. the existing system to be replaced); what lies **in the context** cannot be and may provide **constraints** (the law)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "All aspects that are within the system boundary can thus be altered during system",
+          "loc": "2.2.1 Defining the System Boundary"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "thus cannot be altered during development and may provide constraints for the system to be developed",
+          "loc": "2.4 Summary"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les deux zones grises, celle entre le système et son contexte et celle entre le contexte et l'environnement non pertinent, doivent être entièrement résolues au cours de l'ingénierie des exigences.",
+        "en": "Both grey zones, the one between the system and its context and the one between the context and the irrelevant environment, must be entirely resolved during requirements engineering."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la zone grise entre le **système et le contexte** doit être résolue pendant l'IE, mais celle entre le contexte et l'environnement non pertinent **n'a pas besoin de l'être entièrement**.",
+        "en": "FALSE: the grey zone between the **system and its context** must be resolved during RE, but the one between the context and the irrelevant environment **need not be entirely resolved**."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "it is not necessary to resolve the gray zone",
+          "loc": "Resolving and shifting of the gray zone"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "the system boundary is not precisely defined until the end of the",
+          "loc": "Gray zone between system and system context"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-06",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour une application qui permet de payer par carte bancaire, se demander si le système doit implémenter la fonction de paiement ou réutiliser un système de traitement des paiements existant dans le contexte est un exemple de zone grise entre le système et son contexte.",
+        "en": "For an application allowing payment by credit card, asking whether the system must implement the payment function or reuse an existing payment processing system in the context is an example of a grey zone between the system and its context."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c'est l'exemple du support. Cette séparation initialement floue entre système et contexte se **résout au cours de l'IE** et la frontière peut se déplacer dans la zone grise.",
+        "en": "TRUE: this is the course example. This initially vague separation between system and context is **resolved during RE** and the boundary may shift within the grey zone."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "We refer to this initially vague separation of the system",
+          "loc": "Gray zone between system and system context"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "whether the system should implement a certain function",
+          "loc": "Gray zone between system and system context"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "The system boundary may not only shift within the gray zone",
+          "loc": "Adjusting the gray zone"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l'analyse du contexte, les sources fournissent des entrées au système et les puits reçoivent ses sorties ; ce sont des parties prenantes (ou groupes) ou des systèmes existants, techniques ou non.",
+        "en": "In context analysis, sources provide inputs to the system and sinks receive its outputs; they are stakeholders (or groups) or existing systems, technical or non-technical."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : sources et puits sont le point de départ pour repérer les interactions, et ils communiquent avec le système par des **interfaces** qui peuvent imposer des contraintes.",
+        "en": "TRUE: sources and sinks are the starting point for identifying interactions, and they interact with the system via **interfaces** that may impose constraints."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "Sinks receive outputs from the system",
+          "loc": "Sources and sinks as the starting point"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "Existing systems (both technical and nontechnical systems)",
+          "loc": "Sources and sinks as the starting point"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "Sources and sinks interact with the system to be developed via system interfaces",
+          "loc": "Interfaces: interaction between system and environment"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-08",
+      "type": "mcq",
+      "question": {
+        "fr": "Le client impose une méthode de travail agile avec une livraison toutes les deux semaines. Dans la structuration du contexte en quatre facettes, cet élément relève de la facette :",
+        "en": "The customer imposes an agile working method with a delivery every two weeks. In the structuring of the context into four facets, this element belongs to the facet:"
+      },
+      "options": [
+        {
+          "fr": "Usage",
+          "en": "Usage"
+        },
+        {
+          "fr": "Development",
+          "en": "Development"
+        },
+        {
+          "fr": "IT",
+          "en": "IT"
+        },
+        {
+          "fr": "Subject",
+          "en": "Subject"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "**Development** regroupe tous les aspects qui influencent les procédures de développement. Subject = objets et événements à représenter ; Usage = comment personnes et systèmes utilisent le système ; IT = environnement opérationnel/technique.",
+        "en": "**Development** covers all aspects that influence development procedures. Subject = objects and events to represent; Usage = how people and systems use the system; IT = operating/technical environment."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "all aspects that influence development procedures",
+          "loc": "The 4 facets of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "how people and other systems use the system",
+          "loc": "The 4 facets of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Objects and events that need to be represented in",
+          "loc": "The 4 facets of the context"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-09",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le cours structure le contexte en trois facettes (Subject, Usage, IT) et quatre aspects par facette (sources d'exigences, objets du contexte, propriétés et relations, hypothèses).",
+        "en": "The course structures the context into three facets (Subject, Usage, IT) and four aspects per facet (requirements sources, context objects, properties and relations, assumptions)."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la grille est de **quatre facettes** (Subject, Usage, IT, **Development**) × **trois aspects** (sources d'exigences, objets du contexte, propriétés et relations).",
+        "en": "FALSE: the grid is **four facets** (Subject, Usage, IT, **Development**) × **three aspects** (requirements sources, context objects, properties and relations)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Devide the context into facets",
+          "loc": "Principles of structuration of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Classify aspects within facets",
+          "loc": "Principles of structuration of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Objects and events that need to be represented in",
+          "loc": "The 4 facets of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "how people and other systems use the system",
+          "loc": "The 4 facets of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "all aspects that influence development procedures",
+          "loc": "The 4 facets of the context"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "People and artefacts that should be",
+          "loc": "3 aspects in each facet"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "How things and poeple in the context relate to",
+          "loc": "3 aspects in each facet"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-10",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour documenter le contexte et ses frontières, on utilise souvent des diagrammes de cas d'utilisation, dont les acteurs sont des personnes ou d'autres systèmes de l'environnement, ou des diagrammes de flux de données ; en pratique, on combine généralement plusieurs formes.",
+        "en": "To document the context and its boundaries, use case diagrams are often used, whose actors are people or other systems in the environment, or data flow diagrams; in practice, several forms are typically combined."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : cas d'utilisation (acteurs), flux de données (sources et puits) et diagrammes de classes UML sont possibles ; le support précise qu'on en utilise typiquement plusieurs.",
+        "en": "TRUE: use case diagrams (actors), data flow diagrams (sources and sinks) and UML class diagrams are possible; the material states that typically several are used."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "actors (such as people or other systems) in the system environment",
+          "loc": "2.3 Documenting the System Context"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-11",
+      "type": "mcq",
+      "question": {
+        "fr": "Un étudiant dessine le diagramme de cas d'utilisation du contexte d'un système de réservation. Laquelle de ses pratiques contredit le « Do / Don't » du cours ?",
+        "en": "A student draws the use case diagram of a booking system's context. Which of their practices contradicts the course's \"Do / Don't\"?"
+      },
+      "options": [
+        {
+          "fr": "Il mêle des niveaux de détail et ajoute des cas d'exception.",
+          "en": "He mixes levels of detail and adds exception cases."
+        },
+        {
+          "fr": "Il commence par identifier les acteurs, puis il identifie leurs buts.",
+          "en": "He starts by identifying the actors, then identifies their goals."
+        },
+        {
+          "fr": "Il ne représente que les cas nominaux, complémentaires les uns des autres.",
+          "en": "He only shows the nominal cases, complementary to one another."
+        },
+        {
+          "fr": "Il formule chaque cas comme un service fourni par le système (réifier).",
+          "en": "He words each case as a service provided by the system (reify)."
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "À éviter (**Don't**) : mélanger les niveaux de détail et y mettre les cas alternatifs (non nominaux, exceptions). À faire (**Do**) : identifier acteurs et buts, réifier, traiter les cas complémentaires (nominaux).",
+        "en": "To avoid (**Don't**): mixing levels of detail and including alternative cases (non-nominal, exceptions). To do (**Do**): identify actors and goals, reify, handle complementary (nominal) cases."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Mix up levels of details",
+          "loc": "Use Case Diagrams"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-12",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un modèle de domaine est une description formalisée du monde réel, partagée par tous, qui est ensuite implémentée telle quelle dans le système, avec une notation comme E/R ou BPMN.",
+        "en": "A domain model is a formalized description of the real world, shared by everyone, which is then implemented as is in the system, with a notation such as E/R or BPMN."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le modèle de domaine est une description formalisée du monde réel, partagée par tous, mais il n'est **pas implémenté** (il est abstrait).",
+        "en": "FALSE: a domain model is a formalized description of the real world, shared by everyone, but it is **not implemented** (it is abstract)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Formalized description of",
+          "loc": "Domain models"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Not implemented (abstract",
+          "loc": "Domain models"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-qz-13",
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le cours, les mauvaises hypothèses sur le contexte surviennent soit parce que les auteurs des exigences n'ont pas accès à assez d'information, soit parce que cette information n'existe pas.",
+        "en": "According to the course, bad assumptions about the context occur either because requirement authors do not have access to enough information, or because the information does not exist."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c'est la cause des « bad assumptions » (besoins, buts, contraintes, concept d'opération, budget, calendrier, organisation…).",
+        "en": "TRUE: this is the cause of \"bad assumptions\" (needs, goals, constraints, operations concept, budget, schedule, organization…)."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "occur either because requirement authors do not",
+          "loc": "Bad assumptions"
+        }
+      ]
+    }
+  ],
   "exercises": [],
   "writing": []
 }
