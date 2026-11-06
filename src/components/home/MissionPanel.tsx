@@ -20,7 +20,7 @@ export default function MissionPanel({ due }: { due: number }) {
         </div>
         <div className="mono dim text-right leading-relaxed">{UI.home.missionCards}</div>
       </div>
-      <Link to="/reviser" className="btn primary btn-block">
+      <Link to="/express" className="btn primary btn-block">
         <Icon icon={Zap} />
         {UI.home.missionLaunch}
       </Link>

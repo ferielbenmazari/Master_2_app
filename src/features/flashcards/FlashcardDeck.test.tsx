@@ -1,7 +1,8 @@
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
-import { getCourse, loadChapter } from '@/content/loader'
+import { getCourse, loadAllChapters, loadChapter } from '@/content/loader'
 import AppRoutes from '@/routes'
+import { chapterCardCount } from '@/features/flashcards/glossary-cards'
 import { db } from '@/store/db'
 import { getCardState } from '@/store/fsrs'
 import { PrefsProvider } from '@/store/PrefsProvider'
@@ -41,7 +42,7 @@ describe('FlashcardDeck', () => {
     expect(await db.cards.count()).toBe(0)
 
     const flip = screen.getByRole('button', { name: 'Retourner la carte' })
-    expect(flip).toHaveFocus()
+    await waitFor(() => expect(flip).toHaveFocus())
     // verso masqué aux lecteurs d'écran tant que la carte n'est pas retournée
     expect(document.querySelector('.face.back')).toHaveAttribute('aria-hidden', 'true')
     expect(document.querySelector('.face.back')).toHaveAttribute('inert')
@@ -58,7 +59,8 @@ describe('FlashcardDeck', () => {
   it('noter une carte la persiste et avance le compteur ; « Encore » la fait revenir', async () => {
     const ch = await loadChapter(CH)
     await open(`/matiere/rec1/chapitre/${CH}/flashcards`)
-    const total = ch.flashcards.length
+    // 10 cartes écrites (d'abord) + cartes du glossaire, dans la limite de nouvelles cartes par jour
+    const total = Math.min(DEFAULT_PREFS.newPerDay, chapterCardCount(await loadAllChapters('rec1'), CH))
     expect(screen.getByRole('status', { name: `Carte 1 sur ${total}` })).toBeInTheDocument()
     const firstId = ch.flashcards[0]!.id
 

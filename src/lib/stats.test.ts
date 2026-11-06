@@ -10,6 +10,7 @@ function chapter(id: string, quiz: { id: string; notions?: string[] }[], cards: 
     title: L(`Titre ${id}`),
     quiz: quiz.map((q) => ({ ...q })),
     flashcards: cards.map((c) => ({ id: c })),
+    glossary: [],
   } as unknown as Chapter
 }
 const att = (itemId: string, correct: boolean, kind = 'quiz'): Attempt => ({ itemId, kind, correct, at: '2026-11-01T10:00:00Z' })
@@ -48,6 +49,13 @@ describe('courseStats', () => {
     const s = courseStats(input, [], [card('f1', 21), card('f2', 21.5), card('f3', 60), card('ailleurs', 99)], new Set())
     expect(s.cardsTotal).toBe(3)
     expect(s.cardsMastered).toBe(2)
+  })
+
+  it('les cartes du glossaire comptent dans le total et les maîtrisées', () => {
+    const withTerm = { ...ch1, glossary: [{ id: 'term-a', fr: 'a', en: 'a', definition: L('d'), src: [] }] } as unknown as Chapter
+    const s = courseStats({ courseId: 'c', chapters: [withTerm, ch2] }, [], [card('c-01-gl-term-a-a', 30), card('c-01-gl-term-a-b', 3)], new Set())
+    expect(s.cardsTotal).toBe(5) // f1, f2, f3 + 2 cartes du terme
+    expect(s.cardsMastered).toBe(1)
   })
 
   it('notions les plus ratées : par notion, repli sur le chapitre, triées, plafonnées à 5', () => {

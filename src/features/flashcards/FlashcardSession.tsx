@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { PartyPopper } from 'lucide-react'
 import EmptyState from '@/components/ui/EmptyState'
-import { getCourse, getCourses, loadAllChapters, loadChapter } from '@/content/loader'
+import { getCourse, getCourses, loadAllChapters } from '@/content/loader'
 import { UI } from '@/i18n/ui'
 import { getDueCards } from '@/store/fsrs'
 import { usePrefs } from '@/store/PrefsProvider'
@@ -23,10 +23,11 @@ async function load(scope: SessionScope, newPerDay: number, now: Date): Promise<
     scope === 'all'
       ? await Promise.all(getCourses().map(async (course) => ({ course, chapters: await loadAllChapters(course.id) })))
       : await (async () => {
+          // toute la matière : un terme déjà défini dans un chapitre précédent n'a pas de carte ici
           const course = getCourse(scope.courseId)
-          return course ? [{ course, chapters: [await loadChapter(scope.chapterId)] }] : []
+          return course ? [{ course, chapters: await loadAllChapters(course.id) }] : []
         })()
-  const cards = indexCards(entries)
+  const cards = indexCards(entries, scope === 'all' ? undefined : scope.chapterId)
   return { cards, ids: await getDueCards(now, [...cards.keys()], newPerDay) }
 }
 

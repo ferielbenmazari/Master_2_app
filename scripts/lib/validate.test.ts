@@ -276,6 +276,6 @@ describe('avertissements (règle 12)', () => {
       notions: (n) => { n.notions.push({ id: 'n-orpheline', label: L('Orpheline'), importance: 3, why: 'test', chapter: '05', src: [quote0] }) },
     })
     expect(r.issues.some((i) => i.code === 'W-coverage' && i.path === 'n-orpheline')).toBe(true)
-    expect(r.stats.coverage3.total).toBe(baseNotions.notions.filter((n) => n.importance === 3).length + 1)
+    expect(r.stats.coverage3.total).toBe(baseNotions.notions.filter((n) => n.importance === 3 && n.chapter === '05').length + 1)
   })
 })

@@ -14,6 +14,7 @@ const Glossary = lazy(() => import('@/pages/Glossary'))
 const ChapterSheet = lazy(() => import('@/pages/ChapterSheet'))
 const ChapterFlashcards = lazy(() => import('@/features/flashcards/ChapterFlashcards'))
 const ReviewPage = lazy(() => import('@/features/flashcards/ReviewPage'))
+const ExpressRunner = lazy(() => import('@/features/express/ExpressRunner'))
 const QuizRunner = lazy(() => import('@/features/quiz/QuizRunner'))
 const ExercisesLayout = lazy(() => import('@/features/exercises/ExercisesLayout'))
 const ExerciseList = lazy(() => import('@/features/exercises/ExerciseList'))
@@ -22,7 +23,7 @@ const Profile = lazy(() => import('@/pages/Profile'))
 const Reader = lazy(() => import('@/pages/Reader'))
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 
-const CHAPTER_VIEWS = ['express', 'anglais']
+const CHAPTER_VIEWS = ['anglais']
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
 export default function AppRoutes() {
@@ -30,6 +31,9 @@ export default function AppRoutes() {
     <Suspense fallback={null}>
       <Routes>
         <Route path="/styleguide" element={<Styleguide />} />
+        {/* Express : plein écran, hors coquille (pas de barre de navigation) */}
+        <Route path="/express" element={<ExpressRunner />} />
+        <Route path="/matiere/:courseId/chapitre/:chapterId/express" element={<ExpressRunner />} />
         <Route element={<AppLayout />}>
           <Route index element={<Home />} />
           <Route path="reviser" element={<ReviewPage />} />

@@ -32,7 +32,7 @@ describe('routes', () => {
   })
 
   it('page non réalisée → « Bientôt ici »', () => {
-    renderAt('/matiere/isi1/chapitre/x/express')
+    renderAt('/matiere/isi1/chapitre/x/anglais')
     expect(screen.getByRole('heading', { name: 'Bientôt ici' })).toBeInTheDocument()
   })
 

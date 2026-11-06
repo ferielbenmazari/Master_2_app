@@ -1,4 +1,5 @@
 import type { Chapter, L } from '@/content/schema'
+import { courseGlossaryCards } from '@/features/flashcards/glossary-cards'
 import type { Attempt, CardState } from '@/store/db'
 
 /** Une carte est « maîtrisée » quand sa stabilité FSRS dépasse 21 jours. */
@@ -58,7 +59,8 @@ export function courseStats(
   for (const ch of chapters) {
     for (const q of ch.quiz) if (!quizItems.has(q.id)) quizItems.set(q.id, { chapter: ch, notions: q.notions ?? [] })
   }
-  const cardIds = new Set(chapters.flatMap((ch) => ch.flashcards.map((f) => f.id)))
+  const glossaryCards = courseGlossaryCards(chapters)
+  const cardIds = new Set(chapters.flatMap((ch) => [...ch.flashcards, ...(glossaryCards.get(ch.id) ?? [])].map((f) => f.id)))
 
   let quizAttempts = 0
   let quizCorrect = 0

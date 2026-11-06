@@ -1,6 +1,7 @@
 import { render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
-import { getChapterIndex, loadChapter } from '@/content/loader'
+import { getChapterIndex, loadAllChapters, loadChapter } from '@/content/loader'
+import { courseGlossaryCards } from '@/features/flashcards/glossary-cards'
 import AppRoutes from '@/routes'
 import { db } from '@/store/db'
 import { PrefsProvider } from '@/store/PrefsProvider'
@@ -39,6 +40,9 @@ describe('profil : statistiques', () => {
     const ch = await loadChapter(CH)
     const [q1, q2, q3] = ch.quiz
     const cardId = ch.flashcards[0]?.id ?? ''
+    // cartes écrites + cartes tirées du glossaire de la matière
+    const rec1 = await loadAllChapters('rec1')
+    const cardsTotal = rec1.reduce((n, c) => n + c.flashcards.length, 0) + [...courseGlossaryCards(rec1).values()].reduce((n, l) => n + l.length, 0)
     await recordAttempt({ itemId: q1?.id ?? '', kind: 'quiz', correct: true })
     await recordAttempt({ itemId: q2?.id ?? '', kind: 'quiz', correct: false })
     await recordAttempt({ itemId: q3?.id ?? '', kind: 'quiz', correct: false })
@@ -53,7 +57,7 @@ describe('profil : statistiques', () => {
     const panel = (await screen.findByText('1 bonne réponse sur 3', {}, { timeout: 5000 })).closest('.panel') as HTMLElement
     expect(within(panel).getByText('33 %')).toBeInTheDocument()
     expect(within(panel).getByText(`${Math.round(100 / getChapterIndex('rec1').length)} %`)).toBeInTheDocument() // 1 chapitre lu
-    expect(within(panel).getByText(`1 / ${ch.flashcards.length}`)).toBeInTheDocument()
+    expect(within(panel).getByText(`1 / ${cardsTotal}`)).toBeInTheDocument()
     const links = within(panel).getAllByRole('link')
     expect(links.length).toBeGreaterThan(0)
     expect(links[0]).toHaveAttribute('href', expect.stringContaining(`/matiere/rec1/chapitre/${CH}`))

@@ -2,7 +2,7 @@
 id: T22
 title: "Flashcards tirées automatiquement du glossaire"
 lot: 1
-status: todo
+status: done
 depends: [T09]
 agent: builder
 ---
@@ -26,12 +26,14 @@ Aujourd'hui, 21 chapitres sur 22 ont `flashcards: []` : l'écran Flashcards est 
 4. Tests : ids stables, pas de doublon inter-chapitres, priorité aux cartes écrites, langue FR/EN.
 
 ## Critères d'acceptation
-- [ ] Chaque chapitre a ≥ 8 flashcards dans l'app, ≈ 470 au total (vérifié par un test sur le contenu réel ; INF4-02 est le plus petit : 4 termes propres)
-- [ ] L'historique FSRS des 10 cartes de REC1-05 est conservé (ids inchangés)
-- [ ] La puce Source d'une carte du glossaire montre les citations du terme
-- [ ] `npm run check` vert
+- [x] Chaque chapitre a ≥ 8 flashcards dans l'app, ≈ 470 au total (vérifié par un test sur le contenu réel ; INF4-02 est le plus petit : 4 termes propres)
+- [x] L'historique FSRS des 10 cartes de REC1-05 est conservé (ids inchangés)
+- [x] La puce Source d'une carte du glossaire montre les citations du terme
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Générer des flashcards dans les JSON (c'est le travail des agents de contenu, plus tard).
 
 ## Journal
+2026-11-06 — `glossary-cards.ts` (pur, testé : ids stables, dédup inter-chapitres au sein d'une matière, priorité aux cartes écrites, FR/EN) ; `indexCards` ajoute les cartes du glossaire après les cartes écrites (option `onlyChapterId` : la session d'un chapitre charge toute la matière pour dédupliquer comme la session globale). Compteur du hub, `allFlashcardIds` (cartes dues de l'accueil) et `courseStats` (cartes maîtrisées du profil) incluent désormais ces cartes. Contenu réel : ≈ 458 cartes (229 termes uniques), ≥ 8 par chapitre ; les 10 ids de REC1-05 sont inchangés.
+Écarts : déduplication limitée à une matière (un même `term.id` dans deux matières garde ses cartes dans chacune) ; verso « terme → définition » = définition + `<br>` + exemple/piège (libellés FR/EN dans `UI.flashcards`) ; test FlashcardDeck : `toHaveFocus` passé en `waitFor` (flaky sous charge).

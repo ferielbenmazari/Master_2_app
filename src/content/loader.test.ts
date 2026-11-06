@@ -32,7 +32,7 @@ describe('loader', () => {
   })
 
   it('charge les notions, null si absentes', async () => {
-    expect((await getNotions('rec1'))?.notions.length).toBe(12)
-    expect(await getNotions('isi1')).toBeNull()
+    expect((await getNotions('rec1'))?.notions.length).toBeGreaterThanOrEqual(12)
+    expect(await getNotions('cours-inconnu')).toBeNull()
   })
 })

@@ -4,9 +4,10 @@ import SegBar from '@/components/ui/SegBar'
 import { UI } from '@/i18n/ui'
 import { courseStyle } from '@/lib/course-color'
 import { flashKo, flashOk } from '@/lib/celebrate'
-import { GRADES, previewIntervals, review, Rating, type Grade } from '@/store/fsrs'
+import { previewIntervals, review, Rating, type Grade } from '@/store/fsrs'
 import { usePrefs } from '@/store/PrefsProvider'
 import FlashcardCard from './FlashcardCard'
+import RateBar from './RateBar'
 import { requeue } from './deck-queue'
 import type { DeckCard } from './deck-cards'
 
@@ -20,12 +21,6 @@ interface Props {
   finished: ReactNode
 }
 
-const RATE_COLOR: Record<Grade, string | undefined> = {
-  [Rating.Again]: 'var(--red)',
-  [Rating.Hard]: 'var(--orange)',
-  [Rating.Good]: undefined,
-  [Rating.Easy]: 'var(--cyan)',
-}
 const realNow = () => new Date()
 
 /** Session de flashcards : file d'attente, flip, 4 notes FSRS avec délai, raccourcis 1–4. */
@@ -129,22 +124,7 @@ export default function FlashcardDeck({ ids, cards, now = realNow, finished }: P
       <div className="sr-only" role="status" aria-live="polite">
         {flipped ? UI.flashcards.flipped : ''}
       </div>
-      <div className="rate" role="group" aria-label={UI.flashcards.rateGroup}>
-        {GRADES.map((g) => (
-          <button
-            key={g}
-            type="button"
-            className={g === Rating.Good ? 'good' : undefined}
-            style={{ '--c': RATE_COLOR[g] } as CSSProperties}
-            disabled={!flipped}
-            aria-label={shown ? UI.flashcards.rateLabel(UI.flashcards.ratings[g], shown[g], g) : UI.flashcards.ratings[g]}
-            onClick={() => void rate(g)}
-          >
-            {UI.flashcards.ratings[g]}
-            <small aria-hidden="true">{shown?.[g] ?? '…'}</small>
-          </button>
-        ))}
-      </div>
+      <RateBar delays={shown} disabled={!flipped} onRate={(g) => void rate(g)} />
       {error && (
         <p role="alert" className="mt-3 text-sm text-[var(--bad)]">
           {UI.flashcards.saveError}

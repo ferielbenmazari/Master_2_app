@@ -5,19 +5,22 @@ import Icon from '@/components/ui/Icon'
 import Panel from '@/components/ui/Panel'
 import Tag from '@/components/ui/Tag'
 import { getChapterIndex, getCourse, loadChapter } from '@/content/loader'
+import { useChapters } from '@/content/use-chapters'
 import type { Chapter } from '@/content/schema'
+import { chapterCardCount } from '@/features/flashcards/glossary-cards'
 import { pickLang } from '@/lib/bilingual'
 import { UI } from '@/i18n/ui'
 import { usePrefs } from '@/store/PrefsProvider'
 
 type TileDef = { view: string; label: string; icon: LucideIcon; count?: number }
 
-function tiles(ch: Chapter): TileDef[] {
+/** `cards` : écrites + tirées du glossaire (`undefined` tant que la matière n'est pas chargée). */
+function tiles(ch: Chapter, cards: number | undefined): TileDef[] {
   return [
     { view: 'express', label: UI.hub.express, icon: Timer },
     { view: 'lire', label: UI.hub.read, icon: BookOpen },
     { view: 'fiche', label: UI.hub.sheet, icon: FileText },
-    { view: 'flashcards', label: UI.hub.flashcards, icon: Layers, count: ch.flashcards.length },
+    { view: 'flashcards', label: UI.hub.flashcards, icon: Layers, count: cards },
     { view: 'quiz', label: UI.hub.quiz, icon: ListChecks, count: ch.quiz.length },
     { view: 'exercices', label: UI.hub.exercises, icon: FlaskConical, count: ch.exercises.length },
     { view: 'anglais', label: UI.hub.english, icon: Languages, count: ch.writing.length },
@@ -30,6 +33,7 @@ export default function ChapterHub() {
   const course = getCourse(courseId)
   const known = getChapterIndex(courseId).some((c) => c.id === chapterId)
   const { prefs } = usePrefs()
+  const courseChapters = useChapters(courseId)
   const [state, setState] = useState<{ id: string; chapter: Chapter } | null>(null)
 
   useEffect(() => {
@@ -77,7 +81,7 @@ export default function ChapterHub() {
         {hook.alt && <p className="text-sm text-ink-soft">{hook.alt}</p>}
       </header>
       <ul aria-label={UI.hub.tiles} className="stagger grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {tiles(chapter).map((t, i) => (
+        {tiles(chapter, courseChapters ? chapterCardCount(courseChapters, chapter.id) : undefined).map((t, i) => (
           <li key={t.view} style={{ '--i': i } as CSSProperties}>
             <Link to={`${base}/${t.view}`} className="block h-full">
               <Panel hi drop tilt className="flex h-full min-h-[110px] flex-col justify-between">
