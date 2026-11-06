@@ -9,8 +9,8 @@ Deux sessions Claude Code en parallèle (elles ne touchent pas les mêmes fichie
 
 | # | Session APP (`/next-task`, Sonnet) | Session CONTENU (Sonnet) | Toi |
 |---|---|---|---|
-| 1 | **T11** mise en ligne + PWA | **C07** `/quiz-essentiel isi1` (ch. 02 → 09, `/clear` entre chaque) | Créer le compte Cloudflare Pages (10 min, `docs/05-deploiement.md`) |
-| 2 | **T22** flashcards tirées du glossaire | **C07** (suite) puis traiter les 3 alertes de quiz INF4 (voir C07) | Donner les **dates des contrôles** → `examDate` des `course.json` |
+| 1 | **T11** mise en ligne + PWA | ~~C07 quiz ISI1 ch. 02 → 09~~ ✔ fait le 06/11 · **C07 suite** : V/F des annales sur 01-05 et 07-09 (`/quiz-essentiel isi1 <nn>` en mode ajout) | Créer le compte Cloudflare Pages (10 min, `docs/05-deploiement.md`) |
+| 2 | **T22** flashcards tirées du glossaire | **C07** fin : les 3 alertes de quiz INF4-04 et INF4-05 | Donner les **dates des contrôles** → `examDate` des `course.json` |
 | 3 | **T20** session Express 5 min | — | Cocher `PROGRAMME.md` d'ISI1 (5 min) : `[x]` vu, `[-]` pas vu |
 
 Ordre APP : T11 → T22 → T20. (T11 ne dépend plus de T20 : on met en ligne d'abord.)

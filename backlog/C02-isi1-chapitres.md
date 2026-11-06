@@ -21,4 +21,4 @@ Lancer `/ajouter-cours isi1 (étape 4)` dans Claude Code (session Sonnet). Peut 
 - [ ] 0 erreur de validation, 0 avertissement non traité
 
 ## Journal
-2026-11-06 (revue) : cours des 9 chapitres rédigés en mode essentiel (`draft`, sans fact-checker ni content-reviewer). Quiz : ch. 01 seulement (13 questions) → **C07**. Flashcards, exercices, atelier : vides. Thèmes d'annales sans chapitre : KAOS / i*, cas d'utilisation, priorisation (AHP, top 10, 100 $, Eisenhower), triage, cadre 3D de Pohl → attendre `PROGRAMME.md` coché et les notes de cours.
+2026-11-06 (revue) : cours des 9 chapitres rédigés en mode essentiel (`draft`, sans fact-checker ni content-reviewer). Quiz : faits pour les 9 chapitres le 2026-11-06 (13-15 questions chacun) ; complément annales → **C07**. Flashcards, exercices, atelier : vides. Thèmes d'annales sans chapitre : KAOS / i*, cas d'utilisation, priorisation (AHP, top 10, 100 $, Eisenhower), triage, cadre 3D de Pohl → attendre `PROGRAMME.md` coché et les notes de cours.
