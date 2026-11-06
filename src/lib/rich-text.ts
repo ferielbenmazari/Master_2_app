@@ -3,7 +3,7 @@
  * Le contenu est généré par des agents : on le traite comme non fiable. Aucune chaîne HTML
  * n'est produite ; le rendu React (RichText.tsx) ne crée que les balises de la liste blanche.
  */
-import { Lexer, type Token, type Tokens } from 'marked'
+import { getDefaults, Lexer, type Token, type Tokens } from 'marked'
 import { parseTermRefs } from '@/content/richtext'
 
 export type RichTag = 'strong' | 'em' | 'del' | 'code' | 'sup' | 'sub' | 'a'
@@ -119,9 +119,9 @@ function convert(tokens: Token[], ctx: Ctx): RichNode[] {
   return root
 }
 
-/** Analyse un texte de cours en arbre sûr. */
-export function parseRich(text: string): RichNode[] {
-  const labels: { termId: string; label?: string }[] = []
+/** Remplace les `[[termes]]` par des placeholders ; renvoie le source et la table des libellés. */
+function prepare(text: string): { src: string; labels: Ctx['labels'] } {
+  const labels: Ctx['labels'] = []
   let src = ''
   for (const seg of parseTermRefs(text.replaceAll(OPEN, '').replaceAll(CLOSE, ''))) {
     if (seg.type === 'text') src += seg.value
@@ -130,5 +130,82 @@ export function parseRich(text: string): RichNode[] {
       labels.push(seg.label ? { termId: seg.termId, label: seg.label } : { termId: seg.termId })
     }
   }
+  return { src, labels }
+}
+
+/** Analyse un texte de cours en arbre sûr. */
+export function parseRich(text: string): RichNode[] {
+  const { src, labels } = prepare(text)
   return convert(Lexer.lexInline(src), { labels })
+}
+
+/** Bloc de texte enrichi (markdown bloc) : paragraphes, listes, tableaux, citations, code. */
+export type RichBlock =
+  | { kind: 'p'; children: RichNode[] }
+  | { kind: 'heading'; children: RichNode[] }
+  | { kind: 'list'; ordered: boolean; start: number; items: RichBlock[][] }
+  | { kind: 'table'; head: RichNode[][]; rows: RichNode[][][] }
+  | { kind: 'quote'; children: RichBlock[] }
+  | { kind: 'code'; text: string }
+  | { kind: 'hr' }
+
+function convertBlocks(tokens: Token[], ctx: Ctx): RichBlock[] {
+  const out: RichBlock[] = []
+  for (const t of tokens) {
+    switch (t.type) {
+      case 'space':
+        break
+      case 'paragraph':
+      case 'text': {
+        const inline = (t as Tokens.Paragraph | Tokens.Text).tokens
+        out.push({
+          kind: 'p',
+          children: inline ? convert(inline, ctx) : withTerms(decode(t.raw), ctx.labels),
+        })
+        break
+      }
+      case 'heading':
+        out.push({ kind: 'heading', children: convert((t as Tokens.Heading).tokens, ctx) })
+        break
+      case 'list': {
+        const l = t as Tokens.List
+        out.push({
+          kind: 'list',
+          ordered: l.ordered,
+          start: typeof l.start === 'number' ? l.start : 1,
+          items: l.items.map((it) => convertBlocks(it.tokens, ctx)),
+        })
+        break
+      }
+      case 'table': {
+        const tb = t as Tokens.Table
+        out.push({
+          kind: 'table',
+          head: tb.header.map((c) => convert(c.tokens, ctx)),
+          rows: tb.rows.map((r) => r.map((c) => convert(c.tokens, ctx))),
+        })
+        break
+      }
+      case 'blockquote':
+        out.push({ kind: 'quote', children: convertBlocks((t as Tokens.Blockquote).tokens, ctx) })
+        break
+      case 'code':
+        out.push({ kind: 'code', text: (t as Tokens.Code).text })
+        break
+      case 'hr':
+        out.push({ kind: 'hr' })
+        break
+      default:
+        // HTML brut et le reste : affiché comme texte inerte
+        out.push({ kind: 'p', children: [{ kind: 'text', value: t.raw.trim() }] })
+    }
+  }
+  return out
+}
+
+/** Analyse un texte markdown « bloc » en arbre sûr (jamais de HTML). */
+export function parseRichBlocks(text: string): RichBlock[] {
+  const { src, labels } = prepare(text)
+  // breaks : un retour à la ligne simple reste un retour à la ligne (énoncés « a) … \n b) … »)
+  return convertBlocks(Lexer.lex(src, { ...getDefaults(), breaks: true }), { labels })
 }

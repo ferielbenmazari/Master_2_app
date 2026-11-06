@@ -83,6 +83,7 @@
 ## Données locales (Dexie)
 
 Préférences (pseudo, avatar, thème, mode langue, langue d'entraînement) : `localStorage` clé `m2rev:prefs`, via `src/store/prefs.ts` (lecture/écriture dans `try/catch`, valeurs par défaut si indisponible).
+Brouillons d'exercices (T13) : `localStorage` clés `m2rev:draft:<exerciseId>`, via `src/store/drafts.ts` ; hors export JSON, effacés par `resetAll`.
 
 | Table Dexie | Clé | Contenu |
 |---|---|---|

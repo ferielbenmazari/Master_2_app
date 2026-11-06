@@ -15,11 +15,14 @@ const ChapterSheet = lazy(() => import('@/pages/ChapterSheet'))
 const ChapterFlashcards = lazy(() => import('@/features/flashcards/ChapterFlashcards'))
 const ReviewPage = lazy(() => import('@/features/flashcards/ReviewPage'))
 const QuizRunner = lazy(() => import('@/features/quiz/QuizRunner'))
+const ExercisesLayout = lazy(() => import('@/features/exercises/ExercisesLayout'))
+const ExerciseList = lazy(() => import('@/features/exercises/ExerciseList'))
+const ExerciseView = lazy(() => import('@/features/exercises/ExerciseView'))
 const Profile = lazy(() => import('@/pages/Profile'))
 const Reader = lazy(() => import('@/pages/Reader'))
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 
-const CHAPTER_VIEWS = ['express', 'exercices', 'anglais']
+const CHAPTER_VIEWS = ['express', 'anglais']
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
 export default function AppRoutes() {
@@ -42,6 +45,10 @@ export default function AppRoutes() {
               <Route path="quiz" element={<QuizRunner />} />
               <Route path="fiche" element={<ChapterSheet />} />
               <Route path="flashcards" element={<ChapterFlashcards />} />
+              <Route path="exercices" element={<ExercisesLayout />}>
+                <Route index element={<ExerciseList />} />
+                <Route path=":exerciseId" element={<ExerciseView />} />
+              </Route>
               {CHAPTER_VIEWS.map((v) => (
                 <Route key={v} path={v} element={<Soon />} />
               ))}

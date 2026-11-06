@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { UI } from '@/i18n/ui'
 import { db, SCHEMA_VERSION } from './db'
+import { removeDrafts } from './drafts'
 import { AVATAR_COLORS, DEFAULT_PREFS, MAX_NEW_PER_DAY, loadPrefs, removePrefs, savePrefs, type Prefs } from './prefs'
 import { localDate } from './progress'
 
@@ -138,4 +139,5 @@ export async function resetAll(): Promise<void> {
     Promise.all([db.cards.clear(), db.attempts.clear(), db.reading.clear(), db.activity.clear()]),
   )
   removePrefs()
+  removeDrafts()
 }

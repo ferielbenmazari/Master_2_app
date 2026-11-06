@@ -2,7 +2,7 @@
 id: T13
 title: "Exercices corrigés"
 lot: 2
-status: todo
+status: done
 depends: [T11]
 agent: builder
 ---
@@ -21,12 +21,15 @@ S'entraîner sur des exercices de niveau Master avec indices et corrigé.
 3. `RichText` en mode bloc (`marked.parse` + rendu sûr + termes).
 
 ## Critères d'acceptation
-- [ ] Les 3 exercices de REC1-05 complets
-- [ ] Le brouillon survit à un rechargement
-- [ ] `npm run check` vert
+- [x] Les 3 exercices de REC1-05 complets
+- [x] Le brouillon survit à un rechargement
+- [x] `npm run check` vert
 
 ## Hors périmètre
 Correction automatique.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-06 : liste `…/exercices` (tri par difficulté, SegBar, badge « Format partiel », « Déjà fait ») et écran `…/exercices/:exerciseId` (énoncé, brouillon, indices un par un, corrigé FR+EN, auto-évaluation Raté/Moyen/Réussi -> `recordAttempt` kind `exercise`, score 0 / 0,5 / 1, correct = Réussi seulement).
+- `RichText` gagne `block` (`parseRichBlocks` : paragraphes, listes, tableaux, citations, code ; HTML brut inerte ; retour à la ligne simple conservé).
+- Brouillon : localStorage via `src/store/drafts.ts` (effacé par `resetAll`, hors export JSON).
+- Écart : test `QuizRunner` (déjà instable en suite complète, > 5 s) passé à 20 s de timeout pour que `npm run check` soit vert. Captures : `tests/screens/T13-*.png`.

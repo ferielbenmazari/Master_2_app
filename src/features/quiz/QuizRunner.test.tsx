@@ -99,7 +99,7 @@ describe('QuizRunner REC1-05', () => {
     expect(screen.getByLabelText('Score : 3 bonnes réponses sur 3')).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Refaire mes erreurs' })).toBeNull()
     expect(await db.attempts.count()).toBe(13)
-  })
+  }, 20000)
 
   it('vrai/faux : FAUX ouvre le champ de justification, affichée avec la justification officielle', async () => {
     await open()

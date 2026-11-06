@@ -1251,6 +1251,81 @@
   }
 }
 
+/* ---------- markdown bloc (RichText block) : exercices ---------- */
+@layer components {
+  .rich-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .rich-block ol,
+  .rich-block ul {
+    padding-left: 1.4em;
+  }
+  .rich-block ol {
+    list-style: decimal;
+  }
+  .rich-block ul {
+    list-style: disc;
+  }
+  .rich-block li + li {
+    margin-top: 4px;
+  }
+  .rich-block li > p + p {
+    margin-top: 4px;
+  }
+  .rich-block blockquote {
+    border-left: 2px solid var(--course, var(--acid));
+    padding-left: 12px;
+    color: var(--ink-soft);
+  }
+  .rich-block pre {
+    overflow-x: auto;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    font-family: var(--f-mono);
+    font-size: 13px;
+  }
+  .rich-block code {
+    font-family: var(--f-mono);
+    font-size: 0.9em;
+    padding: 0 4px;
+    background: var(--surface-2);
+  }
+  .rich-block pre code {
+    padding: 0;
+    background: none;
+  }
+  .rich-block hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+  }
+  .rich-block .rb-heading {
+    font-family: var(--f-display);
+    font-weight: 700;
+  }
+  .ex-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+  }
+  .ex-draft {
+    width: 100%;
+    min-height: 140px;
+    padding: 10px 12px;
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--line-hi);
+    resize: vertical;
+  }
+  .ex-draft:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
 /* ---------- flashcards (maquette écran 03) ---------- */
 @layer components {
   .flip {

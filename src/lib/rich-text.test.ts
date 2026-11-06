@@ -1,4 +1,4 @@
-import { parseRich, safeHref, type RichNode } from './rich-text'
+import { parseRich, parseRichBlocks, safeHref, type RichNode } from './rich-text'
 
 /** Tous les nœuds, à plat. */
 function walk(nodes: RichNode[]): RichNode[] {
@@ -92,5 +92,45 @@ describe('safeHref', () => {
     expect(safeHref('//evil.fr')).toBeNull()
     expect(safeHref('/relatif')).toBeNull()
     expect(safeHref('')).toBeNull()
+  })
+})
+
+describe('parseRichBlocks (markdown bloc)', () => {
+  it('liste ordonnée, paragraphes et termes', () => {
+    const b = parseRichBlocks('Intro **gras** :\n\n1. un [[term-x]]\n2. deux')
+    expect(b).toHaveLength(2)
+    expect(b[0]).toMatchObject({ kind: 'p' })
+    const list = b[1]
+    expect(list).toMatchObject({ kind: 'list', ordered: true, start: 1 })
+    if (list?.kind !== 'list') throw new Error('liste attendue')
+    expect(list.items).toHaveLength(2)
+    const first = list.items[0]?.[0]
+    expect(first?.kind === 'p' && first.children.some((n) => n.kind === 'term')).toBe(true)
+  })
+
+  it('un retour à la ligne simple devient un saut de ligne', () => {
+    const b = parseRichBlocks('a) un\nb) deux')
+    expect(b).toHaveLength(1)
+    const p = b[0]
+    expect(p?.kind === 'p' && p.children.some((n) => n.kind === 'br')).toBe(true)
+  })
+
+  it('tableau', () => {
+    const b = parseRichBlocks('| A | B |\n|---|---|\n| 1 | **2** |')
+    expect(b[0]).toMatchObject({ kind: 'table' })
+    if (b[0]?.kind !== 'table') throw new Error('tableau attendu')
+    expect(b[0].head).toHaveLength(2)
+    expect(b[0].rows[0]).toHaveLength(2)
+  })
+
+  it('HTML brut neutralisé en texte', () => {
+    const b = parseRichBlocks('<script>alert(1)</script>')
+    expect(JSON.stringify(b)).not.toContain('"tag":"script"')
+    expect(b[0]).toMatchObject({ kind: 'p' })
+  })
+
+  it('lien javascript: neutralisé', () => {
+    const b = parseRichBlocks('[x](javascript:alert(1))')
+    expect(JSON.stringify(b)).not.toContain('javascript')
   })
 })
