@@ -68,3 +68,13 @@ export function putCard(card: CardState, date: string = localDate()): Promise<vo
 export function getCard(cardId: string): Promise<CardState | undefined> {
   return db.cards.get(cardId)
 }
+
+export function getAllCards(): Promise<CardState[]> {
+  return db.cards.toArray()
+}
+
+/** Ids des chapitres terminés (lus jusqu'au bout). */
+export async function getFinishedChapterIds(): Promise<Set<string>> {
+  const rows = await db.reading.toArray()
+  return new Set(rows.filter((r) => r.finishedAt).map((r) => r.chapterId))
+}

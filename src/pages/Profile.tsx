@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Download, RotateCcw, Upload } from 'lucide-react'
+import StatsSection from '@/components/profile/StatsSection'
 import Button from '@/components/ui/Button'
 import HexAvatar from '@/components/ui/HexAvatar'
 import LangToggle from '@/components/ui/LangToggle'
@@ -68,6 +69,7 @@ export default function Profile() {
         <h1 className="display text-2xl">{t.title}</h1>
         <span className="text-ink-soft">{prefs.pseudo}</span>
       </header>
+      <StatsSection />
       <Panel className="flex flex-col gap-4">
         <label className="flex flex-col gap-1 text-sm text-ink-soft">
           {t.pseudo}

@@ -15,7 +15,7 @@ export default function Home({ now }: { now?: Date }) {
   const { prefs } = usePrefs()
   const courses = getCourses()
   const due = useDueCount()
-  const streak = useStreak()
+  const { streak, grew } = useStreak()
   const read = useReadChapters(courses.flatMap((c) => getChapterIndex(c.id).map((r) => r.id)))
   const next = nextExam(courses, now)
   const log = next ? UI.home.logExam(next.course.code.replace(/^S\d+-/, ''), next.days, due) : UI.home.logNeutral(due)
@@ -27,7 +27,7 @@ export default function Home({ now }: { now?: Date }) {
         <div className="flex-1">
           <div className="flex items-baseline justify-between gap-2">
             <h1 className="display text-[15px]">{UI.home.greeting(prefs.pseudo)}</h1>
-            <span className="streak" aria-label={UI.home.streak(streak)}>
+            <span className={grew ? 'streak pop-up' : 'streak'} aria-label={UI.home.streak(streak)}>
               <Icon icon={Flame} />
               {streak}
             </span>

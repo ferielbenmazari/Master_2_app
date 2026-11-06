@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { currentStreak } from '@/lib/streak'
 import { getActivity, getReading } from './progress'
+import { noteStreak } from './streak-seen'
 
 /** Chapitres lus (finishedAt présent) parmi `chapterIds`. */
 export function useReadChapters(chapterIds: string[]): Set<string> {
@@ -38,16 +39,18 @@ export function useDueCount(): number {
   return n
 }
 
-export function useStreak(): number {
-  const [n, setN] = useState(0)
+export function useStreak(): { streak: number; grew: boolean } {
+  const [state, setState] = useState({ streak: 0, grew: false })
   useEffect(() => {
     let live = true
-    getActivity().then(
-      (rows) => live && setN(currentStreak(rows.filter((r) => r.count > 0).map((r) => r.date))),
-    )
+    getActivity().then((rows) => {
+      if (!live) return
+      const streak = currentStreak(rows.filter((r) => r.count > 0).map((r) => r.date))
+      setState({ streak, grew: noteStreak(streak) })
+    })
     return () => {
       live = false
     }
   }, [])
-  return n
+  return state
 }
