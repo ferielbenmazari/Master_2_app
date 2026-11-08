@@ -1,4 +1,5 @@
-import { Flame } from 'lucide-react'
+import { Flame, Users } from 'lucide-react'
+import { Link } from 'react-router'
 import CourseCard from '@/components/home/CourseCard'
 import MissionPanel from '@/components/home/MissionPanel'
 import HexAvatar from '@/components/ui/HexAvatar'
@@ -7,6 +8,7 @@ import TypeLine from '@/components/ui/TypeLine'
 import XpBar from '@/components/ui/XpBar'
 import { getChapterIndex, getCourses } from '@/content/loader'
 import { nextExam } from '@/lib/exam-countdown'
+import { GAME } from '@/i18n/game-ui'
 import { UI } from '@/i18n/ui'
 import { usePrefs } from '@/store/PrefsProvider'
 import { useDueCount, useReadChapters, useStreak } from '@/store/use-progress'
@@ -48,6 +50,10 @@ export default function Home({ now }: { now?: Date }) {
           ))}
         </div>
       </section>
+      <Link to="/jouer" className="mono dim inline-flex min-h-11 items-center gap-2 self-start underline underline-offset-4">
+        <Icon icon={Users} size={14} />
+        {GAME.entry}
+      </Link>
     </div>
   )
 }

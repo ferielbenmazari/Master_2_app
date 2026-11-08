@@ -32,13 +32,28 @@ describe('routes', () => {
   })
 
   it('page non réalisée → « Bientôt ici »', () => {
-    renderAt('/jouer')
+    renderAt('/jouer/passe-telephone')
     expect(screen.getByRole('heading', { name: 'Bientôt ici' })).toBeInTheDocument()
   })
 
-  it('/jouer/test → page de test réseau (et /jouer reste « Bientôt »)', async () => {
+  it('/jouer → Arène (créer / rejoindre)', async () => {
+    renderAt('/jouer')
+    expect(await screen.findByRole('heading', { name: 'Créer une partie' }, { timeout: 8000 })).toBeInTheDocument()
+  }, 15_000)
+
+  it('/jouer/rejoindre/CODE préremplit le code', async () => {
+    renderAt('/jouer/rejoindre/K7PX')
+    expect(await screen.findByLabelText(/Code de la salle/, {}, { timeout: 8000 })).toHaveValue('K7PX')
+  }, 15_000)
+
+  it('/jouer/creer → choix des chapitres', async () => {
+    renderAt('/jouer/creer')
+    expect(await screen.findByText('Chapitres en jeu', {}, { timeout: 8000 })).toBeInTheDocument()
+  }, 15_000)
+
+  it('/jouer/test → page de test réseau ', async () => {
     renderAt('/jouer/test')
-    expect(await screen.findByRole('heading', { name: 'Test réseau' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: 'Test réseau' }, { timeout: 8000 })).toBeInTheDocument()
     expect(screen.queryByRole('heading', { name: 'Bientôt ici' })).not.toBeInTheDocument()
   })
 

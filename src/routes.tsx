@@ -24,6 +24,9 @@ const ExamRunner = lazy(() => import('@/features/exams/ExamRunner'))
 const Profile = lazy(() => import('@/pages/Profile'))
 const Reader = lazy(() => import('@/pages/Reader'))
 const TransportTest = lazy(() => import('@/features/game/TransportTest'))
+const ArenaPage = lazy(() => import('@/features/game/ArenaPage'))
+const BattleHost = lazy(() => import('@/features/game/BattleHost'))
+const BattleGuest = lazy(() => import('@/features/game/BattleGuest'))
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
@@ -39,6 +42,9 @@ export default function AppRoutes() {
           <Route index element={<Home />} />
           <Route path="reviser" element={<ReviewPage />} />
           <Route path="jouer/test" element={<TransportTest />} />
+          <Route path="jouer" element={<ArenaPage />} />
+          <Route path="jouer/creer" element={<BattleHost />} />
+          <Route path="jouer/rejoindre/:code?" element={<BattleGuest />} />
           <Route path="jouer/*" element={<TitledSoon title={UI.arena.title} />} />
           <Route path="profil" element={<Profile />} />
           <Route path="matiere/:courseId" element={<CourseScope />}>
