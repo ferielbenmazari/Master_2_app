@@ -2,7 +2,7 @@
 id: T16
 title: "Spike réseau multijoueur (test réel en partage de connexion)"
 lot: 3
-status: todo
+status: doing
 depends: [T11]
 agent: builder
 ---
@@ -23,12 +23,14 @@ Vérifier AVANT de construire le jeu que les téléphones se connectent entre eu
 5. **S'arrêter** : demander à l'utilisatrice de faire le test et de remplir le tableau. Décision : PeerJS OK → T17 ; sinon proposer un transport alternatif (nouvelle ADR) avant T17.
 
 ## Critères d'acceptation
-- [ ] Ping fonctionnel entre deux onglets de la même machine
+- [x] Ping fonctionnel entre deux onglets de la même machine (e2e `tests/e2e/transport.spec.ts`, transport local)
 - [ ] ADR rédigée avec résultats réels remplis par l'utilisatrice
-- [ ] `npm run check` vert
+- [ ] `npm run check` vert (tsc, lint, vitest src/ verts ; `validate:content` rouge hors périmètre, voir Journal)
 
 ## Hors périmètre
 Le jeu lui-même.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-08 : points 1 à 4 réalisés. `peerjs` installé ; interface `GameTransport` + `PeerTransport` (id `m2rev-<CODE>`, STUN Google, import dynamique : chunk ~87 Ko) + `LocalTransport` (BroadcastChannel) dans `src/features/game/transport/` ; logique pure (code de salle, messages, RTT, mapping d'erreurs) dans `room.ts` testé ; page `#/jouer/test` (`src/features/game/TransportTest.tsx`) ; ADR `docs/adr/001-transport-multijoueur.md` (statut « proposée »).
+- Tests automatisés : Vitest (`room.test.ts`, `local-transport.test.ts`, route) et e2e Playwright sur deux pages via le transport local. **Le transport PeerJS n'a jamais été exercé sur un vrai réseau** : aucune mesure n'a été faite.
+- **Reste à faire par l'utilisatrice (point 5)** : suivre le protocole de test manuel de l'ADR sur 3 téléphones (hôte = téléphone en partage de connexion, puis hôte = invité), remplir le tableau de résultats et le verdict. Selon le verdict : PeerJS OK → T17 ; sinon nouvelle ADR de transport alternatif avant T17. La tâche reste `doing` jusqu'à là (critère « ADR avec résultats réels » non atteint).

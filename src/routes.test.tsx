@@ -36,6 +36,12 @@ describe('routes', () => {
     expect(screen.getByRole('heading', { name: 'Bientôt ici' })).toBeInTheDocument()
   })
 
+  it('/jouer/test → page de test réseau (et /jouer reste « Bientôt »)', async () => {
+    renderAt('/jouer/test')
+    expect(await screen.findByRole('heading', { name: 'Test réseau' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Bientôt ici' })).not.toBeInTheDocument()
+  })
+
   it('le styleguide reste accessible', async () => {
     renderAt('/styleguide')
     expect(await screen.findByRole('heading', { level: 1 }, { timeout: 8000 })).toHaveTextContent(
