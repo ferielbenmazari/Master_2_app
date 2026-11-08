@@ -56,7 +56,7 @@ export default function QuestionScreen({ question, receivedAt, myChoice, lang, o
         <TimerRing
           seconds={left}
           total={total}
-          tone={left <= 5 ? 'danger' : left <= 10 ? 'warn' : undefined}
+          tone={left <= total * 0.25 ? 'danger' : left <= total * 0.5 ? 'warn' : undefined}
         />
       </div>
 

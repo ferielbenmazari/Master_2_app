@@ -507,3 +507,87 @@ function lobbyOf(s: HostState): GameMessage {
   const step = hostReduce(s, { type: 'hello', id: 'H', name: 'H', avatar: 'lime' })
   return step.out[0]!.msg
 }
+
+describe('réglages de la partie (temps, langue, correction)', () => {
+  const hello = (id: string): HostAction => ({ type: 'hello', id, name: id, avatar: 'lime' })
+  const custom = (seconds: number, lang: 'fr' | 'en', feedback: boolean) =>
+    run(createHostState('H', 2, seconds, lang, feedback), [hello('H'), hello('A')])
+
+  it('par défaut : français et correction détaillée', () => {
+    const { out } = run(createHostState('H', 2, 20), [hello('H')])
+    expect(msgs(out, 'lobby')[0]!.msg).toMatchObject({ lang: 'fr', feedback: true, seconds: 20 })
+  })
+
+  it('le salon et le départ annoncent temps, langue et correction aux invités', () => {
+    const { state, out } = custom(45, 'en', false)
+    expect(msgs(out, 'lobby').at(-1)!.msg).toMatchObject({
+      seconds: 45,
+      lang: 'en',
+      feedback: false,
+    })
+    const started = run(state, [{ type: 'start', questions: QUESTIONS, now: 1000 }])
+    expect(msgs(started.out, 'start')[0]!.msg).toMatchObject({
+      t: 'start',
+      seconds: 45,
+      lang: 'en',
+      feedback: false,
+    })
+    expect(msgs(started.out, 'question')[0]!.msg).toMatchObject({ durationMs: 45_000 })
+  })
+
+  it('le score suit la durée choisie (10 s : 5 s restantes = 750 points)', () => {
+    const { state } = custom(10, 'fr', true)
+    const s = run(state, [
+      { type: 'start', questions: QUESTIONS, now: 1000 },
+      { type: 'answer', id: 'H', index: 0, choice: true, now: 1000 + 5_000 },
+      { type: 'answer', id: 'A', index: 0, choice: true, now: 1000 + 10_000 },
+    ]).state
+    expect(Object.fromEntries(s.players.map((p) => [p.id, p.score]))).toEqual({ H: 750, A: 500 })
+  })
+
+  it('la durée choisie est celle du temps écoulé (30 s)', () => {
+    const { state } = custom(30, 'fr', true)
+    const s = run(state, [{ type: 'start', questions: QUESTIONS, now: 0 }]).state
+    expect(hostReduce(s, { type: 'tick', now: 29_999 }).state.phase).toBe('question')
+    expect(hostReduce(s, { type: 'tick', now: 30_000 }).state.phase).toBe('reveal')
+  })
+
+  it('sans correction détaillée, la justification n’est pas envoyée', () => {
+    const { state } = custom(20, 'fr', false)
+    const { out } = run(state, [
+      { type: 'start', questions: QUESTIONS, now: 0 },
+      { type: 'answer', id: 'H', index: 0, choice: true, now: 100 },
+      { type: 'answer', id: 'A', index: 0, choice: false, now: 100 },
+    ])
+    const reveal = msgs(out, 'reveal')[0]!.msg as Extract<GameMessage, { t: 'reveal' }>
+    expect(reveal.correct).toBe(true) // la bonne réponse reste donnée
+    expect(reveal.explanation).toEqual({ fr: '', en: '' })
+    expect(JSON.stringify(out)).not.toContain('pourquoi')
+  })
+
+  it('avec correction détaillée, la justification est envoyée', () => {
+    const { state } = custom(20, 'en', true)
+    const { out } = run(state, [
+      { type: 'start', questions: QUESTIONS, now: 0 },
+      { type: 'tick', now: 20_000 },
+    ])
+    expect((msgs(out, 'reveal')[0]!.msg as Extract<GameMessage, { t: 'reveal' }>).explanation).toEqual(
+      L('pourquoi 1'),
+    )
+  })
+
+  it('la vue d’un joueur retient langue et correction annoncées par l’hôte', () => {
+    const { out } = custom(15, 'en', false)
+    let v: GuestView = createGuestView()
+    expect(v).toMatchObject({ lang: 'fr', feedback: true })
+    for (const o of out) v = guestReduce(v, { type: 'msg', msg: o.msg, now: 1 })
+    expect(v).toMatchObject({ phase: 'lobby', seconds: 15, lang: 'en', feedback: false })
+  })
+
+  it('un message sans réglage (ancienne version) retombe sur français + correction', () => {
+    const m = parseGameMessage({ t: 'start', total: 5, seconds: 20 } as never)
+    expect(m).toEqual({ t: 'start', total: 5, seconds: 20, lang: 'fr', feedback: true })
+    const bad = parseGameMessage({ t: 'start', total: 5, seconds: 20, lang: 'de' } as never)
+    expect(bad).toMatchObject({ lang: 'fr' })
+  })
+})

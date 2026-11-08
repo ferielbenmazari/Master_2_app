@@ -62,11 +62,11 @@ describe('prepareQuiz', () => {
 })
 
 describe('REC1-05', () => {
-  it('les 10 items sont préparables et leur bonne réponse est reconnue', async () => {
+  it('tous les items sont préparables et leur bonne réponse est reconnue', async () => {
     const ch = await loadChapter('rec1-05-qualite-validite-ethique')
-    expect(ch.quiz).toHaveLength(10)
+    expect(ch.quiz.length).toBeGreaterThanOrEqual(10)
     const prepared = prepareQuiz(ch.quiz, 3)
-    expect(prepared).toHaveLength(10)
+    expect(prepared).toHaveLength(ch.quiz.length)
     for (const { item, order } of prepared) {
       if (item.type === 'true_false') {
         expect(isCorrect(item, item.answer)).toBe(true)

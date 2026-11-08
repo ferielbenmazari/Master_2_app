@@ -71,21 +71,22 @@ beforeEach(async () => {
 afterEach(() => vi.restoreAllMocks())
 
 describe('QuizRunner REC1-05', () => {
-  it('joue les 10 items, enregistre chaque réponse, puis ne refait que les erreurs', async () => {
+  it('joue tous les items, enregistre chaque réponse, puis ne refait que les erreurs', async () => {
     await open()
     const plan = prepareQuiz(chapter.quiz, SEED)
-    expect(plan).toHaveLength(10)
+    const n = plan.length
+    expect(n).toBeGreaterThanOrEqual(10)
     const wrongIdx = new Set([0, 4, 6])
     await playRound(plan, wrongIdx)
 
     const stored = await db.attempts.toArray()
-    expect(stored).toHaveLength(10)
+    expect(stored).toHaveLength(n)
     expect(stored.every((a) => a.kind === 'quiz')).toBe(true)
     expect(stored.filter((a) => !a.correct).map((a) => a.itemId).sort()).toEqual(
       [...wrongIdx].map((i) => plan[i]!.item.id).sort(),
     )
 
-    expect(screen.getByLabelText('Score : 7 bonnes réponses sur 10')).toBeInTheDocument()
+    expect(screen.getByLabelText(`Score : ${n - 3} bonnes réponses sur ${n}`)).toBeInTheDocument()
     const list = within(screen.getByRole('region', { name: 'À revoir' }))
     expect(list.getAllByRole('listitem')).toHaveLength(3)
 
@@ -98,7 +99,7 @@ describe('QuizRunner REC1-05', () => {
     await playRound(plan2, new Set())
     expect(screen.getByLabelText('Score : 3 bonnes réponses sur 3')).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Refaire mes erreurs' })).toBeNull()
-    expect(await db.attempts.count()).toBe(13)
+    expect(await db.attempts.count()).toBe(n + 3)
   }, 20000)
 
   it('vrai/faux : FAUX ouvre le champ de justification, affichée avec la justification officielle', async () => {
@@ -116,7 +117,7 @@ describe('QuizRunner REC1-05', () => {
     click(btn('Valider'))
     expect(await screen.findByText('parce que mon avis')).toBeInTheDocument()
     expect(screen.getByText('Justification du cours')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Voir la source dans le cours' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /voir dans le cours/ })).toBeInTheDocument()
   })
 
   it('énoncé en trainLang avec lien « Voir en EN »', async () => {

@@ -65,10 +65,12 @@ export default function RevealScreen({ view, selfId, lang, footer }: Props) {
             </ul>
           )}
         </div>
-        <div className="mt-1">
-          <span className="mono dim block">{GAME.explanation}</span>
-          <BothLangs fr={reveal.explanation.fr} en={reveal.explanation.en} />
-        </div>
+        {view.feedback && (
+          <div className="mt-1">
+            <span className="mono dim block">{GAME.explanation}</span>
+            <BothLangs fr={reveal.explanation.fr} en={reveal.explanation.en} />
+          </div>
+        )}
       </Panel>
 
       <div>

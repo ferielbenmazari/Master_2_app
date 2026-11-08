@@ -55,7 +55,7 @@ export default function RoomLobby({ code, view, selfId, host, onLeave, children 
         </>
       )}
       <PlayerList players={view.players} hostId={view.hostId} selfId={selfId} />
-      <p className="mono dim">{GAME.rules(view.total, view.seconds)}</p>
+      <p className="mono dim">{GAME.rulesFull(view.total, view.seconds, view.lang, view.feedback)}</p>
       {children}
       {host ? (
         <>

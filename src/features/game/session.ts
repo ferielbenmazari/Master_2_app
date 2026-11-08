@@ -8,6 +8,7 @@ import {
   QUESTION_COUNT,
   QUESTION_SECONDS,
   type BattleQuestion,
+  type GameLang,
   type Choice,
   type GameMessage,
   type GuestView,
@@ -47,6 +48,9 @@ export interface HostOptions {
   readonly me: Me
   readonly total?: number
   readonly seconds?: number
+  readonly lang?: GameLang
+  /** Correction détaillée (justification) après chaque question ; vrai par défaut. */
+  readonly feedback?: boolean
   readonly clock?: () => number
   readonly tickMs?: number
 }
@@ -68,8 +72,19 @@ export class HostSession extends Store<HostSnapshot> {
     this.transport = transport
     this.opts = opts
     this.clock = opts.clock ?? Date.now
-    this.state = createHostState('', opts.total ?? QUESTION_COUNT, opts.seconds ?? QUESTION_SECONDS)
+    this.state = this.freshState('')
     this.snapshot = { state: this.state, view: this.view, selfId: '' }
+  }
+
+  private freshState(hostId: string): HostState {
+    const { total, seconds, lang, feedback } = this.opts
+    return createHostState(
+      hostId,
+      total ?? QUESTION_COUNT,
+      seconds ?? QUESTION_SECONDS,
+      lang,
+      feedback ?? true,
+    )
   }
 
   /** Ouvre la salle `code` ; rejette avec une `TransportError`. */
@@ -77,11 +92,7 @@ export class HostSession extends Store<HostSnapshot> {
     await this.transport.host(code)
     if (this.closed) return
     const hostId = this.transport.selfId
-    this.state = createHostState(
-      hostId,
-      this.opts.total ?? QUESTION_COUNT,
-      this.opts.seconds ?? QUESTION_SECONDS,
-    )
+    this.state = this.freshState(hostId)
     this.unsubs = [
       this.transport.onMessage((from, wire) => this.receive(from, wire)),
       this.transport.onPeers((peers) =>

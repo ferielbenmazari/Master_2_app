@@ -55,6 +55,36 @@ async function room(code: string, guests: string[]) {
   return { host, guests: joined }
 }
 
+describe('réglages choisis par l’hôte avant la partie', () => {
+  it('temps, langue et correction détaillée arrivent aux invités dès le salon', async () => {
+    const host = new HostSession(new LocalTransport(), {
+      me: { name: 'Hôte', avatar: 'lime' },
+      total: 2,
+      seconds: 45,
+      lang: 'en',
+      feedback: false,
+      tickMs: 20,
+    })
+    sessions.push(host)
+    await host.open('WXYZ')
+    const g = new GuestSession(new LocalTransport(), { name: 'Alice', avatar: 'coral' })
+    sessions.push(g)
+    await g.join('WXYZ')
+    await until(() => g.getSnapshot().view.phase === 'lobby', 'salon rejoint')
+    expect(g.getSnapshot().view).toMatchObject({ seconds: 45, lang: 'en', feedback: false })
+
+    host.start(QUESTIONS)
+    await until(() => g.getSnapshot().view.phase === 'question', 'première question')
+    expect(g.getSnapshot().view.question!.durationMs).toBe(45_000)
+    host.answer(true)
+    g.answer(true)
+    await until(() => g.getSnapshot().view.phase === 'reveal', 'correction')
+    const reveal = g.getSnapshot().view.reveal!
+    expect(reveal.correct).toBe(true)
+    expect(reveal.explanation).toEqual({ fr: '', en: '' })
+  })
+})
+
 describe('partie complète via le transport local (hôte + 2 invités)', () => {
   it('salon → questions → corrections → podium, sans fuite des réponses', async () => {
     const { host, guests } = await room('ABCD', ['Alice', 'Bob'])

@@ -15,6 +15,11 @@ export type Choice = boolean | readonly number[]
 
 export const QUESTION_COUNT = 10
 export const QUESTION_SECONDS = 20
+/** Durées proposées à l'hôte avant la partie (en secondes). */
+export const SECONDS_CHOICES = [10, 15, 20, 30, 45, 60] as const
+/** Langue d'affichage des questions pour toute la partie (choisie par l'hôte). */
+export type GameLang = 'fr' | 'en'
+export const DEFAULT_LANG: GameLang = 'fr'
 export const BASE_POINTS = 500
 export const SPEED_POINTS = 500
 export const MAX_NAME_LENGTH = 20
@@ -82,8 +87,17 @@ export type GameMessage =
       readonly locked: boolean
       readonly total: number
       readonly seconds: number
+      readonly lang: GameLang
+      /** Correction détaillée (justification du cours) après chaque question ? */
+      readonly feedback: boolean
     }
-  | { readonly t: 'start'; readonly total: number; readonly seconds: number }
+  | {
+      readonly t: 'start'
+      readonly total: number
+      readonly seconds: number
+      readonly lang: GameLang
+      readonly feedback: boolean
+    }
   | ({ readonly t: 'question' } & PublicQuestion)
   | { readonly t: 'answer'; readonly index: number; readonly choice: Choice }
   | {
@@ -109,6 +123,8 @@ const isObj = (v: unknown): v is Record<string, unknown> =>
 const isInt = (v: unknown): v is number => typeof v === 'number' && Number.isInteger(v)
 const isL = (v: unknown): v is L => isObj(v) && typeof v.fr === 'string' && typeof v.en === 'string'
 const isAvatar = (v: unknown): v is CourseColor => AVATAR_COLORS.includes(v as CourseColor)
+const asLang = (v: unknown): GameLang => (v === 'en' ? 'en' : DEFAULT_LANG)
+const asFeedback = (v: unknown): boolean => v !== false
 
 export function cleanName(raw: unknown): string {
   const s = typeof raw === 'string' ? raw.replace(/\s+/g, ' ').trim().slice(0, MAX_NAME_LENGTH) : ''
@@ -163,11 +179,19 @@ export function parseGameMessage(raw: WireMessage): GameMessage | null {
             locked: m.locked,
             total: m.total,
             seconds: m.seconds,
+            lang: asLang(m.lang),
+            feedback: asFeedback(m.feedback),
           }
         : null
     case 'start':
       return isInt(m.total) && isInt(m.seconds)
-        ? { t: 'start', total: m.total, seconds: m.seconds }
+        ? {
+            t: 'start',
+            total: m.total,
+            seconds: m.seconds,
+            lang: asLang(m.lang),
+            feedback: asFeedback(m.feedback),
+          }
         : null
     case 'question':
       return isInt(m.index) &&
@@ -258,6 +282,8 @@ export interface HostState {
   /** Nombre de questions prévu (connu dès le salon, avant le départ). */
   readonly total: number
   readonly seconds: number
+  readonly lang: GameLang
+  readonly feedback: boolean
   readonly index: number
   readonly startedAt: number
   readonly answers: Readonly<Record<string, { readonly choice: Choice; readonly at: number }>>
@@ -293,6 +319,8 @@ export function createHostState(
   hostId: string,
   total: number = QUESTION_COUNT,
   seconds: number = QUESTION_SECONDS,
+  lang: GameLang = DEFAULT_LANG,
+  feedback = true,
 ): HostState {
   return {
     phase: 'lobby',
@@ -301,6 +329,8 @@ export function createHostState(
     questions: [],
     total,
     seconds,
+    lang,
+    feedback,
     index: -1,
     startedAt: 0,
     answers: {},
@@ -322,6 +352,8 @@ function lobbyMessage(s: HostState, locked: boolean): GameMessage {
     locked,
     total: s.total,
     seconds: s.seconds,
+    lang: s.lang,
+    feedback: s.feedback,
   }
 }
 
@@ -383,7 +415,8 @@ function closeRound(s: HostState): Step {
           t: 'reveal',
           index: s.index,
           correct: q.correct,
-          explanation: q.explanation,
+          // correction détaillée facultative : sans elle, rien n'est envoyé
+          explanation: s.feedback ? q.explanation : { fr: '', en: '' },
           results,
         },
       },
@@ -447,7 +480,13 @@ export function hostReduce(s: HostState, action: HostAction): Step {
       return {
         state,
         out: [
-          { to: ALL, msg: { t: 'start', total: state.total, seconds: s.seconds } },
+          { to: ALL, msg: {
+              t: 'start',
+              total: state.total,
+              seconds: s.seconds,
+              lang: s.lang,
+              feedback: s.feedback,
+            } },
           { to: ALL, msg: { t: 'question', ...publicQuestion(state, 0) } },
         ],
       }
@@ -514,6 +553,8 @@ export interface GuestView {
   readonly players: readonly PlayerInfo[]
   readonly total: number
   readonly seconds: number
+  readonly lang: GameLang
+  readonly feedback: boolean
   readonly question: PublicQuestion | null
   /** Instant (ms) de réception de la question : sert à afficher le minuteur. */
   readonly receivedAt: number
@@ -533,6 +574,8 @@ export function createGuestView(): GuestView {
     players: [],
     total: QUESTION_COUNT,
     seconds: QUESTION_SECONDS,
+    lang: DEFAULT_LANG,
+    feedback: true,
     question: null,
     receivedAt: 0,
     myChoice: null,
@@ -558,9 +601,11 @@ export function guestReduce(v: GuestView, ev: GuestEvent): GuestView {
         players: m.players,
         total: m.total,
         seconds: m.seconds,
+        lang: m.lang,
+        feedback: m.feedback,
       }
     case 'start':
-      return { ...v, total: m.total, seconds: m.seconds }
+      return { ...v, total: m.total, seconds: m.seconds, lang: m.lang, feedback: m.feedback }
     case 'question': {
       const question: PublicQuestion = {
         index: m.index,

@@ -35,6 +35,17 @@ export const GAME = {
   copyLink: 'Copier le lien',
   linkCopied: 'Lien copié',
   rules: (total: number, seconds: number) => `${total} questions · ${seconds} s`,
+  rulesFull: (total: number, seconds: number, lang: 'fr' | 'en', feedback: boolean) =>
+    `${total} questions · ${seconds} s · ${lang === 'en' ? 'questions en anglais' : 'questions en français'} · ${feedback ? 'avec correction détaillée' : 'sans correction détaillée'}`,
+  settings: 'Réglages de la partie',
+  secondsLabel: 'Temps pour répondre',
+  secondsOption: (s: number) => `${s} s`,
+  langLabel: 'Langue des questions',
+  langFr: 'Français',
+  langEn: 'English',
+  feedbackLabel: 'Correction détaillée après chaque question',
+  feedbackHelp:
+    'Affiche la justification du cours sous la bonne réponse. Désactivée, on ne voit que la bonne réponse, les points et le classement.',
   players: 'Joueurs',
   host: 'Hôte',
   you: 'Toi',

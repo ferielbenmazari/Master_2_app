@@ -2,7 +2,6 @@ import { Link } from 'react-router'
 import { ArrowRight, Flag } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { GAME } from '@/i18n/game-ui'
-import { usePrefs } from '@/store/PrefsProvider'
 import type { Choice, GuestView } from './engine'
 import Podium from './Podium'
 import QuestionScreen from './QuestionScreen'
@@ -19,7 +18,6 @@ interface Props {
 
 /** Écrans de jeu communs à l'hôte et aux invités (question, correction, podium). Le salon est géré par l'appelant. */
 export default function GameScreens({ view, selfId, onAnswer, onNext, onLeave }: Props) {
-  const { prefs } = usePrefs()
   const last = view.question ? view.question.index + 1 >= view.question.total : false
 
   if (view.phase === 'question' && view.question) {
@@ -29,7 +27,7 @@ export default function GameScreens({ view, selfId, onAnswer, onNext, onLeave }:
         question={view.question}
         receivedAt={view.receivedAt}
         myChoice={view.myChoice}
-        lang={prefs.trainLang}
+        lang={view.lang}
         onAnswer={onAnswer}
       />
     )
@@ -39,7 +37,7 @@ export default function GameScreens({ view, selfId, onAnswer, onNext, onLeave }:
       <RevealScreen
         view={view}
         selfId={selfId}
-        lang={prefs.trainLang}
+        lang={view.lang}
         footer={
           onNext ? (
             <Button variant="primary" block icon={last ? Flag : ArrowRight} onClick={onNext}>

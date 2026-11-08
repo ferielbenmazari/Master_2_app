@@ -152,3 +152,48 @@ test('code inconnu → message d’erreur en français ; le lien « Jouer à plu
   await page.getByRole('button', { name: 'Rejoindre', exact: true }).click()
   await expect(page.getByRole('alert')).toContainText('Aucune salle avec ce code')
 })
+
+test('réglages de l’hôte : 10 s, questions en anglais, sans correction détaillée — annoncés aux invités et appliqués', async ({
+  context,
+}) => {
+  test.setTimeout(90_000)
+  const host = await player(context, 'Hôtesse', '/#/jouer/creer')
+  await expect(host.getByRole('heading', { name: 'Réglages de la partie' })).toBeVisible()
+  // valeurs par défaut : 20 s, français, correction détaillée cochée
+  await expect(host.getByRole('button', { name: '20 s' })).toHaveAttribute('aria-pressed', 'true')
+  await expect(host.getByRole('button', { name: 'Français' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+  const feedback = host.getByLabel('Correction détaillée après chaque question')
+  await expect(feedback).toBeChecked()
+
+  await host.getByRole('button', { name: '10 s' }).click()
+  await host.getByRole('button', { name: 'English' }).click()
+  await feedback.uncheck()
+  await expect(host.getByText(/10 questions · 10 s/)).toBeVisible()
+  await useLocalTransport(host)
+  await host.getByRole('button', { name: 'Ouvrir la salle' }).click()
+  const radar = host.getByRole('img', { name: /^Code de la salle : [A-Z2-9]{4}$/ })
+  const code = /: ([A-Z2-9]{4})$/.exec((await radar.getAttribute('aria-label')) ?? '')![1]!
+
+  const alice = await player(context, 'Alice', `/#/jouer/rejoindre/${code}`)
+  await useLocalTransport(alice)
+  await alice.getByRole('button', { name: 'Rejoindre', exact: true }).click()
+  const rules = /10 questions · 10 s · questions en anglais · sans correction détaillée/
+  await expect(alice.getByText(rules)).toBeVisible()
+  await expect(host.getByText(rules)).toBeVisible()
+
+  await host.getByRole('button', { name: 'Lancer le combat' }).click()
+  // l'énoncé est affiché en anglais pour tous
+  await expect(alice.locator('.stmt[lang="en"]')).toBeVisible()
+  await expect(host.locator('.stmt[lang="en"]')).toBeVisible()
+  await answerCurrent(host, 1)
+  await answerCurrent(alice, 1)
+  // correction : bonne réponse et classement, mais pas de justification
+  for (const p of [host, alice]) {
+    await expect(p.getByTestId('right-answer')).toBeVisible()
+    await expect(p.getByRole('list', { name: 'Classement' })).toBeVisible()
+    await expect(p.getByText('Explication du cours')).toHaveCount(0)
+  }
+})

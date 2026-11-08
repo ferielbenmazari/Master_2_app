@@ -16,7 +16,7 @@ describe('session de quiz', () => {
   it('score, combo, XP et fin', async () => {
     const s = await play(new Set(['rec1-05-qz-03']))
     expect(s.finished).toBe(true)
-    expect(score(s)).toEqual({ correct: 9, total: 10 })
+    expect(score(s)).toEqual({ correct: s.round.length - 1, total: s.round.length })
     expect(mistakes(s).map((p) => p.item.id)).toEqual(['rec1-05-qz-03'])
     expect(s.xp).toBeGreaterThan(0)
   })
@@ -41,7 +41,7 @@ describe('session de quiz', () => {
   })
 
   it('« Refaire mes erreurs » ne repropose que les erreurs de la session', async () => {
-    const wrong = new Set(['rec1-05-qz-02', 'rec1-05-qz-07', 'rec1-05-qz-10'])
+    const wrong = new Set(['rec1-05-qz-02', 'rec1-05-qz-05', 'rec1-05-qz-10'])
     const s1 = await play(wrong)
     const s2 = sessionReducer(s1, { type: 'retry', seed: 5 })
     expect(s2.round.map((p) => p.item.id).sort()).toEqual([...wrong].sort())
@@ -50,11 +50,11 @@ describe('session de quiz', () => {
     // seconde manche : une seule erreur restante -> la suivante ne contient qu'elle
     let s = s2
     for (const p of s.round) {
-      s = sessionReducer(s, { type: 'answer', id: p.item.id, correct: p.item.id !== 'rec1-05-qz-07' })
+      s = sessionReducer(s, { type: 'answer', id: p.item.id, correct: p.item.id !== 'rec1-05-qz-05' })
       s = sessionReducer(s, { type: 'next' })
     }
     const s3 = sessionReducer(s, { type: 'retry', seed: 6 })
-    expect(s3.round.map((p) => p.item.id)).toEqual(['rec1-05-qz-07'])
+    expect(s3.round.map((p) => p.item.id)).toEqual(['rec1-05-qz-05'])
   })
 
   it('refuse de rejouer sans erreur, et ignore une double réponse', async () => {

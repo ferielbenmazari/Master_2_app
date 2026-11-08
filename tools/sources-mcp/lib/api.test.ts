@@ -47,9 +47,10 @@ describe('REC1 (sources réelles)', () => {
   it('coverage rec1 : rapporte les notions du chapitre 05 selon les règles de 06 §3', () => {
     const r = coverage(REPO, 'rec1')
     expect(r.byChapter['05']?.total).toBeGreaterThanOrEqual(12)
-    // 8 couvertes : n-validity-threats, n-plagiarism, n-avoid-plagiarism, n-translation-rules ne le sont pas (cf. validateur)
+    // n-plagiarism (sans flashcard), n-avoid-plagiarism (sans quiz ni flashcard) et n-translation-rules (sans bloc d'histoire) restent partielles (cf. validateur)
     const uncovered = r.notions.filter((n) => n.status !== 'covered').map((n) => n.id)
-    for (const id of ['n-avoid-plagiarism', 'n-plagiarism', 'n-translation-rules', 'n-validity-threats']) expect(uncovered).toContain(id)
+    for (const id of ['n-avoid-plagiarism', 'n-plagiarism', 'n-translation-rules']) expect(uncovered).toContain(id)
+    expect(r.notions.find((n) => n.id === 'n-validity-threats')?.status).toBe('covered')
   })
 })
 

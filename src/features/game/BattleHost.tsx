@@ -9,7 +9,7 @@ import { GAME } from '@/i18n/game-ui'
 import type { CourseColor } from '@/lib/course-color'
 import { usePrefs } from '@/store/PrefsProvider'
 import AvatarPicker from './AvatarPicker'
-import { QUESTION_COUNT, QUESTION_SECONDS } from './engine'
+import { QUESTION_COUNT, QUESTION_SECONDS, SECONDS_CHOICES, type GameLang } from './engine'
 import GameScreens from './GameScreens'
 import { countQuizItems, pickBattleQuestions } from './questions'
 import RoomLobby from './RoomLobby'
@@ -21,11 +21,22 @@ import TransportPicker from './TransportPicker'
 
 const CODE_ATTEMPTS = 3
 
+interface Settings {
+  seconds: number
+  lang: GameLang
+  feedback: boolean
+}
+
 interface Opened {
   session: HostSession
   code: string
   chapters: Chapter[]
 }
+
+const LANGS: readonly { value: GameLang; label: string }[] = [
+  { value: 'fr', label: GAME.langFr },
+  { value: 'en', label: GAME.langEn },
+]
 
 function errorText(e: unknown): string {
   const kind = e instanceof TransportError ? e.kind : 'unknown'
@@ -73,6 +84,11 @@ export default function BattleHost() {
   const [opened, setOpened] = useState<Opened | null>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
+  const [settings, setSettings] = useState<Settings>({
+    seconds: QUESTION_SECONDS,
+    lang: prefs.trainLang,
+    feedback: true,
+  })
   const live = useRef<HostSession | null>(null)
 
   useEffect(() => {
@@ -111,6 +127,9 @@ export default function BattleHost() {
       const session = new HostSession(createTransport(kind), {
         me: { name: prefs.pseudo, avatar },
         total,
+        seconds: settings.seconds,
+        lang: settings.lang,
+        feedback: settings.feedback,
       })
       live.current = session
       try {
@@ -205,9 +224,58 @@ export default function BattleHost() {
         )}
         <p role="status" className="mono dim">
           {available > 0
-            ? `${GAME.available(available)} · ${GAME.rules(Math.min(QUESTION_COUNT, available), QUESTION_SECONDS)}`
+            ? `${GAME.available(available)} · ${GAME.rules(Math.min(QUESTION_COUNT, available), settings.seconds)}`
             : GAME.noneSelected}
         </p>
+      </Panel>
+
+      <Panel className="flex flex-col gap-4 p-5">
+        <h2 className="display text-lg">{GAME.settings}</h2>
+        <fieldset className="flex flex-col gap-2 border-0 p-0">
+          <legend className="mb-1 font-bold">{GAME.secondsLabel}</legend>
+          <div className="flex flex-wrap gap-2" role="group">
+            {SECONDS_CHOICES.map((s) => (
+              <Button
+                key={s}
+                aria-pressed={settings.seconds === s}
+                className="min-w-16"
+                disabled={busy}
+                onClick={() => setSettings((o) => ({ ...o, seconds: s }))}
+              >
+                {GAME.secondsOption(s)}
+              </Button>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset className="flex flex-col gap-2 border-0 p-0">
+          <legend className="mb-1 font-bold">{GAME.langLabel}</legend>
+          <div className="flex flex-wrap gap-2" role="group">
+            {LANGS.map((l) => (
+              <Button
+                key={l.value}
+                aria-pressed={settings.lang === l.value}
+                lang={l.value}
+                disabled={busy}
+                onClick={() => setSettings((o) => ({ ...o, lang: l.value }))}
+              >
+                {l.label}
+              </Button>
+            ))}
+          </div>
+        </fieldset>
+        <div className="flex flex-col gap-1">
+          <label className="flex min-h-11 items-center gap-3 font-bold">
+            <input
+              type="checkbox"
+              checked={settings.feedback}
+              disabled={busy}
+              onChange={(e) => setSettings((o) => ({ ...o, feedback: e.target.checked }))}
+              className="h-5 w-5"
+            />
+            {GAME.feedbackLabel}
+          </label>
+          <p className="pl-8 text-sm text-ink-soft">{GAME.feedbackHelp}</p>
+        </div>
       </Panel>
 
       <Panel className="flex flex-col gap-4 p-5">
