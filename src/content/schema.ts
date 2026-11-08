@@ -181,7 +181,7 @@ export const ChapterSchema = z
     keyPoints: z.array(KeyPointSchema).min(5).max(10),
     flashcards: z.array(FlashcardSchema).max(25),
     quiz: z.array(QuizItemSchema).max(20),
-    exercises: z.array(ExerciseSchema).max(6),
+    exercises: z.array(ExerciseSchema).max(16),
     writing: z.array(WritingItemSchema).max(12),
   })
   .superRefine((ch, ctx) => {

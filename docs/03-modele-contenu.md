@@ -53,7 +53,7 @@ interface Chapter {
   keyPoints: KeyPoint[];      // 5 à 10 → fiche synthèse
   flashcards: Flashcard[];    // 8 à 25
   quiz: QuizItem[];           // 8 à 20, au moins 50 % de true_false
-  exercises: Exercise[];      // 2 à 6
+  exercises: Exercise[];      // 2 à 16 (REC1-01 en porte 15 : 4 exercices de cours + 11 corrigés du devoir)
   writing: WritingItem[];     // 4 à 12, chaque kind au moins 1 fois
 }
 

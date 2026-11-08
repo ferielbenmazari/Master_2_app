@@ -14,7 +14,7 @@ _Source : `ressources/S3__REC1/Markdown/1_recmeth_1.md`_
 - [ ] Methods in empirical research (SE / IS) → ch.01
 - [ ] Forms of research · primary vs secondary studies → ch.01
 - [ ] Exercise (cours 1) → ch.01
-- [ ] Assignment : présentation d'une méthodologie (questions à traiter) → ch.01
+- [ ] Assignment : présentation d'une méthodologie (questions à traiter) → ch.01 (corrigés des 11 méthodes dans les exercices) et ch.06 (fiches : définition et attentes de chaque méthode)
 
 ## Cours 2 — Research project, question, hypothesis
 _Source : `ressources/S3__REC1/Markdown/2_recmeth_2.md`_
