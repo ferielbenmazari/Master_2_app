@@ -50,7 +50,7 @@ export default function Course({ now }: { now?: Date }) {
   if (!course) return null
   const title = pickLang(course.title, prefs.langMode)
   const days = stickerDays(course.examDate, now)
-  const firstExam = getExamIndex(courseId)[0]
+  const hasExams = getExamIndex(courseId).length > 0
   const empty = getChapterIndex(courseId).length === 0
 
   return (
@@ -73,8 +73,8 @@ export default function Course({ now }: { now?: Date }) {
         <NavLink to={`/matiere/${courseId}/glossaire`} className={({ isActive }) => (isActive ? 'on' : '')}>
           {UI.course.glossary}
         </NavLink>
-        {firstExam ? (
-          <NavLink to={`/matiere/${courseId}/partiel/${firstExam.slug}`} className={({ isActive }) => (isActive ? 'on' : '')}>
+        {hasExams ? (
+          <NavLink to={`/matiere/${courseId}/partiels`} className={({ isActive }) => (isActive ? 'on' : '')}>
             {UI.course.exams}
           </NavLink>
         ) : (

@@ -655,6 +655,17 @@
     filter: drop-shadow(0 0 4px var(--orange));
     transition: stroke-dashoffset 1s linear;
   }
+  .timer[data-tone='ok'] .v {
+    stroke: var(--course, var(--acid));
+    filter: drop-shadow(0 0 4px var(--course, var(--acid)));
+  }
+  .timer[data-tone='warn'] .v {
+    stroke: var(--orange);
+  }
+  .timer[data-tone='danger'] .v {
+    stroke: var(--red);
+    filter: drop-shadow(0 0 4px var(--red));
+  }
   .timer span {
     position: absolute;
     inset: 0;
@@ -1642,5 +1653,57 @@
     background: transparent;
     box-shadow: inset 0 0 0 1px var(--line);
     opacity: 0.4;
+  }
+}
+
+/* ---------- partiels (T14) : HUD du minuteur ---------- */
+@layer components {
+  .exam-hud {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 -1px 0 var(--line-hi);
+  }
+  .exam-clock {
+    font-family: var(--f-mono);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    color: var(--course, var(--acid));
+  }
+  .exam-hud[data-tone='warn'] .exam-clock {
+    color: var(--orange);
+  }
+  .exam-hud[data-tone='danger'] .exam-clock {
+    color: var(--red);
+  }
+  .exam-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .exam-nav button {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-height: 44px;
+    padding: 6px 12px;
+    background: var(--surface);
+    color: var(--ink-soft);
+    box-shadow: inset 0 0 0 1px var(--line-hi);
+    text-align: left;
+  }
+  .exam-nav button[aria-current='step'] {
+    color: var(--ink);
+    box-shadow: inset 0 0 0 2px var(--course, var(--acid));
   }
 }

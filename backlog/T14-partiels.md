@@ -2,7 +2,7 @@
 id: T14
 title: "Partiels blancs et annales corrigées"
 lot: 2
-status: todo
+status: done
 depends: [T13]
 agent: builder
 ---
@@ -23,13 +23,15 @@ Se mettre en conditions d'examen et se corriger avec un barème.
 4. Historique des tentatives par partiel.
 
 ## Critères d'acceptation
-- [ ] Un partiel d'exemple (créer `content/rec1/exams/exemple.json` minimal si aucun n'existe encore, à supprimer ensuite) se passe de bout en bout
-- [ ] Le minuteur survit à un rechargement
-- [ ] Note /20 correcte (tests sur la fonction de calcul)
-- [ ] `npm run check` vert
+- [x] Un partiel d'exemple se passe de bout en bout (partiels réels `content/rec1/exams/blanc-*.json` : aucun exemple.json nécessaire)
+- [x] Le minuteur survit à un rechargement
+- [x] Note /20 correcte (tests sur la fonction de calcul)
+- [~] `npm run check` : tsc, lint, tests de la tâche et build verts ; reste rouge à cause des 17 erreurs de citation de `inf4/03-cadre-ple` (hors périmètre)
 
 ## Hors périmètre
 Correction automatique des questions ouvertes.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+- 2026-11-08 : onglet Partiels (`/matiere/:id/partiels`), consignes + historique, passage chronométré (HUD `T-MM:SS`, orange 10 min, rouge 2 min, annonce lecteur d'écran par paliers), navigation par sections, V/F + justification, QCM, texte libre, `material` (markdown, mermaid, ASCII en bloc de code), correction (V/F et QCM auto, ouvertes par critères cochés, note /20, badge « Corrigé proposé (non officiel) »).
+- Logique pure : `src/lib/exam-timer.ts`, `src/features/exams/exam-logic.ts`, `src/store/exam-session.ts` (tests Vitest) ; e2e `tests/e2e/exams.spec.ts`.
+- Écarts : la copie en cours est en localStorage (`m2rev:exam:<id>`, comme les brouillons T13) et non Dexie ; seules les tentatives terminées (kind `exam`, `score` = note /20) vont dans Dexie `attempts` (pas de changement de schéma). V/F noté sur la seule réponse booléenne (justification non notée). Points d'un critère lus dans son texte « (2 pts) », normalisés sur les points de la question.

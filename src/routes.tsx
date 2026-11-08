@@ -19,6 +19,8 @@ const QuizRunner = lazy(() => import('@/features/quiz/QuizRunner'))
 const ExercisesLayout = lazy(() => import('@/features/exercises/ExercisesLayout'))
 const ExerciseList = lazy(() => import('@/features/exercises/ExerciseList'))
 const ExerciseView = lazy(() => import('@/features/exercises/ExerciseView'))
+const ExamList = lazy(() => import('@/features/exams/ExamList'))
+const ExamRunner = lazy(() => import('@/features/exams/ExamRunner'))
 const Profile = lazy(() => import('@/pages/Profile'))
 const Reader = lazy(() => import('@/pages/Reader'))
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
@@ -42,7 +44,8 @@ export default function AppRoutes() {
           <Route path="matiere/:courseId" element={<CourseScope />}>
             <Route index element={<Course />} />
             <Route path="glossaire" element={<Glossary />} />
-            <Route path="partiel/:examId" element={<Soon />} />
+            <Route path="partiels" element={<ExamList />} />
+            <Route path="partiel/:examId" element={<ExamRunner />} />
             <Route path="chapitre/:chapterId">
               <Route index element={<ChapterHub />} />
               <Route path="lire" element={<Reader />} />
