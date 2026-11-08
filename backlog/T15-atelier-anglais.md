@@ -2,7 +2,7 @@
 id: T15
 title: "Atelier anglais (4 niveaux, sans IA)"
 lot: 2
-status: todo
+status: done
 depends: [T11]
 agent: builder
 ---
@@ -26,12 +26,15 @@ Apprendre à écrire des phrases d'examen simples et justes, corrigées sans IA.
 6. Onglets de niveau 1-4 (maquette), consigne en FR, enregistrement des tentatives.
 
 ## Critères d'acceptation
-- [ ] Les 5 items de REC1-05 jouables
-- [ ] Tests unitaires sur normalize, cloze, spot_error, keywords
-- [ ] `npm run check` vert
+- [x] Les 5 items de REC1-05 jouables
+- [x] Tests unitaires sur normalize, cloze, spot_error, keywords
+- [ ] `npm run check` vert (tsc, lint, build et tests de `src/` verts ; seul le test de contenu `scripts/lib/validate.test.ts` reste rouge à cause de 17 citations de `inf4/03-cadre-ple`, hors périmètre)
 
 ## Hors périmètre
 Correction grammaticale automatique.
 
 ## Journal
-<!-- rempli à la fin : date, résumé, écarts -->
+2026-11-08 — Atelier jouable sur `…/chapitre/:id/anglais` (`src/features/writing/`), logique pure dans `src/lib/writing.ts` (+ `normalizeAnswer` dans `text-normalize.ts`), tests Vitest + e2e `tests/e2e/writing.spec.ts`.
+- Consigne toujours en FR (le texte à produire est en anglais) ; correction en FR+EN. Réponse libre comptée « réussie » à partir de 60 % des mots-clés (`FREE_PASS_RATIO`), score 0..1 enregistré dans `attempts`.
+- Le niveau « Indice » du cloze est dérivé de la réponse (première lettre + traits bas), rien d'inventé. Un niveau sans exercice (ex. REC1-04) est grisé ; un chapitre sans atelier affiche un état vide.
+- Écart : `e2e/flashcards.spec.ts` échoue déjà sur HEAD propre (hors T15).

@@ -40,7 +40,7 @@ interface QuizCardProps {
 const other = (l: Lang): Lang => (l === 'fr' ? 'en' : 'fr')
 
 /** Texte bilingue de correction : FR puis EN, toujours les deux. */
-function BothLangs({ fr, en }: { fr: string; en: string }) {
+export function BothLangs({ fr, en }: { fr: string; en: string }) {
   return (
     <>
       <p lang="fr">

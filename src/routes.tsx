@@ -6,7 +6,6 @@ import { UI } from '@/i18n/ui'
 import ChapterHub from '@/pages/ChapterHub'
 import Course from '@/pages/Course'
 import Home from '@/pages/Home'
-import Soon from '@/pages/Soon'
 import TitledSoon from '@/pages/TitledSoon'
 
 // Routes lourdes chargées à la demande (précachées par le service worker : hors-ligne OK).
@@ -20,12 +19,11 @@ const ExercisesLayout = lazy(() => import('@/features/exercises/ExercisesLayout'
 const ExerciseList = lazy(() => import('@/features/exercises/ExerciseList'))
 const ExerciseView = lazy(() => import('@/features/exercises/ExerciseView'))
 const ExamList = lazy(() => import('@/features/exams/ExamList'))
+const WritingRunner = lazy(() => import('@/features/writing/WritingRunner'))
 const ExamRunner = lazy(() => import('@/features/exams/ExamRunner'))
 const Profile = lazy(() => import('@/pages/Profile'))
 const Reader = lazy(() => import('@/pages/Reader'))
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
-
-const CHAPTER_VIEWS = ['anglais']
 
 /** Table des routes (à placer dans un routeur). Pages non réalisées : « Bientôt ici ». */
 export default function AppRoutes() {
@@ -56,9 +54,7 @@ export default function AppRoutes() {
                 <Route index element={<ExerciseList />} />
                 <Route path=":exerciseId" element={<ExerciseView />} />
               </Route>
-              {CHAPTER_VIEWS.map((v) => (
-                <Route key={v} path={v} element={<Soon />} />
-              ))}
+              <Route path="anglais" element={<WritingRunner />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
