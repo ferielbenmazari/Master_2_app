@@ -26,7 +26,22 @@ const mcq = (n: number): QuizItem =>
     explanation: L(`expl ${n}`),
   }) as QuizItem
 
-const chapterOf = (id: string, quiz: QuizItem[]) => ({ id, quiz }) as unknown as Chapter
+const chapterOf = (id: string, quiz: QuizItem[], courseId = 'rec1', order = 1) =>
+  ({ id, courseId, order, title: L(`titre ${id}`), quiz }) as unknown as Chapter
+
+describe('origine des questions (matière et chapitre)', () => {
+  it('chaque question porte sa matière (en majuscules), son numéro de chapitre et son titre bilingue', () => {
+    const chapters = [
+      chapterOf('c1', [tf(1), tf(2)], 'rec1', 3),
+      chapterOf('c2', [mcq(1), mcq(2)], 'isi1', 7),
+    ]
+    const q = pickBattleQuestions(chapters, 4, 9)
+    const byId = Object.fromEntries(q.map((x) => [x.id, x.origin]))
+    expect(byId['t-1']).toEqual({ course: 'REC1', chapter: 3, title: L('titre c1') })
+    expect(byId['m-2']).toEqual({ course: 'ISI1', chapter: 7, title: L('titre c2') })
+    expect(q.every((x) => x.origin !== undefined)).toBe(true)
+  })
+})
 
 describe('sélection des questions', () => {
   const chapters = [

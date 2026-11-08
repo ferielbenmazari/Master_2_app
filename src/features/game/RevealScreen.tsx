@@ -46,6 +46,11 @@ export default function RevealScreen({ view, selfId, lang, footer }: Props) {
       </div>
 
       <Panel hi className="flex flex-col gap-2">
+        {question.origin && (
+          <p className="mono dim" lang={lang} data-testid="question-origin">
+            {GAME.origin(question.origin.course, question.origin.chapter, question.origin.title[lang])}
+          </p>
+        )}
         <p className="stmt" lang={lang}>
           <RichText lang={lang} text={question.text[lang]} noTerms />
         </p>

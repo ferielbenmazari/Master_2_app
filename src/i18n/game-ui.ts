@@ -46,6 +46,8 @@ export const GAME = {
   closeRound: 'Passer à la correction',
   answeredCount: (n: number, total: number) => `${n} / ${total} ont répondu`,
   noTimer: 'Sans limite de temps',
+  origin: (course: string, chapter: number, title: string) =>
+    `${course} · Chapitre ${String(chapter).padStart(2, '0')} — ${title}`,
   langLabel: 'Langue des questions',
   langFr: 'Français',
   langEn: 'English',

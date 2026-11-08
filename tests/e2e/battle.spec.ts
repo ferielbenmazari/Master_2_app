@@ -188,6 +188,10 @@ test('réglages de l’hôte : 10 s, questions en anglais, sans correction déta
   // l'énoncé est affiché en anglais pour tous
   await expect(alice.locator('.stmt[lang="en"]')).toBeVisible()
   await expect(host.locator('.stmt[lang="en"]')).toBeVisible()
+  // matière et chapitre de la question affichés à tous
+  for (const p of [host, alice]) {
+    await expect(p.getByTestId('question-origin')).toHaveText(/^[A-Z0-9]+ · Chapitre \d\d — .+/)
+  }
   await answerCurrent(host, 1)
   await answerCurrent(alice, 1)
   // correction : bonne réponse et classement, mais pas de justification

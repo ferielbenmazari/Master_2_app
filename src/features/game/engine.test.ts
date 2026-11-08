@@ -462,6 +462,7 @@ describe('vue du joueur', () => {
       text: L('x'),
       options: [],
       multi: false,
+      origin: null,
     } as const
     let v = feed(createGuestView(), q, 42)
     expect(v.receivedAt).toBe(42)
@@ -482,6 +483,7 @@ describe('vue du joueur', () => {
       text: L('x'),
       options: [],
       multi: false,
+      origin: null,
     } as const
     let v = feed(createGuestView(), q)
     const reveal = {
@@ -661,5 +663,31 @@ describe('mode sans minuteur (seconds = 0)', () => {
     ]).state
     expect(afterAnswers.phase).toBe('question')
     expect(hostReduce(afterAnswers, { type: 'peers', ids: ['A'] }).state.phase).toBe('reveal')
+  })
+})
+
+describe('origine de la question (matière et chapitre)', () => {
+  const ORIGIN = { course: 'REC1', chapter: 3, title: L('Littérature') }
+  const withOrigin: BattleQuestion = { ...TF, origin: ORIGIN }
+
+  it('la question envoyée aux joueurs indique matière et chapitre', () => {
+    const { out } = run(lobby('A'), [{ type: 'start', questions: [withOrigin], now: 0 }])
+    expect(msgs(out, 'question')[0]!.msg).toMatchObject({ origin: ORIGIN })
+  })
+
+  it('sans origine connue, la question reste valable (origin = null)', () => {
+    const { out } = run(lobby('A'), [{ type: 'start', questions: [TF], now: 0 }])
+    expect(msgs(out, 'question')[0]!.msg).toMatchObject({ origin: null })
+  })
+
+  it('la vue d’un joueur la conserve ; un message mal formé est rejeté', () => {
+    const { out } = run(lobby('A'), [{ type: 'start', questions: [withOrigin], now: 5 }])
+    const q = msgs(out, 'question')[0]!.msg
+    const v = guestReduce(createGuestView(), { type: 'msg', msg: q, now: 5 })
+    expect(v.question?.origin).toEqual(ORIGIN)
+    expect(parseGameMessage({ ...(q as object), origin: { course: 1 } } as never)).toBeNull()
+    expect(parseGameMessage({ ...(q as object), origin: undefined } as never)).toMatchObject({
+      origin: null,
+    })
   })
 })

@@ -35,6 +35,13 @@ export function scoreFor(correct: boolean, remainingMs: number, totalMs: number)
 
 // --------------------------------------------------------------------------- Messages
 
+/** D'où vient la question : matière (ex. REC1) et chapitre. */
+export interface QuestionOrigin {
+  readonly course: string
+  readonly chapter: number
+  readonly title: L
+}
+
 /** Question telle que stockée par l'hôte (avec la réponse). Les indices sont ceux de l'ordre AFFICHÉ. */
 export interface BattleQuestion {
   readonly id: string
@@ -44,6 +51,7 @@ export interface BattleQuestion {
   readonly options: readonly L[]
   readonly correct: boolean | readonly number[]
   readonly explanation: L
+  readonly origin?: QuestionOrigin
 }
 
 /** Question envoyée aux invités : jamais la réponse ni l'explication. */
@@ -56,6 +64,8 @@ export type PublicQuestion = {
   readonly options: readonly L[]
   /** Plusieurs réponses possibles (cases à cocher) ? Déduit du nombre de bonnes réponses. */
   readonly multi: boolean
+  /** Matière et chapitre de la question (affichés aux joueurs). */
+  readonly origin: QuestionOrigin | null
 }
 
 export interface PlayerInfo {
@@ -124,6 +134,8 @@ const isObj = (v: unknown): v is Record<string, unknown> =>
   typeof v === 'object' && v !== null && !Array.isArray(v)
 const isInt = (v: unknown): v is number => typeof v === 'number' && Number.isInteger(v)
 const isL = (v: unknown): v is L => isObj(v) && typeof v.fr === 'string' && typeof v.en === 'string'
+const isOrigin = (v: unknown): v is QuestionOrigin =>
+  isObj(v) && typeof v.course === 'string' && isInt(v.chapter) && isL(v.title)
 const isAvatar = (v: unknown): v is CourseColor => AVATAR_COLORS.includes(v as CourseColor)
 const asLang = (v: unknown): GameLang => (v === 'en' ? 'en' : DEFAULT_LANG)
 const asFeedback = (v: unknown): boolean => v !== false
@@ -203,7 +215,8 @@ export function parseGameMessage(raw: WireMessage): GameMessage | null {
         isL(m.text) &&
         Array.isArray(m.options) &&
         m.options.every(isL) &&
-        typeof m.multi === 'boolean'
+        typeof m.multi === 'boolean' &&
+        (m.origin === undefined || m.origin === null || isOrigin(m.origin))
         ? {
             t: 'question',
             index: m.index,
@@ -213,6 +226,7 @@ export function parseGameMessage(raw: WireMessage): GameMessage | null {
             text: m.text,
             options: m.options,
             multi: m.multi,
+            origin: isOrigin(m.origin) ? m.origin : null,
           }
         : null
     case 'answer':
@@ -371,6 +385,7 @@ export function publicQuestion(s: HostState, index: number): PublicQuestion {
     text: q.text,
     options: q.options,
     multi: Array.isArray(q.correct) && q.correct.length > 1,
+    origin: q.origin ?? null,
   }
 }
 
@@ -628,6 +643,7 @@ export function guestReduce(v: GuestView, ev: GuestEvent): GuestView {
         text: m.text,
         options: m.options,
         multi: m.multi,
+        origin: m.origin,
       }
       return { ...v, phase: 'question', question, receivedAt: ev.now, myChoice: null, reveal: null }
     }

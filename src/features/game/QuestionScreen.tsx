@@ -74,6 +74,11 @@ export default function QuestionScreen({
         )}
       </div>
 
+      {question.origin && (
+        <p className="mono dim" lang={lang} data-testid="question-origin">
+          {GAME.origin(question.origin.course, question.origin.chapter, question.origin.title[lang])}
+        </p>
+      )}
       <Panel hi>
         <p className="stmt" lang={lang}>
           <RichText lang={lang} text={question.text[lang]} noTerms />
