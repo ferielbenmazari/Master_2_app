@@ -13,11 +13,13 @@ interface Props {
   onAnswer: (choice: Choice) => void
   /** Hôte uniquement : passe à la question suivante / au podium. */
   onNext?: () => void
+  /** Hôte uniquement : clôt la manche sans attendre tout le monde, avec l'avancement des réponses. */
+  host?: { onClose: () => void; answered: number; expected: number }
   onLeave: () => void
 }
 
 /** Écrans de jeu communs à l'hôte et aux invités (question, correction, podium). Le salon est géré par l'appelant. */
-export default function GameScreens({ view, selfId, onAnswer, onNext, onLeave }: Props) {
+export default function GameScreens({ view, selfId, onAnswer, onNext, host, onLeave }: Props) {
   const last = view.question ? view.question.index + 1 >= view.question.total : false
 
   if (view.phase === 'question' && view.question) {
@@ -29,6 +31,18 @@ export default function GameScreens({ view, selfId, onAnswer, onNext, onLeave }:
         myChoice={view.myChoice}
         lang={view.lang}
         onAnswer={onAnswer}
+        footer={
+          host && (
+            <div className="flex flex-col gap-2">
+              <p role="status" className="mono dim text-center">
+                {GAME.answeredCount(host.answered, host.expected)}
+              </p>
+              <Button block icon={Flag} onClick={host.onClose}>
+                {GAME.closeRound}
+              </Button>
+            </div>
+          )
+        }
       />
     )
   }

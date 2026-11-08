@@ -1,5 +1,5 @@
 import { Check, X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import RichText from '@/components/content/RichText'
 import Button from '@/components/ui/Button'
 import Panel from '@/components/ui/Panel'
@@ -16,15 +16,25 @@ interface Props {
   myChoice: Choice | null
   lang: 'fr' | 'en'
   onAnswer: (choice: Choice) => void
+  /** Zone sous les réponses : pour l'hôte, avancement et bouton « Passer à la correction ». */
+  footer?: ReactNode
 }
 
 /** Écran de réponse : énoncé, minuteur, gros boutons (≥ 44 px, ici 68 px). */
-export default function QuestionScreen({ question, receivedAt, myChoice, lang, onAnswer }: Props) {
+export default function QuestionScreen({
+  question,
+  receivedAt,
+  myChoice,
+  lang,
+  onAnswer,
+  footer,
+}: Props) {
   const left = useCountdown(receivedAt, question.durationMs)
   const total = Math.round(question.durationMs / 1000)
+  const noLimit = question.durationMs === 0
   const [checked, setChecked] = useState<readonly number[]>([])
   const answered = myChoice !== null
-  const locked = answered || left <= 0
+  const locked = answered || (!noLimit && left <= 0)
   const n = String(question.index + 1).padStart(2, '0')
 
   function toggle(i: number) {
@@ -53,11 +63,15 @@ export default function QuestionScreen({ question, receivedAt, myChoice, lang, o
             / {question.total}
           </span>
         </div>
-        <TimerRing
-          seconds={left}
-          total={total}
-          tone={left <= total * 0.25 ? 'danger' : left <= total * 0.5 ? 'warn' : undefined}
-        />
+        {noLimit ? (
+          <span className="mono dim">{GAME.noTimer}</span>
+        ) : (
+          <TimerRing
+            seconds={left}
+            total={total}
+            tone={left <= total * 0.25 ? 'danger' : left <= total * 0.5 ? 'warn' : undefined}
+          />
+        )}
       </div>
 
       <Panel hi>
@@ -117,8 +131,9 @@ export default function QuestionScreen({ question, receivedAt, myChoice, lang, o
       )}
 
       <p role="status" className="mono dim text-center">
-        {answered ? GAME.sent : left <= 0 ? GAME.timeUp : ''}
+        {answered ? GAME.sent : !noLimit && left <= 0 ? GAME.timeUp : ''}
       </p>
+      {footer}
     </section>
   )
 }

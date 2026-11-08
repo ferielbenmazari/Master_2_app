@@ -197,3 +197,35 @@ test('réglages de l’hôte : 10 s, questions en anglais, sans correction déta
     await expect(p.getByText('Explication du cours')).toHaveCount(0)
   }
 })
+
+test('sans limite de temps : pas de minuteur, l’hôte passe à la correction quand il veut', async ({
+  context,
+}) => {
+  test.setTimeout(90_000)
+  const host = await player(context, 'Hôtesse', '/#/jouer/creer')
+  await host.getByRole('button', { name: 'Sans limite' }).click()
+  await expect(host.getByText(/Sans minuteur : pas de bonus de vitesse/)).toBeVisible()
+  await expect(host.getByText(/10 questions · sans limite de temps/)).toBeVisible()
+  await useLocalTransport(host)
+  await host.getByRole('button', { name: 'Ouvrir la salle' }).click()
+  const radar = host.getByRole('img', { name: /^Code de la salle : [A-Z2-9]{4}$/ })
+  const code = /: ([A-Z2-9]{4})$/.exec((await radar.getAttribute('aria-label')) ?? '')![1]!
+
+  const alice = await player(context, 'Alice', `/#/jouer/rejoindre/${code}`)
+  await useLocalTransport(alice)
+  await alice.getByRole('button', { name: 'Rejoindre', exact: true }).click()
+  await expect(alice.getByText(/sans limite de temps/)).toBeVisible()
+
+  await host.getByRole('button', { name: 'Lancer le combat' }).click()
+  await expect(host.getByText('Sans limite de temps')).toBeVisible()
+  await expect(alice.getByText('Sans limite de temps')).toBeVisible()
+  await answerCurrent(host, 1)
+  await expect(host.getByText('1 / 2 ont répondu')).toBeVisible()
+  // Alice ne répond pas : rien ne se passe tout seul, mais l'hôte peut clore la manche
+  await host.waitForTimeout(1500)
+  await expect(host.getByTestId('right-answer')).toHaveCount(0)
+  await host.getByRole('button', { name: 'Passer à la correction' }).click()
+  for (const p of [host, alice]) {
+    await expect(p.getByTestId('right-answer')).toBeVisible()
+  }
+})

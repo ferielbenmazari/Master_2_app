@@ -34,12 +34,18 @@ export const GAME = {
   codeOrQr: 'Code ou QR code',
   copyLink: 'Copier le lien',
   linkCopied: 'Lien copié',
-  rules: (total: number, seconds: number) => `${total} questions · ${seconds} s`,
+  rules: (total: number, seconds: number) =>
+    `${total} questions · ${seconds === 0 ? 'sans limite de temps' : `${seconds} s`}`,
   rulesFull: (total: number, seconds: number, lang: 'fr' | 'en', feedback: boolean) =>
-    `${total} questions · ${seconds} s · ${lang === 'en' ? 'questions en anglais' : 'questions en français'} · ${feedback ? 'avec correction détaillée' : 'sans correction détaillée'}`,
+    `${total} questions · ${seconds === 0 ? 'sans limite de temps' : `${seconds} s`} · ${lang === 'en' ? 'questions en anglais' : 'questions en français'} · ${feedback ? 'avec correction détaillée' : 'sans correction détaillée'}`,
   settings: 'Réglages de la partie',
   secondsLabel: 'Temps pour répondre',
-  secondsOption: (s: number) => `${s} s`,
+  secondsOption: (s: number) => (s === 0 ? 'Sans limite' : `${s} s`),
+  noLimitHelp:
+    'Sans minuteur : pas de bonus de vitesse (1000 points par bonne réponse). La manche se termine quand tout le monde a répondu, ou quand l’hôte passe à la correction.',
+  closeRound: 'Passer à la correction',
+  answeredCount: (n: number, total: number) => `${n} / ${total} ont répondu`,
+  noTimer: 'Sans limite de temps',
   langLabel: 'Langue des questions',
   langFr: 'Français',
   langEn: 'English',

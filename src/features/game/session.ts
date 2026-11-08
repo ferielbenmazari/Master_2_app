@@ -154,6 +154,11 @@ export class HostSession extends Store<HostSnapshot> {
     }
   }
 
+  /** Clôt la manche en cours sans attendre les retardataires (mode sans minuteur). */
+  closeRound() {
+    this.dispatch({ type: 'close' })
+  }
+
   /** Question suivante (ou podium) depuis l'écran de correction. */
   next() {
     this.dispatch({ type: 'next', now: this.clock() })

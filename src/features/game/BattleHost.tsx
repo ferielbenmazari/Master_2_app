@@ -69,6 +69,15 @@ function HostRoom({ opened, onLeave }: { opened: Opened; onLeave: () => void }) 
       selfId={selfId}
       onAnswer={(c) => session.answer(c)}
       onNext={state.phase === 'reveal' ? () => session.next() : undefined}
+      host={
+        state.phase === 'question' && state.seconds === 0
+          ? {
+              onClose: () => session.closeRound(),
+              answered: Object.keys(state.answers).length,
+              expected: state.players.filter((p) => p.connected).length,
+            }
+          : undefined
+      }
       onLeave={onLeave}
     />
   )
@@ -246,6 +255,9 @@ export default function BattleHost() {
               </Button>
             ))}
           </div>
+          {settings.seconds === 0 && (
+            <p className="text-sm text-ink-soft">{GAME.noLimitHelp}</p>
+          )}
         </fieldset>
         <fieldset className="flex flex-col gap-2 border-0 p-0">
           <legend className="mb-1 font-bold">{GAME.langLabel}</legend>

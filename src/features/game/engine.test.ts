@@ -591,3 +591,75 @@ describe('réglages de la partie (temps, langue, correction)', () => {
     expect(bad).toMatchObject({ lang: 'fr' })
   })
 })
+
+describe('mode sans minuteur (seconds = 0)', () => {
+  const hello = (id: string): HostAction => ({ type: 'hello', id, name: id, avatar: 'lime' })
+  const open = () =>
+    run(createHostState('H', 2, 0), [
+      hello('H'),
+      hello('A'),
+      hello('B'),
+      { type: 'start', questions: QUESTIONS, now: 0 },
+    ])
+
+  it('annonce une durée nulle et ne clôt jamais la manche au temps', () => {
+    const { state, out } = open()
+    expect(msgs(out, 'question')[0]!.msg).toMatchObject({ durationMs: 0 })
+    expect(hostReduce(state, { type: 'tick', now: 10 * 3600_000 }).state.phase).toBe('question')
+  })
+
+  it('accepte une réponse aussi tardive soit-elle', () => {
+    const { state } = open()
+    const s = hostReduce(state, {
+      type: 'answer',
+      id: 'A',
+      index: 0,
+      choice: true,
+      now: 3600_000,
+    }).state
+    expect(s.answers.A).toBeDefined()
+  })
+
+  it('se termine quand tous les connectés ont répondu : 1000 points par bonne réponse, vite ou lentement', () => {
+    const { state } = run(open().state, [
+      { type: 'answer', id: 'H', index: 0, choice: true, now: 10 },
+      { type: 'answer', id: 'A', index: 0, choice: true, now: 900_000 },
+      { type: 'answer', id: 'B', index: 0, choice: false, now: 20 },
+    ])
+    expect(state.phase).toBe('reveal')
+    expect(Object.fromEntries(state.players.map((p) => [p.id, p.score]))).toEqual({
+      H: 1000,
+      A: 1000,
+      B: 0,
+    })
+  })
+
+  it('l’hôte peut clore la manche : les absents comptent 0', () => {
+    const { state, out } = run(open().state, [
+      { type: 'answer', id: 'H', index: 0, choice: true, now: 10 },
+      { type: 'close' },
+    ])
+    expect(state.phase).toBe('reveal')
+    const reveal = msgs(out, 'reveal')[0]!.msg as Extract<GameMessage, { t: 'reveal' }>
+    expect(reveal.results.map((r) => [r.id, r.answered, r.gain])).toEqual([
+      ['H', true, 1000],
+      ['A', false, 0],
+      ['B', false, 0],
+    ])
+  })
+
+  it('« close » est sans effet hors d’une manche en cours', () => {
+    const lobbyState = run(createHostState('H', 2, 0), [hello('H')]).state
+    expect(hostReduce(lobbyState, { type: 'close' }).out).toEqual([])
+    expect(hostReduce(lobbyState, { type: 'close' }).state).toBe(lobbyState)
+  })
+
+  it('un joueur qui part pendant la manche ne bloque pas l’attente', () => {
+    const afterAnswers = run(open().state, [
+      { type: 'answer', id: 'H', index: 0, choice: true, now: 10 },
+      { type: 'answer', id: 'A', index: 0, choice: true, now: 10 },
+    ]).state
+    expect(afterAnswers.phase).toBe('question')
+    expect(hostReduce(afterAnswers, { type: 'peers', ids: ['A'] }).state.phase).toBe('reveal')
+  })
+})

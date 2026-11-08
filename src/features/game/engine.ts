@@ -16,7 +16,9 @@ export type Choice = boolean | readonly number[]
 export const QUESTION_COUNT = 10
 export const QUESTION_SECONDS = 20
 /** Durées proposées à l'hôte avant la partie (en secondes). */
-export const SECONDS_CHOICES = [10, 15, 20, 30, 45, 60] as const
+export const SECONDS_CHOICES = [10, 15, 20, 30, 45, 60, 0] as const
+/** `seconds = 0` : partie sans minuteur (la manche se clôt quand tous ont répondu, ou à la main par l'hôte). */
+export const NO_LIMIT = 0
 /** Langue d'affichage des questions pour toute la partie (choisie par l'hôte). */
 export type GameLang = 'fr' | 'en'
 export const DEFAULT_LANG: GameLang = 'fr'
@@ -308,6 +310,7 @@ export type HostAction =
       readonly now: number
     }
   | { readonly type: 'tick'; readonly now: number }
+  | { readonly type: 'close' }
   | { readonly type: 'next'; readonly now: number }
 
 export interface Step {
@@ -339,6 +342,7 @@ export function createHostState(
 }
 
 const durationMs = (s: HostState) => s.seconds * 1000
+const unlimited = (s: HostState) => s.seconds === NO_LIMIT
 
 function toInfo(p: HostPlayer): PlayerInfo {
   return { id: p.id, name: p.name, avatar: p.avatar, connected: p.connected }
@@ -400,7 +404,12 @@ function closeRound(s: HostState): Step {
     const a = s.answers[p.id]
     const correct = a !== undefined && isChoiceCorrect(q, a.choice)
     const remaining = a ? durationMs(s) - (a.at - s.startedAt) : 0
-    const gain = scoreFor(correct, remaining, durationMs(s))
+    // sans minuteur, pas de bonus de vitesse : une bonne réponse vaut le maximum
+    const gain = unlimited(s)
+      ? correct
+        ? BASE_POINTS + SPEED_POINTS
+        : 0
+      : scoreFor(correct, remaining, durationMs(s))
     gains[p.id] = gain
     results.push({ id: p.id, answered: a !== undefined, correct, gain })
   }
@@ -497,7 +506,7 @@ export function hostReduce(s: HostState, action: HostAction): Step {
       const player = s.players.find((p) => p.id === action.id)
       if (!player || !player.connected || s.answers[action.id]) return { state: s, out: [] }
       const elapsed = action.now - s.startedAt
-      if (elapsed > durationMs(s)) return { state: s, out: [] } // réponse tardive : ignorée
+      if (!unlimited(s) && elapsed > durationMs(s)) return { state: s, out: [] } // réponse tardive : ignorée
       const choice = normalizeChoice(s.questions[s.index]!, action.choice)
       if (choice === null) return { state: s, out: [] }
       const state = {
@@ -508,9 +517,13 @@ export function hostReduce(s: HostState, action: HostAction): Step {
     }
 
     case 'tick':
-      return s.phase === 'question' && action.now - s.startedAt >= durationMs(s)
+      return s.phase === 'question' && !unlimited(s) && action.now - s.startedAt >= durationMs(s)
         ? closeRound(s)
         : { state: s, out: [] }
+
+    /** L'hôte clôt la manche à la main (surtout utile sans minuteur). */
+    case 'close':
+      return s.phase === 'question' ? closeRound(s) : { state: s, out: [] }
 
     case 'next': {
       if (s.phase !== 'reveal') return { state: s, out: [] }

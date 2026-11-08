@@ -85,6 +85,34 @@ describe('réglages choisis par l’hôte avant la partie', () => {
   })
 })
 
+describe('mode sans minuteur', () => {
+  it('l’hôte clôt la manche à la main, sans attendre un invité silencieux', async () => {
+    const host = new HostSession(new LocalTransport(), {
+      me: { name: 'Hôte', avatar: 'lime' },
+      total: 2,
+      seconds: 0,
+      tickMs: 20,
+    })
+    sessions.push(host)
+    await host.open('KMNP')
+    const g = new GuestSession(new LocalTransport(), { name: 'Alice', avatar: 'coral' })
+    sessions.push(g)
+    await g.join('KMNP')
+    await until(() => host.getSnapshot().view.players.length === 2, 'salon')
+    host.start(QUESTIONS)
+    await until(() => g.getSnapshot().view.phase === 'question', 'question')
+    expect(g.getSnapshot().view.question!.durationMs).toBe(0)
+    host.answer(true)
+    await new Promise((r) => setTimeout(r, 150)) // bien plus que tickMs : rien ne se clôt tout seul
+    expect(host.getSnapshot().state.phase).toBe('question')
+    host.closeRound()
+    await until(() => g.getSnapshot().view.phase === 'reveal', 'correction')
+    const results = g.getSnapshot().view.reveal!.results
+    expect(results.find((r) => r.answered)?.gain).toBe(1000)
+    expect(results.filter((r) => !r.answered)).toHaveLength(1)
+  })
+})
+
 describe('partie complète via le transport local (hôte + 2 invités)', () => {
   it('salon → questions → corrections → podium, sans fuite des réponses', async () => {
     const { host, guests } = await room('ABCD', ['Alice', 'Bob'])
