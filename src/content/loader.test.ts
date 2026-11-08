@@ -28,7 +28,17 @@ describe('loader', () => {
   it('rejette un chapitre ou un examen inconnu', async () => {
     await expect(loadChapter('rec1-99-nope')).rejects.toThrow(/introuvable/)
     await expect(loadExam('rec1', 'nope')).rejects.toThrow(/introuvable/)
-    expect(getExamIndex('rec1')).toEqual([])
+    expect(getExamIndex('cours-inconnu')).toEqual([])
+  })
+
+  it('indexe et charge les partiels blancs de REC1', async () => {
+    const index = getExamIndex('rec1')
+    expect(index.map((e) => e.slug)).toContain('blanc-01')
+    for (const ref of index) {
+      const exam = await loadExam('rec1', ref.slug)
+      expect(exam.courseId).toBe('rec1')
+      expect(exam.sections.length).toBeGreaterThan(0)
+    }
   })
 
   it('charge les notions, null si absentes', async () => {
