@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
-import { loadChapter } from '@/content/loader'
+import { getCourses, loadAllChapters, loadChapter } from '@/content/loader'
 import type { Chapter, WritingItem } from '@/content/schema'
 import AppRoutes from '@/routes'
 import { db } from '@/store/db'
@@ -62,7 +62,9 @@ describe('atelier anglais REC1-05', () => {
     const it1 = item('rec1-05-wr-01', 'reorder')
     await open()
     const bank = screen.getByRole('group', { name: 'Mots à placer' })
-    const shown = within(bank).getAllByRole('button').map((b) => b.textContent)
+    const shown = within(bank)
+      .getAllByRole('button')
+      .map((b) => b.textContent)
     expect(shown).toHaveLength(splitSentence(it1.answer).length)
     expect(shown).not.toEqual(splitSentence(it1.answer))
 
@@ -74,7 +76,9 @@ describe('atelier anglais REC1-05', () => {
     expect(screen.getByRole('button', { name: 'Vérifier' })).toBeDisabled()
 
     for (const w of splitSentence(it1.answer)) {
-      const b = within(bank).getAllByRole('button', { name: w }).find((x) => !(x as HTMLButtonElement).disabled)!
+      const b = within(bank)
+        .getAllByRole('button', { name: w })
+        .find((x) => !(x as HTMLButtonElement).disabled)!
       click(b)
     }
     click(screen.getByRole('button', { name: 'Vérifier' }))
@@ -98,7 +102,11 @@ describe('atelier anglais REC1-05', () => {
     await open()
     const bank = screen.getByRole('group', { name: 'Mots à placer' })
     for (const w of splitSentence(item('rec1-05-wr-01', 'reorder').answer)) {
-      click(within(bank).getAllByRole('button', { name: w }).find((x) => !(x as HTMLButtonElement).disabled)!)
+      click(
+        within(bank)
+          .getAllByRole('button', { name: w })
+          .find((x) => !(x as HTMLButtonElement).disabled)!,
+      )
     }
     click(screen.getByRole('button', { name: 'Vérifier' }))
     click(screen.getByRole('button', { name: 'Voir mon résultat' }))
@@ -140,7 +148,9 @@ describe('atelier anglais REC1-05', () => {
     click(tab(3))
     click(screen.getByRole('button', { name: 'Actually,' }))
     expect(screen.getByRole('group', { name: 'Correct' })).toBeInTheDocument()
-    expect(screen.getByText('Currently, plagiarism is a big problem in universities.')).toBeInTheDocument()
+    expect(
+      screen.getByText('Currently, plagiarism is a big problem in universities.'),
+    ).toBeInTheDocument()
     expect(screen.getByText(/Faux-ami/)).toBeInTheDocument()
     expect(screen.getByText(/False friend/)).toBeInTheDocument()
   })
@@ -169,30 +179,46 @@ describe('atelier anglais REC1-05', () => {
     })
     click(screen.getByRole('button', { name: 'Vérifier' }))
     const g = screen.getByRole('group', { name: '4 mots-clés sur 5' })
-    const chips = within(g).getAllByRole('listitem').filter((li) => li.classList.contains('kw'))
-    const state = (k: string) => chips.find((li) => li.textContent?.startsWith(k))?.getAttribute('data-state')
+    const chips = within(g)
+      .getAllByRole('listitem')
+      .filter((li) => li.classList.contains('kw'))
+    const state = (k: string) =>
+      chips.find((li) => li.textContent?.startsWith(k))?.getAttribute('data-state')
     expect(state('alternative explanations')).toBe('missing')
     expect(state('generalis')).toBe('found')
     expect(state('internal validity')).toBe('found')
     expect(within(g).getByText('Réponse modèle')).toBeInTheDocument()
-    expect(within(g).getAllByRole('checkbox')).toHaveLength(item('rec1-05-wr-05', 'free').checklist.length)
+    expect(within(g).getAllByRole('checkbox')).toHaveLength(
+      item('rec1-05-wr-05', 'free').checklist.length,
+    )
     expect(within(g).getByText('refers to')).toBeInTheDocument()
     await waitFor(async () => {
       const [a] = await db.attempts.toArray()
-      expect(a).toMatchObject({ itemId: 'rec1-05-wr-05', kind: 'writing', correct: true, score: 0.8 })
+      expect(a).toMatchObject({
+        itemId: 'rec1-05-wr-05',
+        kind: 'writing',
+        correct: true,
+        score: 0.8,
+      })
     })
   })
 
   it('chapitre sans atelier → état vide', async () => {
+    // un chapitre du contenu réel sans atelier (le contenu évolue : on le cherche plutôt que de le figer)
+    const all = (await Promise.all(getCourses().map((c) => loadAllChapters(c.id)))).flat()
+    const empty = all.find((c) => c.writing.length === 0)
+    if (!empty) return
     localStorage.setItem(PREFS_KEY, JSON.stringify({ ...DEFAULT_PREFS, pseudo: 'Test' }))
     vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
     render(
       <PrefsProvider>
-        <MemoryRouter initialEntries={['/matiere/rec1/chapitre/rec1-04-choisir-sa-methode/anglais']}>
+        <MemoryRouter initialEntries={[`/matiere/${empty.courseId}/chapitre/${empty.id}/anglais`]}>
           <AppRoutes />
         </MemoryRouter>
       </PrefsProvider>,
     )
-    expect(await screen.findByText('Pas encore d’atelier pour ce chapitre.', {}, { timeout: 5000 })).toBeInTheDocument()
+    expect(
+      await screen.findByText('Pas encore d’atelier pour ce chapitre.', {}, { timeout: 5000 }),
+    ).toBeInTheDocument()
   })
 })
