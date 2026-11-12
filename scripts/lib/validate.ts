@@ -373,7 +373,7 @@ function checkChapter(ctx: Ctx, cc: CourseCtx, file: string, ch: Chapter): void 
     }
     check('notions', ch.notions)
     ch.story.forEach((b, i) => {
-      if (b.type === 'paragraph' || b.type === 'list' || b.type === 'table') check(`story[${i}].notions`, b.notions)
+      if (b.type === 'paragraph' || b.type === 'list' || b.type === 'table' || b.type === 'method') check(`story[${i}].notions`, b.notions)
     })
     ch.keyPoints.forEach((k, i) => check(`keyPoints[${i}].notions`, k.notions))
     ch.flashcards.forEach((f, i) => check(`flashcards[${i}].notions`, f.notions))
@@ -587,7 +587,7 @@ function checkCoverage(
     const entry = chapters.find((c) => c.data.id.startsWith(`${ci.dir}-${n.chapter}-`))
     if (!entry) continue // chapitre pas encore écrit : non comptabilisé
     const ch = entry.data
-    const inStory = ch.story.some((b) => (b.type === 'paragraph' || b.type === 'list' || b.type === 'table') && b.notions?.includes(n.id))
+    const inStory = ch.story.some((b) => (b.type === 'paragraph' || b.type === 'list' || b.type === 'table' || b.type === 'method') && b.notions?.includes(n.id))
     const inQuiz = ch.quiz.some((q) => q.notions?.includes(n.id))
     const termNotions = new Map(ch.glossary.map((t) => [t.id, t.notion]))
     const inCards = ch.flashcards.some((f) => f.notions?.includes(n.id) || (f.termId !== undefined && termNotions.get(f.termId) === n.id))

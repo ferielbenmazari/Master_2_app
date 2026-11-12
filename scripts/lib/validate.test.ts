@@ -59,7 +59,8 @@ function run(
     courses: [
       {
         dir: 'rec1',
-        course: opts.course ? { ...rec1.course!, data: withCourse(opts.course) } : rec1.course!,
+        // par défaut : course.json sans chapterOrder (un seul chapitre dans l'arbre en mémoire)
+        course: { ...rec1.course!, data: withCourse(opts.course ?? ((c) => delete c.chapterOrder)) },
         sources: { file: 'content/rec1/sources.json', data: sources },
         notions: { file: 'content/rec1/notions.json', data: notions },
         chapters: [{ file: opts.file ?? CH_FILE, data: raw ? raw(ch) : ch }],

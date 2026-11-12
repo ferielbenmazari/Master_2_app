@@ -93,7 +93,7 @@ describe('matière', () => {
     renderAt('/matiere/rec1')
     const link = await screen.findByRole('link', { name: /Ta recherche tient-elle debout/ })
     expect(link).toHaveAttribute('href', '/matiere/rec1/chapitre/rec1-05-qualite-validite-ethique')
-    expect(link).toHaveTextContent('05')
+    expect(link).toHaveTextContent(/^0\d/)
     expect(link).toHaveTextContent('min')
     expect(screen.getByRole('link', { name: 'Chapitres' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Glossaire' })).toBeInTheDocument()

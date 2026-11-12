@@ -27,9 +27,11 @@ describe('loader', () => {
     expect(idx).toContainEqual({
       id: REC1_05,
       courseId: 'rec1',
-      order: 5,
+      order: 6,
       path: `/content/rec1/chapters/05-qualite-validite-ethique.json`,
     })
+    // ordre d'affichage REC1 : course.json.chapterOrder (le chapitre 07 s'insère en 4e position)
+    expect(idx.map((c) => c.id.slice(5, 7))).toEqual(['01', '02', '03', '07', '04', '05', '06'])
     expect(getChapterIndex('inf4').every((c) => c.courseId === 'inf4')).toBe(true)
   })
 
