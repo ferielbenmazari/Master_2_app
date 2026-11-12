@@ -51,7 +51,10 @@ export default function ChapterSheet() {
   }, [known, chapterId])
 
   const chapter = state?.id === chapterId ? state.chapter : null
-  const glossary = useMemo(() => new Map((chapter?.glossary ?? []).map((t) => [t.id, t])), [chapter])
+  const glossary = useMemo(
+    () => new Map((chapter?.glossary ?? []).map((t) => [t.id, t])),
+    [chapter],
+  )
   const { notes, points, terms } = useNotes(chapter)
 
   if (!course || !known) return <Navigate to={`/matiere/${courseId}`} replace />
@@ -103,7 +106,52 @@ export default function ChapterSheet() {
           </p>
           <h1 className="display text-2xl">{title.main}</h1>
           {title.alt && <p className="text-sm text-ink-soft">{title.alt}</p>}
+          {chapter.question && <p className="mt-2 font-semibold">{rich(chapter.question)}</p>}
         </header>
+
+        {chapter.objectives && chapter.objectives.length > 0 && (
+          <section aria-labelledby="sheet-objectives" className="flex flex-col gap-2">
+            <h2 id="sheet-objectives" className="display text-lg">
+              {UI.reader.objectives}
+            </h2>
+            <ul className="prose-list list-disc pl-5">
+              {chapter.objectives.map((o) => (
+                <li key={o.id}>{rich(o.text)}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {chapter.synthesis && (
+          <section aria-labelledby="sheet-synthesis" className="flex flex-col gap-3">
+            {(
+              [
+                ['mustKnow', UI.reader.mustKnow],
+                ['mustDo', UI.reader.mustDo],
+                ['distinctions', UI.reader.distinctions],
+                ['links', UI.reader.links],
+              ] as const
+            ).map(([key, label]) => {
+              const items = chapter.synthesis?.[key]
+              if (!items || items.length === 0) return null
+              return (
+                <div key={key} className="flex flex-col gap-1.5">
+                  <h2
+                    id={key === 'mustKnow' ? 'sheet-synthesis' : undefined}
+                    className="display text-base"
+                  >
+                    {label}
+                  </h2>
+                  <ul className="prose-list list-disc pl-5">
+                    {items.map((t, i) => (
+                      <li key={i}>{rich(t)}</li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </section>
+        )}
 
         <section aria-labelledby="sheet-points" className="flex flex-col gap-3">
           <h2 id="sheet-points" className="display text-lg">

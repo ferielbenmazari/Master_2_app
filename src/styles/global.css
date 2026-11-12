@@ -1089,6 +1089,87 @@
   .callout-analogy {
     --cc: var(--cyan);
   }
+  .callout-repere {
+    --cc: var(--ink-dim);
+  }
+  /* paragraphe d'explication : relie des faits du cours */
+  .explain {
+    padding-left: 12px;
+    box-shadow: inset 2px 0 0 var(--course, var(--acid));
+  }
+  .explain-title {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--course, var(--acid));
+  }
+  [data-theme='light'] .explain-title {
+    color: var(--ink-soft);
+  }
+  /* méthode pas à pas */
+  .method-box {
+    padding: 14px 16px;
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--course, var(--acid)) 55%, var(--line));
+    --cc: var(--course, var(--acid));
+  }
+  .method-built {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .method-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .method-steps {
+    list-style: decimal;
+    padding-left: 1.4em;
+  }
+  .method-steps li + li {
+    margin-top: 10px;
+  }
+  .method-do {
+    display: block;
+    font-weight: 600;
+  }
+  .method-why {
+    display: block;
+    margin-top: 2px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .method-why .mono {
+    color: var(--course, var(--acid));
+  }
+  [data-theme='light'] .method-why .mono {
+    color: var(--ink);
+  }
+  /* fil du chapitre (en-tête) et synthèse */
+  .guide-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .guide-q {
+    font-weight: 700;
+    font-size: 1.05em;
+    line-height: 1.45;
+  }
+  .guide-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .guide-list li {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .guide-list .lvl {
+    flex-shrink: 0;
+  }
   .callout-title {
     display: flex;
     align-items: center;

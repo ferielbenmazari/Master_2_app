@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import type { QuizItem, Term } from '@/content/schema'
+import type { Objective, QuizItem, Term } from '@/content/schema'
 
 export interface ReaderCtx {
   courseId: string
@@ -7,6 +7,8 @@ export interface ReaderCtx {
   glossary: ReadonlyMap<string, Term>
   /** Items de quiz du chapitre, par id (blocs `checkpoint`). */
   quiz: ReadonlyMap<string, QuizItem>
+  /** Objectifs du chapitre (rappelés dans la correction des checkpoints). */
+  objectives?: readonly Objective[]
 }
 
 export const ReaderContext = createContext<ReaderCtx>({

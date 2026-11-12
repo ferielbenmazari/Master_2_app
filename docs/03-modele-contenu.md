@@ -36,14 +36,23 @@ interface Course {
   icon: string;               // nom d'icône lucide-react, ex. "ClipboardList" (pas d'emoji)
   description: L;             // 1-2 phrases
   examDate?: string;          // "2026-11-12" — affiche un compte à rebours
+  objectives?: L[];           // objectifs du module (carte de la matière)
+  chapterOrder?: string[];    // ordre d'affichage (ids) ; absent = numéro du fichier. Insérer un chapitre sans changer d'id.
 }
 
 interface Chapter {
   id: string;                 // "<courseId>-<nn>-<slug>", ex. "rec1-05-qualite-validite-ethique"
   courseId: string;
-  order: number;              // 1, 2, 3…
+  order: number;              // 1, 2, 3… (= position dans course.chapterOrder si présent)
   title: L;                   // titre accrocheur
   hook: L;                    // 1 phrase d'accroche
+  // --- conception pédagogique (docs/06 §7) — facultatif dans le schéma, attendu pour tout chapitre refondu
+  question?: L;               // question directrice : à quoi le chapitre répond
+  objectives?: Objective[];   // 3 à 6 objectifs évaluables (« À la fin, tu sais… »)
+  examFocus?: { documented?: L[]; probable?: L[] }; // au partiel : prouvé (annale, consigne, témoignage) vs estimé
+  prerequisites?: L;          // ce qu'il faut savoir avant (chapitres)
+  next?: L;                   // ce que le chapitre prépare
+  synthesis?: { mustKnow: L[]; mustDo: L[]; distinctions?: L[]; links?: L[] }; // fin de lecture
   estimatedMinutes: number;   // temps de lecture de l'histoire
   sources: string[];          // chemins relatifs au repo (ressources/… ou sources-texte/…)
   status: "draft" | "reviewed";
@@ -57,16 +66,20 @@ interface Chapter {
   writing: WritingItem[];     // 4 à 12, chaque kind au moins 1 fois
 }
 
+interface Objective { id: string /* "o1" */; text: L; level: Level }
+
 type StoryBlock =
   | { type: "heading"; text: L }                         // un heading = début d'épisode (3-4 min)
-  | { type: "paragraph"; text: L; src?: SourceRef[]; narrative?: boolean; notions?: string[] }
+  | { type: "paragraph"; text: L; src?: SourceRef[]; narrative?: boolean; explain?: boolean; notions?: string[] }
+      // explain: true = explication pédagogique : relie des faits sourcés AILLEURS dans le chapitre, n'en ajoute aucun
+  | { type: "method"; title: L; steps: { do: L; why: L }[]; src?: SourceRef[]; notions?: string[] } // méthode pas à pas (2-8 étapes)
   | { type: "list"; ordered?: boolean; items: L[]; src: SourceRef[]; notions?: string[] }
-  | { type: "callout"; variant: "tip" | "warning" | "exam" | "analogy"; text: L; src?: SourceRef[] }
+  | { type: "callout"; variant: "tip" | "warning" | "exam" | "analogy" | "repere"; text: L; src?: SourceRef[] } // repere = contexte secondaire, jamais quizzé
   | { type: "table"; headers: L[]; rows: L[][]; src: SourceRef[]; notions?: string[] }
   | { type: "diagram"; mermaid: string; caption: L; src?: SourceRef[] }   // Mermaid valide, libellés en anglais
   | { type: "quote"; text: L; source: string }
   | { type: "checkpoint"; quizId: string };               // renvoie à un item de `quiz`
-// paragraph : src obligatoire sauf narrative: true · callout : src obligatoire sauf variant "analogy"
+// paragraph : src obligatoire sauf narrative: true ou explain: true · callout : src obligatoire sauf variant "analogy"
 
 interface KeyPoint { text: L; src: SourceRef[]; notions?: string[] }
 
@@ -84,8 +97,9 @@ interface Term {
 interface Flashcard { id: string; front: L; back: L; termId?: string; src?: SourceRef[]; notions?: string[] } // src obligatoire si pas de termId
 
 type QuizItem =
-  | { id: string; type: "true_false"; statement: L; answer: boolean; justification: L; level: Level; src: SourceRef[]; notions?: string[] }
-  | { id: string; type: "mcq"; question: L; options: L[]; correct: number[]; explanation: L; level: Level; src: SourceRef[]; notions?: string[] };
+  | { id: string; type: "true_false"; statement: L; answer: boolean; justification: L; level: Level; src: SourceRef[]; notions?: string[]; objective?: string; trap?: L }
+  | { id: string; type: "mcq"; question: L; options: L[]; correct: number[]; explanation: L; level: Level; src: SourceRef[]; notions?: string[]; objective?: string; trap?: L };
+  // objective = id d'un objectif du chapitre ; trap = la confusion à éviter (affichée dans la correction)
 
 interface Exercise {
   id: string;
@@ -98,6 +112,8 @@ interface Exercise {
   level: Level;
   src: SourceRef[];
   notions?: string[];
+  objective?: string;         // id d'un objectif du chapitre
+  trap?: L;                   // erreur typique à éviter
 }
 
 type WritingItem =
@@ -142,7 +158,9 @@ type ExamQuestion =
 9. **Citations** : chaque `src[].quote` est retrouvée dans son fichier (normalisation + tolérance 90 %, voir 06 §2). Erreur bloquante.
 10. **Sourçage obligatoire** selon le tableau de 06 §2. Erreur bloquante.
 11. `notions` : chaque id existe dans `content/<courseId>/notions.json` (si ce fichier existe).
-12. **Avertissements** (n'empêchent pas le build, mais doivent être traités avant `reviewed`) : quotas de `level`, détecteur de questions évidentes, longueurs (paragraphe > 90 mots, épisode > 450 mots sans checkpoint), couverture des notions ★★★/★★. Voir 06 §3-§6.
+12. **Ordre** : si `course.chapterOrder` existe, il liste chaque chapitre une fois et `chapter.order` = sa position (R13).
+13. **Objectifs** : ids uniques ; `objective` d'un quiz/exercice existe dans `objectives` (R14). Avertissements : chapitre sans question/objectifs/synthèse (`W-pedago`), objectif visé par aucun quiz ni exercice, quiz sans objectif.
+14. **Avertissements** (n'empêchent pas le build, mais doivent être traités avant `reviewed`) : quotas de `level`, détecteur de questions évidentes, longueurs (paragraphe > 90 mots, épisode > 450 mots sans checkpoint), couverture des notions ★★★/★★. Voir 06 §3-§6.
 
 ## Charte éditoriale (pour les agents auteurs)
 

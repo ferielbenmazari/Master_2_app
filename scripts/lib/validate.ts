@@ -129,10 +129,14 @@ export function validateTree(tree: ContentTree, readText: ReadText): Report {
   for (const ci of tree.courses) {
     const dirFile = `content/${ci.dir}`
     // --- course.json
+    let chapterOrder: string[] | undefined
     if (ci.course) {
       const r = CourseSchema.safeParse(ci.course.data)
       if (!r.success) schemaIssues(ctx, ci.course.file, r.error.issues)
-      else if (r.data.id !== ci.dir) ctx.error('R7', ci.course.file, 'id', `id "${r.data.id}" ≠ nom du dossier "${ci.dir}"`)
+      else {
+        if (r.data.id !== ci.dir) ctx.error('R7', ci.course.file, 'id', `id "${r.data.id}" ≠ nom du dossier "${ci.dir}"`)
+        chapterOrder = r.data.chapterOrder
+      }
     } else ctx.error('R1', `${dirFile}/course.json`, '', 'fichier course.json manquant')
 
     // --- sources.json
@@ -193,6 +197,7 @@ export function validateTree(tree: ContentTree, readText: ReadText): Report {
     }
 
     for (const ch of chapters) checkChapter(ctx, cc, ch.file, ch.data)
+    if (chapterOrder && ci.course) checkChapterOrder(ctx, ci.course.file, chapterOrder, chapters)
     for (const ex of exams) checkExam(ctx, cc, ex.file, ex.data)
     chapterCount += ci.chapters.length
     examCount += ci.exams.length
@@ -340,7 +345,7 @@ function checkChapter(ctx: Ctx, cc: CourseCtx, file: string, ch: Chapter): void 
   }
   ch.story.forEach((b, i) => {
     const p = `story[${i}]`
-    if (b.type === 'paragraph' && !b.narrative) need(`${p}.src`, b.src, 'paragraphe non narratif')
+    if (b.type === 'paragraph' && !b.narrative && !b.explain) need(`${p}.src`, b.src, 'paragraphe non narratif')
     if (b.type === 'list') need(`${p}.src`, b.src, 'liste')
     if (b.type === 'table') need(`${p}.src`, b.src, 'tableau')
     if (b.type === 'callout' && b.variant !== 'analogy') need(`${p}.src`, b.src, `callout ${b.variant}`)
@@ -379,10 +384,55 @@ function checkChapter(ctx: Ctx, cc: CourseCtx, file: string, ch: Chapter): void 
     })
   }
 
+  // --- R14 : objectifs d'apprentissage
+  checkObjectives(ctx, file, ch)
+
   // --- R12 : avertissements
   warnLevels(ctx, file, ch)
   warnEvident(ctx, file, ch.quiz.map((q, i) => ({ path: `quiz[${i}]`, q })))
   warnLengths(ctx, file, ch)
+}
+
+/** R13 : `course.chapterOrder` liste chaque chapitre une fois, et `chapter.order` = sa position. */
+function checkChapterOrder(ctx: Ctx, file: string, order: readonly string[], chapters: { file: string; data: Chapter }[]): void {
+  const byId = new Map(chapters.map((c) => [c.data.id, c]))
+  const seen = new Set<string>()
+  order.forEach((id, i) => {
+    if (seen.has(id)) ctx.error('R13', file, `chapterOrder[${i}]`, `chapitre "${id}" listé deux fois`)
+    seen.add(id)
+    const ch = byId.get(id)
+    if (!ch) ctx.error('R13', file, `chapterOrder[${i}]`, `chapitre "${id}" introuvable`)
+    else if (ch.data.order !== i + 1) ctx.error('R13', ch.file, 'order', `order ${ch.data.order} ≠ position ${i + 1} dans chapterOrder`)
+  })
+  for (const c of chapters) {
+    if (!seen.has(c.data.id)) ctx.error('R13', file, 'chapterOrder', `chapitre "${c.data.id}" absent de chapterOrder`)
+  }
+}
+
+/** R14 : objectifs uniques, cibles de quiz/exercices existantes ; avertissements de conception pédagogique. */
+function checkObjectives(ctx: Ctx, file: string, ch: Chapter): void {
+  const ids = new Set<string>()
+  ch.objectives?.forEach((o, i) => {
+    if (ids.has(o.id)) ctx.error('R14', file, `objectives[${i}].id`, `objectif "${o.id}" en double`)
+    ids.add(o.id)
+  })
+  const targets: { path: string; objective?: string }[] = [
+    ...ch.quiz.map((q, i) => ({ path: `quiz[${i}].objective`, objective: q.objective })),
+    ...ch.exercises.map((e, i) => ({ path: `exercises[${i}].objective`, objective: e.objective })),
+  ]
+  for (const t of targets) {
+    if (t.objective !== undefined && !ids.has(t.objective)) ctx.error('R14', file, t.path, `objectif "${t.objective}" absent de objectives`)
+  }
+  if (!ch.question || !ch.objectives || !ch.synthesis) {
+    ctx.warn('W-pedago', file, 'chapter', 'question directrice, objectifs ou synthèse manquants (docs/06 §7)')
+    return
+  }
+  for (const o of ch.objectives) {
+    const n = targets.filter((t) => t.objective === o.id).length
+    if (n === 0) ctx.warn('W-objective-uncovered', file, `objectives`, `objectif "${o.id}" : aucun quiz ni exercice ne le vise`)
+  }
+  const orphan = ch.quiz.filter((q) => q.objective === undefined).length
+  if (orphan > 0) ctx.warn('W-quiz-no-objective', file, 'quiz', `${orphan} question(s) sans objectif`)
 }
 
 function checkQuizItem(ctx: Ctx, file: string, path: string, q: Q | ExamQuestion): void {
@@ -517,6 +567,7 @@ function warnLengths(ctx: Ctx, file: string, ch: Chapter): void {
       if (b.items.length > 7) ctx.warn('W-list-long', file, `story[${i}]`, `liste de ${b.items.length} items (> 7)`)
     }
     if (b.type === 'callout' || b.type === 'quote') episodeWords += words(b.text.fr)
+    if (b.type === 'method') episodeWords += b.steps.reduce((s, st) => s + words(st.do.fr) + words(st.why.fr), 0)
   })
   closeEpisode()
 }

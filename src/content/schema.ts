@@ -28,6 +28,10 @@ export const CourseSchema = z.strictObject({
   icon: nonEmpty,
   description: LSchema,
   examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'format AAAA-MM-JJ').optional(),
+  /** Objectifs du module (carte de la matière). */
+  objectives: z.array(LSchema).optional(),
+  /** Ordre d'affichage des chapitres (ids) ; absent = ordre des numéros de fichier. Permet d'insérer un chapitre sans changer les ids. */
+  chapterOrder: stringArray.optional(),
 })
 export type Course = z.infer<typeof CourseSchema>
 
@@ -39,6 +43,8 @@ export const StoryBlockSchema = z.discriminatedUnion('type', [
     text: LSchema,
     src: srcList.optional(),
     narrative: z.boolean().optional(),
+    /** Explication pédagogique : relie des faits sourcés ailleurs dans le chapitre sans en ajouter (src facultatif). */
+    explain: z.boolean().optional(),
     notions: notionIds,
   }),
   z.strictObject({
@@ -50,7 +56,7 @@ export const StoryBlockSchema = z.discriminatedUnion('type', [
   }),
   z.strictObject({
     type: z.literal('callout'),
-    variant: z.enum(['tip', 'warning', 'exam', 'analogy']),
+    variant: z.enum(['tip', 'warning', 'exam', 'analogy', 'repere']),
     text: LSchema,
     src: srcList.optional(),
   }),
@@ -59,6 +65,14 @@ export const StoryBlockSchema = z.discriminatedUnion('type', [
     headers: z.array(LSchema).min(1),
     rows: z.array(z.array(LSchema)).min(1),
     src: srcList,
+    notions: notionIds,
+  }),
+  z.strictObject({
+    type: z.literal('method'),
+    title: LSchema,
+    /** Étapes : ce qu'on fait, et pourquoi on le fait. */
+    steps: z.array(z.strictObject({ do: LSchema, why: LSchema })).min(2).max(8),
+    src: srcList.optional(),
     notions: notionIds,
   }),
   z.strictObject({ type: z.literal('diagram'), mermaid: nonEmpty, caption: LSchema, src: srcList.optional() }),
@@ -105,6 +119,8 @@ export const QuizItemSchema = z.discriminatedUnion('type', [
     level: LevelSchema,
     src: srcList,
     notions: notionIds,
+    objective: nonEmpty.optional(),
+    trap: LSchema.optional(),
   }),
   z.strictObject({
     id: nonEmpty,
@@ -116,6 +132,8 @@ export const QuizItemSchema = z.discriminatedUnion('type', [
     level: LevelSchema,
     src: srcList,
     notions: notionIds,
+    objective: nonEmpty.optional(),
+    trap: LSchema.optional(),
   }),
 ])
 export type QuizItem = z.infer<typeof QuizItemSchema>
@@ -131,6 +149,8 @@ export const ExerciseSchema = z.strictObject({
   level: LevelSchema,
   src: srcList,
   notions: notionIds,
+  objective: nonEmpty.optional(),
+  trap: LSchema.optional(),
 })
 export type Exercise = z.infer<typeof ExerciseSchema>
 
@@ -165,6 +185,30 @@ export const WritingItemSchema = z.discriminatedUnion('kind', [
 export type WritingItem = z.infer<typeof WritingItemSchema>
 
 // ---------------------------------------------------------------- Chapter
+/** Objectif d'apprentissage évaluable (« À la fin, tu sais… »). */
+export const ObjectiveSchema = z.strictObject({
+  id: z.string().regex(/^o\d+$/, 'id d’objectif : "o1", "o2"…'),
+  text: LSchema,
+  level: LevelSchema,
+})
+export type Objective = z.infer<typeof ObjectiveSchema>
+
+export const ExamFocusSchema = z.strictObject({
+  /** Exigences établies par un document (annale, consigne, témoignage). */
+  documented: z.array(LSchema).optional(),
+  /** Estimations raisonnées (programme, exercices), présentées comme telles. */
+  probable: z.array(LSchema).optional(),
+})
+export type ExamFocus = z.infer<typeof ExamFocusSchema>
+
+export const SynthesisSchema = z.strictObject({
+  mustKnow: z.array(LSchema).min(1),
+  mustDo: z.array(LSchema).min(1),
+  distinctions: z.array(LSchema).optional(),
+  links: z.array(LSchema).optional(),
+})
+export type Synthesis = z.infer<typeof SynthesisSchema>
+
 export const ChapterSchema = z
   .strictObject({
     id: nonEmpty,
@@ -172,6 +216,14 @@ export const ChapterSchema = z
     order: z.number().int().positive(),
     title: LSchema,
     hook: LSchema,
+    /** Question directrice du chapitre. */
+    question: LSchema.optional(),
+    objectives: z.array(ObjectiveSchema).min(1).max(8).optional(),
+    examFocus: ExamFocusSchema.optional(),
+    /** Ce qu'il faut savoir avant / ce que ce chapitre prépare. */
+    prerequisites: LSchema.optional(),
+    next: LSchema.optional(),
+    synthesis: SynthesisSchema.optional(),
     estimatedMinutes: z.number().positive(),
     sources: stringArray,
     status: z.enum(['draft', 'reviewed']),

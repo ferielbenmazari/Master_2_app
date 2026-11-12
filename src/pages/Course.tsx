@@ -16,7 +16,7 @@ import { useReadChapters } from '@/store/use-progress'
 function ChapterRow({ chapter, done, index }: { chapter: Chapter; done: boolean; index: number }) {
   const { prefs } = usePrefs()
   const title = pickLang(chapter.title, prefs.langMode)
-  const hook = pickLang(chapter.hook, prefs.langMode)
+  const hook = pickLang(chapter.question ?? chapter.hook, prefs.langMode)
   return (
     <li style={{ '--i': index } as React.CSSProperties}>
       <Link
@@ -67,14 +67,24 @@ export default function Course({ now }: { now?: Date }) {
         {days !== null && <Tag tilt="right">{UI.home.examSoon(days)}</Tag>}
       </header>
       <nav className="tabs" aria-label={UI.course.tabs}>
-        <NavLink to={`/matiere/${courseId}`} end className={({ isActive }) => (isActive ? 'on' : '')}>
+        <NavLink
+          to={`/matiere/${courseId}`}
+          end
+          className={({ isActive }) => (isActive ? 'on' : '')}
+        >
           {UI.course.chapters}
         </NavLink>
-        <NavLink to={`/matiere/${courseId}/glossaire`} className={({ isActive }) => (isActive ? 'on' : '')}>
+        <NavLink
+          to={`/matiere/${courseId}/glossaire`}
+          className={({ isActive }) => (isActive ? 'on' : '')}
+        >
           {UI.course.glossary}
         </NavLink>
         {hasExams ? (
-          <NavLink to={`/matiere/${courseId}/partiels`} className={({ isActive }) => (isActive ? 'on' : '')}>
+          <NavLink
+            to={`/matiere/${courseId}/partiels`}
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
             {UI.course.exams}
           </NavLink>
         ) : (
@@ -82,7 +92,11 @@ export default function Course({ now }: { now?: Date }) {
         )}
       </nav>
       {empty ? (
-        <EmptyState icon={Hourglass} title={UI.course.preparingTitle} text={UI.course.preparingText}>
+        <EmptyState
+          icon={Hourglass}
+          title={UI.course.preparingTitle}
+          text={UI.course.preparingText}
+        >
           <Link to="/" className="btn">
             {UI.course.back}
           </Link>

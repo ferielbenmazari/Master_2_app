@@ -2,6 +2,8 @@ import { BookOpen, ChevronLeft, Check } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, Navigate, useParams, useSearchParams } from 'react-router'
 import Bilingual from '@/components/content/Bilingual'
+import ChapterGuide from '@/components/content/ChapterGuide'
+import ChapterSynthesis from '@/components/content/ChapterSynthesis'
 import { ReaderContext } from '@/components/content/ReaderContext'
 import RichText from '@/components/content/RichText'
 import SourceChip from '@/components/content/SourceChip'
@@ -118,7 +120,9 @@ export default function Reader() {
   }
 
   return (
-    <ReaderContext.Provider value={{ courseId, chapterId, glossary, quiz }}>
+    <ReaderContext.Provider
+      value={{ courseId, chapterId, glossary, quiz, objectives: chapter.objectives }}
+    >
       <article className="reader">
         <div className="reader-bar">
           <div className="mb-2 flex items-center justify-between gap-3">
@@ -156,6 +160,8 @@ export default function Reader() {
             />
           </header>
 
+          <ChapterGuide chapter={chapter} layout={layout} />
+
           {episodes.map((ep, i) => (
             <section
               key={i}
@@ -187,23 +193,31 @@ export default function Reader() {
               <h2 id="summary" className="display text-lg">
                 {UI.reader.summaryTitle}
               </h2>
-              <ul className="flex flex-col gap-3">
-                {chapter.keyPoints.slice(0, 3).map((k, i) => (
-                  <li key={i} className="flex gap-2">
-                    <Icon icon={Check} size={16} className="mt-1.5 shrink-0 text-[var(--course)]" />
-                    <Bilingual
-                      layout={layout}
-                      className="min-w-0 flex-1"
-                      render={(lang, alt) => (
-                        <div>
-                          <RichText lang={lang} text={k.text[lang]} />
-                          {!alt && <SourceChip src={k.src} />}
-                        </div>
-                      )}
-                    />
-                  </li>
-                ))}
-              </ul>
+              {chapter.synthesis ? (
+                <ChapterSynthesis synthesis={chapter.synthesis} layout={layout} />
+              ) : (
+                <ul className="flex flex-col gap-3">
+                  {chapter.keyPoints.slice(0, 3).map((k, i) => (
+                    <li key={i} className="flex gap-2">
+                      <Icon
+                        icon={Check}
+                        size={16}
+                        className="mt-1.5 shrink-0 text-[var(--course)]"
+                      />
+                      <Bilingual
+                        layout={layout}
+                        className="min-w-0 flex-1"
+                        render={(lang, alt) => (
+                          <div>
+                            <RichText lang={lang} text={k.text[lang]} />
+                            {!alt && <SourceChip src={k.src} />}
+                          </div>
+                        )}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
               {finished ? (
                 <div className="flex flex-wrap items-center gap-3">
                   <Tag icon={Check}>{UI.reader.finished}</Tag>

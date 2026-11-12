@@ -1,5 +1,16 @@
 import { describe, expect, it } from 'vitest'
-import { getChapterIndex, getCourse, getCourses, getExamIndex, getNotions, loadAllChapters, loadChapter, loadExam } from './loader'
+import {
+  getChapterIndex,
+  getCourse,
+  getCourses,
+  getExamIndex,
+  getNotions,
+  loadAllChapters,
+  loadChapter,
+  loadExam,
+  orderChapterRefs,
+} from './loader'
+import type { Course } from './schema'
 
 const REC1_05 = 'rec1-05-qualite-validite-ethique'
 
@@ -13,7 +24,12 @@ describe('loader', () => {
   it('indexe les chapitres sans les charger', () => {
     const idx = getChapterIndex('rec1')
     expect(idx.map((c) => c.order)).toEqual([...idx.map((c) => c.order)].sort((a, b) => a - b))
-    expect(idx).toContainEqual({ id: REC1_05, courseId: 'rec1', order: 5, path: `/content/rec1/chapters/05-qualite-validite-ethique.json` })
+    expect(idx).toContainEqual({
+      id: REC1_05,
+      courseId: 'rec1',
+      order: 5,
+      path: `/content/rec1/chapters/05-qualite-validite-ethique.json`,
+    })
     expect(getChapterIndex('inf4').every((c) => c.courseId === 'inf4')).toBe(true)
   })
 
@@ -44,5 +60,40 @@ describe('loader', () => {
   it('charge les notions, null si absentes', async () => {
     expect((await getNotions('rec1'))?.notions.length).toBeGreaterThanOrEqual(12)
     expect(await getNotions('cours-inconnu')).toBeNull()
+  })
+})
+
+describe('orderChapterRefs', () => {
+  const ref = (id: string, order: number) => ({
+    id,
+    courseId: 'x',
+    order,
+    path: `/content/x/chapters/${id}.json`,
+  })
+  const course = (chapterOrder?: string[]) =>
+    ({
+      id: 'x',
+      code: 'X',
+      title: { fr: 'X', en: 'X' },
+      color: 'lime',
+      icon: 'Book',
+      description: { fr: 'X', en: 'X' },
+      chapterOrder,
+    }) as Course
+  it('sans chapterOrder : ordre des numéros de fichier', () => {
+    expect(
+      orderChapterRefs([ref('x-02-b', 2), ref('x-01-a', 1)], [course()]).map((r) => r.id),
+    ).toEqual(['x-01-a', 'x-02-b'])
+  })
+  it('avec chapterOrder : position dans la liste, sans changer les ids', () => {
+    const out = orderChapterRefs(
+      [ref('x-01-a', 1), ref('x-02-b', 2), ref('x-07-new', 7)],
+      [course(['x-01-a', 'x-07-new', 'x-02-b'])],
+    )
+    expect(out.map((r) => [r.id, r.order])).toEqual([
+      ['x-01-a', 1],
+      ['x-07-new', 2],
+      ['x-02-b', 3],
+    ])
   })
 })

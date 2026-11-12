@@ -7,7 +7,7 @@ import { useReader } from './ReaderContext'
 
 /** Bloc `checkpoint` du lecteur : la question du quiz jouable sur place (cible `#cp-<quizId>`). */
 export default function Checkpoint({ quizId, quizHref }: { quizId: string; quizHref: string }) {
-  const { quiz } = useReader()
+  const { quiz, objectives } = useReader()
   const { prefs } = usePrefs()
   const item = quiz.get(quizId)
   // dans le lecteur, la langue de lecture prime ; en FR+EN on suit la langue d'entraînement
@@ -16,7 +16,7 @@ export default function Checkpoint({ quizId, quizHref }: { quizId: string; quizH
     <Panel hi brackets id={`cp-${quizId}`} className="flex scroll-mt-24 flex-col gap-3">
       <h3 className="display text-base">{UI.reader.checkpoint}</h3>
       {item ? (
-        <QuizCard item={item} lang={lang} />
+        <QuizCard item={item} lang={lang} objectives={objectives} />
       ) : (
         <p className="text-sm text-ink-soft">{UI.reader.checkpointText}</p>
       )}

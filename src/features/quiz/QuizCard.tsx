@@ -7,7 +7,7 @@ import Icon from '@/components/ui/Icon'
 import Panel from '@/components/ui/Panel'
 import Tag from '@/components/ui/Tag'
 import TimerRing from '@/components/ui/TimerRing'
-import type { QuizItem } from '@/content/schema'
+import type { Objective, QuizItem } from '@/content/schema'
 import { UI } from '@/i18n/ui'
 import { comboBurst, flashKo, flashOk } from '@/lib/celebrate'
 import { recordAttempt } from '@/store/progress'
@@ -35,6 +35,8 @@ interface QuizCardProps {
   onAnswered?: (r: QuizResult) => void
   /** Boutons affichés sous la correction (ex. « Suivante »). */
   actions?: ReactNode
+  /** Objectifs du chapitre : la correction rappelle celui que vise la question. */
+  objectives?: readonly Objective[]
 }
 
 const other = (l: Lang): Lang => (l === 'fr' ? 'en' : 'fr')
@@ -62,7 +64,9 @@ export default function QuizCard({
   timerSeconds = 0,
   onAnswered,
   actions,
+  objectives,
 }: QuizCardProps) {
+  const objective = item.objective ? objectives?.find((o) => o.id === item.objective) : undefined
   const [showAlt, setShowAlt] = useState(false)
   const [pick, setPick] = useState<boolean | null>(null)
   const [checked, setChecked] = useState<readonly number[]>([])
@@ -72,7 +76,12 @@ export default function QuizCard({
   const rootRef = useRef<HTMLDivElement>(null)
   const fbRef = useRef<HTMLDivElement>(null)
 
-  const shown = item.type === 'mcq' ? (order && order.length === item.options.length ? order : item.options.map((_, i) => i)) : []
+  const shown =
+    item.type === 'mcq'
+      ? order && order.length === item.options.length
+        ? order
+        : item.options.map((_, i) => i)
+      : []
   const alt = other(lang)
 
   function settle(answer: Answer, timedOut: boolean) {
@@ -142,7 +151,8 @@ export default function QuizCard({
         </div>
         {showAlt && (
           <p lang={alt} className="text-sm text-ink-soft">
-            <span className="mono">{alt.toUpperCase()}</span> <RichText lang={alt} text={stem[alt]} noTerms />
+            <span className="mono">{alt.toUpperCase()}</span>{' '}
+            <RichText lang={alt} text={stem[alt]} noTerms />
           </p>
         )}
         <button
@@ -191,7 +201,12 @@ export default function QuizCard({
               <span id={`just-help-${item.id}`} className="text-sm text-ink-soft">
                 {UI.quiz.justificationHelp}
               </span>
-              <Button variant="primary" icon={Check} className="self-start" onClick={() => settle(false, false)}>
+              <Button
+                variant="primary"
+                icon={Check}
+                className="self-start"
+                onClick={() => settle(false, false)}
+              >
                 {UI.quiz.validate}
               </Button>
             </div>
@@ -204,7 +219,15 @@ export default function QuizCard({
             const opt = item.options[orig]!
             const isGood = item.correct.includes(orig)
             const isPicked = checked.includes(orig)
-            const state = !done ? undefined : isGood ? (isPicked ? 'right' : 'missed') : isPicked ? 'wrong' : undefined
+            const state = !done
+              ? undefined
+              : isGood
+                ? isPicked
+                  ? 'right'
+                  : 'missed'
+                : isPicked
+                  ? 'wrong'
+                  : undefined
             return (
               <label key={orig} className="opt" data-state={state}>
                 <input
@@ -225,7 +248,11 @@ export default function QuizCard({
                   {state && (
                     <span className="opt-mark">
                       <Icon icon={state === 'wrong' ? X : Check} size={14} />{' '}
-                      {state === 'right' ? UI.quiz.optionRight : state === 'wrong' ? UI.quiz.optionWrong : UI.quiz.optionMissed}
+                      {state === 'right'
+                        ? UI.quiz.optionRight
+                        : state === 'wrong'
+                          ? UI.quiz.optionWrong
+                          : UI.quiz.optionMissed}
                     </span>
                   )}
                 </span>
@@ -256,10 +283,14 @@ export default function QuizCard({
               <Tag
                 tilt="left"
                 icon={result.correct ? Check : X}
-                style={{ '--course': result.correct ? 'var(--ok)' : 'var(--bad)' } as React.CSSProperties}
+                style={
+                  { '--course': result.correct ? 'var(--ok)' : 'var(--bad)' } as React.CSSProperties
+                }
               >
                 {verdict}
-                {item.type === 'true_false' && !result.correct ? ` · ${UI.quiz.answerWas(item.answer)}` : ''}
+                {item.type === 'true_false' && !result.correct
+                  ? ` · ${UI.quiz.answerWas(item.answer)}`
+                  : ''}
               </Tag>
               {result.correct && result.xp > 0 && (
                 <Tag icon={Zap} style={{ '--course': 'var(--gold)' } as React.CSSProperties}>
@@ -269,7 +300,10 @@ export default function QuizCard({
               <Tag>{UI.quiz.levels[item.level]}</Tag>
             </div>
             {item.type === 'true_false' && mine.trim() && pick === false && (
-              <blockquote className="mt-2 border-l-2 border-[var(--course)] pl-3 text-sm" lang={lang}>
+              <blockquote
+                className="mt-2 border-l-2 border-[var(--course)] pl-3 text-sm"
+                lang={lang}
+              >
                 <span className="mono dim block">{UI.quiz.yourJustification}</span>
                 {mine.trim()}
               </blockquote>
@@ -283,6 +317,18 @@ export default function QuizCard({
                 en={item.type === 'true_false' ? item.justification.en : item.explanation.en}
               />
             </div>
+            {item.trap && (
+              <div className="mt-2">
+                <span className="mono dim block">{UI.quiz.trap}</span>
+                <BothLangs fr={item.trap.fr} en={item.trap.en} />
+              </div>
+            )}
+            {objective && (
+              <p className="mt-2 text-sm text-ink-soft">
+                <span className="mono dim">{UI.quiz.objective}</span> —{' '}
+                <RichText lang={lang} text={objective.text[lang]} noTerms />
+              </p>
+            )}
             <div className="flex">
               <SourceChip src={item.src} />
             </div>

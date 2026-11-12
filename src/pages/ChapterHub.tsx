@@ -1,4 +1,15 @@
-import { BadgeCheck, BookOpen, ChevronLeft, FileText, FlaskConical, Languages, Layers, ListChecks, Timer, type LucideIcon } from 'lucide-react'
+import {
+  BadgeCheck,
+  BookOpen,
+  ChevronLeft,
+  FileText,
+  FlaskConical,
+  Languages,
+  Layers,
+  ListChecks,
+  Timer,
+  type LucideIcon,
+} from 'lucide-react'
 import { useEffect, useState, type CSSProperties } from 'react'
 import { Link, Navigate, useParams } from 'react-router'
 import Icon from '@/components/ui/Icon'
@@ -62,7 +73,10 @@ export default function ChapterHub() {
 
   return (
     <div className="flex flex-col gap-5">
-      <Link to={`/matiere/${courseId}`} className="mono dim inline-flex min-h-11 items-center gap-1.5 self-start">
+      <Link
+        to={`/matiere/${courseId}`}
+        className="mono dim inline-flex min-h-11 items-center gap-1.5 self-start"
+      >
         <Icon icon={ChevronLeft} size={14} />
         {UI.hub.back(course.code.replace(/^S\d+-/, ''))}
       </Link>
@@ -77,11 +91,27 @@ export default function ChapterHub() {
         </div>
         <h1 className="display text-2xl">{title.main}</h1>
         {title.alt && <p className="text-sm text-ink-soft">{title.alt}</p>}
-        <p className="text-ink-soft">{hook.main}</p>
-        {hook.alt && <p className="text-sm text-ink-soft">{hook.alt}</p>}
+        {chapter.question ? (
+          <>
+            <p className="font-semibold">{pickLang(chapter.question, prefs.langMode).main}</p>
+            {pickLang(chapter.question, prefs.langMode).alt && (
+              <p className="text-sm text-ink-soft">
+                {pickLang(chapter.question, prefs.langMode).alt}
+              </p>
+            )}
+          </>
+        ) : (
+          <>
+            <p className="text-ink-soft">{hook.main}</p>
+            {hook.alt && <p className="text-sm text-ink-soft">{hook.alt}</p>}
+          </>
+        )}
       </header>
       <ul aria-label={UI.hub.tiles} className="stagger grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {tiles(chapter, courseChapters ? chapterCardCount(courseChapters, chapter.id) : undefined).map((t, i) => (
+        {tiles(
+          chapter,
+          courseChapters ? chapterCardCount(courseChapters, chapter.id) : undefined,
+        ).map((t, i) => (
           <li key={t.view} style={{ '--i': i } as CSSProperties}>
             <Link to={`${base}/${t.view}`} className="block h-full">
               <Panel hi drop tilt className="flex h-full min-h-[110px] flex-col justify-between">
@@ -90,11 +120,7 @@ export default function ChapterHub() {
                 </div>
                 <div>
                   <h2 className="display mt-2.5 text-[13.5px] leading-tight">{t.label}</h2>
-                  {t.count !== undefined && (
-                    <span className="mono hl">
-                      {t.count}
-                    </span>
-                  )}
+                  {t.count !== undefined && <span className="mono hl">{t.count}</span>}
                 </div>
               </Panel>
             </Link>

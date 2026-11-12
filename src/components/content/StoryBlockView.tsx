@@ -1,4 +1,12 @@
-import { Info, Lightbulb, Sparkles, TriangleAlert, type LucideIcon } from 'lucide-react'
+import {
+  Compass,
+  Info,
+  Lightbulb,
+  Route,
+  Sparkles,
+  TriangleAlert,
+  type LucideIcon,
+} from 'lucide-react'
 import Icon from '@/components/ui/Icon'
 import ScrambleText from '@/components/ui/ScrambleText'
 import Squiggle from '@/components/ui/Squiggle'
@@ -17,6 +25,7 @@ const CALLOUTS: Record<Extract<StoryBlock, { type: 'callout' }>['variant'], Luci
   exam: TriangleAlert,
   warning: Info,
   analogy: Sparkles,
+  repere: Compass,
 }
 
 interface Props {
@@ -80,7 +89,10 @@ export default function StoryBlockView({ block, layout, episode, quizHref, table
         <Bilingual
           layout={layout}
           render={(lang, alt) => (
-            <div>
+            <div className={block.explain ? 'explain' : undefined}>
+              {block.explain && !alt && (
+                <span className="mono explain-title">{UI.reader.explain}</span>
+              )}
               <p className={block.narrative ? 'narrative' : undefined}>
                 <RichText lang={lang} text={block.text[lang]} />
               </p>
@@ -167,6 +179,39 @@ export default function StoryBlockView({ block, layout, episode, quizHref, table
               </div>
               {!alt && <SourceChip src={block.src} />}
             </div>
+          )}
+        />
+      )
+
+    case 'method':
+      return (
+        <Bilingual
+          layout={layout}
+          render={(lang, alt) => (
+            <aside className="method-box">
+              <span className="mono callout-title">
+                <Icon icon={Route} size={14} />
+                {UI.reader.method}
+                {!alt && <span className="dim method-built">· {UI.reader.methodBuilt}</span>}
+              </span>
+              <p className="method-title">
+                <RichText lang={lang} text={block.title[lang]} />
+              </p>
+              <ol className="method-steps">
+                {block.steps.map((st, i) => (
+                  <li key={i}>
+                    <span className="method-do">
+                      <RichText lang={lang} text={st.do[lang]} />
+                    </span>
+                    <span className="method-why">
+                      <span className="mono">{UI.reader.methodWhy}</span>{' '}
+                      <RichText lang={lang} text={st.why[lang]} />
+                    </span>
+                  </li>
+                ))}
+              </ol>
+              {!alt && block.src && block.src.length > 0 && <SourceChip src={block.src} />}
+            </aside>
           )}
         />
       )

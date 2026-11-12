@@ -5,7 +5,15 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { readSourceFile } from '../../tools/sources-mcp/lib/quote.ts'
-import { ChapterSchema, NotionsSchema, SourcesSchema, type Chapter, type Exam, type Notions, type Sources } from '../../src/content/schema.ts'
+import {
+  ChapterSchema,
+  NotionsSchema,
+  SourcesSchema,
+  type Chapter,
+  type Exam,
+  type Notions,
+  type Sources,
+} from '../../src/content/schema.ts'
 import { formatReport, formatSummary } from './format-report.ts'
 import { loadContentTree } from './load-tree.ts'
 import { validateTree, type ContentTree, type Issue, type Report } from './validate.ts'
@@ -23,13 +31,23 @@ const baseNotions = NotionsSchema.parse(rec1.notions!.data)
 const clone = <T>(v: T): T => structuredClone(v)
 
 interface Opts {
+  course?: (c: Record<string, unknown>) => void
   sources?: (s: Sources) => void
   notions?: (n: Notions) => void
   exams?: Exam[]
   file?: string
 }
+function withCourse(mutate: (c: Record<string, unknown>) => void): unknown {
+  const c = clone(rec1.course!.data) as Record<string, unknown>
+  mutate(c)
+  return c
+}
 /** Valide le chapitre REC1-05 (modifié par `mutate`) dans une matière rec1 en mémoire. */
-function run(mutate: (ch: Chapter) => void = () => {}, opts: Opts = {}, raw?: (data: Chapter) => unknown): Report {
+function run(
+  mutate: (ch: Chapter) => void = () => {},
+  opts: Opts = {},
+  raw?: (data: Chapter) => unknown,
+): Report {
   const ch = clone(baseChapter)
   mutate(ch)
   const sources = clone(baseSources)
@@ -41,11 +59,14 @@ function run(mutate: (ch: Chapter) => void = () => {}, opts: Opts = {}, raw?: (d
     courses: [
       {
         dir: 'rec1',
-        course: rec1.course!,
+        course: opts.course ? { ...rec1.course!, data: withCourse(opts.course) } : rec1.course!,
         sources: { file: 'content/rec1/sources.json', data: sources },
         notions: { file: 'content/rec1/notions.json', data: notions },
         chapters: [{ file: opts.file ?? CH_FILE, data: raw ? raw(ch) : ch }],
-        exams: (opts.exams ?? []).map((e, i) => ({ file: `content/rec1/exams/e${i}.json`, data: e })),
+        exams: (opts.exams ?? []).map((e, i) => ({
+          file: `content/rec1/exams/e${i}.json`,
+          data: e,
+        })),
       },
     ],
   }
@@ -70,82 +91,298 @@ describe('contenu actuel', () => {
     expect(r.stats.courses).toBe(4)
     expect(r.stats.chapters).toBeGreaterThanOrEqual(1)
     expect(r.stats.citations).toBeGreaterThanOrEqual(143)
-    expect(formatSummary(r)).toMatch(/^✔ 4 matières · \d+ chapitres? · (?:\d+ examens? · )?\d+ citations vérifiées · couverture ★★★ \d+\/\d+/)
+    expect(formatSummary(r)).toMatch(
+      /^✔ 4 matières · \d+ chapitres? · (?:\d+ examens? · )?\d+ citations vérifiées · couverture ★★★ \d+\/\d+/,
+    )
   }, 60_000) // ~7 s : 5000+ citations à vérifier
   it('formate les messages comme spécifié', () => {
     const r = run((ch) => {
       ch.quiz[2]!.src[0]!.quote = 'phrase totalement inventée qui ne figure nulle part ici'
     })
-    expect(formatReport(r)).toMatch(/✖ content\/rec1\/chapters\/05-.*\.json › quiz\[2\]\.src\[0\] : citation introuvable \(ratio 0\.\d\d\) dans ressources\//)
+    expect(formatReport(r)).toMatch(
+      /✖ content\/rec1\/chapters\/05-.*\.json › quiz\[2\]\.src\[0\] : citation introuvable \(ratio 0\.\d\d\) dans ressources\//,
+    )
   })
 })
 
 describe('règles d’erreur', () => {
   it('R1 : champ inconnu, cardinalité, JSON invalide', () => {
-    expect(has(run(() => {}, {}, (ch) => ({ ...ch, extra: 1 })), 'R1')).toBe(true)
-    expect(has(run((ch) => { ch.story = ch.story.slice(0, 5) }), 'R1')).toBe(true)
-    expect(has(run((ch) => { ch.quiz.forEach((q) => { if (q.type === 'mcq') q.options = q.options.slice(0, 2) }) }), 'R1')).toBe(true)
+    expect(
+      has(
+        run(
+          () => {},
+          {},
+          (ch) => ({ ...ch, extra: 1 }),
+        ),
+        'R1',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.story = ch.story.slice(0, 5)
+        }),
+        'R1',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.quiz.forEach((q) => {
+            if (q.type === 'mcq') q.options = q.options.slice(0, 2)
+          })
+        }),
+        'R1',
+      ),
+    ).toBe(true)
     const dir = mkdtempSync(join(tmpdir(), 'validate-'))
     mkdirSync(join(dir, 'content/x'), { recursive: true })
     writeFileSync(join(dir, 'content/x/course.json'), '{ pas du json')
     expect(loadContentTree(dir).loadIssues[0]?.code).toBe('R1')
   })
   it('R2 : id dupliqué, mauvais préfixe, id ≠ fichier, terme en double', () => {
-    expect(has(run((ch) => { ch.quiz[1]!.id = ch.quiz[0]!.id }), 'R2')).toBe(true)
-    expect(has(run((ch) => { ch.flashcards[0]!.id = 'autre-01-fc-01' }), 'R2')).toBe(true)
-    expect(has(run((ch) => { ch.id = 'rec1-06-autre' }), 'R2')).toBe(true)
-    expect(has(run((ch) => { ch.glossary[1]!.id = ch.glossary[0]!.id }), 'R2')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.quiz[1]!.id = ch.quiz[0]!.id
+        }),
+        'R2',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.flashcards[0]!.id = 'autre-01-fc-01'
+        }),
+        'R2',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.id = 'rec1-06-autre'
+        }),
+        'R2',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.glossary[1]!.id = ch.glossary[0]!.id
+        }),
+        'R2',
+      ),
+    ).toBe(true)
   })
   it('R2 : unicité globale entre chapitres et examens', () => {
     const ex = baseExam()
     ex.id = baseChapter.id
-    expect(has(run(() => {}, { exams: [ex] }), 'R2')).toBe(true)
+    expect(
+      has(
+        run(() => {}, { exams: [ex] }),
+        'R2',
+      ),
+    ).toBe(true)
   })
   it('R3 : [[termId]] inconnu, termId de flashcard inconnu', () => {
-    expect(has(run((ch) => { const b = ch.story.find((x) => x.type === 'paragraph'); if (b?.type === 'paragraph') b.text.fr += ' [[term-inexistant]]' }), 'R3')).toBe(true)
-    expect(has(run((ch) => { ch.flashcards[0]!.termId = 'term-inexistant' }), 'R3')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const b = ch.story.find((x) => x.type === 'paragraph')
+          if (b?.type === 'paragraph') b.text.fr += ' [[term-inexistant]]'
+        }),
+        'R3',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.flashcards[0]!.termId = 'term-inexistant'
+        }),
+        'R3',
+      ),
+    ).toBe(true)
   })
   it('R4 : checkpoint vers un quiz inexistant', () => {
-    expect(has(run((ch) => { const b = ch.story.find((x) => x.type === 'checkpoint'); if (b?.type === 'checkpoint') b.quizId = 'rec1-05-qz-99' }), 'R4')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const b = ch.story.find((x) => x.type === 'checkpoint')
+          if (b?.type === 'checkpoint') b.quizId = 'rec1-05-qz-99'
+        }),
+        'R4',
+      ),
+    ).toBe(true)
   })
   it('R5 : indice correct hors limites ou en double', () => {
     const mcq = (ch: Chapter) => ch.quiz.find((q) => q.type === 'mcq')!
-    expect(has(run((ch) => { const q = mcq(ch); if (q.type === 'mcq') q.correct = [9] }), 'R5')).toBe(true)
-    expect(has(run((ch) => { const q = mcq(ch); if (q.type === 'mcq') q.correct = [0, 0] }), 'R5')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const q = mcq(ch)
+          if (q.type === 'mcq') q.correct = [9]
+        }),
+        'R5',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const q = mcq(ch)
+          if (q.type === 'mcq') q.correct = [0, 0]
+        }),
+        'R5',
+      ),
+    ).toBe(true)
   })
   it('R6 : cloze sans trou, spot_error dont error ∉ sentence', () => {
-    expect(has(run((ch) => { for (const w of ch.writing) if (w.kind === 'cloze') w.text = 'Aucun trou ici.' }), 'R6')).toBe(true)
-    expect(has(run((ch) => { for (const w of ch.writing) if (w.kind === 'spot_error') w.error = 'zzz absent' }), 'R6')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          for (const w of ch.writing) if (w.kind === 'cloze') w.text = 'Aucun trou ici.'
+        }),
+        'R6',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          for (const w of ch.writing) if (w.kind === 'spot_error') w.error = 'zzz absent'
+        }),
+        'R6',
+      ),
+    ).toBe(true)
   })
   it('R7 : champ fr vide, courseId ≠ dossier', () => {
-    expect(has(run((ch) => { ch.title.fr = '  ' }), 'R7')).toBe(true)
-    expect(has(run((ch) => { ch.courseId = 'isi1' }), 'R7')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.title.fr = '  '
+        }),
+        'R7',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.courseId = 'isi1'
+        }),
+        'R7',
+      ),
+    ).toBe(true)
   })
   it('R8 : fichier introuvable ou classé ignore', () => {
-    expect(has(run((ch) => { ch.keyPoints[0]!.src[0]!.file = 'ressources/n-existe-pas.md' }), 'R8')).toBe(true)
-    expect(has(run((ch) => { ch.sources = ['ressources/n-existe-pas.md'] }), 'R8')).toBe(true)
-    const r = run(() => {}, { sources: (s) => { for (const e of s.sources) if (e.file === SRC_FILE) e.tier = 'ignore' } })
+    expect(
+      has(
+        run((ch) => {
+          ch.keyPoints[0]!.src[0]!.file = 'ressources/n-existe-pas.md'
+        }),
+        'R8',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.sources = ['ressources/n-existe-pas.md']
+        }),
+        'R8',
+      ),
+    ).toBe(true)
+    const r = run(() => {}, {
+      sources: (s) => {
+        for (const e of s.sources) if (e.file === SRC_FILE) e.tier = 'ignore'
+      },
+    })
     expect(find(r, 'R8').message).toMatch(/ignore/)
   })
   it('R9 : citation altérée (≥ 2 mots) échoue, 1 mot passe', () => {
-    const q = 'Internal validity: How well the study is conducted (controls extraneous variables, eliminates alternative explanations).'
-    const one = run((ch) => { ch.keyPoints[0]!.src[0]!.quote = q.replace('conducted', 'performed') })
+    const q =
+      'Internal validity: How well the study is conducted (controls extraneous variables, eliminates alternative explanations).'
+    const one = run((ch) => {
+      ch.keyPoints[0]!.src[0]!.quote = q.replace('conducted', 'performed')
+    })
     expect(has(one, 'R9')).toBe(false)
-    const two = run((ch) => { ch.keyPoints[0]!.src[0]!.quote = q.replace('conducted', 'performed').replace('well', 'badly') })
+    const two = run((ch) => {
+      ch.keyPoints[0]!.src[0]!.quote = q.replace('conducted', 'performed').replace('well', 'badly')
+    })
     expect(find(two, 'R9').message).toMatch(/ratio 0\.8/)
   })
   it('R10 : sourçage obligatoire', () => {
-    expect(has(run((ch) => { const b = ch.story.find((x) => x.type === 'paragraph' && !x.narrative); if (b?.type === 'paragraph') delete b.src }), 'R10')).toBe(true)
-    expect(has(run((ch) => { const b = ch.story.find((x) => x.type === 'callout' && x.variant !== 'analogy'); if (b?.type === 'callout') delete b.src }), 'R10')).toBe(true)
-    expect(has(run((ch) => { const b = ch.story.find((x) => x.type === 'list'); if (b?.type === 'list') b.src = [] }), 'R10')).toBe(true)
-    expect(has(run((ch) => { ch.keyPoints[0]!.src = [] }), 'R10')).toBe(true)
-    expect(has(run((ch) => { ch.quiz[0]!.src = [] }), 'R10')).toBe(true)
-    expect(has(run((ch) => { ch.exercises[0]!.src = [] }), 'R10')).toBe(true)
-    expect(has(run((ch) => { ch.glossary[0]!.src = [] }), 'R10')).toBe(true)
-    expect(has(run((ch) => { const f = ch.flashcards.find((x) => x.termId === undefined)!; delete f.src }), 'R10')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const b = ch.story.find((x) => x.type === 'paragraph' && !x.narrative)
+          if (b?.type === 'paragraph') delete b.src
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const b = ch.story.find((x) => x.type === 'callout' && x.variant !== 'analogy')
+          if (b?.type === 'callout') delete b.src
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const b = ch.story.find((x) => x.type === 'list')
+          if (b?.type === 'list') b.src = []
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.keyPoints[0]!.src = []
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.quiz[0]!.src = []
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.exercises[0]!.src = []
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.glossary[0]!.src = []
+        }),
+        'R10',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          const f = ch.flashcards.find((x) => x.termId === undefined)!
+          delete f.src
+        }),
+        'R10',
+      ),
+    ).toBe(true)
   })
   it('R10 : une définition doit citer le niveau "cours"', () => {
-    const r = run(() => {}, { sources: (s) => { for (const e of s.sources) if (e.file === SRC_FILE) e.tier = 'lecture' } })
+    const r = run(() => {}, {
+      sources: (s) => {
+        for (const e of s.sources) if (e.file === SRC_FILE) e.tier = 'lecture'
+      },
+    })
     expect(find(r, 'R10').message).toMatch(/cours/)
   })
   it('R10 : narrative et analogy sont dispensés', () => {
@@ -156,8 +393,22 @@ describe('règles d’erreur', () => {
     expect(has(r, 'R10')).toBe(false)
   })
   it('R11 : notion inconnue', () => {
-    expect(has(run((ch) => { ch.quiz[0]!.notions = ['n-inconnue'] }), 'R11')).toBe(true)
-    expect(has(run((ch) => { ch.notions.push('n-inconnue') }), 'R11')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.quiz[0]!.notions = ['n-inconnue']
+        }),
+        'R11',
+      ),
+    ).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.notions.push('n-inconnue')
+        }),
+        'R11',
+      ),
+    ).toBe(true)
   })
 })
 
@@ -180,7 +431,14 @@ function baseExam(): Exam {
     durationMinutes: 60,
     correctionStatus: 'proposed',
     instructions: L('Répondez.'),
-    sections: [{ title: L('S1'), points: 4, instructions: L('V/F'), questions: [mk(1, true), mk(2, false), mk(3, true), mk(4, false)] }],
+    sections: [
+      {
+        title: L('S1'),
+        points: 4,
+        instructions: L('V/F'),
+        questions: [mk(1, true), mk(2, false), mk(3, true), mk(4, false)],
+      },
+    ],
   }
 }
 
@@ -196,7 +454,17 @@ describe('examens', () => {
     qs[1]!.id = 'autre-q2'
     qs[2]!.src = []
     qs[3]!.src = [{ ...quote0, quote: 'texte qui ne figure absolument pas dans la source' }]
-    ex.sections[0]!.questions.push({ id: 'rec1-exam-test-q5', type: 'mcq', points: 1, question: L('Q ?'), options: [L('a'), L('b'), L('c')], correct: [5], explanation: L('x'), level: 'apply', src: [quote0] })
+    ex.sections[0]!.questions.push({
+      id: 'rec1-exam-test-q5',
+      type: 'mcq',
+      points: 1,
+      question: L('Q ?'),
+      options: [L('a'), L('b'), L('c')],
+      correct: [5],
+      explanation: L('x'),
+      level: 'apply',
+      src: [quote0],
+    })
     const r = run(() => {}, { exams: [ex] })
     for (const c of ['R2', 'R10', 'R9', 'R5']) expect(has(r, c)).toBe(true)
   })
@@ -204,7 +472,12 @@ describe('examens', () => {
     const ex = baseExam()
     ex.kind = 'mock'
     for (const q of ex.sections[0]!.questions) if (q.type === 'true_false') q.answer = true
-    expect(has(run(() => {}, { exams: [ex] }), 'W-tf-ratio')).toBe(true)
+    expect(
+      has(
+        run(() => {}, { exams: [ex] }),
+        'W-tf-ratio',
+      ),
+    ).toBe(true)
   })
 })
 
@@ -213,19 +486,39 @@ describe('avertissements (règle 12)', () => {
     expect(errors(run())).toEqual([])
   })
   it('W-level-remember et W-level-apply-analyze', () => {
-    const r = run((ch) => { for (const q of ch.quiz) q.level = 'remember' })
+    const r = run((ch) => {
+      for (const q of ch.quiz) q.level = 'remember'
+    })
     expect(has(r, 'W-level-remember')).toBe(true)
     expect(has(r, 'W-level-apply-analyze')).toBe(true)
   })
   it('W-level-exercise-analyze', () => {
-    expect(has(run((ch) => { for (const e of ch.exercises) e.level = 'apply' }), 'W-level-exercise-analyze')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          for (const e of ch.exercises) e.level = 'apply'
+        }),
+        'W-level-exercise-analyze',
+      ),
+    ).toBe(true)
   })
   it('W-tf-ratio', () => {
-    expect(has(run((ch) => { for (const q of ch.quiz) if (q.type === 'true_false') q.answer = true }), 'W-tf-ratio')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          for (const q of ch.quiz) if (q.type === 'true_false') q.answer = true
+        }),
+        'W-tf-ratio',
+      ),
+    ).toBe(true)
   })
   it('W-absolute-words : mots absolus seulement dans les FAUX', () => {
     const r = run((ch) => {
-      for (const q of ch.quiz) if (q.type === 'true_false') { q.statement.fr = q.statement.fr.replace(/jamais|toujours/gi, 'souvent'); q.statement.en = q.statement.en.replace(/never|always/gi, 'often') }
+      for (const q of ch.quiz)
+        if (q.type === 'true_false') {
+          q.statement.fr = q.statement.fr.replace(/jamais|toujours/gi, 'souvent')
+          q.statement.en = q.statement.en.replace(/never|always/gi, 'often')
+        }
       const f = ch.quiz.find((q) => q.type === 'true_false' && !q.answer)
       if (f?.type === 'true_false') f.statement.fr += ' Cela garantit toujours le résultat.'
     })
@@ -233,49 +526,189 @@ describe('avertissements (règle 12)', () => {
   })
   it('W-mcq-longest', () => {
     const r = run((ch) => {
-      for (const q of ch.quiz) if (q.type === 'mcq') { q.options = [L('court'), L('court aussi'), L('la bonne réponse, nettement plus longue que les autres')]; q.correct = [2] }
+      for (const q of ch.quiz)
+        if (q.type === 'mcq') {
+          q.options = [
+            L('court'),
+            L('court aussi'),
+            L('la bonne réponse, nettement plus longue que les autres'),
+          ]
+          q.correct = [2]
+        }
     })
     expect(has(r, 'W-mcq-longest')).toBe(true)
   })
   it('W-mcq-position', () => {
     const r = run((ch) => {
-      for (const q of ch.quiz) if (q.type === 'mcq') { q.options = [L('aaaa'), L('bbbb'), L('cccc')]; q.correct = [1] }
+      for (const q of ch.quiz)
+        if (q.type === 'mcq') {
+          q.options = [L('aaaa'), L('bbbb'), L('cccc')]
+          q.correct = [1]
+        }
     })
     expect(has(r, 'W-mcq-position')).toBe(true)
   })
   it('W-answer-in-question', () => {
     const r = run((ch) => {
       const q = ch.quiz.find((x) => x.type === 'mcq')
-      if (q?.type === 'mcq') { q.question = L('Quelle est la validité interne de cette étude ?'); q.options[q.correct[0]!] = L('validité interne') }
+      if (q?.type === 'mcq') {
+        q.question = L('Quelle est la validité interne de cette étude ?')
+        q.options[q.correct[0]!] = L('validité interne')
+      }
     })
     expect(has(r, 'W-answer-in-question')).toBe(true)
   })
   it('W-paragraph-long, W-episode-long', () => {
     const r = run((ch) => {
-      ch.story.push({ type: 'heading', text: L('Épisode trop long') }, { type: 'paragraph', text: L(lorem(460)), src: [quote0] })
+      ch.story.push(
+        { type: 'heading', text: L('Épisode trop long') },
+        { type: 'paragraph', text: L(lorem(460)), src: [quote0] },
+      )
     })
     expect(has(r, 'W-paragraph-long')).toBe(true)
     expect(has(r, 'W-episode-long')).toBe(true)
   })
   it('W-chapter-long', () => {
-    expect(has(run((ch) => { ch.estimatedMinutes = 16 }), 'W-chapter-long')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.estimatedMinutes = 16
+        }),
+        'W-chapter-long',
+      ),
+    ).toBe(true)
   })
   it('W-list-long', () => {
-    const r = run((ch) => { ch.story.push({ type: 'list', items: Array.from({ length: 8 }, (_, i) => L(`item ${i}`)), src: [quote0] }) })
+    const r = run((ch) => {
+      ch.story.push({
+        type: 'list',
+        items: Array.from({ length: 8 }, (_, i) => L(`item ${i}`)),
+        src: [quote0],
+      })
+    })
     expect(r.issues.filter((i) => i.code === 'W-list-long').length).toBeGreaterThanOrEqual(1)
   })
   it('W-quote-length', () => {
-    expect(has(run((ch) => { ch.keyPoints[0]!.src[0] = { ...quote0, quote: 'conclusions right' } }), 'W-quote-length')).toBe(true)
+    expect(
+      has(
+        run((ch) => {
+          ch.keyPoints[0]!.src[0] = { ...quote0, quote: 'conclusions right' }
+        }),
+        'W-quote-length',
+      ),
+    ).toBe(true)
   })
   it('W-source-non-listee', () => {
-    const r = run(() => {}, { sources: (s) => { s.sources = s.sources.filter((e) => e.file !== SRC_FILE && e.text !== SRC_FILE) } })
+    const r = run(() => {}, {
+      sources: (s) => {
+        s.sources = s.sources.filter((e) => e.file !== SRC_FILE && e.text !== SRC_FILE)
+      },
+    })
     expect(has(r, 'W-source-non-listee')).toBe(true)
   })
   it('W-coverage : notion ★★★ sans quiz ni flashcard', () => {
     const r = run(() => {}, {
-      notions: (n) => { n.notions.push({ id: 'n-orpheline', label: L('Orpheline'), importance: 3, why: 'test', chapter: '05', src: [quote0] }) },
+      notions: (n) => {
+        n.notions.push({
+          id: 'n-orpheline',
+          label: L('Orpheline'),
+          importance: 3,
+          why: 'test',
+          chapter: '05',
+          src: [quote0],
+        })
+      },
     })
     expect(r.issues.some((i) => i.code === 'W-coverage' && i.path === 'n-orpheline')).toBe(true)
-    expect(r.stats.coverage3.total).toBe(baseNotions.notions.filter((n) => n.importance === 3 && n.chapter === '05').length + 1)
+    expect(r.stats.coverage3.total).toBe(
+      baseNotions.notions.filter((n) => n.importance === 3 && n.chapter === '05').length + 1,
+    )
+  })
+})
+
+describe('modèle pédagogique (T25)', () => {
+  const pedago = (ch: Chapter): void => {
+    ch.question = L('Comment juger une recherche ?')
+    ch.objectives = [
+      { id: 'o1', text: L('Distinguer validité interne et externe'), level: 'understand' },
+      { id: 'o2', text: L('Repérer une menace'), level: 'apply' },
+    ]
+    ch.synthesis = { mustKnow: [L('a')], mustDo: [L('b')] }
+    ch.quiz.forEach((q) => (q.objective = 'o1'))
+    ch.exercises.forEach((e) => (e.objective = 'o2'))
+  }
+  it('paragraphe « explain » sans src : accepté', () => {
+    const r = run((ch) =>
+      ch.story.splice(1, 0, { type: 'paragraph', explain: true, text: L('Relie deux faits.') }),
+    )
+    expect(errors(r)).toEqual([])
+  })
+  it('bloc méthode et encadré repère : acceptés', () => {
+    const r = run((ch) =>
+      ch.story.splice(
+        1,
+        0,
+        {
+          type: 'method',
+          title: L('Diagnostic'),
+          steps: [
+            { do: L('Étape 1'), why: L('Parce que') },
+            { do: L('Étape 2'), why: L('Donc') },
+          ],
+        },
+        { type: 'callout', variant: 'repere', text: L('Contexte'), src: [quote0] },
+      ),
+    )
+    expect(errors(r)).toEqual([])
+  })
+  it('chapitre sans question ni objectifs : avertissement W-pedago', () => {
+    expect(has(run(), 'W-pedago')).toBe(true)
+    expect(has(run(pedago), 'W-pedago')).toBe(false)
+  })
+  it('objectif inconnu ou en double : erreur R14', () => {
+    expect(
+      find(
+        run((ch) => {
+          pedago(ch)
+          ch.quiz[0]!.objective = 'o9'
+        }),
+        'R14',
+      ).path,
+    ).toBe('quiz[0].objective')
+    expect(
+      has(
+        run((ch) => {
+          pedago(ch)
+          ch.objectives!.push({ id: 'o1', text: L('x'), level: 'apply' })
+        }),
+        'R14',
+      ),
+    ).toBe(true)
+  })
+  it('objectif non visé et quiz sans objectif : avertissements', () => {
+    const r = run((ch) => {
+      pedago(ch)
+      ch.exercises.forEach((e) => (e.objective = 'o1'))
+      delete ch.quiz[0]!.objective
+    })
+    expect(find(r, 'W-objective-uncovered').message).toContain('"o2"')
+    expect(find(r, 'W-quiz-no-objective').message).toContain('1 question')
+  })
+  it('chapterOrder : chapitre absent, inconnu ou mal numéroté → R13', () => {
+    expect(
+      errors(run((ch) => (ch.order = 1), { course: (c) => (c.chapterOrder = [baseChapter.id]) })),
+    ).toEqual([])
+    expect(
+      find(
+        run((ch) => (ch.order = 2), { course: (c) => (c.chapterOrder = [baseChapter.id]) }),
+        'R13',
+      ).message,
+    ).toContain('position 1')
+    expect(
+      find(
+        run(() => {}, { course: (c) => (c.chapterOrder = ['rec1-99-x']) }),
+        'R13',
+      ).message,
+    ).toMatch(/introuvable|absent/)
   })
 })

@@ -31,7 +31,11 @@ export default function QuizSession({ chapter, code, state, dispatch }: Props) {
           <div className="mono dim">
             {code} · {UI.hub.chapter(chapter.order)}
           </div>
-          <div className="display mt-1 text-[22px]" role="status" aria-label={UI.quiz.position(state.index + 1, total)}>
+          <div
+            className="display mt-1 text-[22px]"
+            role="status"
+            aria-label={UI.quiz.position(state.index + 1, total)}
+          >
             <span aria-hidden="true">Q.{n}</span>{' '}
             <span className="dim text-sm" aria-hidden="true">
               / {total}
@@ -45,6 +49,7 @@ export default function QuizSession({ chapter, code, state, dispatch }: Props) {
         )}
       </div>
       <QuizCard
+        objectives={chapter.objectives}
         key={`${state.roundNo}-${current.item.id}`}
         item={current.item}
         order={current.order}

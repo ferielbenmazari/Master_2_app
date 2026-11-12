@@ -29,7 +29,7 @@ export interface ChapterRef {
   /** "rec1-05-qualite-validite-ethique" */
   id: string
   courseId: string
-  /** numéro du nom de fichier (05 → 5) */
+  /** rang d'affichage : position dans `course.chapterOrder`, sinon numéro du nom de fichier (05 → 5) */
   order: number
   path: string
 }
@@ -49,13 +49,29 @@ function parsePath(path: string): { courseId: string; name: string } | null {
   return m ? { courseId: m[1] as string, name: m[2] as string } : null
 }
 
-const chapterRefs: ChapterRef[] = Object.keys(chapterModules)
-  .flatMap((path) => {
+/**
+ * Ordre d'affichage : `course.chapterOrder` (liste d'ids) s'il existe, sinon le numéro du nom de fichier.
+ * Permet d'insérer ou de déplacer un chapitre sans changer son id (la progression enregistrée est conservée).
+ */
+export function orderChapterRefs(refs: ChapterRef[], courseList: readonly Course[]): ChapterRef[] {
+  const position = new Map<string, number>()
+  for (const c of courseList) c.chapterOrder?.forEach((id, i) => position.set(id, i + 1))
+  return refs
+    .map((r) => {
+      const pos = position.get(r.id)
+      return pos === undefined ? r : { ...r, order: pos }
+    })
+    .sort((a, b) => a.courseId.localeCompare(b.courseId) || a.order - b.order || a.id.localeCompare(b.id))
+}
+
+const chapterRefs: ChapterRef[] = orderChapterRefs(
+  Object.keys(chapterModules).flatMap((path) => {
     const p = parsePath(path)
     const nn = p ? /^(\d{2})-/.exec(p.name) : null
     return p && nn ? [{ id: `${p.courseId}-${p.name}`, courseId: p.courseId, order: Number(nn[1]), path }] : []
-  })
-  .sort((a, b) => a.courseId.localeCompare(b.courseId) || a.order - b.order)
+  }),
+  courses,
+)
 
 const examRefs: ExamRef[] = Object.keys(examModules)
   .flatMap((path) => {
@@ -87,7 +103,7 @@ export function getCourse(courseId: string): Course | undefined {
   return courses.find((c) => c.id === courseId)
 }
 
-/** Chapitres d'une matière, triés par numéro. */
+/** Chapitres d'une matière, dans l'ordre d'affichage. */
 export function getChapterIndex(courseId: string): ChapterRef[] {
   return chapterRefs.filter((c) => c.courseId === courseId)
 }
