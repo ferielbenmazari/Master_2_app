@@ -117,7 +117,7 @@ describe('QuizRunner REC1-05', () => {
     click(btn('Valider'))
     expect(await screen.findByText('parce que mon avis')).toBeInTheDocument()
     expect(screen.getByText('Justification du cours')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /voir dans le cours/ })).toBeInTheDocument()
+    expect(screen.getAllByRole('button', { name: 'Voir la source dans le cours' }).length).toBeGreaterThan(0)
   })
 
   it('énoncé en trainLang avec lien « Voir en EN »', async () => {
