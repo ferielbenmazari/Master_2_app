@@ -67,6 +67,7 @@ Style des slides : listes courtes, majuscules pour l'emphase (« CAUSE », « EF
 - **Incohérences entre supports** (à signaler, ne pas trancher seul) :
   - les **7 étapes** : les **PDF originaux** (`sources-texte/rec1/2-recmeth-2.md` slide 23, `3-recmeth-3.md`, `5-recmeth-5.md`) donnent partout la **même numérotation** : 1 problème pratique (optionnel), 2 problème de recherche, 3 revue de littérature, **4 questions de recherche** (sous-puces : cadre conceptuel, hypothèses explicatives), **5 choix de la méthodologie** (sous-puces : collecte, vérification, analyse et interprétation ; **boucle 5 → 4 → 3**), **6 Reporting and evaluating**, **7 Communicating**. Seules les transcriptions Markdown (`2_recmeth_2.md` : cadre/hypothèses à l'étape 5 et méthode à l'étape 6 ; `5_recmeth_5.md` : « Implementation of the chosen research method steps... » en étape 6 et fusion rapport/communication en étape 7) la déforment. **Le PDF fait foi** ; les chapitres citent `sources-texte/`.
   - **Design Science Research** figure dans la liste du cours 1 mais pas dans l'aperçu, la matrice ni les arbres du cours 4.
+  - **Cours 4, schémas relus sur les images des slides (2026-11-13)** : la transcription Markdown simplifie la matrice quoi × où (l'expérience et le POC y sont rangés côté labo seulement, alors que leurs ellipses s'étendent du labo au terrain) et invente « Re-scope research » dans l'arbre 2 (le schéma mène « Not enough » vers la **SMS**). Les chapitres suivent les images.
 
 ## 4. Notions sur lesquelles la prof insiste
 

@@ -9,6 +9,8 @@
 
 ## Chapitres
 
+> Architecture refondue le 2026-11-13 : voir `PARCOURS.md` (ordre d'affichage dans `course.json.chapterOrder`, nouveau chapitre `07-hypotheses-cadre-conceptuel`). Le tableau ci-dessous est l'historique de production.
+
 | # | Fichier | Titre de travail | Source | État |
 |---|---|---|---|---|
 | 01 | `01-introduction-recherche.json` | C'est quoi, faire de la recherche ? | Markdown/1_recmeth_1.md | à faire |
