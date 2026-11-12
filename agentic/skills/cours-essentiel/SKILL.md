@@ -14,6 +14,9 @@ description: PHASE 1 (prioritaire) - rédige le COURS d'un chapitre (histoire en
 - Sources lues par passages (`read_source` ou `npm run sources -- read`), pas en entier au-delà de ~400 lignes.
 - Un chapitre par appel ; à la fin, dire de taper `/clear`.
 
+## Conception (docs/06 §9, prioritaire)
+Lire `content/<id>/PARCOURS.md`. Chapitre = question directrice + objectifs + épisodes qui expliquent (`explain`) + méthode (`method`) + corrigé commenté + synthèse. Le contexte va dans des encadrés `repere`. « Couvrir chaque ligne » ne veut pas dire « tout développer ».
+
 ## Étapes
 0. **Une seule fois** : si le validateur refuse un chapitre dont `quiz` est vide, rendre `quiz` facultatif dans `src/content/schema.ts` (min 0 ; règle « ≥ 50 % de V/F » seulement si le quiz n'est pas vide ; avertissement « chapitre sans quiz »), tests à jour, `npm run check` vert, commit `chore: autoriser un chapitre sans quiz (phase cours)`.
 1. **Périmètre = la classe.** Dans `PROGRAMME.md`, prendre les lignes du chapitre `[x]` (vu en classe, ★ = insisté) et `[ ]` (incertain, traité plus brièvement), ignorer `[-]`, et ajouter la section « Vu en classe mais absent ». Si `ressources/S3__<ID>/NOTES/` existe, ces notes disent **ce qui a été fait en classe et comment** : suivre leur ordre, leurs exemples, leur insistance.

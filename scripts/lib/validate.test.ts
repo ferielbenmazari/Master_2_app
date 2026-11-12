@@ -385,6 +385,14 @@ describe('règles d’erreur', () => {
     })
     expect(find(r, 'R10').message).toMatch(/cours/)
   })
+  it('R10 : une annale qui emploie le terme suffit (notion d’examen absente des supports, docs/06 §9.6)', () => {
+    const r = run(() => {}, {
+      sources: (s) => {
+        for (const e of s.sources) if (e.file === SRC_FILE) e.tier = 'annale'
+      },
+    })
+    expect(r.issues.some((i) => i.code === 'R10' && i.path.startsWith('glossary'))).toBe(false)
+  })
   it('R10 : narrative et analogy sont dispensés', () => {
     const r = run((ch) => {
       ch.story.push({ type: 'paragraph', text: L('Histoire pure.'), narrative: true })

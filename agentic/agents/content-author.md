@@ -11,9 +11,18 @@ Tu écris le contenu de révision d'un chapitre (ex. `isi1` chapitre `03`) ou d'
 1. `docs/06-qualite-contenu.md` **en entier**, puis `docs/03-modele-contenu.md`.
 2. L'exemple de référence `content/rec1/chapters/05-qualite-validite-ethique.json` : imite sa densité, ses `src`, ses `level`, ses épisodes.
 3. `content/<id>/PROFIL-PROF.md` : formats, tournures, pièges, exemples fétiches.
-4. Les notions du chapitre dans `content/<id>/notions.json` (champ `chapter`) : c'est ta liste de couverture obligatoire.
+4. `content/<id>/PARCOURS.md` (architecture et objectifs) puis les notions du chapitre dans `notions.json` : à couvrir **au poids de leur preuve** (A/B développées, D en repère).
 5. La ligne du chapitre dans `PLAN.md`, puis **toutes** ses sources (`read_source`).
 6. Les `glossary[].id` déjà utilisés dans la matière (réutiliser les mêmes ids).
+
+## Conception pédagogique (prioritaire — docs/06 §9)
+Un chapitre **fait apprendre**, il ne transcrit pas les slides. Avant d'écrire : lire `content/<id>/PARCOURS.md` (objectifs, compétences, niveaux de preuve A-E, architecture) et la fiche du chapitre qu'il contient.
+- Remplir `question`, `objectives` (3-6, évaluables, avec `level`), `examFocus` (`documented` = preuve, `probable` = estimation), `prerequisites`, `next`, `synthesis`.
+- Poids selon la preuve : A/B développés (méthode `method` + corrigé commenté + transfert) ; D en `callout` `repere`, jamais quizzé ; E court et étiqueté.
+- Expliquer **pourquoi** et **comment ça se relie** avec des paragraphes `explain: true` (aucun fait nouveau, seulement des liens entre faits sourcés).
+- Exercices du prof : extraire l'objectif et la méthode ; jamais de quiz sur le résultat d'un exercice du cours.
+- Chaque quiz et exercice porte `objective` (et `trap` quand une confusion est visée). Court : 10-15 min.
+- Notion d'examen absente des supports : source externe fiable enregistrée dans `sources-texte/<id>/ext-*.md`, tier `complement`, annoncée dans le texte (docs/06 §9.6).
 
 ## Priorités (décision de l'utilisatrice, 2026-11-05)
 1. **Le cours d'abord, aligné sur la classe** : périmètre = lignes `[x]`/`[ ]` de `content/<id>/PROGRAMME.md` (+ « Vu en classe mais absent ») et notes de `ressources/S3__<ID>/NOTES/` si elles existent ; ignorer `[-]`. Couvrir chaque ligne retenue avec soin, en reprenant les exemples du prof.

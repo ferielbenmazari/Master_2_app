@@ -358,8 +358,8 @@ function checkChapter(ctx: Ctx, cc: CourseCtx, file: string, ch: Chapter): void 
   })
   ch.glossary.forEach((t, i) => {
     need(`glossary[${i}].src`, t.src, 'terme')
-    if (t.src.length > 0 && tiers.size > 0 && !t.src.some((s) => tiers.get(s.file) === 'cours')) {
-      ctx.error('R10', file, `glossary[${i}].src`, `terme "${t.id}" : au moins une source de niveau "cours" est obligatoire pour la définition`)
+    if (t.src.length > 0 && tiers.size > 0 && !t.src.some((s) => tiers.get(s.file) === 'cours' || tiers.get(s.file) === 'annale')) {
+      ctx.error('R10', file, `glossary[${i}].src`, `terme "${t.id}" : au moins une source de niveau "cours" (ou une annale qui l'emploie) est obligatoire pour la définition`)
     }
   })
 
@@ -424,7 +424,7 @@ function checkObjectives(ctx: Ctx, file: string, ch: Chapter): void {
     if (t.objective !== undefined && !ids.has(t.objective)) ctx.error('R14', file, t.path, `objectif "${t.objective}" absent de objectives`)
   }
   if (!ch.question || !ch.objectives || !ch.synthesis) {
-    ctx.warn('W-pedago', file, 'chapter', 'question directrice, objectifs ou synthèse manquants (docs/06 §7)')
+    ctx.warn('W-pedago', file, 'chapter', 'question directrice, objectifs ou synthèse manquants (docs/06 §9)')
     return
   }
   for (const o of ch.objectives) {

@@ -137,3 +137,40 @@ sources.json ─► course-analyst ─► notions.json + PROFIL-PROF.md ─► [
 ## 8. Boucle de correction par les utilisateurs
 
 Dans l'app, bouton **Signaler** sur chaque bloc/question → ouvre une *issue* GitHub pré-remplie (id de l'item, chapitre, texte, commentaire). Commande `/corriger-signalements` : l'agent `fact-checker` traite les issues ouvertes, corrige, commente et ferme.
+
+## 9. Conception pédagogique (refonte du 2026-11-12) — prioritaire sur le style
+
+> Constat de l'audit : des chapitres exacts mais construits comme des slides commentées (un épisode par slide, une question par notion). Un chapitre doit **faire apprendre**, pas transcrire. Ce paragraphe prime sur « couvrir chaque ligne » (§2 bis) : on couvre ce qui sert l'examen, au bon poids.
+
+### 9.1 Hiérarchiser par la preuve
+| Niveau | Signification | Traitement |
+|---|---|---|
+| **A** | preuve directe d'évaluation (annale, consigne d'examen, témoignage de l'utilisatrice sur un contrôle) | développé, méthode + corrigé + transfert, quiz |
+| **B** | importance fortement étayée (récurrent, central, travaillé en exercice) | développé, quiz |
+| **C** | fondement nécessaire pour comprendre A/B | expliqué brièvement, relié |
+| **D** | contexte (chiffres, outils, logistique, historique) | encadré `repere`, **jamais quizzé** |
+| **E** | importance incertaine (lectures, approfondissements) | court, étiqueté, signalé |
+
+Cible : A + B ≥ 70 % du récit et des quiz. Ne jamais présenter une hypothèse sur l'examen comme un fait : `examFocus.documented` (preuve) ≠ `examFocus.probable` (estimation).
+
+### 9.2 Gabarit d'un chapitre
+1. `question` directrice ; 3 à 6 `objectives` évaluables (définir, distinguer, expliquer, diagnostiquer, appliquer, justifier) ; `examFocus` ; `prerequisites` / `next`.
+2. Épisodes : chacun sert au moins un objectif ; il part d'un besoin (question d'accroche, situation), introduit la notion, **explique pourquoi elle existe et à quoi elle se relie**, puis l'applique.
+3. Pour chaque compétence : un bloc `method` (étapes + pourquoi), un **corrigé commenté** (l'exercice du prof : chaque étape dit pourquoi on la fait), puis un **exercice de transfert** sur un cas absent du cours.
+4. `synthesis` : à restituer, à savoir faire, distinctions, liens avec les autres chapitres (la structure, pas un résumé).
+5. Court : 10 à 15 min. Couper le contexte avant de couper l'explication.
+
+### 9.3 Statut des textes (zéro invention, mais de l'explication)
+- **Fait de cours** : `src` obligatoire (inchangé).
+- **Explication** (`paragraph.explain: true`) : relie, compare ou applique des faits **déjà sourcés dans le chapitre** ; n'introduit aucun fait de cours nouveau. Le fact-checker vérifie ce point.
+- **Méthode de l'app** (bloc `method`) : construction pédagogique à partir de plusieurs slides ; chaque `why` nomme ce qui la fonde. Ce que le cours ne définit pas est signalé (« le cours ne précise pas… »), jamais comblé.
+- **Récit** (`narrative: true`) : mise en scène, aucun fait.
+
+### 9.4 Exercices des profs
+Ne jamais confondre l'énoncé et l'objectif. Pour chaque exercice représentatif : objectif réel → notions mobilisées → méthode → résolution commentée → transfert. **Interdit** : un quiz qui demande le résultat d'un exercice du cours (« le modèle autorise 46 produits ? ») ; un épisode qui raconte l'exercice sans en extraire la méthode.
+
+### 9.5 Quiz
+Chaque item a un `objective` ; `trap` nomme la confusion visée quand il y en a une. La correction dit pourquoi, quelle notion, quel raisonnement. Distracteurs = confusions réelles. Rien sur le niveau D.
+
+### 9.6 Sources hors supports
+Autorisées (décision de l'utilisatrice, 2026-11-12) quand une notion d'examen manque dans les supports ou reste trop obscure : d'abord les lectures du prof (`lecture`), sinon une source **fiable** (article évalué par les pairs, ouvrage de référence, norme, syllabus officiel). L'extrait utilisé est enregistré dans `sources-texte/<id>/ext-<slug>.md` (en-tête : référence complète, URL, date de consultation), déclaré `complement` dans `sources.json`, cité comme le reste, et annoncé dans le texte (« d'après X, hors supports du cours »). Un terme de glossaire doit avoir une source `cours` **ou** une `annale` qui l'emploie.

@@ -11,6 +11,9 @@ Tous les chapitres de la matière ayant des lignes `[x]` dans `PROGRAMME.md` ont
 ## Règles d'économie
 Pas de sous-agent. Lire seulement : le chapitre JSON, `PROFIL-PROF.md` (sections 1 à 3, 7), `docs/06-qualite-contenu.md` §5, et les passages cités dans le chapitre. Un chapitre à la fois ; si plusieurs, enchaîner mais **commit + push après chacun**.
 
+## Règle pédagogique (docs/06 §9.5)
+Chaque question vise un `objective` du chapitre et, si une confusion classique existe, la nomme dans `trap`. Jamais de question sur un encadré `repere` ni sur le résultat d'un exercice du cours.
+
 ## Pour chaque chapitre
 1. Quiz de **10 à 15 items** tirés **uniquement** du cours du chapitre (les `src` existants ; les compléments « Pour aller plus loin » au plus 1 question) :
    - **format du prof** (ISI1 : V/F « justifiez si et seulement si FAUX », énoncés longs et presque vrais ; REC1 : questions de la consigne — quand appliquer, pourquoi, menaces… ; sinon V/F + QCM) ;

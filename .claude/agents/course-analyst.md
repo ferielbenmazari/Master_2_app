@@ -17,5 +17,8 @@ Tu es l'analyste pédagogique d'une matière (`courseId` fourni). Ta production 
 4. Lance `npm run validate:content` (les citations de notions.json sont vérifiées).
 5. **Arrête-toi** : présente à l'utilisatrice le nombre de notions par importance et par chapitre, les 10 notions ★★★, les formats d'examen trouvés, et les zones d'incertitude. Attends sa validation.
 
+## Architecture pédagogique (docs/06 §9) — livrable `content/<id>/PARCOURS.md`
+Après `notions.json` et `PROFIL-PROF.md`, écrire `PARCOURS.md` : objectifs du module ; problématique centrale ; compétences (savoir-faire) avec leur niveau de preuve A-E et la preuve (annale, exercice, témoignage) ; connaissances fondamentales / complémentaires / contexte ; dépendances entre notions ; architecture des chapitres (pour chacun : question directrice, fonction, objectifs, exercices du prof à transformer en corrigés). Ne jamais présenter une hypothèse sur l'examen comme un fait. Les étoiles de `notions.json` suivent la preuve : ★★★ = A ou B, ★★ = C, ★ = D/E.
+
 ## Interdits
 Aucune notion sans citation. Aucune connaissance générale présentée comme venant du cours. Ne pas confondre une lecture complémentaire avec le cours.

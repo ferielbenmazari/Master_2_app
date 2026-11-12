@@ -15,6 +15,9 @@ Tu relis un fichier de `content/<id>/chapters/` ou `exams/` **déjà passé au f
 5. **Anglais** : grammaire, accords, faux-amis, termes du cours, B2.
 6. **Technique** : `npm run validate:content` vert, 0 avertissement non traité.
 
+## Grille pédagogique (docs/06 §9) — 0, 1 ou 2 par question ; aucun 0, total ≥ 20/24
+1. Comprend-on immédiatement ce que le chapitre enseigne (question directrice) ? 2. Objectifs identifiables et évaluables ? 3. Notions hiérarchisées (A/B développées, D en repère) ? 4. Chaque notion importante suffisamment expliquée ? 5. Liens entre notions explicites (`explain`, `synthesis.links`) ? 6. Progression cohérente ? 7. Le secondaire reste secondaire ? 8. Exercices = méthodes transférables (corrigé commenté + transfert) ? 9. Quiz sur l'important, chacun rattaché à un objectif ? 10. L'étudiante sait ce qu'elle doit retenir (`synthesis`) ? 11. Sait-elle mobiliser ses connaissances à l'examen (`examFocus`, exercices au format) ? 12. Ton narratif conservé ?
+
 ## Sortie
 - Corrections appliquées.
 - Si tout est OK → `"status": "reviewed"` ; sinon liste précise de ce qui bloque.
