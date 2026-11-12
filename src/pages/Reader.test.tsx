@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
+import { loadChapter } from '@/content/loader'
 import AppRoutes from '@/routes'
 import { PrefsProvider } from '@/store/PrefsProvider'
 import { DEFAULT_PREFS, PREFS_KEY, type LangMode } from '@/store/prefs'
@@ -25,23 +26,44 @@ async function open(langMode: LangMode = 'fr') {
 }
 
 describe('lecteur REC1-05', () => {
-  it('rend tous les types de blocs présents (heading, paragraph, list, callout x4, table, quote, checkpoint)', async () => {
+  it('rend chaque type de bloc du chapitre (attentes calculées depuis le contenu)', async () => {
+    const ch = await loadChapter(CH)
+    const count = (t: string) => ch.story.filter((b) => b.type === t).length
     const { container } = await open('fr')
-    expect(container.querySelectorAll('section h2').length).toBe(7) // 6 épisodes + « Ce que tu sais maintenant »
-    expect(screen.getByText('Épisode 1/6')).toBeInTheDocument()
-    expect(container.querySelectorAll('.reader-flow p').length).toBeGreaterThan(9)
-    expect(container.querySelectorAll('ul.prose-list, ol.prose-list').length).toBe(2)
-    for (const v of ['tip', 'exam', 'warning', 'analogy']) {
+    const episodes = count('heading')
+    expect(container.querySelectorAll('section h2').length).toBe(episodes + 1) // + « Ce que tu sais maintenant »
+    expect(screen.getByText(`Épisode 1/${episodes}`)).toBeInTheDocument()
+    expect(container.querySelectorAll('.reader-flow p').length).toBeGreaterThan(
+      count('paragraph') - 1,
+    )
+    expect(container.querySelectorAll('ul.prose-list, ol.prose-list').length).toBe(count('list'))
+    const variants = new Set(ch.story.flatMap((b) => (b.type === 'callout' ? [b.variant] : [])))
+    for (const v of variants)
       expect(container.querySelectorAll(`aside.callout-${v}`).length).toBeGreaterThan(0)
-    }
-    expect(container.querySelectorAll('.table-wrap table').length).toBe(2)
+    const tables = count('table')
+    expect(container.querySelectorAll('.table-wrap table').length).toBe(tables)
     expect(
       [...container.querySelectorAll('.table-wrap')].map((t) => t.getAttribute('aria-label')),
-    ).toEqual(['Tableau 1, défilement horizontal', 'Tableau 2, défilement horizontal'])
+    ).toEqual(Array.from({ length: tables }, (_, i) => `Tableau ${i + 1}, défilement horizontal`))
+    expect(container.querySelectorAll('.method-box').length).toBe(count('method'))
+    expect(container.querySelectorAll('.explain').length).toBe(
+      ch.story.filter((b) => b.type === 'paragraph' && b.explain).length,
+    )
     expect(container.textContent).not.toMatch(/term-[a-z]/)
-    expect(container.querySelectorAll('blockquote.story-quote').length).toBe(1)
-    expect(screen.getAllByRole('heading', { name: 'Teste-toi' }).length).toBe(5)
+    expect(container.querySelectorAll('blockquote.story-quote').length).toBe(count('quote'))
+    expect(screen.getAllByRole('heading', { name: 'Teste-toi' }).length).toBe(count('checkpoint'))
     expect(container.querySelector('script, img, iframe')).toBeNull()
+  })
+
+  it('fil du chapitre en tête et synthèse structurée en fin de lecture', async () => {
+    const ch = await loadChapter(CH)
+    await open('fr')
+    if (ch.question) expect(screen.getByText(ch.question.fr)).toBeInTheDocument()
+    if (ch.objectives) expect(screen.getByText(ch.objectives[0]!.text.fr)).toBeInTheDocument()
+    if (ch.synthesis) {
+      expect(screen.getByText('À savoir restituer')).toBeInTheDocument()
+      expect(screen.getByText(ch.synthesis.mustDo[0]!.fr)).toBeInTheDocument()
+    }
   })
 
   it('modes de langue : fr / en / both (empilé en dessous de 1024 px)', async () => {

@@ -1,12 +1,17 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import type { Course } from '@/content/schema'
+import { loadChapter } from '@/content/loader'
+import { UI } from '@/i18n/ui'
 import AppRoutes from '@/routes'
 import { PrefsProvider } from '@/store/PrefsProvider'
 import { DEFAULT_PREFS, PREFS_KEY } from '@/store/prefs'
 
 // Fixtures : on ajoute une 5ᵉ matière (équivalent de content/test/course.json) et on pilote examDate.
-const fixture = vi.hoisted(() => ({ examDates: {} as Record<string, string | undefined>, extra: true }))
+const fixture = vi.hoisted(() => ({
+  examDates: {} as Record<string, string | undefined>,
+  extra: true,
+}))
 vi.mock('@/content/loader', async (orig) => {
   const real = await orig<typeof import('@/content/loader')>()
   const test: Course = {
@@ -18,7 +23,10 @@ vi.mock('@/content/loader', async (orig) => {
     description: { fr: 'd', en: 'd' },
   }
   const withDates = () =>
-    [...real.getCourses(), ...(fixture.extra ? [test] : [])].map((c) => ({ ...c, examDate: fixture.examDates[c.id] }))
+    [...real.getCourses(), ...(fixture.extra ? [test] : [])].map((c) => ({
+      ...c,
+      examDate: fixture.examDates[c.id],
+    }))
   return {
     ...real,
     getCourses: () => withDates(),
@@ -48,7 +56,9 @@ beforeEach(() => {
 describe('accueil', () => {
   it('affiche toutes les matières du contenu, y compris une 5ᵉ ajoutée, sans code spécifique', () => {
     renderAt('/')
-    const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href')?.startsWith('/matiere/'))
+    const links = screen
+      .getAllByRole('link')
+      .filter((a) => a.getAttribute('href')?.startsWith('/matiere/'))
     expect(links.map((a) => a.getAttribute('href'))).toEqual([
       '/matiere/inf4',
       '/matiere/isi1',
@@ -101,12 +111,23 @@ describe('matière', () => {
 })
 
 describe('hub de chapitre', () => {
-  it('affiche le badge Vérifié et les 7 tuiles avec leurs compteurs', async () => {
+  it('affiche le badge de statut et les 7 tuiles avec leurs compteurs', async () => {
+    const ch = await loadChapter('rec1-05-qualite-validite-ethique')
     renderAt('/matiere/rec1/chapitre/rec1-05-qualite-validite-ethique')
-    expect(await screen.findByText('Vérifié')).toBeInTheDocument()
+    expect(
+      await screen.findByText(ch.status === 'reviewed' ? UI.hub.reviewed : UI.hub.draft),
+    ).toBeInTheDocument()
     const tiles = screen.getAllByRole('listitem')
     expect(tiles).toHaveLength(7)
-    for (const name of ['Express 5 min', 'Lire l’histoire', 'Fiche', 'Flashcards', 'Quiz', 'Exercices', 'Atelier anglais']) {
+    for (const name of [
+      'Express 5 min',
+      'Lire l’histoire',
+      'Fiche',
+      'Flashcards',
+      'Quiz',
+      'Exercices',
+      'Atelier anglais',
+    ]) {
       expect(screen.getByRole('heading', { name })).toBeInTheDocument()
     }
     expect(screen.getByRole('link', { name: /^Quiz \d+$/ })).toHaveAttribute(

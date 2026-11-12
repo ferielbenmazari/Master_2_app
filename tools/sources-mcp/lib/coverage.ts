@@ -37,7 +37,7 @@ export function computeCoverage(notions: Notions, chapters: Chapter[]): Coverage
     let where = ''
     for (const ch of chapters) {
       const termNotions = new Map(ch.glossary.map((t) => [t.id, t.notion]))
-      const s = ch.story.filter((b) => (b.type === 'paragraph' || b.type === 'list' || b.type === 'table') && b.notions?.includes(n.id)).length
+      const s = ch.story.filter((b) => (b.type === 'paragraph' || b.type === 'list' || b.type === 'table' || b.type === 'method') && b.notions?.includes(n.id)).length
       const q = ch.quiz.filter((x) => x.notions?.includes(n.id)).length
       const f = ch.flashcards.filter((x) => x.notions?.includes(n.id) || (x.termId !== undefined && termNotions.get(x.termId) === n.id)).length
       if (s + q + f > 0 && !where) where = ch.id

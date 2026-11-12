@@ -60,7 +60,10 @@ function run(
       {
         dir: 'rec1',
         // par défaut : course.json sans chapterOrder (un seul chapitre dans l'arbre en mémoire)
-        course: { ...rec1.course!, data: withCourse(opts.course ?? ((c) => delete c.chapterOrder)) },
+        course: {
+          ...rec1.course!,
+          data: withCourse(opts.course ?? ((c) => delete c.chapterOrder)),
+        },
         sources: { file: 'content/rec1/sources.json', data: sources },
         notions: { file: 'content/rec1/notions.json', data: notions },
         chapters: [{ file: opts.file ?? CH_FILE, data: raw ? raw(ch) : ch }],
@@ -98,6 +101,7 @@ describe('contenu actuel', () => {
   }, 60_000) // ~7 s : 5000+ citations à vérifier
   it('formate les messages comme spécifié', () => {
     const r = run((ch) => {
+      ch.quiz[2]!.src[0]!.file = SRC_FILE
       ch.quiz[2]!.src[0]!.quote = 'phrase totalement inventée qui ne figure nulle part ici'
     })
     expect(formatReport(r)).toMatch(
@@ -300,10 +304,12 @@ describe('règles d’erreur', () => {
     const q =
       'Internal validity: How well the study is conducted (controls extraneous variables, eliminates alternative explanations).'
     const one = run((ch) => {
+      ch.keyPoints[0]!.src[0]!.file = SRC_FILE
       ch.keyPoints[0]!.src[0]!.quote = q.replace('conducted', 'performed')
     })
     expect(has(one, 'R9')).toBe(false)
     const two = run((ch) => {
+      ch.keyPoints[0]!.src[0]!.file = SRC_FILE
       ch.keyPoints[0]!.src[0]!.quote = q.replace('conducted', 'performed').replace('well', 'badly')
     })
     expect(find(two, 'R9').message).toMatch(/ratio 0\.8/)
@@ -671,7 +677,12 @@ describe('modèle pédagogique (T25)', () => {
     expect(errors(r)).toEqual([])
   })
   it('chapitre sans question ni objectifs : avertissement W-pedago', () => {
-    expect(has(run(), 'W-pedago')).toBe(true)
+    expect(
+      has(
+        run((ch) => delete ch.question),
+        'W-pedago',
+      ),
+    ).toBe(true)
     expect(has(run(pedago), 'W-pedago')).toBe(false)
   })
   it('objectif inconnu ou en double : erreur R14', () => {
