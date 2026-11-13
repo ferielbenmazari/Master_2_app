@@ -10,7 +10,91 @@
     "fr": "Trois exigences par jour, des milliers d'un coup, et des doublons partout : comment retrouver la bonne exigence dans un référentiel qui déborde ?",
     "en": "Three requirements a day, thousands in one burst, duplicates everywhere: how do you find the right requirement in an overflowing repository?"
   },
-  "estimatedMinutes": 25,
+  "question": {
+    "fr": "Quand des milliers d’exigences arrivent en langage naturel, comment un outil peut-il aider à retrouver les doublons et les liens ?",
+    "en": "When thousands of requirements arrive in natural language, how can a tool help find duplicates and links?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Expliquer pourquoi les grands référentiels restent en langage naturel et ce que les outils de gestion ne savent pas faire.",
+        "en": "Explain why large repositories stay in natural language and what management tools cannot do."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Expliquer le calcul de similarité lexicale : tokenisation, racinisation, mots vides, vecteurs, mesures Dice, Jaccard, cosinus.",
+        "en": "Explain lexical similarity computation: tokenization, stemming, stop words, vectors, Dice, Jaccard, cosine measures."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Calculer et interpréter rappel, précision et exactitude, et relier chaque cas industriel (Telelogic, Baan, Sony Ericsson) à son problème.",
+        "en": "Compute and interpret recall, precision and accuracy, and link each industrial case (Telelogic, Baan, Sony Ericsson) to its problem."
+      },
+      "level": "apply"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Lecture d’approfondissement (support 16) jamais interrogée en annale : priorité basse.",
+        "en": "In-depth reading (support 16) never asked in past exams: low priority."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 6 : référentiel d’exigences, langage naturel, traçabilité.",
+    "en": "Chapter 6: requirements repository, natural language, traceability."
+  },
+  "next": {
+    "fr": "Le chapitre 9 revient aux fondements : que doit vraiment décrire une exigence ?",
+    "en": "Chapter 9 goes back to foundations: what should a requirement really describe?"
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Le langage naturel reste la langue des grands référentiels : la validation se fait avec les utilisateurs, qui ne lisent pas les langages formels.",
+        "en": "Natural language remains the language of large repositories: validation is done with users, who do not read formal languages."
+      },
+      {
+        "fr": "Similarité lexicale : on compare des mots (pas des sens) après tokenisation, racinisation et retrait des mots vides.",
+        "en": "Lexical similarity: compare words (not meanings) after tokenization, stemming and stop-word removal."
+      },
+      {
+        "fr": "Rappel = vraies paires trouvées / toutes les vraies paires ; précision = vraies paires / toutes les paires retenues.",
+        "en": "Recall = true pairs found / all true pairs; precision = true pairs / all retained pairs."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Calculer un rappel et une précision à partir de nombres de paires.",
+        "en": "Compute recall and precision from pair counts."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Vérification (cohérence interne, que le formel facilite) ≠ validation (correspondance aux intentions des utilisateurs).",
+        "en": "Verification (internal consistency, eased by formal languages) ≠ validation (match with users’ intentions)."
+      },
+      {
+        "fr": "Similarité lexicale (mots) ≠ sémantique (sens).",
+        "en": "Lexical similarity (words) ≠ semantic (meaning)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Les doublons et les liens rappellent l’identifiant unique et la traçabilité du chapitre 6.",
+        "en": "Duplicates and links recall chapter 6’s unique identifier and traceability."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
   "sources": [
     "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md"
   ],
@@ -49,6 +133,21 @@
       }
     },
     {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Repère : ce chapitre résume un chapitre de livre fourni en lecture (support 16). Il n’a jamais été interrogé : lis-le en dernier, pour la culture. L’essentiel tient dans la synthèse et les flashcards.",
+        "en": "Landmark: this chapter summarises a book chapter provided as reading (support 16). It has never been asked: read it last, for background. The essentials fit in the summary and flashcards."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.1 Introduction",
+          "quote": "Market and technology driven companies developing increasingly complex"
+        }
+      ]
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Imagine une entreprise de logiciel qui reçoit des exigences de partout — marketing, support, développeurs, clients — **trois par jour en moyenne**, parfois **des milliers d'un coup**. Le chapitre 10 de Natt och Dag et Gervasi part de ce constat : les entreprises dirigées par le marché et la technologie font face à d'énormes flux d'information qui peuvent dépasser leurs capacités de gestion et d'analyse. Deux symptômes apparaissent : la **détérioration du référentiel** d'exigences et la difficulté croissante à **identifier et maintenir les relations** entre exigences.",
@@ -70,6 +169,9 @@
           "loc": "10.1 Introduction",
           "quote": "each month, either in bursts of thousands or continuously 3-5 requirements each"
         }
+      ],
+      "notions": [
+        "n-defi-flux-exigences-nl"
       ]
     },
     {
@@ -89,6 +191,9 @@
           "loc": "10.1 Introduction",
           "quote": "monolithic requirements specifications. The new challenge of managing"
         }
+      ],
+      "notions": [
+        "n-defauts-langage-naturel"
       ]
     },
     {
@@ -118,6 +223,9 @@
           "loc": "10.1 Introduction",
           "quote": "been shown to be too costly and at times counter-productive"
         }
+      ],
+      "notions": [
+        "n-limites-outils-gestion"
       ]
     },
     {
@@ -148,6 +256,9 @@
           "loc": "10.2 The Role of Natural Language Requirements",
           "quote": "NL is universal, meaning that it can be"
         }
+      ],
+      "notions": [
+        "n-pourquoi-langage-naturel"
       ]
     },
     {
@@ -187,6 +298,9 @@
           "loc": "10.2 The Role of Natural Language Requirements",
           "quote": "and to this end, NL is a more suited language"
         }
+      ],
+      "notions": [
+        "n-pourquoi-langage-naturel"
       ]
     },
     {
@@ -281,6 +395,9 @@
           "loc": "10.3.3 Requirements Management",
           "quote": "declared as fragile, in that any change in one of the linked requirements marks the"
         }
+      ],
+      "notions": [
+        "n-limites-outils-gestion"
       ]
     },
     {
@@ -349,6 +466,9 @@
           "loc": "10.4 Requirements Similarity",
           "quote": "semantic similarity: a measure of whether two requirements convey the same meaning"
         }
+      ],
+      "notions": [
+        "n-similarite-exigences"
       ]
     },
     {
@@ -531,6 +651,9 @@
           "loc": "Table 10.1",
           "quote": "Temporal Similarity in time of origin"
         }
+      ],
+      "notions": [
+        "n-similarite-exigences"
       ]
     },
     {
@@ -623,6 +746,11 @@
           "loc": "10.4 Requirements Similarity",
           "quote": "the sequence of tokens all those words that have a purely grammatical role."
         }
+      ],
+      "notions": [
+        "n-tokenisation",
+        "n-racinisation",
+        "n-mots-vides"
       ]
     },
     {
@@ -657,8 +785,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Une fois les exigences sous forme de vecteurs, on applique des mesures standard : **Dice**, **Jaccard** et **Cosinus** (comparées au cas 1 ; elles diffèrent surtout par leur traitement des exigences de longueurs différentes). Le **cosinus** tient son nom du cosinus de l'angle entre les vecteurs dans un modèle d'espace vectoriel ; il a été retenu aux cas 2 et 3 car jugé généralement meilleur. Les auteurs admettent une simplification assumée : tous les termes sont traités de façon uniforme, alors que la présence de certains termes en dit en pratique bien plus que d'autres.",
-        "en": "Once requirements are vectors, standard measures apply: **Dice**, **Jaccard** and **Cosine** (compared in Case 1; they differ mostly in how they treat requirements of different lengths). **Cosine** is named for the cosine of the angle between vectors in a vector-space model; it was selected in Cases 2 and 3 as generally performing better. The authors accept a deliberate simplification: all terms are treated uniformly, although in practice some terms are far more revealing than others."
+        "fr": "Une fois les exigences en vecteurs, on applique des mesures standard : **Dice**, **Jaccard** et **Cosinus** (comparées au cas 1 ; elles diffèrent surtout face aux exigences de longueurs différentes). Le **cosinus**, nommé d'après l'angle entre les vecteurs, est retenu aux cas 2 et 3, jugé généralement meilleur. Simplification assumée : tous les termes pèsent pareil, alors que certains en disent bien plus que d'autres.",
+        "en": "Once requirements are vectors, standard measures are applied: **Dice**, **Jaccard** and **Cosine** (compared in case 1; they differ mainly with requirements of different lengths). **Cosine**, named after the angle between vectors, is chosen in cases 2 and 3, judged generally better. An accepted simplification: all terms weigh the same, although some say much more than others."
       },
       "src": [
         {
@@ -681,6 +809,9 @@
           "loc": "10.4 Requirements Similarity",
           "quote": "in practice, the presence or absence of certain terms may be much"
         }
+      ],
+      "notions": [
+        "n-mesures-dice-jaccard-cosinus"
       ]
     },
     {
@@ -736,6 +867,9 @@
           "loc": "10.5 Case 1",
           "quote": "Each requirement has a lifecycle progressing through specific states in the development proc-"
         }
+      ],
+      "notions": [
+        "n-cas-telelogic-doublons"
       ]
     },
     {
@@ -818,6 +952,9 @@
           "loc": "10.5.2 Evaluation",
           "quote": "value, which acts as a selection criteria."
         }
+      ],
+      "notions": [
+        "n-cas-telelogic-doublons"
       ]
     },
     {
@@ -857,13 +994,16 @@
           "loc": "10.5.2 Evaluation",
           "quote": "pairs that fall on the correct side of the threshold"
         }
+      ],
+      "notions": [
+        "n-rappel-precision-exactitude"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Résultats : le rappel passe d'environ **80 %** au seuil 0+ à un peu moins de **20 %** au seuil 1. **Dice** donne un rappel légèrement moins bon que le cosinus et peut être écarté ; entre **Jaccard** et **Cosinus**, le cosinus a un rappel plus élevé mais une précision plus faible : le choix **dépend de l'application**. Enfin, les paires suspectes sont regroupées en **n-clusters** (n = nombre d'exigences du groupe), obtenus par **fermeture transitive** du graphe dont les nœuds sont les exigences et les arêtes les paires au-dessus du seuil : si (A,F) et (C,F) sont suspectes, A, C et F forment un 3-cluster à regarder ensemble.",
-        "en": "Results: recall decreases from about **80%** at threshold 0+ to just under **20%** at threshold 1. **Dice** gives slightly worse recall than Cosine and can be discarded; between **Jaccard** and **Cosine**, Cosine has higher recall but lower precision: the choice **depends on the application**. Finally, suspected pairs are grouped into **n-clusters** (n = number of requirements in the group), obtained as the **transitive closure** of the graph whose nodes are requirements and whose edges are pairs above the threshold: if (A,F) and (C,F) are suspected, A, C and F form a 3-cluster to be examined together."
+        "fr": "Résultats : le rappel passe d'environ **80 %** au seuil 0+ à un peu moins de **20 %** au seuil 1. **Dice** fait un peu moins bien que le cosinus ; entre **Jaccard** et **Cosinus**, le cosinus a un meilleur rappel mais une moins bonne précision : le choix **dépend de l'application**. Les paires suspectes sont regroupées en **n-clusters** par fermeture transitive : si (A,F) et (C,F) sont suspectes, A, C et F forment un 3-cluster à examiner ensemble.",
+        "en": "Results: recall drops from about **80%** at threshold 0+ to just under **20%** at threshold 1. **Dice** does slightly worse than cosine; between **Jaccard** and **Cosine**, cosine has better recall but lower precision: the choice **depends on the application**. Suspect pairs are grouped into **n-clusters** by transitive closure: if (A,F) and (C,F) are suspect, A, C and F form a 3-cluster to examine together."
       },
       "src": [
         {
@@ -891,6 +1031,9 @@
           "loc": "10.5.2 Evaluation",
           "quote": "The cluster distribution can be derived by calculating the transitive closure of a"
         }
+      ],
+      "notions": [
+        "n-rappel-precision-exactitude"
       ]
     },
     {
@@ -956,6 +1099,9 @@
           "loc": "10.6 Case 2",
           "quote": "complete and correct MRs-BRs links is paramount to maintaining good"
         }
+      ],
+      "notions": [
+        "n-cas-baan-mr-br"
       ]
     },
     {
@@ -990,6 +1136,9 @@
           "loc": "10.6 Case 2",
           "quote": "only allows text search in the requirement description."
         }
+      ],
+      "notions": [
+        "n-cas-baan-mr-br"
       ]
     },
     {
@@ -1078,13 +1227,16 @@
           "loc": "10.7 Case 3",
           "quote": "The RFIs play a important role in the operator"
         }
+      ],
+      "notions": [
+        "n-cas-sony-ericsson-rfi"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le circuit est long : l'opérateur → le **Key Account Manager (KAM)** → le **Bid Support Specialist (BSS)** → le **coordinateur** → les **Areas of Expertise (AoE)** (un groupe fonctionnel + un groupe de travail technique), puis retour pour relecture, éventuelle réunion avec la Global Product Management, et envoi de la réponse par le KAM. Le goulot : les AoE, qui doivent **re-déclarer la conformité pour des exigences identiques ou très proches**, car de grandes parties des nouvelles versions d'un RFI sont identiques aux précédentes, et l'historique de révision des opérateurs n'est **pas fiable** (identifiants réutilisés, exigences modifiées sans indication).",
-        "en": "The chain is long: operator → **Key Account Manager (KAM)** → **Bid Support Specialist (BSS)** → **coordinator** → **Areas of Expertise (AoE)** (a function group plus a technical work group), then back for review, possibly a meeting with Global Product Management, and the reply is sent by the KAM. The bottleneck: the AoEs, who must **state compliance again for the same or very similar requirements**, since large parts of new RFI versions are identical to previous ones and the operators' revision history **cannot be trusted** (IDs reused, requirements changed without indication)."
+        "fr": "Le circuit est long : opérateur → **Key Account Manager (KAM)** → **Bid Support Specialist (BSS)** → coordinateur → **Areas of Expertise (AoE)**, puis relecture et envoi par le KAM. Le goulot : les AoE doivent **re-déclarer la conformité d'exigences identiques ou très proches**, car les nouvelles versions d'un RFI reprennent largement les précédentes, et l'historique de révision des opérateurs n'est **pas fiable** (identifiants réutilisés, modifications non signalées).",
+        "en": "The process is long: operator → **Key Account Manager (KAM)** → **Bid Support Specialist (BSS)** → coordinator → **Areas of Expertise (AoE)**, then review and sending by the KAM. The bottleneck: AoE must **re-declare compliance for identical or very similar requirements**, because new RFI versions largely repeat earlier ones, and operators' revision history is **not reliable** (reused identifiers, unflagged changes)."
       },
       "src": [
         {
@@ -1107,8 +1259,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "La solution testée : convertir les RFI en **format standardisé** (exigences atomiques avec identifiants uniques), les comparer par similarité à une base de RFI déjà analysés (≈ **11 000 exigences**), puis laisser le KAM ou le BSS marquer chaque exigence **doublon**, **similaire** ou **non marquée**. Les AoE ne traitent alors que les exigences similaires ou non marquées. **Hypothèse** : il est plus rapide de juger la ressemblance de deux exigences que de réanalyser chacune pour la conformité. Bénéfices annexes : l'intelligence économique est rassemblée au même endroit, et les similarités et **contradictions** entre exigences d'opérateurs différents sont plus faciles à repérer.",
-        "en": "The solution tested: convert RFIs into a **standardized format** (atomic requirements with unique identifiers), compare them by similarity with a base of already analyzed RFIs (≈ **11,000 requirements**), then let the KAM or BSS mark each requirement as **duplicate**, **similar** or **not marked**. The AoEs then only check the similar or unmarked ones. **Hypothesis**: it is quicker to judge how similar two requirements are than to reanalyze each for compliance. Side benefits: business intelligence is gathered in one place, and similarities and **contradictions** between different operators' requirements are easier to identify."
+        "fr": "La solution testée : convertir les RFI en **format standardisé** (exigences atomiques, identifiants uniques), les comparer par similarité à une base d'environ **11 000 exigences** déjà analysées, puis laisser le KAM ou le BSS marquer chaque exigence **doublon**, **similaire** ou **non marquée** ; les AoE ne traitent que les deux dernières. **Hypothèse** : juger la ressemblance de deux exigences est plus rapide que réanalyser la conformité. Bonus : les contradictions entre opérateurs se repèrent mieux.",
+        "en": "The tested solution: convert RFIs into a **standardised format** (atomic requirements, unique identifiers), compare them by similarity with a base of about **11,000 requirements** already analysed, then let the KAM or BSS mark each requirement **duplicate**, **similar** or **unmarked**; AoE only handle the last two. **Hypothesis**: judging how similar two requirements are is faster than re-analysing compliance. Bonus: contradictions between operators are easier to spot."
       },
       "src": [
         {
@@ -1141,6 +1293,9 @@
           "loc": "10.7 Case 3",
           "quote": "Contradictions between different operators requirements may be identified more easily."
         }
+      ],
+      "notions": [
+        "n-cas-sony-ericsson-rfi"
       ]
     },
     {
@@ -1175,8 +1330,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Bilan des auteurs : calculer la similarité **lexicale** donne une exactitude « raisonnablement élevée vu sa simplicité ». L'approche **complète** la façon de travailler actuelle pour gagner du temps, elle ne la remplace pas ; la simplicité est un **choix délibéré** (technique robuste, peu de maintenance, donc plus facilement acceptée en industrie). L'obstacle principal est au niveau de l'**implémentation** : il n'existe pas de solution toute prête, et adopter la technique revient à un projet de développement interne (un éditeur propose déjà une fonction « Find Similar » ; leur prototype ReqSimile est librement disponible).",
-        "en": "The authors' assessment: **lexical** similarity gives reasonably high accuracy considering its simplicity. The approach **complements** the current way of working to save time; it does not replace it; simplicity is a **deliberate choice** (a robust technique, little maintenance, hence easier industry acceptance). The main obstacle is at the **implementation** level: there are no ready-made solutions, and adopting the technique amounts to an in-house development project (one vendor already offers a \"Find Similar\" function; their prototype ReqSimile is freely available)."
+        "fr": "Bilan des auteurs : la similarité **lexicale** donne une exactitude « raisonnablement élevée vu sa simplicité ». L'approche **complète** le travail actuel pour gagner du temps, sans le remplacer ; sa simplicité est un **choix délibéré** (robuste, peu de maintenance, mieux acceptée en industrie). L'obstacle principal est l'**implémentation** : pas de solution toute prête, donc un projet interne (leur prototype ReqSimile est librement disponible).",
+        "en": "The authors' conclusion: **lexical** similarity gives an accuracy \"reasonably high given its simplicity\". The approach **complements** current work to save time, without replacing it; its simplicity is a **deliberate choice** (robust, low maintenance, better accepted in industry). The main obstacle is **implementation**: no ready-made solution, hence an in-house project (their ReqSimile prototype is freely available)."
       },
       "src": [
         {
@@ -1209,6 +1364,9 @@
           "loc": "10.8 Conclusions",
           "quote": "our own recent prototype tool, ReqSimile, is freely available and may be"
         }
+      ],
+      "notions": [
+        "n-outil-complete-analystes"
       ]
     },
     {
@@ -1241,7 +1399,8 @@
           "loc": "10.1–10.2",
           "quote": "natural language, which induces several problems like imprecision, ambiguity, in-"
         }
-      ]
+      ],
+      "notion": "n-pourquoi-langage-naturel"
     },
     {
       "id": "term-requirements-repository",
@@ -1262,7 +1421,8 @@
           "loc": "10.1 / 10.5",
           "quote": "collected into a repository and assigned the status of New"
         }
-      ]
+      ],
+      "notion": "n-limites-outils-gestion"
     },
     {
       "id": "term-information-overload",
@@ -1278,7 +1438,8 @@
           "loc": "10.2",
           "quote": "In essence, these companies face an information overload problem. But, as we"
         }
-      ]
+      ],
+      "notion": "n-surcharge-information"
     },
     {
       "id": "term-requirements-similarity",
@@ -1299,7 +1460,8 @@
           "loc": "10.4",
           "quote": "it has to be computable in a relatively inexpensive way"
         }
-      ]
+      ],
+      "notion": "n-similarite-exigences"
     },
     {
       "id": "term-lexical-similarity",
@@ -1320,7 +1482,8 @@
           "loc": "10.4",
           "quote": "We therefore focus on lexical similarity as a way of approximating semantic similarity"
         }
-      ]
+      ],
+      "notion": "n-similarite-exigences"
     },
     {
       "id": "term-tokenization",
@@ -1341,7 +1504,8 @@
           "loc": "10.4",
           "quote": "is called a token. In the upcoming case studies, a token is"
         }
-      ]
+      ],
+      "notion": "n-tokenisation"
     },
     {
       "id": "term-stemming",
@@ -1362,7 +1526,8 @@
           "loc": "10.4",
           "quote": "from verbs). This process is called stemming and is usually performed with the"
         }
-      ]
+      ],
+      "notion": "n-racinisation"
     },
     {
       "id": "term-stop-words",
@@ -1383,7 +1548,8 @@
           "loc": "10.4",
           "quote": "the sequence of tokens all those words that have a purely grammatical role."
         }
-      ]
+      ],
+      "notion": "n-mots-vides"
     },
     {
       "id": "term-cosine-measure",
@@ -1404,7 +1570,8 @@
           "loc": "10.4",
           "quote": "the Cosine measure was selected as it was considered to generally perform better"
         }
-      ]
+      ],
+      "notion": "n-mesures-dice-jaccard-cosinus"
     },
     {
       "id": "term-recall",
@@ -1425,7 +1592,8 @@
           "loc": "10.5.2",
           "quote": "duplicate pairs that fall above the similarity threshold."
         }
-      ]
+      ],
+      "notion": "n-rappel-precision-exactitude"
     },
     {
       "id": "term-precision",
@@ -1441,7 +1609,8 @@
           "loc": "10.5.2",
           "quote": "the percentage of actual duplicates above the similarity threshold in relation to all"
         }
-      ]
+      ],
+      "notion": "n-rappel-precision-exactitude"
     },
     {
       "id": "term-accuracy",
@@ -1457,7 +1626,8 @@
           "loc": "10.5.2",
           "quote": "pairs that fall on the correct side of the threshold"
         }
-      ]
+      ],
+      "notion": "n-rappel-precision-exactitude"
     },
     {
       "id": "term-n-cluster",
@@ -1478,7 +1648,8 @@
           "loc": "10.5.2",
           "quote": "The cluster distribution can be derived by calculating the transitive closure of a"
         }
-      ]
+      ],
+      "notion": "n-cas-baan-mr-br"
     },
     {
       "id": "term-mr-br",
@@ -1504,7 +1675,8 @@
           "loc": "10.6",
           "quote": "to each other in a many-to-many relationship; a single MR can span several BRs"
         }
-      ]
+      ],
+      "notion": "n-cas-baan-mr-br"
     },
     {
       "id": "term-rfi",
@@ -1525,7 +1697,8 @@
           "loc": "10.7",
           "quote": "whether or not a certain product complies, i.e."
         }
-      ]
+      ],
+      "notion": "n-cas-sony-ericsson-rfi"
     }
   ],
   "keyPoints": [
@@ -1676,7 +1849,128 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "isi1-08-fc-01",
+      "termId": "term-nl-requirements",
+      "front": {
+        "fr": "exigence en langage naturel ?",
+        "en": "natural language requirement (NL)?"
+      },
+      "back": {
+        "fr": "Exigence exprimée dans la langue de communication commune à toutes les parties prenantes ; universelle (tout domaine, tout niveau d'abstraction) mais sujette à l'imprécision, l'ambiguïté, l'incomplétude, le conflit et l'incohérence.",
+        "en": "Requirement expressed in the language shared by all stakeholders; universal (any domain, any abstraction level) but prone to imprecision, ambiguity, incompleteness, conflict and inconsistency."
+      }
+    },
+    {
+      "id": "isi1-08-fc-02",
+      "termId": "term-lexical-similarity",
+      "front": {
+        "fr": "similarité lexicale ?",
+        "en": "lexical similarity?"
+      },
+      "back": {
+        "fr": "Ressemblance des mots employés dans deux exigences ; calculable automatiquement, elle sert d'approximation de la similarité sémantique.",
+        "en": "Similarity in the words used by two requirements; computable automatically, it serves as an approximation of semantic similarity."
+      }
+    },
+    {
+      "id": "isi1-08-fc-03",
+      "termId": "term-tokenization",
+      "front": {
+        "fr": "tokenisation ?",
+        "en": "tokenization?"
+      },
+      "back": {
+        "fr": "Séparation des constituants lexicaux d'une exigence ; chaque mot (au sens large) est un token. Dans les cas étudiés : suite de lettres et/ou chiffres, tout autre caractère étant un délimiteur.",
+        "en": "Separation of the lexical constituents of a requirement; each word (in the extended sense) is a token. In the studied cases: a sequence of letters and/or digits, any other character being a delimiter."
+      }
+    },
+    {
+      "id": "isi1-08-fc-04",
+      "termId": "term-stemming",
+      "front": {
+        "fr": "racinisation ?",
+        "en": "stemming?"
+      },
+      "back": {
+        "fr": "Réduction des tokens à leur forme de base en supprimant les flexions morphologiques, à l'aide de règles générales et d'un dictionnaire d'exceptions.",
+        "en": "Reduction of tokens to their base form by removing morphological inflections, using general rules and a dictionary of exceptions."
+      }
+    },
+    {
+      "id": "isi1-08-fc-05",
+      "termId": "term-stop-words",
+      "front": {
+        "fr": "mots vides ?",
+        "en": "stop words?"
+      },
+      "back": {
+        "fr": "Mots au rôle purement grammatical (le plus souvent articles et prépositions) retirés de la suite de tokens avant le calcul de similarité.",
+        "en": "Words with a purely grammatical role (mostly articles and prepositions) dropped from the sequence of tokens before computing similarity."
+      }
+    },
+    {
+      "id": "isi1-08-fc-06",
+      "termId": "term-cosine-measure",
+      "front": {
+        "fr": "mesure du cosinus ?",
+        "en": "cosine measure?"
+      },
+      "back": {
+        "fr": "Mesure de similarité calculant le cosinus de l'angle entre les vecteurs qui représentent deux exigences dans un modèle d'espace vectoriel ; comparée à Dice et Jaccard, retenue aux cas 2 et 3.",
+        "en": "Similarity measure computing the cosine of the angle between the vectors representing two requirements in a vector-space model; compared with Dice and Jaccard, selected in Cases 2 and 3."
+      }
+    },
+    {
+      "id": "isi1-08-fc-07",
+      "termId": "term-recall",
+      "front": {
+        "fr": "rappel ?",
+        "en": "recall?"
+      },
+      "back": {
+        "fr": "Pourcentage des vraies paires de doublons qui tombent au-dessus du seuil de similarité.",
+        "en": "Percentage of the actual duplicate pairs that fall above the similarity threshold."
+      }
+    },
+    {
+      "id": "isi1-08-fc-08",
+      "termId": "term-precision",
+      "front": {
+        "fr": "précision ?",
+        "en": "precision?"
+      },
+      "back": {
+        "fr": "Pourcentage de vrais doublons parmi toutes les paires situées au-dessus du seuil de similarité.",
+        "en": "Percentage of actual duplicates among all pairs above the similarity threshold."
+      }
+    },
+    {
+      "id": "isi1-08-fc-09",
+      "termId": "term-mr-br",
+      "front": {
+        "fr": "MR / BR (Baan) ?",
+        "en": "Market / Business Requirement (MR / BR)?"
+      },
+      "back": {
+        "fr": "Chez Baan : les Market Requirements sont les souhaits des clients, les Business Requirements les exigences produit ; liés en plusieurs-à-plusieurs.",
+        "en": "At Baan: Market Requirements are customer wishes, Business Requirements are product requirements; linked many-to-many."
+      }
+    },
+    {
+      "id": "isi1-08-fc-10",
+      "termId": "term-rfi",
+      "front": {
+        "fr": "RFI / SoC ?",
+        "en": "Request for Information / Statement of Compliance?"
+      },
+      "back": {
+        "fr": "Chez Sony Ericsson : demande d'information envoyée par un opérateur ; la plus courante est la demande de déclaration de conformité (SoC), où chaque exigence reçoit une réponse standard « satisfait / non satisfait ».",
+        "en": "At Sony Ericsson: request for information sent by an operator; the most common is the request for a statement of compliance (SoC), where each requirement gets a standard \"complies / does not comply\" reply."
+      }
+    }
+  ],
   "quiz": [
     {
       "id": "isi1-08-qz-01",
@@ -1712,7 +2006,15 @@
           "quote": "been shown to be too costly and at times counter-productive",
           "loc": "10.1 Introduction"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-limites-outils-gestion"
+      ],
+      "trap": {
+        "fr": "Croire que les outils du marché détectent les liens : ils les stockent seulement.",
+        "en": "Believing market tools detect links: they only store them."
+      }
     },
     {
       "id": "isi1-08-qz-02",
@@ -1763,7 +2065,16 @@
           "quote": "natural language, which induces several problems like imprecision, ambiguity, in-",
           "loc": "10.1 Introduction"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-pourquoi-langage-naturel",
+        "n-verification-vs-validation-nl"
+      ],
+      "trap": {
+        "fr": "Croire que le langage naturel est sans ambiguïté : son atout est la validation avec les utilisateurs.",
+        "en": "Believing natural language is unambiguous: its strength is validation with users."
+      }
     },
     {
       "id": "isi1-08-qz-03",
@@ -1794,6 +2105,10 @@
           "quote": "Since not all requirements are expected to be implemented, there is little motivation for spending",
           "loc": "10.2 The Role of Natural Language Requirements"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-pourquoi-langage-naturel"
       ]
     },
     {
@@ -1820,6 +2135,10 @@
           "quote": "declared as fragile, in that any change in one of the linked requirements marks the",
           "loc": "10.3.3 Requirements Management"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-limites-outils-gestion"
       ]
     },
     {
@@ -1856,7 +2175,15 @@
           "quote": "it has to be computable in a relatively inexpensive way",
           "loc": "10.4 Requirements Similarity"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-similarite-exigences"
+      ],
+      "trap": {
+        "fr": "Confondre lexical (retenu, calculable) et sémantique (trop coûteux).",
+        "en": "Confusing lexical (chosen, computable) and semantic (too costly)."
+      }
     },
     {
       "id": "isi1-08-qz-06",
@@ -1912,7 +2239,15 @@
           "quote": "to their base form, removing morphological inflections",
           "loc": "10.4 Requirements Similarity"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-mots-vides"
+      ],
+      "trap": {
+        "fr": "Confondre suppression des mots vides et racinisation.",
+        "en": "Confusing stop-word removal and stemming."
+      }
     },
     {
       "id": "isi1-08-qz-07",
@@ -1938,6 +2273,10 @@
           "quote": "also use the well-known weighting formula 1+log2(term frequency)",
           "loc": "10.4 Requirements Similarity"
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-mesures-dice-jaccard-cosinus"
       ]
     },
     {
@@ -1989,7 +2328,15 @@
           "quote": "the percentage of actual duplicates above the similarity threshold in relation to all",
           "loc": "10.5.2 Evaluation"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-rappel-precision-exactitude"
+      ],
+      "trap": {
+        "fr": "Inverser les dénominateurs du rappel (vraies paires) et de la précision (paires retenues).",
+        "en": "Swapping the denominators of recall (true pairs) and precision (retained pairs)."
+      }
     },
     {
       "id": "isi1-08-qz-09",
@@ -2010,7 +2357,16 @@
           "quote": "recall decreases from around 80% at threshold level 0+ to just",
           "loc": "10.5.2 Evaluation"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-rappel-precision-exactitude",
+        "n-cas-telelogic-doublons"
+      ],
+      "trap": {
+        "fr": "Croire que relever le seuil augmente le rappel : il le fait baisser.",
+        "en": "Believing a higher threshold raises recall: it lowers it."
+      }
     },
     {
       "id": "isi1-08-qz-10",
@@ -2036,6 +2392,10 @@
           "quote": "recall but lower precision than Jaccard. The choice would thus depend on the",
           "loc": "10.5.2 Evaluation"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-mesures-dice-jaccard-cosinus"
       ]
     },
     {
@@ -2067,7 +2427,15 @@
           "quote": "several MRs (e.g., when several customers are requesting the same functionality).",
           "loc": "10.6 Case 2"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cas-baan-mr-br"
+      ],
+      "trap": {
+        "fr": "Croire à des liens un-à-un : ils sont plusieurs-à-plusieurs.",
+        "en": "Believing links are one-to-one: they are many-to-many."
+      }
     },
     {
       "id": "isi1-08-qz-12",
@@ -2118,7 +2486,15 @@
           "quote": "list size of 7±2 could be a good compromise",
           "loc": "10.6.2 Evaluation"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cas-baan-mr-br"
+      ],
+      "trap": {
+        "fr": "Confondre le paramètre n de la liste présentée et d’autres réglages.",
+        "en": "Confusing the n parameter of the presented list with other settings."
+      }
     },
     {
       "id": "isi1-08-qz-13",
@@ -2149,7 +2525,16 @@
           "quote": "this time the AoEs only have to check those that are marked as similar or not marked",
           "loc": "10.7 Case 3"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cas-sony-ericsson-rfi",
+        "n-outil-complete-analystes"
+      ],
+      "trap": {
+        "fr": "Croire que l’outil remplace les analystes : il les complète.",
+        "en": "Believing the tool replaces analysts: it complements them."
+      }
     },
     {
       "id": "isi1-08-qz-14",
@@ -2180,9 +2565,163 @@
           "quote": "It has been estimated that 20% of the time spent on checking the",
           "loc": "10.7.1 Evaluation"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cas-sony-ericsson-rfi"
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "exercises": [
+    {
+      "id": "isi1-08-ex-01",
+      "title": {
+        "fr": "Rappel et précision d’une détection de doublons",
+        "en": "Recall and precision of duplicate detection"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o3",
+      "statement": {
+        "fr": "Un référentiel contient 50 vraies paires de doublons. Avec un seuil t, l’outil signale 40 paires, dont 30 sont de vrais doublons. (a) Calcule le rappel et la précision. (b) Si l’on relève le seuil, que deviennent en général le rappel et la précision ? (c) Pourquoi les auteurs disent-ils que l’outil complète les analystes plutôt qu’il ne les remplace ?",
+        "en": "A repository contains 50 true duplicate pairs. With threshold t, the tool flags 40 pairs, 30 of which are true duplicates. (a) Compute recall and precision. (b) If the threshold is raised, what generally happens to recall and precision? (c) Why do the authors say the tool complements analysts rather than replacing them?"
+      },
+      "hints": [
+        {
+          "fr": "Rappel : dénominateur = toutes les vraies paires. Précision : dénominateur = toutes les paires signalées.",
+          "en": "Recall: denominator = all true pairs. Precision: denominator = all flagged pairs."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (a) Rappel = 30 / 50 = **60 %** ; précision = 30 / 40 = **75 %**. (b) En relevant le seuil, on signale moins de paires : le rappel baisse (dans le cas Telelogic, d’environ 80 % au seuil 0+ à moins de 20 % au seuil 1), la précision tend à monter. (c) La similarité est lexicale (des mots, pas des sens) : l’outil propose des candidats, l’analyste juge ; il accélère le travail sans le remplacer.",
+        "en": "**Proposed** solution. (a) Recall = 30 / 50 = **60%**; precision = 30 / 40 = **75%**. (b) Raising the threshold flags fewer pairs: recall drops (in the Telelogic case, from about 80% at threshold 0+ to under 20% at threshold 1), precision tends to rise. (c) Similarity is lexical (words, not meanings): the tool suggests candidates, the analyst judges; it speeds up the work without replacing it."
+      },
+      "notions": [
+        "n-rappel-precision-exactitude",
+        "n-outil-complete-analystes"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.5.2 Evaluation",
+          "quote": "Recall is calculated as the percentage of the actual"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.5.2 Evaluation",
+          "quote": "recall decreases from around 80% at threshold level 0+ to just"
+        }
+      ]
+    },
+    {
+      "id": "isi1-08-ex-02",
+      "title": {
+        "fr": "Pourquoi pas tout en formel ?",
+        "en": "Why not formalise everything?"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o1",
+      "statement": {
+        "fr": "Un collègue propose de réécrire tout le référentiel de 10 000 exigences dans un langage formel « pour supprimer l’ambiguïté ». Réponds-lui en t’appuyant sur les arguments du chapitre.",
+        "en": "A colleague proposes rewriting the whole 10,000-requirement repository in a formal language “to remove ambiguity”. Answer using the chapter’s arguments."
+      },
+      "hints": [
+        {
+          "fr": "Pense à vérification ≠ validation, et au nombre d’exigences réellement retenues.",
+          "en": "Think verification ≠ validation, and how many requirements are actually kept."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. Le formel facilite la **vérification** (cohérence interne), mais la **validation** se fait avec les utilisateurs, qui lisent le langage naturel. Peu d’exigences proposées sont finalement retenues : formaliser les autres serait un gaspillage. Beaucoup d’exigences entrantes sont imparfaites, et le langage naturel est la langue commune des parties prenantes. Mieux vaut garder le langage naturel et outiller sa gestion (similarité lexicale pour les doublons et les liens).",
+        "en": "**Proposed** solution. Formal languages ease **verification** (internal consistency), but **validation** is done with users, who read natural language. Few proposed requirements are eventually kept: formalising the rest would be waste. Many incoming requirements are imperfect, and natural language is the stakeholders’ common language. Better to keep natural language and support its management with tools (lexical similarity for duplicates and links)."
+      },
+      "notions": [
+        "n-pourquoi-langage-naturel",
+        "n-verification-vs-validation-nl"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.2 The Role of Natural Language Requirements",
+          "quote": "Since not all requirements are expected to be implemented, there is little motivation for spending"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.2 The Role of Natural Language Requirements",
+          "quote": "a process often referred to as verification"
+        }
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "isi1-08-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Lexical similarity compares words, not meanings.",
+      "accepted": [
+        "Lexical similarity compares words and not meanings."
+      ]
+    },
+    {
+      "id": "isi1-08-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "Recall is the share of true duplicate pairs found above the {{threshold}}; precision is the share of true duplicates among all {{retained}} pairs.",
+      "translation": "Le rappel est la part des vraies paires trouvées au-dessus du seuil ; la précision est la part de vrais doublons parmi toutes les paires retenues."
+    },
+    {
+      "id": "isi1-08-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Raising the similarity threshold increases recall.",
+      "error": "increases recall",
+      "corrected": "decreases recall",
+      "explanation": {
+        "fr": "Un seuil plus haut retient moins de paires : on retrouve moins de vrais doublons, le rappel baisse.",
+        "en": "A higher threshold keeps fewer pairs: fewer true duplicates are found, recall drops."
+      }
+    },
+    {
+      "id": "isi1-08-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique pourquoi les grands référentiels gardent le langage naturel.",
+        "en": "In 2-3 English sentences, explain why large repositories keep natural language."
+      },
+      "modelAnswer": "Large repositories keep natural language because requirements must be validated with users, who do not read formal languages. Moreover, few proposed requirements are finally implemented, so formalising all of them would be wasteful. Tools based on lexical similarity can help manage them.",
+      "keywords": [
+        "validated",
+        "users",
+        "formal",
+        "few",
+        "similarity"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité la validation avec les utilisateurs.",
+          "en": "I mentioned validation with users."
+        },
+        {
+          "fr": "J’ai cité le faible taux d’exigences retenues.",
+          "en": "I mentioned the low share of requirements kept."
+        }
+      ],
+      "usefulPhrases": [
+        "because requirements must be validated",
+        "moreover",
+        "can help manage"
+      ]
+    }
+  ]
 }
