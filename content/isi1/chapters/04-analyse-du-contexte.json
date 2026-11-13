@@ -10,6 +10,108 @@
     "fr": "Pourquoi un système validé peut échouer en production, et comment deux frontières et une zone grise t'aident à l'éviter.",
     "en": "Why a validated system can still fail in operation, and how two boundaries and a grey zone help you avoid it."
   },
+  "question": {
+    "fr": "Où s’arrête le système, qu’est-ce qui l’entoure, et comment le représenter sans erreur avec des cas d’utilisation ?",
+    "en": "Where does the system end, what surrounds it, and how do you represent it correctly with use cases?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir et appliquer contexte du système, frontière du système, frontière du contexte et zone grise (les « termes à retenir » du prof).",
+        "en": "Define and apply system context, system boundary, context boundary and grey zone (the teacher’s “terms to remember”)."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Structurer le contexte (sources et puits, interfaces, quatre facettes) et choisir l’outil de description adapté (dictionnaire, modèle de domaine, ontologie, analyse de l’existant…).",
+        "en": "Structure the context (sources and sinks, interfaces, four facets) and choose the right description tool (dictionary, domain model, ontology, legacy analysis…)."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Corriger un diagramme de cas d’utilisation selon le « Do / Don’t » du cours, proposer une version correcte et spécifier un cas (format de l’annale 2013, partie B).",
+        "en": "Correct a use case diagram according to the course’s “Do / Don’t”, propose a correct version and specify a case (2013 exam format, part B)."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Annale 2013, partie B (5 points) : erreurs d’un modèle de cas d’utilisation (banque en ligne), version correcte, spécification d’un cas.",
+        "en": "2013 exam, part B (5 points): errors in a use case model (online bank), correct version, specification of a case."
+      },
+      {
+        "fr": "Annales 2013 et 2014, Q5 : les cas d’utilisation sont des buts « complémentaires » (2013) ou « alternatifs » (2014).",
+        "en": "2013 and 2014 exams, Q5: use cases are “complementary” (2013) or “alternative” (2014) goals."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Les trois termes que le support 7 demande explicitement de retenir : contexte du système, frontière du système, frontière du contexte.",
+        "en": "The three terms support 7 explicitly asks you to remember: system context, system boundary, context boundary."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 1 (exigence) et chapitre 3 (contraintes) : les exigences dépendent de leur environnement.",
+    "en": "Chapter 1 (requirement) and chapter 3 (constraints): requirements depend on their environment."
+  },
+  "next": {
+    "fr": "Le chapitre 5 explique comment faire émerger les exigences auprès des sources identifiées ici (parties prenantes, documents, systèmes).",
+    "en": "Chapter 5 explains how to elicit requirements from the sources identified here (stakeholders, documents, systems)."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Contexte du système : la partie de l’environnement pertinente pour définir et comprendre les exigences.",
+        "en": "System context: the part of the environment relevant to defining and understanding requirements."
+      },
+      {
+        "fr": "Frontière du système : ce qu’on peut modifier / ce qu’on ne peut pas. Frontière du contexte : environnement pertinent / non pertinent. Zone grise : ce qu’on ne sait pas encore placer.",
+        "en": "System boundary: what can be changed / what cannot. Context boundary: relevant / irrelevant environment. Grey zone: what cannot yet be placed."
+      },
+      {
+        "fr": "Quatre facettes : Subject, Usage, IT, Development ; sources (entrées) et puits (sorties) via des interfaces.",
+        "en": "Four facets: Subject, Usage, IT, Development; sources (inputs) and sinks (outputs) through interfaces."
+      },
+      {
+        "fr": "Cas d’utilisation — à faire : acteurs, buts, services fournis par le système, cas nominaux complémentaires ; à éviter : CRUD, « Manage », niveaux mélangés, cas alternatifs.",
+        "en": "Use cases — do: actors, goals, services provided by the system, complementary nominal cases; don’t: CRUD, “Manage”, mixed levels, alternative cases."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Placer des éléments dans le système, le contexte ou l’environnement non pertinent, et justifier.",
+        "en": "Place elements in the system, the context or the irrelevant environment, and justify."
+      },
+      {
+        "fr": "Corriger un diagramme de cas d’utilisation puis spécifier un cas : acteur, déclencheur, scénario nominal, résultat attendu.",
+        "en": "Correct a use case diagram then specify a case: actor, trigger, nominal scenario, expected result."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Frontière du système (modifiable ou non) ≠ frontière du contexte (pertinent ou non).",
+        "en": "System boundary (changeable or not) ≠ context boundary (relevant or not)."
+      },
+      {
+        "fr": "Cas complémentaires (nominaux, tous nécessaires) ≠ cas alternatifs (exceptions), à ne pas dessiner dans le diagramme.",
+        "en": "Complementary cases (nominal, all needed) ≠ alternative cases (exceptions), not to be drawn in the diagram."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Des cas complémentaires correspondent à un raffinement ET de KAOS (chapitre 10) ; le dictionnaire du domaine prépare le glossaire (chapitre 6).",
+        "en": "Complementary cases correspond to a KAOS AND refinement (chapter 10); the domain dictionary prepares the glossary (chapter 6)."
+      }
+    ]
+  },
   "estimatedMinutes": 15,
   "sources": [
     "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
@@ -73,6 +175,9 @@
           "loc": "The system context",
           "quote": "Requirements only exist in a context"
         }
+      ],
+      "notions": [
+        "n-exigence-existe-dans-un-contexte"
       ]
     },
     {
@@ -112,6 +217,9 @@
           "loc": "2.1 System Context",
           "quote": "Documents (e.g., laws, standards, system documentation)"
         }
+      ],
+      "notions": [
+        "n-contexte-systeme"
       ]
     },
     {
@@ -151,6 +259,10 @@
           "loc": "System context and requirement context",
           "quote": "The better the context of a requirement is understood"
         }
+      ],
+      "notions": [
+        "n-exigence-existe-dans-un-contexte",
+        "n-documenter-contexte"
       ]
     },
     {
@@ -186,6 +298,10 @@
           "loc": "2.2 Defining System and Context Boundaries",
           "quote": "Which aspects pertain to the system context"
         }
+      ],
+      "notions": [
+        "n-frontiere-systeme",
+        "n-frontiere-contexte"
       ]
     },
     {
@@ -250,6 +366,9 @@
           "loc": "2.4 Summary",
           "quote": "thus cannot be altered during development and may provide constraints for the system to be developed"
         }
+      ],
+      "notions": [
+        "n-frontiere-systeme"
       ]
     },
     {
@@ -268,7 +387,7 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Terms and definitions to remember",
-          "quote": "System Boundary"
+          "quote": "system boundary and context boundary 2"
         }
       ]
     },
@@ -305,6 +424,9 @@
           "loc": "Gray zone between system and system context",
           "quote": "whether the system should implement a certain function"
         }
+      ],
+      "notions": [
+        "n-zone-grise"
       ]
     },
     {
@@ -329,6 +451,9 @@
           "loc": "System boundary",
           "quote": "Adjustments will be needed"
         }
+      ],
+      "notions": [
+        "n-zone-grise"
       ]
     },
     {
@@ -353,6 +478,10 @@
           "loc": "Resolving and shifting of the gray zone",
           "quote": "it is not necessary to resolve the gray zone"
         }
+      ],
+      "notions": [
+        "n-evolution-contexte",
+        "n-frontiere-contexte"
       ]
     },
     {
@@ -410,13 +539,16 @@
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "Resolving and shifting of the gray zone",
-          "quote": "In contrast to"
+          "quote": "In contrast to the gray zone"
         },
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "Resolving and shifting of the gray zone",
           "quote": "it is not necessary to resolve the gray zone"
         }
+      ],
+      "notions": [
+        "n-zone-grise"
       ]
     },
     {
@@ -440,7 +572,7 @@
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "Sources and sinks as the starting point",
-          "quote": "Sources provide inputs"
+          "quote": "Sources provide inputs for the system."
         },
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
@@ -452,6 +584,9 @@
           "loc": "Sources and sinks as the starting point",
           "quote": "Existing systems (both technical and nontechnical systems)"
         }
+      ],
+      "notions": [
+        "n-sources-et-puits"
       ]
     },
     {
@@ -476,6 +611,9 @@
           "loc": "Interfaces: interaction between system and environment",
           "quote": "The interface type in turn may also"
         }
+      ],
+      "notions": [
+        "n-interface-systeme"
       ]
     },
     {
@@ -521,6 +659,10 @@
           "loc": "The 4 facets of the context",
           "quote": "all aspects that influence development procedures"
         }
+      ],
+      "notions": [
+        "n-facettes-contexte",
+        "n-structuration-contexte"
       ]
     },
     {
@@ -533,7 +675,7 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "3 aspects in each facet",
-          "quote": "Requirements sources"
+          "quote": "Requirements sources: stakeholders, documents, other systems"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
@@ -545,6 +687,9 @@
           "loc": "3 aspects in each facet",
           "quote": "How things and poeple in the context relate to"
         }
+      ],
+      "notions": [
+        "n-trois-aspects-par-facette"
       ]
     },
     {
@@ -615,13 +760,16 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "The 4 facets of the context",
-          "quote": "operating/technical environment"
+          "quote": "operating/technical environment, physical and software"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "The 4 facets of the context",
           "quote": "all aspects that influence development procedures"
         }
+      ],
+      "notions": [
+        "n-facettes-contexte"
       ]
     },
     {
@@ -638,8 +786,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les exigences dépendent du contexte : connaissance du domaine, règles et processus métier, organisation, stratégie de l'entreprise, lois, normes, autres systèmes, technologie. Attention : ce peuvent être des **hypothèses sur le futur**. Pour documenter le contexte (surtout les frontières), on utilise souvent des **diagrammes de cas d'utilisation** (acteurs : personnes ou autres systèmes, et leurs relations d'usage avec le système) ou des **diagrammes de flux de données** (sources et puits de flux de données, de matière, d'énergie, d'argent…). Les **diagrammes de classes UML** sont possibles aussi ; en pratique on combine plusieurs formes.",
-        "en": "Requirements depend on the context: domain knowledge, business rules and processes, the organisation, the corporate strategy, laws, norms, standards, other systems, technology. Careful: these can be **assumptions about the future**. To document the context (especially the boundaries), **use case diagrams** (actors — people or other systems — and their usage relationships to the system) or **data flow diagrams** (sources and sinks of data, material, energy, money flows…) are often used. **UML class diagrams** may also be used; in practice several forms are combined."
+        "fr": "Les exigences dépendent du contexte : connaissance du domaine, règles et processus métier, organisation, stratégie, lois, normes, autres systèmes, technologie. Attention : ce peuvent être des **hypothèses sur le futur**. Pour documenter le contexte (surtout les frontières), on utilise souvent des **diagrammes de cas d'utilisation** (acteurs et relations d'usage) ou des **diagrammes de flux de données** (sources et puits de flux de données, de matière, d'argent…), parfois des **diagrammes de classes UML** ; en pratique on combine plusieurs formes.",
+        "en": "Requirements depend on the context: domain knowledge, business rules and processes, organisation, strategy, laws, norms, other systems, technology. Careful: these can be **assumptions about the future**. To document the context (especially the boundaries), **use case diagrams** (actors and usage relationships) or **data flow diagrams** (sources and sinks of data, material, money flows…) are often used, sometimes **UML class diagrams**; in practice several forms are combined."
       },
       "src": [
         {
@@ -650,7 +798,7 @@
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "2.3 Documenting the System Context",
-          "quote": "“use case” diagrams"
+          "quote": "“use case” diagrams [Jacobson et al."
         },
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
@@ -660,20 +808,23 @@
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "2.3 Documenting the System Context",
-          "quote": "UML class"
+          "quote": "UML class diagrams [OMG 2007] (see"
         },
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "2.3 Documenting the System Context",
-          "quote": "typically several"
+          "quote": "typically several documentation forms are used."
         }
+      ],
+      "notions": [
+        "n-documenter-contexte"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les **parties prenantes** font partie du contexte. Le cours montre le « *stakeholder diagram* » d'Ian Alexander (2005) sur un projet de jeu vidéo : autour du produit (le jeu) on place le système, le système englobant, un système en interface, l'environnement élargi, et des rôles comme le joueur (bénéficiaire fonctionnel / opérateur normal), l'opérateur de maintenance, le directeur, l'actionnaire (bénéficiaire financier), le chef de produit (acheteur), le développeur, le concurrent (partie prenante *négative*), le régulateur, les médias, le politicien. Le diagramme montre surtout les **pressions** entre eux : faire un jeu agréable, faire du profit, innover, réguler l'imagerie violente et sexuelle.",
-        "en": "**Stakeholders** are part of the context. The course shows Ian Alexander's “stakeholder diagram” (2005) on a video game project: around the product (the game) you place the system, the containing system, an interfacing system, the wider environment, and roles such as the player (functional beneficiary / normal operator), the maintenance operator, the director, the shareholder (financial beneficiary), the product manager (purchaser), the developer, the competitor (*negative* stakeholder), the regulator, the media, the politician. The diagram mostly shows the **pressures** among them: make the game enjoyable, make a profit, innovate, regulate violent and sexual imagery."
+        "fr": "Les **parties prenantes** font partie du contexte. Le cours montre le « *stakeholder diagram* » d'Ian Alexander (2005) sur un projet de jeu vidéo : autour du produit, le système englobant, un système en interface, l'environnement élargi, et des rôles comme le joueur, l'opérateur de maintenance, l'actionnaire, le développeur, le concurrent (partie prenante *négative*), le régulateur, les médias. Le diagramme montre surtout les **pressions** entre eux : faire un jeu agréable, faire du profit, innover, réguler l'imagerie violente.",
+        "en": "**Stakeholders** are part of the context. The course shows Ian Alexander's “stakeholder diagram” (2005) on a video game project: around the product, the containing system, an interfacing system, the wider environment, and roles such as the player, the maintenance operator, the shareholder, the developer, the competitor (*negative* stakeholder), the regulator, the media. The diagram mostly shows the **pressures** among them: make the game enjoyable, make a profit, innovate, regulate violent imagery."
       },
       "src": [
         {
@@ -684,22 +835,106 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Stakeholders",
-          "quote": "The Containing"
+          "quote": "The Containing System Interfacing Competitor Pressure"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Stakeholders",
-          "quote": "Politician"
+          "quote": "Politician Roles in System Director Development\""
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Stakeholders",
-          "quote": "Pressure to"
+          "quote": "Pressure to System The (Negative Stakeholder)"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Stakeholders",
-          "quote": "regulate violent"
+          "quote": "regulate violent & easyweb.easynet.co .u"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-04-qz-10"
+    },
+    {
+      "type": "method",
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-diagramme-cas-utilisation"
+      ],
+      "title": {
+        "fr": "Corriger un diagramme de cas d’utilisation (format de l’annale 2013, partie B)",
+        "en": "Correcting a use case diagram (2013 exam format, part B)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Vérifier le système (la boîte) et les acteurs : chaque acteur est-il une personne ou un système externe, et en manque-t-il ?",
+            "en": "Check the system (the box) and the actors: is each actor a person or an external system, and is one missing?"
+          },
+          "why": {
+            "fr": "Première consigne du Do : identifier les acteurs.",
+            "en": "First Do rule: identify actors."
+          }
+        },
+        {
+          "do": {
+            "fr": "Pour chaque cas : est-ce un but de l’acteur, formulé comme un service (verbe + complément) ?",
+            "en": "For each case: is it the actor’s goal, phrased as a service (verb + complement)?"
+          },
+          "why": {
+            "fr": "Identifier leurs buts, réifier les services fournis par le système.",
+            "en": "Identify their goals, reify the services provided by the system."
+          }
+        },
+        {
+          "do": {
+            "fr": "Repérer le CRUD (créer / consulter / modifier / supprimer une même donnée) et les « Gérer ».",
+            "en": "Spot CRUD (create / read / update / delete the same data) and “Manage” cases."
+          },
+          "why": {
+            "fr": "Ce sont deux interdits explicites du Don’t.",
+            "en": "Both are explicit Don’ts."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier l’homogénéité des niveaux et retirer les cas d’exception.",
+            "en": "Check that levels are consistent and remove exception cases."
+          },
+          "why": {
+            "fr": "Ne pas mélanger les niveaux de détail ; pas de cas alternatifs.",
+            "en": "Don’t mix levels of detail; no alternative cases."
+          }
+        },
+        {
+          "do": {
+            "fr": "Entourer chaque erreur, l’expliquer à droite, puis redessiner le diagramme corrigé.",
+            "en": "Circle each error, explain it on the right, then redraw the corrected diagram."
+          },
+          "why": {
+            "fr": "C’est la consigne exacte de l’annale.",
+            "en": "This is the exam’s exact instruction."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Identifier explicitement les erreurs faites dans ce modèle (en les entourant lorsque c'est possible), et expliquez-les à droite."
         }
       ]
     },
@@ -707,35 +942,150 @@
       "type": "callout",
       "variant": "exam",
       "text": {
-        "fr": "**Piège d'examen — les cas d'utilisation.** Le cours donne un *Do / Don't*. **À faire** : identifier les acteurs, identifier leurs buts, « réifier » (services fournis par le système), traiter les cas complémentaires (nominaux). **À éviter** : le CRUD, les « Manage », mélanger les niveaux de détail, y mettre les cas alternatifs (non nominaux, exceptions…).",
-        "en": "**Exam trap — use cases.** The course gives a *Do / Don't*. **Do**: identify actors, identify their goals, reify (services provided by the system), complementary (nominal) cases. **Don't**: CRUD, “Manage”, mixing up levels of detail, alternative cases (non-nominal cases, exceptions, etc.)."
+        "fr": "Annales, Q5. 2013 : les cas d’utilisation sont des buts **complémentaires**, qui affinent un même but par un ET (KAOS) : corrigé proposé **VRAI**, cohérent avec « Complementary cases (nominal) ». 2014 : ce sont des buts **alternatifs** : **FAUX**, le support range justement les cas alternatifs dans le « Don’t ».",
+        "en": "Past exams, Q5. 2013: use cases are **complementary** goals refining the same goal through an AND (KAOS): proposed answer **TRUE**, consistent with “Complementary cases (nominal)”. 2014: they are **alternative** goals: **FALSE**, the slide puts alternative cases precisely in the “Don’t”."
       },
       "src": [
         {
-          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
-          "loc": "Use Case Diagrams",
-          "quote": "Identify actors"
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts complémentaires, c'est-à-dire qui affinent un même but par une décomposition AND dans les termes du formalisme KAOS."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Use Case Diagrams",
-          "quote": "Identify their goals"
-        },
-        {
-          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
-          "loc": "Use Case Diagrams",
-          "quote": "Mix up levels of details"
-        },
-        {
-          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
-          "loc": "Use Case Diagrams",
-          "quote": "Alternative cases"
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
         }
       ]
     },
     {
+      "type": "paragraph",
+      "explain": true,
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ],
+      "text": {
+        "fr": "Pourquoi ces règles ? Un cas d’utilisation exprime le **but d’un acteur** : « effectuer un virement » a un sens pour le client, « modifier le solde » non. Le CRUD décrit des opérations sur une donnée, pas des buts ; « Gérer » cache plusieurs buts sous un seul mot ; mélanger les niveaux rend le diagramme illisible ; les exceptions se décrivent dans la spécification d’un cas, pas comme des cas à part.",
+        "en": "Why these rules? A use case expresses an **actor’s goal**: “make a transfer” makes sense to the customer, “modify the balance” does not. CRUD describes operations on data, not goals; “Manage” hides several goals under one word; mixing levels makes the diagram unreadable; exceptions are described within a case’s specification, not as separate cases."
+      }
+    },
+    {
+      "type": "table",
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ],
+      "headers": [
+        {
+          "fr": "À faire (Do)",
+          "en": "Do"
+        },
+        {
+          "fr": "À éviter (Don’t)",
+          "en": "Don’t"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Identifier les acteurs",
+            "en": "Identify actors"
+          },
+          {
+            "fr": "Le CRUD (créer, lire, modifier, supprimer une donnée)",
+            "en": "CRUD (create, read, update, delete a piece of data)"
+          }
+        ],
+        [
+          {
+            "fr": "Identifier leurs buts",
+            "en": "Identify their goals"
+          },
+          {
+            "fr": "Les cas « Gérer… » (Manage)",
+            "en": "“Manage…” cases"
+          }
+        ],
+        [
+          {
+            "fr": "Réifier : des services fournis par le système",
+            "en": "Reify: services provided by the system"
+          },
+          {
+            "fr": "Mélanger les niveaux de détail",
+            "en": "Mix up levels of detail"
+          }
+        ],
+        [
+          {
+            "fr": "Des cas complémentaires (nominaux)",
+            "en": "Complementary (nominal) cases"
+          },
+          {
+            "fr": "Des cas alternatifs (non nominaux, exceptions…)",
+            "en": "Alternative cases (non-nominal, exceptions…)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ],
+      "text": {
+        "fr": "Un cas d’utilisation documente la **vue externe** du système : il a un **événement déclencheur** et un **résultat attendu**, et chaque cas est une fonctionnalité que le système doit supporter. Le diagramme donne une vue d’ensemble : quelles fonctions le système offre à l’utilisateur et comment elles se relient aux entités externes (les acteurs), sans détailler leurs responsabilités.",
+        "en": "A use case documents the system’s **external view**: it has a **trigger event** and an **expected result**, and each case is a functionality the system must support. The diagram gives an overview: which functions the system offers the user and how they relate to external entities (actors), without detailing their responsibilities."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Every use case is a functionality that must be supported by the system to be developed"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Overview of system functions",
+          "quote": "A use case describes which functions are offered to the user by the system and how these functions relate to other external interacting entities."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les cas d’utilisation : le « Do / Don’t » du prof",
+        "en": "Use cases: the teacher’s “Do / Don’t”"
+      }
+    },
+    {
       "type": "checkpoint",
-      "quizId": "isi1-04-qz-10"
+      "quizId": "isi1-04-qz-11"
     },
     {
       "type": "heading",
@@ -754,7 +1104,7 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Don’t forget",
-          "quote": "Domain knowledge"
+          "quote": "Domain knowledge business rules, business processes,"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
@@ -764,18 +1114,21 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Don’t forget",
-          "quote": "Orthogonal requirements"
+          "quote": "Orthogonal requirements Interfaces with other systems"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Don’t forget",
-          "quote": "Legacy integration issues"
+          "quote": "Legacy integration issues Domain dictionary Terms:"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Don’t forget",
-          "quote": "Users (skills, expectations,"
+          "quote": "Users (skills, expectations, Project requirements needs…)"
         }
+      ],
+      "notions": [
+        "n-ne-pas-oublier-contexte"
       ]
     },
     {
@@ -793,61 +1146,82 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Bad assumptions",
-          "quote": "Operations Concept"
+          "quote": "Operations Concept Budget Schedule Management/Organization"
         }
+      ],
+      "notions": [
+        "n-mauvaises-hypotheses"
       ]
     },
     {
       "type": "paragraph",
+      "notions": [
+        "n-dictionnaire-du-domaine",
+        "n-modele-de-domaine",
+        "n-ontologies"
+      ],
       "text": {
-        "fr": "Pour décrire ce contexte, le cours liste des outils : le **dictionnaire du domaine** (termes — acteurs, ressources, tâches, informations, règles —, acronymes, définitions, références, auteur), les **modèles de domaine** (description formalisée du monde réel, partagée par tous, jamais implémentée, avec une notation comme E/R ou BPMN — exemple : commande, ligne de commande, article, stock), les **ontologies** (réseau formel de concepts et règles logiques) et l'**analyse de l'existant** (*legacy analysis*), qui exploite les exigences déjà documentées mais demande un regard critique (pratiques : archéologie du système, lecture « par perspective », réutilisation d'exigences). On peut aussi analyser **coûts et performance** (temps d'exécution des processus, goulots d'étranglement, taux d'erreurs) et pratiquer l'**ethnographie « quick and dirty »**.",
-        "en": "To describe this context, the course lists tools: the **domain dictionary** (terms — actors, resources, tasks, information, rules —, acronyms, definitions, references, author), **domain models** (formalized description of the real world, shared by all, never implemented, with a notation such as E/R or BPMN — example: order, order line, item, stock), **ontologies** (formal network of concepts and logical rules) and **legacy analysis**, which exploits requirements already documented but needs a critical view (practices: system archaeology, perspective-based reading, requirements reuse). You can also run **cost and performance analysis** (process execution time, bottlenecks, error rates) and practise **“quick and dirty” ethnography**."
+        "fr": "Pour décrire ce contexte, le cours liste des outils. Le **dictionnaire du domaine** consigne les termes (acteurs, ressources, tâches, informations, règles), acronymes, définitions, références et auteur. Les **modèles de domaine** sont une description formalisée du monde réel, partagée par tous, jamais implémentée telle quelle, avec une notation comme E/R ou BPMN (exemple : commande, ligne de commande, article, stock). Les **ontologies** forment un réseau formel de concepts et de règles logiques.",
+        "en": "To describe this context, the course lists tools. The **domain dictionary** records terms (actors, resources, tasks, information, rules), acronyms, definitions, references and author. **Domain models** are a formalized description of the real world, shared by all, never implemented as is, with a notation such as E/R or BPMN (example: order, order line, item, stock). **Ontologies** form a formal network of concepts and logical rules."
       },
       "src": [
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Domain dictionary",
-          "quote": "Acronyms,"
+          "quote": "Acronyms, abreviations Definitions References/Sources Author"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Domain models",
-          "quote": "Formalized description of"
+          "quote": "Formalized description of real world Order"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Domain models",
-          "quote": "Not implemented (abstract"
+          "quote": "Not implemented (abstract Order line only)"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Ontologies",
           "quote": "Formal network of concepts"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-analyse-heritage",
+        "n-analyse-couts-performances"
+      ],
+      "text": {
+        "fr": "L'**analyse de l'existant** (*legacy analysis*) exploite les exigences déjà documentées, mais demande un regard critique (pratiques : archéologie du système, lecture « par perspective », réutilisation d'exigences). On peut aussi analyser **coûts et performance** (temps d'exécution des processus, goulots d'étranglement, taux d'erreurs) et pratiquer l'**ethnographie « quick and dirty »**.",
+        "en": "**Legacy analysis** exploits requirements already documented, but needs a critical view (practices: system archaeology, perspective-based reading, requirements reuse). You can also run **cost and performance analysis** (process execution time, bottlenecks, error rates) and practise **“quick and dirty” ethnography**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Legacy analysis",
+          "quote": "Understand the current situation Exploit requirements"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Legacy analysis",
-          "quote": "Understand the current"
+          "quote": "Needs critical view Practices: System archeology"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Legacy analysis",
-          "quote": "Needs critical view"
-        },
-        {
-          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
-          "loc": "Legacy analysis",
-          "quote": "System archeology"
+          "quote": "System archeology « perspective-based » reading Source"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Cost and performance analysis",
-          "quote": "Process execution"
+          "quote": "Process execution time and frequencies Productivity"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "« quick and dirty » Ethnography",
-          "quote": "quick and dirty"
+          "quote": "quick and dirty » Ethnography Source: theoryfamily.files.wordpress.com"
         }
       ]
     },
@@ -867,7 +1241,7 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Take away",
-          "quote": "Eliminate the “fat”"
+          "quote": "Eliminate the “fat” Foresee its evolutions"
         },
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
@@ -896,7 +1270,8 @@
           "loc": "Definition 2-1",
           "quote": "The system context is the part of the system environment that is relevant for the definition as well as the"
         }
-      ]
+      ],
+      "notion": "n-contexte-systeme"
     },
     {
       "id": "term-system-boundary",
@@ -912,7 +1287,8 @@
           "loc": "Definition 2-2",
           "quote": "The system boundary separates the system to be developed from its environment"
         }
-      ]
+      ],
+      "notion": "n-frontiere-systeme"
     },
     {
       "id": "term-context-boundary",
@@ -928,7 +1304,8 @@
           "loc": "Definition 2-3",
           "quote": "The context boundary separates the relevant part of the environment of a system to be developed from the"
         }
-      ]
+      ],
+      "notion": "n-frontiere-contexte"
     },
     {
       "id": "term-grey-zone",
@@ -947,9 +1324,10 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Yet another grey zone",
-          "quote": "grey zone"
+          "quote": "grey zone irements [Pohl 2010] « Requ"
         }
-      ]
+      ],
+      "notion": "n-zone-grise"
     },
     {
       "id": "term-source-sink",
@@ -963,14 +1341,15 @@
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "Sources and sinks as the starting point",
-          "quote": "Sources provide inputs"
+          "quote": "Sources provide inputs for the system."
         },
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "Sources and sinks as the starting point",
           "quote": "Sinks receive outputs from the system"
         }
-      ]
+      ],
+      "notion": "n-sources-et-puits"
     },
     {
       "id": "term-interface",
@@ -986,7 +1365,8 @@
           "loc": "Interfaces: interaction between system and environment",
           "quote": "Sources and sinks interact with the system to be developed via system interfaces"
         }
-      ]
+      ],
+      "notion": "n-interface-systeme"
     },
     {
       "id": "term-facets",
@@ -1007,7 +1387,8 @@
           "loc": "Principles of structuration of the context",
           "quote": "Classify aspects within facets"
         }
-      ]
+      ],
+      "notion": "n-facettes-contexte"
     },
     {
       "id": "term-domain-model",
@@ -1021,14 +1402,15 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Domain models",
-          "quote": "Formalized description of"
+          "quote": "Formalized description of real world Order"
         },
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "Domain models",
-          "quote": "Not implemented (abstract"
+          "quote": "Not implemented (abstract Order line only)"
         }
-      ]
+      ],
+      "notion": "n-modele-de-domaine"
     }
   ],
   "keyPoints": [
@@ -1131,7 +1513,7 @@
         {
           "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
           "loc": "3 aspects in each facet",
-          "quote": "Requirements sources"
+          "quote": "Requirements sources: stakeholders, documents, other systems"
         }
       ]
     },
@@ -1144,12 +1526,182 @@
         {
           "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
           "loc": "2.3 Documenting the System Context",
-          "quote": "typically several"
+          "quote": "typically several documentation forms are used."
         }
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "isi1-04-fc-01",
+      "termId": "term-system-context",
+      "front": {
+        "fr": "Contexte du système ?",
+        "en": "System context?"
+      },
+      "back": {
+        "fr": "La partie de l’environnement du système pertinente pour la définition et la compréhension des exigences.",
+        "en": "The part of the system’s environment relevant to defining and understanding the requirements."
+      }
+    },
+    {
+      "id": "isi1-04-fc-02",
+      "termId": "term-system-boundary",
+      "front": {
+        "fr": "Frontière du système ?",
+        "en": "System boundary?"
+      },
+      "back": {
+        "fr": "Sépare le système à développer (modifiable) de son environnement (non modifiable).",
+        "en": "Separates the system to be developed (changeable) from its environment (not changeable)."
+      }
+    },
+    {
+      "id": "isi1-04-fc-03",
+      "termId": "term-context-boundary",
+      "front": {
+        "fr": "Frontière du contexte ?",
+        "en": "Context boundary?"
+      },
+      "back": {
+        "fr": "Sépare la partie pertinente de l’environnement de la partie non pertinente.",
+        "en": "Separates the relevant part of the environment from the irrelevant part."
+      }
+    },
+    {
+      "id": "isi1-04-fc-04",
+      "termId": "term-grey-zone",
+      "front": {
+        "fr": "Zone grise ?",
+        "en": "Grey zone?"
+      },
+      "back": {
+        "fr": "Ce qu’on ne sait pas encore placer ; celle entre système et contexte doit être résolue pendant l’IE.",
+        "en": "What cannot yet be placed; the one between system and context must be resolved during RE."
+      }
+    },
+    {
+      "id": "isi1-04-fc-05",
+      "termId": "term-source-sink",
+      "front": {
+        "fr": "Sources et puits ?",
+        "en": "Sources and sinks?"
+      },
+      "back": {
+        "fr": "Les sources fournissent des entrées au système, les puits reçoivent ses sorties.",
+        "en": "Sources provide inputs to the system, sinks receive its outputs."
+      }
+    },
+    {
+      "id": "isi1-04-fc-06",
+      "termId": "term-facets",
+      "front": {
+        "fr": "Les quatre facettes du contexte ?",
+        "en": "The four context facets?"
+      },
+      "back": {
+        "fr": "Subject, Usage, IT, Development.",
+        "en": "Subject, Usage, IT, Development."
+      }
+    },
+    {
+      "id": "isi1-04-fc-07",
+      "front": {
+        "fr": "Cas d’utilisation : les quatre « Do » ?",
+        "en": "Use cases: the four “Do”s?"
+      },
+      "back": {
+        "fr": "Identifier les acteurs, identifier leurs buts, réifier (services fournis par le système), cas complémentaires (nominaux).",
+        "en": "Identify actors, identify their goals, reify (services provided by the system), complementary (nominal) cases."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-04-fc-08",
+      "front": {
+        "fr": "Cas d’utilisation : les quatre « Don’t » ?",
+        "en": "Use cases: the four “Don’t”s?"
+      },
+      "back": {
+        "fr": "CRUD, « Manage », mélanger les niveaux de détail, cas alternatifs (exceptions).",
+        "en": "CRUD, “Manage”, mixing levels of detail, alternative cases (exceptions)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-04-fc-09",
+      "front": {
+        "fr": "Un cas d’utilisation a… ?",
+        "en": "A use case has…?"
+      },
+      "back": {
+        "fr": "Un événement déclencheur et un résultat attendu ; c’est une fonctionnalité que le système doit supporter.",
+        "en": "A trigger event and an expected result; it is a functionality the system must support."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "id": "isi1-04-fc-10",
+      "termId": "term-domain-model",
+      "front": {
+        "fr": "Modèle de domaine ?",
+        "en": "Domain model?"
+      },
+      "back": {
+        "fr": "Représentation des concepts du domaine et de leurs relations (ex. Order, Order line, Item, Stock).",
+        "en": "Representation of domain concepts and their relations (e.g., Order, Order line, Item, Stock)."
+      }
+    },
+    {
+      "id": "isi1-04-fc-11",
+      "termId": "term-interface",
+      "front": {
+        "fr": "Interface (analyse du contexte) ?",
+        "en": "Interface (context analysis)?"
+      },
+      "back": {
+        "fr": "Le point de passage entre le système et ses sources et puits : le système y fournit ses fonctions, surveille et influence son environnement.",
+        "en": "The crossing point between the system and its sources and sinks: there the system provides its functions, monitors and influences its environment."
+      }
+    }
+  ],
   "quiz": [
     {
       "id": "isi1-04-qz-01",
@@ -1184,7 +1736,8 @@
       "notions": [
         "n-contexte-systeme",
         "n-exigence-existe-dans-un-contexte"
-      ]
+      ],
+      "objective": "o1"
     },
     {
       "id": "isi1-04-qz-02",
@@ -1238,7 +1791,12 @@
       ],
       "notions": [
         "n-exigence-existe-dans-un-contexte"
-      ]
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Accuser les tests : le défaut vient d’un contexte mal pris en compte.",
+        "en": "Blaming the tests: the defect comes from a poorly considered context."
+      }
     },
     {
       "id": "isi1-04-qz-03",
@@ -1268,7 +1826,12 @@
       "notions": [
         "n-frontiere-contexte",
         "n-frontiere-systeme"
-      ]
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Inverser les deux frontières.",
+        "en": "Swapping the two boundaries."
+      }
     },
     {
       "id": "isi1-04-qz-04",
@@ -1318,7 +1881,12 @@
       "notions": [
         "n-frontiere-contexte",
         "n-frontiere-systeme"
-      ]
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Mettre la loi dans le système : on ne peut pas la modifier, elle est dans le contexte.",
+        "en": "Putting the law inside the system: it cannot be changed, it belongs to the context."
+      }
     },
     {
       "id": "isi1-04-qz-05",
@@ -1347,7 +1915,12 @@
       ],
       "notions": [
         "n-zone-grise"
-      ]
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Croire que les deux zones grises se résolvent : seule celle entre système et contexte doit l’être.",
+        "en": "Believing both grey zones get resolved: only the one between system and context must be."
+      }
     },
     {
       "id": "isi1-04-qz-06",
@@ -1381,7 +1954,8 @@
       ],
       "notions": [
         "n-zone-grise"
-      ]
+      ],
+      "objective": "o1"
     },
     {
       "id": "isi1-04-qz-07",
@@ -1412,7 +1986,8 @@
           "quote": "Sources and sinks interact with the system to be developed via system interfaces",
           "loc": "Interfaces: interaction between system and environment"
         }
-      ]
+      ],
+      "objective": "o2"
     },
     {
       "id": "isi1-04-qz-08",
@@ -1466,7 +2041,12 @@
       ],
       "notions": [
         "n-facettes-contexte"
-      ]
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Classer une méthode de travail en IT : elle influence le développement.",
+        "en": "Classifying a working method as IT: it influences development."
+      }
     },
     {
       "id": "isi1-04-qz-09",
@@ -1520,7 +2100,12 @@
       ],
       "notions": [
         "n-facettes-contexte"
-      ]
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Inverser les nombres : quatre facettes, trois aspects.",
+        "en": "Swapping the numbers: four facets, three aspects."
+      }
     },
     {
       "id": "isi1-04-qz-10",
@@ -1545,7 +2130,8 @@
       "notions": [
         "n-diagramme-cas-utilisation",
         "n-documenter-contexte"
-      ]
+      ],
+      "objective": "o3"
     },
     {
       "id": "isi1-04-qz-11",
@@ -1590,7 +2176,12 @@
       "notions": [
         "n-cas-utilisation-do-dont",
         "n-diagramme-cas-utilisation"
-      ]
+      ],
+      "objective": "o3",
+      "trap": {
+        "fr": "Croire que les cas d’exception enrichissent le diagramme : ils sont dans le Don’t.",
+        "en": "Believing exception cases enrich the diagram: they are in the Don’t."
+      }
     },
     {
       "id": "isi1-04-qz-12",
@@ -1619,7 +2210,12 @@
       ],
       "notions": [
         "n-modele-de-domaine"
-      ]
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Croire que le modèle de domaine est implémenté tel quel.",
+        "en": "Believing the domain model is implemented as is."
+      }
     },
     {
       "id": "isi1-04-qz-13",
@@ -1640,6 +2236,10 @@
           "quote": "occur either because requirement authors do not",
           "loc": "Bad assumptions"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-mauvaises-hypotheses"
       ]
     },
     {
@@ -1689,7 +2289,12 @@
       ],
       "notions": [
         "n-dictionnaire-du-domaine"
-      ]
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Confondre dictionnaire (termes, définitions, sources) et modèle de domaine (concepts et relations).",
+        "en": "Confusing dictionary (terms, definitions, sources) and domain model (concepts and relations)."
+      }
     },
     {
       "id": "isi1-04-qz-15",
@@ -1718,7 +2323,12 @@
       ],
       "notions": [
         "n-ontologies"
-      ]
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Inverser : l’ontologie est plus formelle (règles logiques), pas moins.",
+        "en": "Reversing: the ontology is more formal (logical rules), not less."
+      }
     },
     {
       "id": "isi1-04-qz-16",
@@ -1747,7 +2357,8 @@
       ],
       "notions": [
         "n-analyse-heritage"
-      ]
+      ],
+      "objective": "o2"
     },
     {
       "id": "isi1-04-qz-17",
@@ -1796,9 +2407,227 @@
       ],
       "notions": [
         "n-analyse-couts-performances"
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Confondre mesure des processus (coûts, performances) et étude des documents existants (legacy).",
+        "en": "Confusing process measurement (costs, performance) with studying existing documents (legacy)."
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "isi1-04-ex-01",
+      "title": {
+        "fr": "Annale 2013, partie B : le modèle de cas d’utilisation de la banque en ligne",
+        "en": "2013 exam, part B: the online bank use case model"
+      },
+      "difficulty": 3,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "« Le modèle de cas d’utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne. » (5 points)\nDiagramme (relu sur le PDF) : système « **Compte en Ligne** » ; l’acteur **Client** est relié à « Accéder au Solde du compte » et « Modifier le Solde du compte » ; l’acteur **Opérateur Banque en ligne** est relié à « Ouverture du compte » et « Clôture ».\n**(a)** Identifiez explicitement les erreurs et expliquez-les. **(b)** Proposez une version correcte. **(c)** Spécifiez un cas d’utilisation de votre choix.",
+        "en": "“The use case model below presents the needs for an account-keeping system in an online-bank type company.” (5 points)\nDiagram (read from the PDF): system “**Online Account**”; the **Customer** actor is linked to “Access the account Balance” and “Modify the account Balance”; the **Online bank operator** actor is linked to “Account opening” and “Closure”.\n**(a)** Explicitly identify the errors and explain them. **(b)** Propose a correct version. **(c)** Specify a use case of your choice."
+      },
+      "hints": [
+        {
+          "fr": "Mets les quatre cas côte à côte : créer, lire, modifier, supprimer… quoi ?",
+          "en": "Put the four cases side by side: create, read, update, delete… what?"
+        },
+        {
+          "fr": "Le client peut-il vraiment « modifier son solde » ? Quel est son but ?",
+          "en": "Can the customer really “modify their balance”? What is their goal?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (aucun corrigé officiel), fondé sur le « Do / Don’t » du support 7.\n\n**(a) Erreurs**\n1. **Le modèle est un CRUD du compte** : ouverture (créer), accéder au solde (lire), modifier le solde (modifier), clôture (supprimer). Le CRUD est explicitement à éviter : ce sont des opérations sur une donnée, pas des buts d’acteurs.\n2. **« Modifier le Solde du compte » n’est pas un but du client** : le client fait un virement ou un paiement ; le solde change en conséquence. Il faut réifier le service fourni.\n3. **Niveaux de détail mélangés et nommage hétérogène** : « Accéder au Solde du compte » (accès à une donnée) côtoie « Ouverture du compte » (processus métier) ; « Clôture » est un nom seul, sans complément.\n4. **Acteurs et buts incomplets** : dans une banque en ligne, c’est le client qui veut ouvrir ou clôturer un compte ; l’opérateur intervient pour traiter ou valider. Le système s’appelle « Compte en Ligne » : c’est la donnée, pas le système (« Banque en ligne »).\n\n**(b) Version correcte** — système **Banque en ligne** :\n- **Client** : Consulter ses comptes et opérations ; Effectuer un virement ; Demander l’ouverture d’un compte ; Demander la clôture de son compte.\n- **Opérateur banque en ligne** : Traiter une demande d’ouverture ; Traiter une demande de clôture.\n(Cas nominaux, complémentaires, de même niveau, formulés comme des buts.)\n\n**(c) Spécification de « Effectuer un virement »**\n- **Acteur** : Client. **Déclencheur** : le client choisit de faire un virement.\n- **Scénario nominal** : 1. le client choisit le compte à débiter ; 2. il saisit le bénéficiaire et le montant ; 3. le système vérifie que le solde disponible suffit ; 4. le client confirme ; 5. le système exécute le virement et met à jour le solde.\n- **Résultat attendu** : le virement est enregistré, le solde est à jour, une confirmation est affichée.\n- Les exceptions (solde insuffisant, bénéficiaire inconnu) se décrivent ici, pas comme des cas du diagramme.\n\n**Barème indicatif** : (a) 2 pts, (b) 2 pts, (c) 1 pt.",
+        "en": "**Proposed** solution (no official one), based on support 7’s “Do / Don’t”.\n\n**(a) Errors**\n1. **The model is a CRUD of the account**: opening (create), access the balance (read), modify the balance (update), closure (delete). CRUD is explicitly to be avoided: these are operations on data, not actors’ goals.\n2. **“Modify the account Balance” is not a customer goal**: the customer makes a transfer or a payment; the balance changes as a result. The service provided must be reified.\n3. **Mixed levels of detail and inconsistent naming**: “Access the account Balance” (data access) sits next to “Account opening” (business process); “Closure” is a bare noun with no complement.\n4. **Incomplete actors and goals**: in an online bank, the customer is the one who wants to open or close an account; the operator processes or validates. The system is called “Online Account”: that is the data, not the system (“Online bank”).\n\n**(b) Correct version** — system **Online bank**:\n- **Customer**: View accounts and transactions; Make a transfer; Request an account opening; Request closure of their account.\n- **Online bank operator**: Process an opening request; Process a closure request.\n(Nominal, complementary cases, at the same level, phrased as goals.)\n\n**(c) Specification of “Make a transfer”**\n- **Actor**: Customer. **Trigger**: the customer chooses to make a transfer.\n- **Nominal scenario**: 1. the customer chooses the account to debit; 2. enters the beneficiary and amount; 3. the system checks the available balance is sufficient; 4. the customer confirms; 5. the system executes the transfer and updates the balance.\n- **Expected result**: the transfer is recorded, the balance is up to date, a confirmation is displayed.\n- Exceptions (insufficient balance, unknown beneficiary) are described here, not as diagram cases.\n\n**Indicative marking**: (a) 2 pts, (b) 2 pts, (c) 1 pt."
+      },
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-diagramme-cas-utilisation"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-ex-02",
+      "title": {
+        "fr": "Tracer les frontières du Deadbot",
+        "en": "Drawing the Deadbot’s boundaries"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o1",
+      "statement": {
+        "fr": "Pour le Deadbot de MemoriaTech, place chaque élément dans le **système**, le **contexte** ou l’**environnement non pertinent**, et justifie. Signale ce qui relève de la **zone grise**. (1) Le module de conversation. (2) Le RGPD. (3) Les réseaux sociaux du défunt, d’où l’on pourrait importer des messages. (4) Le fournisseur du modèle de langage, dont on ne sait pas encore s’il sera intégré ou loué. (5) Le cours de la Bourse. (6) Les psychologues du deuil.",
+        "en": "For the MemoriaTech Deadbot, place each element in the **system**, the **context** or the **irrelevant environment**, and justify. Flag what belongs to the **grey zone**. (1) The conversation module. (2) The GDPR. (3) The deceased’s social networks, from which messages could be imported. (4) The language model provider, not yet known to be integrated or rented. (5) The stock market. (6) Grief psychologists."
+      },
+      "hints": [
+        {
+          "fr": "Système = ce qu’on peut modifier ; contexte = pertinent mais non modifiable.",
+          "en": "System = what we can change; context = relevant but not changeable."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) **Système** : on le développe, donc on peut le modifier. (2) **Contexte** : pertinent (il impose des exigences légales) mais non modifiable. (3) **Contexte** : source d’exigences et de données, hors de notre contrôle. (4) **Zone grise système / contexte** : tant qu’on ne sait pas si on l’intègre ou le loue, la frontière n’est pas fixée ; à résoudre pendant l’IE. (5) **Environnement non pertinent** : aucun lien avec le système. (6) **Contexte** : parties prenantes (sources d’exigences éthiques), non modifiables.",
+        "en": "**Proposed** solution. (1) **System**: we develop it, so we can change it. (2) **Context**: relevant (it imposes legal requirements) but not changeable. (3) **Context**: a source of requirements and data, outside our control. (4) **System / context grey zone**: as long as we do not know whether it is integrated or rented, the boundary is not fixed; to be resolved during RE. (5) **Irrelevant environment**: no link with the system. (6) **Context**: stakeholders (sources of ethical requirements), not changeable."
+      },
+      "notions": [
+        "n-frontiere-systeme",
+        "n-frontiere-contexte",
+        "n-zone-grise"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-2",
+          "quote": "The system boundary separates the system to be developed from its environment"
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "Definition 2-3",
+          "quote": "The context boundary separates the relevant part of the environment of a system to be developed from the"
+        }
+      ]
+    },
+    {
+      "id": "isi1-04-ex-03",
+      "title": {
+        "fr": "Vrai ou faux, format des annales : contexte et cas d’utilisation",
+        "en": "True or false, past-exam format: context and use cases"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "« Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX. »\n1. (2014) Les cas d’utilisation d’un modèle de cas d’utilisation correspondent à des buts alternatifs.\n2. (2013) Les cas d’utilisation correspondent à des buts complémentaires, qui affinent un même but par une décomposition AND dans les termes de KAOS.\n3. La frontière du système sépare l’environnement pertinent de l’environnement non pertinent.\n4. Un cas « Gérer les clients » est conforme aux recommandations du cours, car il regroupe tous les services liés aux clients.",
+        "en": "“Answer TRUE or FALSE, justify if (and only if) you answer FALSE.”\n1. (2014) The use cases of a use case model correspond to alternative goals.\n2. (2013) Use cases correspond to complementary goals, refining the same goal through an AND decomposition in KAOS terms.\n3. The system boundary separates the relevant environment from the irrelevant environment.\n4. A “Manage customers” case complies with the course’s recommendations, since it groups all customer-related services."
+      },
+      "hints": [
+        {
+          "fr": "Relis le tableau Do / Don’t et les définitions des deux frontières.",
+          "en": "Reread the Do / Don’t table and the two boundary definitions."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n1. **FAUX** : le support demande des cas complémentaires (nominaux) et range les cas alternatifs dans le « Don’t ».\n2. **VRAI** : cohérent avec « Complementary cases (nominal) » ; le lien avec le ET de KAOS est une lecture des annales.\n3. **FAUX** : c’est la frontière du **contexte** ; la frontière du système sépare ce qu’on peut modifier de ce qu’on ne peut pas.\n4. **FAUX** : « Manage » est explicitement à éviter ; il cache plusieurs buts (consulter, créer, modifier…).",
+        "en": "**Proposed** solution.\n1. **FALSE**: the slide asks for complementary (nominal) cases and puts alternative cases in the “Don’t”.\n2. **TRUE**: consistent with “Complementary cases (nominal)”; the link with KAOS’s AND is a reading of the exams.\n3. **FALSE**: that is the **context** boundary; the system boundary separates what can be changed from what cannot.\n4. **FALSE**: “Manage” is explicitly to be avoided; it hides several goals (view, create, modify…)."
+      },
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-frontiere-systeme",
+        "n-frontiere-contexte"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "writing": [
+    {
+      "id": "isi1-04-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The system boundary separates the system from its environment.",
+      "accepted": [
+        "The system boundary separates its environment from the system."
+      ]
+    },
+    {
+      "id": "isi1-04-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "A use case has a {{trigger}} event and an expected {{result}}.",
+      "translation": "Un cas d’utilisation a un événement déclencheur et un résultat attendu."
+    },
+    {
+      "id": "isi1-04-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A good use case diagram shows all the alternative cases and exceptions.",
+      "error": "all the alternative cases and exceptions",
+      "corrected": "the complementary nominal cases",
+      "explanation": {
+        "fr": "Le cours demande des cas complémentaires (nominaux) ; les cas alternatifs sont dans le « Don’t ».",
+        "en": "The course asks for complementary (nominal) cases; alternative cases are in the “Don’t”."
+      }
+    },
+    {
+      "id": "isi1-04-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique la différence entre la frontière du système et la frontière du contexte.",
+        "en": "In 2-3 English sentences, explain the difference between the system boundary and the context boundary."
+      },
+      "modelAnswer": "The system boundary separates the system, which the development process can change, from its environment, which it cannot change. The context boundary separates the relevant part of the environment from the irrelevant part. For example, a law is outside the system but inside the context.",
+      "keywords": [
+        "system boundary",
+        "change",
+        "context boundary",
+        "relevant",
+        "irrelevant"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai défini les deux frontières.",
+          "en": "I defined both boundaries."
+        },
+        {
+          "fr": "J’ai donné un exemple.",
+          "en": "I gave an example."
+        }
+      ],
+      "usefulPhrases": [
+        "separates … from …",
+        "which the development process can change",
+        "for example"
+      ]
+    }
+  ]
 }
