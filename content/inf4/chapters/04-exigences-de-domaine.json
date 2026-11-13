@@ -10,6 +10,102 @@
     "fr": "Écrire les exigences de toute une famille de produits : que mettre en commun, que laisser varier, et comment le noter ?",
     "en": "Writing requirements for a whole product family: what to share, what to let vary, and how to record it?"
   },
+  "question": {
+    "fr": "Comment écrire les exigences de toute une famille : décider ce qui est commun, modéliser ce qui varie, et le noter dans un OVM ?",
+    "en": "How do you write a whole family’s requirements: decide what is common, model what varies, and record it in an OVM?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Situer l’ingénierie des exigences de domaine : ses échanges avec la gestion de produit, la conception de domaine et l’ingénierie d’application ; la variabilité externe.",
+        "en": "Place domain requirements engineering: its exchanges with product management, domain design and application engineering; external variability."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Analyser la communalité (matrice applications-exigences, priorités de Kano, liste de contrôle) et décider si une exigence est commune.",
+        "en": "Analyse commonality (application-requirements matrix, Kano priorities, checklist) and decide whether a requirement is common."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Définir la variabilité dans un OVM : points de variation, variants, dépendances de variabilité et de contrainte.",
+        "en": "Define variability in an OVM: variation points, variants, variability and constraint dependencies."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Appliquer la démarche à un exemple complet (sécurité domestique) et relier la documentation textuelle à l’OVM.",
+        "en": "Apply the approach to a complete example (home security) and link textual documentation to the OVM."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Définitions numérotées du livre de Pohl (point de variation, variant, dépendances) et lecture de la matrice applications-exigences (tableau 10-1).",
+        "en": "Numbered definitions from Pohl’s book (variation point, variant, dependencies) and reading the application-requirements matrix (table 10-1)."
+      },
+      {
+        "fr": "Distinction dépendance de variabilité (obligatoire, optionnel, choix alternatif) / dépendance de contrainte (requires, excludes).",
+        "en": "Distinction between variability dependency (mandatory, optional, alternative choice) and constraint dependency (requires, excludes)."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 1 et 3 : communalité, variabilité, domaine / application ; feature models.",
+    "en": "Chapters 1 and 3: commonality, variability, domain / application; feature models."
+  },
+  "next": {
+    "fr": "Le chapitre 9 présente trois stratégies pour éliciter ces exigences ; l’ingénierie d’application (chapitres 5 et 6) les réutilise pour un client.",
+    "en": "Chapter 9 presents three strategies to elicit these requirements; application engineering (chapters 5 and 6) reuses them for a customer."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "L’ingénierie des exigences de domaine définit de façon proactive les exigences de toutes les applications prévisibles ; la gestion de produit décide du périmètre et de la variabilité externe.",
+        "en": "Domain requirements engineering proactively defines the requirements of all foreseeable applications; product management decides the scope and external variability."
+      },
+      {
+        "fr": "Commune = obligatoire dans toutes les applications prévues ; on maximise la communalité ; on affine par priorités (Kano : base, haute priorité, communalité stratégique) et liste de contrôle.",
+        "en": "Common = mandatory in all planned applications; commonality is maximised; refined by priorities (Kano: basic, high priority, strategic commonality) and checklist."
+      },
+      {
+        "fr": "OVM : point de variation (ce qui varie), variants (les options), dépendances de variabilité (obligatoire, optionnel, choix alternatif [min..max]) et de contrainte (requires, excludes).",
+        "en": "OVM: variation point (what varies), variants (the options), variability dependencies (mandatory, optional, alternative choice [min..max]) and constraint dependencies (requires, excludes)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "À partir d’une matrice, classer les exigences en communes et variables, puis définir points de variation et variants.",
+        "en": "From a matrix, classify requirements as common or variable, then define variation points and variants."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Dépendance de variabilité (relie un point de variation à ses variants) ≠ dépendance de contrainte (requires / excludes entre variants ou points de variation).",
+        "en": "Variability dependency (links a variation point to its variants) ≠ constraint dependency (requires / excludes between variants or variation points)."
+      },
+      {
+        "fr": "Variabilité externe (visible du client) ≠ interne (cachée).",
+        "en": "External variability (visible to the customer) ≠ internal (hidden)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "L’OVM est le langage pivot de la stratégie multi-points de vue (chapitre 9) ; les catégories de Kano rappellent celles vues en ISI1.",
+        "en": "The OVM is the pivot language of the multi-viewpoint strategy (chapter 9); Kano categories recall those seen in ISI1."
+      }
+    ]
+  },
   "estimatedMinutes": 15,
   "sources": [
     "ressources/S3__INF4/mardown/8__ple.md"
@@ -26,8 +122,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Dans un projet classique, on écrit les exigences d'**un** système. Ici, on en écrit pour **toute la famille**. L'[[term-dre|ingénierie des exigences de domaine]] est « un processus continu visant à définir de manière proactive les exigences pour toutes les applications prévisibles » de la ligne. Son but : développer des exigences de domaine **communes et variables**, et les documenter précisément. Son enjeu particulier : identifier et documenter explicitement la [[term-external-var|variabilité externe]], celle que voit le client. Elle ne travaille pas seule. De la **gestion de produit** (*Product Management*), elle reçoit la **feuille de route produit** : les applications prévues, leurs communalités et variabilités envisagées, un calendrier de commercialisation, et la liste des artefacts existants de projets antérieurs. En retour, elle lui suggère des fonctionnalités additionnelles, modifiées ou affinées, d'après les produits existants, les parties prenantes, les lois et contraintes.",
-        "en": "In a classic project, you write the requirements of **one** system. Here, you write them for the **whole family**. [[term-dre|Domain requirements engineering]] is \"a continuous process that proactively defines the requirements for all foreseeable applications\" of the line. Its goal: develop **common and variable** domain requirements and document them precisely. Its particular challenge: explicitly identify and document [[term-external-var|external variability]], the one the customer sees. It does not work alone. From **Product Management**, it receives the **product roadmap**: the planned applications, their envisaged commonalities and variabilities, a marketing schedule, and the list of existing artefacts from earlier projects. In return, it suggests additional, modified or refined features, based on existing products, stakeholders, laws and constraints."
+        "fr": "Dans un projet classique, on écrit les exigences d'**un** système. Ici, on en écrit pour **toute la famille**. L'[[term-dre|ingénierie des exigences de domaine]] est « un processus continu visant à définir de manière proactive les exigences pour toutes les applications prévisibles » de la ligne. Son but : développer des exigences de domaine **communes et variables**, et les documenter précisément. Son enjeu particulier : identifier et documenter explicitement la [[term-external-var|variabilité externe]], celle que voit le client.",
+        "en": "In a classic project, you write the requirements of **one** system. Here, you write them for the **whole family**. [[term-dre|Domain requirements engineering]] is \"a continuous process that proactively defines the requirements for all foreseeable applications\" of the line. Its goal: develop **common and variable** domain requirements and document them precisely. Its particular challenge: explicitly identify and document [[term-external-var|external variability]], the one the customer sees."
       },
       "src": [
         {
@@ -49,7 +145,20 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.1.1",
           "quote": "La donnée d'entrée clé pour le processus d'ingénierie des exigences de domaine est la feuille de route produit"
-        },
+        }
+      ],
+      "notions": [
+        "n-dre-goals",
+        "n-external-variability"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Elle ne travaille pas seule. De la **gestion de produit** (*Product Management*), elle reçoit la **feuille de route produit** : les applications prévues, leurs communalités et variabilités envisagées, un calendrier de commercialisation, et la liste des artefacts existants de projets antérieurs. En retour, elle lui suggère des fonctionnalités additionnelles, modifiées ou affinées, d'après les produits existants, les parties prenantes, les lois et contraintes.",
+        "en": "It does not work alone. From **Product Management**, it receives the **product roadmap**: the planned applications, their envisaged commonalities and variabilities, a marketing schedule, and the list of existing artefacts from earlier projects. In return, it suggests additional, modified or refined features, based on existing products, stakeholders, laws and constraints."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.1.1",
@@ -60,6 +169,10 @@
           "loc": "10.1.1",
           "quote": "des suggestions de fonctionnalités additionnelles, modifiées ou affinées"
         }
+      ],
+      "notions": [
+        "n-dre-interrelations",
+        "n-product-roadmap"
       ]
     },
     {
@@ -85,8 +198,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Vers la **conception de domaine**, elle envoie toutes les exigences de domaine définies et le [[term-ovm|modèle de variabilité orthogonale (OVM)]], qui définit au minimum la variabilité externe, mais peut aussi spécifier une partie de la variabilité interne. Le lien entre exigences et architecture est décrit par le modèle **Twin Peaks** : on alterne entre exigences et architecture, à des niveaux de détail croissants. Une exigence trop ambitieuse pour la conception produit une demande de modification (flèche 4). Vers l'**ingénierie des exigences d'application**, elle transmet les mêmes éléments : l'OVM facilite la communication de la variabilité et la réutilisation des exigences de domaine. Le retour d'information des applications (flèche 6) peut faire évoluer la ligne. Mais c'est aux **gestionnaires de produits et aux parties prenantes** de décider de l'intégrer ; et intégrer un artefact d'application impose de le **réingénier** pour le rendre réutilisable.",
-        "en": "To **domain design**, it sends all the defined domain requirements and the [[term-ovm|Orthogonal Variability Model (OVM)]], which defines at least the external variability but may also specify part of the internal variability. The link between requirements and architecture is described by the **Twin Peaks** model: you alternate between requirements and architecture, at increasing levels of detail. A requirement that is too ambitious for the design produces a change request (arrow 4). To **application requirements engineering**, it passes the same elements: the OVM eases the communication of variability and the reuse of domain requirements. Feedback from applications (arrow 6) can make the line evolve. But it is up to **product managers and stakeholders** to decide whether to integrate it; and integrating an application artefact requires **re-engineering** it to make it reusable."
+        "fr": "Vers la **conception de domaine**, elle envoie toutes les exigences de domaine définies et le [[term-ovm|modèle de variabilité orthogonale (OVM)]], qui définit au minimum la variabilité externe, mais peut aussi spécifier une partie de la variabilité interne. Le lien entre exigences et architecture est décrit par le modèle **Twin Peaks** : on alterne entre exigences et architecture, à des niveaux de détail croissants. Une exigence trop ambitieuse pour la conception produit une demande de modification (flèche 4).",
+        "en": "To **domain design**, it sends all the defined domain requirements and the [[term-ovm|Orthogonal Variability Model (OVM)]], which defines at least the external variability but may also specify part of the internal variability. The link between requirements and architecture is described by the **Twin Peaks** model: you alternate between requirements and architecture, at increasing levels of detail. A requirement that is too ambitious for the design produces a change request (arrow 4)."
       },
       "src": [
         {
@@ -103,7 +216,19 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Fig. 10-3",
           "quote": "Si certaines exigences s'avèrent trop ambitieuses du point de vue de la conception, cela génère des demandes de modification"
-        },
+        }
+      ],
+      "notions": [
+        "n-dre-interrelations"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Vers l'**ingénierie des exigences d'application**, elle transmet les mêmes éléments : l'OVM facilite la communication de la variabilité et la réutilisation des exigences de domaine. Le retour d'information des applications (flèche 6) peut faire évoluer la ligne. Mais c'est aux **gestionnaires de produits et aux parties prenantes** de décider de l'intégrer ; et intégrer un artefact d'application impose de le **réingénier** pour le rendre réutilisable.",
+        "en": "To **application requirements engineering**, it passes the same elements: the OVM eases the communication of variability and the reuse of domain requirements. Feedback from applications (arrow 6) can make the line evolve. But it is up to **product managers and stakeholders** to decide whether to integrate it; and integrating an application artefact requires **re-engineering** it to make it reusable."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.1.3",
@@ -119,6 +244,9 @@
           "loc": "10.1.3",
           "quote": "exige que les ingénieurs d'exigences et architectes de domaine réingénient ces artefacts pour les rendre réutilisables"
         }
+      ],
+      "notions": [
+        "n-dre-interrelations"
       ]
     },
     {
@@ -155,19 +283,14 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Pour un système unique, l'ingénierie des exigences comporte **cinq activités** : l'**élicitation** (comprendre besoins et contraintes), la **documentation** (enregistrer les exigences de façon structurée), la **négociation** (obtenir un consensus entre parties prenantes), la **validation et vérification** (prouver que les exigences sont claires, complètes, correctes, compréhensibles) et la **gestion** (les maintenir à jour tout au long du cycle de vie). Ces objectifs se mesurent selon trois dimensions (Pohl 1994) : la **spécification** (de la compréhension faible à la compréhension aussi complète que possible), la **représentation** (du croquis ou de la langue naturelle aux langages de modélisation formels) et l'**accord** (de l'opinion de chacun au consensus). Pour une ligne de produits, la variabilité ajoute des tâches. Trois activités clés, « étroitement liées » : l'**analyse de communalité** (identifier les exigences communes à toutes les applications), l'**analyse de variabilité** (identifier celles qui diffèrent et préciser ces différences) et la **modélisation de la variabilité** (modéliser points de variation, variants et leurs relations). En plus, il faut établir la **cohérence entre les vues** : objectifs, fonctionnalités, scénarios, cas d'utilisation, modèles de données, de comportement, de fonctions et exigences textuelles.",
-        "en": "For a single system, requirements engineering has **five activities**: **elicitation** (understand needs and constraints), **documentation** (record requirements in a structured way), **negotiation** (reach consensus between stakeholders), **validation and verification** (prove that requirements are clear, complete, correct, understandable) and **management** (keep them up to date throughout the lifecycle). These objectives are measured along three dimensions (Pohl 1994): **specification** (from weak understanding to as complete an understanding as possible), **representation** (from sketches or natural language to formal modelling languages) and **agreement** (from each person's opinion to consensus). For a product line, variability adds tasks. Three key, \"closely linked\" activities: **commonality analysis** (identify the requirements common to all applications), **variability analysis** (identify those that differ and specify the differences) and **variability modelling** (model variation points, variants and their relations). In addition, you must establish **consistency between views**: goals, features, scenarios, use cases, data, behavioural and functional models, and textual requirements."
+        "fr": "Pour un système unique, l'ingénierie des exigences comporte **cinq activités** : l'**élicitation** (comprendre besoins et contraintes), la **documentation** (enregistrer les exigences de façon structurée), la **négociation** (obtenir un consensus entre parties prenantes), la **validation et vérification** (prouver que les exigences sont claires, complètes, correctes, compréhensibles) et la **gestion** (les maintenir à jour tout au long du cycle de vie).",
+        "en": "For a single system, requirements engineering has **five activities**: **elicitation** (understand needs and constraints), **documentation** (record requirements in a structured way), **negotiation** (reach consensus between stakeholders), **validation and verification** (prove that requirements are clear, complete, correct, understandable) and **management** (keep them up to date throughout the lifecycle)."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.2",
           "quote": "L'objectif est de comprendre les besoins et contraintes des utilisateurs pour le système."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/8__ple.md",
-          "loc": "10.2",
-          "quote": "L'objectif est l'enregistrement bien structuré des exigences élicitées avec toutes les informations nécessaires."
         },
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
@@ -187,17 +310,46 @@
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.2",
-          "quote": "Les objectifs du processus d'ingénierie des exigences se caractérisent selon les trois dimensions de"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/8__ple.md",
-          "loc": "10.2",
           "quote": "Caractérise le niveau de compréhension atteint sur les exigences du système"
         },
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.2",
           "quote": "Traite de la réconciliation des opinions conflictuelles"
+        }
+      ],
+      "notions": [
+        "n-re-activities-single-system"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ces objectifs se mesurent selon trois dimensions (Pohl 1994) : la **spécification** (de la compréhension faible à la compréhension aussi complète que possible), la **représentation** (du croquis ou de la langue naturelle aux langages de modélisation formels) et l'**accord** (de l'opinion de chacun au consensus).",
+        "en": "These objectives are measured along three dimensions (Pohl 1994): **specification** (from weak understanding to as complete an understanding as possible), **representation** (from sketches or natural language to formal modelling languages) and **agreement** (from each person's opinion to consensus)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.2",
+          "quote": "Les objectifs du processus d'ingénierie des exigences se caractérisent selon les trois dimensions de"
+        }
+      ],
+      "notions": [
+        "n-re-activities-single-system"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour une ligne de produits, la variabilité ajoute des tâches. Trois activités clés, « étroitement liées » : l'**analyse de communalité** (identifier les exigences communes à toutes les applications), l'**analyse de variabilité** (identifier celles qui diffèrent et préciser ces différences) et la **modélisation de la variabilité** (modéliser points de variation, variants et leurs relations). En plus, il faut établir la **cohérence entre les vues** : objectifs, fonctionnalités, scénarios, cas d'utilisation, modèles de données, de comportement, de fonctions et exigences textuelles.",
+        "en": "For a product line, variability adds tasks. Three key, \"closely linked\" activities: **commonality analysis** (identify the requirements common to all applications), **variability analysis** (identify those that differ and specify the differences) and **variability modelling** (model variation points, variants and their relations). In addition, you must establish **consistency between views**: goals, features, scenarios, use cases, data, behavioural and functional models, and textual requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.2",
+          "quote": "L'objectif est l'enregistrement bien structuré des exigences élicitées avec toutes les informations nécessaires."
         },
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
@@ -224,6 +376,10 @@
           "loc": "10.3.2",
           "quote": "établir la cohérence entre les différents artefacts d'exigences et leurs documentations"
         }
+      ],
+      "notions": [
+        "n-dre-specific-activities",
+        "n-three-dimensions-re"
       ]
     },
     {
@@ -294,8 +450,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les artefacts d'exigences de domaine ont une partie **commune** et une partie **variable**. Règle d'or : « avant de définir une exigence comme commune, une analyse de communalité doit être effectuée ». Deux étapes, exécutées **de façon itérative** : identifier un ensemble d'exigences communes, puis les documenter en détail dans le format adapté à la vue (fonctionnalités, cas d'utilisation…). Deux points d'attention. **Qualité élevée** : les exigences communes sont le socle de toutes les applications ; des revues régulières garantissent leur cohérence. **Évolution** : une exigence commune peut devenir variable avec le temps ; documenter justifications et hypothèses évite des transformations injustifiées vers de la variabilité inutile. Pour les exigences **variables**, la Figure 10-4 donne quatre étapes : (1) identifier un ensemble initial d'exigences variables ; (2) développer l'[[term-ovm|OVM]] (points de variation et variants) ; (3) documenter en détail chaque artefact en séparant partie invariante et partie variable ; (4) **associer** chaque élément variable de l'artefact au variant correspondant dans l'OVM. Les étapes 3 et 4 se répètent pour toutes les vues requises.",
-        "en": "Domain requirements artefacts have a **common** part and a **variable** part. Golden rule: \"before defining a requirement as common, a commonality analysis must be performed\". Two steps, performed **iteratively**: identify a set of common requirements, then document them in detail in the format suited to the view (features, use cases…). Two points of attention. **High quality**: common requirements are the foundation of all applications; regular reviews ensure their consistency. **Evolution**: a common requirement may become variable over time; documenting rationales and assumptions avoids unjustified transformations into unnecessary variability. For **variable** requirements, Figure 10-4 gives four steps: (1) identify an initial set of variable requirements; (2) develop the [[term-ovm|OVM]] (variation points and variants); (3) document each artefact in detail, separating the invariant part from the variable part; (4) **link** each variable element of the artefact to the matching variant in the OVM. Steps 3 and 4 are repeated for all required views."
+        "fr": "Les artefacts d'exigences de domaine ont une partie **commune** et une partie **variable**. Règle d'or : « avant de définir une exigence comme commune, une analyse de communalité doit être effectuée ». Deux étapes, exécutées **de façon itérative** : identifier un ensemble d'exigences communes, puis les documenter en détail dans le format adapté à la vue (fonctionnalités, cas d'utilisation…). Deux points d'attention. **Qualité élevée** : les exigences communes sont le socle de toutes les applications ; des revues régulières garantissent leur cohérence.",
+        "en": "Domain requirements artefacts have a **common** part and a **variable** part. Golden rule: \"before defining a requirement as common, a commonality analysis must be performed\". Two steps, performed **iteratively**: identify a set of common requirements, then document them in detail in the format suited to the view (features, use cases…). Two points of attention. **High quality**: common requirements are the foundation of all applications; regular reviews ensure their consistency."
       },
       "src": [
         {
@@ -317,7 +473,20 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.4.1",
           "quote": "Les exigences communes constituent le socle de toutes les applications de la ligne de produits."
-        },
+        }
+      ],
+      "notions": [
+        "n-defining-common-requirements",
+        "n-defining-variable-requirements"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Évolution** : une exigence commune peut devenir variable avec le temps ; documenter justifications et hypothèses évite des transformations injustifiées vers de la variabilité inutile.",
+        "en": "**Evolution**: a common requirement may become variable over time; documenting rationales and assumptions avoids unjustified transformations into unnecessary variability."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.4.1",
@@ -332,7 +501,16 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.4.2",
           "quote": "La définition des exigences variables implique la modélisation de la variabilité dans le modèle de variabilité et la documentation détaillée des exigences variables."
-        },
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour les exigences **variables**, la Figure 10-4 donne quatre étapes : (1) identifier un ensemble initial d'exigences variables ; (2) développer l'[[term-ovm|OVM]] (points de variation et variants) ; (3) documenter en détail chaque artefact en séparant partie invariante et partie variable ; (4) **associer** chaque élément variable de l'artefact au variant correspondant dans l'OVM. Les étapes 3 et 4 se répètent pour toutes les vues requises.",
+        "en": "For **variable** requirements, Figure 10-4 gives four steps: (1) identify an initial set of variable requirements; (2) develop the [[term-ovm|OVM]] (variation points and variants); (3) document each artefact in detail, separating the invariant part from the variable part; (4) **link** each variable element of the artefact to the matching variant in the OVM. Steps 3 and 4 are repeated for all required views."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Fig. 10-4",
@@ -387,6 +565,9 @@
           "loc": "10.5",
           "quote": "Le développement d'une ligne de produits part rarement de zéro"
         }
+      ],
+      "notions": [
+        "n-requirements-sources"
       ]
     },
     {
@@ -422,6 +603,10 @@
           "loc": "10.6.1",
           "quote": "La matrice applications-exigences donne une première approximation de la communalité et de la variabilité."
         }
+      ],
+      "notions": [
+        "n-maximise-commonality",
+        "n-commonality-analysis"
       ]
     },
     {
@@ -527,13 +712,16 @@
           "loc": "Tableau 10-1",
           "quote": "elle est donc candidate pour devenir une exigence commune de la ligne de produits."
         }
+      ],
+      "notions": [
+        "n-application-requirements-matrix"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "La matrice ne suffit pas : on affine avec la **priorité** (classification de Kano). Trois catégories d'exigences communes : les **exigences de base** (que chaque application du domaine doit remplir), les **exigences à haute priorité** (priorité élevée pour un grand groupe de clients, rejetées par aucun autre) et les **communalités stratégiques** (besoins futurs prévisibles, implémentés d'emblée pour se démarquer de la concurrence). Lecture du tableau 10-1 : **R1** est obligatoire pour les quatre applications → candidate à l'exigence **commune**. **R2** (App. 3 et 4 seulement) et **R3** (App. 2 seulement) ne sont pas retenues comme communes.",
-        "en": "The matrix is not enough: we refine with **priority** (Kano classification). Three categories of common requirements: **basic requirements** (that every application in the domain must fulfil), **high-priority requirements** (high priority for a large group of customers, rejected by none) and **strategic commonalities** (foreseeable future needs, implemented straight away to stand out from competition). Reading Table 10-1: **R1** is mandatory for all four applications → candidate for a **common** requirement. **R2** (App. 3 and 4 only) and **R3** (App. 2 only) are not retained as common."
+        "fr": "La matrice ne suffit pas : on affine avec la **priorité** (classification de Kano). Trois catégories d'exigences communes : les **exigences de base** (que chaque application du domaine doit remplir), les **exigences à haute priorité** (priorité élevée pour un grand groupe de clients, rejetées par aucun autre) et les **communalités stratégiques** (besoins futurs prévisibles, implémentés d'emblée pour se démarquer de la concurrence).",
+        "en": "The matrix is not enough: we refine with **priority** (Kano classification). Three categories of common requirements: **basic requirements** (that every application in the domain must fulfil), **high-priority requirements** (high priority for a large group of customers, rejected by none) and **strategic commonalities** (foreseeable future needs, implemented straight away to stand out from competition)."
       },
       "src": [
         {
@@ -555,7 +743,22 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.6.2",
           "quote": "Besoins futurs prévisibles sur le cycle de vie de la ligne de produits, implémentés directement comme communalités pour se démarquer de la concurrence"
-        },
+        }
+      ],
+      "notions": [
+        "n-priority-based-analysis",
+        "n-kano-basic-requirements",
+        "n-high-priority-requirements",
+        "n-strategic-commonality"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Lecture du tableau 10-1 : **R1** est obligatoire pour les quatre applications → candidate à l'exigence **commune**. **R2** (App. 3 et 4 seulement) et **R3** (App. 2 seulement) ne sont pas retenues comme communes.",
+        "en": "Reading Table 10-1: **R1** is mandatory for all four applications → candidate for a **common** requirement. **R2** (App. 3 and 4 only) and **R3** (App. 2 only) are not retained as common."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Tableau 10-1",
@@ -566,6 +769,9 @@
           "loc": "Tableau 10-1",
           "quote": "elles ne sont donc pas retenues comme exigences communes."
         }
+      ],
+      "notions": [
+        "n-application-requirements-matrix"
       ]
     },
     {
@@ -628,6 +834,9 @@
           "loc": "Exemple 10-3",
           "quote": "Elle est donc définie comme une communalité de la ligne de produits."
         }
+      ],
+      "notions": [
+        "n-strategic-commonality"
       ]
     },
     {
@@ -662,6 +871,9 @@
           "loc": "10.6.3",
           "quote": "Les exigences nécessaires au support technique (gestion des erreurs, maintenance, communication)."
         }
+      ],
+      "notions": [
+        "n-checklist-based-analysis"
       ]
     },
     {
@@ -698,8 +910,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "L'analyse de variabilité identifie les exigences variables et définit les [[term-vp|points de variation]] et [[term-variant|variants]] associés. Des exigences qui divergent entre applications indiquent qu'il faut un point de variation, après évaluation de son impact sur l'architecture de référence. Exemple 10-4 : des besoins de sécurité différents créent le point de variation « sécurité domestique par », avec les variants « détection de mouvement » et « surveillance par caméra ». Avec la **matrice**, les exigences obligatoires pour une seule application, ou un petit sous-ensemble, sont des candidates directes au statut d'exigences variables. Avec la **priorité**, trois signaux : priorités **divergentes** (forte pour certains clients, faible pour d'autres), évaluations **contradictoires** (positive pour un groupe, négative pour un autre), exigences à haute priorité **en conflit** (incompatibilités sémantiques ou techniques). Deux exemples du livre. **10-5** : « informer automatiquement la police en cas d'intrusion » est très importante pour un groupe, moins pour un autre → exigence variable. **10-6** : le stockage vidéo de toute la surveillance plaît à un groupe, mais « ne pas enregistrer de données personnelles » est aussi prioritaire pour beaucoup → le stockage vidéo est défini comme exigence variable. La **liste de contrôle** de variabilité : « chaque différence de structure, de fonctionnalité, de comportement ou de qualité est candidate à la variabilité ». On regarde les fonctionnalités, les attributs de qualité (sûreté, sécurité, fiabilité), les interfaces avec les systèmes existants (*legacy*), les interfaces utilisateur et les contraintes de conception (bases de données, réseaux, composants COTS, systèmes d'exploitation).",
-        "en": "Variability analysis identifies variable requirements and defines the associated [[term-vp|variation points]] and [[term-variant|variants]]. Requirements that diverge between applications show that a variation point is needed, after assessing its impact on the reference architecture. Example 10-4: different security needs create the variation point \"home security by\", with the variants \"motion detection\" and \"camera surveillance\". With the **matrix**, requirements mandatory for a single application, or a small subset, are direct candidates for variable requirements. With **priority**, three signals: **diverging** priorities (high for some customers, low for others), **contradictory** evaluations (positive for one group, negative for another), **conflicting** high-priority requirements (semantic or technical incompatibilities). Two examples from the book. **10-5**: \"automatically inform the police in case of intrusion\" is very important for one group, less so for another → variable requirement. **10-6**: video storage of all surveillance data is liked by one group, but \"do not record personal data\" is also a priority for many → video storage is defined as a variable requirement. The variability **checklist**: \"every difference in structure, functionality, behaviour or quality is a candidate for variability\". Look at features, quality attributes (safety, security, reliability), interfaces with existing (*legacy*) systems, user interfaces and design constraints (databases, networks, COTS components, operating systems)."
+        "fr": "L'analyse de variabilité identifie les exigences variables et définit les [[term-vp|points de variation]] et [[term-variant|variants]] associés. Des exigences qui divergent entre applications indiquent qu'il faut un point de variation, après évaluation de son impact sur l'architecture de référence. Exemple 10-4 : des besoins de sécurité différents créent le point de variation « sécurité domestique par », avec les variants « détection de mouvement » et « surveillance par caméra ».",
+        "en": "Variability analysis identifies variable requirements and defines the associated [[term-vp|variation points]] and [[term-variant|variants]]. Requirements that diverge between applications show that a variation point is needed, after assessing its impact on the reference architecture. Example 10-4: different security needs create the variation point \"home security by\", with the variants \"motion detection\" and \"camera surveillance\"."
       },
       "src": [
         {
@@ -719,6 +931,25 @@
         },
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.7.2",
+          "quote": "Exigences évaluées positivement par un groupe et négativement par un autre"
+        }
+      ],
+      "notions": [
+        "n-variability-analysis",
+        "n-variation-point",
+        "n-variant"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Avec la **matrice**, les exigences obligatoires pour une seule application, ou un petit sous-ensemble, sont des candidates directes au statut d'exigences variables. Avec la **priorité**, trois signaux : priorités **divergentes** (forte pour certains clients, faible pour d'autres), évaluations **contradictoires** (positive pour un groupe, négative pour un autre), exigences à haute priorité **en conflit** (incompatibilités sémantiques ou techniques).",
+        "en": "With the **matrix**, requirements mandatory for a single application, or a small subset, are direct candidates for variable requirements. With **priority**, three signals: **diverging** priorities (high for some customers, low for others), **contradictory** evaluations (positive for one group, negative for another), **conflicting** high-priority requirements (semantic or technical incompatibilities)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.7.1",
           "quote": "Les exigences qui ne sont obligatoires que pour une seule application ou un sous-ensemble restreint d'applications constituent des candidates directes au statut d'exigences variables."
         },
@@ -726,11 +957,6 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.7.2",
           "quote": "Exigences ayant une priorité forte pour certains clients et faible pour d'autres"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/8__ple.md",
-          "loc": "10.7.2",
-          "quote": "Exigences évaluées positivement par un groupe et négativement par un autre"
         },
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
@@ -744,6 +970,25 @@
         },
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.7.3",
+          "quote": "Les différentes exigences d'interface utilisateur (UI)."
+        }
+      ],
+      "notions": [
+        "n-variability-analysis",
+        "n-variation-point",
+        "n-variant"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux exemples du livre. **10-5** : « informer automatiquement la police en cas d'intrusion » est très importante pour un groupe, moins pour un autre → exigence variable. **10-6** : le stockage vidéo de toute la surveillance plaît à un groupe, mais « ne pas enregistrer de données personnelles » est aussi prioritaire pour beaucoup → le stockage vidéo est défini comme exigence variable.",
+        "en": "Two examples from the book. **10-5**: \"automatically inform the police in case of intrusion\" is very important for one group, less so for another → variable requirement. **10-6**: video storage of all surveillance data is liked by one group, but \"do not record personal data\" is also a priority for many → video storage is defined as a variable requirement."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Exemple 10-6",
           "quote": "est également prioritaire pour de nombreux clients"
         },
@@ -751,7 +996,19 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Exemple 10-6",
           "quote": "L'ingénieur décide donc de définir le stockage vidéo comme une exigence variable."
-        },
+        }
+      ],
+      "notions": [
+        "n-variability-analysis"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La **liste de contrôle** de variabilité : « chaque différence de structure, de fonctionnalité, de comportement ou de qualité est candidate à la variabilité ». On regarde les fonctionnalités, les attributs de qualité (sûreté, sécurité, fiabilité), les interfaces avec les systèmes existants (*legacy*), les interfaces utilisateur et les contraintes de conception (bases de données, réseaux, composants COTS, systèmes d'exploitation).",
+        "en": "The variability **checklist**: \"every difference in structure, functionality, behaviour or quality is a candidate for variability\". Look at features, quality attributes (safety, security, reliability), interfaces with existing (*legacy*) systems, user interfaces and design constraints (databases, networks, COTS components, operating systems)."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.7.3",
@@ -770,13 +1027,11 @@
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.7.3",
-          "quote": "Les différentes exigences d'interface utilisateur (UI)."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/8__ple.md",
-          "loc": "10.7.3",
           "quote": "Les différentes contraintes de conception (bases de données, réseaux, composants COTS, systèmes d'exploitation)."
         }
+      ],
+      "notions": [
+        "n-variability-analysis"
       ]
     },
     {
@@ -813,8 +1068,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Pour définir la variabilité, l'ingénieur doit : (1) définir soigneusement le bon jeu de points de variation et de variants ; (2) déterminer leurs dépendances ; (3) fixer, avec les gestionnaires de produits, la part de variabilité offerte aux clients comme **variabilité externe**. Comment trouver un point de variation ? En cherchant le **sujet de variabilité** commun. Exemple 10-7 : App. 1 exige « la porte d'entrée sécurisée par un digicode », App. 2 « une autorisation par empreinte digitale ». Même sujet : le mécanisme d'identification. On définit donc le point de variation « mécanisme d'identification du verrou de porte » avec deux variants. On peut aussi ajouter des variants additionnels (« *delighters* ») pour se différencier de la concurrence.",
-        "en": "To define variability, the engineer must: (1) carefully define the right set of variation points and variants; (2) determine their dependencies; (3) decide, with product managers, how much variability is offered to customers as **external variability**. How do you find a variation point? By looking for the common **variability subject**. Example 10-7: App. 1 requires \"the front door secured by a keypad\", App. 2 \"fingerprint authorisation\". Same subject: the identification mechanism. So we define the variation point \"door lock identification mechanism\" with two variants. We may also add extra variants (\"*delighters*\") to stand out from competition."
+        "fr": "Pour définir la variabilité, l'ingénieur doit : (1) définir soigneusement le bon jeu de points de variation et de variants ; (2) déterminer leurs dépendances ; (3) fixer, avec les gestionnaires de produits, la part de variabilité offerte aux clients comme **variabilité externe**. Comment trouver un point de variation ? En cherchant le **sujet de variabilité** commun.",
+        "en": "To define variability, the engineer must: (1) carefully define the right set of variation points and variants; (2) determine their dependencies; (3) decide, with product managers, how much variability is offered to customers as **external variability**. How do you find a variation point? By looking for the common **variability subject**."
       },
       "src": [
         {
@@ -836,7 +1091,20 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.8.1",
           "quote": "commun permet de définir le point de variation approprié."
-        },
+        }
+      ],
+      "notions": [
+        "n-defining-variable-requirements",
+        "n-variability-subject"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Exemple 10-7 : App. 1 exige « la porte d'entrée sécurisée par un digicode », App. 2 « une autorisation par empreinte digitale ». Même sujet : le mécanisme d'identification. On définit donc le point de variation « mécanisme d'identification du verrou de porte » avec deux variants. On peut aussi ajouter des variants additionnels (« *delighters* ») pour se différencier de la concurrence.",
+        "en": "Example 10-7: App. 1 requires \"the front door secured by a keypad\", App. 2 \"fingerprint authorisation\". Same subject: the identification mechanism. So we define the variation point \"door lock identification mechanism\" with two variants. We may also add extra variants (\"*delighters*\") to stand out from competition."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Exemple 10-7",
@@ -852,13 +1120,17 @@
           "loc": "10.8.1",
           "quote": "pour se différencier de la concurrence ou augmenter la satisfaction client."
         }
+      ],
+      "notions": [
+        "n-variation-point",
+        "n-variant"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Deux familles de dépendances. Les **dépendances de variabilité** (obligatoire, optionnel, choix alternatif `[min..max]`) fixent les combinaisons autorisées ; les architectes logiciels doivent y être impliqués, vu l'impact sur l'architecture de référence. Les **dépendances de contrainte** (`requires`, `excludes`) restreignent ou imposent des liaisons entre variants, ou entre variants et points de variation, lors de l'ingénierie d'application. Dernier mot à la **gestion de produit** : valider, ajouter ou supprimer des points de variation ou variants ; corriger contraintes et dépendances ; classer les points de variation en variabilité **externe** ou **interne**. Exemple 10-8 : la brochure dit que le système est toujours livré avec l'« alarme acoustique » ; le client peut ajouter en option l'« information police ». Le modèle contient donc le point de variation « activation de l'alarme » avec un variant **obligatoire** (alarme acoustique) et un variant **optionnel** (information police).",
-        "en": "Two families of dependencies. **Variability dependencies** (mandatory, optional, alternative choice `[min..max]`) fix the allowed combinations; software architects must be involved, given the impact on the reference architecture. **Constraint dependencies** (`requires`, `excludes`) restrict or impose bindings between variants, or between variants and variation points, during application engineering. The last word belongs to **product management**: validate, add or remove variation points or variants; correct constraints and dependencies; classify variation points as **external** or **internal** variability. Example 10-8: the brochure says the system always ships with the \"acoustic alarm\"; the customer can optionally add \"police information\". The model thus contains the variation point \"alarm activation\" with a **mandatory** variant (acoustic alarm) and an **optional** variant (police information)."
+        "fr": "Deux familles de dépendances. Les **dépendances de variabilité** (obligatoire, optionnel, choix alternatif `[min..max]`) fixent les combinaisons autorisées ; les architectes logiciels doivent y être impliqués, vu l'impact sur l'architecture de référence. Les **dépendances de contrainte** (`requires`, `excludes`) restreignent ou imposent des liaisons entre variants, ou entre variants et points de variation, lors de l'ingénierie d'application.",
+        "en": "Two families of dependencies. **Variability dependencies** (mandatory, optional, alternative choice `[min..max]`) fix the allowed combinations; software architects must be involved, given the impact on the reference architecture. **Constraint dependencies** (`requires`, `excludes`) restrict or impose bindings between variants, or between variants and variation points, during application engineering."
       },
       "src": [
         {
@@ -875,7 +1147,21 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.8.3",
           "quote": "restreignent ou imposent des liaisons de variants entre eux, ou entre variants et points de variation lors de l'ingénierie d'application."
-        },
+        }
+      ],
+      "notions": [
+        "n-variability-dependencies",
+        "n-alternative-choice",
+        "n-constraint-dependencies"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dernier mot à la **gestion de produit** : valider, ajouter ou supprimer des points de variation ou variants ; corriger contraintes et dépendances ; classer les points de variation en variabilité **externe** ou **interne**. Exemple 10-8 : la brochure dit que le système est toujours livré avec l'« alarme acoustique » ; le client peut ajouter en option l'« information police ». Le modèle contient donc le point de variation « activation de l'alarme » avec un variant **obligatoire** (alarme acoustique) et un variant **optionnel** (information police).",
+        "en": "The last word belongs to **product management**: validate, add or remove variation points or variants; correct constraints and dependencies; classify variation points as **external** or **internal** variability. Example 10-8: the brochure says the system always ships with the \"acoustic alarm\"; the customer can optionally add \"police information\". The model thus contains the variation point \"alarm activation\" with a **mandatory** variant (acoustic alarm) and an **optional** variant (police information)."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.8.4",
@@ -906,6 +1192,10 @@
           "loc": "Exemple 10-8",
           "quote": "Le modèle de variabilité contient donc le point de variation"
         }
+      ],
+      "notions": [
+        "n-product-management-decisions",
+        "n-external-variability"
       ]
     },
     {
@@ -929,6 +1219,99 @@
       ]
     },
     {
+      "type": "method",
+      "notions": [
+        "n-ovm",
+        "n-variation-point",
+        "n-variant",
+        "n-variability-dependencies",
+        "n-constraint-dependencies"
+      ],
+      "title": {
+        "fr": "Construire un OVM à partir des exigences de plusieurs applications",
+        "en": "Building an OVM from several applications’ requirements"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Dresser la matrice applications × exigences (obligatoire ou non dans chaque application).",
+            "en": "Draw the applications × requirements matrix (mandatory or not in each application)."
+          },
+          "why": {
+            "fr": "On explore toutes les applications prévues en même temps.",
+            "en": "All planned applications are explored at the same time."
+          }
+        },
+        {
+          "do": {
+            "fr": "Exigence obligatoire dans toutes les applications → candidate commune ; affiner par priorités (Kano) et liste de contrôle (lois, normes).",
+            "en": "Requirement mandatory in all applications → common candidate; refine by priorities (Kano) and checklist (laws, standards)."
+          },
+          "why": {
+            "fr": "Une exigence présente dans quelques applications seulement n’est pas commune.",
+            "en": "A requirement present in only some applications is not common."
+          }
+        },
+        {
+          "do": {
+            "fr": "Regrouper les exigences divergentes qui portent sur un même sujet : ce sujet devient un **point de variation**, chaque exigence un **variant**.",
+            "en": "Group diverging requirements on the same subject: that subject becomes a **variation point**, each requirement a **variant**."
+          },
+          "why": {
+            "fr": "Ex. digicode et empreinte → point de variation « mécanisme d’identification ».",
+            "en": "E.g., keypad and fingerprint → variation point “identification mechanism”."
+          }
+        },
+        {
+          "do": {
+            "fr": "Fixer les dépendances de variabilité : obligatoire, optionnel, choix alternatif [min..max].",
+            "en": "Set variability dependencies: mandatory, optional, alternative choice [min..max]."
+          },
+          "why": {
+            "fr": "Elles disent quelles combinaisons de variants sont permises.",
+            "en": "They say which variant combinations are allowed."
+          }
+        },
+        {
+          "do": {
+            "fr": "Ajouter les dépendances de contrainte (requires, excludes), puis faire valider par la gestion de produit (variabilité externe ou interne).",
+            "en": "Add constraint dependencies (requires, excludes), then have product management validate (external or internal variability)."
+          },
+          "why": {
+            "fr": "La gestion de produit a le dernier mot sur le périmètre.",
+            "en": "Product management has the last word on scope."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.6",
+          "quote": "L'objectif est de maximiser la communalité afin de réduire la variabilité au strict minimum requis"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Tableau 10-1",
+          "quote": "elle est donc candidate pour devenir une exigence commune de la ligne de produits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Exemple 10-7",
+          "quote": "Ces exigences se rapportent au même sujet de variabilité : le mécanisme d'identification."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.8.2",
+          "quote": "fixent les combinaisons autorisées."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.8.4",
+          "quote": "La gestion de produit prend les décisions finales concernant"
+        }
+      ]
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-04-qz-11"
     },
@@ -942,8 +1325,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le livre suit trois applications prévisibles : **App. 1** (maison), **App. 2** (bureau), **App. 3** (appartement). Chacune a ses objectifs (G1…), fonctionnalités (F1…) et exigences (R1…). Les trois objectifs de protection (« protection contre le cambriolage », « …dans le bureau », « sécurité contre les voleurs ») sont synthétisés en un unique objectif commun : **« protéger contre le cambriolage »** (Exemple 10-9). **Communalité** (Fig. 10-8) : deux exigences sont obligatoires dans les trois applications → **communalité stricte** : la caméra a un stockage tampon de 5 min de flux vidéo ; les flux vidéo stockés sont sécurisés contre les altérations. À l'inverse, d'autres sont spécifiques à une application (ex. : informer la police immédiatement, App. 3 seulement). **Variabilité** (Fig. 10-8, lignes grises « candidates à la variabilité ») : la désactivation de l'alarme (police, propriétaire, ou auto après 20 min : trois variants, Ex. 10-10) ; le délai détection-enregistrement (< 0,5 s en App. 1 et 3, < 2,5 s en App. 2) ; la qualité du mot de passe (10 caractères et changement tous les 3 mois en App. 1, 5 caractères en App. 2, Ex. 10-11).",
-        "en": "The book follows three foreseeable applications: **App. 1** (house), **App. 2** (office), **App. 3** (flat). Each has its goals (G1…), features (F1…) and requirements (R1…). The three protection goals (\"protection against burglary\", \"…in the office\", \"safety against thieves\") are merged into a single common goal: **\"protect against burglary\"** (Example 10-9). **Commonality** (Fig. 10-8): two requirements are mandatory in all three applications → **strict commonality**: the camera has a 5-minute video buffer; stored video streams are protected against tampering. Conversely, others are specific to one application (e.g. inform the police immediately, App. 3 only). **Variability** (Fig. 10-8, grey rows \"candidates for variability\"): alarm deactivation (police, owner, or automatic after 20 min: three variants, Ex. 10-10); detection-to-recording delay (< 0.5 s in App. 1 and 3, < 2.5 s in App. 2); password quality (10 characters and change every 3 months in App. 1, 5 characters in App. 2, Ex. 10-11)."
+        "fr": "Le livre suit trois applications prévisibles : **App. 1** (maison), **App. 2** (bureau), **App. 3** (appartement). Chacune a ses objectifs (G1…), fonctionnalités (F1…) et exigences (R1…). Les trois objectifs de protection (« protection contre le cambriolage », « …dans le bureau », « sécurité contre les voleurs ») sont synthétisés en un unique objectif commun : **« protéger contre le cambriolage »** (Exemple 10-9).",
+        "en": "The book follows three foreseeable applications: **App. 1** (house), **App. 2** (office), **App. 3** (flat). Each has its goals (G1…), features (F1…) and requirements (R1…). The three protection goals (\"protection against burglary\", \"…in the office\", \"safety against thieves\") are merged into a single common goal: **\"protect against burglary\"** (Example 10-9)."
       },
       "src": [
         {
@@ -955,7 +1338,19 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Exemple 10-9",
           "quote": "Ces trois objectifs sont synthétisés sous un unique objectif commun"
-        },
+        }
+      ],
+      "notions": [
+        "n-home-security-example"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Communalité** (Fig. 10-8) : deux exigences sont obligatoires dans les trois applications → **communalité stricte** : la caméra a un stockage tampon de 5 min de flux vidéo ; les flux vidéo stockés sont sécurisés contre les altérations.",
+        "en": "**Commonality** (Fig. 10-8): two requirements are mandatory in all three applications → **strict commonality**: the camera has a 5-minute video buffer; stored video streams are protected against tampering."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Fig. 10-8",
@@ -970,7 +1365,19 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Fig. 10-8",
           "quote": "Les flux vidéo stockés doivent être sécurisés contre les altérations"
-        },
+        }
+      ],
+      "notions": [
+        "n-home-security-example"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "À l'inverse, d'autres sont spécifiques à une application (ex. : informer la police immédiatement, App. 3 seulement). **Variabilité** (Fig. 10-8, lignes grises « candidates à la variabilité ») : la désactivation de l'alarme (police, propriétaire, ou auto après 20 min : trois variants, Ex. 10-10) ; le délai détection-enregistrement (< 0,5 s en App. 1 et 3, < 2,5 s en App. 2) ; la qualité du mot de passe (10 caractères et changement tous les 3 mois en App. 1, 5 caractères en App. 2, Ex. 10-11).",
+        "en": "Conversely, others are specific to one application (e.g. inform the police immediately, App. 3 only). **Variability** (Fig. 10-8, grey rows \"candidates for variability\"): alarm deactivation (police, owner, or automatic after 20 min: three variants, Ex. 10-10); detection-to-recording delay (< 0.5 s in App. 1 and 3, < 2.5 s in App. 2); password quality (10 characters and change every 3 months in App. 1, 5 characters in App. 2, Ex. 10-11)."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Fig. 10-8",
@@ -1001,6 +1408,9 @@
           "loc": "Exemple 10-11",
           "quote": "Pour la qualité d'authentification par mot de passe :"
         }
+      ],
+      "notions": [
+        "n-home-security-example"
       ]
     },
     {
@@ -1020,6 +1430,10 @@
           "loc": "Fig. 10-9",
           "quote": "Une application donnée doit obligatoirement sélectionner soit le mode manuel, soit le mode automatique, mais jamais les deux."
         }
+      ],
+      "notions": [
+        "n-alternative-choice",
+        "n-home-security-example"
       ]
     },
     {
@@ -1040,8 +1454,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "**Contrainte `requires`** (Fig. 10-10, Ex. 10-14) : dès qu'une application choisit le variant « vidéosurveillance », elle doit sélectionner un niveau du point de variation « qualité de la vidéosurveillance » (haute, moyenne, basse). La dépendance `requires_v_vp` impose donc un niveau de performance vidéo dès que la vidéosurveillance est activée. **Documentation** : les artefacts textuels (scénarios, cas d'utilisation) sont enrichis de **balises XML** pour marquer la variabilité (Fig. 10-11). Exemple : le cas d'utilisation « activer la vidéosurveillance » est un variant **optionnel** du point de variation « alarm system », avec deux déroulements **alternatifs** : « authentication first » et « access first ».",
-        "en": "**`requires` constraint** (Fig. 10-10, Ex. 10-14): as soon as an application picks the \"video surveillance\" variant, it must select a level of the \"video surveillance quality\" variation point (high, medium, low). The `requires_v_vp` dependency thus imposes a video performance level as soon as video surveillance is activated. **Documentation**: textual artefacts (scenarios, use cases) are enriched with **XML tags** to mark variability (Fig. 10-11). Example: the use case \"activate video surveillance\" is an **optional** variant of the variation point \"alarm system\", with two **alternative** flows: \"authentication first\" and \"access first\"."
+        "fr": "**Contrainte `requires`** (Fig. 10-10, Ex. 10-14) : dès qu'une application choisit le variant « vidéosurveillance », elle doit sélectionner un niveau du point de variation « qualité de la vidéosurveillance » (haute, moyenne, basse). La dépendance `requires_v_vp` impose donc un niveau de performance vidéo dès que la vidéosurveillance est activée.",
+        "en": "**`requires` constraint** (Fig. 10-10, Ex. 10-14): as soon as an application picks the \"video surveillance\" variant, it must select a level of the \"video surveillance quality\" variation point (high, medium, low). The `requires_v_vp` dependency thus imposes a video performance level as soon as video surveillance is activated."
       },
       "src": [
         {
@@ -1053,7 +1467,20 @@
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "Exemple 10-14",
           "quote": "impose le choix d'un niveau de performance vidéo dès que la vidéosurveillance est activée."
-        },
+        }
+      ],
+      "notions": [
+        "n-constraint-dependencies",
+        "n-home-security-example"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Documentation** : les artefacts textuels (scénarios, cas d'utilisation) sont enrichis de **balises XML** pour marquer la variabilité (Fig. 10-11). Exemple : le cas d'utilisation « activer la vidéosurveillance » est un variant **optionnel** du point de variation « alarm system », avec deux déroulements **alternatifs** : « authentication first » et « access first ».",
+        "en": "**Documentation**: textual artefacts (scenarios, use cases) are enriched with **XML tags** to mark variability (Fig. 10-11). Example: the use case \"activate video surveillance\" is an **optional** variant of the variation point \"alarm system\", with two **alternative** flows: \"authentication first\" and \"access first\"."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/8__ple.md",
           "loc": "10.9.6",
@@ -1106,7 +1533,8 @@
           "loc": "10.1",
           "quote": "un processus continu visant à définir de manière proactive les exigences pour toutes les applications prévisibles"
         }
-      ]
+      ],
+      "notion": "n-dre-goals"
     },
     {
       "id": "term-external-var",
@@ -1122,7 +1550,8 @@
           "loc": "10.1",
           "quote": "identifier et documenter explicitement la variabilité externe"
         }
-      ]
+      ],
+      "notion": "n-external-variability"
     },
     {
       "id": "term-ovm",
@@ -1138,7 +1567,8 @@
           "loc": "10.11",
           "quote": "La variabilité est formalisée dans le modèle de variabilité orthogonale"
         }
-      ]
+      ],
+      "notion": "n-ovm"
     },
     {
       "id": "term-matrix",
@@ -1154,7 +1584,8 @@
           "loc": "10.6.1",
           "quote": "La matrice applications-exigences donne une première approximation de la communalité et de la variabilité."
         }
-      ]
+      ],
+      "notion": "n-application-requirements-matrix"
     },
     {
       "id": "term-commonality",
@@ -1170,7 +1601,8 @@
           "loc": "10.3.1",
           "quote": "Identifier les exigences communes à toutes les applications de la ligne de produits logiciels (Section 10.6)."
         }
-      ]
+      ],
+      "notion": "n-maximise-commonality"
     },
     {
       "id": "term-variability-analysis",
@@ -1186,7 +1618,8 @@
           "loc": "10.3.1",
           "quote": "Identifier les exigences qui diffèrent entre les applications et déterminer précisément ces différences (Section 10.7)."
         }
-      ]
+      ],
+      "notion": "n-variability-analysis"
     },
     {
       "id": "term-vp",
@@ -1202,7 +1635,8 @@
           "loc": "10.7",
           "quote": "Des exigences divergentes entre applications indiquent la nécessité d'introduire un point de variation"
         }
-      ]
+      ],
+      "notion": "n-variation-point"
     },
     {
       "id": "term-variant",
@@ -1218,7 +1652,8 @@
           "loc": "Exemple 10-4",
           "quote": "Les exigences différentes des clients concernant le système de sécurité entraînent l'introduction d'un point de variation"
         }
-      ]
+      ],
+      "notion": "n-variant"
     },
     {
       "id": "term-var-dep",
@@ -1234,7 +1669,8 @@
           "loc": "10.8.2",
           "quote": "fixent les combinaisons autorisées."
         }
-      ]
+      ],
+      "notion": "n-variability-dependencies"
     },
     {
       "id": "term-constraint-dep",
@@ -1250,7 +1686,8 @@
           "loc": "10.8.3",
           "quote": "restreignent ou imposent des liaisons de variants entre eux, ou entre variants et points de variation lors de l'ingénierie d'application."
         }
-      ]
+      ],
+      "notion": "n-constraint-dependencies"
     },
     {
       "id": "term-kano",
@@ -1266,7 +1703,8 @@
           "loc": "10.6.2",
           "quote": "Une analyse plus fine s'appuie sur la classification de Kano"
         }
-      ]
+      ],
+      "notion": "n-priority-based-analysis"
     },
     {
       "id": "term-strategic",
@@ -1282,7 +1720,8 @@
           "loc": "10.6.2",
           "quote": "Besoins futurs prévisibles sur le cycle de vie de la ligne de produits, implémentés directement comme communalités pour se démarquer de la concurrence"
         }
-      ]
+      ],
+      "notion": "n-strategic-commonality"
     }
   ],
   "notions": [
@@ -1435,7 +1874,215 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "inf4-04-fc-01",
+      "termId": "term-dre",
+      "front": {
+        "fr": "ingénierie des exigences de domaine ?",
+        "en": "domain requirements engineering?"
+      },
+      "back": {
+        "fr": "Processus continu définissant de façon proactive les exigences communes et variables de toutes les applications prévisibles de la ligne de produits.",
+        "en": "Continuous process proactively defining the common and variable requirements of all foreseeable applications of the product line."
+      }
+    },
+    {
+      "id": "inf4-04-fc-02",
+      "termId": "term-external-var",
+      "front": {
+        "fr": "variabilité externe ?",
+        "en": "external variability?"
+      },
+      "back": {
+        "fr": "Variabilité visible par le client ; l'ingénierie des exigences de domaine doit l'identifier et la documenter explicitement.",
+        "en": "Variability visible to the customer; domain requirements engineering must identify and document it explicitly."
+      }
+    },
+    {
+      "id": "inf4-04-fc-03",
+      "termId": "term-ovm",
+      "front": {
+        "fr": "modèle de variabilité orthogonale (OVM) ?",
+        "en": "Orthogonal Variability Model (OVM)?"
+      },
+      "back": {
+        "fr": "Modèle documentant la variabilité : points de variation, variants, dépendances de variabilité et dépendances de contrainte.",
+        "en": "Model documenting variability: variation points, variants, variability dependencies and constraint dependencies."
+      }
+    },
+    {
+      "id": "inf4-04-fc-04",
+      "termId": "term-matrix",
+      "front": {
+        "fr": "matrice applications-exigences ?",
+        "en": "application-requirements matrix?"
+      },
+      "back": {
+        "fr": "Tableau croisant exigences et applications ; première approximation de la communalité et de la variabilité.",
+        "en": "Table crossing requirements and applications; a first approximation of commonality and variability."
+      }
+    },
+    {
+      "id": "inf4-04-fc-05",
+      "termId": "term-commonality",
+      "front": {
+        "fr": "analyse de communalité ?",
+        "en": "commonality analysis?"
+      },
+      "back": {
+        "fr": "Identifier les exigences communes à toutes les applications de la ligne de produits ; objectif : maximiser le commun.",
+        "en": "Identify the requirements common to all applications of the product line; goal: maximise what is common."
+      }
+    },
+    {
+      "id": "inf4-04-fc-06",
+      "termId": "term-variability-analysis",
+      "front": {
+        "fr": "analyse de variabilité ?",
+        "en": "variability analysis?"
+      },
+      "back": {
+        "fr": "Identifier les exigences qui diffèrent entre les applications et déterminer précisément ces différences.",
+        "en": "Identify the requirements that differ between applications and determine precisely these differences."
+      }
+    },
+    {
+      "id": "inf4-04-fc-07",
+      "termId": "term-vp",
+      "front": {
+        "fr": "point de variation ?",
+        "en": "variation point?"
+      },
+      "back": {
+        "fr": "Élément de l'OVM introduit quand des exigences divergent entre applications ; il regroupe des variants autour d'un même sujet de variabilité.",
+        "en": "OVM element introduced when requirements diverge between applications; it groups variants around the same variability subject."
+      }
+    },
+    {
+      "id": "inf4-04-fc-08",
+      "termId": "term-variant",
+      "front": {
+        "fr": "variant ?",
+        "en": "variant?"
+      },
+      "back": {
+        "fr": "Option associée à un point de variation (ex. « détection de mouvement » ou « surveillance par caméra »).",
+        "en": "Option attached to a variation point (e.g. \"motion detection\" or \"camera surveillance\")."
+      }
+    },
+    {
+      "id": "inf4-04-fc-09",
+      "termId": "term-var-dep",
+      "front": {
+        "fr": "dépendance de variabilité ?",
+        "en": "variability dependency?"
+      },
+      "back": {
+        "fr": "Dépendance (obligatoire, optionnel, choix alternatif [min..max]) qui fixe les combinaisons autorisées.",
+        "en": "Dependency (mandatory, optional, alternative choice [min..max]) that fixes the allowed combinations."
+      }
+    },
+    {
+      "id": "inf4-04-fc-10",
+      "termId": "term-constraint-dep",
+      "front": {
+        "fr": "dépendance de contrainte ?",
+        "en": "constraint dependency?"
+      },
+      "back": {
+        "fr": "Dépendance (requires, excludes) qui restreint ou impose des liaisons entre variants, ou entre variants et points de variation.",
+        "en": "Dependency (requires, excludes) restricting or imposing bindings between variants, or between variants and variation points."
+      }
+    },
+    {
+      "id": "inf4-04-fc-11",
+      "termId": "term-kano",
+      "front": {
+        "fr": "classification de Kano ?",
+        "en": "Kano classification?"
+      },
+      "back": {
+        "fr": "Analyse par priorité distinguant exigences de base, exigences à haute priorité et communalités stratégiques.",
+        "en": "Priority-based analysis distinguishing basic requirements, high-priority requirements and strategic commonalities."
+      }
+    },
+    {
+      "id": "inf4-04-fc-12",
+      "termId": "term-strategic",
+      "front": {
+        "fr": "communalité stratégique ?",
+        "en": "strategic commonality?"
+      },
+      "back": {
+        "fr": "Besoin futur prévisible, implémenté directement comme communalité pour se démarquer de la concurrence.",
+        "en": "Foreseeable future need, implemented directly as commonality to stand out from competition."
+      }
+    },
+    {
+      "id": "inf4-04-fc-13",
+      "front": {
+        "fr": "Choix alternatif [1..1] sur un point de variation ?",
+        "en": "Alternative choice [1..1] on a variation point?"
+      },
+      "back": {
+        "fr": "Exactement un variant du groupe est sélectionné (ex. désactivation par carte ou par code, jamais les deux).",
+        "en": "Exactly one variant of the group is selected (e.g., deactivation by card or by code, never both)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Exemple 10-12",
+          "quote": "En faisant abstraction des exigences de désactivation d'alarme, nous définissons le point de variation"
+        }
+      ],
+      "notions": [
+        "n-alternative-choice"
+      ]
+    },
+    {
+      "id": "inf4-04-fc-14",
+      "front": {
+        "fr": "Quand une exigence est-elle commune ?",
+        "en": "When is a requirement common?"
+      },
+      "back": {
+        "fr": "Quand elle est obligatoire dans toutes les applications prévues (puis confirmée par priorité et liste de contrôle).",
+        "en": "When it is mandatory in all planned applications (then confirmed by priority and checklist)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Tableau 10-1",
+          "quote": "elle est donc candidate pour devenir une exigence commune de la ligne de produits."
+        }
+      ],
+      "notions": [
+        "n-application-requirements-matrix"
+      ]
+    },
+    {
+      "id": "inf4-04-fc-15",
+      "front": {
+        "fr": "Analyse de communalité par liste de contrôle ?",
+        "en": "Checklist-based commonality analysis?"
+      },
+      "back": {
+        "fr": "Elle examine les exigences imposées par les lois et normes (nationales ou internationales), celles prescrites par les normes de l’organisation, et celles qui ne diffèrent que marginalement entre applications.",
+        "en": "It examines requirements imposed by laws and standards (national or international), those prescribed by the organisation’s standards, and those that differ only marginally between applications."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.6.3",
+          "quote": "Les exigences imposées par les lois et normes nationales ou internationales."
+        }
+      ],
+      "notions": [
+        "n-checklist-based-analysis"
+      ]
+    }
+  ],
   "quiz": [
     {
       "id": "inf4-04-qz-01",
@@ -1461,7 +2108,16 @@
           "loc": "10.1.1",
           "quote": "Cette feuille de route comprend un ensemble initial d'applications prévues pour la ligne de produits"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-dre-interrelations",
+        "n-product-roadmap"
+      ],
+      "trap": {
+        "fr": "Inverser les rôles : la feuille de route vient de la gestion de produit.",
+        "en": "Swapping roles: the roadmap comes from product management."
+      }
     },
     {
       "id": "inf4-04-qz-02",
@@ -1492,6 +2148,11 @@
           "loc": "10.10",
           "quote": "ne traitent pas d'une application isolée, mais des exigences de toutes les applications prévisibles de la ligne de produits."
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-dre-specific-activities",
+        "n-re-activities-single-system"
       ]
     },
     {
@@ -1543,7 +2204,15 @@
           "loc": "10.2",
           "quote": "Caractérise le niveau de compréhension atteint sur les exigences du système"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-three-dimensions-re"
+      ],
+      "trap": {
+        "fr": "Confondre les dimensions : l’accord réconcilie les opinions.",
+        "en": "Confusing the dimensions: agreement reconciles opinions."
+      }
     },
     {
       "id": "inf4-04-qz-04",
@@ -1569,7 +2238,15 @@
           "loc": "10.4.1",
           "quote": "Ces étapes sont exécutées de manière itérative."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-defining-common-requirements"
+      ],
+      "trap": {
+        "fr": "Inverser l’ordre : d’abord l’analyse de communalité, ensuite la documentation détaillée.",
+        "en": "Reversing the order: commonality analysis first, then detailed documentation."
+      }
     },
     {
       "id": "inf4-04-qz-05",
@@ -1580,8 +2257,8 @@
       },
       "options": [
         {
-          "fr": "Identifier un ensemble initial d'exigences variables",
-          "en": "Identify an initial set of variable requirements"
+          "fr": "Identifier un ensemble initial d’exigences variables, en repartant de la matrice applications-exigences",
+          "en": "Identify an initial set of variable requirements, starting again from the application-requirements matrix"
         },
         {
           "fr": "Relier chaque élément variable du cas d'utilisation au variant correspondant dans l'OVM",
@@ -1615,7 +2292,15 @@
           "loc": "Fig. 10-4",
           "quote": "Les étapes (3) et (4) sont répétées pour toutes les vues requises."
         }
-      ]
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-ovm"
+      ],
+      "trap": {
+        "fr": "Oublier de relier les éléments variables du texte à l’OVM.",
+        "en": "Forgetting to link the text’s variable elements to the OVM."
+      }
     },
     {
       "id": "inf4-04-qz-06",
@@ -1661,7 +2346,15 @@
           "loc": "Tableau 10-1",
           "quote": "elles ne sont donc pas retenues comme exigences communes."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-application-requirements-matrix"
+      ],
+      "trap": {
+        "fr": "Croire qu’une exigence présente dans la matrice est commune.",
+        "en": "Believing a requirement in the matrix is common."
+      }
     },
     {
       "id": "inf4-04-qz-07",
@@ -1672,8 +2365,8 @@
       },
       "options": [
         {
-          "fr": "Les exigences de base",
-          "en": "Basic requirements"
+          "fr": "Les exigences de base, que toute application du domaine satisfait",
+          "en": "Basic requirements, which every application of the domain satisfies"
         },
         {
           "fr": "Les exigences à haute priorité",
@@ -1707,7 +2400,16 @@
           "loc": "10.6.2",
           "quote": "Exigences essentielles que chaque application du domaine doit remplir"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-high-priority-requirements",
+        "n-kano-basic-requirements"
+      ],
+      "trap": {
+        "fr": "Confondre exigence à haute priorité et communalité stratégique.",
+        "en": "Confusing high-priority requirement and strategic commonality."
+      }
     },
     {
       "id": "inf4-04-qz-08",
@@ -1733,7 +2435,15 @@
           "loc": "10.7.1",
           "quote": "Les exigences qui ne sont obligatoires que pour une seule application ou un sous-ensemble restreint d'applications constituent des candidates directes au statut d'exigences variables."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-maximise-commonality"
+      ],
+      "trap": {
+        "fr": "Croire qu’une majorité suffit : commune = obligatoire dans toutes les applications.",
+        "en": "Believing a majority is enough: common = mandatory in all applications."
+      }
     },
     {
       "id": "inf4-04-qz-09",
@@ -1764,6 +2474,10 @@
           "loc": "10.7.2",
           "quote": "Conflits sémantiques ou incompatibilités techniques entre exigences fortement souhaitées."
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-variability-analysis"
       ]
     },
     {
@@ -1800,7 +2514,16 @@
           "loc": "10.7.3",
           "quote": "Chaque différence de structure, de fonctionnalité, de comportement ou de qualité est candidate à la variabilité."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-commonality-analysis",
+        "n-variability-analysis"
+      ],
+      "trap": {
+        "fr": "Croire que les deux analyses utilisent des outils différents.",
+        "en": "Believing the two analyses use different tools."
+      }
     },
     {
       "id": "inf4-04-qz-11",
@@ -1811,8 +2534,8 @@
       },
       "options": [
         {
-          "fr": "Il définit les deux exigences comme communes, car toutes deux concernent la porte",
-          "en": "He defines both as common, since both concern the door"
+          "fr": "Il définit les deux exigences comme communes, car toutes deux concernent la porte d’entrée de la maison",
+          "en": "He defines both requirements as common, since both concern the house’s front door"
         },
         {
           "fr": "Il définit le digicode comme variant obligatoire et l'empreinte comme variant optionnel",
@@ -1823,8 +2546,8 @@
           "en": "He adds an excludes constraint between two requirements with no variation point"
         },
         {
-          "fr": "Il définit le point de variation « mécanisme d'identification du verrou de porte » avec deux variants",
-          "en": "He defines the variation point \"door lock identification mechanism\" with two variants"
+          "fr": "Il définit le point de variation « mécanisme d’identification du verrou » avec deux variants",
+          "en": "He defines the variation point “lock identification mechanism” with two variants"
         }
       ],
       "correct": [
@@ -1846,7 +2569,17 @@
           "loc": "Exemple 10-7",
           "quote": "On définit donc le point de variation"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-variation-point",
+        "n-variant",
+        "n-defining-variable-requirements"
+      ],
+      "trap": {
+        "fr": "Déclarer communes deux exigences différentes au lieu de créer un point de variation.",
+        "en": "Declaring two different requirements common instead of creating a variation point."
+      }
     },
     {
       "id": "inf4-04-qz-12",
@@ -1872,7 +2605,16 @@
           "loc": "10.8.3",
           "quote": "restreignent ou imposent des liaisons de variants entre eux, ou entre variants et points de variation lors de l'ingénierie d'application."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-variability-dependencies",
+        "n-constraint-dependencies"
+      ],
+      "trap": {
+        "fr": "Ranger requires / excludes parmi les dépendances de variabilité.",
+        "en": "Putting requires / excludes among variability dependencies."
+      }
     },
     {
       "id": "inf4-04-qz-13",
@@ -1903,6 +2645,11 @@
           "loc": "Exemple 10-8",
           "quote": "Le modèle de variabilité contient donc le point de variation"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-external-variability",
+        "n-product-management-decisions"
       ]
     },
     {
@@ -1924,7 +2671,15 @@
           "loc": "Fig. 10-9",
           "quote": "Une application donnée doit obligatoirement sélectionner soit le mode manuel, soit le mode automatique, mais jamais les deux."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-alternative-choice"
+      ],
+      "trap": {
+        "fr": "Lire [1..1] comme « au moins un » : c’est exactement un.",
+        "en": "Reading [1..1] as “at least one”: it is exactly one."
+      }
     },
     {
       "id": "inf4-04-qz-15",
@@ -1950,9 +2705,227 @@
           "loc": "Exemple 10-14",
           "quote": "impose le choix d'un niveau de performance vidéo dès que la vidéosurveillance est activée."
         }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-constraint-dependencies",
+        "n-home-security-example"
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "exercises": [
+    {
+      "id": "inf4-04-ex-01",
+      "title": {
+        "fr": "De la matrice à l’OVM : une ligne de distributeurs de boissons",
+        "en": "From matrix to OVM: a drinks vending machine line"
+      },
+      "difficulty": 3,
+      "level": "apply",
+      "objective": "o3",
+      "statement": {
+        "fr": "Exigences de trois applications prévues : **R1** « servir une boisson choisie » (App. 1, 2, 3) ; **R2** « payer en pièces » (App. 1, 2) ; **R3** « payer par carte sans contact » (App. 2, 3) ; **R4** « payer par smartphone » (App. 3) ; **R5** « afficher les calories » (App. 2) ; **R6** « servir des boissons chaudes » (App. 1, 3), qui nécessite « chauffer l’eau » (**R7**, App. 1, 3). (a) Dresse la matrice. (b) Quelles exigences sont communes ? (c) Définis les points de variation, variants et dépendances (chaque application propose au moins un moyen de paiement).",
+        "en": "Requirements of three planned applications: **R1** “serve a chosen drink” (App. 1, 2, 3); **R2** “pay with coins” (App. 1, 2); **R3** “pay by contactless card” (App. 2, 3); **R4** “pay by smartphone” (App. 3); **R5** “display calories” (App. 2); **R6** “serve hot drinks” (App. 1, 3), which needs “heat water” (**R7**, App. 1, 3). (a) Draw the matrix. (b) Which requirements are common? (c) Define variation points, variants and dependencies (each application offers at least one payment method)."
+      },
+      "hints": [
+        {
+          "fr": "Commune = obligatoire dans les trois applications.",
+          "en": "Common = mandatory in all three applications."
+        },
+        {
+          "fr": "Les trois moyens de paiement portent sur un même sujet ; « au moins un » donne quelle cardinalité ?",
+          "en": "The three payment methods share a subject; “at least one” gives which cardinality?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n(a) R1 : 1, 2, 3 ; R2 : 1, 2 ; R3 : 2, 3 ; R4 : 3 ; R5 : 2 ; R6 : 1, 3 ; R7 : 1, 3.\n(b) Seule **R1** est commune (obligatoire dans les trois applications).\n(c) **Point de variation « moyen de paiement »** : variants pièces, carte sans contact, smartphone ; **choix alternatif [1..3]** (au moins un, éventuellement plusieurs). **Point de variation « affichage nutritionnel »** : variant calories, **optionnel**. **Point de variation « boissons chaudes »** : variant boissons chaudes, **optionnel**. **Contrainte** : boissons chaudes **requires** chauffer l’eau (R7 n’est pas un choix du client : c’est une conséquence, de la variabilité interne). La gestion de produit valide le tout.",
+        "en": "**Proposed** solution.\n(a) R1: 1, 2, 3; R2: 1, 2; R3: 2, 3; R4: 3; R5: 2; R6: 1, 3; R7: 1, 3.\n(b) Only **R1** is common (mandatory in all three applications).\n(c) **Variation point “payment method”**: variants coins, contactless card, smartphone; **alternative choice [1..3]** (at least one, possibly several). **Variation point “nutrition display”**: calories variant, **optional**. **Variation point “hot drinks”**: hot drinks variant, **optional**. **Constraint**: hot drinks **requires** heat water (R7 is not a customer choice: it is a consequence, internal variability). Product management validates the whole."
+      },
+      "notions": [
+        "n-application-requirements-matrix",
+        "n-variation-point",
+        "n-variant",
+        "n-alternative-choice",
+        "n-constraint-dependencies"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Tableau 10-1",
+          "quote": "**R1** | obligatoire | obligatoire | obligatoire | obligatoire | | **R2**"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Tableau 10-1",
+          "quote": "elle est donc candidate pour devenir une exigence commune de la ligne de produits."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Exemple 10-7",
+          "quote": "Ces exigences se rapportent au même sujet de variabilité : le mécanisme d'identification."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.8.2",
+          "quote": "fixent les combinaisons autorisées."
+        }
+      ]
+    },
+    {
+      "id": "inf4-04-ex-02",
+      "title": {
+        "fr": "Kano et communalité : classer des exigences",
+        "en": "Kano and commonality: classifying requirements"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o2",
+      "statement": {
+        "fr": "Dans une ligne de systèmes domotiques, classe chaque exigence commune dans une catégorie de Kano du cours (exigence de base, haute priorité, communalité stratégique) et justifie : (1) contrôler le chauffage ; (2) contrôler l’accès à la maison ; (3) communiquer en réseau sans fil, pas encore demandé mais attendu demain.",
+        "en": "In a line of home automation systems, classify each common requirement in one of the course’s Kano categories (basic requirement, high priority, strategic commonality) and justify: (1) control the heating; (2) control access to the house; (3) communicate over a wireless network, not yet requested but expected tomorrow."
+      },
+      "hints": [
+        {
+          "fr": "Ce sont exactement les trois exemples du tableau du cours.",
+          "en": "These are exactly the three examples in the course table."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé (exemples du livre). (1) **Exigence de base** (10-1) : toute application du domaine doit la satisfaire. (2) **Haute priorité** (10-2) : prioritaire pour un grand groupe de clients, rejetée par aucun. (3) **Communalité stratégique** (10-3) : besoin futur prévisible, implémenté d’emblée pour se démarquer de la concurrence.",
+        "en": "Solution (the book’s examples). (1) **Basic requirement** (10-1): every application of the domain must satisfy it. (2) **High priority** (10-2): a priority for a large group of customers, rejected by none. (3) **Strategic commonality** (10-3): a foreseeable future need, implemented straight away to stand out from competitors."
+      },
+      "notions": [
+        "n-kano-basic-requirements",
+        "n-high-priority-requirements",
+        "n-strategic-commonality"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Exemple 10-1",
+          "quote": "Elle est donc une bonne candidate pour être incluse dans l'ensemble des exigences communes."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.6.2",
+          "quote": "Une analyse plus fine s'appuie sur la classification de Kano"
+        }
+      ]
+    },
+    {
+      "id": "inf4-04-ex-03",
+      "title": {
+        "fr": "Dépendance de variabilité ou de contrainte ?",
+        "en": "Variability or constraint dependency?"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "Dans le système de sécurité domestique, dis si chaque énoncé est une dépendance de variabilité ou une dépendance de contrainte, et précise laquelle : (1) l’alarme acoustique est toujours fournie ; (2) l’information de la police est une option ; (3) la désactivation se fait par carte ou par code, jamais les deux ; (4) choisir la vidéosurveillance impose de choisir un niveau de qualité vidéo.",
+        "en": "In the home security system, say whether each statement is a variability or a constraint dependency, and which one: (1) the acoustic alarm is always provided; (2) informing the police is an option; (3) deactivation is by card or by code, never both; (4) choosing video surveillance requires choosing a video quality level."
+      },
+      "hints": [
+        {
+          "fr": "Variabilité : obligatoire, optionnel, choix alternatif ; contrainte : requires, excludes.",
+          "en": "Variability: mandatory, optional, alternative choice; constraint: requires, excludes."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) Variabilité, **obligatoire**. (2) Variabilité, **optionnelle**. (3) Variabilité, **choix alternatif [1..1]**. (4) **Contrainte requires** (vidéosurveillance requires un variant du point de variation « qualité vidéo »).",
+        "en": "**Proposed** solution. (1) Variability, **mandatory**. (2) Variability, **optional**. (3) Variability, **alternative choice [1..1]**. (4) **Requires constraint** (video surveillance requires a variant of the “video quality” variation point)."
+      },
+      "notions": [
+        "n-variability-dependencies",
+        "n-constraint-dependencies",
+        "n-alternative-choice"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "10.8.2",
+          "quote": "fixent les combinaisons autorisées."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Exemple 10-12",
+          "quote": "En faisant abstraction des exigences de désactivation d'alarme, nous définissons le point de variation"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/8__ple.md",
+          "loc": "Fig. 10-10",
+          "quote": "Dès lors qu'une application choisit le variant"
+        }
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "inf4-04-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "A variation point describes what varies, and variants describe how it varies.",
+      "accepted": [
+        "A variation point describes what varies and variants describe how it varies."
+      ]
+    },
+    {
+      "id": "inf4-04-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "A requirement is common only if it is {{mandatory}} in {{all}} planned applications.",
+      "translation": "Une exigence n’est commune que si elle est obligatoire dans toutes les applications prévues."
+    },
+    {
+      "id": "inf4-04-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Requires and excludes are variability dependencies, like mandatory and optional.",
+      "error": "are variability dependencies, like mandatory and optional",
+      "corrected": "are constraint dependencies",
+      "explanation": {
+        "fr": "Obligatoire, optionnel et choix alternatif sont des dépendances de variabilité ; requires et excludes sont des dépendances de contrainte.",
+        "en": "Mandatory, optional and alternative choice are variability dependencies; requires and excludes are constraint dependencies."
+      }
+    },
+    {
+      "id": "inf4-04-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique comment on passe de deux exigences divergentes à un point de variation.",
+        "en": "In 2-3 English sentences, explain how two diverging requirements become a variation point."
+      },
+      "modelAnswer": "When two applications require different things about the same subject, the subject becomes a variation point. Each requirement becomes a variant of this variation point. For example, a keypad and a fingerprint reader are variants of the identification mechanism.",
+      "keywords": [
+        "same subject",
+        "variation point",
+        "variant",
+        "example"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité le sujet commun.",
+          "en": "I mentioned the common subject."
+        },
+        {
+          "fr": "J’ai donné un exemple.",
+          "en": "I gave an example."
+        }
+      ],
+      "usefulPhrases": [
+        "about the same subject",
+        "becomes a variant of",
+        "for example"
+      ]
+    }
+  ]
 }
