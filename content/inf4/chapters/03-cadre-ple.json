@@ -10,6 +10,110 @@
     "fr": "10^21 produits ne se listent pas : comment décrire toute une famille en un seul arbre ?",
     "en": "10^21 products cannot be listed: how do you describe a whole family in a single tree?"
   },
+  "question": {
+    "fr": "Comment décrire en un seul modèle une famille de milliers, voire de milliards de produits, et savoir exactement lesquels il autorise ?",
+    "en": "How do you describe a family of thousands, even billions, of products in a single model, and know exactly which ones it allows?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Distinguer représentation extensive (produits listés) et intensive (règles), niveau domaine (PLM) et niveau produit.",
+        "en": "Distinguish extensive (listed products) and intensive (rules) representation, domain level (PLM) and product level."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Lire un feature model (obligatoire, optionnel, XOR, cardinalité de groupe, requires, mutex, contraintes) et donner sa sémantique.",
+        "en": "Read a feature model (mandatory, optional, XOR, group cardinality, requires, mutex, constraints) and give its semantics."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Compter les produits autorisés par un feature model et justifier le résultat (exercice 8192 → 46).",
+        "en": "Count the products a feature model allows and justify the result (exercise 8192 → 46)."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Citer les dialectes et les limites des feature models.",
+        "en": "Name feature model dialects and limits."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Exercice du prof (slides 26-27) : construire au moins 12 produits, donner l’espace des combinaisons (2¹³ = 8192), compter les produits autorisés (46) et dire pourquoi.",
+        "en": "The teacher’s exercise (slides 26-27): build at least 12 products, give the combination space (2¹³ = 8192), count the allowed products (46) and say why."
+      },
+      {
+        "fr": "Questions de cours : sémantique d’un feature model, rond plein / rond vide, effet d’un XOR, d’un requires ou d’un mutex.",
+        "en": "Course questions: feature model semantics, filled / empty circle, effect of an XOR, a requires or a mutex."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 1 et 2 : communalité, variabilité, dépendances ; ingénierie de domaine et d’application.",
+    "en": "Chapters 1 and 2: commonality, variability, dependencies; domain and application engineering."
+  },
+  "next": {
+    "fr": "Le chapitre 4 décrit la variabilité des exigences avec l’OVM ; le chapitre 9 construit un feature model à partir d’exigences ; le chapitre 7 le traduit en contraintes pour le vérifier.",
+    "en": "Chapter 4 describes requirements variability with OVM; chapter 9 builds a feature model from requirements; chapter 7 translates it into constraints to verify it."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Extensive : chaque produit listé (simple, mais ne passe pas à l’échelle) ; intensive : des règles qui génèrent les produits valides (PLM).",
+        "en": "Extensive: each product listed (simple, but does not scale); intensive: rules that generate valid products (PLM)."
+      },
+      {
+        "fr": "FODA : rond plein = obligatoire, rond vide = optionnel ; XOR = exactement un ; <m..n> = entre m et n enfants ; requires, mutex, contraintes logiques.",
+        "en": "FODA: filled circle = mandatory, empty circle = optional; XOR = exactly one; <m..n> = between m and n children; requires, mutex, logical constraints."
+      },
+      {
+        "fr": "Sémantique d’un feature model = l’ensemble des configurations valides qu’il autorise.",
+        "en": "A feature model’s semantics = the set of valid configurations it allows."
+      },
+      {
+        "fr": "Nombre de produits ≠ 2ⁿ : la structure et les contraintes réduisent l’espace (8192 → 46).",
+        "en": "Number of products ≠ 2ⁿ: structure and constraints shrink the space (8192 → 46)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Compter les produits : multiplier les choix des sous-arbres indépendants, puis traiter les contraintes par cas.",
+        "en": "Count products: multiply the choices of independent subtrees, then handle constraints case by case."
+      },
+      {
+        "fr": "Lister quelques configurations valides et justifier pourquoi une configuration est interdite.",
+        "en": "List some valid configurations and justify why a configuration is forbidden."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "XOR (exactement un) ≠ deux optionnelles (zéro, un ou les deux) ≠ cardinalité <1..2> (au moins un).",
+        "en": "XOR (exactly one) ≠ two optionals (zero, one or both) ≠ cardinality <1..2> (at least one)."
+      },
+      {
+        "fr": "requires (si A alors B) ≠ mutex (jamais A et B ensemble).",
+        "en": "requires (if A then B) ≠ mutex (never A and B together)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "La sémantique se calcule automatiquement en traduisant le modèle en contraintes (chapitre 7).",
+        "en": "The semantics is computed automatically by translating the model into constraints (chapter 7)."
+      }
+    ]
+  },
   "estimatedMinutes": 15,
   "sources": [
     "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
@@ -51,13 +155,16 @@
           "loc": "Page 1",
           "quote": "Espace de la solution / Architecture, Composants & Implémentation"
         }
+      ],
+      "notions": [
+        "n-domain-engineering-activities"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le slogan du cours : « *Domain Engineering: it's all about the family* ». On ne conçoit pas un produit, on conçoit la famille. Trois activités : **Analysis** (identifier la variabilité présente dans la ligne de produits), **Design** (développer une architecture et un plan de production), **Implementation** (développer toutes les features en pensant à la composabilité). Ce chapitre traite surtout de la première : comment *écrire* la variabilité. Le fil rouge de cette partie : *comment spécifier un modèle de ligne de produits (PLM)* ? Quatre familles de langages sont citées : Feature Models, OVM, DOPLER et les modèles par contraintes. Les **feature models** (FODA) sont ceux qu'on étudie à fond ici.",
-        "en": "The course slogan: “*Domain Engineering: it's all about the family*”. You design the family, not one product. Three activities: **Analysis** (identify the variability present in the product line), **Design** (develop an architecture and production plan), **Implementation** (develop all features with composability in mind). This chapter is mostly about the first one: how to *write down* variability. The thread of this part: *how do we specify a product line model (PLM)?* Four language families are listed: Feature Models, OVM, DOPLER and constraint-based models. **Feature models** (FODA) are the ones studied in depth here."
+        "fr": "Le slogan du cours : « *Domain Engineering: it's all about the family* ». On conçoit la famille, pas un produit. Trois activités : **Analysis** (identifier la variabilité de la ligne), **Design** (architecture et plan de production), **Implementation** (développer les features en pensant à leur composabilité). Ce chapitre traite de la première : comment *spécifier un modèle de ligne de produits (PLM)* ? Quatre familles de langages sont citées : feature models, OVM, DOPLER et modèles par contraintes ; on étudie à fond les **feature models** (FODA).",
+        "en": "The course's slogan: “*Domain Engineering: it's all about the family*”. You design the family, not a product. Three activities: **Analysis** (identify the line's variability), **Design** (architecture and production plan), **Implementation** (develop features with composability in mind). This chapter covers the first: how do you *specify a product line model (PLM)*? Four families of languages are cited: feature models, OVM, DOPLER and constraint-based models; **feature models** (FODA) are studied in depth."
       },
       "src": [
         {
@@ -95,6 +202,9 @@
           "loc": "Page 3",
           "quote": "Constraint-based product line models"
         }
+      ],
+      "notions": [
+        "n-domain-engineering-activities"
       ]
     },
     {
@@ -125,6 +235,9 @@
           "loc": "Page 6",
           "quote": "chaque ligne liste la quantité exacte de chaque composant"
         }
+      ],
+      "notions": [
+        "n-extensive-representation"
       ]
     },
     {
@@ -288,13 +401,16 @@
           "loc": "Page 6",
           "quote": "External system PID | 0 | 1 | 1"
         }
+      ],
+      "notions": [
+        "n-extensive-representation"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Même information en **breakdown structure** : une décomposition produit par produit (ex. *Basic* = 1 Chronometric reaction measure + 1 Manual product ID ; *Advanced* contient 2 RFID product ID). Dans les deux cas, chaque produit est défini individuellement par la liste exhaustive de ses composants : c'est de l'énumération **extensive**. Les avantages annoncés : **Big picture** (vision claire de ce qui est attendu), **Completeness** (couverture des variantes fonctionnelles et physiques), **Consistency** (pas de duplication d'exigences : on définit exigences communes et spécifiques), **Easy to maintain** (au niveau système et au niveau feature).",
-        "en": "The same information as a **breakdown structure**: a product-by-product decomposition (e.g. *Basic* = 1 Chronometric reaction measure + 1 Manual product ID; *Advanced* contains 2 RFID product ID). Either way, each product is defined individually by an exhaustive list of its components: this is **extensive** enumeration. The announced benefits: **Big picture** (clear vision of what is expected), **Completeness** (coverage of functional & physical variants), **Consistency** (avoid duplicating requirements by defining common & specific ones), **Easy to maintain** (at system and at feature level)."
+        "fr": "Même information en **breakdown structure** : une décomposition produit par produit (ex. *Basic* = 1 Chronometric reaction measure + 1 Manual product ID). Dans les deux cas, chaque produit est défini par la liste exhaustive de ses composants : c'est l'énumération **extensive**. Avantages annoncés : **Big picture** (vision claire), **Completeness** (couverture des variantes), **Consistency** (exigences communes et spécifiques sans duplication), **Easy to maintain**.",
+        "en": "The same information as a **breakdown structure**: a product-by-product decomposition (e.g., *Basic* = 1 Chronometric reaction measure + 1 Manual product ID). In both cases, each product is defined by the exhaustive list of its components: this is **extensive** enumeration. Stated advantages: **Big picture** (clear view), **Completeness** (variant coverage), **Consistency** (common and specific requirements without duplication), **Easy to maintain**."
       },
       "src": [
         {
@@ -332,6 +448,10 @@
           "loc": "Page 8",
           "quote": "**Easy to maintain :** * At system level"
         }
+      ],
+      "notions": [
+        "n-extensive-representation",
+        "n-extensive-benefits"
       ]
     },
     {
@@ -367,6 +487,9 @@
           "loc": "Page 9",
           "quote": "Il est impossible d'énumérer un par un $10^{21}$ produits."
         }
+      ],
+      "notions": [
+        "n-scalability-issue"
       ]
     },
     {
@@ -427,6 +550,11 @@
           "loc": "Page 10",
           "quote": "Représentation explicite des instances dérivées"
         }
+      ],
+      "notions": [
+        "n-intensive-representation",
+        "n-plm",
+        "n-product-model"
       ]
     },
     {
@@ -475,6 +603,10 @@
           "loc": "Page 10",
           "quote": "domain([A, B, C], 0, 1)"
         }
+      ],
+      "notions": [
+        "n-languages-plm",
+        "n-constraint-based-plm"
       ]
     },
     {
@@ -525,6 +657,9 @@
           "loc": "Page 11",
           "quote": "Feature-Oriented Domain Analysis (FODA) Feasibility Study"
         }
+      ],
+      "notions": [
+        "n-fm-foda"
       ]
     },
     {
@@ -569,6 +704,9 @@
           "loc": "Page 11",
           "quote": "`Air conditioning` * **Règle de composition (Composition"
         }
+      ],
+      "notions": [
+        "n-fm-semantics"
       ]
     },
     {
@@ -619,6 +757,9 @@
           "loc": "Page 12",
           "quote": "Intentions VS prescribed solutions"
         }
+      ],
+      "notions": [
+        "n-feature"
       ]
     },
     {
@@ -635,8 +776,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le diagramme FODA est un **arbre** : la **racine** est le concept principal de la ligne de produits, les **nœuds** sont les features (concrètes ou abstraites), et les arêtes sont des relations « composed of » (raffinement / décomposition). Dans le dialecte FODA, **rond plein = obligatoire**, **rond vide = optionnel**. **Exemple 1** : racine F1 ; enfants obligatoires F2, F3, F4 ; sous F3 : F5 (optionnelle), F6 (optionnelle), F7 (obligatoire). F1, F2, F3, F4, F7 figurent dans tous les produits ; F5 et F6 sont présentes ou absentes indépendamment, soit 2² = **4 produits**.",
-        "en": "A FODA diagram is a **tree**: the **root** is the main concept of the product line, **nodes** are features (concrete or abstract), and edges are “composed of” relationships (refinement / decomposition). In the FODA dialect, **filled circle = mandatory**, **empty circle = optional**. **Example 1**: root F1; mandatory children F2, F3, F4; under F3: F5 (optional), F6 (optional), F7 (mandatory). F1, F2, F3, F4, F7 are in every product; F5 and F6 are independently present or absent, giving 2² = **4 products**."
+        "fr": "Le diagramme FODA est un **arbre** : la **racine** est le concept principal de la ligne, les **nœuds** sont les features (concrètes ou abstraites), les arêtes des relations « composed of » (décomposition). Dans le dialecte FODA, **rond plein = obligatoire**, **rond vide = optionnel**. **Exemple 1** : racine F1 ; enfants obligatoires F2, F3, F4 ; sous F3 : F5 et F6 optionnelles, F7 obligatoire. F5 et F6 sont présentes ou absentes indépendamment : 2² = **4 produits**.",
+        "en": "A FODA diagram is a **tree**: the **root** is the line's main concept, **nodes** are features (concrete or abstract), edges are “composed of” relations (decomposition). In the FODA dialect, **filled circle = mandatory**, **empty circle = optional**. **Example 1**: root F1; mandatory children F2, F3, F4; under F3: F5 and F6 optional, F7 mandatory. F5 and F6 are independently present or absent: 2² = **4 products**."
       },
       "src": [
         {
@@ -669,6 +810,10 @@
           "loc": "Page 15",
           "quote": "donnant $2^2 = 4$ combinaisons"
         }
+      ],
+      "notions": [
+        "n-foda-diagram-structure",
+        "n-mandatory-optional-features"
       ]
     },
     {
@@ -713,6 +858,10 @@
           "loc": "Page 19",
           "quote": "8 configurations avec F10"
         }
+      ],
+      "notions": [
+        "n-xor-alternatives",
+        "n-group-cardinality"
       ]
     },
     {
@@ -783,6 +932,10 @@
           "loc": "Page 24",
           "quote": "Si la feature `F9` est sélectionnée, alors il est interdit de sélectionner simultanément `F5` et `F6`."
         }
+      ],
+      "notions": [
+        "n-requires-mutex",
+        "n-complex-constraints"
       ]
     },
     {
@@ -799,8 +952,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Exercice « Manual Analysis of FODA model » : racine F1 ; F2 (obligatoire) avec F8 (optionnel), F9 (obligatoire), F10 (optionnel) ; sous F9, cardinalité `<1..1>` sur F13, F14, F15 ; F3 (optionnel) ; F4 (optionnel) avec XOR F11/F12 ; F5 (obligatoire) ; F7 (optionnel). Dépendances : F10 mutex F3, F12 mutex F7, F15 requires F11 ; contraintes : F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7. Trois questions : (1) construire au moins 12 produits ; (2) espace des combinaisons possibles ; (3) combien le modèle en autorise réellement. Corrigé : l'espace brut vaut **2¹³ = 8192** combinaisons ; le modèle n'en autorise que **46**. La structure, les cardinalités de groupe, les `requires`/`mutex` et les contraintes booléennes réduisent drastiquement l'espace des solutions.",
-        "en": "Exercise “Manual Analysis of FODA model”: root F1; F2 with F8 (optional), F9 (mandatory), F10 (optional); under F9, cardinality `<1..1>` over F13, F14, F15; F3 (optional); F4 (optional) with XOR F11/F12; F5 (mandatory); F7 (optional). Dependencies: F10 mutex F3, F12 mutex F7, F15 requires F11; constraints: F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7. Three questions: (1) build at least 12 products; (2) the space of possible combinations; (3) how many the model really allows. Solution: the raw space is **2¹³ = 8192** combinations; the model only allows **46**. The structure, group cardinalities, `requires`/`mutex` and Boolean constraints drastically shrink the solution space."
+        "fr": "Exercice « Manual Analysis of FODA model » : racine F1 ; F2 (obligatoire) avec F8 (optionnel), F9 (obligatoire), F10 (optionnel) ; sous F9, cardinalité `<1..1>` sur F13, F14, F15 ; F3 (optionnel) ; F4 (optionnel) avec XOR F11/F12 ; F5 (obligatoire) ; F7 (optionnel). Dépendances : F10 mutex F3, F12 mutex F7, F15 requires F11 ; contraintes : F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7. Réponses du prof : espace brut **2¹³ = 8192** combinaisons, mais seulement **46** produits autorisés.",
+        "en": "Exercise “Manual Analysis of FODA model”: root F1; F2 (mandatory) with F8 (optional), F9 (mandatory), F10 (optional); under F9, cardinality `<1..1>` on F13, F14, F15; F3 (optional); F4 (optional) with XOR F11/F12; F5 (mandatory); F7 (optional). Dependencies: F10 mutex F3, F12 mutex F7, F15 requires F11; constraints: F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7. The teacher's answers: raw space **2¹³ = 8192** combinations, but only **46** allowed products."
       },
       "src": [
         {
@@ -838,6 +991,94 @@
           "loc": "Page 27",
           "quote": "réduisent drastiquement l'espace des solutions de 8192 à seulement 46 produits valides"
         }
+      ],
+      "notions": [
+        "n-fm-exercise-46"
+      ]
+    },
+    {
+      "type": "method",
+      "notions": [
+        "n-fm-exercise-46",
+        "n-fm-semantics"
+      ],
+      "title": {
+        "fr": "Compter les produits d’un feature model",
+        "en": "Counting a feature model’s products"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Fixer ce qui est toujours présent : la racine et les features obligatoires dont le parent est présent.",
+            "en": "Fix what is always present: the root and the mandatory features whose parent is present."
+          },
+          "why": {
+            "fr": "Elles figurent dans tous les produits et ne multiplient rien.",
+            "en": "They appear in every product and multiply nothing."
+          }
+        },
+        {
+          "do": {
+            "fr": "Compter les choix de chaque bloc : une optionnelle = 2 ; un XOR sous un parent obligatoire = nombre d’alternatives ; sous un parent optionnel = 1 + ce nombre ; un groupe <m..n> = nombre de sous-ensembles de taille m à n.",
+            "en": "Count each block’s choices: an optional = 2; an XOR under a mandatory parent = number of alternatives; under an optional parent = 1 + that number; a group <m..n> = number of subsets of size m to n."
+          },
+          "why": {
+            "fr": "Chaque élément du diagramme filtre l’espace des produits.",
+            "en": "Each diagram element filters the product space."
+          }
+        },
+        {
+          "do": {
+            "fr": "Sans contrainte transversale : multiplier les choix des blocs indépendants.",
+            "en": "Without cross-tree constraints: multiply the choices of independent blocks."
+          },
+          "why": {
+            "fr": "C’est ainsi que l’exemple passe de 4 à 8 puis à 24 produits.",
+            "en": "This is how the example goes from 4 to 8 then 24 products."
+          }
+        },
+        {
+          "do": {
+            "fr": "Avec requires, mutex ou contraintes logiques : raisonner par cas sur la feature la plus contrainte, compter chaque cas, puis additionner.",
+            "en": "With requires, mutex or logical constraints: reason case by case on the most constrained feature, count each case, then add up."
+          },
+          "why": {
+            "fr": "Les contraintes relient des blocs : on ne peut plus multiplier directement.",
+            "en": "Constraints link blocks: you can no longer multiply directly."
+          }
+        },
+        {
+          "do": {
+            "fr": "Contrôler : le total doit rester inférieur à 2ⁿ (n = features hors racine).",
+            "en": "Check: the total must stay below 2ⁿ (n = features excluding the root)."
+          },
+          "why": {
+            "fr": "2ⁿ est l’espace brut des combinaisons (8192 pour 13 features).",
+            "en": "2ⁿ is the raw combination space (8192 for 13 features)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "donnant $2^2 = 4$ combinaisons"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 17",
+          "quote": "Ensemble des 8 produits valides"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 19",
+          "quote": "Ensemble des 24 produits valides"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: $2^{13} = 8192$ combinations"
+        }
       ]
     },
     {
@@ -873,9 +1114,15 @@
     },
     {
       "type": "paragraph",
+      "notions": [
+        "n-feature-dialects",
+        "n-fore-dialect",
+        "n-individual-cardinalities",
+        "n-feature-attributes"
+      ],
       "text": {
-        "fr": "Il existe plusieurs **dialectes** : FODA (arbre, original), FORM, FOPLE, FeatuRSEB, GP, Bosch, FORE. Dans FORE, *requires* est une flèche orientée, *excludes* une flèche bidirectionnelle, et la cardinalité de groupe `<m..n>` impose, si le parent est sélectionné, entre m et n enfants. Concepts ajoutés au dialecte FODA : **cardinalités individuelles** (nombre de fois qu'une feature peut apparaître dans une configuration), **attributs** (caractéristiques mesurables avec nom, domaine et valeur au moment de la configuration), **contraintes complexes** (booléennes, arithmétiques, symboliques). Mais les feature models ont des **problèmes**. L'exemple du *Braking System* le montre : confusion entre structure physique et décision de configuration ; ambiguïté entre décomposition (« partie de ») et sous-typage (« est un ») ; ambiguïtés entre cardinalités d'éléments `[0..2]`, cardinalités de groupe `<1..2>` et contraintes `includes`/`excludes`.",
-        "en": "There are several **dialects**: FODA (tree, original), FORM, FOPLE, FeatuRSEB, GP, Bosch, FORE. In FORE, *requires* is a directed arrow, *excludes* a bidirectional arrow, and group cardinality `<m..n>` forces, if the parent is selected, between m and n children. Concepts added to the FODA dialect: **individual cardinalities** (number of times a feature can occur in a configuration), **attributes** (measurable characteristics with a name, a domain and a value at configuration time), **complex constraints** (Boolean, arithmetic, symbolic). But feature models have **problems**. The *Braking System* example shows it: confusion between physical structure and configuration decision; ambiguity between decomposition (“part of”) and subtyping (“is a”); ambiguities between element cardinalities `[0..2]`, group cardinalities `<1..2>` and `includes`/`excludes` constraints."
+        "fr": "Il existe plusieurs **dialectes** : FODA (l'original), FORM, FOPLE, FeatuRSEB, GP, Bosch, FORE. Dans FORE, *requires* est une flèche orientée, *excludes* une flèche bidirectionnelle. Concepts ajoutés au dialecte FODA : **cardinalités individuelles** (nombre de fois qu'une feature peut apparaître), **attributs** (caractéristiques mesurables avec nom, domaine et valeur fixée à la configuration), **contraintes complexes** (booléennes, arithmétiques, symboliques).",
+        "en": "There are several **dialects**: FODA (the original), FORM, FOPLE, FeatuRSEB, GP, Bosch, FORE. In FORE, *requires* is a directed arrow, *excludes* a bidirectional arrow. Concepts added to the FODA dialect: **individual cardinalities** (how many times a feature can appear), **attributes** (measurable characteristics with name, domain and value set at configuration), **complex constraints** (Boolean, arithmetic, symbolic)."
       },
       "src": [
         {
@@ -907,7 +1154,19 @@
           "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
           "loc": "Page 29",
           "quote": "Boolean, Arithmetic, Symbolic (`all_different(...)`, `relation(...)`,"
-        },
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-fm-limitations"
+      ],
+      "text": {
+        "fr": "Mais les feature models ont des **problèmes**, que montre l'exemple du *Braking System* : confusion entre structure physique et décision de configuration ; ambiguïté entre décomposition (« partie de ») et sous-typage (« est un ») ; ambiguïtés entre cardinalités d'éléments `[0..2]`, cardinalités de groupe `<1..2>` et contraintes `includes` / `excludes`.",
+        "en": "But feature models have **problems**, shown by the *Braking System* example: confusion between physical structure and configuration decision; ambiguity between decomposition (“part of”) and subtyping (“is a”); ambiguities between element cardinalities `[0..2]`, group cardinalities `<1..2>` and `includes` / `excludes` constraints."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
           "loc": "Page 32",
@@ -945,7 +1204,8 @@
           "loc": "Page 2",
           "quote": "Domain engineering = Engineering for reuse"
         }
-      ]
+      ],
+      "notion": "n-domain-engineering-activities"
     },
     {
       "id": "term-extensive",
@@ -965,7 +1225,8 @@
           "loc": "Page 7",
           "quote": "Chaque produit est défini individuellement par la liste exhaustive de ses fonctionnalités et composants."
         }
-      ]
+      ],
+      "notion": "n-extensive-representation"
     },
     {
       "id": "term-intensive",
@@ -981,7 +1242,8 @@
           "loc": "Page 10",
           "quote": "permettant de générer implicitement tous les produits valides sans les énumérer"
         }
-      ]
+      ],
+      "notion": "n-intensive-representation"
     },
     {
       "id": "term-plm",
@@ -997,7 +1259,8 @@
           "loc": "Page 10",
           "quote": "Product Line Models (PLMs): Intensive representation"
         }
-      ]
+      ],
+      "notion": "n-plm"
     },
     {
       "id": "term-feature",
@@ -1017,7 +1280,8 @@
           "loc": "Page 12",
           "quote": "A feature is an essential abstraction of a functionality or product characteristic relevant to stakeholders"
         }
-      ]
+      ],
+      "notion": "n-feature"
     },
     {
       "id": "term-foda",
@@ -1038,7 +1302,8 @@
           "loc": "Page 37",
           "quote": "Version originale pionnière | | **FORM** | Graphe | Rond"
         }
-      ]
+      ],
+      "notion": "n-fm-foda"
     },
     {
       "id": "term-mandatory-optional",
@@ -1054,7 +1319,8 @@
           "loc": "Page 37",
           "quote": "FODA** | Arbre | Rond plein | Rond vide"
         }
-      ]
+      ],
+      "notion": "n-mandatory-optional-features"
     },
     {
       "id": "term-xor",
@@ -1070,7 +1336,8 @@
           "loc": "Page 16",
           "quote": "Exactement une feature parmi le groupe doit être sélectionnée."
         }
-      ]
+      ],
+      "notion": "n-xor-alternatives"
     },
     {
       "id": "term-group-cardinality",
@@ -1086,7 +1353,8 @@
           "loc": "Page 18",
           "quote": "Nombre min/max de caractéristiques sélectionnables dans le groupe."
         }
-      ]
+      ],
+      "notion": "n-group-cardinality"
     },
     {
       "id": "term-cross-tree",
@@ -1107,7 +1375,8 @@
           "loc": "Page 21",
           "quote": "Toutes les configurations contenant simultanément `F2` et `F8` sont éliminées/invalides."
         }
-      ]
+      ],
+      "notion": "n-requires-mutex"
     },
     {
       "id": "term-fm-semantics",
@@ -1123,7 +1392,8 @@
           "loc": "Slide 11",
           "quote": "La sémantique d'un modèle de fonctionnalités correspond à l'ensemble des configurations valides de produits qu'il autorise"
         }
-      ]
+      ],
+      "notion": "n-fm-semantics"
     }
   ],
   "notions": [
@@ -1314,7 +1584,234 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "inf4-03-fc-01",
+      "termId": "term-domain-engineering",
+      "front": {
+        "fr": "ingénierie de domaine ?",
+        "en": "domain engineering?"
+      },
+      "back": {
+        "fr": "Ingénierie pour la réutilisation : analyse, conception et implémentation de la famille de produits.",
+        "en": "Engineering for reuse: analysis, design and implementation of the product family."
+      }
+    },
+    {
+      "id": "inf4-03-fc-02",
+      "termId": "term-extensive",
+      "front": {
+        "fr": "représentation extensive ?",
+        "en": "extensive representation?"
+      },
+      "back": {
+        "fr": "Chaque produit est défini individuellement par la liste exhaustive de ses composants (matrice, breakdown structure) ; ne passe pas à l'échelle.",
+        "en": "Each product is defined individually by an exhaustive list of its components (matrix, breakdown structure); does not scale."
+      }
+    },
+    {
+      "id": "inf4-03-fc-03",
+      "termId": "term-intensive",
+      "front": {
+        "fr": "représentation intensive ?",
+        "en": "intensive representation?"
+      },
+      "back": {
+        "fr": "Règles, contraintes et modèles génériques qui génèrent implicitement tous les produits valides sans les énumérer.",
+        "en": "Generic rules, constraints and models that implicitly generate all valid products without listing them."
+      }
+    },
+    {
+      "id": "inf4-03-fc-04",
+      "termId": "term-plm",
+      "front": {
+        "fr": "modèle de ligne de produits (PLM) ?",
+        "en": "product line model (PLM)?"
+      },
+      "back": {
+        "fr": "Modèle du niveau domaine, en représentation intensive (feature model, OVM, DOPLER, modèle par contraintes).",
+        "en": "Domain-level model, in intensive representation (feature model, OVM, DOPLER, constraint-based model)."
+      }
+    },
+    {
+      "id": "inf4-03-fc-05",
+      "termId": "term-feature",
+      "front": {
+        "fr": "feature (caractéristique) ?",
+        "en": "feature?"
+      },
+      "back": {
+        "fr": "Abstraction essentielle d'une fonctionnalité ou caractéristique du produit, pertinente pour les parties prenantes.",
+        "en": "An essential abstraction of a functionality or product characteristic relevant to stakeholders."
+      }
+    },
+    {
+      "id": "inf4-03-fc-06",
+      "termId": "term-foda",
+      "front": {
+        "fr": "FODA ?",
+        "en": "FODA?"
+      },
+      "back": {
+        "fr": "Feature-Oriented Domain Analysis (Kang et al., SEI, 1990) : le premier dialecte de feature models, sous forme d'arbre.",
+        "en": "Feature-Oriented Domain Analysis (Kang et al., SEI, 1990): the first feature-model dialect, tree-shaped."
+      }
+    },
+    {
+      "id": "inf4-03-fc-07",
+      "termId": "term-mandatory-optional",
+      "front": {
+        "fr": "feature obligatoire / optionnelle ?",
+        "en": "mandatory / optional feature?"
+      },
+      "back": {
+        "fr": "Dans FODA : rond plein = obligatoire (dans tous les produits où le parent est présent) ; rond vide = optionnelle.",
+        "en": "In FODA: filled circle = mandatory; empty circle = optional."
+      }
+    },
+    {
+      "id": "inf4-03-fc-08",
+      "termId": "term-xor",
+      "front": {
+        "fr": "alternative (XOR) ?",
+        "en": "alternative (XOR)?"
+      },
+      "back": {
+        "fr": "Exactement une feature du groupe doit être sélectionnée.",
+        "en": "Exactly one feature of the group must be selected."
+      }
+    },
+    {
+      "id": "inf4-03-fc-09",
+      "termId": "term-group-cardinality",
+      "front": {
+        "fr": "cardinalité de groupe ?",
+        "en": "group cardinality?"
+      },
+      "back": {
+        "fr": "Nombre min/max de features sélectionnables dans un groupe, notée `<m..n>`.",
+        "en": "Min/max number of selectable features in a group, written `<m..n>`."
+      }
+    },
+    {
+      "id": "inf4-03-fc-10",
+      "termId": "term-cross-tree",
+      "front": {
+        "fr": "contrainte transversale (requires / mutex) ?",
+        "en": "cross-tree constraint (requires / mutex)?"
+      },
+      "back": {
+        "fr": "Contrainte entre features de branches différentes : *requires* (A impose B) ou *mutex* (A et B jamais ensemble).",
+        "en": "Constraint between features in different branches: *requires* (A forces B) or *mutex* (A and B never together)."
+      }
+    },
+    {
+      "id": "inf4-03-fc-11",
+      "termId": "term-fm-semantics",
+      "front": {
+        "fr": "sémantique d'un feature model ?",
+        "en": "feature model semantics?"
+      },
+      "back": {
+        "fr": "L'ensemble des configurations valides de produits que le modèle autorise.",
+        "en": "The set of valid product configurations the model allows."
+      }
+    },
+    {
+      "id": "inf4-03-fc-12",
+      "front": {
+        "fr": "Combien de produits pour 2 optionnelles indépendantes, puis avec un XOR de 2 alternatives sous une feature obligatoire ?",
+        "en": "How many products for 2 independent optionals, then with a 2-alternative XOR under a mandatory feature?"
+      },
+      "back": {
+        "fr": "2² = 4, puis 4 × 2 = 8.",
+        "en": "2² = 4, then 4 × 2 = 8."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 15",
+          "quote": "donnant $2^2 = 4$ combinaisons"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 17",
+          "quote": "Ensemble des 8 produits valides"
+        }
+      ],
+      "notions": [
+        "n-xor-alternatives"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-13",
+      "front": {
+        "fr": "Exercice du prof : espace brut et produits autorisés ?",
+        "en": "The teacher’s exercise: raw space and allowed products?"
+      },
+      "back": {
+        "fr": "2¹³ = 8192 combinaisons ; 46 produits valides, car structure, cardinalités, requires, mutex et contraintes filtrent l’espace.",
+        "en": "2¹³ = 8192 combinations; 46 valid products, because structure, cardinalities, requires, mutex and constraints filter the space."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: $2^{13} = 8192$ combinations"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: 46 produits valides."
+        }
+      ],
+      "notions": [
+        "n-fm-exercise-46"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-14",
+      "front": {
+        "fr": "Limites des feature models (exemple du Braking System) ?",
+        "en": "Feature model limits (Braking System example)?"
+      },
+      "back": {
+        "fr": "Confusion structure physique / décision de configuration ; « partie de » / « est un » ; cardinalités d’éléments, de groupe et contraintes ambiguës.",
+        "en": "Confusion between physical structure and configuration decision; “part of” / “is a”; ambiguous element cardinalities, group cardinalities and constraints."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 32",
+          "quote": "Mélange entre structures physiques et décisions de configuration"
+        }
+      ],
+      "notions": [
+        "n-fm-limitations"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-15",
+      "front": {
+        "fr": "PLM par contraintes : à quoi ressemble-t-il ?",
+        "en": "Constraint-based PLM: what does it look like?"
+      },
+      "back": {
+        "fr": "Des variables et des contraintes, ex. domain([A, B, C], 0, 1), B <= A, C <= A.",
+        "en": "Variables and constraints, e.g., domain([A, B, C], 0, 1), B <= A, C <= A."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "domain([A, B, C], 0, 1)"
+        }
+      ],
+      "notions": [
+        "n-constraint-based-plm"
+      ]
+    }
+  ],
   "quiz": [
     {
       "id": "inf4-03-qz-01",
@@ -1340,6 +1837,10 @@
           "loc": "Page 1",
           "quote": "Ingénierie d'application / avec réutilisation"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-domain-engineering-activities"
       ]
     },
     {
@@ -1366,6 +1867,10 @@
           "loc": "Page 6",
           "quote": "C'est une forme d'énumération explicite/extensive."
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-extensive-representation"
       ]
     },
     {
@@ -1392,7 +1897,16 @@
           "loc": "Page 9",
           "quote": "devient totalement inexploitable face à l'explosion combinatoire"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-extensive-representation",
+        "n-scalability-issue"
+      ],
+      "trap": {
+        "fr": "Croire que l’extensive est confuse : elle est claire, mais ne passe pas à l’échelle.",
+        "en": "Believing extensive is confusing: it is clear, but does not scale."
+      }
     },
     {
       "id": "inf4-03-qz-04",
@@ -1438,7 +1952,17 @@
           "loc": "Page 10",
           "quote": "Product Models (PMs): Extensive representation"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-intensive-representation",
+        "n-plm",
+        "n-product-model"
+      ],
+      "trap": {
+        "fr": "Inverser : le niveau domaine (PLM) est intensif, le niveau produit extensif.",
+        "en": "Reversing: the domain level (PLM) is intensive, the product level extensive."
+      }
     },
     {
       "id": "inf4-03-qz-05",
@@ -1479,7 +2003,15 @@
           "loc": "Slide 11",
           "quote": "La sémantique d'un modèle de fonctionnalités correspond à l'ensemble des configurations valides de produits qu'il autorise"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-fm-semantics"
+      ],
+      "trap": {
+        "fr": "Confondre sémantique (configurations valides) et espace brut des combinaisons.",
+        "en": "Confusing semantics (valid configurations) and the raw combination space."
+      }
     },
     {
       "id": "inf4-03-qz-06",
@@ -1510,6 +2042,11 @@
           "loc": "Slide 11",
           "quote": "Alternative features: `Manual`, `Automatic`"
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-fm-foda",
+        "n-mandatory-optional-features"
       ]
     },
     {
@@ -1561,7 +2098,15 @@
           "loc": "Page 12",
           "quote": "Intentions VS prescribed solutions"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-feature"
+      ],
+      "trap": {
+        "fr": "Prendre un élément de conception (classe, fonction) pour une feature.",
+        "en": "Taking a design element (class, function) for a feature."
+      }
     },
     {
       "id": "inf4-03-qz-08",
@@ -1582,7 +2127,16 @@
           "loc": "Page 37",
           "quote": "FODA** | Arbre | Rond plein | Rond vide"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-mandatory-optional-features",
+        "n-foda-diagram-structure"
+      ],
+      "trap": {
+        "fr": "Inverser rond plein (obligatoire) et rond vide (optionnel).",
+        "en": "Swapping filled circle (mandatory) and empty circle (optional)."
+      }
     },
     {
       "id": "inf4-03-qz-09",
@@ -1628,7 +2182,15 @@
           "loc": "Page 17",
           "quote": "Ensemble des 8 produits valides"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-xor-alternatives"
+      ],
+      "trap": {
+        "fr": "Additionner au lieu de multiplier : 4 × 2 = 8.",
+        "en": "Adding instead of multiplying: 4 × 2 = 8."
+      }
     },
     {
       "id": "inf4-03-qz-10",
@@ -1654,7 +2216,15 @@
           "loc": "Page 19",
           "quote": "8 configurations avec F8"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-group-cardinality"
+      ],
+      "trap": {
+        "fr": "Ajouter au lieu de multiplier : exactement un parmi trois → 8 × 3 = 24.",
+        "en": "Adding instead of multiplying: exactly one out of three → 8 × 3 = 24."
+      }
     },
     {
       "id": "inf4-03-qz-11",
@@ -1680,6 +2250,10 @@
           "loc": "Page 22",
           "quote": "Les configurations ayant `F6` avec `F11` sont éliminées."
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-requires-mutex"
       ]
     },
     {
@@ -1701,7 +2275,15 @@
           "loc": "Page 21",
           "quote": "Toutes les configurations contenant simultanément `F2` et `F8` sont éliminées/invalides."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-requires-mutex"
+      ],
+      "trap": {
+        "fr": "Lire mutex comme un requires : mutex interdit la présence simultanée.",
+        "en": "Reading mutex as a requires: mutex forbids joint presence."
+      }
     },
     {
       "id": "inf4-03-qz-13",
@@ -1742,7 +2324,15 @@
           "loc": "Page 24",
           "quote": "Si la feature `F9` est sélectionnée, alors il est interdit de sélectionner simultanément `F5` et `F6`."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-complex-constraints"
+      ],
+      "trap": {
+        "fr": "Oublier que la contrainte ne s’applique que si F9 est sélectionnée.",
+        "en": "Forgetting the constraint only applies if F9 is selected."
+      }
     },
     {
       "id": "inf4-03-qz-14",
@@ -1768,7 +2358,15 @@
           "loc": "Slide 27",
           "quote": "Answer: 46 produits valides."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-fm-exercise-46"
+      ],
+      "trap": {
+        "fr": "Confondre espace brut (2¹³) et produits autorisés (46).",
+        "en": "Confusing the raw space (2¹³) and allowed products (46)."
+      }
     },
     {
       "id": "inf4-03-qz-15",
@@ -1794,9 +2392,242 @@
           "loc": "Page 29",
           "quote": "Specific measurable characteristics of a feature, with a name, a domain and a value at a given configuration time"
         }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-feature-attributes",
+        "n-feature-dialects"
+      ],
+      "trap": {
+        "fr": "Confondre attribut et cardinalité individuelle.",
+        "en": "Confusing attribute and individual cardinality."
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "inf4-03-ex-01",
+      "title": {
+        "fr": "Exercice du prof : « Manual Analysis of FODA model »",
+        "en": "The teacher’s exercise: “Manual Analysis of FODA model”"
+      },
+      "difficulty": 3,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "Modèle : racine F1 ; F2 (obligatoire) avec F8 (optionnelle), F9 (obligatoire), F10 (optionnelle) ; sous F9, cardinalité `<1..1>` sur F13, F14, F15 ; F3 (optionnelle) ; F4 (optionnelle) avec XOR F11 / F12 ; F5 (obligatoire) ; F7 (optionnelle). Dépendances : F10 mutex F3, F12 mutex F7, F15 requires F11 ; contraintes : F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7.\n(1) « Construct at least 12 unique products from this model. » (2) « What is the space of possible combinations with these features? » (3) « How many are actually allowed by the model? » Why?",
+        "en": "Model: root F1; F2 (mandatory) with F8 (optional), F9 (mandatory), F10 (optional); under F9, cardinality `<1..1>` on F13, F14, F15; F3 (optional); F4 (optional) with XOR F11 / F12; F5 (mandatory); F7 (optional). Dependencies: F10 mutex F3, F12 mutex F7, F15 requires F11; constraints: F14 ⟹ ¬(F8 ∧ F10), F13 ⟹ F8 ∧ ¬F7.\n(1) “Construct at least 12 unique products from this model.” (2) “What is the space of possible combinations with these features?” (3) “How many are actually allowed by the model?” Why?"
+      },
+      "hints": [
+        {
+          "fr": "F1, F2, F5, F9 sont toujours présentes ; le groupe <1..1> impose exactement un de F13, F14, F15 : fais trois cas.",
+          "en": "F1, F2, F5, F9 are always present; the <1..1> group imposes exactly one of F13, F14, F15: make three cases."
+        },
+        {
+          "fr": "Cas F13 : F8 présente, F7 absente. Compte les choix restants pour (F10, F3) et pour (F4, F11, F12).",
+          "en": "Case F13: F8 present, F7 absent. Count the remaining choices for (F10, F3) and for (F4, F11, F12)."
+        }
+      ],
+      "solution": {
+        "fr": "Réponses du prof : (2) **2¹³ = 8192** combinaisons (13 features hors racine) ; (3) **46 produits**. Décomposition **proposée** (vérifiée par énumération exhaustive), toujours avec F1, F2, F5, F9 :\n- **Cas F13** (donc F8 = 1, F7 = 0) : (F10, F3) ∈ {(0,0), (0,1), (1,0)} → 3 ; bloc F4 : absent, F4 + F11, F4 + F12 → 3. Total **3 × 3 = 9**.\n- **Cas F14** (pas F8 et F10 ensemble) : (F8, F10, F3) → (0,0,·) 2 + (1,0,·) 2 + (0,1,0) 1 = 5 ; (F7, F4, F11, F12) → F7 = 0 : 3 choix, F7 = 1 : 2 choix (F12 exclue) = 5. Total **5 × 5 = 25**.\n- **Cas F15** (donc F11, F4 présentes, F12 absente) : F8 libre (2) × (F10, F3) 3 = 6 ; F7 libre (2). Total **6 × 2 = 12**.\n- **9 + 25 + 12 = 46**.\n(1) Douze produits, par exemple : {F1, F2, F5, F9, F13, F8}, + F3, + F10, + F4 F11, + F4 F12, … ; {F1, F2, F5, F9, F14}, + F7, + F8, + F10, … ; {F1, F2, F5, F9, F15, F4, F11}, + F7, + F8, …\n**Pourquoi ?** La structure (obligatoires, XOR, cardinalité) et les dépendances (mutex, requires, contraintes logiques) éliminent la plupart des 8192 combinaisons.",
+        "en": "The teacher’s answers: (2) **2¹³ = 8192** combinations (13 features excluding the root); (3) **46 products**. **Proposed** breakdown (checked by exhaustive enumeration), always with F1, F2, F5, F9:\n- **Case F13** (so F8 = 1, F7 = 0): (F10, F3) ∈ {(0,0), (0,1), (1,0)} → 3; F4 block: absent, F4 + F11, F4 + F12 → 3. Total **3 × 3 = 9**.\n- **Case F14** (not F8 and F10 together): (F8, F10, F3) → (0,0,·) 2 + (1,0,·) 2 + (0,1,0) 1 = 5; (F7, F4, F11, F12) → F7 = 0: 3 choices, F7 = 1: 2 choices (F12 excluded) = 5. Total **5 × 5 = 25**.\n- **Case F15** (so F11, F4 present, F12 absent): F8 free (2) × (F10, F3) 3 = 6; F7 free (2). Total **6 × 2 = 12**.\n- **9 + 25 + 12 = 46**.\n(1) Twelve products, e.g.: {F1, F2, F5, F9, F13, F8}, + F3, + F10, + F4 F11, + F4 F12, …; {F1, F2, F5, F9, F14}, + F7, + F8, + F10, …; {F1, F2, F5, F9, F15, F4, F11}, + F7, + F8, …\n**Why?** Structure (mandatory, XOR, cardinality) and dependencies (mutex, requires, logical constraints) eliminate most of the 8192 combinations."
+      },
+      "notions": [
+        "n-fm-exercise-46",
+        "n-fm-semantics",
+        "n-group-cardinality",
+        "n-requires-mutex"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "Construct at least 12 unique products from this model."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "What is the space of possible combinations with these features?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 26",
+          "quote": "How many are actually allowed by the model?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: $2^{13} = 8192$ combinations"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 27",
+          "quote": "Answer: 46 produits valides."
+        }
+      ]
+    },
+    {
+      "id": "inf4-03-ex-02",
+      "title": {
+        "fr": "Transfert : compter les produits d’une ligne de téléphones",
+        "en": "Transfer: counting a phone line’s products"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o3",
+      "statement": {
+        "fr": "Racine Phone ; Screen obligatoire, avec XOR Basic / HD ; Camera optionnelle, avec un groupe `<1..2>` sur Front et Back ; GPS optionnelle. Contrainte : Back requires HD. (a) Quel est l’espace brut des combinaisons ? (b) Combien de produits le modèle autorise-t-il ? Détaille.",
+        "en": "Root Phone; Screen mandatory, with XOR Basic / HD; Camera optional, with a `<1..2>` group on Front and Back; GPS optional. Constraint: Back requires HD. (a) What is the raw combination space? (b) How many products does the model allow? Show your work."
+      },
+      "hints": [
+        {
+          "fr": "Fais deux cas selon l’écran : Basic ou HD.",
+          "en": "Make two cases depending on the screen: Basic or HD."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (a) 7 features hors racine (Screen, Basic, HD, Camera, Front, Back, GPS) : 2⁷ = **128**. (b) **Cas Basic** : Back interdite (requires HD) ; Camera absente ou {Front} → 2 ; × GPS 2 = **4**. **Cas HD** : Camera absente, {Front}, {Back}, {Front, Back} → 4 ; × GPS 2 = **8**. Total **12 produits**.",
+        "en": "**Proposed** solution. (a) 7 features excluding the root (Screen, Basic, HD, Camera, Front, Back, GPS): 2⁷ = **128**. (b) **Case Basic**: Back forbidden (requires HD); Camera absent or {Front} → 2; × GPS 2 = **4**. **Case HD**: Camera absent, {Front}, {Back}, {Front, Back} → 4; × GPS 2 = **8**. Total **12 products**."
+      },
+      "notions": [
+        "n-xor-alternatives",
+        "n-group-cardinality",
+        "n-requires-mutex"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 16",
+          "quote": "Exactement une feature parmi le groupe doit être sélectionnée."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 18",
+          "quote": "Nombre min/max de caractéristiques sélectionnables dans le groupe."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 22",
+          "quote": "doit impérativement contenir `F12`"
+        }
+      ]
+    },
+    {
+      "id": "inf4-03-ex-03",
+      "title": {
+        "fr": "Extensif ou intensif ?",
+        "en": "Extensive or intensive?"
+      },
+      "difficulty": 1,
+      "level": "understand",
+      "objective": "o1",
+      "statement": {
+        "fr": "Un fabricant d’analyseurs sanguins propose 3 variantes (Basic, Medium, Enriched) ; un éditeur de logiciels embarqués envisage 10²¹ produits avec 1000 composants. Pour chacun, quelle représentation choisirais-tu, et pourquoi ?",
+        "en": "A blood analyser maker offers 3 variants (Basic, Medium, Enriched); an embedded software vendor plans 10²¹ products with 1000 components. For each, which representation would you choose, and why?"
+      },
+      "hints": [
+        {
+          "fr": "Pense à la lisibilité contre le passage à l’échelle.",
+          "en": "Think readability versus scalability."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. 3 variantes : une représentation **extensive** (matrice produits × composants) suffit ; elle est simple et lisible. 10²¹ produits : impossible de les lister ; il faut une représentation **intensive** (feature model ou contraintes) qui décrit les règles et génère implicitement les produits valides, avec les composants communs et les contraintes transversales.",
+        "en": "**Proposed** solution. 3 variants: an **extensive** representation (products × components matrix) is enough; it is simple and readable. 10²¹ products: impossible to list them; an **intensive** representation (feature model or constraints) is needed, describing rules and implicitly generating valid products, with common components and cross-tree constraints."
+      },
+      "notions": [
+        "n-extensive-representation",
+        "n-intensive-representation",
+        "n-scalability-issue"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 6",
+          "quote": "Chaque colonne représente une variante de produit spécifique (Basic, Medium, Enriched)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 9",
+          "quote": "How do you specify a product line of $10^{21}$ products with 1000 components ?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 10",
+          "quote": "Product Line Models (PLMs): Intensive representation"
+        }
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "writing": [
+    {
+      "id": "inf4-03-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The semantics of a feature model is the set of valid configurations.",
+      "accepted": [
+        "A feature model's semantics is the set of valid configurations."
+      ]
+    },
+    {
+      "id": "inf4-03-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "In an XOR group, {{exactly}} one feature is selected; a group cardinality <m..n> allows between m and {{n}} features.",
+      "translation": "Dans un groupe XOR, exactement une feature est sélectionnée ; une cardinalité de groupe <m..n> en autorise entre m et n."
+    },
+    {
+      "id": "inf4-03-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A feature model with 13 features always allows 8192 products.",
+      "error": "always allows 8192 products",
+      "corrected": "allows at most 8192 combinations",
+      "explanation": {
+        "fr": "2¹³ est l’espace brut ; la structure et les contraintes réduisent le nombre de produits (46 dans l’exercice).",
+        "en": "2¹³ is the raw space; structure and constraints reduce the number of products (46 in the exercise)."
+      }
+    },
+    {
+      "id": "inf4-03-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique pourquoi on préfère une représentation intensive pour une grande ligne de produits.",
+        "en": "In 2-3 English sentences, explain why an intensive representation is preferred for a large product line."
+      },
+      "modelAnswer": "An extensive representation lists every product, which is impossible when the line has billions of products. An intensive representation, such as a feature model, describes the rules that generate all valid products. It also captures common components and cross-tree constraints.",
+      "keywords": [
+        "extensive",
+        "lists",
+        "intensive",
+        "rules",
+        "constraints"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai défini les deux représentations.",
+          "en": "I defined both representations."
+        },
+        {
+          "fr": "J’ai cité le passage à l’échelle.",
+          "en": "I mentioned scalability."
+        }
+      ],
+      "usefulPhrases": [
+        "lists every product",
+        "describes the rules that",
+        "it also captures"
+      ]
+    }
+  ]
 }
