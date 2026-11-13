@@ -1,0 +1,487 @@
+{
+  "id": "isi1-exam-2013",
+  "courseId": "isi1",
+  "title": {
+    "fr": "Annale ISI1 — 31 janvier 2013",
+    "en": "ISI1 past exam — 31 January 2013"
+  },
+  "kind": "past",
+  "year": 2013,
+  "durationMinutes": 90,
+  "source": "ressources/S3__ISI1/Markdown/examen_2.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Sujet de C. Salinesi, sans document, réponses sur l’énoncé. Aucun corrigé officiel : les corrigés sont proposés à partir des supports du cours et de sources externes citées (KAOS, i*, triage).",
+    "en": "C. Salinesi’s exam, no documents, answers on the paper. No official answers: solutions are proposed from the course slides and cited external sources (KAOS, i*, triage)."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "A. Questions de cours",
+        "en": "A. Course questions"
+      },
+      "points": 5,
+      "instructions": {
+        "fr": "Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX.",
+        "en": "Answer TRUE or FALSE, justify if (and only if) you answer FALSE."
+      },
+      "questions": [
+        {
+          "id": "isi1-exam-2013-q01",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Il est nécessaire de numéroter les exigences au moyen d’un identifiant unique. À la fois pour des raisons de traçabilité, mais aussi de partage, de gestion de configuration, et de classification.",
+            "en": "Requirements must be numbered with a unique identifier, for traceability but also for sharing, configuration management and classification."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : l’ISO 29148 exige que chaque exigence soit identifiable de façon unique et note que l’identifiant aide à la traçabilité ; les autres raisons ne sont pas contredites.",
+            "en": "TRUE: ISO 29148 requires each requirement to be uniquely identifiable and notes the identifier aids tracing; the other reasons are not contradicted."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q1",
+              "quote": "Il est nécessaire de numéroter les exigences au moyen d'un identifiant unique."
+            },
+            {
+              "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+              "loc": "7.5.3",
+              "quote": "Each requirement shall be uniquely identifiable."
+            },
+            {
+              "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+              "loc": "5.2.7",
+              "quote": "Unique identifiers aid in requirements tracing."
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q02",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Les exigences définies dans le modèle de Kano comme étant de type « must have » sont des exigences implicites.",
+            "en": "Requirements defined in the Kano model as “must have” are implicit requirements."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : « must have » ≈ dissatisfier, propriété qui va de soi (savoir subconscient), donc implicite.",
+            "en": "TRUE: “must have” ≈ dissatisfier, a self-evident property (subconscious knowledge), hence implicit."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q2",
+              "quote": "Les exigences définies dans le modèle de Kano comme étant de type « must have » sont des exigences implicites."
+            },
+            {
+              "file": "sources-texte/isi1/20-eliciting-requirements.md",
+              "loc": "3.2",
+              "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q03",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Les « soft goals » du formalisme i* sont des buts qui ne peuvent jamais être satisfaits puisqu’on n’a pas de critère mesurable.",
+            "en": "Soft goals in i* are goals that can never be satisfied since there is no measurable criterion."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : un soft goal n’est pas satisfait de façon tranchée, mais il est satisfait de façon suffisante (satisficing, solutions « good enough ») ; « jamais » est faux.",
+            "en": "FALSE: a soft goal is not satisfied in a clear-cut way, but it is satisficed (“good enough” solutions); “never” is wrong."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q3",
+              "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+            },
+            {
+              "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+              "loc": "Softgoals and satisficing",
+              "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q04",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Dans le formalisme KAOS, le lien de décomposition OR est formellement équivalent au XOR : le but affiné est satisfait si et seulement si l’un des buts de plus bas niveau est satisfait.",
+            "en": "In KAOS, the OR decomposition link is formally equivalent to XOR: the refined goal is satisfied if and only if one lower-level goal is satisfied."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : en OU, satisfaire une des alternatives suffit, mais plusieurs peuvent l’être ; le XOR en imposerait exactement une.",
+            "en": "FALSE: in OR, satisfying one alternative suffices, but several may be; XOR would require exactly one."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q4",
+              "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+            },
+            {
+              "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+              "loc": "4. Goal refinement links",
+              "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q05",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Les cas d’utilisation d’un modèle de cas d’utilisation correspondent à des buts complémentaires, c’est-à-dire qui affinent un même but par une décomposition AND dans les termes du formalisme KAOS.",
+            "en": "Use cases in a use case model correspond to complementary goals, refining the same goal through an AND decomposition in KAOS terms."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : cohérent avec le « Do » du support (« Complementary cases (nominal) ») ; des cas tous nécessaires ensemble correspondent à un raffinement ET.",
+            "en": "TRUE: consistent with the slide’s “Do” (“Complementary cases (nominal)”); cases all needed together correspond to an AND refinement."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q5",
+              "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts complémentaires"
+            },
+            {
+              "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+              "loc": "Use Case Diagrams",
+              "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q06",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Le cadre tridimensionnel de l’IE de Klaus Pohl indique que le processus d’ingénierie des exigences progresse selon trois axes : la complétude, l’accord et la formalisation.",
+            "en": "Klaus Pohl’s three-dimensional RE framework says the RE process progresses along three axes: completeness, agreement and formalisation."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : les trois axes du support vont vers une spécification complète, une vue commune (accord) et une représentation formelle.",
+            "en": "TRUE: the slide’s three axes lead to a complete specification, a common view (agreement) and a formal representation."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q6",
+              "quote": "progresse selon trois axes : la complétude, l'accord et la formalisation"
+            },
+            {
+              "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+              "loc": "The 3 dimensions of RE",
+              "quote": "The 3 dimensions of RE desired Specification result complete"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q07",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Les exigences non fonctionnelles peuvent : (a) servir de critère de décision pour choisir les exigences fonctionnelles, (b) s’affiner en exigences fonctionnelles, etc., (c) servir d’attribut qualité associé à une ou plusieurs exigences fonctionnelles.",
+            "en": "Non-functional requirements can: (a) serve as a decision criterion to choose functional requirements, (b) be refined into functional requirements, etc., (c) serve as a quality attribute associated with one or more functional requirements."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : (c) attribut qualité et (b) décomposition en FR sont dans le support 1 ; (a) les soft goals servent à comparer des raffinements alternatifs (van Lamsweerde).",
+            "en": "TRUE: (c) quality attribute and (b) breakdown into FRs are in support 1; (a) soft goals compare alternative refinements (van Lamsweerde)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q7",
+              "quote": "servir de critère de décision pour choisir les exigences fonctionnelles"
+            },
+            {
+              "file": "sources-texte/isi1/1-ie-introduction.md",
+              "loc": "Exigences non fonctionnelles",
+              "quote": "NB => Les autres NFR se décomposent en FR"
+            },
+            {
+              "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+              "loc": "Soft goals",
+              "quote": "Soft goals are especially useful for comparing alternative goal refinements and chosing one that contributes the “best” to them"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q08",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "On peut chercher à vérifier les exigences en organisant des revues. Cela permettra d’identifier les erreurs communes telles que : ambiguïté, incohérence, sur- et sous-spécification, etc.",
+            "en": "Requirements can be checked by organising reviews, which identify common errors such as ambiguity, inconsistency, over- and under-specification, etc."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : le support recommande d’organiser une revue ; ce sont les défauts du cours (la sous-spécification correspond au silence).",
+            "en": "TRUE: the slides recommend organising a review; these are the course’s defects (under-specification corresponds to silence)."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q8",
+              "quote": "On peut chercher à vérifier les exigences en organisant des revues. Cela permettra d'identifier les erreurs communes telles que : ambiguïté, incohérence, sur- et sous-spécification, etc."
+            },
+            {
+              "file": "sources-texte/isi1/1-ie-introduction.md",
+              "loc": "Mauvaise qualité des exigences",
+              "quote": "Surspécification (présence d'éléments caractéristiques de la solution)"
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q09",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "La technique AHP permet d’améliorer la cohérence des exigences.",
+            "en": "The AHP technique improves the consistency of requirements."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : l’AHP priorise les exigences ; son contrôle de cohérence porte sur les jugements de comparaison, pas sur la cohérence des exigences entre elles.",
+            "en": "FALSE: AHP prioritizes requirements; its consistency check concerns comparison judgements, not consistency between requirements."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q9",
+              "quote": "La technique AHP permet d'améliorer la cohérence des exigences."
+            },
+            {
+              "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+              "loc": "2.2 Pair-Wise Comparisons",
+              "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+            }
+          ]
+        },
+        {
+          "id": "isi1-exam-2013-q10",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres.",
+            "en": "The aim of “triage” is to group requirements into three bundles: the most important, the unimportant, and the others."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : ce sont les trois groupes du triage de Davis : les évidences, les irréalistes à écarter, et le reste à classer.",
+            "en": "TRUE: these are Davis’s three triage groups: no-brainers, dreamy ones to dismiss, and the rest to rank."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "A. Q10",
+              "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+            },
+            {
+              "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+              "loc": "Triage",
+              "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "B. Modélisation de cas d’utilisation",
+        "en": "B. Use case modelling"
+      },
+      "points": 5,
+      "instructions": {
+        "fr": "Identifier les erreurs, proposer une version correcte, spécifier un cas d’utilisation.",
+        "en": "Identify the errors, propose a correct version, specify a use case."
+      },
+      "questions": [
+        {
+          "id": "isi1-exam-2013-b",
+          "type": "open",
+          "points": 5,
+          "prompt": {
+            "fr": "« Le modèle de cas d’utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne. » (5 points)\nDiagramme (relu sur le PDF) : système « **Compte en Ligne** » ; l’acteur **Client** est relié à « Accéder au Solde du compte » et « Modifier le Solde du compte » ; l’acteur **Opérateur Banque en ligne** est relié à « Ouverture du compte » et « Clôture ».\n**(a)** Identifiez explicitement les erreurs et expliquez-les. **(b)** Proposez une version correcte. **(c)** Spécifiez un cas d’utilisation de votre choix.",
+            "en": "“The use case model below presents the needs for an account-keeping system in an online-bank type company.” (5 points)\nDiagram (read from the PDF): system “**Online Account**”; the **Customer** actor is linked to “Access the account Balance” and “Modify the account Balance”; the **Online bank operator** actor is linked to “Account opening” and “Closure”.\n**(a)** Explicitly identify the errors and explain them. **(b)** Propose a correct version. **(c)** Specify a use case of your choice."
+          },
+          "correction": {
+            "fr": "Corrigé **proposé** (aucun corrigé officiel), fondé sur le « Do / Don’t » du support 7.\n\n**(a) Erreurs**\n1. **Le modèle est un CRUD du compte** : ouverture (créer), accéder au solde (lire), modifier le solde (modifier), clôture (supprimer). Le CRUD est explicitement à éviter : ce sont des opérations sur une donnée, pas des buts d’acteurs.\n2. **« Modifier le Solde du compte » n’est pas un but du client** : le client fait un virement ou un paiement ; le solde change en conséquence. Il faut réifier le service fourni.\n3. **Niveaux de détail mélangés et nommage hétérogène** : « Accéder au Solde du compte » (accès à une donnée) côtoie « Ouverture du compte » (processus métier) ; « Clôture » est un nom seul, sans complément.\n4. **Acteurs et buts incomplets** : dans une banque en ligne, c’est le client qui veut ouvrir ou clôturer un compte ; l’opérateur intervient pour traiter ou valider. Le système s’appelle « Compte en Ligne » : c’est la donnée, pas le système (« Banque en ligne »).\n\n**(b) Version correcte** — système **Banque en ligne** :\n- **Client** : Consulter ses comptes et opérations ; Effectuer un virement ; Demander l’ouverture d’un compte ; Demander la clôture de son compte.\n- **Opérateur banque en ligne** : Traiter une demande d’ouverture ; Traiter une demande de clôture.\n(Cas nominaux, complémentaires, de même niveau, formulés comme des buts.)\n\n**(c) Spécification de « Effectuer un virement »**\n- **Acteur** : Client. **Déclencheur** : le client choisit de faire un virement.\n- **Scénario nominal** : 1. le client choisit le compte à débiter ; 2. il saisit le bénéficiaire et le montant ; 3. le système vérifie que le solde disponible suffit ; 4. le client confirme ; 5. le système exécute le virement et met à jour le solde.\n- **Résultat attendu** : le virement est enregistré, le solde est à jour, une confirmation est affichée.\n- Les exceptions (solde insuffisant, bénéficiaire inconnu) se décrivent ici, pas comme des cas du diagramme.\n\n**Barème indicatif** : (a) 2 pts, (b) 2 pts, (c) 1 pt.",
+            "en": "**Proposed** solution (no official one), based on support 7’s “Do / Don’t”.\n\n**(a) Errors**\n1. **The model is a CRUD of the account**: opening (create), access the balance (read), modify the balance (update), closure (delete). CRUD is explicitly to be avoided: these are operations on data, not actors’ goals.\n2. **“Modify the account Balance” is not a customer goal**: the customer makes a transfer or a payment; the balance changes as a result. The service provided must be reified.\n3. **Mixed levels of detail and inconsistent naming**: “Access the account Balance” (data access) sits next to “Account opening” (business process); “Closure” is a bare noun with no complement.\n4. **Incomplete actors and goals**: in an online bank, the customer is the one who wants to open or close an account; the operator processes or validates. The system is called “Online Account”: that is the data, not the system (“Online bank”).\n\n**(b) Correct version** — system **Online bank**:\n- **Customer**: View accounts and transactions; Make a transfer; Request an account opening; Request closure of their account.\n- **Online bank operator**: Process an opening request; Process a closure request.\n(Nominal, complementary cases, at the same level, phrased as goals.)\n\n**(c) Specification of “Make a transfer”**\n- **Actor**: Customer. **Trigger**: the customer chooses to make a transfer.\n- **Nominal scenario**: 1. the customer chooses the account to debit; 2. enters the beneficiary and amount; 3. the system checks the available balance is sufficient; 4. the customer confirms; 5. the system executes the transfer and updates the balance.\n- **Expected result**: the transfer is recorded, the balance is up to date, a confirmation is displayed.\n- Exceptions (insufficient balance, unknown beneficiary) are described here, not as diagram cases.\n\n**Indicative marking**: (a) 2 pts, (b) 2 pts, (c) 1 pt."
+          },
+          "gradingGuide": [
+            {
+              "fr": "Erreurs identifiées et expliquées avec le Do / Don’t (CRUD, buts, niveaux, acteurs) : 2 pts",
+              "en": "Errors identified and explained with the Do / Don’t (CRUD, goals, levels, actors): 2 pts"
+            },
+            {
+              "fr": "Diagramme corrigé : cas nominaux complémentaires, formulés comme des buts : 2 pts",
+              "en": "Corrected diagram: complementary nominal cases, phrased as goals: 2 pts"
+            },
+            {
+              "fr": "Spécification : acteur, déclencheur, scénario nominal, résultat attendu : 1 pt",
+              "en": "Specification: actor, trigger, nominal scenario, expected result: 1 pt"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "B. Modélisation de Cas d'Utilisation",
+              "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
+            },
+            {
+              "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+              "loc": "Use Case Diagrams",
+              "quote": "Identify actors CRUD Identify their goals « Manage »"
+            },
+            {
+              "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+              "loc": "Use Case Diagrams",
+              "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+            },
+            {
+              "file": "sources-texte/isi1/20-eliciting-requirements.md",
+              "loc": "Modeling action sequences",
+              "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "C. Modélisation de buts",
+        "en": "C. Goal modelling"
+      },
+      "points": 5,
+      "instructions": {
+        "fr": "Identifier les erreurs du modèle KAOS, puis proposer un modèle correct.",
+        "en": "Identify the KAOS model’s errors, then propose a correct model."
+      },
+      "questions": [
+        {
+          "id": "isi1-exam-2013-c",
+          "type": "open",
+          "points": 5,
+          "prompt": {
+            "fr": "Le modèle KAOS de l’annale (relu sur le PDF) : « Système location VOD » est relié par **un seul** triangle pointant vers le haut à « téléchargement », « nouveau film » et « authentifier ». « téléchargement » est relié à « en visionnage temps réel » et « enregistrer le .avi » par de simples traits, **sans symbole de raffinement**. « nouveau film » est relié à « Par les abonnés en leur offrant des avantages » et « À partir de sites tiers » par un triangle **pointant vers le bas**. « authentifier » est relié par un triangle pointant vers le haut à « Créer un compte », « Saisir le login », « Saisir le mot de passe ».\n**(a)** Identifie et explique les erreurs. **(b)** Propose un modèle correct. (5 points)\n\n*La transcription Markdown de l’annale note « AND » sous « nouveau film » : le PDF montre un triangle inversé.*",
+            "en": "The exam’s KAOS model (read from the PDF): “VOD rental system” is linked by **a single** upward-pointing triangle to “download”, “new film” and “authenticate”. “download” is linked to “real-time viewing” and “save the .avi” by plain lines, **with no refinement symbol**. “new film” is linked to “By subscribers by offering them benefits” and “From third-party sites” by a **downward-pointing** triangle. “authenticate” is linked by an upward-pointing triangle to “Create an account”, “Enter the login”, “Enter the password”.\n**(a)** Identify and explain the errors. **(b)** Propose a correct model. (5 points)\n\n*The Markdown transcription of the exam marks “AND” under “new film”: the PDF shows an inverted triangle.*"
+          },
+          "correction": {
+            "fr": "Corrigé **proposé** (aucun corrigé officiel), fondé sur les définitions de KAOS (van Lamsweerde) ; les points marqués *lecture* interprètent le dessin.\n\n**(a) Erreurs**\n1. **La racine n’est pas un but** : « Système location VOD » désigne un système ; il faut un objectif à atteindre, ex. « Les abonnés louent et regardent des films ». (L’énoncé parle de cassettes vidéo, le modèle de VOD : incohérence de périmètre.)\n2. **« téléchargement » n’a pas de raffinement** : de simples traits, ni ET ni OU. Or visionner en temps réel et enregistrer le fichier sont deux façons de regarder le film : c’est un **OU**, donc deux raffinements alternatifs.\n3. **« nouveau film » : triangle inversé** (*lecture*) : il pointe vers les sous-buts alors que les autres pointent vers le but parent ; la notation est incohérente. Et comme ses deux sources sont des alternatives, un seul raffinement (un ET) ne convient pas : il faut un **OU**.\n4. **« authentifier » en ET avec « Créer un compte »** : un ET exige tous les sous-buts à chaque fois ; or on ne crée pas un compte à chaque authentification. « Compte créé » est un but distinct (préalable), et il mélange les niveaux avec la saisie de champs.\n5. **Nœuds formulés comme des noms ou des actions** (« téléchargement », « authentifier », « Saisir le login ») au lieu de buts (états à atteindre) ; « enregistrer le **.avi** » impose une solution technique (un format), alors qu’une exigence dit **quoi**, pas **comment** (ISO 29148).\n\n**(b) Modèle correct**\n- **Les abonnés louent et regardent des films** (ET, un seul raffinement) :\n  - **Compte d’abonné créé**\n  - **Abonné authentifié** (ET) : identifiant saisi ; mot de passe vérifié\n  - **Film mis à disposition de l’abonné** (OU, deux raffinements) : visionné en streaming | téléchargé et conservé\n  - **Catalogue enrichi de nouveaux films** (OU, deux raffinements) : proposés par les abonnés en échange d’avantages | acquis auprès de sites tiers\n\n**Barème indicatif** : chaque erreur identifiée et expliquée (0,5 pt, max 2,5) ; modèle corrigé avec des opérateurs ET / OU justes (2,5 pts).",
+            "en": "**Proposed** solution (no official one), based on KAOS definitions (van Lamsweerde); points marked *reading* interpret the drawing.\n\n**(a) Errors**\n1. **The root is not a goal**: “VOD rental system” names a system; an objective is needed, e.g., “Subscribers rent and watch films”. (The statement speaks of video cassettes, the model of VOD: scope inconsistency.)\n2. **“download” has no refinement**: plain lines, neither AND nor OR. Yet real-time viewing and saving the file are two ways of watching the film: it is an **OR**, hence two alternative refinements.\n3. **“new film”: inverted triangle** (*reading*): it points to the subgoals while the others point to the parent goal; the notation is inconsistent. And since its two sources are alternatives, a single refinement (an AND) does not fit: an **OR** is needed.\n4. **“authenticate” as an AND with “Create an account”**: an AND requires all subgoals every time; yet you do not create an account at each authentication. “Account created” is a separate (prior) goal, and it mixes levels with field entry.\n5. **Nodes phrased as nouns or actions** (“download”, “authenticate”, “Enter the login”) instead of goals (states to reach); “save the **.avi**” imposes a technical solution (a format), whereas a requirement says **what**, not **how** (ISO 29148).\n\n**(b) Correct model**\n- **Subscribers rent and watch films** (AND, a single refinement):\n  - **Subscriber account created**\n  - **Subscriber authenticated** (AND): login entered; password checked\n  - **Film made available to the subscriber** (OR, two refinements): watched by streaming | downloaded and kept\n  - **Catalogue enriched with new films** (OR, two refinements): offered by subscribers in exchange for benefits | acquired from third-party sites\n\n**Indicative marking**: each error identified and explained (0.5 pt, max 2.5); corrected model with correct AND / OR operators (2.5 pts)."
+          },
+          "gradingGuide": [
+            {
+              "fr": "Chaque erreur identifiée et expliquée (racine, opérateurs, triangle inversé, ET abusif, nœuds non formulés en buts) : 0,5 pt, max 2,5",
+              "en": "Each error identified and explained (root, operators, inverted triangle, misused AND, nodes not phrased as goals): 0.5 pt, max 2.5"
+            },
+            {
+              "fr": "Modèle corrigé cohérent avec des opérateurs ET / OU justes : 2,5 pts",
+              "en": "Corrected model consistent with correct AND / OR operators: 2.5 pts"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "C. Modélisation de buts",
+              "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+            },
+            {
+              "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+              "loc": "4. Goal refinement links",
+              "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+            },
+            {
+              "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+              "loc": "5.2.5",
+              "quote": "The requirement states what is required, not how the requirement should be met."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "D. Réflexion",
+        "en": "D. Reflection"
+      },
+      "points": 5,
+      "instructions": {
+        "fr": "Que pensez-vous de ce constat, quelles sont vos préconisations ?",
+        "en": "What do you think of this finding, what do you recommend?"
+      },
+      "questions": [
+        {
+          "id": "isi1-exam-2013-d",
+          "type": "open",
+          "points": 5,
+          "prompt": {
+            "fr": "« Récemment employé dans une société afin d’améliorer la maturité des pratiques en matière d’ingénierie des exigences, vous constatez que les principaux outils employés pour spécifier les exigences sont Excel (pour lister les exigences individuellement) et Word (pour rédiger les cahiers des charges). En outre, deux projets ont déjà pris les devants, l’un en mettant en place un wiki pour étendre la collecte des besoins à un plus grand nombre de parties prenantes, l’autre en recensant systématiquement les exigences dans le contexte de l’activité de test, avec l’outil Quality Center. Que pensez-vous de ce constat, quelles sont vos préconisations ? » (5 points)",
+            "en": "“Recently hired by a company to improve the maturity of its requirements engineering practices, you find that the main tools used to specify requirements are Excel (to list requirements individually) and Word (to write requirements documents). Moreover, two projects have taken the lead, one by setting up a wiki to extend needs gathering to more stakeholders, the other by systematically listing requirements in the context of testing, with the Quality Center tool. What do you think of this finding, what do you recommend?” (5 points)"
+          },
+          "correction": {
+            "fr": "Corrigé **proposé** (plusieurs réponses possibles).\n**Avis.** Excel + Word est le mode « bureautique » : mieux que l’oral, mais les exigences sont dispersées entre fichiers, sans lien entre la liste Excel et le cahier des charges Word → risques d’incohérence, de redondance, de versions divergentes, et traçabilité difficile. Les deux initiatives sont positives mais isolées : le **wiki** élargit la collecte (plus de parties prenantes, document facile à modifier) mais risque des contributions non validées et une terminologie incohérente ; **Quality Center** relie exigences et tests (vérifiabilité, traçabilité vers la vérification) mais part du test, donc tard et sans les buts métier.\n**Préconisations.** (1) Un **référentiel d’exigences unique** fondé sur un modèle d’échange (exigences, attributs, dépendances vers sources, justifications, tests). (2) Un **identifiant unique** par exigence, jamais changé ni réutilisé. (3) Des **attributs** (priorité, source, statut, moyen de vérification). (4) Un **plan type** (IEEE 830) et un **gabarit de phrase**. (5) Un **glossaire** central et obligatoire (le wiki peut l’héberger). (6) Des **revues** (complétude, cohérence, modifiabilité, compréhensibilité). (7) Généraliser la **traçabilité vers les tests** de Quality Center à tous les projets.\n**Justification.** Ces mesures visent la cohérence, la traçabilité et la modifiabilité ; et l’outil seul ne suffit pas : « a fool with a tool is still just a fool ».\n**Barème indicatif** : avis argumenté (1,5), erreurs nommées (1,5), préconisations justifiées (2).",
+            "en": "**Proposed** solution (several answers possible).\n**Opinion.** Excel + Word is the “office tools” mode: better than oral, but requirements are scattered across files, with no link between the Excel list and the Word document → risks of inconsistency, redundancy, divergent versions, and hard traceability. Both initiatives are positive but isolated: the **wiki** widens gathering (more stakeholders, easily modified document) but risks unvalidated contributions and inconsistent terminology; **Quality Center** links requirements and tests (verifiability, traceability to verification) but starts from testing, hence late and without business goals.\n**Recommendations.** (1) A **single requirements repository** based on an exchange model (requirements, attributes, dependencies to sources, rationale, tests). (2) A **unique identifier** per requirement, never changed or reused. (3) **Attributes** (priority, source, status, verification method). (4) A **standard outline** (IEEE 830) and a **sentence template**. (5) A central, mandatory **glossary** (the wiki can host it). (6) **Reviews** (completeness, consistency, modifiability, comprehensibility). (7) Extend Quality Center’s **traceability to tests** to all projects.\n**Justification.** These measures target consistency, traceability and modifiability; and the tool alone is not enough: “a fool with a tool is still just a fool”.\n**Indicative marking**: argued opinion (1.5), named errors (1.5), justified recommendations (2)."
+          },
+          "gradingGuide": [
+            {
+              "fr": "Avis argumenté sur Excel / Word, le wiki et Quality Center : 1,5 pt",
+              "en": "Argued opinion on Excel / Word, the wiki and Quality Center: 1.5 pt"
+            },
+            {
+              "fr": "Erreurs et risques nommés avec le vocabulaire du cours : 1,5 pt",
+              "en": "Errors and risks named with the course vocabulary: 1.5 pt"
+            },
+            {
+              "fr": "Préconisations justifiées (référentiel, identifiants, attributs, traçabilité, glossaire, revues) : 2 pts",
+              "en": "Justified recommendations (repository, identifiers, attributes, traceability, glossary, reviews): 2 pts"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+              "loc": "D. Réflexion",
+              "quote": "l'un en mettant en place un wiki pour étendre la collecte des besoins à un plus grand nombre de parties prenantes, l'autre en recensant systématiquement les exigences dans le contexte de l'activité de test, avec l'outil Quality Center."
+            },
+            {
+              "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+              "loc": "Different ways to document requirements",
+              "quote": "Easy to make mistakes"
+            },
+            {
+              "file": "sources-texte/isi1/1-ie-introduction.md",
+              "loc": "Outil sans méthode",
+              "quote": "Caliber RM « A fool with a tool is still"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
