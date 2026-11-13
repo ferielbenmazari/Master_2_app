@@ -10,6 +10,86 @@
     "fr": "De la Ford T à la personnalisation de masse : pourquoi une plate-forme commune change l'économie du logiciel.",
     "en": "From the Model T to mass customisation: why a common platform changes the economics of software."
   },
+  "question": {
+    "fr": "Qu’est-ce qui rend une ligne de produits économiquement intéressante, et à quelles conditions ?",
+    "en": "What makes a product line economically worthwhile, and under which conditions?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Expliquer la personnalisation de masse et le rôle d’une plate-forme (ligne de produits = plate-forme + personnalisation de masse).",
+        "en": "Explain mass customisation and the role of a platform (product line = platform + mass customisation)."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Décrire la stratégie « d’abord le commun, ensuite les différences » et la variabilité gérée.",
+        "en": "Describe the “commonality first, differences next” strategy and managed variability."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Évaluer si une ligne de produits logiciels est rentable : motivations, point mort, prérequis.",
+        "en": "Assess whether a software product line pays off: motivations, break-even point, prerequisites."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Définitions et chiffres du livre de Böckle (plate-forme logicielle, point mort vers 3 systèmes, +35 % / −7 %) ; prérequis d’une ligne de produits.",
+        "en": "Definitions and figures from Böckle’s book (software platform, break-even around 3 systems, +35% / −7%); product line prerequisites."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 1 : communalité, variabilité, mécanismes de réutilisation, courbe d’investissement.",
+    "en": "Chapter 1: commonality, variability, reuse mechanisms, investment curve."
+  },
+  "next": {
+    "fr": "Le chapitre 3 montre comment écrire la variabilité de la famille avec un feature model.",
+    "en": "Chapter 3 shows how to write the family’s variability with a feature model."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Logiciel individuel = cher ; standard = pas assez diversifié ; la personnalisation de masse combine production à grande échelle et produits adaptés.",
+        "en": "Individual software = expensive; standard = not diversified enough; mass customisation combines large-scale production and tailored products."
+      },
+      {
+        "fr": "Ligne de produits = plate-forme commune + personnalisation de masse ; plate-forme logicielle = sous-systèmes et interfaces formant une structure commune.",
+        "en": "Product line = common platform + mass customisation; software platform = subsystems and interfaces forming a common structure."
+      },
+      {
+        "fr": "D’abord le commun, puis les différences ; la variabilité est gérée et documentée ; point mort vers 3 systèmes (Weiss et Lai : 3 à 4).",
+        "en": "Commonality first, then differences; variability is managed and documented; break-even around 3 systems (Weiss and Lai: 3 to 4)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Justifier ou déconseiller une ligne de produits à partir des motivations et des prérequis du cours.",
+        "en": "Justify or advise against a product line using the course’s motivations and prerequisites."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Plate-forme logicielle (sous-systèmes et interfaces) ≠ plate-forme matérielle ou OS.",
+        "en": "Software platform (subsystems and interfaces) ≠ hardware platform or OS."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Le point mort de Böckle complète la courbe d’investissement du chapitre 1 ; « d’abord le commun » se retrouve dans l’analyse de communalité du chapitre 4.",
+        "en": "Böckle’s break-even point complements chapter 1’s investment curve; “commonality first” returns in chapter 4’s commonality analysis."
+      }
+    ]
+  },
   "estimatedMinutes": 14,
   "sources": [
     "ressources/S3__INF4/mardown/2__software_ple.md"
@@ -22,6 +102,21 @@
         "fr": "Ford, la chaîne… et l'impasse",
         "en": "Ford, the assembly line… and the dead end"
       }
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Repère : ce chapitre suit le livre de Böckle (support 2). Il prolonge le chapitre 1 avec les arguments économiques ; les chiffres viennent de sources différentes : cite toujours la source du chiffre.",
+        "en": "Landmark: this chapter follows Böckle’s book (support 2). It extends chapter 1 with economic arguments; figures come from different sources: always cite the figure’s source."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1 Ligne de production",
+          "quote": "les biens étaient fabriqués à la main pour des clients individuels"
+        }
+      ]
     },
     {
       "type": "paragraph",
@@ -64,6 +159,9 @@
           "loc": "1.1 Logiciel individuel et standard",
           "quote": "les produits logiciels standards manquent d'une diversification suffisante"
         }
+      ],
+      "notions": [
+        "n-individual-vs-standard-software"
       ]
     },
     {
@@ -109,6 +207,9 @@
           "loc": "1.1.1 Personnalisation de masse",
           "quote": "La personnalisation de masse est la production à grande échelle de biens adaptés aux besoins individuels des clients."
         }
+      ],
+      "notions": [
+        "n-mass-customisation"
       ]
     },
     {
@@ -123,6 +224,9 @@
           "loc": "1.1.1 Personnalisation de masse",
           "quote": "Produit unique pour tous vs. produits individuels"
         }
+      ],
+      "notions": [
+        "n-mass-customisation"
       ]
     },
     {
@@ -142,6 +246,9 @@
           "loc": "1.1.1 Personnalisation de masse",
           "quote": "ont commencé à introduire des plates-formes communes pour leurs différents types de voitures"
         }
+      ],
+      "notions": [
+        "n-mass-customisation"
       ]
     },
     {
@@ -172,6 +279,9 @@
           "loc": "1.1.2 Plates-formes",
           "quote": "celles qui partaient de zéro pour chaque nouvelle série de voitures ont subi une perte de ventes de 7%"
         }
+      ],
+      "notions": [
+        "n-platform-sales-growth"
       ]
     },
     {
@@ -196,6 +306,9 @@
           "loc": "1.1.2 Plates-formes",
           "quote": "Les notes \"Post-It\" de 3M sont considérées comme une plate-forme"
         }
+      ],
+      "notions": [
+        "n-platform"
       ]
     },
     {
@@ -215,6 +328,9 @@
           "loc": "1.1.2 Plates-formes",
           "quote": "qui englobe toutes sortes d'artefacts réutilisables"
         }
+      ],
+      "notions": [
+        "n-platform"
       ]
     },
     {
@@ -245,6 +361,9 @@
           "loc": "1.1.3 Combiner",
           "quote": "que nous appelons ingénierie des lignes de produits logiciels"
         }
+      ],
+      "notions": [
+        "n-platform-plus-mass-customisation"
       ]
     },
     {
@@ -295,6 +414,9 @@
           "loc": "1.2.1 Création de la plate-forme",
           "quote": "créer la plate-forme implique de se préparer à la personnalisation de masse"
         }
+      ],
+      "notions": [
+        "n-creating-platform"
       ]
     },
     {
@@ -309,6 +431,10 @@
           "loc": "1.2.1 Création de la plate-forme",
           "quote": "La stratégie consiste d'abord à se concentrer sur ce qui est commun à tous les produits, puis sur ce qui est différent."
         }
+      ],
+      "notions": [
+        "n-commonality-first",
+        "n-flexibility"
       ]
     },
     {
@@ -333,6 +459,9 @@
           "loc": "1.2.2 Introduction de la flexibilité",
           "quote": "pas de lave-glace arrière sur un cabriolet quand le toit est ouvert"
         }
+      ],
+      "notions": [
+        "n-managed-variability"
       ]
     },
     {
@@ -357,6 +486,9 @@
           "loc": "1.2.3 Réorganisation de l'entreprise",
           "quote": "créer une unité responsable de la plate-forme"
         }
+      ],
+      "notions": [
+        "n-restrict-variation"
       ]
     },
     {
@@ -387,6 +519,10 @@
           "loc": "1.3.1 Réduction des coûts",
           "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
         }
+      ],
+      "notions": [
+        "n-reduction-development-costs",
+        "n-break-even-point"
       ]
     },
     {
@@ -406,6 +542,9 @@
           "loc": "1.3.2 Amélioration de la qualité",
           "quote": "augmente considérablement les chances de détecter les défauts et de les corriger"
         }
+      ],
+      "notions": [
+        "n-quality-enhancement"
       ]
     },
     {
@@ -425,6 +564,9 @@
           "loc": "1.3.3 Time to Market",
           "quote": "une fois cet obstacle franchi, le délai est considérablement raccourci grâce à la réutilisation"
         }
+      ],
+      "notions": [
+        "n-time-to-market"
       ]
     },
     {
@@ -459,6 +601,10 @@
           "loc": "1.3.4 Motivations supplémentaires",
           "quote": "est réduite par la structure de la plate-forme et la réutilisation"
         }
+      ],
+      "notions": [
+        "n-coping-complexity",
+        "n-customer-benefits"
       ]
     },
     {
@@ -524,6 +670,9 @@
           "loc": "1.4 Ingénierie des lignes de produits logiciels",
           "quote": "Il faut restreindre la variation à des endroits précis pour qu'elle reste gérable et ne corrompe pas la structure du logiciel."
         }
+      ],
+      "notions": [
+        "n-spl-engineering-definition"
       ]
     },
     {
@@ -548,6 +697,9 @@
           "loc": "1.4.2 Plate-forme logicielle",
           "quote": "le mot plate-forme désigne souvent le matériel ou l'OS"
         }
+      ],
+      "notions": [
+        "n-software-platform"
       ]
     },
     {
@@ -577,6 +729,12 @@
           "loc": "1.4.3 Prérequis",
           "quote": "une stabilité du marché sont indispensables pour que l'investissement soit rentable"
         }
+      ],
+      "notions": [
+        "n-prerequisites",
+        "n-enabling-technologies",
+        "n-process-maturity",
+        "n-domain-expertise"
       ]
     },
     {
@@ -619,7 +777,8 @@
           "loc": "1.1.1 Personnalisation de masse",
           "quote": "La personnalisation de masse est la production à grande échelle de biens adaptés aux besoins individuels des clients."
         }
-      ]
+      ],
+      "notion": "n-mass-customisation"
     },
     {
       "id": "term-platform",
@@ -635,7 +794,8 @@
           "loc": "1.1.2 Plates-formes",
           "quote": "Une plate-forme est toute base de technologies sur laquelle d'autres technologies ou processus sont construits."
         }
-      ]
+      ],
+      "notion": "n-platform"
     },
     {
       "id": "term-variability",
@@ -661,7 +821,8 @@
           "loc": "1.2.2 Introduction de la flexibilité",
           "quote": "pas de lave-glace arrière sur un cabriolet quand le toit est ouvert"
         }
-      ]
+      ],
+      "notion": "n-managed-variability"
     },
     {
       "id": "term-break-even",
@@ -677,7 +838,8 @@
           "loc": "1.3.1 Réduction des coûts",
           "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
         }
-      ]
+      ],
+      "notion": "n-break-even-point"
     },
     {
       "id": "term-software-platform",
@@ -698,7 +860,8 @@
           "loc": "1.4.2 Plate-forme logicielle",
           "quote": "à partir de laquelle un ensemble de produits dérivés peut être développé et produit efficacement"
         }
-      ]
+      ],
+      "notion": "n-software-platform"
     },
     {
       "id": "term-spl-engineering",
@@ -719,7 +882,8 @@
           "loc": "1.4 Ingénierie des lignes de produits logiciels",
           "quote": "en utilisant des plates-formes et la personnalisation de masse"
         }
-      ]
+      ],
+      "notion": "n-spl-engineering-definition"
     }
   ],
   "notions": [
@@ -963,7 +1127,164 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "inf4-02-fc-01",
+      "termId": "term-mass-customisation",
+      "front": {
+        "fr": "personnalisation de masse ?",
+        "en": "mass customisation?"
+      },
+      "back": {
+        "fr": "Production à grande échelle de biens adaptés aux besoins individuels des clients.",
+        "en": "Large-scale production of goods adapted to the individual needs of customers."
+      }
+    },
+    {
+      "id": "inf4-02-fc-02",
+      "termId": "term-platform",
+      "front": {
+        "fr": "plate-forme ?",
+        "en": "platform?"
+      },
+      "back": {
+        "fr": "Toute base de technologies sur laquelle d'autres technologies ou processus sont construits.",
+        "en": "Any technology base on which other technologies or processes are built."
+      }
+    },
+    {
+      "id": "inf4-02-fc-03",
+      "termId": "term-variability",
+      "front": {
+        "fr": "variabilité ?",
+        "en": "variability?"
+      },
+      "back": {
+        "fr": "Flexibilité des artefacts de la plate-forme : on identifie où les produits diffèrent en fonctionnalités, exigences ou architecture ; elle s'accompagne de contraintes.",
+        "en": "Flexibility of platform artefacts: we identify where products differ in functionality, requirements or architecture; it comes with constraints."
+      }
+    },
+    {
+      "id": "inf4-02-fc-04",
+      "termId": "term-break-even",
+      "front": {
+        "fr": "point mort (break-even) ?",
+        "en": "break-even point?"
+      },
+      "back": {
+        "fr": "Point où les courbes de coût des systèmes uniques et de la famille de systèmes se croisent (≈ 3 systèmes en logiciel) ; après lui, la famille coûte moins par système.",
+        "en": "Point where the cost curves of single systems and of the system family cross (≈ 3 systems for software); after it, the family costs less per system."
+      }
+    },
+    {
+      "id": "inf4-02-fc-05",
+      "termId": "term-software-platform",
+      "front": {
+        "fr": "plate-forme logicielle ?",
+        "en": "software platform?"
+      },
+      "back": {
+        "fr": "Ensemble de sous-systèmes logiciels et d'interfaces formant une structure commune à partir de laquelle des produits dérivés sont développés efficacement.",
+        "en": "A set of software subsystems and interfaces forming a common structure from which derived products can be developed efficiently."
+      }
+    },
+    {
+      "id": "inf4-02-fc-06",
+      "termId": "term-spl-engineering",
+      "front": {
+        "fr": "ingénierie des lignes de produits logiciels ?",
+        "en": "software product line engineering?"
+      },
+      "back": {
+        "fr": "Paradigme pour développer des applications logicielles en utilisant des plates-formes et la personnalisation de masse.",
+        "en": "A paradigm for developing software applications using platforms and mass customisation."
+      }
+    },
+    {
+      "id": "inf4-02-fc-07",
+      "front": {
+        "fr": "Ligne de produits = … + … ?",
+        "en": "Product line = … + …?"
+      },
+      "back": {
+        "fr": "Plate-forme commune + personnalisation de masse.",
+        "en": "Common platform + mass customisation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.1.3 Combiner",
+          "quote": "La combinaison de la personnalisation de masse et d'une plate-forme commune nous permet de réutiliser une base de technologie commune"
+        }
+      ],
+      "notions": [
+        "n-platform-plus-mass-customisation"
+      ]
+    },
+    {
+      "id": "inf4-02-fc-08",
+      "front": {
+        "fr": "Stratégie de création d’une ligne de produits ?",
+        "en": "Strategy for creating a product line?"
+      },
+      "back": {
+        "fr": "D’abord ce qui est commun à tous les produits, ensuite ce qui diffère.",
+        "en": "First what is common to all products, then what differs."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.2.1 Création de la plate-forme",
+          "quote": "La stratégie consiste d'abord à se concentrer sur ce qui est commun à tous les produits, puis sur ce qui est différent."
+        }
+      ],
+      "notions": [
+        "n-commonality-first"
+      ]
+    },
+    {
+      "id": "inf4-02-fc-09",
+      "front": {
+        "fr": "Time to market d’une ligne de produits ?",
+        "en": "A product line’s time to market?"
+      },
+      "back": {
+        "fr": "D’abord plus long (actifs communs à construire), puis bien plus court.",
+        "en": "Longer at first (common assets to build), then much shorter."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.3 Time to Market",
+          "quote": "Le délai de mise sur le marché est initialement plus élevé, car les artefacts communs doivent d'abord être construits."
+        }
+      ],
+      "notions": [
+        "n-time-to-market"
+      ]
+    },
+    {
+      "id": "inf4-02-fc-10",
+      "front": {
+        "fr": "Prérequis d’une ligne de produits logiciels ?",
+        "en": "Prerequisites of a software product line?"
+      },
+      "back": {
+        "fr": "Technologies habilitantes (objet, composants, liaison tardive), processus matures, bonne connaissance du domaine et marché stable.",
+        "en": "Enabling technologies (objects, components, late binding), mature processes, good domain knowledge and a stable market."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "La programmation orientée objet, la technologie des composants et les techniques de liaison tardive (late-binding)"
+        }
+      ],
+      "notions": [
+        "n-prerequisites"
+      ]
+    }
+  ],
   "quiz": [
     {
       "id": "inf4-02-qz-01",
@@ -989,7 +1310,15 @@
           "loc": "1.1 Logiciel individuel et standard",
           "quote": "les produits logiciels standards manquent d'une diversification suffisante"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-individual-vs-standard-software"
+      ],
+      "trap": {
+        "fr": "Inverser : l’individuel est cher, le standard manque de diversité.",
+        "en": "Reversing: individual is expensive, standard lacks diversity."
+      }
     },
     {
       "id": "inf4-02-qz-02",
@@ -1035,7 +1364,15 @@
           "loc": "1.1.1 Personnalisation de masse",
           "quote": "ont commencé à introduire des plates-formes communes pour leurs différents types de voitures"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-mass-customisation"
+      ],
+      "trap": {
+        "fr": "Croire que la personnalisation de masse réduit les coûts d’emblée.",
+        "en": "Believing mass customisation cuts costs straight away."
+      }
     },
     {
       "id": "inf4-02-qz-03",
@@ -1061,7 +1398,15 @@
           "loc": "1.1.2 Plates-formes",
           "quote": "celles qui partaient de zéro pour chaque nouvelle série de voitures ont subi une perte de ventes de 7%"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-platform-sales-growth"
+      ],
+      "trap": {
+        "fr": "Inverser les chiffres : +35 % pour la meilleure stratégie de plate-forme, −7 % pour qui repart de zéro.",
+        "en": "Swapping the figures: +35% for the best platform strategy, −7% for starting from scratch."
+      }
     },
     {
       "id": "inf4-02-qz-04",
@@ -1087,6 +1432,10 @@
           "loc": "1.1.2 Plates-formes",
           "quote": "en 1994, il avait conquis 70% du marché américain"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-platform"
       ]
     },
     {
@@ -1133,7 +1482,15 @@
           "loc": "1.1.3 Combiner",
           "quote": "que nous appelons ingénierie des lignes de produits logiciels"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-platform-plus-mass-customisation"
+      ],
+      "trap": {
+        "fr": "Oublier l’un des deux ingrédients de la formule.",
+        "en": "Forgetting one of the formula’s two ingredients."
+      }
     },
     {
       "id": "inf4-02-qz-06",
@@ -1154,7 +1511,15 @@
           "loc": "1.2.1 Création de la plate-forme",
           "quote": "La stratégie consiste d'abord à se concentrer sur ce qui est commun à tous les produits, puis sur ce qui est différent."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-commonality-first"
+      ],
+      "trap": {
+        "fr": "Inverser l’ordre : d’abord le commun, ensuite les différences.",
+        "en": "Reversing the order: commonality first, differences next."
+      }
     },
     {
       "id": "inf4-02-qz-07",
@@ -1180,6 +1545,10 @@
           "loc": "1.2.3 Réorganisation de l'entreprise",
           "quote": "créer une unité responsable de la plate-forme"
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-creating-platform"
       ]
     },
     {
@@ -1221,7 +1590,15 @@
           "loc": "1.2.2 Introduction de la flexibilité",
           "quote": "pas de lave-glace arrière sur un cabriolet quand le toit est ouvert"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-managed-variability"
+      ],
+      "trap": {
+        "fr": "Confondre contrainte de variabilité et communalité.",
+        "en": "Confusing variability constraint and commonality."
+      }
     },
     {
       "id": "inf4-02-qz-09",
@@ -1247,7 +1624,15 @@
           "loc": "1.3.3 Time to Market",
           "quote": "une fois cet obstacle franchi, le délai est considérablement raccourci grâce à la réutilisation"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-time-to-market"
+      ],
+      "trap": {
+        "fr": "Croire au gain immédiat : le time to market est d’abord plus long.",
+        "en": "Believing in immediate gain: time to market is longer at first."
+      }
     },
     {
       "id": "inf4-02-qz-10",
@@ -1288,7 +1673,15 @@
           "loc": "1.3.4 Motivations supplémentaires",
           "quote": "Les corrections apportées à la plate-forme se propagent à tous les produits."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-quality-enhancement"
+      ],
+      "trap": {
+        "fr": "Confondre réduction de la maintenance et du time to market.",
+        "en": "Confusing reduced maintenance and reduced time to market."
+      }
     },
     {
       "id": "inf4-02-qz-11",
@@ -1309,6 +1702,10 @@
           "loc": "1.3.1 Réduction des coûts",
           "quote": "qui se situe à environ 3 systèmes pour l'ingénierie logicielle"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-break-even-point"
       ]
     },
     {
@@ -1335,7 +1732,15 @@
           "loc": "1.4.2 Plate-forme logicielle",
           "quote": "le mot plate-forme désigne souvent le matériel ou l'OS"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-software-platform"
+      ],
+      "trap": {
+        "fr": "Prendre le sens industriel (matériel, OS) pour celui du livre.",
+        "en": "Taking the industrial meaning (hardware, OS) for the book’s."
+      }
     },
     {
       "id": "inf4-02-qz-13",
@@ -1381,9 +1786,164 @@
           "loc": "1.4.3 Prérequis",
           "quote": "une stabilité du marché sont indispensables pour que l'investissement soit rentable"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-prerequisites",
+        "n-domain-expertise"
+      ],
+      "trap": {
+        "fr": "Ne pas voir qu’un domaine mal connu et un marché instable menacent l’investissement.",
+        "en": "Missing that a poorly known domain and an unstable market threaten the investment."
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "inf4-02-ex-01",
+      "title": {
+        "fr": "Conseiller une entreprise : ligne de produits ou non ?",
+        "en": "Advising a company: product line or not?"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "Deux entreprises hésitent. (A) Un éditeur de logiciels de caisse connaît son métier depuis 15 ans, vend à des boulangeries, pharmacies et librairies, et prévoit 5 variantes. (B) Une start-up explore un marché naissant (lunettes connectées) et ne sait pas encore ce que veulent les clients. Pour chacune, recommande ou non une ligne de produits en citant au moins trois arguments du cours (motivations, point mort, prérequis).",
+        "en": "Two companies are hesitating. (A) A POS software vendor has known its business for 15 years, sells to bakeries, pharmacies and bookshops, and plans 5 variants. (B) A start-up explores an emerging market (smart glasses) and does not yet know what customers want. For each, recommend a product line or not, citing at least three course arguments (motivations, break-even point, prerequisites)."
+      },
+      "hints": [
+        {
+          "fr": "Point mort vers 3 systèmes ; prérequis : domaine connu, marché stable, processus matures, technologies habilitantes.",
+          "en": "Break-even around 3 systems; prerequisites: known domain, stable market, mature processes, enabling technologies."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (A) **Oui** : 5 variantes dépassent le point mort (environ 3 systèmes) ; le domaine est bien connu et le marché stable (prérequis) ; on gagne en coûts par produit, en qualité (artefacts testés dans plusieurs produits) et en maintenance (une correction profite à tous). (B) **Pas encore** : domaine mal connu et marché instable compromettent la rentabilité de l’investissement initial ; mieux vaut d’abord explorer, puis construire la plate-forme quand la communalité sera claire.",
+        "en": "**Proposed** solution. (A) **Yes**: 5 variants exceed the break-even point (about 3 systems); the domain is well known and the market stable (prerequisites); gains in cost per product, quality (assets tested in several products) and maintenance (one fix benefits all). (B) **Not yet**: a poorly known domain and an unstable market jeopardise the initial investment’s return; better to explore first, then build the platform once commonality is clear."
+      },
+      "notions": [
+        "n-break-even-point",
+        "n-prerequisites",
+        "n-domain-expertise",
+        "n-quality-enhancement"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.3.1 Réduction des coûts",
+          "quote": "L'entreprise doit faire un investissement initial pour créer la plate-forme, mais cela réduit ensuite les coûts par produit en réutilisant les artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.3 Prérequis",
+          "quote": "La programmation orientée objet, la technologie des composants et les techniques de liaison tardive (late-binding)"
+        }
+      ]
+    },
+    {
+      "id": "inf4-02-ex-02",
+      "title": {
+        "fr": "Plate-forme ou pas plate-forme ?",
+        "en": "Platform or not?"
+      },
+      "difficulty": 1,
+      "level": "understand",
+      "objective": "o1",
+      "statement": {
+        "fr": "Dis si chaque élément est une plate-forme logicielle au sens du livre, et justifie : (1) le système d’exploitation Android d’un téléphone ; (2) un ensemble de sous-systèmes et d’interfaces communs à toute une gamme d’applications bancaires, sur lequel on dérive chaque produit ; (3) le code d’une seule application, copié pour en faire une autre.",
+        "en": "Say whether each item is a software platform in the book’s sense, and justify: (1) a phone’s Android operating system; (2) a set of subsystems and interfaces common to a whole range of banking applications, from which each product is derived; (3) the code of a single application, copied to make another."
+      },
+      "hints": [
+        {
+          "fr": "Attention au sens industriel du mot « plate-forme ».",
+          "en": "Beware of the industrial meaning of “platform”."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) **Non** au sens du livre : dans l’industrie, « plate-forme » désigne souvent le matériel ou l’OS, ce n’est pas la définition retenue. (2) **Oui** : des sous-systèmes et des interfaces formant une structure commune à partir de laquelle on développe efficacement des produits dérivés. (3) **Non** : c’est de la duplication (réutilisation opportuniste), pas une base conçue pour la réutilisation.",
+        "en": "**Proposed** solution. (1) **No** in the book’s sense: in industry, “platform” often means hardware or the OS, which is not the definition used. (2) **Yes**: subsystems and interfaces forming a common structure from which derived products are developed efficiently. (3) **No**: that is duplication (opportunistic reuse), not a base designed for reuse."
+      },
+      "notions": [
+        "n-software-platform",
+        "n-platform"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/2__software_ple.md",
+          "loc": "1.4.2 Plate-forme logicielle",
+          "quote": "Une plate-forme logicielle est un ensemble de sous-systèmes logiciels et d'interfaces qui forment une structure commune"
+        }
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "writing": [
+    {
+      "id": "inf4-02-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "A product line combines a common platform with mass customisation.",
+      "accepted": [
+        "A product line combines mass customisation with a common platform."
+      ]
+    },
+    {
+      "id": "inf4-02-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "Individual software is rather {{expensive}}, while standard software lacks sufficient {{diversification}}.",
+      "translation": "Le logiciel individuel est plutôt cher, le logiciel standard manque de diversification."
+    },
+    {
+      "id": "inf4-02-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Thanks to reuse, a product line shortens time to market from the first product.",
+      "error": "from the first product",
+      "corrected": "once the common assets are built",
+      "explanation": {
+        "fr": "Le time to market est d’abord plus long, le temps de construire les artefacts communs.",
+        "en": "Time to market is longer at first, while common assets are built."
+      }
+    },
+    {
+      "id": "inf4-02-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique ce qu’est une plate-forme logicielle au sens du livre.",
+        "en": "In 2-3 English sentences, explain what a software platform is in the book’s sense."
+      },
+      "modelAnswer": "A software platform is a set of software subsystems and interfaces that form a common structure. Derived products can be developed efficiently from it. It is not the hardware or the operating system.",
+      "keywords": [
+        "subsystems",
+        "interfaces",
+        "common structure",
+        "derived products"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité sous-systèmes et interfaces.",
+          "en": "I mentioned subsystems and interfaces."
+        },
+        {
+          "fr": "J’ai écarté le sens matériel / OS.",
+          "en": "I ruled out the hardware / OS meaning."
+        }
+      ],
+      "usefulPhrases": [
+        "is a set of",
+        "can be developed efficiently from it",
+        "it is not"
+      ]
+    }
+  ]
 }
