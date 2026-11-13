@@ -10,7 +10,95 @@
     "fr": "Une exigence ne dit rien de la machine : elle décrit le monde. Comment passer d'un désir du client à une spécification qu'un développeur peut implémenter ?",
     "en": "A requirement says nothing about the machine: it describes the world. How do you get from a customer's wish to a specification a developer can implement?"
   },
-  "estimatedMinutes": 30,
+  "question": {
+    "fr": "Que décrit vraiment une exigence : la machine ou le monde ? Et comment passer d’un désir du client à une spécification implémentable ?",
+    "en": "What does a requirement really describe: the machine or the world? And how do you go from a customer’s wish to an implementable specification?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Distinguer machine et environnement, indicatif (hypothèses, savoir du domaine) et optatif (exigences, spécifications).",
+        "en": "Distinguish machine and environment, indicative (assumptions, domain knowledge) and optative (requirements, specifications)."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Classer des actions (contrôle, partage) et expliquer pourquoi une exigence n’est pas directement implémentable.",
+        "en": "Classify actions (control, sharing) and explain why a requirement is not directly implementable."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Expliquer la relation S, K ⊢ R (S, W ⊢ R dans les Problem Frames) et reconnaître les cadres élémentaires.",
+        "en": "Explain the relation S, K ⊢ R (S, W ⊢ R in Problem Frames) and recognise elementary frames."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Lectures théoriques (supports 17 et 18) jamais interrogées en annale : priorité basse. Utile pour argumenter une réflexion (« quoi, pas comment »).",
+        "en": "Theoretical readings (supports 17 and 18) never asked in past exams: low priority. Useful to argue a reflection (“what, not how”)."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 2 et 3 : exigence « quoi, pas comment », spécification, savoir du domaine.",
+    "en": "Chapters 2 and 3: requirement “what, not how”, specification, domain knowledge."
+  },
+  "next": {
+    "fr": "Fin du parcours ISI1 : reviens aux annales (chapitres 1 à 6 et 10) pour t’entraîner.",
+    "en": "End of the ISI1 path: go back to past exams (chapters 1 to 6 and 10) to practise."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Une exigence décrit l’environnement (optatif), pas la machine ; l’indicatif décrit ce qui est vrai sans la machine (savoir du domaine K).",
+        "en": "A requirement describes the environment (optative), not the machine; the indicative describes what is true without the machine (domain knowledge K)."
+      },
+      {
+        "fr": "Actions : contrôlées par l’environnement ou la machine, partagées ou non ; « machine et non partagée » est impossible.",
+        "en": "Actions: controlled by the environment or the machine, shared or not; “machine-controlled and unshared” is impossible."
+      },
+      {
+        "fr": "Une spécification S ne contraint que la machine, n’utilise que des actions partagées et ne se réfère pas au futur ; il faut prouver S, K ⊢ R.",
+        "en": "A specification S only constrains the machine, uses only shared actions and does not refer to the future; S, K ⊢ R must be proved."
+      },
+      {
+        "fr": "Problem Frames : machine, monde du problème, exigence ; S, W ⊢ R ; cadres WorkPieces, Required Behaviour, Information Display.",
+        "en": "Problem Frames: machine, problem world, requirement; S, W ⊢ R; WorkPieces, Required Behaviour, Information Display frames."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Dire si une phrase est indicative ou optative, et si elle est implémentable telle quelle.",
+        "en": "Say whether a sentence is indicative or optative, and whether it is implementable as is."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Assertion (peut être fausse) ≠ définition (ni vraie ni fausse).",
+        "en": "Assertion (can be false) ≠ definition (neither true nor false)."
+      },
+      {
+        "fr": "Exigence R (optative, sur l’environnement) ≠ spécification S (optative, implémentable par la machine).",
+        "en": "Requirement R (optative, about the environment) ≠ specification S (optative, implementable by the machine)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "« Quoi, pas comment » (ISO, chapitre 2) prend ici un sens précis ; les hypothèses KAOS (chapitre 10) sont les buts confiés à l’environnement.",
+        "en": "“What, not how” (ISO, chapter 2) gets a precise meaning here; KAOS assumptions (chapter 10) are goals assigned to the environment."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
   "sources": [
     "sources-texte/isi1/17-four-dark-corners-or-re.md",
     "sources-texte/isi1/18-problem-frames.md"
@@ -56,10 +144,25 @@
       }
     },
     {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Repère : ce chapitre résume deux lectures théoriques (supports 17 et 18). Elles n’ont jamais été interrogées : lis-les en dernier. Elles donnent des arguments solides pour justifier « quoi, pas comment » dans une réflexion.",
+        "en": "Landmark: this chapter summarises two theoretical readings (supports 17 and 18). They have never been asked: read them last. They give solid arguments to justify “what, not how” in a reflection."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "1. Introduction",
+          "quote": "There was a time when the epigram “requirements say what the system"
+        }
+      ]
+    },
+    {
       "type": "paragraph",
       "text": {
-        "fr": "Imagine un étudiant en IE qui croit qu'une exigence, c'est « ce que le système fera, et non comment ». Zave et Jackson (1997) disent : cette époque est révolue. La discipline a produit un corps de connaissances (terminologie, méthodes, langages, outils), mais **quatre zones** de son fondement restent faibles ou obscures. Leurs quatre conclusions : (1) tout le vocabulaire de l'IE doit être **ancré dans la réalité de l'environnement** pour lequel on construit une machine ; (2) on ne décrit pas la machine, on décrit l'**environnement**, tel qu'il serait sans elle et tel qu'on espère qu'il sera grâce à elle ; (3) il faut identifier **qui contrôle quelles actions** (environnement, machine, ou partagées) ; (4) le **savoir du domaine** sert surtout à **raffiner** les exigences en spécifications implémentables.",
-        "en": "Picture an RE student who believes a requirement is \"what the system will do, not how\". Zave and Jackson (1997) say that time is long past. The field has built a body of knowledge (terminology, methods, languages, tools), yet **four areas** of its foundation remain weak or obscure. Their four conclusions: (1) all RE terminology must be **grounded in the reality of the environment** for which a machine is built; (2) you do not describe the machine, you describe the **environment**, as it would be without the machine and as we hope it becomes because of it; (3) you must identify **which actions each agent controls** (environment, machine, or shared); (4) **domain knowledge** mainly supports **refining** requirements into implementable specifications."
+        "fr": "Imagine un étudiant qui croit qu'une exigence, c'est « ce que le système fera, et non comment ». Pour Zave et Jackson (1997), cette époque est révolue : **quatre zones** du fondement de l'IE restent obscures. Leurs conclusions : (1) ancrer tout le vocabulaire dans la **réalité de l'environnement** ; (2) décrire l'**environnement**, pas la machine ; (3) identifier **qui contrôle quelles actions** ; (4) le **savoir du domaine** sert surtout à **raffiner** les exigences en spécifications implémentables.",
+        "en": "Imagine a student who believes a requirement is \"what the system will do, not how\". For Zave and Jackson (1997), that era is over: **four areas** of RE's foundation remain obscure. Their conclusions: (1) ground all vocabulary in the **reality of the environment**; (2) describe the **environment**, not the machine; (3) identify **who controls which actions**; (4) **domain knowledge** mainly serves to **refine** requirements into implementable specifications."
       },
       "src": [
         {
@@ -87,6 +190,10 @@
           "loc": "1. Introduction",
           "quote": "The primary role of domain knowledge in requirements engineering is"
         }
+      ],
+      "notions": [
+        "n-quatre-coins-sombres",
+        "n-machine-vs-systeme"
       ]
     },
     {
@@ -128,8 +235,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Dialogue de deux ingénieurs d'exigences pour un système d'information d'université. Able : « Deux types de base : étudiant et cours, et une relation *inscrit*. » Baker : « Seuls les étudiants s'inscrivent à des cours ? Je ne crois pas que ce soit vrai. » Able : « Mais c'est ce que j'appelle un étudiant ! » Si un étudiant est une personne inscrite à un cours, l'assertion d'Able est presque vide ; si c'est une personne immatriculée et ni diplômée ni partie, c'est une contrainte forte. Le **sens d'un terme primitif ne s'établit que par une explication informelle**, claire, précise, **écrite et maintenue** dans la documentation des exigences : une **désignation**. Peu de méthodes imposent une désignation pour chaque terme primitif.",
-        "en": "Two requirements engineers discuss an information system for a university. Able: \"Two important basic types are student and course, plus a relation enrolled.\" Baker: \"Do only students enroll in courses? I don't think that's true.\" Able: \"But that's what I mean by student!\" If a student is a person enrolled in a course, Able's assertion is nearly vacuous; if it is a person who has matriculated and not yet graduated or withdrawn, it is a strong constraint. The **meaning of a primitive term can only be established by an informal explanation**, clear, precise, **written down and maintained** in the requirements documentation: a **designation**. Very few methods enforce a designation for every primitive term."
+        "fr": "Deux ingénieurs conçoivent le système d'une université. Able : « Deux types de base, étudiant et cours, et une relation *inscrit*. » Baker : « Seuls les étudiants s'inscrivent ? Je ne crois pas. » Able : « Mais c'est ce que j'appelle un étudiant ! » Selon le sens d'« étudiant », l'assertion est presque vide ou très contraignante. Le sens d'un terme primitif ne s'établit que par une explication informelle, précise, **écrite et maintenue** : une **désignation**.",
+        "en": "Two engineers design a university system. Able: \"Two basic types, student and course, and a relation *enrolled*.\" Baker: \"Only students enrol? I don't think so.\" Able: \"But that's what I call a student!\" Depending on what \"student\" means, the assertion is nearly empty or very constraining. The meaning of a primitive term can only be established by an informal, precise explanation, **written and maintained**: a **designation**."
       },
       "src": [
         {
@@ -162,6 +269,10 @@
           "loc": "2",
           "quote": "Yet very few requirements methods address this"
         }
+      ],
+      "notions": [
+        "n-coin1-termes-ancres-environnement",
+        "n-designation"
       ]
     },
     {
@@ -186,13 +297,17 @@
           "loc": "2",
           "quote": "ing, but it cannot be false."
         }
+      ],
+      "notions": [
+        "n-definition-formelle",
+        "n-designation"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Autre apport : le **« goal regress »**. Le but « refuser l'entrée à ceux qui n'ont pas payé » d'un tourniquet de zoo peut se reformuler à l'infini : le vrai but n'est-il pas la rentabilité du zoo ? Et le but du profit, le bonheur du propriétaire ? Il y a évidemment un problème : **presque tout but est un sous-but d'un but supérieur**. Ce qui distingue l'ingénierie de la religion, c'est le **sujet traité**. Il faut donc dire aux ingénieurs, en plus du but, que le sujet est l'entrée du zoo, via des désignations de phénomènes observables (visiteurs, pièces, action d'entrer). Ces désignations délimitent le terrain où explorer des stratégies alternatives.",
-        "en": "Another benefit: **goal regress**. The goal \"deny entrance to people who have not paid\" for a zoo turnstile can be restated endlessly: isn't the real goal the zoo's profitability? And the goal of profit, the owner's happiness? Obviously something is wrong: **almost every goal is a subgoal of some higher purpose**. What distinguishes engineering from religion is the **subject matter**. So engineers must be told, besides the goal, that the subject is the zoo entrance, through designations of observable phenomena (visitors, coins, the action of entering). These designations circumscribe the area where alternative goal-satisfaction strategies can be considered."
+        "fr": "Autre apport : le **« goal regress »**. Le but « refuser l'entrée à ceux qui n'ont pas payé » d'un tourniquet de zoo peut remonter sans fin : la rentabilité du zoo ? le bonheur du propriétaire ? **Presque tout but est le sous-but d'un autre.** Ce qui arrête la régression, c'est le **sujet traité** : l'entrée du zoo, délimitée par des désignations de phénomènes observables (visiteurs, pièces, action d'entrer), où l'on explore ensuite des stratégies alternatives.",
+        "en": "Another contribution: **goal regress**. A zoo turnstile's goal \"refuse entry to those who have not paid\" can climb endlessly: the zoo's profitability? the owner's happiness? **Almost every goal is a subgoal of another.** What stops the regress is the **subject matter**: the zoo entrance, delimited by designations of observable phenomena (visitors, coins, entering), where alternative strategies are then explored."
       },
       "src": [
         {
@@ -246,8 +361,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les exigences doivent décrire ce que fait la machine, pas comment. Plus précisément, ce qui est **observable à l'interface** entre environnement et machine, et rien d'autre sur la machine ; dire autre chose = **biais d'implémentation**. Problème : presque aucune machine n'est assez simple pour se passer d'**état**, or l'état est interne et non observable à l'interface. Zave et Jackson passent en revue des solutions antérieures (techniques orientées propriétés, orientées modèles, définition de Jones, approche de Lamport) puis proposent de **regarder le problème autrement**. Exemple de Jones : bloquer des numéros de téléphone représentés par un *ensemble* est sans biais ; une *liste* est biaisée (elle porte un ordre inobservable) — mais si l'on demande plus tard de rejouer les numéros dans l'ordre saisi, l'ensemble ne suffit plus : l'absence de biais entre en conflit avec la **maintenabilité**.",
-        "en": "Requirements should describe what the machine does, not how. More precisely, what is **observable at the interface** between environment and machine, and nothing else about the machine; saying anything else is **implementation bias**. Problem: very few machines are simple enough to avoid **state**, yet state is internal and not observable at the interface. Zave and Jackson review earlier solutions (property-oriented, model-oriented, Jones' definition, Lamport's approach) then propose **a completely different way of looking** at the problem. Jones' example: blocked telephone numbers represented as a *set* are unbiased; a *list* is biased (it carries unobservable ordering) — but if a later requirement asks to play back numbers in the order entered, a set is inadequate: freedom from bias conflicts with **maintainability**."
+        "fr": "Les exigences doivent décrire ce qui est **observable à l'interface** entre environnement et machine, et rien d'autre sur la machine ; sinon, c'est un **biais d'implémentation**. Problème : presque toute machine a un **état** interne, inobservable à l'interface. Exemple de Jones : des numéros bloqués représentés par un *ensemble* sont sans biais, par une *liste* biaisés (ordre inobservable) ; mais si l'on veut plus tard rejouer les numéros dans l'ordre, l'ensemble ne suffit plus : absence de biais et **maintenabilité** s'opposent.",
+        "en": "Requirements should describe what is **observable at the interface** between environment and machine, and nothing else about the machine; otherwise, it is **implementation bias**. Problem: almost every machine has internal **state**, unobservable at the interface. Jones's example: blocked numbers represented as a *set* are unbiased, as a *list* biased (unobservable order); but if numbers must later be replayed in order, the set no longer suffices: lack of bias and **maintainability** conflict."
       },
       "src": [
         {
@@ -275,13 +390,17 @@
           "loc": "3",
           "quote": "Thus Jones’ recommendation brings freedom from implementation bias into conflict with maintainabil-"
         }
+      ],
+      "notions": [
+        "n-biais-implementation",
+        "n-coin2-decrire-environnement"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "La nouvelle vue : une portion du monde devient « environnement » parce que son comportement actuel est insatisfaisant ; on y connecte une machine pour le rendre satisfaisant. Les entrées/sorties de la machine sont elles-mêmes des phénomènes de l'environnement. **Toute affirmation faite en IE porte donc sur l'environnement.** La distinction essentielle tient à deux modes grammaticaux : l'**indicatif** décrit l'environnement tel qu'il est en l'absence de la machine ou indépendamment de ses actions (on parle d'**hypothèses** ou de **connaissances du domaine**) ; l'**optatif** décrit l'environnement tel qu'on voudrait qu'il soit quand la machine y sera connectée : ce sont les **exigences**. Comme on décrit l'environnement à l'optatif, il devient inutile de décrire la machine, et la spécification ne peut pas sur-contraindre l'implémentation.",
-        "en": "The new view: a portion of the world becomes the \"environment\" because its current behavior is unsatisfactory; a machine is connected to make it satisfactory. The machine's inputs and outputs are themselves phenomena of the environment. **All statements made in RE are therefore about the environment.** The key distinction is two grammatical moods: the **indicative** describes the environment as it is without the machine or regardless of its actions (called **assumptions** or **domain knowledge**); the **optative** describes the environment as we would like it to be once the machine is connected: these are the **requirements**. Since the environment is described in the optative mood, there is no need to describe the machine, and the specification cannot overconstrain the implementation."
+        "fr": "La nouvelle vue : une portion du monde devient « environnement » parce que son comportement est insatisfaisant ; on y connecte une machine pour l'améliorer. **Toute affirmation de l'IE porte donc sur l'environnement**, selon deux modes : l'**indicatif** le décrit tel qu'il est sans la machine (**hypothèses**, **connaissances du domaine**) ; l'**optatif** le décrit tel qu'on le voudrait avec la machine : ce sont les **exigences**. Inutile alors de décrire la machine, et la spécification ne sur-contraint pas l'implémentation.",
+        "en": "The new view: a portion of the world becomes \"environment\" because its behaviour is unsatisfactory; a machine is connected to improve it. **Every RE statement is therefore about the environment**, in two moods: the **indicative** describes it as it is without the machine (**assumptions**, **domain knowledge**); the **optative** describes it as we would like it with the machine: these are the **requirements**. No need then to describe the machine, and the specification does not over-constrain implementation."
       },
       "src": [
         {
@@ -314,6 +433,10 @@
           "loc": "3.2",
           "quote": "This perspective avoids the problem of implementation bias because no"
         }
+      ],
+      "notions": [
+        "n-indicatif-optatif",
+        "n-coin2-decrire-environnement"
       ]
     },
     {
@@ -343,13 +466,16 @@
           "loc": "3.2",
           "quote": "request leads to a withdrawal payout, provided that the requested amount"
         }
+      ],
+      "notions": [
+        "n-indicatif-optatif"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Deux conséquences. (a) Si l'état de la spécification était un état de la machine, la spécification devrait être minimale ; comme c'est un état de l'environnement, on peut **collecter des connaissances du domaine avant d'être sûr qu'elles servent** (utile pour des bibliothèques réutilisables). (b) La machine garde souvent un état interne qui imite l'environnement, imparfaitement (retard, erreurs, facteurs inconnus) : l'exemple de l'entrepôt, où vol, casse ou erreurs de saisie rendent la quantité réelle d'un casier différente de celle du modèle de la machine. **L'état interne de la machine ne peut pas être désigné.**",
-        "en": "Two consequences. (a) If specification state were machine state, the specification would have to be minimal; since it is environment state, we are free to **collect domain knowledge before we are sure it will be needed** (useful for reusable libraries). (b) The machine often keeps internal state that mimics the environment, imperfectly (delay, errors, unknown factors): the warehouse example, where theft, breakage or clerical errors make the quantity actually in a bin differ from the machine's model. **Components of the machine state cannot be designated.**"
+        "fr": "Deux conséquences. (a) L'état décrit est celui de l'environnement : on peut donc **collecter des connaissances du domaine avant d'être sûr qu'elles servent**. (b) La machine garde souvent un état qui imite l'environnement, imparfaitement : dans un entrepôt, vol, casse ou erreurs de saisie écartent la quantité réelle de celle du modèle. **L'état interne de la machine ne peut pas être désigné.**",
+        "en": "Two consequences. (a) The state described is the environment's: one can therefore **collect domain knowledge before being sure it is useful**. (b) The machine often keeps a state imitating the environment, imperfectly: in a warehouse, theft, breakage or input errors make the real quantity differ from the model's. **The machine's internal state cannot be designated.**"
       },
       "src": [
         {
@@ -403,8 +529,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "En IE, il y a toujours deux agents : l'**environnement** et la **machine**. Dès qu'il y a deux agents, comprendre **qui contrôle quoi** est essentiel. Un langage d'exigences doit pouvoir déclarer des **types d'actions**, chacun étant soit **contrôlé par l'environnement**, soit **contrôlé par la machine**, et soit **partagé** (observable par la machine et l'environnement), soit **non partagé** (privé à l'environnement, inobservable par la machine). Une action ne peut pas être à la fois contrôlée par la machine et non partagée : il reste **trois catégories** — environnement/non partagé, environnement/partagé, machine/partagé. La machine implémentée doit exécuter les actions qu'elle contrôle (pas celles de l'environnement), peut observer les actions partagées, mais les non partagées sont hors de sa portée.",
-        "en": "In RE there are always two agents: the **environment** and the **machine**. With two agents, understanding **who controls what** is essential. A requirements language must declare **action types**, each either **environment-controlled** or **machine-controlled**, and either **shared** (observable by both machine and environment) or **unshared** (private to the environment, unobservable by the machine). An action cannot be both machine-controlled and unshared: this leaves **three categories** — environment/unshared, environment/shared, machine/shared. The implemented machine must perform the machine-controlled actions (not the environment-controlled ones), can observe shared actions, while unshared ones are beyond its reach."
+        "fr": "En IE, il y a toujours deux agents, l'**environnement** et la **machine** : il faut savoir **qui contrôle quoi**. Chaque type d'action est **contrôlé par l'environnement** ou **par la machine**, et **partagé** (observable des deux côtés) ou **non partagé** (privé à l'environnement). Une action ne peut pas être contrôlée par la machine et non partagée : restent **trois catégories**. La machine exécute les actions qu'elle contrôle, peut observer les actions partagées, mais pas les autres.",
+        "en": "In RE there are always two agents, the **environment** and the **machine**: you must know **who controls what**. Each action type is **controlled by the environment** or **by the machine**, and **shared** (observable on both sides) or **unshared** (private to the environment). An action cannot be machine-controlled and unshared: **three categories** remain. The machine performs the actions it controls, can observe shared actions, but not the others."
       },
       "src": [
         {
@@ -442,6 +568,11 @@
           "loc": "4.1",
           "quote": "while the unshared actions are beyond its reach."
         }
+      ],
+      "notions": [
+        "n-coin3-controle-actions",
+        "n-actions-partagees",
+        "n-trois-categories-actions"
       ]
     },
     {
@@ -506,13 +637,16 @@
           "loc": "6.2 Table II / 4.2",
           "quote": "In addition, there are machine-controlled lock and unlock actions."
         }
+      ],
+      "notions": [
+        "n-trois-categories-actions"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le **tourniquet** du zoo en est l'illustration. Cinq types d'actions : *pay* (un client met assez d'argent dans la fente), *push* (il pousse le tourniquet), *enter* (il le fait aller jusqu'au bout et entre), puis *lock* et *unlock*. Les trois premiers sont contrôlés par l'environnement ; *pay* et *push* sont partagés avec la machine, *enter* ne l'est pas ; *lock* et *unlock* sont contrôlés par la machine. Le texte formule ses propriétés comme des propriétés de **sûreté** (*safety* : « quelque chose de mauvais ne doit pas arriver ») ou de **vivacité** (*liveness* : « quelque chose de bon doit arriver »).",
-        "en": "The zoo **turnstile** illustrates this. Five action types: *pay* (a customer puts enough money in the slot), *push* (pushes the turnstile), *enter* (pushes it through to its home position and enters), plus *lock* and *unlock*. The first three are environment-controlled; *pay* and *push* are shared with the machine, *enter* is not; *lock* and *unlock* are machine-controlled. The text expresses properties as **safety** (\"something bad must not happen\") or **liveness** (\"something good must happen\") properties."
+        "fr": "Le **tourniquet** du zoo l'illustre avec cinq actions : *pay* (mettre l'argent), *push* (pousser), *enter* (entrer), *lock* et *unlock*. Les trois premières sont contrôlées par l'environnement ; *pay* et *push* sont partagées, *enter* non ; *lock* et *unlock* sont contrôlées par la machine. Les propriétés sont de **sûreté** (« quelque chose de mauvais ne doit pas arriver ») ou de **vivacité** (« quelque chose de bon doit arriver »).",
+        "en": "The zoo **turnstile** illustrates it with five actions: *pay* (insert money), *push*, *enter*, *lock* and *unlock*. The first three are environment-controlled; *pay* and *push* are shared, *enter* is not; *lock* and *unlock* are machine-controlled. Properties are **safety** (\"something bad must not happen\") or **liveness** (\"something good must happen\")."
       },
       "src": [
         {
@@ -545,8 +679,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Quelques propriétés du tourniquet. **G1** (indicative, sûreté) : *push* et *enter* alternent strictement. **G2** (indicative, vivacité) : un *push* mène toujours à un *enter* (mécanisme hydraulique). **G3** (**optative**, sûreté) : *lock* et *unlock* alternent strictement, parce que le matériel est conçu ainsi et peut tomber en panne sinon — c'est optatif car rien dans l'environnement n'impose cet ordre aux signaux de la machine. **G4** (indicative, sûreté) : quand le tourniquet est verrouillé, aucun *push* ne se produit. **G5** (optative, sûreté, sur une action de l'environnement) : le nombre cumulé d'*enter* ne dépasse jamais le nombre cumulé de *pay*. Imposer l'alternance *enter*/*pay* serait trop restrictif, car un enseignant peut payer d'un coup pour toute une classe.",
-        "en": "Some turnstile properties. **G1** (indicative, safety): *push* and *enter* strictly alternate. **G2** (indicative, liveness): a *push* always leads to an *enter* (hydraulic mechanism). **G3** (**optative**, safety): *lock* and *unlock* strictly alternate, because the hardware is designed so and may break otherwise — it is optative since nothing in the environment imposes any order on the machine's signals. **G4** (indicative, safety): when the turnstile is locked, no *push* occurs. **G5** (optative, safety, on an environment action): the accumulated number of *enter* never exceeds the accumulated number of *pay*. Forcing alternation of enters and pays would be too restrictive, since a teacher can pay at once for a whole class."
+        "fr": "Propriétés du tourniquet. **G1** (indicative, sûreté) : *push* et *enter* alternent. **G2** (indicative, vivacité) : un *push* mène toujours à un *enter* (mécanisme hydraulique). **G3** (**optative**, sûreté) : *lock* et *unlock* alternent, car rien dans l'environnement n'impose cet ordre aux signaux. **G4** (indicative) : verrouillé, aucun *push* ne se produit. **G5** (optative) : le nombre d'*enter* ne dépasse jamais celui de *pay* ; imposer l'alternance serait trop strict (un enseignant paie pour toute sa classe).",
+        "en": "Turnstile properties. **G1** (indicative, safety): *push* and *enter* alternate. **G2** (indicative, liveness): a *push* always leads to an *enter* (hydraulic mechanism). **G3** (**optative**, safety): *lock* and *unlock* alternate, since nothing in the environment imposes this order on the signals. **G4** (indicative): when locked, no *push* occurs. **G5** (optative): the number of *enter* never exceeds the number of *pay*; requiring alternation would be too strict (a teacher pays for a whole class)."
       },
       "src": [
         {
@@ -644,6 +778,10 @@
           "loc": "5",
           "quote": "(2) augmenting or replacing them until they are fully implementable."
         }
+      ],
+      "notions": [
+        "n-exigence-specification-optatives",
+        "n-coin4-savoir-du-domaine"
       ]
     },
     {
@@ -683,13 +821,17 @@
           "loc": "5",
           "quote": "Some requirements are already implementable, so they can be copied"
         }
+      ],
+      "notions": [
+        "n-savoir-du-domaine",
+        "n-relation-s-k-r"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Pourquoi une exigence n'est-elle pas directement implémentable ? Trois raisons. **(1) Contrainte sur l'environnement** : le seul moyen de la satisfaire est de contraindre une action contrôlée par l'environnement. Ex. G5 « les *enter* ne dépassent pas les *pay* » : il faut le savoir indicatif que *push* et *enter* alternent (G1), que verrouillé aucun *push* n'arrive (G4), l'effet de *lock*/*unlock*, et une borne inférieure du temps entre deux *push* ; la spécification obtenue (G6, G7) dit quand *lock* et *unlock* doivent et ne doivent pas se produire. **(2) Information non partagée** : la banque ne peut pas implémenter une règle exprimée avec le solde, car le solde n'est pas partagé ; on remplace le solde par son expression équivalente en dépôts et retraits payés, qui sont partagés. **(3) Référence au futur** : au téléphone, « après le dernier chiffre composé, un signal doit se produire » suppose de savoir qu'aucun autre chiffre ne sera composé ; avec le savoir approximatif « s'il compose un autre chiffre, c'est presque toujours dans les quatre secondes », la spécification devient : répondre après un chiffre suivi de quatre secondes de silence.",
-        "en": "Why isn't a requirement directly implementable? Three reasons. **(1) Environment constraint**: the only way to satisfy it is to constrain an environment-controlled action. E.g. G5 \"enters do not outnumber pays\": you need the indicative knowledge that push and enter alternate (G1), that pushes cannot occur when locked (G4), the effect of lock/unlock, and a lower bound on the time between two pushes; the resulting specification (G6, G7) says when lock and unlock must and must not occur. **(2) Unshared information**: the bank cannot implement a rule stated with the balance, because the balance is not shared; the balance is replaced by its equivalent expression over deposits and withdrawal payouts, which are shared. **(3) Future reference**: in telephony, \"after the last digit dialed, a tone must occur\" presupposes knowing that no further digit will be dialed; with the approximate knowledge \"if the user dials another digit, almost always within four seconds\", the specification becomes: respond after a dialed digit followed by a four-second silence."
+        "fr": "Pourquoi une exigence n'est-elle pas directement implémentable ? **(1) Elle contraint une action de l'environnement** : G5 ne se réalise qu'avec le savoir G1, G4 et l'effet de *lock*/*unlock*, d'où une spécification sur *lock* et *unlock*. **(2) Elle utilise une information non partagée** : la banque remplace le solde par les dépôts et retraits payés, partagés. **(3) Elle se réfère au futur** : « après le dernier chiffre composé, un signal » devient « après un chiffre suivi de quatre secondes de silence ».",
+        "en": "Why is a requirement not directly implementable? **(1) It constrains an environment action**: G5 is only achieved with knowledge G1, G4 and the effect of *lock*/*unlock*, hence a specification on *lock* and *unlock*. **(2) It uses unshared information**: the bank replaces the balance with paid deposits and withdrawals, which are shared. **(3) It refers to the future**: \"after the last digit dialled, a signal\" becomes \"after a digit followed by four seconds of silence\"."
       },
       "src": [
         {
@@ -742,6 +884,10 @@
           "loc": "5.1–5.3",
           "quote": "The resulting specification says that the system must respond after a"
         }
+      ],
+      "notions": [
+        "n-exigences-non-implementables",
+        "n-raffinement-exigences-zj"
       ]
     },
     {
@@ -827,13 +973,16 @@
           "loc": "6.2",
           "quote": "(4) Each property or assertion must be identified as a requirement, state-"
         }
+      ],
+      "notions": [
+        "n-achevement-ie"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "L'IE est **achevée, au sens fort**, si cinq critères sont satisfaits : (1) un ensemble **R** d'exigences, chacune **validée** (vérifiée informellement) comme acceptable pour le client, et R dans son ensemble validé comme exprimant tous les désirs du client ; (2) un ensemble **K** d'énoncés de savoir du domaine, chacun validé comme **vrai** de l'environnement ; (3) un ensemble **S** de spécifications qui ne contraignent pas l'environnement, ne parlent d'aucune action non partagée et ne se réfèrent pas au futur ; (4) une **preuve que S, K ⊢ R** ; (5) une **preuve que S et K sont cohérents**. Les deux preuves ensemble impliquent que S, K et R sont cohérents entre eux. La vérification n'est donc pas réservée à « l'implémentation satisfait la spécification » : elle a un rôle dès l'IE.",
-        "en": "RE is **complete, in the strongest sense**, if five criteria hold: (1) a set **R** of requirements, each **validated** (checked informally) as acceptable to the customer, and R as a whole validated as expressing all the customer's desires; (2) a set **K** of domain-knowledge statements, each validated as **true** of the environment; (3) a set **S** of specifications that do not constrain the environment, mention no unshared actions and do not refer to the future; (4) a **proof that S, K ⊢ R**; (5) a **proof that S and K are consistent**. The two proofs together imply S, K and R are consistent with each other. Verification is therefore not reserved to \"the implementation satisfies the specification\": it plays a role within RE itself."
+        "fr": "L'IE est **achevée, au sens fort**, si : (1) les exigences **R** sont validées comme acceptables et complètes pour le client ; (2) le savoir du domaine **K** est validé comme **vrai** de l'environnement ; (3) les spécifications **S** ne contraignent pas l'environnement, n'utilisent aucune action non partagée et ne se réfèrent pas au futur ; (4) on a **prouvé S, K ⊢ R** ; (5) on a **prouvé que S et K sont cohérents**. La vérification a donc un rôle dès l'IE.",
+        "en": "RE is **complete, in the strong sense**, if: (1) requirements **R** are validated as acceptable and complete for the customer; (2) domain knowledge **K** is validated as **true** of the environment; (3) specifications **S** do not constrain the environment, use no unshared action and do not refer to the future; (4) **S, K ⊢ R** has been proved; (5) **S and K have been proved consistent**. Verification therefore has a role from RE onwards."
       },
       "src": [
         {
@@ -866,6 +1015,10 @@
           "loc": "6.3",
           "quote": "verification also has a role to play in requirements engineering."
         }
+      ],
+      "notions": [
+        "n-achevement-ie",
+        "n-relation-s-k-r"
       ]
     },
     {
@@ -882,8 +1035,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Huit ans plus tard, Michael Jackson reprend la même idée dans l'**approche Problem Frames (PF)**. Ce n'est **pas une méthode de développement** : c'est une **perspective et un cadre conceptuel**, utilisable de façon constructive (guider le développement), analytique (comprendre des développements achevés) et méthodologique (comprendre les approches existantes). Sa définition de l'ingénierie : organiser la conception et la construction de tout artefact qui **transforme le monde physique** pour répondre à un besoin reconnu. Les trois « parties principales » du problème sont : la **machine** (le logiciel exécuté sur un ordinateur généraliste), le **monde du problème** (*problem world*, la partie du monde à transformer) et l'**exigence** (le besoin à satisfaire). La machine et le monde du problème interagissent par des **phénomènes partagés** (événements et états) ; l'exigence, figurée par un ovale en pointillé car intangible, est un prédicat sur le monde du problème.",
-        "en": "Eight years later Michael Jackson takes up the same idea in the **Problem Frames (PF) approach**. It is **not a development method**: it is a **perspective and a conceptual framework**, usable constructively (to guide development), analytically (to understand completed developments) and methodologically (to understand existing approaches). Its definition of engineering: organising the design and construction of any artifice that **transforms the physical world** to meet a recognised need. The three \"principal parts\" of the problem are: the **machine** (software executed on a general-purpose computer), the **problem world** (the part of the world to be transformed) and the **requirement** (the need to satisfy). Machine and problem world interact through **shared phenomena** (events and states); the requirement, shown as a dashed oval because it is intangible, is a predicate on the problem world."
+        "fr": "Huit ans plus tard, Michael Jackson reprend l'idée dans les **Problem Frames (PF)**. Ce n'est **pas une méthode de développement** mais une **perspective**, utilisable pour guider, analyser ou comparer des développements. Le problème a trois parties : la **machine** (le logiciel), le **monde du problème** (la partie du monde à transformer) et l'**exigence** (le besoin, prédicat sur ce monde). Machine et monde interagissent par des **phénomènes partagés** (événements, états).",
+        "en": "Eight years later, Michael Jackson takes the idea up in **Problem Frames (PF)**. It is **not a development method** but a **perspective**, usable to guide, analyse or compare developments. The problem has three parts: the **machine** (the software), the **problem world** (the part of the world to transform) and the **requirement** (the need, a predicate on that world). Machine and world interact through **shared phenomena** (events, states)."
       },
       "src": [
         {
@@ -916,13 +1069,17 @@
           "loc": "2",
           "quote": "the problem: it is a predicate or condition on the problem"
         }
+      ],
+      "notions": [
+        "n-problem-frames-approche",
+        "n-monde-du-probleme"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "PF exige de distinguer **trois descriptions** : l'**exigence R** (comment le monde doit être, en termes des phénomènes de l'exigence), la **spécification S** (le comportement que la machine doit avoir, en termes des phénomènes de spécification à l'interface) et les **propriétés du monde W** (propriétés données du monde du problème, valables indépendamment de la machine). Il faut montrer que **S, W ⊢ R** : si une machine satisfaisant S est installée dans un monde satisfaisant W, alors R est satisfaite. On reconnaît exactement la relation S, K ⊢ R de Zave et Jackson — W joue le rôle de K. L'écart entre ce qu'on désire (phénomènes de l'exigence) et ce que la machine peut surveiller et commander (phénomènes de spécification) est comblé par les propriétés du monde. Aller de R à S s'appelle la **réduction de problème** ; la montrer correcte est le **souci de base** (*basic problem concern*).",
-        "en": "PF demands a clear distinction among **three descriptions**: the **requirement R** (how the world is desired to be, in terms of the requirement phenomena), the **specification S** (the machine behaviour required, in terms of the specification phenomena at the interface) and the **world properties W** (given properties of the problem world holding independently of the machine). One must show **S, W ⊢ R**: if a machine satisfying S is installed in a problem world satisfying W, then R is satisfied. This is exactly Zave and Jackson's S, K ⊢ R — W plays the role of K. The gap between what is desired (requirement phenomena) and what the machine can monitor and control (specification phenomena) is bridged by the world properties. Going from R to S is called **problem reduction**; showing it correct is the **basic problem concern**."
+        "fr": "PF distingue **trois descriptions** : l'**exigence R** (comment le monde doit être), la **spécification S** (le comportement de la machine à l'interface) et les **propriétés du monde W** (vraies indépendamment de la machine). Il faut montrer que **S, W ⊢ R** : une machine conforme à S, installée dans un monde conforme à W, satisfait R. C'est la relation S, K ⊢ R de Zave et Jackson, W jouant le rôle de K. Passer de R à S s'appelle la **réduction de problème**.",
+        "en": "PF distinguishes **three descriptions**: the **requirement R** (how the world must be), the **specification S** (the machine's behaviour at the interface) and the **world properties W** (true independently of the machine). One must show that **S, W ⊢ R**: a machine meeting S, installed in a world meeting W, satisfies R. This is Zave and Jackson's S, K ⊢ R, with W playing the role of K. Going from R to S is called **problem reduction**."
       },
       "src": [
         {
@@ -960,6 +1117,10 @@
           "loc": "3",
           "quote": "Showing, formally or informally, that this relationship holds"
         }
+      ],
+      "notions": [
+        "n-descriptions-machine-vs-monde",
+        "n-relation-s-k-r"
       ]
     },
     {
@@ -994,8 +1155,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les **cadres élémentaires** (*elementary problem frames*) sont des **patrons de problème** pour des sous-problèmes simples. Trois exemples du texte : **WorkPieces** (un *User* édite une *WorkPiece*, texte ou graphique : les commandes d'édition doivent produire les changements correspondants) ; **Required Behaviour** (la *Control Machine* doit imposer un comportement à un *Controlled Domain*) ; **Information Display** (l'*Information Machine* surveille un *Real World* et affiche des informations sur un *Display*). Un patron fixe aussi la nature de chaque domaine du monde du problème : le *Controlled Domain* est **causal**, la *WorkPiece* est **lexicale**, l'*User* est **biddable** (on peut lui demander d'agir, sans garantie).",
-        "en": "**Elementary problem frames** are **problem patterns** for simple subproblems. Three examples from the text: **WorkPieces** (a *User* edits a *WorkPiece*, a text or graphic: the edit commands must produce corresponding changes); **Required Behaviour** (the *Control Machine* must impose a behaviour on a *Controlled Domain*); **Information Display** (the *Information Machine* monitors a *Real World* and displays information about it on a *Display*). A pattern also fixes each problem domain's nature: the *Controlled Domain* is **causal**, the *WorkPiece* is **lexical**, the *User* is **biddable** (can be asked to act, with no guarantee)."
+        "fr": "Les **cadres élémentaires** sont des **patrons** de sous-problèmes simples : **WorkPieces** (un utilisateur édite un texte ou un graphique), **Required Behaviour** (la machine impose un comportement à un domaine contrôlé), **Information Display** (la machine surveille le monde réel et affiche des informations). Chaque domaine a une nature : **causal** (domaine contrôlé), **lexical** (la *WorkPiece*), **biddable** (l'utilisateur, à qui l'on peut demander d'agir, sans garantie).",
+        "en": "**Elementary frames** are **patterns** for simple subproblems: **WorkPieces** (a user edits a text or graphic), **Required Behaviour** (the machine imposes behaviour on a controlled domain), **Information Display** (the machine monitors the real world and displays information). Each domain has a nature: **causal** (controlled domain), **lexical** (the *WorkPiece*), **biddable** (the user, who can be asked to act, without guarantee)."
       },
       "src": [
         {
@@ -1023,13 +1184,17 @@
           "loc": "6",
           "quote": "causal, the WorkPiece is lexical, and the User is"
         }
+      ],
+      "notions": [
+        "n-cadres-elementaires",
+        "n-domaines-causal-lexical-biddable"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Chaque cadre soulève des **préoccupations spécifiques** à traiter : **initialisation** (la machine démarre dans son état initial, alors que le monde du problème est dans un de ses états : si le développeur ne l'a pas considéré, le comportement spécifié risque de ne pas satisfaire l'exigence), **casse** (*breakage* : un domaine causal peut être endommagé par certaines séquences d'opérations), **fiabilité** (un domaine causal satisfait ses propriétés avec une grande, jamais parfaite, fiabilité), **déficit d'information** (dans *Information Display*, l'information disponible à l'instant de l'affichage peut être insuffisante). Elles ne se posent pas toutes partout : pas de déficit d'information pour *WorkPieces*, pas de fiabilité pour *Information Display*. Pour le déficit d'information, la solution standard introduit un domaine *Model* inventé (souvent une base de données) et découpe le problème en deux sous-problèmes.",
-        "en": "Each frame raises **specific concerns**: **initialisation** (the machine begins in its initial state while the problem world is in one of some set of states: if the developer has not considered it, the specified behaviour is unlikely to satisfy the requirement), **breakage** (a causal domain may be damaged by certain sequences of operations), **reliability** (a causal domain satisfies its properties with high, never perfect, reliability), **information deficit** (in *Information Display*, the information available when each output must be produced may be inadequate). They do not all arise everywhere: no information deficit in *WorkPieces*, no reliability concern in *Information Display*. For information deficit the standard solution introduces an invented *Model* domain (often a database) and splits the problem into two subproblems."
+        "fr": "Chaque cadre soulève des **préoccupations** : **initialisation** (la machine démarre dans son état initial, pas forcément le monde), **casse** (un domaine causal peut être endommagé), **fiabilité** (jamais parfaite), **déficit d'information** (l'information disponible à l'affichage peut manquer). Elles ne se posent pas partout : pas de déficit d'information pour *WorkPieces*. Pour ce déficit, on introduit souvent un domaine *Model* inventé (une base de données) et l'on découpe le problème en deux.",
+        "en": "Each frame raises **concerns**: **initialisation** (the machine starts in its initial state, the world not necessarily), **breakage** (a causal domain can be damaged), **reliability** (never perfect), **information deficit** (information available at display time may be lacking). They do not arise everywhere: no information deficit for *WorkPieces*. For this deficit, an invented *Model* domain (a database) is often introduced and the problem split in two."
       },
       "src": [
         {
@@ -1109,7 +1274,8 @@
           "loc": "6.1",
           "quote": "—The environment is the portion of the real world relevant to the software"
         }
-      ]
+      ],
+      "notion": "n-coin2-decrire-environnement"
     },
     {
       "id": "term-machine",
@@ -1125,7 +1291,8 @@
           "loc": "6.1",
           "quote": "—The machine is a computer-based machine that will be constructed and"
         }
-      ]
+      ],
+      "notion": "n-machine-vs-systeme"
     },
     {
       "id": "term-designation",
@@ -1146,7 +1313,8 @@
           "loc": "2 / 6.1",
           "quote": "the requirements documentation. We call such an explanation a"
         }
-      ]
+      ],
+      "notion": "n-designation"
     },
     {
       "id": "term-definition",
@@ -1167,7 +1335,8 @@
           "loc": "2 / 6.1",
           "quote": "ing, but it cannot be false."
         }
-      ]
+      ],
+      "notion": "n-definition-formelle"
     },
     {
       "id": "term-indicative",
@@ -1188,7 +1357,8 @@
           "loc": "3.2 / 6.1",
           "quote": "machine; these statements are often called"
         }
-      ]
+      ],
+      "notion": "n-indicatif-optatif"
     },
     {
       "id": "term-optative",
@@ -1209,7 +1379,8 @@
           "loc": "3.2",
           "quote": "connected to the environment. Optative statements are commonly called"
         }
-      ]
+      ],
+      "notion": "n-indicatif-optatif"
     },
     {
       "id": "term-implementation-bias",
@@ -1230,7 +1401,8 @@
           "loc": "3",
           "quote": "and nothing else about the machine. To say anything else about the"
         }
-      ]
+      ],
+      "notion": "n-biais-implementation"
     },
     {
       "id": "term-shared-action",
@@ -1251,7 +1423,8 @@
           "loc": "4.1 / 6.1",
           "quote": "while the unshared actions are beyond its reach."
         }
-      ]
+      ],
+      "notion": "n-actions-partagees"
     },
     {
       "id": "term-requirement-zj",
@@ -1267,7 +1440,8 @@
           "loc": "6.1 / 5",
           "quote": "A requirement is an optative property. Let R be the set of requirements for"
         }
-      ]
+      ],
+      "notion": "n-exigence-specification-optatives"
     },
     {
       "id": "term-specification-zj",
@@ -1283,7 +1457,8 @@
           "loc": "5",
           "quote": "A specification is also an optative property, but one that must be"
         }
-      ]
+      ],
+      "notion": "n-exigence-specification-optatives"
     },
     {
       "id": "term-domain-knowledge",
@@ -1304,7 +1479,8 @@
           "loc": "5",
           "quote": "Let K be the relevant domain knowledge, i.e., the set of relevant"
         }
-      ]
+      ],
+      "notion": "n-savoir-du-domaine"
     },
     {
       "id": "term-problem-frame",
@@ -1325,7 +1501,8 @@
           "loc": "6",
           "quote": "its physical properties—causal, lexical or biddable—as"
         }
-      ]
+      ],
+      "notion": "n-problem-frames-approche"
     },
     {
       "id": "term-problem-world",
@@ -1346,7 +1523,8 @@
           "loc": "2",
           "quote": "we call the requirement. Satisfying the requirement involves"
         }
-      ]
+      ],
+      "notion": "n-monde-du-probleme"
     }
   ],
   "keyPoints": [
@@ -1489,7 +1667,206 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "isi1-09-fc-01",
+      "termId": "term-environment",
+      "front": {
+        "fr": "environnement ?",
+        "en": "environment?"
+      },
+      "back": {
+        "fr": "Portion du monde réel pertinente pour le projet de développement ; c'est lui que décrivent toutes les affirmations de l'IE.",
+        "en": "The portion of the real world relevant to the software development project; all RE statements describe it."
+      }
+    },
+    {
+      "id": "isi1-09-fc-02",
+      "termId": "term-machine",
+      "front": {
+        "fr": "machine ?",
+        "en": "machine?"
+      },
+      "back": {
+        "fr": "Artefact informatique qui sera construit et connecté à l'environnement du fait du projet (le mot « système » désigne un artefact plus général, avec parties manuelles).",
+        "en": "The computer-based artifact built and connected to the environment as a result of the project (\"system\" denotes a more general artifact with manual parts)."
+      }
+    },
+    {
+      "id": "isi1-09-fc-03",
+      "termId": "term-designation",
+      "front": {
+        "fr": "désignation ?",
+        "en": "designation?"
+      },
+      "back": {
+        "fr": "Description informelle du sens d'un terme formel atomique se référant à l'environnement ; claire, précise, écrite et maintenue dans la documentation.",
+        "en": "An informal description of the meaning of an atomic formal term referring to the environment; clear, precise, written down and maintained in the documentation."
+      }
+    },
+    {
+      "id": "isi1-09-fc-04",
+      "termId": "term-definition",
+      "front": {
+        "fr": "définition (formelle) ?",
+        "en": "definition?"
+      },
+      "back": {
+        "fr": "Description formelle d'un terme atomique à l'aide d'autres termes définis ou désignés ; elle ne contraint pas le monde réel et ne peut pas être fausse.",
+        "en": "A formal description of an atomic term using other defined or designated terms; it does not constrain the real world and cannot be false."
+      }
+    },
+    {
+      "id": "isi1-09-fc-05",
+      "termId": "term-indicative",
+      "front": {
+        "fr": "énoncé indicatif ?",
+        "en": "indicative statement?"
+      },
+      "back": {
+        "fr": "Énoncé qui décrit l'environnement tel qu'il serait sans la machine ou malgré elle : hypothèse ou connaissance du domaine.",
+        "en": "Statement describing the environment as it would be without or in spite of the machine: an assumption or domain knowledge."
+      }
+    },
+    {
+      "id": "isi1-09-fc-06",
+      "termId": "term-optative",
+      "front": {
+        "fr": "énoncé optatif ?",
+        "en": "optative statement?"
+      },
+      "back": {
+        "fr": "Énoncé qui décrit l'environnement tel qu'on voudrait qu'il soit grâce à la machine ; on l'appelle couramment exigence.",
+        "en": "Statement describing the environment as we would like it to be because of the machine; commonly called a requirement."
+      }
+    },
+    {
+      "id": "isi1-09-fc-07",
+      "termId": "term-implementation-bias",
+      "front": {
+        "fr": "biais d'implémentation ?",
+        "en": "implementation bias?"
+      },
+      "back": {
+        "fr": "Fait de dire, dans les exigences, autre chose sur la machine que ce qui est observable à son interface avec l'environnement.",
+        "en": "Saying anything about the machine in the requirements other than what is observable at its interface with the environment."
+      }
+    },
+    {
+      "id": "isi1-09-fc-08",
+      "termId": "term-shared-action",
+      "front": {
+        "fr": "action partagée ?",
+        "en": "shared action?"
+      },
+      "back": {
+        "fr": "Action de l'environnement à laquelle la machine participe aussi (observable par les deux) ; une action non partagée est privée à l'environnement.",
+        "en": "An action in the environment in which the machine also participates (observable by both); an unshared action is private to the environment."
+      }
+    },
+    {
+      "id": "isi1-09-fc-09",
+      "termId": "term-requirement-zj",
+      "front": {
+        "fr": "exigence (au sens de Zave & Jackson) ?",
+        "en": "requirement (Zave & Jackson)?"
+      },
+      "back": {
+        "fr": "Propriété optative exprimant les désirs du client concernant le projet.",
+        "en": "An optative property intended to express the desires of the customer concerning the project."
+      }
+    },
+    {
+      "id": "isi1-09-fc-10",
+      "termId": "term-specification-zj",
+      "front": {
+        "fr": "spécification (au sens de Zave & Jackson) ?",
+        "en": "specification (Zave & Jackson)?"
+      },
+      "back": {
+        "fr": "Propriété optative directement implémentable, qui soutient la satisfaction des exigences.",
+        "en": "An optative property directly implementable and supporting satisfaction of the requirements."
+      }
+    },
+    {
+      "id": "isi1-09-fc-11",
+      "termId": "term-domain-knowledge",
+      "front": {
+        "fr": "savoir du domaine ?",
+        "en": "domain knowledge?"
+      },
+      "back": {
+        "fr": "Ensemble K des propriétés indicatives pertinentes ; il comble l'écart entre exigences et spécifications (S, K ⊢ R).",
+        "en": "The set K of relevant indicative properties; it bridges the gap between requirements and specifications (S, K ⊢ R)."
+      }
+    },
+    {
+      "id": "isi1-09-fc-12",
+      "termId": "term-problem-frame",
+      "front": {
+        "fr": "cadre de problème ?",
+        "en": "problem frame?"
+      },
+      "back": {
+        "fr": "Patron de problème : décomposition du monde en domaines, caractérisation de chaque domaine (causal, lexical, biddable) et de chaque interface, nature de l'exigence ; capte une classe de sous-problèmes simples.",
+        "en": "A problem pattern: decomposition of the world into domains, characterisation of each domain (causal, lexical, biddable) and interface, nature of the requirement; captures a class of simple subproblems."
+      }
+    },
+    {
+      "id": "isi1-09-fc-13",
+      "termId": "term-problem-world",
+      "front": {
+        "fr": "monde du problème ?",
+        "en": "problem world?"
+      },
+      "back": {
+        "fr": "Partie du monde à transformer, dans laquelle se situe l'exigence ; la machine y est connectée par des phénomènes partagés.",
+        "en": "The part of the world to be transformed, in which the requirement is located; the machine is connected to it by shared phenomena."
+      }
+    },
+    {
+      "id": "isi1-09-fc-14",
+      "front": {
+        "fr": "Que signifie S, K ⊢ R ?",
+        "en": "What does S, K ⊢ R mean?"
+      },
+      "back": {
+        "fr": "Les spécifications S, jointes au savoir du domaine K, permettent de déduire les exigences R.",
+        "en": "Specifications S, together with domain knowledge K, allow the requirements R to be deduced."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "5",
+          "quote": "The primary role of domain knowledge is to bridge the gap between"
+        }
+      ],
+      "notions": [
+        "n-relation-s-k-r"
+      ]
+    },
+    {
+      "id": "isi1-09-fc-15",
+      "front": {
+        "fr": "Les quatre conclusions de Zave et Jackson (« coins sombres ») ?",
+        "en": "Zave and Jackson’s four conclusions (“dark corners”)?"
+      },
+      "back": {
+        "fr": "Ancrer le vocabulaire dans l’environnement ; décrire l’environnement, pas la machine ; identifier qui contrôle quelles actions ; utiliser le savoir du domaine pour raffiner les exigences.",
+        "en": "Ground vocabulary in the environment; describe the environment, not the machine; identify who controls which actions; use domain knowledge to refine requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "1. Introduction",
+          "quote": "There was a time when the epigram “requirements say what the system"
+        }
+      ],
+      "notions": [
+        "n-quatre-coins-sombres"
+      ]
+    }
+  ],
   "quiz": [
     {
       "id": "isi1-09-qz-01",
@@ -1520,6 +1897,10 @@
           "quote": "—The environment is the portion of the real world relevant to the software",
           "loc": "6.1"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-machine-vs-systeme"
       ]
     },
     {
@@ -1551,7 +1932,15 @@
           "quote": "presupposes a designation of student (perhaps as a person who has matric-",
           "loc": "2"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-definition-formelle"
+      ],
+      "trap": {
+        "fr": "Confondre définition (ni vraie ni fausse) et assertion (peut être fausse).",
+        "en": "Confusing definition (neither true nor false) and assertion (can be false)."
+      }
     },
     {
       "id": "isi1-09-qz-03",
@@ -1607,7 +1996,15 @@
           "quote": "But goals by themselves do not make a good",
           "loc": "2"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-designation"
+      ],
+      "trap": {
+        "fr": "Remonter sans fin les buts : c’est le sujet traité qui arrête la régression.",
+        "en": "Climbing goals endlessly: the subject matter stops the regress."
+      }
     },
     {
       "id": "isi1-09-qz-04",
@@ -1666,7 +2063,12 @@
       ],
       "notions": [
         "n-exigence-specification-optatives"
-      ]
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Prendre une propriété vraie de l’environnement (indicative) pour une exigence.",
+        "en": "Taking a property true of the environment (indicative) for a requirement."
+      }
     },
     {
       "id": "isi1-09-qz-05",
@@ -1702,7 +2104,16 @@
           "quote": "we can point out that components of the machine state cannot be designated.",
           "loc": "3.3"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-indicatif-optatif",
+        "n-biais-implementation"
+      ],
+      "trap": {
+        "fr": "Décrire l’état interne de la machine : c’est un biais d’implémentation.",
+        "en": "Describing the machine’s internal state: that is implementation bias."
+      }
     },
     {
       "id": "isi1-09-qz-06",
@@ -1753,7 +2164,15 @@
           "quote": "trolled; pays and pushes are shared with the machine, while enters are not.",
           "loc": "4.2"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-trois-categories-actions"
+      ],
+      "trap": {
+        "fr": "Oublier qu’une action contrôlée par la machine est forcément partagée.",
+        "en": "Forgetting that a machine-controlled action is necessarily shared."
+      }
     },
     {
       "id": "isi1-09-qz-07",
@@ -1784,7 +2203,15 @@
           "quote": "The primary lift requirement is that (L2) each begin-group-waiting action",
           "loc": "4.2"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-indicatif-optatif"
+      ],
+      "trap": {
+        "fr": "Croire qu’une même forme de phrase a toujours le même mode.",
+        "en": "Believing the same sentence form always has the same mood."
+      }
     },
     {
       "id": "isi1-09-qz-08",
@@ -1830,7 +2257,15 @@
           "quote": "The resulting specification says that the system must respond after a",
           "loc": "5.1–5.3"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-exigences-non-implementables"
+      ],
+      "trap": {
+        "fr": "Ne pas voir la référence au futur (« le dernier chiffre »).",
+        "en": "Missing the reference to the future (“the last digit”)."
+      }
     },
     {
       "id": "isi1-09-qz-09",
@@ -1859,7 +2294,12 @@
       ],
       "notions": [
         "n-relation-s-k-r"
-      ]
+      ],
+      "objective": "o3",
+      "trap": {
+        "fr": "Inverser S et R dans S, K ⊢ R.",
+        "en": "Swapping S and R in S, K ⊢ R."
+      }
     },
     {
       "id": "isi1-09-qz-10",
@@ -1903,7 +2343,8 @@
       ],
       "notions": [
         "n-exigence-specification-optatives"
-      ]
+      ],
+      "objective": "o1"
     },
     {
       "id": "isi1-09-qz-11",
@@ -1937,7 +2378,8 @@
       ],
       "notions": [
         "n-relation-s-k-r"
-      ]
+      ],
+      "objective": "o3"
     },
     {
       "id": "isi1-09-qz-12",
@@ -1963,7 +2405,15 @@
           "quote": "perspective and a conceptual framework, embodying a",
           "loc": "2"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-problem-frames-approche"
+      ],
+      "trap": {
+        "fr": "Prendre les Problem Frames pour une méthode complète : c’est une perspective.",
+        "en": "Taking Problem Frames for a full method: it is a perspective."
+      }
     },
     {
       "id": "isi1-09-qz-13",
@@ -2002,7 +2452,8 @@
       ],
       "notions": [
         "n-relation-s-k-r"
-      ]
+      ],
+      "objective": "o3"
     },
     {
       "id": "isi1-09-qz-14",
@@ -2053,9 +2504,162 @@
           "quote": "† In a Required Behaviour problem the Control Machine is",
           "loc": "6"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cadres-elementaires"
+      ],
+      "trap": {
+        "fr": "Confondre surveiller et afficher (Information Display) avec imposer un comportement (Required Behaviour).",
+        "en": "Confusing monitoring and displaying (Information Display) with imposing behaviour (Required Behaviour)."
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "isi1-09-ex-01",
+      "title": {
+        "fr": "Indicatif ou optatif ? Le Deadbot vu par Zave et Jackson",
+        "en": "Indicative or optative? The Deadbot through Zave and Jackson"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o2",
+      "statement": {
+        "fr": "Pour chaque énoncé, dis s’il est indicatif ou optatif et, s’il est optatif, s’il est implémentable tel quel par la machine. (1) « Un proche endeuillé écrit au Deadbot surtout le soir. » (2) « Le proche ne doit jamais croire qu’il parle réellement au défunt. » (3) « Le Deadbot doit afficher en permanence la mention “IA” dans la conversation. » (4) « Après le dernier message de la soirée, le Deadbot doit envoyer un mot de bonne nuit. »",
+        "en": "For each statement, say whether it is indicative or optative and, if optative, whether the machine can implement it as is. (1) “A bereaved relative writes to the Deadbot mostly in the evening.” (2) “The relative must never believe they are really talking to the deceased.” (3) “The Deadbot shall permanently display an ‘AI’ label in the conversation.” (4) “After the last message of the evening, the Deadbot shall send a goodnight note.”"
+      },
+      "hints": [
+        {
+          "fr": "Optatif non implémentable : contraint l’environnement, utilise une information non partagée, ou se réfère au futur.",
+          "en": "Non-implementable optative: constrains the environment, uses unshared information, or refers to the future."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) **Indicatif** : vrai (ou non) de l’environnement sans la machine : savoir du domaine. (2) **Optatif non implémentable** : la croyance du proche n’est pas partagée avec la machine ; il faut la raffiner avec du savoir du domaine (ex. une mention visible fait savoir qu’on parle à une IA). (3) **Optatif implémentable** : une spécification qui ne porte que sur une action contrôlée par la machine. (4) **Optatif non implémentable** : « le dernier message » se réfère au futur ; on spécifie plutôt « après un message suivi de 30 minutes sans nouveau message ».",
+        "en": "**Proposed** solution. (1) **Indicative**: true (or not) of the environment without the machine: domain knowledge. (2) **Non-implementable optative**: the relative’s belief is not shared with the machine; it must be refined with domain knowledge (e.g., a visible label tells them they are talking to an AI). (3) **Implementable optative**: a specification on an action controlled by the machine only. (4) **Non-implementable optative**: “the last message” refers to the future; specify instead “after a message followed by 30 minutes without a new message”."
+      },
+      "notions": [
+        "n-indicatif-optatif",
+        "n-exigences-non-implementables"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "From this perspective, all statements made in the course of requirements"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "5.1–5.3",
+          "quote": "Some requirements are not directly implementable because the only way to"
+        }
+      ]
+    },
+    {
+      "id": "isi1-09-ex-02",
+      "title": {
+        "fr": "Reconnaître un cadre élémentaire",
+        "en": "Recognising an elementary frame"
+      },
+      "difficulty": 1,
+      "level": "apply",
+      "objective": "o3",
+      "statement": {
+        "fr": "Quel cadre élémentaire (WorkPieces, Required Behaviour, Information Display) correspond à chaque problème ? (1) Un logiciel régule la température d’une serre en pilotant le chauffage. (2) Un éditeur permet à un juriste de rédiger des contrats. (3) Un tableau de bord affiche le niveau d’eau d’un barrage mesuré par des capteurs.",
+        "en": "Which elementary frame (WorkPieces, Required Behaviour, Information Display) matches each problem? (1) Software regulates a greenhouse’s temperature by driving the heating. (2) An editor lets a lawyer write contracts. (3) A dashboard displays a dam’s water level measured by sensors."
+      },
+      "hints": [
+        {
+          "fr": "Imposer un comportement, éditer un objet lexical, ou surveiller et afficher ?",
+          "en": "Impose behaviour, edit a lexical object, or monitor and display?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) **Required Behaviour** : la machine impose un comportement à un domaine causal (le chauffage). (2) **WorkPieces** : un utilisateur (biddable) édite un domaine lexical (le contrat). (3) **Information Display** : la machine surveille le monde réel et affiche ; attention au déficit d’information (mesure disponible au moment de l’affichage).",
+        "en": "**Proposed** solution. (1) **Required Behaviour**: the machine imposes behaviour on a causal domain (the heating). (2) **WorkPieces**: a (biddable) user edits a lexical domain (the contract). (3) **Information Display**: the machine monitors the real world and displays; beware of information deficit (measurement available at display time)."
+      },
+      "notions": [
+        "n-cadres-elementaires",
+        "n-domaines-causal-lexical-biddable"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/18-problem-frames.md",
+          "loc": "6",
+          "quote": "† In a WorkPieces problem a User edits a WorkPiece such"
+        }
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "writing": [
+    {
+      "id": "isi1-09-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Requirements describe the environment, not the machine.",
+      "accepted": [
+        "Requirements describe the environment and not the machine."
+      ]
+    },
+    {
+      "id": "isi1-09-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "The {{indicative}} mood describes the environment as it is; the {{optative}} mood describes it as we would like it to be.",
+      "translation": "L’indicatif décrit l’environnement tel qu’il est ; l’optatif, tel qu’on voudrait qu’il soit."
+    },
+    {
+      "id": "isi1-09-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A definition is false when it does not match the real world.",
+      "error": "A definition is false",
+      "corrected": "An assertion is false",
+      "explanation": {
+        "fr": "Une définition n’est ni vraie ni fausse ; c’est une assertion qui peut être fausse.",
+        "en": "A definition is neither true nor false; an assertion can be false."
+      }
+    },
+    {
+      "id": "isi1-09-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique pourquoi une exigence n’est pas toujours directement implémentable.",
+        "en": "In 2-3 English sentences, explain why a requirement is not always directly implementable."
+      },
+      "modelAnswer": "A requirement may constrain an action controlled by the environment, use information the machine cannot observe, or refer to the future. In these cases, domain knowledge is used to refine it into a specification. The specification only constrains shared actions controlled by the machine.",
+      "keywords": [
+        "environment",
+        "observe",
+        "future",
+        "domain knowledge",
+        "specification"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai donné au moins deux raisons.",
+          "en": "I gave at least two reasons."
+        },
+        {
+          "fr": "J’ai cité le rôle du savoir du domaine.",
+          "en": "I mentioned the role of domain knowledge."
+        }
+      ],
+      "usefulPhrases": [
+        "may constrain",
+        "is used to refine it into",
+        "only constrains"
+      ]
+    }
+  ]
 }
