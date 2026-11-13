@@ -4,6 +4,21 @@ URL : https://webperso.info.ucl.ac.be/~avl/files/RE01.pdf (page de l'auteur) —
 
 # van Lamsweerde (2001) — extraits
 
+## 2. What are goals?
+What are goals?
+A goal is an objective the system under consideration should
+achieve. Goal formulations thus refer to intended properties
+to be ensured; they are optative statements as opposed to
+indicative ones, and bounded by the subject matter [Jac95,
+Zav97a].
+Goals may be formulated at different levels of abstraction,
+ranging from high-level, strategic concerns (such as “serve
+more passengers” for a train transportation system or “provide ubiquitous cash service” for an ATM network system)
+to low-level, technical concerns (such as “acceleration command delivered on time” for a train transportation system or
+“card kept after 3 wrong password entries” for an ATM system).
+Goals also cover different types of concerns: functional concerns associated with the services to be provided, and nonfunctional concerns associated with quality of service --such
+as safety, security, accuracy, performance, and so forth.
+
 ## 2. Goals and agents
 [Fea87, Yue87, Fic92]; henceforth we will call them agents.
 Unlike requirements, a goal may in general require the cooperation of a hybrid combination of multiple agents to achieve

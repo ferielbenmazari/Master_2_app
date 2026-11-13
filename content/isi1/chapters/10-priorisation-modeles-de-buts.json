@@ -1,0 +1,2260 @@
+{
+  "id": "isi1-10-priorisation-modeles-de-buts",
+  "courseId": "isi1",
+  "order": 7,
+  "title": {
+    "fr": "Prioriser et modéliser les buts : triage, AHP, Kano, KAOS",
+    "en": "Prioritizing and modelling goals: triage, AHP, Kano, KAOS"
+  },
+  "hook": {
+    "fr": "Trop d’exigences pour le temps disponible, des buts qui se raffinent ou s’opposent : comment décider, calculer et modéliser comme le demandent les annales.",
+    "en": "Too many requirements for the time available, goals that refine or conflict: how to decide, compute and model as past exams require."
+  },
+  "question": {
+    "fr": "Quand il y a plus d’exigences qu’on ne peut en réaliser et des buts qui se décomposent, comment décider quoi garder, dans quel ordre, et comment le représenter correctement ?",
+    "en": "When there are more requirements than can be implemented and goals that break down, how do you decide what to keep, in which order, and how to represent it correctly?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Expliquer ce qu’est la priorisation (triage) et pourquoi elle est inévitable.",
+        "en": "Explain what prioritization (triage) is and why it is unavoidable."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Appliquer l’AHP à une matrice de comparaisons par paires : compléter par réciprocité, normaliser, moyenner, classer.",
+        "en": "Apply AHP to a pairwise comparison matrix: complete by reciprocity, normalize, average, rank."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Distinguer les techniques de priorisation (groupes, classement, 100 $, AHP, Kano) et le vocabulaire de Kano.",
+        "en": "Distinguish prioritization techniques (groups, ranking, 100 dollars, AHP, Kano) and Kano’s vocabulary."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Lire et corriger un modèle de buts : raffinement ET / OU, soft goals, cas d’utilisation complémentaires.",
+        "en": "Read and correct a goal model: AND / OR refinement, soft goals, complementary use cases."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Juger les énoncés vrai/faux des annales sur ces notions et justifier un FAUX.",
+        "en": "Judge past-exam true/false statements on these notions and justify a FALSE."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Annale 2014, partie C (3 points) : « Appliquez la méthode AHP à la matrice de priorité paires à paires », sans calculer l’indice de cohérence.",
+        "en": "2014 exam, part C (3 points): “Apply the AHP method to the pairwise priority matrix”, without computing the consistency index."
+      },
+      {
+        "fr": "Annale 2013, partie C (5 points) : trouver les erreurs d’un modèle KAOS (location de vidéos) et proposer un modèle correct.",
+        "en": "2013 exam, part C (5 points): find the errors in a KAOS model (video rental) and propose a correct model."
+      },
+      {
+        "fr": "Vrai/faux répétés : soft goals, OR / XOR, AHP et cohérence, triage (2013) ; Kano « exciter » et « must have », cas d’utilisation, top 10 et 100 $, Eisenhower (2014).",
+        "en": "Repeated true/false: soft goals, OR / XOR, AHP and consistency, triage (2013); Kano “exciter” and “must have”, use cases, top 10 and 100 dollars, Eisenhower (2014)."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 4 (cas d’utilisation) et 6 (Kano, élicitation) ; le questionnaire et la priorisation de l’étude de cas Deadbot.",
+    "en": "Chapters 4 (use cases) and 6 (Kano, elicitation); the questionnaire and prioritization of the Deadbot case study."
+  },
+  "next": {
+    "fr": "Les exigences priorisées alimentent le cahier des charges (attribut de priorité, chapitre 3) et la planification des versions.",
+    "en": "Prioritized requirements feed the requirements document (priority attribute, chapter 3) and release planning."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Prioriser (triage) = décider quelles exigences comptent vraiment ou entrent dans la prochaine version, parce qu’il y a plus d’exigences que de temps et de ressources.",
+        "en": "Prioritizing (triage) = deciding which requirements really matter or go into the next release, because there are more requirements than time and resources."
+      },
+      {
+        "fr": "Techniques : groupes de priorité, classement (sans écart visible), 100 $ (vote cumulatif : 100 points à répartir), comparaisons par paires / AHP (échelle de rapport, contrôle de cohérence, mais n(n-1)/2 comparaisons), Kano (selon la satisfaction).",
+        "en": "Techniques: priority groups, ranking (no visible distance), 100 dollars (cumulative voting: 100 points to distribute), pairwise comparisons / AHP (ratio scale, consistency check, but n(n-1)/2 comparisons), Kano (by satisfaction)."
+      },
+      {
+        "fr": "KAOS : raffinement ET = tous les sous-buts suffisent ensemble ; OU = une des alternatives suffit (≠ XOR). Soft goal : satisfait de façon « suffisante » (satisficing), pas de manière tranchée.",
+        "en": "KAOS: AND refinement = all subgoals together suffice; OR = one of the alternatives suffices (≠ XOR). Soft goal: satisficed (“good enough”), not satisfied in a clear-cut way."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Calculer une AHP : réciproques, sommes des colonnes, normalisation, moyennes des lignes, classement.",
+        "en": "Compute an AHP: reciprocals, column sums, normalization, row averages, ranking."
+      },
+      {
+        "fr": "Corriger un modèle de buts : opérateur ET / OU explicite, nœuds formulés comme des buts, alternatives en OU, conditions nécessaires en ET.",
+        "en": "Correct a goal model: explicit AND / OR operator, nodes phrased as goals, alternatives in OR, necessary conditions in AND."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "OU (une alternative suffit, plusieurs peuvent l’être) ≠ XOR (exactement une).",
+        "en": "OR (one alternative suffices, several may be) ≠ XOR (exactly one)."
+      },
+      {
+        "fr": "Must have / basique / dissatisfier (attendu, ne crée pas de satisfaction) ≠ exciter / delighter (inattendu, crée de la satisfaction).",
+        "en": "Must have / basic / dissatisfier (expected, creates no satisfaction) ≠ exciter / delighter (unexpected, creates satisfaction)."
+      },
+      {
+        "fr": "Cohérence d’une AHP (erreurs de jugement dans les comparaisons) ≠ cohérence des exigences.",
+        "en": "AHP consistency (judgement errors in comparisons) ≠ consistency of requirements."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Kano vient de l’élicitation (chapitre 6) ; les cas d’utilisation complémentaires (chapitre 4) correspondent à un raffinement ET.",
+        "en": "Kano comes from elicitation (chapter 6); complementary use cases (chapter 4) correspond to an AND refinement."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+    "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+    "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+    "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+    "sources-texte/isi1/ext-yu-1997-istar.md",
+    "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+    "sources-texte/isi1/20-eliciting-requirements.md",
+    "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+    "ressources/S3__ISI1/Markdown/examen_2.md",
+    "ressources/S3__ISI1/Markdown/examen_3.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Trop d’exigences, pas assez de temps",
+        "en": "Too many requirements, not enough time"
+      }
+    },
+    {
+      "type": "paragraph",
+      "narrative": true,
+      "text": {
+        "fr": "Retour chez MemoriaTech. Le questionnaire sur le Deadbot est revenu : des dizaines d’idées, toutes « importantes » pour quelqu’un. L’étude de cas le dit sans détour : il faut maintenant prioriser les fonctionnalités selon l’importance accordée par les utilisateurs potentiels.",
+        "en": "Back at MemoriaTech. The Deadbot questionnaire is back: dozens of ideas, all “important” to someone. The case study says it plainly: you must now prioritize features according to the importance given by potential users."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "3. Activités",
+          "quote": "les étudiants devront prioriser les fonctionnalités selon l'importance accordée par les utilisateurs potentiels"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-priorisation-exigences",
+        "n-triage"
+      ],
+      "text": {
+        "fr": "Pourquoi prioriser ? Parce qu’il y a plus d’exigences qu’on ne peut en réaliser : il faut arbitrer avec le budget, l’équipe et le calendrier. La [[term-triage|priorisation des exigences]], aussi appelée **triage**, consiste à décider quelles exigences comptent vraiment, ou lesquelles entrent dans la version en cours, en faisant des compromis entre valeur, coût et délai de mise sur le marché.",
+        "en": "Why prioritize? Because there are more requirements than can be implemented: you must trade off against budget, staff and schedule. [[term-triage|Requirements prioritization]], also called **triage**, means deciding which requirements really matter, or which go into the current release, by trading off value, cost and time-to-market."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Prioritizing Requirements",
+          "quote": "There are more requirements than can be implemented"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Requirements prioritization is also referred to as triage"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Need to decide which requirements really matter or on those that need to be implemented in the current release"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le plan du cours (support 1) annonce une partie « Négociation » et une partie « Modèles », mais leurs supports ne figurent pas dans tes fichiers. Ce chapitre s’appuie donc sur des sources externes fiables (cours universitaires d’Ottawa et de Waterloo, articles de van Lamsweerde, Yu et Karlsson et al.), citées à chaque fois, et sur les énoncés des annales.",
+        "en": "The course plan (support 1) announces a “Negotiation” part and a “Models” part, but their slides are not in your files. This chapter therefore relies on reliable external sources (Ottawa and Waterloo university courses, papers by van Lamsweerde, Yu and Karlsson et al.), cited each time, and on past-exam statements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "p. 1",
+          "quote": "Elucidation Négociation Modèles Gestion"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les techniques de priorisation",
+        "en": "Prioritization techniques"
+      }
+    },
+    {
+      "type": "table",
+      "notions": [
+        "n-priorisation-exigences",
+        "n-top10-vs-100-dollars",
+        "n-matrice-eisenhower"
+      ],
+      "headers": [
+        {
+          "fr": "Technique",
+          "en": "Technique"
+        },
+        {
+          "fr": "Principe",
+          "en": "Principle"
+        },
+        {
+          "fr": "À retenir",
+          "en": "Key point"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Groupes de priorité",
+            "en": "Priority groups"
+          },
+          {
+            "fr": "Ranger les exigences dans 3 ou 4 groupes (ex. critique, standard, optionnelle)",
+            "en": "Put requirements into 3 or 4 groups (e.g., critical, standard, optional)"
+          },
+          {
+            "fr": "La technique la plus courante",
+            "en": "The most common technique"
+          }
+        ],
+        [
+          {
+            "fr": "Échelles",
+            "en": "Scales"
+          },
+          {
+            "fr": "Noter chaque exigence sur des critères fréquents : **urgence** (haute, moyenne, basse) et **importance** (essentielle, conditionnelle, optionnelle)",
+            "en": "Rate each requirement on frequent criteria: **urgency** (high, medium, low) and **importance** (essential, conditional, optional)"
+          },
+          {
+            "fr": "Il faut fixer critères, granularité et échelle",
+            "en": "Criteria, granularity and scale must be set"
+          }
+        ],
+        [
+          {
+            "fr": "Classement (ranking)",
+            "en": "Ranking"
+          },
+          {
+            "fr": "Donner à chaque exigence un rang unique (1, 2, …)",
+            "en": "Give each requirement a unique rank (1, 2, …)"
+          },
+          {
+            "fr": "On ne voit pas l’écart entre deux rangs",
+            "en": "You cannot see the distance between two ranks"
+          }
+        ],
+        [
+          {
+            "fr": "[[term-cumulative-voting|100 $ (vote cumulatif)]]",
+            "en": "[[term-cumulative-voting|100 dollars (cumulative voting)]]"
+          },
+          {
+            "fr": "Chaque partie prenante répartit 100 points entre les exigences",
+            "en": "Each stakeholder distributes 100 points among the requirements"
+          },
+          {
+            "fr": "Les points montrent l’intensité de la préférence",
+            "en": "Points show the strength of preference"
+          }
+        ],
+        [
+          {
+            "fr": "[[term-ahp|Comparaisons par paires (AHP)]]",
+            "en": "[[term-ahp|Pairwise comparisons (AHP)]]"
+          },
+          {
+            "fr": "Comparer chaque paire d’exigences sur une échelle de 1 à 9",
+            "en": "Compare each pair of requirements on a 1-to-9 scale"
+          },
+          {
+            "fr": "Échelle de rapport, contrôle de cohérence, mais n(n-1)/2 comparaisons",
+            "en": "Ratio scale, consistency check, but n(n-1)/2 comparisons"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Grouping Requirements",
+          "quote": "The most common prioritization technique is numerical assignment or grouping of requirements into 3-4 priority groups."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Urgency High (mission critical requirement; required for next release)"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "explain": true,
+      "text": {
+        "fr": "Ce qui distingue ces techniques, c’est l’information qu’elles donnent. Un groupe ou un rang dit seulement « avant » ou « après » ; les 100 $ et l’AHP disent aussi « de combien ». En échange, l’AHP coûte cher : 10 exigences demandent déjà 45 comparaisons. Choisir une technique, c’est arbitrer entre précision et effort.",
+        "en": "What separates these techniques is the information they give. A group or a rank only says “before” or “after”; 100 dollars and AHP also say “by how much”. In exchange, AHP is costly: 10 requirements already need 45 comparisons. Choosing a technique means trading precision against effort."
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Deux techniques des annales restent mal documentées. La **matrice d’Eisenhower** (annale 2014) croise importance et urgence : ce sont bien les deux échelles fréquentes citées par le cours d’Ottawa, mais le nom de la matrice n’apparaît dans aucune source disponible. Le **top 10** (annale 2014, « top 10 » et « 100 $ ») n’est défini ni dans tes supports ni dans les sources consultées : vérifie-le dans tes notes avant de trancher.",
+        "en": "Two techniques from past exams remain poorly documented. The **Eisenhower matrix** (2014 exam) crosses importance and urgency: these are indeed the two frequent scales cited by the Ottawa course, but the matrix’s name appears in no available source. The **top 10** (2014 exam, “top 10” and “100 dollars”) is defined neither in your slides nor in the sources consulted: check your notes before deciding."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Importance Essential (product unacceptable unless these requirements are satisfied)"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "L’AHP pas à pas",
+        "en": "AHP step by step"
+      }
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-ahp"
+      ],
+      "text": {
+        "fr": "L’[[term-ahp|AHP]] (*Analytic Hierarchy Process*) repose sur des comparaisons par paires. Pour chaque paire, on note la préférence sur une échelle : 1 = préférence égale, 3 = modérée, 5 = forte, 7 = très forte, 9 = extrême ; 2, 4, 6 et 8 sont des valeurs intermédiaires. La procédure de base : construire la matrice de comparaisons, la normaliser, puis faire la moyenne de chaque ligne pour obtenir la note de chaque élément.",
+        "en": "[[term-ahp|AHP]] (Analytic Hierarchy Process) relies on pairwise comparisons. For each pair, you rate the preference on a scale: 1 = equally preferred, 3 = moderately, 5 = strongly, 7 = very strongly, 9 = extremely; 2, 4, 6 and 8 are intermediate values. The basic procedure: build the comparison matrix, normalize it, then average each row to get each element’s rating."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 24 (transcription)",
+          "quote": "RATING 9 = Extremely strongly preferred"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 24 (transcription)",
+          "quote": "Values 2, 4, 6, or 8 represent preferences halfway between the integers on either side"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 23",
+          "quote": "Develop pairwise comparison matrix of each criterion"
+        }
+      ]
+    },
+    {
+      "type": "method",
+      "notions": [
+        "n-ahp"
+      ],
+      "title": {
+        "fr": "Calculer une AHP à la main",
+        "en": "Computing an AHP by hand"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Compléter la matrice : 1 sur la diagonale ; si A vaut 3 face à B, alors B vaut 1/3 face à A.",
+            "en": "Complete the matrix: 1 on the diagonal; if A is 3 against B, then B is 1/3 against A."
+          },
+          "why": {
+            "fr": "C’est la réciprocité visible dans l’exemple du cours d’Ottawa (3 et 1/3, 2 et 1/2, 1/5 et 5).",
+            "en": "This is the reciprocity visible in the Ottawa example (3 and 1/3, 2 and 1/2, 1/5 and 5)."
+          }
+        },
+        {
+          "do": {
+            "fr": "Additionner chaque colonne.",
+            "en": "Add up each column."
+          },
+          "why": {
+            "fr": "Première étape de la normalisation.",
+            "en": "First step of normalization."
+          }
+        },
+        {
+          "do": {
+            "fr": "Diviser chaque valeur par la somme de sa colonne ; chaque colonne fait alors 1.",
+            "en": "Divide each value by its column sum; each column then adds up to 1."
+          },
+          "why": {
+            "fr": "On rend les colonnes comparables.",
+            "en": "Columns become comparable."
+          }
+        },
+        {
+          "do": {
+            "fr": "Faire la moyenne de chaque ligne : c’est la priorité de l’exigence (les priorités font 1 au total).",
+            "en": "Average each row: this is the requirement’s priority (priorities add up to 1)."
+          },
+          "why": {
+            "fr": "« Average the value of each row to get corresponding rating ».",
+            "en": "“Average the value of each row to get corresponding rating”."
+          }
+        },
+        {
+          "do": {
+            "fr": "Classer les exigences par priorité décroissante ; ne calculer la cohérence que si l’énoncé la demande.",
+            "en": "Rank requirements by decreasing priority; compute consistency only if asked."
+          },
+          "why": {
+            "fr": "L’annale 2014 précise de ne pas calculer l’indice de cohérence.",
+            "en": "The 2014 exam says not to compute the consistency index."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Vous ne calculerez pas l'indice de cohérence."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "notions": [
+        "n-ahp"
+      ],
+      "headers": [
+        {
+          "fr": "Exemple du cours d’Ottawa",
+          "en": "Ottawa course example"
+        },
+        {
+          "fr": "A",
+          "en": "A"
+        },
+        {
+          "fr": "B",
+          "en": "B"
+        },
+        {
+          "fr": "C",
+          "en": "C"
+        },
+        {
+          "fr": "Priorité (moyenne de la ligne normalisée)",
+          "en": "Priority (normalized row average)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "A",
+            "en": "A"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "3",
+            "en": "3"
+          },
+          {
+            "fr": "2",
+            "en": "2"
+          },
+          {
+            "fr": "0,5012",
+            "en": "0.5012"
+          }
+        ],
+        [
+          {
+            "fr": "B",
+            "en": "B"
+          },
+          {
+            "fr": "1/3",
+            "en": "1/3"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1/5",
+            "en": "1/5"
+          },
+          {
+            "fr": "0,1185",
+            "en": "0.1185"
+          }
+        ],
+        [
+          {
+            "fr": "C",
+            "en": "C"
+          },
+          {
+            "fr": "1/2",
+            "en": "1/2"
+          },
+          {
+            "fr": "5",
+            "en": "5"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "0,3803",
+            "en": "0.3803"
+          }
+        ],
+        [
+          {
+            "fr": "Somme des colonnes",
+            "en": "Column sums"
+          },
+          {
+            "fr": "11/6",
+            "en": "11/6"
+          },
+          {
+            "fr": "9",
+            "en": "9"
+          },
+          {
+            "fr": "16/5",
+            "en": "16/5"
+          },
+          {
+            "fr": "1,000 → A en tête",
+            "en": "1.000 → A ranks first"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Average the value of each row to get corresponding rating: A = 0.5012, B = 0.1185, C = 0.3803. A has highest rank."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-ahp"
+      ],
+      "text": {
+        "fr": "Un point d’annale : la comparaison par paires inclut un **contrôle de cohérence**, qui repère les erreurs de jugement et calcule un ratio de cohérence ; Saaty et Vargas recommandent un ratio inférieur à 0,10 pour que la priorisation soit jugée fiable.",
+        "en": "A past-exam point: pairwise comparison includes a **consistency check**, which spots judgement errors and computes a consistency ratio; Saaty and Vargas recommend a ratio below 0.10 for the prioritization to be considered trustworthy."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "3.4.4 Consistency Ratio",
+          "quote": "Saaty and Vargas (2001) have recommended that CR should be lower than 0.10 in order for the prioritisation to be considered trustworthy."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013 : « La technique AHP permet d’améliorer la cohérence des exigences. » Raisonne : l’AHP **priorise** des exigences ; sa cohérence porte sur les **jugements** donnés lors des comparaisons, pas sur la cohérence des exigences entre elles (qui relève des revues, chapitre 3).",
+        "en": "2013 exam: “The AHP technique improves the consistency of requirements.” Reason it out: AHP **prioritizes** requirements; its consistency concerns the **judgements** given during comparisons, not the consistency of requirements with each other (which belongs to reviews, chapter 3)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q9",
+          "quote": "La technique AHP permet d'améliorer la cohérence des exigences."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Kano : prioriser selon la satisfaction",
+        "en": "Kano: prioritizing by satisfaction"
+      }
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-kano-vocabulaire-annales"
+      ],
+      "text": {
+        "fr": "Le cours (chapitre 6) présente Kano avec trois catégories. Les **dissatisfiers** vont de soi, attendus sans être dits ; les satisfaire n’apporte pas de satisfaction, cela évite seulement un fort mécontentement. Les **satisfiers** sont demandés explicitement. Les **delighters** sont des propriétés que la partie prenante ne connaît pas ou n’attend pas.",
+        "en": "The course (chapter 6) presents Kano with three categories. **Dissatisfiers** are self-evident, expected without being stated; fulfilling them brings no satisfaction, it only avoids strong discontent. **Satisfiers** are explicitly demanded. **Delighters** are properties the stakeholder does not know or expect."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)."
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "Delighters are system properties that the stakeholder does not know or"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "notions": [
+        "n-kano-vocabulaire-annales"
+      ],
+      "headers": [
+        {
+          "fr": "Annales",
+          "en": "Past exams"
+        },
+        {
+          "fr": "Cours (support 20)",
+          "en": "Course (support 20)"
+        },
+        {
+          "fr": "Waterloo",
+          "en": "Waterloo"
+        },
+        {
+          "fr": "Effet",
+          "en": "Effect"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "« must have »",
+            "en": "“must have”"
+          },
+          {
+            "fr": "dissatisfier",
+            "en": "dissatisfier"
+          },
+          {
+            "fr": "basic : ce que le client tient pour acquis",
+            "en": "basic: what the customer takes for granted"
+          },
+          {
+            "fr": "Absente → insatisfaction ; présente → pas de satisfaction",
+            "en": "Missing → dissatisfaction; present → no satisfaction"
+          }
+        ],
+        [
+          {
+            "fr": "—",
+            "en": "—"
+          },
+          {
+            "fr": "satisfier",
+            "en": "satisfier"
+          },
+          {
+            "fr": "performance : ce que le client demande explicitement",
+            "en": "performance: what the customer specifically asks for"
+          },
+          {
+            "fr": "Plus c’est satisfait, plus le client est satisfait",
+            "en": "The more it is fulfilled, the more satisfied the customer"
+          }
+        ],
+        [
+          {
+            "fr": "« exciter »",
+            "en": "“exciter”"
+          },
+          {
+            "fr": "delighter",
+            "en": "delighter"
+          },
+          {
+            "fr": "excitement : ce que le client ne demande ni n’attend",
+            "en": "excitement: what the customer neither requests nor expects"
+          },
+          {
+            "fr": "Présente → satisfaction ; avec le temps, devient attendue",
+            "en": "Present → satisfaction; over time, becomes expected"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Basic Requirements",
+          "quote": "Basic: requirements that the customer takes for granted"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Performance Requirements",
+          "quote": "Performance: requirements that the customer specifically asked for"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Excitement Requirements",
+          "quote": "Excitement: requirements that the customer does not request or expect"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "explain": true,
+      "text": {
+        "fr": "Le rapprochement « must have » = dissatisfier = basic se fait par les définitions : dans les trois cas, c’est ce que le client tient pour acquis. Même raisonnement pour « exciter » = delighter = excitement : ce qu’il n’attend pas. D’où le piège de l’annale 2014 : une exigence « must have » ne génère **pas** de satisfaction quand elle est réalisée.",
+        "en": "The match “must have” = dissatisfier = basic comes from the definitions: in all three cases, it is what the customer takes for granted. Same reasoning for “exciter” = delighter = excitement: what is not expected. Hence the 2014 trap: a “must have” requirement does **not** create satisfaction when implemented."
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2014 : « les exigences de type must have sont celles qui génèrent de l’insatisfaction lorsqu’elles ne sont pas mises en œuvre, et qui génèrent de la satisfaction lorsqu’elles le sont ». La seconde moitié est fausse : un dissatisfier satisfait évite seulement le mécontentement.",
+        "en": "2014 exam: “must have requirements are those that create dissatisfaction when not implemented, and create satisfaction when they are”. The second half is false: a fulfilled dissatisfier only avoids discontent."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q19",
+          "quote": "les exigences de type « must have » sont celles qui génèrent de l'insatisfaction lorsqu'elles ne sont pas mises en œuvre"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "do not generate a positive disposition but merely help to avoid massive discontent"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-08"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Modéliser les buts : KAOS, ET / OU, soft goals",
+        "en": "Modelling goals: KAOS, AND / OR, soft goals"
+      }
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "text": {
+        "fr": "Le support 12 cite le **raffinement ET / OU des buts**, avec KAOS comme exemple : définir les buts, puis les raffiner. Selon van Lamsweerde, un but est un objectif que le système doit atteindre. Un lien de [[term-and-refinement|raffinement ET]] relie un but à un ensemble de sous-buts : les satisfaire **tous** suffit à satisfaire le but parent. Un lien de [[term-or-refinement|raffinement OU]] relie un but à des raffinements **alternatifs** : en satisfaire **un** suffit.",
+        "en": "Support 12 mentions **AND/OR goal refinement**, with KAOS as an example: define goals, then refine them. According to van Lamsweerde, a goal is an objective the system should achieve. An [[term-and-refinement|AND-refinement]] link relates a goal to a set of subgoals: satisfying **all** of them suffices to satisfy the parent goal. An [[term-or-refinement|OR-refinement]] link relates a goal to **alternative** refinements: satisfying **one** suffices."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. What are goals?",
+          "quote": "A goal is an objective the system under consideration should achieve"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "explain": true,
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "text": {
+        "fr": "Lis bien la définition du OU : satisfaire **une** alternative **suffit**. Rien n’interdit d’en satisfaire plusieurs. Un XOR imposerait au contraire d’en satisfaire **exactement une**. C’est le piège de l’annale 2013, qui affirme que OR est « formellement équivalent au XOR » : le OU de KAOS est une condition suffisante, pas une exclusion.",
+        "en": "Read the OR definition carefully: satisfying **one** alternative **suffices**. Nothing forbids satisfying several. An XOR would instead require satisfying **exactly one**. This is the 2013 trap, which claims OR is “formally equivalent to XOR”: KAOS’s OR is a sufficient condition, not an exclusion."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "text": {
+        "fr": "Les feuilles du modèle sont confiées à des agents : un but sous la responsabilité d’un seul agent du logiciel à construire devient une **exigence** ; sous la responsabilité d’un agent de l’environnement, il devient une **hypothèse** (*assumption*), que le logiciel ne peut pas imposer.",
+        "en": "The model’s leaves are assigned to agents: a goal under the responsibility of a single agent in the software-to-be becomes a **requirement**; under the responsibility of an agent in the environment, it becomes an **assumption**, which the software cannot enforce."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "A goal under responsibility of a single agent in the software-to-be becomes a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-istar-soft-goals"
+      ],
+      "text": {
+        "fr": "Reste les [[term-soft-goal|soft goals]] (i*, KAOS) : des buts dont la satisfaction ne peut pas être établie de façon tranchée. On parle alors de *satisficing* : les sous-buts doivent atteindre le but parent dans des limites acceptables, plutôt qu’absolument ; chez Yu, il s’agit de trouver des solutions « suffisamment bonnes ». Dans une dépendance de type softgoal, c’est à celui qui dépend de décider quelles mesures lui suffisent.",
+        "en": "Then come [[term-soft-goal|soft goals]] (i*, KAOS): goals whose satisfaction cannot be established in a clear-cut sense. We then speak of *satisficing*: subgoals must achieve the parent goal within acceptable limits, rather than absolutely; for Yu, it is about finding “good enough” solutions. In a softgoal dependency, the depender decides what measures are enough."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013 : les soft goals « ne peuvent jamais être satisfaits puisqu’on n’a pas de critère mesurable ». Le mot « jamais » doit t’alerter : un soft goal est satisfait de façon suffisante (*satisficed*), selon un jugement, même sans critère tranché fixé d’avance.",
+        "en": "2013 exam: soft goals “can never be satisfied since there is no measurable criterion”. The word “never” should alert you: a soft goal is satisficed, according to a judgement, even without a clear-cut criterion set in advance."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "text": {
+        "fr": "Lien avec les cas d’utilisation (chapitre 4) : le support 7 demande des cas **complémentaires** (nominaux) et proscrit les cas **alternatifs** (non nominaux, exceptions). Des cas complémentaires, tous nécessaires ensemble, correspondent à un raffinement ET ; d’où le FAUX de l’annale 2014 qui parle de « buts alternatifs ».",
+        "en": "Link with use cases (chapter 4): support 7 asks for **complementary** (nominal) cases and rules out **alternative** cases (non-nominal, exceptions). Complementary cases, all needed together, correspond to an AND refinement; hence the FALSE of the 2014 exam, which speaks of “alternative goals”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "by the system) Alternative cases (non Complementary cases"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        }
+      ]
+    },
+    {
+      "type": "method",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "title": {
+        "fr": "Corriger un modèle de buts (format de l’annale 2013)",
+        "en": "Correcting a goal model (2013 exam format)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Chaque nœud est-il formulé comme un but (un état à atteindre), et non comme un système, une donnée ou une action isolée ?",
+            "en": "Is each node phrased as a goal (a state to achieve), not as a system, a piece of data or an isolated action?"
+          },
+          "why": {
+            "fr": "Un but est un objectif que le système doit atteindre.",
+            "en": "A goal is an objective the system should achieve."
+          }
+        },
+        {
+          "do": {
+            "fr": "Chaque décomposition porte-t-elle un opérateur explicite, ET ou OU ?",
+            "en": "Does each decomposition carry an explicit operator, AND or OR?"
+          },
+          "why": {
+            "fr": "Les liens de raffinement sont soit ET, soit OU.",
+            "en": "Refinement links are either AND or OR."
+          }
+        },
+        {
+          "do": {
+            "fr": "Les sous-buts d’un ET sont-ils tous nécessaires ensemble ? Ceux d’un OU sont-ils de vraies alternatives ?",
+            "en": "Are the subgoals of an AND all needed together? Are those of an OR real alternatives?"
+          },
+          "why": {
+            "fr": "ET : tous suffisent ensemble ; OU : un seul suffit.",
+            "en": "AND: all together suffice; OR: one suffices."
+          }
+        },
+        {
+          "do": {
+            "fr": "Les niveaux sont-ils homogènes (pas un but stratégique à côté d’une saisie de champ) ?",
+            "en": "Are levels consistent (no strategic goal next to a field entry)?"
+          },
+          "why": {
+            "fr": "Les buts se formulent à différents niveaux d’abstraction, qu’il ne faut pas mélanger dans un même raffinement.",
+            "en": "Goals are stated at different abstraction levels, which must not be mixed in one refinement."
+          }
+        },
+        {
+          "do": {
+            "fr": "Redessiner le modèle corrigé et expliquer chaque correction à côté.",
+            "en": "Redraw the corrected model and explain each correction beside it."
+          },
+          "why": {
+            "fr": "L’annale demande d’identifier, d’expliquer, puis de proposer un modèle correct.",
+            "en": "The exam asks to identify, explain, then propose a correct model."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. What are goals?",
+          "quote": "Goals may be formulated at different levels of abstraction"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-10"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-triage",
+      "fr": "triage (priorisation des exigences)",
+      "en": "triage (requirements prioritization)",
+      "definition": {
+        "fr": "Décider quelles exigences comptent vraiment, ou entrent dans la version en cours, par des compromis entre valeur, coût et délai.",
+        "en": "Deciding which requirements really matter, or go into the current release, by trading off value, cost and time."
+      },
+      "pitfall": {
+        "fr": "Les supports du cours ne définissent pas les « trois paquets » cités par l’annale.",
+        "en": "The course slides do not define the “three bundles” cited by the past exam."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Requirements prioritization is also referred to as triage"
+        }
+      ],
+      "notion": "n-triage"
+    },
+    {
+      "id": "term-ahp",
+      "fr": "AHP (Analytic Hierarchy Process)",
+      "en": "AHP (Analytic Hierarchy Process)",
+      "definition": {
+        "fr": "Priorisation par comparaisons par paires sur une échelle de 1 à 9 : matrice réciproque, normalisation, moyenne des lignes.",
+        "en": "Prioritization by pairwise comparisons on a 1-to-9 scale: reciprocal matrix, normalization, row averages."
+      },
+      "pitfall": {
+        "fr": "Sa cohérence porte sur les jugements, pas sur les exigences.",
+        "en": "Its consistency is about judgements, not requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 23",
+          "quote": "Develop pairwise comparison matrix of each criterion"
+        }
+      ],
+      "notion": "n-ahp"
+    },
+    {
+      "id": "term-cumulative-voting",
+      "fr": "100 $ (vote cumulatif)",
+      "en": "100-dollar test (cumulative voting)",
+      "definition": {
+        "fr": "Chaque partie prenante répartit 100 points de priorité entre les exigences.",
+        "en": "Each stakeholder distributes 100 priority points among the requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q14",
+          "quote": "Les techniques de priorisation « top 10 » et"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ],
+      "notion": "n-top10-vs-100-dollars"
+    },
+    {
+      "id": "term-and-refinement",
+      "fr": "raffinement ET",
+      "en": "AND-refinement",
+      "definition": {
+        "fr": "Lien qui relie un but à un ensemble de sous-buts : les satisfaire tous suffit à satisfaire le but parent.",
+        "en": "A link relating a goal to a set of subgoals: satisfying all of them suffices to satisfy the parent goal."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notion": "n-kaos-or-xor"
+    },
+    {
+      "id": "term-or-refinement",
+      "fr": "raffinement OU",
+      "en": "OR-refinement",
+      "definition": {
+        "fr": "Lien qui relie un but à des raffinements alternatifs : en satisfaire un suffit (ce n’est pas un XOR).",
+        "en": "A link relating a goal to alternative refinements: satisfying one suffices (it is not an XOR)."
+      },
+      "pitfall": {
+        "fr": "OU ≠ XOR : plusieurs alternatives peuvent être satisfaites.",
+        "en": "OR ≠ XOR: several alternatives may be satisfied."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notion": "n-kaos-or-xor"
+    },
+    {
+      "id": "term-soft-goal",
+      "fr": "soft goal (but souple)",
+      "en": "soft goal",
+      "definition": {
+        "fr": "But dont la satisfaction ne peut pas être établie de façon tranchée ; il est satisfait de façon suffisante (satisficing).",
+        "en": "A goal whose satisfaction cannot be established in a clear-cut sense; it is satisficed (“good enough”)."
+      },
+      "pitfall": {
+        "fr": "Il n’est pas « jamais satisfait » : il est atteint de façon jugée suffisante.",
+        "en": "It is not “never satisfied”: it is achieved to a level judged sufficient."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        }
+      ],
+      "notion": "n-istar-soft-goals"
+    }
+  ],
+  "notions": [
+    "n-priorisation-exigences",
+    "n-triage",
+    "n-ahp",
+    "n-top10-vs-100-dollars",
+    "n-matrice-eisenhower",
+    "n-kano-vocabulaire-annales",
+    "n-kaos-or-xor",
+    "n-istar-soft-goals"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Prioriser (triage) : décider quelles exigences comptent ou entrent dans la version en cours, parce qu’il y a plus d’exigences que de ressources.",
+        "en": "Prioritizing (triage): deciding which requirements matter or go into the current release, because there are more requirements than resources."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Need to decide which requirements really matter or on those that need to be implemented in the current release"
+        }
+      ],
+      "notions": [
+        "n-triage",
+        "n-priorisation-exigences"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Groupes, classement (sans écart), 100 $ (100 points à répartir), AHP (comparaisons par paires, échelle 1-9, n(n-1)/2 comparaisons).",
+        "en": "Groups, ranking (no distance), 100 dollars (100 points to distribute), AHP (pairwise comparisons, 1-9 scale, n(n-1)/2 comparisons)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ],
+      "notions": [
+        "n-top10-vs-100-dollars",
+        "n-priorisation-exigences"
+      ]
+    },
+    {
+      "text": {
+        "fr": "AHP : matrice réciproque, somme des colonnes, normalisation (chaque colonne fait 1), moyenne de chaque ligne = priorité.",
+        "en": "AHP: reciprocal matrix, column sums, normalization (each column adds up to 1), each row average = priority."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Kano : must have / dissatisfier / basic (attendu, pas de satisfaction si présent) ; exciter / delighter / excitement (inattendu).",
+        "en": "Kano: must have / dissatisfier / basic (expected, no satisfaction when present); exciter / delighter / excitement (unexpected)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Basic Requirements",
+          "quote": "Basic: requirements that the customer takes for granted"
+        }
+      ],
+      "notions": [
+        "n-kano-vocabulaire-annales"
+      ]
+    },
+    {
+      "text": {
+        "fr": "KAOS : ET = tous les sous-buts suffisent ; OU = une alternative suffit (≠ XOR). Soft goal : satisficing, pas de satisfaction tranchée.",
+        "en": "KAOS: AND = all subgoals suffice; OR = one alternative suffices (≠ XOR). Soft goal: satisficing, no clear-cut satisfaction."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notions": [
+        "n-kaos-or-xor",
+        "n-istar-soft-goals"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "isi1-10-fc-11",
+      "front": {
+        "fr": "Pourquoi faut-il prioriser les exigences ?",
+        "en": "Why must requirements be prioritized?"
+      },
+      "back": {
+        "fr": "Parce qu’il y a plus d’exigences qu’on ne peut en réaliser avec le budget, l’équipe et le calendrier.",
+        "en": "Because there are more requirements than can be implemented with the budget, staff and schedule."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Prioritizing Requirements",
+          "quote": "There are more requirements than can be implemented"
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-01",
+      "termId": "term-triage",
+      "front": {
+        "fr": "Triage des exigences : de quoi s’agit-il ?",
+        "en": "Requirements triage: what is it?"
+      },
+      "back": {
+        "fr": "La priorisation : décider quelles exigences comptent ou entrent dans la version en cours, par compromis valeur / coût / délai.",
+        "en": "Prioritization: deciding which requirements matter or go into the current release, trading off value / cost / time."
+      }
+    },
+    {
+      "id": "isi1-10-fc-02",
+      "termId": "term-ahp",
+      "front": {
+        "fr": "Les étapes d’une AHP à la main ?",
+        "en": "The steps of an AHP by hand?"
+      },
+      "back": {
+        "fr": "Compléter par réciprocité, sommer les colonnes, diviser par la somme de colonne, moyenner chaque ligne, classer.",
+        "en": "Complete by reciprocity, sum columns, divide by column sum, average each row, rank."
+      }
+    },
+    {
+      "id": "isi1-10-fc-03",
+      "front": {
+        "fr": "AHP : A vaut 5 face à B. Que vaut B face à A ?",
+        "en": "AHP: A is 5 against B. What is B against A?"
+      },
+      "back": {
+        "fr": "1/5 (réciprocité).",
+        "en": "1/5 (reciprocity)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-04",
+      "front": {
+        "fr": "Combien de comparaisons pour n exigences en comparaisons par paires ?",
+        "en": "How many comparisons for n requirements in pairwise comparison?"
+      },
+      "back": {
+        "fr": "n(n-1)/2 (45 pour 10 exigences).",
+        "en": "n(n-1)/2 (45 for 10 requirements)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-05",
+      "termId": "term-cumulative-voting",
+      "front": {
+        "fr": "Méthode des 100 $ ?",
+        "en": "100-dollar method?"
+      },
+      "back": {
+        "fr": "Vote cumulatif : chaque partie prenante répartit 100 points entre les exigences.",
+        "en": "Cumulative voting: each stakeholder distributes 100 points among the requirements."
+      }
+    },
+    {
+      "id": "isi1-10-fc-06",
+      "front": {
+        "fr": "Kano : une exigence « must have » réalisée crée-t-elle de la satisfaction ?",
+        "en": "Kano: does an implemented “must have” requirement create satisfaction?"
+      },
+      "back": {
+        "fr": "Non : comme un dissatisfier, elle évite seulement le mécontentement.",
+        "en": "No: like a dissatisfier, it only avoids discontent."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "do not generate a positive disposition but merely help to avoid massive discontent"
+        }
+      ],
+      "notions": [
+        "n-kano-vocabulaire-annales"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-07",
+      "termId": "term-or-refinement",
+      "front": {
+        "fr": "KAOS : OU ou XOR ?",
+        "en": "KAOS: OR or XOR?"
+      },
+      "back": {
+        "fr": "OU : satisfaire une alternative suffit ; plusieurs peuvent l’être. Ce n’est pas un XOR.",
+        "en": "OR: satisfying one alternative suffices; several may be. It is not an XOR."
+      }
+    },
+    {
+      "id": "isi1-10-fc-08",
+      "termId": "term-and-refinement",
+      "front": {
+        "fr": "KAOS : que signifie un raffinement ET ?",
+        "en": "KAOS: what does an AND refinement mean?"
+      },
+      "back": {
+        "fr": "Satisfaire tous les sous-buts suffit à satisfaire le but parent.",
+        "en": "Satisfying all subgoals suffices to satisfy the parent goal."
+      }
+    },
+    {
+      "id": "isi1-10-fc-09",
+      "termId": "term-soft-goal",
+      "front": {
+        "fr": "Soft goal : peut-il être satisfait ?",
+        "en": "Soft goal: can it be satisfied?"
+      },
+      "back": {
+        "fr": "Oui, de façon suffisante (satisficing), sans critère tranché fixé d’avance.",
+        "en": "Yes, to a sufficient level (satisficing), without a clear-cut criterion set in advance."
+      }
+    },
+    {
+      "id": "isi1-10-fc-10",
+      "front": {
+        "fr": "KAOS : but confié à un agent de l’environnement ?",
+        "en": "KAOS: goal assigned to an agent in the environment?"
+      },
+      "back": {
+        "fr": "C’est une hypothèse (assumption) ; confié à un agent du logiciel, c’est une exigence.",
+        "en": "It is an assumption; assigned to a software agent, it is a requirement."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ],
+      "notions": [
+        "n-kaos-or-xor"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-12",
+      "front": {
+        "fr": "Matrice d’Eisenhower (annale 2014) : quels critères croise-t-elle ?",
+        "en": "Eisenhower matrix (2014 exam): which criteria does it cross?"
+      },
+      "back": {
+        "fr": "Importance et urgence, deux échelles fréquentes de priorisation. Le nom de la matrice n’est dans aucune source disponible : à confirmer.",
+        "en": "Importance and urgency, two frequent prioritization scales. The matrix’s name is in no available source: to be confirmed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Urgency High (mission critical requirement; required for next release)"
+        }
+      ],
+      "notions": [
+        "n-matrice-eisenhower"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "isi1-10-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "La priorisation des exigences, aussi appelée triage, consiste à décider quelles exigences comptent vraiment ou entrent dans la version en cours.",
+        "en": "Requirements prioritization, also called triage, means deciding which requirements really matter or go into the current release."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « Requirements prioritization is also referred to as triage » ; il faut décider quelles exigences comptent vraiment ou doivent être réalisées dans la version en cours.",
+        "en": "TRUE: “Requirements prioritization is also referred to as triage”; you must decide which requirements really matter or must be implemented in the current release."
+      },
+      "level": "understand",
+      "objective": "o1",
+      "notions": [
+        "n-triage"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Need to decide which requirements really matter or on those that need to be implemented in the current release"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-02",
+      "type": "mcq",
+      "question": {
+        "fr": "Chaque partie prenante reçoit 100 points à répartir entre les exigences. De quelle technique s’agit-il ?",
+        "en": "Each stakeholder receives 100 points to distribute among the requirements. Which technique is it?"
+      },
+      "options": [
+        {
+          "fr": "Le classement (ranking), qui ordonne les exigences de la plus à la moins importante",
+          "en": "Ranking, which orders requirements from most to least important"
+        },
+        {
+          "fr": "Le vote cumulatif, ou méthode des 100 $",
+          "en": "Cumulative voting, or the 100-dollar test"
+        },
+        {
+          "fr": "L’AHP",
+          "en": "AHP"
+        },
+        {
+          "fr": "Le modèle de Kano",
+          "en": "The Kano model"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "« In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points ». Le classement donne un rang unique sans écart ; l’AHP compare des paires ; Kano classe selon la satisfaction.",
+        "en": "“In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points”. Ranking gives a unique rank with no distance; AHP compares pairs; Kano classifies by satisfaction."
+      },
+      "trap": {
+        "fr": "Confondre répartir des points (intensité) et ordonner (rang).",
+        "en": "Confusing distributing points (strength) and ordering (rank)."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-top10-vs-100-dollars"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un classement (ranking) des exigences montre l’écart d’importance entre deux exigences de rangs successifs.",
+        "en": "A ranking of requirements shows the importance gap between two requirements of successive ranks."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : chaque exigence reçoit un rang unique, mais « it is not possible to see the relative difference between ranked requirements ». Les 100 $ ou l’AHP donnent, eux, une intensité.",
+        "en": "FALSE: each requirement gets a unique rank, but “it is not possible to see the relative difference between ranked requirements”. 100 dollars or AHP give a strength."
+      },
+      "trap": {
+        "fr": "Croire qu’un ordre dit aussi « de combien ».",
+        "en": "Believing an order also says “by how much”."
+      },
+      "level": "understand",
+      "objective": "o3",
+      "notions": [
+        "n-priorisation-exigences"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-04",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans une matrice AHP, l’exigence A est notée 5 face à l’exigence B. Quelle valeur inscrire pour B face à A ?",
+        "en": "In an AHP matrix, requirement A is rated 5 against requirement B. Which value goes for B against A?"
+      },
+      "options": [
+        {
+          "fr": "5",
+          "en": "5"
+        },
+        {
+          "fr": "1/5",
+          "en": "1/5"
+        },
+        {
+          "fr": "-5",
+          "en": "-5"
+        },
+        {
+          "fr": "Rien : seule la moitié supérieure de la matrice est utilisée",
+          "en": "Nothing: only the upper half of the matrix is used"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "La matrice est réciproque : dans l’exemple du cours d’Ottawa, A face à B vaut 3 et B face à A vaut 1/3. Toutes les cases servent au calcul (sommes des colonnes).",
+        "en": "The matrix is reciprocal: in the Ottawa example, A against B is 3 and B against A is 1/3. All cells are used in the calculation (column sums)."
+      },
+      "trap": {
+        "fr": "Oublier les réciproques, ou laisser des cases vides avant de sommer.",
+        "en": "Forgetting reciprocals, or leaving cells empty before summing."
+      },
+      "level": "apply",
+      "objective": "o2",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans la procédure AHP, après avoir divisé chaque valeur par la somme de sa colonne, les valeurs de chaque colonne font toujours 1 au total.",
+        "en": "In the AHP procedure, after dividing each value by its column sum, the values of each column always add up to 1."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est le but de la normalisation (« the values in each column add up to 1 »). On fait ensuite la moyenne de chaque ligne.",
+        "en": "TRUE: that is the purpose of normalization (“the values in each column add up to 1”). You then average each row."
+      },
+      "level": "apply",
+      "objective": "o2",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-06",
+      "type": "mcq",
+      "question": {
+        "fr": "Combien de comparaisons demande une priorisation par paires de 10 exigences ?",
+        "en": "How many comparisons does a pairwise prioritization of 10 requirements require?"
+      },
+      "options": [
+        {
+          "fr": "10",
+          "en": "10"
+        },
+        {
+          "fr": "20",
+          "en": "20"
+        },
+        {
+          "fr": "45",
+          "en": "45"
+        },
+        {
+          "fr": "100, une par case de la matrice",
+          "en": "100, one per matrix cell"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "n(n-1)/2 = 10 × 9 / 2 = 45. La diagonale vaut 1 et la moitié inférieure se déduit par réciprocité : seules les paires distinctes demandent un jugement.",
+        "en": "n(n-1)/2 = 10 × 9 / 2 = 45. The diagonal is 1 and the lower half follows by reciprocity: only distinct pairs need a judgement."
+      },
+      "trap": {
+        "fr": "Compter toutes les cases de la matrice.",
+        "en": "Counting all matrix cells."
+      },
+      "level": "analyze",
+      "objective": "o2",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "La technique AHP permet d’améliorer la cohérence des exigences.",
+        "en": "The AHP technique improves the consistency of requirements."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l’AHP **priorise** les exigences. Son contrôle de cohérence repère les erreurs de **jugement** dans les comparaisons ; la cohérence des exigences entre elles relève des revues.",
+        "en": "FALSE: AHP **prioritizes** requirements. Its consistency check spots **judgement** errors in comparisons; consistency between requirements belongs to reviews."
+      },
+      "trap": {
+        "fr": "Confondre cohérence des jugements et cohérence des exigences.",
+        "en": "Confusing consistency of judgements and consistency of requirements."
+      },
+      "level": "analyze",
+      "objective": "o5",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q9",
+          "quote": "La technique AHP permet d'améliorer la cohérence des exigences."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-08",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans le modèle de Kano, une exigence « must have » génère de l’insatisfaction quand elle manque, et de la satisfaction quand elle est réalisée.",
+        "en": "In the Kano model, a “must have” requirement creates dissatisfaction when missing, and satisfaction when implemented."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : un must have correspond au dissatisfier du cours ; réalisé, il « do[es] not generate a positive disposition » et évite seulement le mécontentement. C’est l’énoncé de l’annale 2014.",
+        "en": "FALSE: a must have matches the course’s dissatisfier; when fulfilled it does “not generate a positive disposition” and only avoids discontent. This is the 2014 exam statement."
+      },
+      "trap": {
+        "fr": "Prêter au must have l’effet d’un satisfier.",
+        "en": "Giving the must have the effect of a satisfier."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-kano-vocabulaire-annales"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q19",
+          "quote": "les exigences de type « must have » sont celles qui génèrent de l'insatisfaction lorsqu'elles ne sont pas mises en œuvre"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "do not generate a positive disposition but merely help to avoid massive discontent"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-09",
+      "type": "mcq",
+      "question": {
+        "fr": "Le Deadbot propose spontanément de rejouer la voix du défunt pour un anniversaire, ce que personne n’avait demandé ni imaginé. Dans quelle catégorie de Kano ?",
+        "en": "The Deadbot spontaneously offers to replay the deceased’s voice for a birthday, which nobody had asked for or imagined. Which Kano category?"
+      },
+      "options": [
+        {
+          "fr": "Dissatisfier (must have)",
+          "en": "Dissatisfier (must have)"
+        },
+        {
+          "fr": "Satisfier, puisque les familles apprécieront cette fonction",
+          "en": "Satisfier, since families will appreciate this feature"
+        },
+        {
+          "fr": "Delighter (exciter)",
+          "en": "Delighter (exciter)"
+        },
+        {
+          "fr": "Aucune : Kano ne s’applique qu’aux exigences exprimées par les clients",
+          "en": "None: Kano only applies to requirements stated by customers"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Une propriété que la partie prenante ne connaît pas ou n’attend pas est un delighter (excitement chez Waterloo, exciter dans les annales). Un satisfier est demandé explicitement.",
+        "en": "A property the stakeholder does not know or expect is a delighter (excitement at Waterloo, exciter in past exams). A satisfier is explicitly demanded."
+      },
+      "trap": {
+        "fr": "Classer par « c’est apprécié » au lieu de « c’est attendu ou non ».",
+        "en": "Classifying by “it is liked” instead of “is it expected or not”."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-kano-vocabulaire-annales"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "Delighters are system properties that the stakeholder does not know or"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-10",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans KAOS, le lien de décomposition OR est formellement équivalent au XOR : le but affiné est satisfait si et seulement si un seul des sous-buts est satisfait.",
+        "en": "In KAOS, the OR decomposition link is formally equivalent to XOR: the refined goal is satisfied if and only if exactly one subgoal is satisfied."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : un raffinement OU relie un but à des alternatives, et satisfaire **une** d’elles **suffit** ; plusieurs peuvent être satisfaites. Un XOR imposerait exactement une.",
+        "en": "FALSE: an OR refinement relates a goal to alternatives, and satisfying **one** of them **suffices**; several may be satisfied. An XOR would require exactly one."
+      },
+      "trap": {
+        "fr": "Lire « une suffit » comme « une seule ».",
+        "en": "Reading “one suffices” as “only one”."
+      },
+      "level": "understand",
+      "objective": "o4",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-11",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans un raffinement ET, satisfaire l’ensemble des sous-buts suffit à satisfaire le but parent.",
+        "en": "In an AND refinement, satisfying all subgoals suffices to satisfy the parent goal."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « satisfying all subgoals in the refinement is sufficient for satisfying the parent goal ».",
+        "en": "TRUE: “satisfying all subgoals in the refinement is sufficient for satisfying the parent goal”."
+      },
+      "level": "apply",
+      "objective": "o4",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-12",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les soft goals du formalisme i* ne peuvent jamais être satisfaits, puisqu’on n’a pas de critère mesurable.",
+        "en": "Soft goals in the i* framework can never be satisfied, since there is no measurable criterion."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : leur satisfaction ne s’établit pas de façon tranchée, mais ils sont satisfaits de façon suffisante (satisficing, solutions « good enough »), selon le jugement de celui qui dépend du but.",
+        "en": "FALSE: their satisfaction is not established in a clear-cut way, but they are satisficed (“good enough” solutions), according to the depender’s judgement."
+      },
+      "trap": {
+        "fr": "Confondre « pas de critère tranché » et « jamais satisfait ».",
+        "en": "Confusing “no clear-cut criterion” and “never satisfied”."
+      },
+      "level": "analyze",
+      "objective": "o5",
+      "notions": [
+        "n-istar-soft-goals"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-13",
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le support du cours sur les diagrammes de cas d’utilisation, il faut représenter des cas complémentaires (nominaux) et éviter les cas alternatifs.",
+        "en": "According to the course slide on use case diagrams, you should show complementary (nominal) cases and avoid alternative cases."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « Do : Complementary cases (nominal) » ; « Don’t : Alternative cases (non nominal cases, exceptions) ». D’où le FAUX de l’annale 2014 qui parle de « buts alternatifs ».",
+        "en": "TRUE: “Do: Complementary cases (nominal)”; “Don’t: Alternative cases (non nominal cases, exceptions)”. Hence the FALSE of the 2014 exam, which speaks of “alternative goals”."
+      },
+      "level": "analyze",
+      "objective": "o4",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "by the system) Alternative cases (non Complementary cases"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-14",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans KAOS, le but « Le client présente une carte valide » est confié au client, un agent de l’environnement. Que devient-il ?",
+        "en": "In KAOS, the goal “The customer presents a valid card” is assigned to the customer, an environment agent. What does it become?"
+      },
+      "options": [
+        {
+          "fr": "Une exigence, puisque le système en dépend directement pour fonctionner",
+          "en": "A requirement, since the system directly depends on it to work"
+        },
+        {
+          "fr": "Une hypothèse (assumption), que le logiciel ne peut pas imposer",
+          "en": "An assumption, which the software cannot enforce"
+        },
+        {
+          "fr": "Un soft goal",
+          "en": "A soft goal"
+        },
+        {
+          "fr": "Un raffinement OU",
+          "en": "An OR refinement"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Un but sous la responsabilité d’un agent de l’environnement devient une hypothèse ; sous la responsabilité d’un agent du logiciel, une exigence.",
+        "en": "A goal under the responsibility of an environment agent becomes an assumption; under a software agent, a requirement."
+      },
+      "trap": {
+        "fr": "Appeler « exigence » tout ce dont le système a besoin.",
+        "en": "Calling “requirement” anything the system needs."
+      },
+      "level": "apply",
+      "objective": "o4",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "isi1-10-ex-01",
+      "title": {
+        "fr": "Annale 2014, partie C : appliquer l’AHP",
+        "en": "2014 exam, part C: applying AHP"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "apply",
+      "objective": "o2",
+      "statement": {
+        "fr": "« Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre. Vous ne calculerez pas l’indice de cohérence. » (3 points)\n\n| | Exi 1 | Exi 2 | Exi 3 | Exi 4 |\n|---|---|---|---|---|\n| **Exi 1** | | 1 | | |\n| **Exi 2** | | | 5 | 2 |\n| **Exi 3** | 1/3 | | | |\n| **Exi 4** | 1/5 | | 3 | |\n\n*Matrice relue sur le PDF de l’annale : la transcription Markdown décale les lignes.*",
+        "en": "“Apply the AHP method to the pairwise priority matrix. You will not compute the consistency index.” (3 points)\n\n| | Req 1 | Req 2 | Req 3 | Req 4 |\n|---|---|---|---|---|\n| **Req 1** | | 1 | | |\n| **Req 2** | | | 5 | 2 |\n| **Req 3** | 1/3 | | | |\n| **Req 4** | 1/5 | | 3 | |\n\n*Matrix read from the exam PDF: the Markdown transcription shifts the rows.*"
+      },
+      "hints": [
+        {
+          "fr": "Chaque paire n’est donnée qu’une fois : complète l’autre case par réciprocité, et mets 1 sur la diagonale.",
+          "en": "Each pair is given only once: fill the other cell by reciprocity, and put 1 on the diagonal."
+        },
+        {
+          "fr": "Somme de la colonne Exi 3 : 3 + 5 + 1 + 3 = 12.",
+          "en": "Sum of the Req 3 column: 3 + 5 + 1 + 3 = 12."
+        },
+        {
+          "fr": "Divise chaque valeur par la somme de sa colonne, puis fais la moyenne de chaque ligne.",
+          "en": "Divide each value by its column sum, then average each row."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (aucun corrigé officiel), selon la procédure du cours d’Ottawa.\n\n**1. Matrice complétée** (réciprocité, diagonale à 1) :\n\n| | Exi 1 | Exi 2 | Exi 3 | Exi 4 |\n|---|---|---|---|---|\n| Exi 1 | 1 | 1 | 3 | 5 |\n| Exi 2 | 1 | 1 | 5 | 2 |\n| Exi 3 | 1/3 | 1/5 | 1 | 1/3 |\n| Exi 4 | 1/5 | 1/2 | 3 | 1 |\n| **Somme** | 38/15 ≈ 2,533 | 27/10 = 2,7 | 12 | 25/3 ≈ 8,333 |\n\n**2. Normalisation** (valeur / somme de colonne) puis **moyenne des lignes** :\n- Exi 1 : (0,395 + 0,370 + 0,250 + 0,600) / 4 ≈ **0,404**\n- Exi 2 : (0,395 + 0,370 + 0,417 + 0,240) / 4 ≈ **0,355**\n- Exi 3 : (0,132 + 0,074 + 0,083 + 0,040) / 4 ≈ **0,082**\n- Exi 4 : (0,079 + 0,185 + 0,250 + 0,120) / 4 ≈ **0,159**\n\n(Total ≈ 1.)\n\n**3. Classement** : Exi 1 > Exi 2 > Exi 4 > Exi 3.\n\n**Barème indicatif** : matrice complétée (1 pt), normalisation et moyennes (1,5 pt), classement (0,5 pt).",
+        "en": "**Proposed** solution (no official one), following the Ottawa course procedure.\n\n**1. Completed matrix** (reciprocity, diagonal at 1):\n\n| | Req 1 | Req 2 | Req 3 | Req 4 |\n|---|---|---|---|---|\n| Req 1 | 1 | 1 | 3 | 5 |\n| Req 2 | 1 | 1 | 5 | 2 |\n| Req 3 | 1/3 | 1/5 | 1 | 1/3 |\n| Req 4 | 1/5 | 1/2 | 3 | 1 |\n| **Sum** | 38/15 ≈ 2.533 | 27/10 = 2.7 | 12 | 25/3 ≈ 8.333 |\n\n**2. Normalization** (value / column sum) then **row averages**:\n- Req 1: (0.395 + 0.370 + 0.250 + 0.600) / 4 ≈ **0.404**\n- Req 2: (0.395 + 0.370 + 0.417 + 0.240) / 4 ≈ **0.355**\n- Req 3: (0.132 + 0.074 + 0.083 + 0.040) / 4 ≈ **0.082**\n- Req 4: (0.079 + 0.185 + 0.250 + 0.120) / 4 ≈ **0.159**\n\n(Total ≈ 1.)\n\n**3. Ranking**: Req 1 > Req 2 > Req 4 > Req 3.\n\n**Indicative marking**: completed matrix (1 pt), normalization and averages (1.5 pt), ranking (0.5 pt)."
+      },
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-ex-02",
+      "title": {
+        "fr": "Annale 2013, partie C : corriger le modèle KAOS de la location de vidéos",
+        "en": "2013 exam, part C: correcting the video rental KAOS model"
+      },
+      "difficulty": 3,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o4",
+      "statement": {
+        "fr": "Le modèle KAOS de l’annale décompose « Système location VOD » (ET) en « téléchargement », « nouveau film » et « authentifier ». « téléchargement » se décompose en « en visionnage temps réel » et « enregistrer le .avi », **sans opérateur**. « nouveau film » se décompose (OU) en « Par les abonnés en leur offrant des avantages » et « À partir de sites tiers ». « authentifier » se décompose (ET) en « Créer un compte », « Saisir le login », « Saisir le mot de passe ».\n**(a)** Identifie et explique les erreurs. **(b)** Propose un modèle correct. (5 points)",
+        "en": "The exam’s KAOS model decomposes “VOD rental system” (AND) into “download”, “new film” and “authenticate”. “download” decomposes into “real-time viewing” and “save the .avi”, **without an operator**. “new film” decomposes (OR) into “By subscribers by offering them benefits” and “From third-party sites”. “authenticate” decomposes (AND) into “Create an account”, “Enter the login”, “Enter the password”.\n**(a)** Identify and explain the errors. **(b)** Propose a correct model. (5 points)"
+      },
+      "hints": [
+        {
+          "fr": "Passe chaque nœud et chaque décomposition à la méthode « corriger un modèle de buts ».",
+          "en": "Run each node and each decomposition through the “correcting a goal model” method."
+        },
+        {
+          "fr": "Visionner en temps réel et enregistrer le fichier : faut-il les deux, ou l’un suffit-il ?",
+          "en": "Real-time viewing and saving the file: are both needed, or does one suffice?"
+        },
+        {
+          "fr": "Faut-il créer un compte à chaque authentification ?",
+          "en": "Must you create an account at every authentication?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (aucun corrigé officiel), fondé sur les définitions de KAOS (van Lamsweerde).\n\n**(a) Erreurs**\n1. **La racine n’est pas un but** : « Système location VOD » désigne un système ; il faut un objectif à atteindre, ex. « Les abonnés louent et regardent des films ». (Au passage, l’énoncé parle de cassettes vidéo, le modèle de VOD.)\n2. **« téléchargement » n’a pas d’opérateur** : tout raffinement est ET ou OU. Ici, visionner en temps réel et enregistrer le fichier sont deux façons de regarder le film : c’est un **OU**.\n3. **Nœuds formulés comme des actions ou des noms** (« téléchargement », « authentifier », « Saisir le login ») : on attend des buts, ex. « Film mis à disposition », « Abonné authentifié ».\n4. **« authentifier » en ET avec « Créer un compte »** : un ET exige tous les sous-buts ; or on ne crée pas un compte à chaque authentification. « Compte créé » est un but distinct (préalable), et mélange les niveaux avec la saisie des champs.\n5. **« nouveau film »** : le OU est juste (deux sources alternatives), mais le nœud doit devenir un but, ex. « Catalogue enrichi de nouveaux films ».\n\n**(b) Modèle correct**\n- **Les abonnés louent et regardent des films** (ET) :\n  - **Compte d’abonné créé**\n  - **Abonné authentifié** (ET) : identifiant saisi ; mot de passe vérifié\n  - **Film mis à disposition de l’abonné** (OU) : visionné en streaming ; téléchargé et enregistré\n  - **Catalogue enrichi de nouveaux films** (OU) : proposés par les abonnés en échange d’avantages ; acquis auprès de sites tiers\n\n**Barème indicatif** : chaque erreur identifiée et expliquée (0,5 pt, max 2,5) ; modèle corrigé cohérent avec opérateurs ET / OU justes (2,5 pts).",
+        "en": "**Proposed** solution (no official one), based on KAOS definitions (van Lamsweerde).\n\n**(a) Errors**\n1. **The root is not a goal**: “VOD rental system” names a system; an objective is needed, e.g., “Subscribers rent and watch films”. (Incidentally, the statement speaks of video cassettes, the model of VOD.)\n2. **“download” has no operator**: every refinement is AND or OR. Here, real-time viewing and saving the file are two ways of watching the film: it is an **OR**.\n3. **Nodes phrased as actions or nouns** (“download”, “authenticate”, “Enter the login”): goals are expected, e.g., “Film made available”, “Subscriber authenticated”.\n4. **“authenticate” as an AND with “Create an account”**: an AND requires all subgoals; yet you do not create an account at each authentication. “Account created” is a separate (prior) goal, and it mixes levels with field entry.\n5. **“new film”**: the OR is right (two alternative sources), but the node must become a goal, e.g., “Catalogue enriched with new films”.\n\n**(b) Correct model**\n- **Subscribers rent and watch films** (AND):\n  - **Subscriber account created**\n  - **Subscriber authenticated** (AND): login entered; password checked\n  - **Film made available to the subscriber** (OR): watched by streaming; downloaded and saved\n  - **Catalogue enriched with new films** (OR): offered by subscribers in exchange for benefits; acquired from third-party sites\n\n**Indicative marking**: each error identified and explained (0.5 pt, max 2.5); corrected model consistent with correct AND / OR operators (2.5 pts)."
+      },
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-ex-03",
+      "title": {
+        "fr": "Deadbot : classer avec Kano, puis choisir une technique",
+        "en": "Deadbot: classify with Kano, then choose a technique"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o3",
+      "statement": {
+        "fr": "Pour le Deadbot, classe chaque exigence dans une catégorie de Kano et justifie : (1) les conversations sont confidentielles ; (2) le Deadbot imite le style d’écriture du défunt ; (3) le Deadbot propose de lui-même un album souvenir généré à partir des échanges ; (4) on peut supprimer définitivement le profil du défunt. Puis propose une technique pour prioriser les 15 exigences restantes avec 5 parties prenantes, et justifie.",
+        "en": "For the Deadbot, put each requirement in a Kano category and justify: (1) conversations are confidential; (2) the Deadbot imitates the deceased’s writing style; (3) the Deadbot spontaneously offers a memory album generated from the exchanges; (4) the deceased’s profile can be permanently deleted. Then propose a technique to prioritize the 15 remaining requirements with 5 stakeholders, and justify."
+      },
+      "hints": [
+        {
+          "fr": "Attendu sans être dit, demandé explicitement, ou ni demandé ni attendu ?",
+          "en": "Expected without being stated, explicitly demanded, or neither requested nor expected?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) **Must have / dissatisfier** : la confidentialité va de soi ; son absence provoquerait un rejet, sa présence ne réjouit pas. (2) **Satisfier / performance** : c’est le cœur de la demande (« simuler de manière réaliste »), plus c’est réussi, plus on est satisfait. (3) **Exciter / delighter** : personne ne l’attend. (4) **Must have** probable (exigence de protection des données attendue). Technique : avec 15 exigences, l’AHP demanderait 105 comparaisons par personne ; les **100 $** (ou des groupes de priorité) sont plus réalistes, et montrent l’intensité des préférences de chaque partie prenante.",
+        "en": "**Proposed** solution. (1) **Must have / dissatisfier**: confidentiality goes without saying; its absence would cause rejection, its presence does not delight. (2) **Satisfier / performance**: it is the core of the demand (“realistically simulate”), the better it is, the more satisfied users are. (3) **Exciter / delighter**: nobody expects it. (4) Probably **must have** (expected data protection requirement). Technique: with 15 requirements, AHP would need 105 comparisons per person; **100 dollars** (or priority groups) is more realistic, and shows each stakeholder’s strength of preference."
+      },
+      "notions": [
+        "n-kano-vocabulaire-annales",
+        "n-priorisation-exigences"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.2",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-ex-04",
+      "title": {
+        "fr": "Vrai ou faux des annales : priorisation et buts",
+        "en": "Past-exam true or false: prioritization and goals"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o5",
+      "statement": {
+        "fr": "« Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX. »\n1. (2013) La technique AHP permet d’améliorer la cohérence des exigences.\n2. (2013) Dans KAOS, OR est formellement équivalent au XOR.\n3. (2013) Les soft goals de i* ne peuvent jamais être satisfaits puisqu’on n’a pas de critère mesurable.\n4. (2014) Les exigences « exciter » de Kano sont des exigences non dites qui correspondent aux innovations et créent de la différentiation.\n5. (2014) Les cas d’utilisation correspondent à des buts alternatifs.\n6. (2014) La matrice d’Eisenhower permet de trier les exigences en combinant importance et urgence.",
+        "en": "“Answer TRUE or FALSE, justify if (and only if) you answer FALSE.”\n1. (2013) AHP improves the consistency of requirements.\n2. (2013) In KAOS, OR is formally equivalent to XOR.\n3. (2013) i* soft goals can never be satisfied since there is no measurable criterion.\n4. (2014) Kano “exciter” requirements are unstated requirements that correspond to innovations and create differentiation.\n5. (2014) Use cases correspond to alternative goals.\n6. (2014) The Eisenhower matrix sorts requirements by combining importance and urgency."
+      },
+      "hints": [
+        {
+          "fr": "Cherche le mot absolu ou la précision en trop dans chaque énoncé.",
+          "en": "Look for the absolute word or the extra detail in each statement."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n1. **FAUX** : l’AHP priorise ; sa cohérence concerne les jugements de comparaison, pas les exigences.\n2. **FAUX** : en OU, satisfaire une alternative suffit, plusieurs peuvent l’être ; le XOR en impose exactement une.\n3. **FAUX** : un soft goal est satisfait de façon suffisante (satisficing) ; « jamais » est faux.\n4. **VRAI** au regard du cours (delighters : non connus ou non attendus) ; « innovations, différentiation » n’est pas dans les supports, mais n’est pas contredit.\n5. **FAUX** : le support demande des cas complémentaires (nominaux) et proscrit les cas alternatifs.\n6. **Probablement VRAI** : importance et urgence sont deux échelles de priorisation fréquentes (cours d’Ottawa), mais la matrice d’Eisenhower n’est définie dans aucune source disponible : à confirmer avec tes notes.",
+        "en": "**Proposed** solution.\n1. **FALSE**: AHP prioritizes; its consistency concerns comparison judgements, not requirements.\n2. **FALSE**: in OR, satisfying one alternative suffices, several may be; XOR requires exactly one.\n3. **FALSE**: a soft goal is satisficed; “never” is wrong.\n4. **TRUE** with respect to the course (delighters: not known or not expected); “innovations, differentiation” is not in the slides, but not contradicted.\n5. **FALSE**: the slide asks for complementary (nominal) cases and rules out alternative cases.\n6. **Probably TRUE**: importance and urgency are two frequent prioritization scales (Ottawa course), but the Eisenhower matrix is defined in no available source: check your notes."
+      },
+      "notions": [
+        "n-kaos-or-xor",
+        "n-istar-soft-goals",
+        "n-ahp",
+        "n-kano-vocabulaire-annales",
+        "n-matrice-eisenhower"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q2",
+          "quote": "sont des exigences non dites qui correspondent aux innovations et créent de la différentiation"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        }
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "isi1-10-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Satisfying one of the alternatives is sufficient for satisfying the parent goal.",
+      "accepted": [
+        "Satisfying one alternative is sufficient for satisfying the parent goal."
+      ]
+    },
+    {
+      "id": "isi1-10-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "In cumulative voting, each stakeholder {{distributes}} 100 points among the {{requirements}}.",
+      "translation": "Dans le vote cumulatif, chaque partie prenante répartit 100 points entre les exigences."
+    },
+    {
+      "id": "isi1-10-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A soft goal can never be satisfied, so we must ignore it.",
+      "error": "can never be satisfied",
+      "corrected": "can be satisficed",
+      "explanation": {
+        "fr": "Un soft goal n’est pas satisfait de façon tranchée, mais il peut être *satisficed* (atteint de façon suffisante).",
+        "en": "A soft goal is not satisfied in a clear-cut way, but it can be *satisficed* (achieved to a sufficient level)."
+      }
+    },
+    {
+      "id": "isi1-10-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique la différence entre un raffinement OR et un XOR dans KAOS.",
+        "en": "In 2-3 English sentences, explain the difference between an OR refinement and an XOR in KAOS."
+      },
+      "modelAnswer": "In KAOS, an OR refinement relates a goal to alternative refinements. Satisfying one of them is sufficient, but several can be satisfied at the same time. An XOR would require exactly one alternative to be satisfied.",
+      "keywords": [
+        "OR",
+        "alternative",
+        "sufficient",
+        "several",
+        "exactly one"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai défini le OU (une alternative suffit).",
+          "en": "I defined OR (one alternative suffices)."
+        },
+        {
+          "fr": "J’ai dit que plusieurs peuvent être satisfaites.",
+          "en": "I said several can be satisfied."
+        },
+        {
+          "fr": "J’ai défini le XOR (exactement une).",
+          "en": "I defined XOR (exactly one)."
+        }
+      ],
+      "usefulPhrases": [
+        "relates a goal to…",
+        "is sufficient",
+        "would require exactly one"
+      ]
+    }
+  ]
+}
