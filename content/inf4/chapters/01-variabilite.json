@@ -10,9 +10,110 @@
     "fr": "Deux gardes britanniques, un magasin de sandwichs et une Ford T : pourquoi le logiciel a besoin de lignes de produits.",
     "en": "Two British guards, a sandwich shop and a Ford Model T: why software needs product lines."
   },
+  "question": {
+    "fr": "Pourquoi produire du logiciel « en famille » plutôt que produit par produit, et que faut-il savoir décrire pour le faire ?",
+    "en": "Why produce software “as a family” rather than product by product, and what must you be able to describe to do so?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Distinguer communalité, variabilité et dépendances, et les décrire en même temps sur un exemple.",
+        "en": "Distinguish commonality, variability and dependencies, and describe them together on an example."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Comparer les six mécanismes de réutilisation et dire ce que la ligne de produits apporte en plus.",
+        "en": "Compare the six reuse mechanisms and say what the product line adds."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Lire le framework PLE (domaine / produit, problème / solution) et y placer une activité.",
+        "en": "Read the PLE framework (domain / product, problem / solution) and place an activity in it."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Expliquer bénéfices et coût d’une ligne de produits (courbe d’investissement, seuil de rentabilité).",
+        "en": "Explain a product line’s benefits and cost (investment curve, break-even point)."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Jeux d’ouverture du prof : décrire « AT THE SAME TIME » ce qui est commun, ce qui varie et les dépendances (gardes, sandwichs).",
+        "en": "The teacher’s opening games: describe “AT THE SAME TIME” what is common, what varies and the dependencies (guards, sandwiches)."
+      },
+      {
+        "fr": "Comparaisons « X VS PL » des mécanismes de réutilisation ; schéma du framework PLE.",
+        "en": "“X VS PL” comparisons of reuse mechanisms; the PLE framework diagram."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Aucun : point de départ du cours.",
+    "en": "None: starting point of the course."
+  },
+  "next": {
+    "fr": "Le chapitre 2 approfondit la plate-forme et la personnalisation de masse ; le chapitre 3 apprend à écrire la variabilité avec un feature model.",
+    "en": "Chapter 2 develops platforms and mass customisation; chapter 3 teaches how to write variability with a feature model."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Communalité = ce que tous les produits partagent ; variabilité = ce qui peut changer ; dépendance = un choix en contraint un autre.",
+        "en": "Commonality = what all products share; variability = what can change; dependency = one choice constrains another."
+      },
+      {
+        "fr": "Six mécanismes : duplication, deltas, gestion de configuration, composants, aspects, lignes de produits ; la ligne apporte une vue intégrée, une spécification intensive, une conception pour la réutilisation.",
+        "en": "Six mechanisms: duplication, deltas, configuration management, components, aspects, product lines; the line brings an integrated view, intensive specification, design for reuse."
+      },
+      {
+        "fr": "Framework PLE : ingénierie de domaine (pour tous les produits) en haut, ingénierie de produit (un produit) en bas ; problème à gauche, solution à droite.",
+        "en": "PLE framework: domain engineering (for all products) at the top, product engineering (one product) at the bottom; problem on the left, solution on the right."
+      },
+      {
+        "fr": "Coût initial élevé, rentable après quelques produits (souvent 3 ou 4).",
+        "en": "High initial cost, profitable after a few products (often 3 or 4)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Décrire un petit domaine en trois listes : commun, variable, dépendances.",
+        "en": "Describe a small domain in three lists: common, variable, dependencies."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Réutilisation opportuniste (duplication) ≠ conception pour la réutilisation (ligne de produits).",
+        "en": "Opportunistic reuse (duplication) ≠ design for reuse (product line)."
+      },
+      {
+        "fr": "Domaine (préparer pour tous) ≠ produit (configurer un).",
+        "en": "Domain (prepare for all) ≠ product (configure one)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "La distinction extensive / intensive de la comparaison duplication / ligne revient au chapitre 3.",
+        "en": "The extensive / intensive distinction in the duplication / line comparison returns in chapter 3."
+      }
+    ]
+  },
   "estimatedMinutes": 14,
   "sources": [
-    "ressources/S3__INF4/mardown/1__introduction.md"
+    "ressources/S3__INF4/mardown/1__introduction.md",
+    "sources-texte/inf4/1-introduction-to-ple.md"
   ],
   "status": "draft",
   "story": [
@@ -35,6 +136,9 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "Ils portent le même uniforme rouge, le même pantalon noir et font le même mouvement de marche."
         }
+      ],
+      "notions": [
+        "n-british-guards-game"
       ]
     },
     {
@@ -65,6 +169,10 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "Ils se distinguent par des caractéristiques variables"
         }
+      ],
+      "notions": [
+        "n-commonality",
+        "n-variability"
       ]
     },
     {
@@ -79,6 +187,9 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "un grand chapeau projette une grande ombre"
         }
+      ],
+      "notions": [
+        "n-dependencies"
       ]
     },
     {
@@ -139,6 +250,10 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "les recettes et procédures pour chaque combinaison"
         }
+      ],
+      "notions": [
+        "n-sandwich-store",
+        "n-problem-solution-space"
       ]
     },
     {
@@ -189,6 +304,10 @@
           "loc": "3. De l'artisanat à l'ingénierie",
           "quote": "Utilisées à Venise au 12ème siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de production de la Ford T (1908-1927)."
         }
+      ],
+      "notions": [
+        "n-production-line",
+        "n-craft-engineering-art-design"
       ]
     },
     {
@@ -213,6 +332,9 @@
           "loc": "3. De l'artisanat à l'ingénierie",
           "quote": "partageant des propriétés communes étendues"
         }
+      ],
+      "notions": [
+        "n-production-line"
       ]
     },
     {
@@ -241,9 +363,27 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Avant la ligne de produits : quatre façons de réutiliser (1960-2000)",
-        "en": "Before product lines: four ways to reuse (1960-2000)"
+        "fr": "Six mécanismes de réutilisation, de la duplication à la ligne de produits",
+        "en": "Six reuse mechanisms, from duplication to product lines"
       }
+    },
+    {
+      "type": "paragraph",
+      "notions": [
+        "n-six-reuse-mechanisms",
+        "n-aspects-reuse"
+      ],
+      "text": {
+        "fr": "Le cours liste **six mécanismes de réutilisation** : (1) la duplication (« copy & own »), (2) la réutilisation par deltas (Δ), (3) l’évolution par gestion de configuration, (4) la réutilisation par composants, (5) les aspects, (6) les lignes de produits. Les quatre premiers, apparus entre 1960 et 2000, sont détaillés ci-dessous ; chacun est comparé à la ligne de produits.",
+        "en": "The course lists **six reuse mechanisms**: (1) duplication (“copy & own”), (2) delta-based (Δ) reuse, (3) evolution through configuration management, (4) component-based reuse, (5) aspects, (6) product lines. The first four, which appeared between 1960 and 2000, are detailed below; each is compared with the product line."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 16",
+          "quote": "Six reuse mechanisms 1. Duplication (aka « copy & own ») 2. Δ based reuse 3. Evolution - Configuration management 4. Componenent-based reuse 5. Aspects 6. Product lines"
+        }
+      ]
     },
     {
       "type": "paragraph",
@@ -266,6 +406,79 @@
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
           "loc": "4. Duplication",
           "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
+        }
+      ],
+      "notions": [
+        "n-duplication-reuse"
+      ]
+    },
+    {
+      "type": "table",
+      "notions": [
+        "n-duplication-reuse"
+      ],
+      "headers": [
+        {
+          "fr": "Duplication",
+          "en": "Duplication"
+        },
+        {
+          "fr": "Ligne de produits",
+          "en": "Product line"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Vue éparpillée",
+            "en": "Scattered view"
+          },
+          {
+            "fr": "Vue intégrée",
+            "en": "Integrated view"
+          }
+        ],
+        [
+          {
+            "fr": "Spécification extensive",
+            "en": "Extensive specification"
+          },
+          {
+            "fr": "Spécification intensive",
+            "en": "Intensive specification"
+          }
+        ],
+        [
+          {
+            "fr": "Réutilisation opportuniste",
+            "en": "Opportunistic reuse"
+          },
+          {
+            "fr": "Conçue pour la réutilisation",
+            "en": "Design for reuse"
+          }
+        ],
+        [
+          {
+            "fr": "Qualité au niveau du produit",
+            "en": "Product-level quality"
+          },
+          {
+            "fr": "Qualité au niveau de la famille",
+            "en": "Family-level quality"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 18",
+          "quote": "Scatered view Integrated view Extensive specification Intensive specification Oportunistic reuse Design for reuse"
+        },
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 18",
+          "quote": "Product-level quality Family-level quality"
         }
       ]
     },
@@ -296,6 +509,9 @@
           "loc": "4. Deltas",
           "quote": "Explosion de la complexité avec le nombre de variantes."
         }
+      ],
+      "notions": [
+        "n-delta-reuse"
       ]
     },
     {
@@ -325,6 +541,9 @@
           "loc": "4. Gestion de configuration",
           "quote": "Utile pour un seul produit évolutif, mais gestion difficile de la compatibilité et des aspects transversaux pour toute une famille de produits."
         }
+      ],
+      "notions": [
+        "n-configuration-management-reuse"
       ]
     },
     {
@@ -344,6 +563,9 @@
           "loc": "4. Composants",
           "quote": "les règles d'assemblage se perdent, pas de garantie sur les effets de bord"
         }
+      ],
+      "notions": [
+        "n-component-based-reuse"
       ]
     },
     {
@@ -384,6 +606,11 @@
           "loc": "5. Framework PLE",
           "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
         }
+      ],
+      "notions": [
+        "n-ple-framework-sei",
+        "n-domain-engineering",
+        "n-application-engineering"
       ]
     },
     {
@@ -403,6 +630,10 @@
           "loc": "5. Framework PLE",
           "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
         }
+      ],
+      "notions": [
+        "n-ple-framework-sei",
+        "n-domain-engineering"
       ]
     },
     {
@@ -422,6 +653,10 @@
           "loc": "5. Framework PLE",
           "quote": "qui doivent interagir de manière itérative"
         }
+      ],
+      "notions": [
+        "n-ple-framework-sei",
+        "n-core-assets"
       ]
     },
     {
@@ -487,6 +722,9 @@
           "loc": "6. Bénéfices et coûts",
           "quote": "Temps de mise sur le marché (Time to market) : Réduit de 98%."
         }
+      ],
+      "notions": [
+        "n-ple-benefits-numbers"
       ]
     },
     {
@@ -511,6 +749,10 @@
           "loc": "6. Exemples industriels",
           "quote": "Secteur médical. Réduction massive des erreurs et gains financiers directs grâce à la vérification de l'ingénierie de domaine."
         }
+      ],
+      "notions": [
+        "n-pl-success-examples",
+        "n-celsiustech"
       ]
     },
     {
@@ -546,6 +788,9 @@
           "loc": "6. Courbes d'investissement",
           "quote": "Les deux lignes se croisent au point de rentabilité"
         }
+      ],
+      "notions": [
+        "n-investment-curves"
       ]
     },
     {
@@ -570,6 +815,9 @@
           "loc": "6. Coûts vs bénéfices",
           "quote": "En échange, elle offre la réutilisation massive des exigences, de l'architecture, du code et des tests, permettant de cibler de nouveaux marchés en quelques mois au lieu de quelques années."
         }
+      ],
+      "notions": [
+        "n-investment-curves"
       ]
     },
     {
@@ -616,7 +864,8 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "Les personnes et les choses ont des caractéristiques communes"
         }
-      ]
+      ],
+      "notion": "n-commonality"
     },
     {
       "id": "term-variability",
@@ -636,7 +885,8 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "Ils se distinguent par des caractéristiques variables"
         }
-      ]
+      ],
+      "notion": "n-variability"
     },
     {
       "id": "term-dependency",
@@ -656,7 +906,8 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "un grand chapeau projette une grande ombre"
         }
-      ]
+      ],
+      "notion": "n-dependencies"
     },
     {
       "id": "term-craft",
@@ -672,7 +923,8 @@
           "loc": "3. De l'artisanat à l'ingénierie",
           "quote": "Outils primitifs taillés à la main, occupation spécialisée."
         }
-      ]
+      ],
+      "notion": "n-craft-engineering-art-design"
     },
     {
       "id": "term-mass-customization",
@@ -688,7 +940,8 @@
           "loc": "3. Personnalisation de masse",
           "quote": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé."
         }
-      ]
+      ],
+      "notion": "n-production-line"
     },
     {
       "id": "term-problem-space",
@@ -709,7 +962,8 @@
           "loc": "5. Framework PLE",
           "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
         }
-      ]
+      ],
+      "notion": "n-problem-solution-space"
     },
     {
       "id": "term-domain-engineering",
@@ -730,7 +984,8 @@
           "loc": "5. Framework PLE",
           "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
         }
-      ]
+      ],
+      "notion": "n-domain-engineering"
     },
     {
       "id": "term-product-engineering",
@@ -746,7 +1001,8 @@
           "loc": "5. Framework PLE",
           "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
         }
-      ]
+      ],
+      "notion": "n-application-engineering"
     },
     {
       "id": "term-ple",
@@ -767,7 +1023,8 @@
           "loc": "1. Introduction",
           "quote": "Aider à intégrer l'ingénierie des lignes de produits (Product Line Engineering - PLE) dans les pratiques de développement et de recherche."
         }
-      ]
+      ],
+      "notion": "n-ple-framework-sei"
     },
     {
       "id": "term-copy-paste-reuse",
@@ -788,7 +1045,8 @@
           "loc": "4. Duplication",
           "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
         }
-      ]
+      ],
+      "notion": "n-duplication-reuse"
     },
     {
       "id": "term-delta-reuse",
@@ -809,7 +1067,8 @@
           "loc": "4. Deltas",
           "quote": "Explosion de la complexité avec le nombre de variantes."
         }
-      ]
+      ],
+      "notion": "n-delta-reuse"
     },
     {
       "id": "term-core-assets",
@@ -830,7 +1089,8 @@
           "loc": "5. Framework PLE",
           "quote": "Développement des actifs de base (Core Asset Development), Développement des produits (Product Development), et la Gestion (Management)."
         }
-      ]
+      ],
+      "notion": "n-core-assets"
     },
     {
       "id": "term-break-even",
@@ -856,7 +1116,8 @@
           "loc": "6. Courbes d'investissement",
           "quote": "Les deux lignes se croisent au point de rentabilité"
         }
-      ]
+      ],
+      "notion": "n-investment-curves"
     }
   ],
   "notions": [
@@ -1083,7 +1344,232 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "inf4-01-fc-01",
+      "termId": "term-commonality",
+      "front": {
+        "fr": "communalité ?",
+        "en": "commonality?"
+      },
+      "back": {
+        "fr": "Ce que les produits (ou les gardes) ont en commun : leurs caractéristiques communes.",
+        "en": "What products (or guards) have in common: their shared characteristics."
+      }
+    },
+    {
+      "id": "inf4-01-fc-02",
+      "termId": "term-variability",
+      "front": {
+        "fr": "variabilité ?",
+        "en": "variability?"
+      },
+      "back": {
+        "fr": "Ce qui distingue les produits les uns des autres : leurs caractéristiques variables.",
+        "en": "What distinguishes products from one another: their variable characteristics."
+      }
+    },
+    {
+      "id": "inf4-01-fc-03",
+      "termId": "term-dependency",
+      "front": {
+        "fr": "dépendance ?",
+        "en": "dependency?"
+      },
+      "back": {
+        "fr": "Lien entre des caractéristiques : le choix de l'une est lié à celui d'une autre.",
+        "en": "A link between characteristics: the choice of one is tied to the choice of another."
+      }
+    },
+    {
+      "id": "inf4-01-fc-04",
+      "termId": "term-craft",
+      "front": {
+        "fr": "artisanat ?",
+        "en": "craft?"
+      },
+      "back": {
+        "fr": "Production d'objets avec des outils primitifs taillés à la main, par une occupation spécialisée.",
+        "en": "Producing objects with primitive hand-made tools, as a specialised occupation."
+      }
+    },
+    {
+      "id": "inf4-01-fc-05",
+      "termId": "term-mass-customization",
+      "front": {
+        "fr": "personnalisation de masse ?",
+        "en": "mass customization?"
+      },
+      "back": {
+        "fr": "Produire en masse MAIS de façon personnalisée : c'est ce que demande un logiciel présent partout.",
+        "en": "Producing in mass BUT customised: what software, being everywhere, demands."
+      }
+    },
+    {
+      "id": "inf4-01-fc-06",
+      "termId": "term-problem-space",
+      "front": {
+        "fr": "espace du problème ?",
+        "en": "problem space?"
+      },
+      "back": {
+        "fr": "Côté « problème » : analyser les types de produits, identifier les points communs et les différences (par opposition à l'espace de la solution : conception, recettes, composants).",
+        "en": "The “problem” side: analysing the types of products, identifying commonalities and differences (as opposed to the solution space: design, recipes, components)."
+      }
+    },
+    {
+      "id": "inf4-01-fc-07",
+      "termId": "term-domain-engineering",
+      "front": {
+        "fr": "ingénierie du domaine ?",
+        "en": "domain engineering?"
+      },
+      "back": {
+        "fr": "Partie haute du framework PLE : on analyse le marché, on modélise toutes les variations possibles (Variability Model) et on code les composants réutilisables (Components Model).",
+        "en": "Top part of the PLE framework: analyse the market, model all possible variations (Variability Model) and code the reusable components (Components Model)."
+      }
+    },
+    {
+      "id": "inf4-01-fc-08",
+      "termId": "term-product-engineering",
+      "front": {
+        "fr": "ingénierie du produit ?",
+        "en": "product engineering?"
+      },
+      "back": {
+        "fr": "Partie basse du framework PLE : un client veut une application spécifique ; on sélectionne ses exigences dans le modèle de variabilité (configuration), ce qui dérive l'architecture et assemble les composants.",
+        "en": "Bottom part of the PLE framework: a customer wants a specific application; their requirements are selected in the variability model (configuration), which derives the architecture and assembles the components."
+      }
+    },
+    {
+      "id": "inf4-01-fc-09",
+      "termId": "term-ple",
+      "front": {
+        "fr": "ligne de produits (PLE) ?",
+        "en": "product line engineering (PLE)?"
+      },
+      "back": {
+        "fr": "Approche offrant une vue intégrée, conçue explicitement pour la réutilisation, qui gère la qualité au niveau de la famille et prescrit comment assembler stratégiquement les composants.",
+        "en": "An approach offering an integrated view, designed explicitly for reuse, managing quality at the family level and prescribing how to assemble components strategically."
+      }
+    },
+    {
+      "id": "inf4-01-fc-10",
+      "termId": "term-copy-paste-reuse",
+      "front": {
+        "fr": "réutilisation par duplication ?",
+        "en": "copy/paste reuse?"
+      },
+      "back": {
+        "fr": "Exigences, design et code copiés/collés d'un projet à l'autre : simple, mais maintenance cauchemardesque et réutilisation opportuniste.",
+        "en": "Requirements, design and code copied/pasted from one project to another: simple, but nightmarish maintenance and opportunistic reuse."
+      }
+    },
+    {
+      "id": "inf4-01-fc-11",
+      "termId": "term-delta-reuse",
+      "front": {
+        "fr": "réutilisation par deltas ?",
+        "en": "delta-based reuse?"
+      },
+      "back": {
+        "fr": "Un produit de référence (Baseline 1) sert de base ; des modifications (Δ) créent les autres baselines. Pas de gouvernance globale, complexité qui explose avec les variantes.",
+        "en": "A reference product (Baseline 1) serves as base; modifications (Δ) create the other baselines. No global governance, complexity exploding with variants."
+      }
+    },
+    {
+      "id": "inf4-01-fc-12",
+      "termId": "term-core-assets",
+      "front": {
+        "fr": "actifs de base ?",
+        "en": "core assets?"
+      },
+      "back": {
+        "fr": "Éléments réutilisables créés par l'ingénierie du domaine ; leur développement (Core Asset Development) est l'une des trois activités essentielles du SEI.",
+        "en": "Reusable elements created by domain engineering; their development (Core Asset Development) is one of the three essential SEI activities."
+      }
+    },
+    {
+      "id": "inf4-01-fc-13",
+      "termId": "term-break-even",
+      "front": {
+        "fr": "point de rentabilité ?",
+        "en": "break-even point?"
+      },
+      "back": {
+        "fr": "Point où se croisent la courbe de coût du développement classique (linéaire par produit) et celle de la ligne de produits (coût initial élevé, coût marginal presque plat).",
+        "en": "Point where the cost curve of classic development (linear per product) crosses that of the product line (high initial cost, almost flat marginal cost)."
+      }
+    },
+    {
+      "id": "inf4-01-fc-14",
+      "front": {
+        "fr": "Les six mécanismes de réutilisation ?",
+        "en": "The six reuse mechanisms?"
+      },
+      "back": {
+        "fr": "Duplication, deltas, gestion de configuration, composants, aspects, lignes de produits.",
+        "en": "Duplication, deltas, configuration management, components, aspects, product lines."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 16",
+          "quote": "Six reuse mechanisms 1. Duplication (aka « copy & own ») 2. Δ based reuse 3. Evolution - Configuration management 4. Componenent-based reuse 5. Aspects 6. Product lines"
+        }
+      ],
+      "notions": [
+        "n-six-reuse-mechanisms"
+      ]
+    },
+    {
+      "id": "inf4-01-fc-15",
+      "front": {
+        "fr": "Duplication VS ligne de produits ?",
+        "en": "Duplication VS product line?"
+      },
+      "back": {
+        "fr": "Vue éparpillée / intégrée ; spécification extensive / intensive ; réutilisation opportuniste / conçue pour ; qualité du produit / de la famille.",
+        "en": "Scattered / integrated view; extensive / intensive specification; opportunistic reuse / design for reuse; product / family quality."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 18",
+          "quote": "Scatered view Integrated view Extensive specification Intensive specification Oportunistic reuse Design for reuse"
+        },
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 18",
+          "quote": "Product-level quality Family-level quality"
+        }
+      ],
+      "notions": [
+        "n-duplication-reuse"
+      ]
+    },
+    {
+      "id": "inf4-01-fc-16",
+      "front": {
+        "fr": "Réutilisation par gestion de configuration ?",
+        "en": "Reuse through configuration management?"
+      },
+      "back": {
+        "fr": "Un arbre de développement : système découpé en modules et sous-modules, gérés par des fichiers (Makefiles) et des versions.",
+        "en": "A development tree: system split into modules and submodules, managed through files (Makefiles) and versions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Gestion de configuration",
+          "quote": "Utile pour un seul produit évolutif, mais gestion difficile de la compatibilité et des aspects transversaux pour toute une famille de produits."
+        }
+      ],
+      "notions": [
+        "n-configuration-management-reuse"
+      ]
+    }
+  ],
   "quiz": [
     {
       "id": "inf4-01-qz-01",
@@ -1109,7 +1595,17 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "Ils se distinguent par des caractéristiques variables"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-british-guards-game",
+        "n-commonality",
+        "n-variability"
+      ],
+      "trap": {
+        "fr": "Prendre ce qui est commun aux deux gardes pour de la variabilité.",
+        "en": "Taking what both guards share for variability."
+      }
     },
     {
       "id": "inf4-01-qz-02",
@@ -1150,7 +1646,15 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "un grand chapeau projette une grande ombre"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-dependencies"
+      ],
+      "trap": {
+        "fr": "Voir une simple variabilité là où un choix en contraint un autre.",
+        "en": "Seeing mere variability where one choice constrains another."
+      }
     },
     {
       "id": "inf4-01-qz-03",
@@ -1176,6 +1680,11 @@
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "les recettes et procédures pour chaque combinaison"
         }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-problem-solution-space",
+        "n-sandwich-store"
       ]
     },
     {
@@ -1217,7 +1726,15 @@
           "loc": "3. De l'artisanat à l'ingénierie",
           "quote": "Elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure) comme l'industrie du logiciel en a l'habitude."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-production-line"
+      ],
+      "trap": {
+        "fr": "Croire que la chaîne de production manque de spécialisation : elle manque de sur-mesure.",
+        "en": "Believing the production line lacks specialisation: it lacks customisation."
+      }
     },
     {
       "id": "inf4-01-qz-05",
@@ -1243,7 +1760,15 @@
           "loc": "4. Duplication",
           "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-duplication-reuse"
+      ],
+      "trap": {
+        "fr": "Ne retenir que les avantages de la duplication : elle devient vite un problème de maintenance.",
+        "en": "Remembering only duplication’s pros: it quickly becomes a maintenance issue."
+      }
     },
     {
       "id": "inf4-01-qz-06",
@@ -1289,7 +1814,15 @@
           "loc": "4. Composants",
           "quote": "les règles d'assemblage se perdent, pas de garantie sur les effets de bord"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-component-based-reuse"
+      ],
+      "trap": {
+        "fr": "Confondre composants (boîte noire) et gestion de configuration.",
+        "en": "Confusing components (black box) and configuration management."
+      }
     },
     {
       "id": "inf4-01-qz-07",
@@ -1310,6 +1843,11 @@
           "loc": "4. Deltas",
           "quote": "L'accident de la fusée Ariane 5 est cité comme exemple de réutilisation de code sans test approprié dans un nouveau contexte"
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-ariane-5",
+        "n-delta-reuse"
       ]
     },
     {
@@ -1336,7 +1874,16 @@
           "loc": "5. Framework PLE",
           "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-ple-framework-sei",
+        "n-domain-engineering"
+      ],
+      "trap": {
+        "fr": "Inverser haut (domaine, pour tous) et bas (produit, pour un) du schéma.",
+        "en": "Swapping top (domain, for all) and bottom (product, for one) of the diagram."
+      }
     },
     {
       "id": "inf4-01-qz-09",
@@ -1377,7 +1924,15 @@
           "loc": "5. Framework PLE",
           "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-application-engineering"
+      ],
+      "trap": {
+        "fr": "Placer la configuration d’un produit dans l’ingénierie de domaine.",
+        "en": "Placing a product’s configuration in domain engineering."
+      }
     },
     {
       "id": "inf4-01-qz-10",
@@ -1403,6 +1958,10 @@
           "loc": "5. Framework PLE",
           "quote": "qui doivent interagir de manière itérative"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-ple-framework-sei"
       ]
     },
     {
@@ -1429,7 +1988,15 @@
           "loc": "6. Bénéfices et coûts",
           "quote": "Temps de mise sur le marché (Time to market) : Réduit de 98%."
         }
-      ]
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-ple-benefits-numbers"
+      ],
+      "trap": {
+        "fr": "Inverser les chiffres : coûts −60 %, temps de mise sur le marché −98 %.",
+        "en": "Swapping the figures: costs −60%, time to market −98%."
+      }
     },
     {
       "id": "inf4-01-qz-12",
@@ -1455,7 +2022,15 @@
           "loc": "6. Courbes d'investissement",
           "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
         }
-      ]
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-investment-curves"
+      ],
+      "trap": {
+        "fr": "Croire à un coût marginal nul et à une rentabilité dès le deuxième produit.",
+        "en": "Believing in zero marginal cost and profitability from the second product."
+      }
     },
     {
       "id": "inf4-01-qz-13",
@@ -1501,9 +2076,222 @@
           "loc": "6. Courbes d'investissement",
           "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
         }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-investment-curves"
+      ],
+      "trap": {
+        "fr": "Croire qu’une ligne de produits est rentable pour un seul produit.",
+        "en": "Believing a product line pays off for a single product."
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "inf4-01-ex-01",
+      "title": {
+        "fr": "Le jeu du prof, sur un nouveau domaine : la pizzeria",
+        "en": "The teacher’s game, on a new domain: the pizzeria"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "apply",
+      "objective": "o1",
+      "statement": {
+        "fr": "Comme pour les gardes et les sandwichs (« Find a way to describe both AT THE SAME TIME! »), décris une pizzeria qui propose des pizzas sur mesure : toutes ont une pâte et une base (tomate ou crème, au choix, une seule) ; on ajoute de 1 à 4 garnitures ; l’option « sans gluten » impose la pâte fine. Donne (a) la communalité, (b) la variabilité, (c) les dépendances, (d) ce qui relève de l’espace du problème et de l’espace de la solution.",
+        "en": "As for the guards and the sandwiches (“Find a way to describe both AT THE SAME TIME!”), describe a pizzeria offering custom pizzas: all have a dough and a base (tomato or cream, choose one); 1 to 4 toppings are added; the “gluten-free” option requires thin dough. Give (a) commonality, (b) variability, (c) dependencies, (d) what belongs to the problem space and to the solution space."
+      },
+      "hints": [
+        {
+          "fr": "Commun = présent dans toutes les pizzas ; variable = ce que le client choisit ; dépendance = un choix qui en impose ou interdit un autre.",
+          "en": "Common = in every pizza; variable = what the customer chooses; dependency = a choice that imposes or forbids another."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (a) **Communalité** : une pâte, une base, au moins une garniture. (b) **Variabilité** : base tomate ou crème (une seule), 1 à 4 garnitures parmi la carte, type de pâte, option sans gluten. (c) **Dépendances** : « sans gluten » impose la pâte fine ; tomate et crème s’excluent. (d) **Espace du problème** : ce que le client peut choisir (la carte, les options et leurs règles) ; **espace de la solution** : les recettes, les ingrédients et la façon de préparer chaque pizza. Ce triptyque se modélisera au chapitre 3 en feature model (XOR pour la base, cardinalité <1..4> pour les garnitures, requires pour le sans gluten).",
+        "en": "**Proposed** solution. (a) **Commonality**: a dough, a base, at least one topping. (b) **Variability**: tomato or cream base (only one), 1 to 4 toppings from the menu, dough type, gluten-free option. (c) **Dependencies**: “gluten-free” requires thin dough; tomato and cream exclude each other. (d) **Problem space**: what the customer can choose (the menu, options and their rules); **solution space**: recipes, ingredients and how each pizza is made. This triptych will be modelled in chapter 3 as a feature model (XOR for the base, <1..4> cardinality for toppings, requires for gluten-free)."
+      },
+      "notions": [
+        "n-commonality",
+        "n-variability",
+        "n-dependencies",
+        "n-problem-solution-space"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Un menu de composition de sandwichs avec des cases à cocher pour le type de pain, la viande, les légumes et les sauces."
+        }
+      ]
+    },
+    {
+      "id": "inf4-01-ex-02",
+      "title": {
+        "fr": "Quel mécanisme de réutilisation ?",
+        "en": "Which reuse mechanism?"
+      },
+      "difficulty": 2,
+      "level": "understand",
+      "objective": "o2",
+      "statement": {
+        "fr": "Pour chaque situation, nomme le mécanisme de réutilisation et une limite que le cours lui attribue, puis dis ce qu’une ligne de produits ferait mieux. (1) Une équipe copie le projet d’un client pour en démarrer un nouveau. (2) Un produit de référence est modifié par versions successives. (3) Un module de paiement est réutilisé comme boîte noire dans plusieurs applications.",
+        "en": "For each situation, name the reuse mechanism and one limit the course attributes to it, then say what a product line would do better. (1) A team copies one customer’s project to start a new one. (2) A reference product is modified through successive versions. (3) A payment module is reused as a black box in several applications."
+      },
+      "hints": [
+        {
+          "fr": "Pense aux slides « X VS PL ».",
+          "en": "Think of the “X VS PL” slides."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (1) **Duplication** (copy & own) : simple, sans effet sur les autres produits, mais difficile à faire évoluer (problème de maintenance) et réutilisation opportuniste. La ligne offre une vue intégrée et une conception pour la réutilisation. (2) **Deltas** : efficace pour quelques variantes, mais les deltas s’accumulent ; la ligne décrit la variabilité de façon intensive. (3) **Composants** : bonne séparation des responsabilités (boîte noire), mais pas de vision stratégique de l’assemblage ; la ligne planifie l’assemblage au niveau de la famille.",
+        "en": "**Proposed** solution. (1) **Duplication** (copy & own): simple, without effects on other products, but hard to evolve (maintenance issue) and opportunistic reuse. The line offers an integrated view and design for reuse. (2) **Deltas**: efficient for a few variants, but deltas pile up; the line describes variability intensively. (3) **Components**: good separation of responsibilities (black box), but no strategic view of assembly; the line plans assembly at family level."
+      },
+      "notions": [
+        "n-six-reuse-mechanisms",
+        "n-duplication-reuse",
+        "n-delta-reuse",
+        "n-component-based-reuse"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 16",
+          "quote": "Six reuse mechanisms 1. Duplication (aka « copy & own ») 2. Δ based reuse 3. Evolution - Configuration management 4. Componenent-based reuse 5. Aspects 6. Product lines"
+        },
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 18",
+          "quote": "Scatered view Integrated view Extensive specification Intensive specification Oportunistic reuse Design for reuse"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Composants",
+          "quote": "Sépare bien les responsabilités (boîte noire), mais il n'y a pas de vision stratégique d'assemblage"
+        }
+      ]
+    },
+    {
+      "id": "inf4-01-ex-03",
+      "title": {
+        "fr": "Faut-il se lancer ? La courbe d’investissement",
+        "en": "Should we go for it? The investment curve"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o4",
+      "statement": {
+        "fr": "Une PME développe aujourd’hui chaque application sur mesure. Elle prévoit (a) un seul produit dans les trois ans, ou (b) six variantes d’un même produit pour six marchés. Pour chaque scénario, recommande ou non une ligne de produits, en t’appuyant sur la courbe d’investissement du cours.",
+        "en": "An SME currently develops each application from scratch. It plans (a) a single product over three years, or (b) six variants of one product for six markets. For each scenario, recommend a product line or not, based on the course’s investment curve."
+      },
+      "hints": [
+        {
+          "fr": "Coût initial « Big bang » contre coût linéaire par produit ; seuil vers 3 ou 4 produits.",
+          "en": "“Big bang” initial cost versus linear per-product cost; break-even around 3 or 4 products."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. (a) **Non** : la ligne a un coût initial bien plus élevé (création des actifs communs) ; avec un seul produit, ce surcoût n’est jamais amorti. (b) **Oui** : au-delà de quelques produits (souvent 3 ou 4), le coût par produit devient bien plus faible qu’en développement classique, et les bénéfices annoncés (productivité, qualité, temps de mise sur le marché) jouent à plein.",
+        "en": "**Proposed** solution. (a) **No**: the line has a much higher initial cost (creating common assets); with a single product, this extra cost is never paid back. (b) **Yes**: beyond a few products (often 3 or 4), the cost per product becomes much lower than with classic development, and the stated benefits (productivity, quality, time to market) fully apply."
+      },
+      "notions": [
+        "n-investment-curves",
+        "n-ple-benefits-numbers"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "le développement classique a un coût linéaire par produit"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "6. Courbes d'investissement",
+          "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
+        }
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "writing": [
+    {
+      "id": "inf4-01-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Commonality is what all the products of the family share.",
+      "accepted": [
+        "Commonality is what all products of the family share."
+      ]
+    },
+    {
+      "id": "inf4-01-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "Domain engineering is engineering {{for}} reuse; application engineering is engineering {{with}} reuse.",
+      "translation": "L’ingénierie de domaine est faite pour la réutilisation ; l’ingénierie d’application avec réutilisation."
+    },
+    {
+      "id": "inf4-01-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A product line is profitable from the very first product.",
+      "error": "from the very first product",
+      "corrected": "after a few products (often three or four)",
+      "explanation": {
+        "fr": "Le coût initial est élevé ; la rentabilité vient avec la multiplication des produits.",
+        "en": "The initial cost is high; profitability comes as products multiply."
+      }
+    },
+    {
+      "id": "inf4-01-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique la différence entre communalité, variabilité et dépendance avec l’exemple des gardes.",
+        "en": "In 2-3 English sentences, explain the difference between commonality, variability and dependency with the guards example."
+      },
+      "modelAnswer": "Commonality is what all guards share, such as the jacket and the hat. Variability is what can change from one guard to another, such as the size of the hat. A dependency links two choices: a big hat casts a big shadow.",
+      "keywords": [
+        "commonality",
+        "share",
+        "variability",
+        "change",
+        "dependency"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai défini les trois notions.",
+          "en": "I defined the three notions."
+        },
+        {
+          "fr": "J’ai donné un exemple pour chacune.",
+          "en": "I gave an example for each."
+        }
+      ],
+      "usefulPhrases": [
+        "is what all … share",
+        "can change from one … to another",
+        "links two choices"
+      ]
+    }
+  ]
 }
