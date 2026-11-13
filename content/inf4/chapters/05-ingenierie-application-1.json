@@ -10,6 +10,102 @@
     "fr": "Un client demande une application à partir de la ligne : que réutilise-t-on, que doit-on adapter, et à quel prix ?",
     "en": "A customer orders an application from the line: what is reused, what must be adapted, and at what cost?"
   },
+  "question": {
+    "fr": "Quand un client demande une application dérivée de la ligne, comment décider ce qu’on réutilise, ce qu’on adapte, et à quel coût ?",
+    "en": "When a customer asks for an application derived from the line, how do you decide what to reuse, what to adapt, and at what cost?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Distinguer exigences de partie prenante et exigences d’application, et citer les trois activités essentielles de l’ingénierie des exigences d’application.",
+        "en": "Distinguish stakeholder requirements and application requirements, and name the three essential activities of application requirements engineering."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Communiquer la variabilité externe à un client (points de variation, variants, choix alternatifs) et lier ses choix.",
+        "en": "Communicate external variability to a customer (variation points, variants, alternative choices) and bind their choices."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Analyser un delta : type de delta, catégorie d’effort A à D (Table 15-1), options de décision.",
+        "en": "Analyse a delta: delta type, effort category A to D (Table 15-1), decision options."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Décrire la spécification des exigences d’application et ses différences avec un système unique.",
+        "en": "Describe the application requirements specification and its differences from a single system."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Objectif du chapitre du livre : « How to identify deltas between stakeholder requirements and product line requirements » ; Table 15-1 (catégories A à D par type de delta).",
+        "en": "The book chapter’s objective: “How to identify deltas between stakeholder requirements and product line requirements”; Table 15-1 (categories A to D per delta type)."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 4 : OVM, points de variation, variants, dépendances.",
+    "en": "Chapter 4: OVM, variation points, variants, dependencies."
+  },
+  "next": {
+    "fr": "Le chapitre 6 poursuit avec la conception, la réalisation et le test de l’application.",
+    "en": "Chapter 6 continues with the application’s design, realisation and testing."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Exigences de partie prenante (demandées) → exigences d’application (retenues) ; satisfaites complètement, partiellement ou pas du tout par le domaine.",
+        "en": "Stakeholder requirements (requested) → application requirements (retained); fully, partially or not satisfied by the domain."
+      },
+      {
+        "fr": "Trois activités : communiquer la variabilité externe, évaluer les deltas, documenter les exigences d’application.",
+        "en": "Three activities: communicate external variability, assess deltas, document application requirements."
+      },
+      {
+        "fr": "Types de delta et catégories possibles : nouveau variant A-B ; adaptation des dépendances de variabilité A-C ; des dépendances de contrainte B-D ; nouveau point de variation B-D.",
+        "en": "Delta types and possible categories: new variant A-B; adapting variability dependencies A-C; constraint dependencies B-D; new variation point B-D."
+      },
+      {
+        "fr": "Catégories : A aucun effort, B local, C global, D pas de réalisation raisonnable ; options : réaliser, adapter l’exigence (« 80 % »), adapter les deux, renoncer.",
+        "en": "Categories: A no effort, B local, C global, D no reasonable realisation; options: realise, adapt the requirement (“80%”), adapt both, give up."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Pour une demande client, nommer le type de delta, donner la plage de catégories et proposer une décision.",
+        "en": "For a customer request, name the delta type, give the category range and propose a decision."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Modèle de variabilité de domaine (tous les variants) ≠ modèle de variabilité d’application (les variants liés pour ce client).",
+        "en": "Domain variability model (all variants) ≠ application variability model (the variants bound for this customer)."
+      },
+      {
+        "fr": "Exigence de partie prenante (ce qu’on demande) ≠ exigence d’application (ce qu’on retient).",
+        "en": "Stakeholder requirement (what is asked) ≠ application requirement (what is retained)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "RED-PL (chapitre 8) automatise la dérivation des exigences d’un produit et l’arbitrage entre exigences.",
+        "en": "RED-PL (chapter 8) automates deriving a product’s requirements and arbitrating between them."
+      }
+    ]
+  },
   "estimatedMinutes": 15,
   "sources": [
     "ressources/S3__INF4/mardown/3__application_engineering.md"
@@ -40,13 +136,17 @@
           "loc": "15.1",
           "quote": "The reuse of domain requirements artefacts for each application supports the overall goal of obtaining a high degree of domain artefact reuse."
         }
+      ],
+      "notions": [
+        "n-application-engineering-goal",
+        "n-are-goal"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Qui parle à qui ? Les **chefs de produit** définissent les grandes fonctionnalités selon leur stratégie de marché ; les **clients** veulent une application qui répond à leurs besoins à un prix abordable. Quand le client est inconnu (cas le plus courant), chefs de produit et experts marketing le représentent. Dans tous les cas, on lui **communique** les communalités et la variabilité externe pour qu'il juge ce que la ligne peut couvrir. Le livre distingue **deux catégories d'applications** selon le degré de réutilisation. Catégorie 1 : toutes ses exigences sont un **sous-ensemble** des exigences du domaine — il suffit de les présenter et de choisir. Catégorie 2 : certaines exigences **n'existent pas** dans le domaine — il faut détecter et documenter les écarts, les [[term-delta|deltas d'exigences]].",
-        "en": "Who talks to whom? **Product managers** define the major features based on their market strategy; **customers** want an application that meets their needs at an affordable price. When customers are not personally known (the more common case), product managers and marketing experts represent them. Either way, the commonality and external variability are **communicated** so they can judge what the line can cover. The book distinguishes **two application categories** by degree of reuse. Category 1: all its requirements are a **subset** of the domain requirements — you just present them and select. Category 2: some requirements are **not part** of the domain — differences, the [[term-delta|requirements deltas]], must be detected and documented."
+        "fr": "Qui parle à qui ? Les **chefs de produit** définissent les grandes fonctionnalités selon leur stratégie de marché ; les **clients** veulent une application qui répond à leurs besoins à un prix abordable. Quand le client est inconnu (cas le plus courant), chefs de produit et experts marketing le représentent. Dans tous les cas, on lui **communique** les communalités et la variabilité externe pour qu'il juge ce que la ligne peut couvrir.",
+        "en": "Who talks to whom? **Product managers** define the major features based on their market strategy; **customers** want an application that meets their needs at an affordable price. When customers are not personally known (the more common case), product managers and marketing experts represent them. Either way, the commonality and external variability are **communicated** so they can judge what the line can cover."
       },
       "src": [
         {
@@ -63,7 +163,16 @@
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.1",
           "quote": "product managers and marketing experts represent the customer as stakeholder of the application requirements engineering sub-process"
-        },
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le livre distingue **deux catégories d'applications** selon le degré de réutilisation. Catégorie 1 : toutes ses exigences sont un **sous-ensemble** des exigences du domaine — il suffit de les présenter et de choisir. Catégorie 2 : certaines exigences **n'existent pas** dans le domaine — il faut détecter et documenter les écarts, les [[term-delta|deltas d'exigences]].",
+        "en": "The book distinguishes **two application categories** by degree of reuse. Category 1: all its requirements are a **subset** of the domain requirements — you just present them and select. Category 2: some requirements are **not part** of the domain — differences, the [[term-delta|requirements deltas]], must be detected and documented."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.1",
@@ -79,6 +188,9 @@
           "loc": "15.1",
           "quote": "the differences or deltas between domain requirements artefacts and application requirements artefacts have to be detected and documented"
         }
+      ],
+      "notions": [
+        "n-two-application-categories"
       ]
     },
     {
@@ -123,6 +235,9 @@
           "loc": "Fig. 15-2",
           "quote": "6 (Depuis Application Design) : Effort evaluation of requirements deltas."
         }
+      ],
+      "notions": [
+        "n-are-goal"
       ]
     },
     {
@@ -157,6 +272,9 @@
           "loc": "15.1.2",
           "quote": "Before these artefacts can be integrated into the product line, a decision within the domain engineering process has to be made"
         }
+      ],
+      "notions": [
+        "n-are-feedback-domain"
       ]
     },
     {
@@ -173,8 +291,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le livre ne distingue pas l'origine du besoin (gestion de produit, client…) : ce sont des **exigences des parties prenantes** (*stakeholder requirements*), celles qu'elles « s'attendent à voir satisfaites » par l'application. Mais, à cause des arbitrages, elles ne sont pas forcément identiques aux **exigences d'application** (*application requirements*), qui « spécifient complètement » une application de la ligne. Face à une exigence de partie prenante, trois issues : elle est **complètement**, **partiellement**, ou **pas du tout** satisfaite par des exigences d'application. L'ingénieur d'exigences la met en correspondance avec les artefacts de domaine : si l'un la satisfait, il est **réutilisé** tel quel ; sinon, il faut un effort d'adaptation et un arbitrage.",
-        "en": "The book does not distinguish the origin of the need (product management, customer…): these are **stakeholder requirements**, those the stakeholders expect to be fulfilled by the application. But because of trade-offs they are not necessarily identical to the **application requirements**, which completely specify a product line application. A stakeholder requirement has three possible outcomes: **completely**, **partially**, or **not at all** fulfilled by application requirements. The requirements engineer maps it to domain artefacts: if one satisfies it, it is **reused** as is; otherwise adaptation effort and a trade-off are needed."
+        "fr": "Le livre ne distingue pas l'origine du besoin (gestion de produit, client…) : ce sont des **exigences des parties prenantes** (*stakeholder requirements*), celles qu'elles « s'attendent à voir satisfaites » par l'application. Mais, à cause des arbitrages, elles ne sont pas forcément identiques aux **exigences d'application** (*application requirements*), qui « spécifient complètement » une application de la ligne.",
+        "en": "The book does not distinguish the origin of the need (product management, customer…): these are **stakeholder requirements**, those the stakeholders expect to be fulfilled by the application. But because of trade-offs they are not necessarily identical to the **application requirements**, which completely specify a product line application."
       },
       "src": [
         {
@@ -200,18 +318,35 @@
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.2",
-          "quote": "The stakeholder requirement can be partially fulfilled by an application requirement or set of application requirements."
-        },
+          "quote": "The stakeholder requirement cannot be fulfilled by any application requirement or set of application requirements."
+        }
+      ],
+      "notions": [
+        "n-stakeholder-requirements",
+        "n-application-requirements"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Face à une exigence de partie prenante, trois issues : elle est **complètement**, **partiellement**, ou **pas du tout** satisfaite par des exigences d'application. L'ingénieur d'exigences la met en correspondance avec les artefacts de domaine : si l'un la satisfait, il est **réutilisé** tel quel ; sinon, il faut un effort d'adaptation et un arbitrage.",
+        "en": "A stakeholder requirement has three possible outcomes: **completely**, **partially**, or **not at all** fulfilled by application requirements. The requirements engineer maps it to domain artefacts: if one satisfies it, it is **reused** as is; otherwise adaptation effort and a trade-off are needed."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.2",
-          "quote": "The stakeholder requirement cannot be fulfilled by any application requirement or set of application requirements."
+          "quote": "The stakeholder requirement can be partially fulfilled by an application requirement or set of application requirements."
         },
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.2",
           "quote": "In case a specific domain requirements artefact satisfies a particular stakeholder requirement, the domain requirements artefact can be reused."
         }
+      ],
+      "notions": [
+        "n-stakeholder-requirements",
+        "n-requirements-deltas"
       ]
     },
     {
@@ -246,6 +381,9 @@
           "loc": "15.2",
           "quote": "The orthogonal variability model plays a central role in this activity"
         }
+      ],
+      "notions": [
+        "n-are-three-activities"
       ]
     },
     {
@@ -302,8 +440,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Comment parle-t-on de variabilité à quelqu'un qui n'est pas ingénieur ? On part des **points de variation**, au plus haut niveau d'abstraction. Pour chacun, on communique : (1) ses variants, les dépendances de variabilité et les choix alternatifs ; (2) les points de variation ou variants dépendants, en suivant les dépendances de contrainte. **Exemple du livre (15-1)** : deux points de variation, « security standard » (basic / advanced) et « authentication » (password / fingerprint). Le client s'intéresse à l'authentification : la ligne offre deux mécanismes, **exactement un** doit être choisi. Si c'est « password », le point de variation « security standard » doit **aussi** être lié : basic ou advanced.",
-        "en": "How do you talk about variability to a non-engineer? Start from the **variation points**, at the topmost level of abstraction. For each, communicate: (1) its variants, the variability dependencies and the alternative choices; (2) dependent variation points or variants, by following the constraint dependencies. **Book example (15-1)**: two variation points, 'security standard' (basic / advanced) and 'authentication' (password / fingerprint). The stakeholder is interested in authentication: the line offers two mechanisms, **exactly one** must be selected. If 'password', the variation point 'security standard' must **also** be bound: basic or advanced."
+        "fr": "Comment parle-t-on de variabilité à quelqu'un qui n'est pas ingénieur ? On part des **points de variation**, au plus haut niveau d'abstraction. Pour chacun, on communique : (1) ses variants, les dépendances de variabilité et les choix alternatifs ; (2) les points de variation ou variants dépendants, en suivant les dépendances de contrainte.",
+        "en": "How do you talk about variability to a non-engineer? Start from the **variation points**, at the topmost level of abstraction. For each, communicate: (1) its variants, the variability dependencies and the alternative choices; (2) dependent variation points or variants, by following the constraint dependencies."
       },
       "src": [
         {
@@ -320,7 +458,19 @@
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.3.1",
           "quote": "Communicating dependent variation points and/or variants by following the existing constraint dependencies."
-        },
+        }
+      ],
+      "notions": [
+        "n-communicating-vp-variants"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Exemple du livre (15-1)** : deux points de variation, « security standard » (basic / advanced) et « authentication » (password / fingerprint). Le client s'intéresse à l'authentification : la ligne offre deux mécanismes, **exactement un** doit être choisi. Si c'est « password », le point de variation « security standard » doit **aussi** être lié : basic ou advanced.",
+        "en": "**Book example (15-1)**: two variation points, 'security standard' (basic / advanced) and 'authentication' (password / fingerprint). The stakeholder is interested in authentication: the line offers two mechanisms, **exactly one** must be selected. If 'password', the variation point 'security standard' must **also** be bound: basic or advanced."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "Ex. 15-1",
@@ -336,6 +486,9 @@
           "loc": "Ex. 15-1",
           "quote": "The stakeholder has to select either 'basic' or 'advanced' security."
         }
+      ],
+      "notions": [
+        "n-communicating-vp-variants"
       ]
     },
     {
@@ -380,13 +533,16 @@
           "loc": "15.3.2",
           "quote": "the features related to the variant under consideration are used to provide a management view"
         }
+      ],
+      "notions": [
+        "n-domain-artefacts-traceability-views"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Pour enchaîner, deux stratégies : prendre le prochain point de variation **de plus haut niveau** non encore traité (on lie d'abord ce qui touche les propriétés grossières de l'application), ou, si un artefact est associé à plusieurs variants, présenter **tous ces variants** d'un coup. Résultat de la communication : une **classification** des exigences de partie prenante. (a) Celles satisfaites en **liant la variabilité** déjà définie dans le domaine : les artefacts sont documentés tels quels comme exigences d'application. (b) Celles qui **ne correspondent à aucun artefact** de domaine : il y a un delta, à analyser.",
-        "en": "To move on, two strategies: take the next **topmost** variation point not yet considered (coarse-grained properties get bound first), or, if an artefact is associated with several variants, present **all those variants** at once. Result of the communication: a **classification** of stakeholder requirements. (a) Those satisfied by **binding the variability** already defined in the domain: the artefacts are documented as application requirements. (b) Those that **do not correspond to any** domain artefact: a delta exists, to be analysed."
+        "fr": "Pour enchaîner, deux stratégies : prendre le prochain point de variation **de plus haut niveau** non encore traité (on lie d'abord ce qui touche les propriétés grossières de l'application), ou, si un artefact est associé à plusieurs variants, présenter **tous ces variants** d'un coup.",
+        "en": "To move on, two strategies: take the next **topmost** variation point not yet considered (coarse-grained properties get bound first), or, if an artefact is associated with several variants, present **all those variants** at once."
       },
       "src": [
         {
@@ -398,7 +554,16 @@
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.3.2",
           "quote": "the requirements engineer can communicate all associated variants and thereby bind the variability related to the considered artefact"
-        },
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Résultat de la communication : une **classification** des exigences de partie prenante. (a) Celles satisfaites en **liant la variabilité** déjà définie dans le domaine : les artefacts sont documentés tels quels comme exigences d'application. (b) Celles qui **ne correspondent à aucun artefact** de domaine : il y a un delta, à analyser.",
+        "en": "Result of the communication: a **classification** of stakeholder requirements. (a) Those satisfied by **binding the variability** already defined in the domain: the artefacts are documented as application requirements. (b) Those that **do not correspond to any** domain artefact: a delta exists, to be analysed."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.3.3",
@@ -414,6 +579,9 @@
           "loc": "15.3.3",
           "quote": "Stakeholder requirements that do not correspond to domain requirements artefacts."
         }
+      ],
+      "notions": [
+        "n-communication-result"
       ]
     },
     {
@@ -469,6 +637,10 @@
           "loc": "15.4.1",
           "quote": "An invariant part must be turned into a variable part"
         }
+      ],
+      "notions": [
+        "n-evaluating-deltas",
+        "n-variability-model-deltas"
       ]
     },
     {
@@ -503,6 +675,10 @@
           "loc": "15.4.2",
           "quote": "Thus, the two variants (the original one and the changed one) are selectable."
         }
+      ],
+      "notions": [
+        "n-modifying-dependencies",
+        "n-variability-model-deltas"
       ]
     },
     {
@@ -532,6 +708,10 @@
           "loc": "Ex. 15-5",
           "quote": "Local access must be available in each home automation system while the remote variant is optional."
         }
+      ],
+      "notions": [
+        "n-adding-new-variant",
+        "n-adding-new-variation-point"
       ]
     },
     {
@@ -556,6 +736,9 @@
           "loc": "Ex. 15-7",
           "quote": "requirements artefacts are needed that describe each combination of variants: no authentication, one kind of authentication, or both"
         }
+      ],
+      "notions": [
+        "n-impact-on-requirements-artefacts"
       ]
     },
     {
@@ -611,6 +794,9 @@
           "loc": "15.4.4",
           "quote": "no economically reasonable realisation of the delta is possible within the software product line"
         }
+      ],
+      "notions": [
+        "n-architectural-adaptation-categories"
       ]
     },
     {
@@ -688,6 +874,9 @@
           "loc": "Table 15.1",
           "quote": "| 2. Adaptation of variability dependencies | X | X | X | |"
         }
+      ],
+      "notions": [
+        "n-architectural-adaptation-categories"
       ]
     },
     {
@@ -711,6 +900,85 @@
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "Ex. 15-8",
           "quote": "all components would have to be reengineered to enable parallel access and synchronisation"
+        }
+      ],
+      "notions": [
+        "n-delta-category-examples"
+      ]
+    },
+    {
+      "type": "method",
+      "notions": [
+        "n-requirements-deltas",
+        "n-architectural-adaptation-categories",
+        "n-delta-decision-alternatives"
+      ],
+      "title": {
+        "fr": "Évaluer un delta d’exigences",
+        "en": "Assessing a requirements delta"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Mettre l’exigence du client en correspondance avec le domaine : satisfaite complètement, partiellement ou pas du tout ?",
+            "en": "Map the customer’s requirement to the domain: fully, partially or not satisfied?"
+          },
+          "why": {
+            "fr": "Seules les deux dernières issues créent un delta.",
+            "en": "Only the last two outcomes create a delta."
+          }
+        },
+        {
+          "do": {
+            "fr": "Nommer le type de delta : nouveau variant, adaptation des dépendances de variabilité, des dépendances de contrainte, nouveau point de variation.",
+            "en": "Name the delta type: new variant, adapting variability dependencies, constraint dependencies, new variation point."
+          },
+          "why": {
+            "fr": "Ce sont les quatre lignes de la Table 15-1.",
+            "en": "These are the four rows of Table 15-1."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lire la plage de catégories possibles dans la Table 15-1, puis estimer la catégorie avec l’architecte (A aucun effort, B local, C global, D déraisonnable).",
+            "en": "Read the range of possible categories in Table 15-1, then estimate the category with the architect (A no effort, B local, C global, D unreasonable)."
+          },
+          "why": {
+            "fr": "La table donne une plage, pas une catégorie unique.",
+            "en": "The table gives a range, not a single category."
+          }
+        },
+        {
+          "do": {
+            "fr": "Proposer une décision : réaliser, adapter l’exigence (« solution à 80 % »), adapter exigence et artefacts, ou renoncer.",
+            "en": "Propose a decision: realise, adapt the requirement (“80% solution”), adapt requirement and artefacts, or give up."
+          },
+          "why": {
+            "fr": "La partie prenante choisit parmi ces quatre options après le retour sur l’effort.",
+            "en": "The stakeholder chooses among these four options after feedback on effort."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "The stakeholder requirement can be partially fulfilled by an application requirement or set of application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 1. New variant | X | X | | |"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The adaptation effort for the product line architecture."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The stakeholder adapts the requirement (which means the stakeholder might only get an 80% solution)."
         }
       ]
     },
@@ -756,6 +1024,10 @@
           "loc": "15.4.4",
           "quote": "The stakeholder decides that the requirement should not be realised due to the high adaptation effort"
         }
+      ],
+      "notions": [
+        "n-delta-decision-alternatives",
+        "n-decision-options"
       ]
     },
     {
@@ -780,6 +1052,9 @@
           "loc": "Ex. 15-10",
           "quote": "The engineer presents two alternatives with regard to home security: 'camera surveillance' and 'motion detection'."
         }
+      ],
+      "notions": [
+        "n-trade-off-decisions"
       ]
     },
     {
@@ -820,13 +1095,17 @@
           "loc": "15.5",
           "quote": "The requirements deltas including the traces to the original domain requirements artefacts"
         }
+      ],
+      "notions": [
+        "n-application-requirements-specification",
+        "n-application-variability-model"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Pourquoi tracer ? Les traces vers le domaine sont « un moyen essentiel » de soutenir la réutilisation en conception, réalisation et test d'application. Les liaisons de variabilité fournissent la base pour déduire les liaisons dans l'**architecture de référence**, les **composants** et les **artefacts de test** ; les traces des artefacts modifiés permettent à l'architecte de retrouver et d'adapter les artefacts d'architecture correspondants. Vs. ingénierie d'un système unique (élicitation, validation, négociation, documentation + gestion continue des exigences), la ligne ajoute **quatre activités** : la **communication de la variabilité externe**, l'**évaluation de l'effort de réalisation des deltas**, la **documentation des exigences d'application** (avec traçabilité), la **documentation des liaisons de variabilité** (résultat : le modèle de variabilité d'application).",
-        "en": "Why trace? The traces to domain artefacts are an essential means to support reuse in application design, realisation and testing. The variability bindings are the basis for deriving the bindings in the **reference architecture**, the **components** and the **test artefacts**; traces from modified artefacts let the architect find and adapt the corresponding architecture artefacts. Compared with single-system engineering (elicitation, validation, negotiation, documentation + continuous requirements management), the product line adds **four activities**: **communicating external variability**, **evaluating the realisation effort of deltas**, **documenting application requirements** (with traceability), **documenting variability bindings** (result: the application variability model)."
+        "fr": "Pourquoi tracer ? Les traces vers le domaine sont « un moyen essentiel » de soutenir la réutilisation en conception, réalisation et test d'application. Les liaisons de variabilité fournissent la base pour déduire les liaisons dans l'**architecture de référence**, les **composants** et les **artefacts de test** ; les traces des artefacts modifiés permettent à l'architecte de retrouver et d'adapter les artefacts d'architecture correspondants.",
+        "en": "Why trace? The traces to domain artefacts are an essential means to support reuse in application design, realisation and testing. The variability bindings are the basis for deriving the bindings in the **reference architecture**, the **components** and the **test artefacts**; traces from modified artefacts let the architect find and adapt the corresponding architecture artefacts."
       },
       "src": [
         {
@@ -838,7 +1117,19 @@
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.5",
           "quote": "provide the basis for deriving the bindings for the variation points in the reference architecture, in the components, and in the test artefacts"
-        },
+        }
+      ],
+      "notions": [
+        "n-traceability-to-domain"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Vs. ingénierie d'un système unique (élicitation, validation, négociation, documentation + gestion continue des exigences), la ligne ajoute **quatre activités** : la **communication de la variabilité externe**, l'**évaluation de l'effort de réalisation des deltas**, la **documentation des exigences d'application** (avec traçabilité), la **documentation des liaisons de variabilité** (résultat : le modèle de variabilité d'application).",
+        "en": "Compared with single-system engineering (elicitation, validation, negotiation, documentation + continuous requirements management), the product line adds **four activities**: **communicating external variability**, **evaluating the realisation effort of deltas**, **documenting application requirements** (with traceability), **documenting variability bindings** (result: the application variability model)."
+      },
+      "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "15.6",
@@ -859,6 +1150,9 @@
           "loc": "15.6",
           "quote": "The result of this activity is the application variability model."
         }
+      ],
+      "notions": [
+        "n-are-four-activities"
       ]
     },
     {
@@ -901,7 +1195,8 @@
           "loc": "15.1",
           "quote": "The goal of application requirements engineering is to elicit and to document the requirements artefacts for a particular application and at the same time reuse, as much as possible, the domain requirements artefacts."
         }
-      ]
+      ],
+      "notion": "n-are-goal"
     },
     {
       "id": "term-stakeholder-req",
@@ -917,7 +1212,8 @@
           "loc": "15.2",
           "quote": "Stakeholder requirements are requirements that stakeholders state for a particular application, i.e. requirements that the stakeholders expect to be fulfilled by the application."
         }
-      ]
+      ],
+      "notion": "n-stakeholder-requirements"
     },
     {
       "id": "term-app-req",
@@ -933,7 +1229,8 @@
           "loc": "15.2",
           "quote": "Application requirements are requirements that completely specify a particular product line application."
         }
-      ]
+      ],
+      "notion": "n-application-requirements"
     },
     {
       "id": "term-delta",
@@ -954,7 +1251,8 @@
           "loc": "15.2",
           "quote": "Deltas between domain and application requirements occur when stakeholder requirements cannot be completely satisfied by domain requirements artefacts."
         }
-      ]
+      ],
+      "notion": "n-requirements-deltas"
     },
     {
       "id": "term-vm-delta",
@@ -975,7 +1273,8 @@
           "loc": "15.4.1",
           "quote": "An invariant part must be turned into a variable part"
         }
-      ]
+      ],
+      "notion": "n-variability-model-deltas"
     },
     {
       "id": "term-arch-cat",
@@ -996,7 +1295,8 @@
           "loc": "15.4.4",
           "quote": "Category D - Too high adaptation effort:"
         }
-      ]
+      ],
+      "notion": "n-architectural-adaptation-categories"
     },
     {
       "id": "term-app-spec",
@@ -1017,7 +1317,8 @@
           "loc": "15.1.3",
           "quote": "It includes the application variability model, which is derived from the domain variability model, the requirements artefacts that are reused from the domain artefacts, and the requirements deltas."
         }
-      ]
+      ],
+      "notion": "n-application-requirements-specification"
     },
     {
       "id": "term-app-vm",
@@ -1033,7 +1334,8 @@
           "loc": "15.5",
           "quote": "This part of the documentation describes the application variability model with the selected variants, i.e. with the variability bindings."
         }
-      ]
+      ],
+      "notion": "n-application-variability-model"
     }
   ],
   "notions": [
@@ -1174,7 +1476,167 @@
       ]
     }
   ],
-  "flashcards": [],
+  "flashcards": [
+    {
+      "id": "inf4-05-fc-01",
+      "termId": "term-are",
+      "front": {
+        "fr": "ingénierie des exigences d'application ?",
+        "en": "application requirements engineering?"
+      },
+      "back": {
+        "fr": "Sous-processus qui élicite et documente les exigences d'une application particulière tout en réutilisant au maximum les artefacts d'exigences du domaine.",
+        "en": "Sub-process that elicits and documents the requirements of a particular application while reusing the domain requirements artefacts as much as possible."
+      }
+    },
+    {
+      "id": "inf4-05-fc-02",
+      "termId": "term-stakeholder-req",
+      "front": {
+        "fr": "exigences des parties prenantes ?",
+        "en": "stakeholder requirements?"
+      },
+      "back": {
+        "fr": "Exigences que les parties prenantes énoncent pour une application particulière et qu'elles s'attendent à voir satisfaites.",
+        "en": "Requirements that stakeholders state for a particular application and expect to be fulfilled by the application."
+      }
+    },
+    {
+      "id": "inf4-05-fc-03",
+      "termId": "term-app-req",
+      "front": {
+        "fr": "exigences d'application ?",
+        "en": "application requirements?"
+      },
+      "back": {
+        "fr": "Exigences qui spécifient complètement une application particulière de la ligne de produits.",
+        "en": "Requirements that completely specify a particular product line application."
+      }
+    },
+    {
+      "id": "inf4-05-fc-04",
+      "termId": "term-delta",
+      "front": {
+        "fr": "delta d'exigences ?",
+        "en": "requirements delta?"
+      },
+      "back": {
+        "fr": "Différence entre les artefacts d'exigences de domaine et ceux d'application, quand une exigence de partie prenante ne peut être satisfaite par les artefacts de domaine ; elle entraîne un effort d'adaptation.",
+        "en": "Difference between domain and application requirements artefacts, arising when a stakeholder requirement cannot be satisfied by domain artefacts; it causes adaptation effort."
+      }
+    },
+    {
+      "id": "inf4-05-fc-05",
+      "termId": "term-vm-delta",
+      "front": {
+        "fr": "delta du modèle de variabilité ?",
+        "en": "variability model delta?"
+      },
+      "back": {
+        "fr": "Différence entre le modèle de variabilité de domaine et celui d'application : modification de la variabilité externe existante, ou transformation d'une partie invariante en partie variable.",
+        "en": "Difference between the domain and the application variability model: modification of existing external variability, or turning an invariant part into a variable one."
+      }
+    },
+    {
+      "id": "inf4-05-fc-06",
+      "termId": "term-arch-cat",
+      "front": {
+        "fr": "catégories d'adaptation architecturale (A-D) ?",
+        "en": "architectural adaptation categories (A-D)?"
+      },
+      "back": {
+        "fr": "Quatre catégories d'effort d'adaptation de l'architecture de référence : A aucun, B modéré, C élevé, D trop élevé.",
+        "en": "Four categories of effort to adapt the reference architecture: A none, B moderate, C high, D too high."
+      }
+    },
+    {
+      "id": "inf4-05-fc-07",
+      "termId": "term-app-spec",
+      "front": {
+        "fr": "spécification des exigences d'application ?",
+        "en": "application requirements specification?"
+      },
+      "back": {
+        "fr": "Spécification complète de l'application : exigences réutilisées du domaine, modèle de variabilité d'application et deltas d'exigences. Elle sert de base à la conception d'application.",
+        "en": "Complete specification of the application: requirements reused from the domain, application variability model and requirements deltas. It is the basis for application design."
+      }
+    },
+    {
+      "id": "inf4-05-fc-08",
+      "termId": "term-app-vm",
+      "front": {
+        "fr": "modèle de variabilité d'application ?",
+        "en": "application variability model?"
+      },
+      "back": {
+        "fr": "Modèle décrivant la variabilité de l'application avec les variants sélectionnés, c'est-à-dire les liaisons de variabilité.",
+        "en": "Model describing the application's variability with the selected variants, i.e. the variability bindings."
+      }
+    },
+    {
+      "id": "inf4-05-fc-09",
+      "front": {
+        "fr": "Table 15-1 : plage de catégories par type de delta ?",
+        "en": "Table 15-1: category range per delta type?"
+      },
+      "back": {
+        "fr": "Nouveau variant A-B ; adaptation des dépendances de variabilité A-C ; des dépendances de contrainte B-D ; nouveau point de variation B-D.",
+        "en": "New variant A-B; variability dependency adaptation A-C; constraint dependency adaptation B-D; new variation point B-D."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 1. New variant | X | X | | |"
+        }
+      ],
+      "notions": [
+        "n-architectural-adaptation-categories"
+      ]
+    },
+    {
+      "id": "inf4-05-fc-10",
+      "front": {
+        "fr": "Les quatre options face à un delta coûteux ?",
+        "en": "The four options for a costly delta?"
+      },
+      "back": {
+        "fr": "Réaliser le delta ; adapter l’exigence (« 80 % ») ; adapter exigence et artefacts ; renoncer.",
+        "en": "Realise the delta; adapt the requirement (“80%”); adapt requirement and artefacts; give up."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The stakeholder adapts the requirement (which means the stakeholder might only get an 80% solution)."
+        }
+      ],
+      "notions": [
+        "n-delta-decision-alternatives"
+      ]
+    },
+    {
+      "id": "inf4-05-fc-11",
+      "front": {
+        "fr": "Trois activités essentielles de l’ingénierie des exigences d’application ?",
+        "en": "Three essential activities of application requirements engineering?"
+      },
+      "back": {
+        "fr": "Communiquer la variabilité externe, évaluer les deltas, documenter les exigences d’application.",
+        "en": "Communicate external variability, assess deltas, document application requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "the following three activities are essential:"
+        }
+      ],
+      "notions": [
+        "n-are-three-activities"
+      ]
+    }
+  ],
   "quiz": [
     {
       "id": "inf4-05-qz-01",
@@ -1200,7 +1662,15 @@
           "loc": "15.1",
           "quote": "The second category comprises applications which have requirements artefacts that are not part of the domain requirements artefacts."
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-two-application-categories"
+      ],
+      "trap": {
+        "fr": "Confondre les catégories : en catégorie 1, toutes les exigences existent dans le domaine.",
+        "en": "Confusing categories: in category 1, all requirements exist in the domain."
+      }
     },
     {
       "id": "inf4-05-qz-02",
@@ -1221,7 +1691,15 @@
           "loc": "15.1",
           "quote": "Requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application."
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-requirements-deltas"
+      ],
+      "trap": {
+        "fr": "Croire qu’un delta ne coûte qu’en phase d’exigences : il coûte dans toute l’ingénierie d’application.",
+        "en": "Believing a delta costs only in the requirements phase: it costs across application engineering."
+      }
     },
     {
       "id": "inf4-05-qz-03",
@@ -1247,7 +1725,16 @@
           "loc": "15.2",
           "quote": "Application requirements are requirements that completely specify a particular product line application."
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-stakeholder-requirements",
+        "n-application-requirements"
+      ],
+      "trap": {
+        "fr": "Confondre ce qui est demandé et ce qui est retenu.",
+        "en": "Confusing what is requested and what is retained."
+      }
     },
     {
       "id": "inf4-05-qz-04",
@@ -1303,7 +1790,15 @@
           "loc": "15.2",
           "quote": "The orthogonal variability model plays a central role in this activity"
         }
-      ]
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-are-three-activities"
+      ],
+      "trap": {
+        "fr": "Prendre une activité du domaine (construire l’OVM) pour une activité d’application.",
+        "en": "Taking a domain activity (building the OVM) for an application activity."
+      }
     },
     {
       "id": "inf4-05-qz-05",
@@ -1349,7 +1844,15 @@
           "loc": "Ex. 15-1",
           "quote": "The stakeholder has to select either 'basic' or 'advanced' security."
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-communicating-vp-variants"
+      ],
+      "trap": {
+        "fr": "Oublier de lier les autres points de variation.",
+        "en": "Forgetting to bind the other variation points."
+      }
     },
     {
       "id": "inf4-05-qz-06",
@@ -1375,7 +1878,15 @@
           "loc": "Ex. 15-4",
           "quote": "the alternative choice is removed resulting in two independent optional variability dependencies"
         }
-      ]
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-communicating-vp-variants"
+      ],
+      "trap": {
+        "fr": "Lire le choix alternatif comme facultatif : exactement un.",
+        "en": "Reading the alternative choice as optional: exactly one."
+      }
     },
     {
       "id": "inf4-05-qz-07",
@@ -1401,6 +1912,10 @@
           "loc": "15.3.1",
           "quote": "typically starts with the variation points that provide the topmost level of abstraction"
         }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-communicating-vp-variants"
       ]
     },
     {
@@ -1447,7 +1962,16 @@
           "loc": "Ex. 15-4",
           "quote": "the same result could be achieved by defining the range [0..2] for the alternative choice"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-variability-model-deltas",
+        "n-modifying-dependencies"
+      ],
+      "trap": {
+        "fr": "Ajouter une contrainte au lieu de supprimer le choix alternatif.",
+        "en": "Adding a constraint instead of removing the alternative choice."
+      }
     },
     {
       "id": "inf4-05-qz-09",
@@ -1473,6 +1997,10 @@
           "loc": "15.4.2",
           "quote": "The stakeholder selects two variants that are related by an \"exclude\" dependency."
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-variability-model-deltas"
       ]
     },
     {
@@ -1499,7 +2027,15 @@
           "loc": "Table 15.1",
           "quote": "| 4. New variation point | | X | X | X |"
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-architectural-adaptation-categories"
+      ],
+      "trap": {
+        "fr": "Croire qu’un nouveau variant peut aller jusqu’à D : sa plage est A-B.",
+        "en": "Believing a new variant can go up to D: its range is A-B."
+      }
     },
     {
       "id": "inf4-05-qz-11",
@@ -1545,7 +2081,15 @@
           "loc": "Ex. 15-8",
           "quote": "The deletion of an \"exclude\" dependency might lead to a very large change in the architectural structure, e.g. if the dependency exists for technological reasons."
         }
-      ]
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-delta-category-examples"
+      ],
+      "trap": {
+        "fr": "Surestimer l’effort : optional → alternative relève surtout de la configuration (A).",
+        "en": "Overestimating effort: optional → alternative is mostly configuration (A)."
+      }
     },
     {
       "id": "inf4-05-qz-12",
@@ -1571,6 +2115,10 @@
           "loc": "Ex. 15-9",
           "quote": "this stakeholder requirement can be fulfilled completely by reusing domain artefacts"
         }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-delta-decision-alternatives"
       ]
     },
     {
@@ -1597,7 +2145,15 @@
           "loc": "15.5",
           "quote": "The variability model deltas including the traces to the original variability model elements"
         }
-      ]
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-application-variability-model"
+      ],
+      "trap": {
+        "fr": "Confondre modèle de domaine (tous les variants) et d’application (variants liés).",
+        "en": "Confusing domain model (all variants) and application model (bound variants)."
+      }
     },
     {
       "id": "inf4-05-qz-14",
@@ -1648,9 +2204,201 @@
           "loc": "15.6",
           "quote": "The documentation of variability bindings"
         }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-are-four-activities"
+      ],
+      "trap": {
+        "fr": "Prendre une activité propre à la ligne pour une activité de système unique.",
+        "en": "Taking a line-specific activity for a single-system activity."
+      }
+    },
+    {
+      "id": "inf4-05-qz-15",
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon la Table 15-1, un delta de type « nouveau variant » relève toujours de la catégorie A ou B.",
+        "en": "According to Table 15-1, a “new variant” delta always falls into category A or B."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la ligne « New variant » de la Table 15-1 ne coche que les catégories A et B.",
+        "en": "TRUE: the “New variant” row of Table 15-1 only ticks categories A and B."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-architectural-adaptation-categories",
+        "n-adding-new-variant"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 1. New variant | X | X | | |"
+        }
       ]
     }
   ],
-  "exercises": [],
-  "writing": []
+  "exercises": [
+    {
+      "id": "inf4-05-ex-01",
+      "title": {
+        "fr": "Classer des deltas : la ligne de sécurité domestique",
+        "en": "Classifying deltas: the home security line"
+      },
+      "difficulty": 3,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "La ligne propose l’authentification par mot de passe ou par empreinte (choix alternatif [1..1]) et l’alarme acoustique obligatoire. Pour chaque demande client, nomme le type de delta, donne la plage de catégories (Table 15-1) et propose une décision. (1) Prévenir le propriétaire par SMS en cas d’intrusion. (2) Pouvoir activer les deux authentifications à la fois. (3) Supprimer l’alarme acoustique (le client trouve le bruit gênant). (4) Gérer un tout nouveau sujet : la détection de fuite d’eau.",
+        "en": "The line offers authentication by password or fingerprint (alternative choice [1..1]) and a mandatory acoustic alarm. For each customer request, name the delta type, give the category range (Table 15-1) and propose a decision. (1) Notify the owner by SMS in case of intrusion. (2) Be able to enable both authentications at once. (3) Remove the acoustic alarm (the customer finds the noise annoying). (4) Handle a brand-new subject: water leak detection."
+      },
+      "hints": [
+        {
+          "fr": "Applique la méthode « Évaluer un delta » : correspondance, type, plage, décision.",
+          "en": "Apply the “Assessing a delta” method: mapping, type, range, decision."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n(1) **Nouveau variant** (« SMS information », comme l’exemple 15-3) → **A-B** ; souvent réalisable : réaliser le delta.\n(2) **Adaptation des dépendances de variabilité** (le choix [1..1] devient [1..2]) → **A-C** ; si c’est surtout de la configuration, réaliser.\n(3) Le client **rejette un variant obligatoire** : adaptation des dépendances de variabilité (obligatoire → optionnel) → **A-C** ; à discuter : l’alarme peut être un choix de conception, la solution « à 80 % » (alarme silencieuse ? volume réglable ?) est une option.\n(4) **Nouveau point de variation** → **B-D** ; effort potentiellement élevé : estimer avec l’architecte ; en catégorie D, renoncer ou traiter hors ligne (projet séparé).",
+        "en": "**Proposed** solution.\n(1) **New variant** (“SMS information”, like example 15-3) → **A-B**; often feasible: realise the delta.\n(2) **Adapting variability dependencies** (the [1..1] choice becomes [1..2]) → **A-C**; if it is mostly configuration, realise.\n(3) The customer **rejects a mandatory variant**: adapting variability dependencies (mandatory → optional) → **A-C**; to discuss: the alarm may be a design choice, an “80%” solution (silent alarm? adjustable volume?) is an option.\n(4) **New variation point** → **B-D**; potentially high effort: estimate with the architect; in category D, give up or handle outside the line (separate project)."
+      },
+      "notions": [
+        "n-requirements-deltas",
+        "n-architectural-adaptation-categories",
+        "n-delta-decision-alternatives",
+        "n-variability-model-deltas"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-3",
+          "quote": "This delta can be realised by adding the new variant 'SMS information'"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Table 15.1",
+          "quote": "| 1. New variant | X | X | | |"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "The stakeholder adapts the requirement (which means the stakeholder might only get an 80% solution)."
+        }
+      ]
+    },
+    {
+      "id": "inf4-05-ex-02",
+      "title": {
+        "fr": "Présenter la variabilité à un client",
+        "en": "Presenting variability to a customer"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o2",
+      "statement": {
+        "fr": "Avec l’exemple 15-1 (points de variation « security standard » : basic / advanced, et « authentication » : password / fingerprint, en choix alternatif), décris comment l’ingénieur présente la variabilité à un client non technicien, dans quel ordre, et ce que le client doit lier à la fin.",
+        "en": "Using example 15-1 (variation points “security standard”: basic / advanced, and “authentication”: password / fingerprint, as an alternative choice), describe how the engineer presents variability to a non-technical customer, in which order, and what the customer must bind at the end."
+      },
+      "hints": [
+        {
+          "fr": "On part des points de variation de plus haut niveau ; on suit les liens de traçabilité si le client veut des détails.",
+          "en": "Start from the highest-level variation points; follow traceability links if the customer wants details."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**. On part des **points de variation** au plus haut niveau d’abstraction : pour chacun, on présente ses variants, les dépendances de variabilité et les choix alternatifs (« authentication » : exactement un mécanisme parmi password et fingerprint). Si le client veut des détails, on suit les **liens de traçabilité** vers les artefacts d’exigences. On enchaîne avec le prochain point de variation de plus haut niveau non traité. À la fin, le client doit avoir **lié chaque point de variation** : s’il choisit password, il doit aussi choisir basic ou advanced pour « security standard ». Ses besoins non couverts deviennent des deltas.",
+        "en": "**Proposed** solution. Start from the **variation points** at the highest abstraction level: for each, present its variants, variability dependencies and alternative choices (“authentication”: exactly one mechanism between password and fingerprint). If the customer wants details, follow **traceability links** to requirements artefacts. Move on to the next highest-level variation point not yet handled. In the end, the customer must have **bound every variation point**: if they choose password, they must also choose basic or advanced for “security standard”. Uncovered needs become deltas."
+      },
+      "notions": [
+        "n-communicating-vp-variants",
+        "n-communication-result"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "typically starts with the variation points that provide the topmost level of abstraction"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "Exactly one of these has to be selected: authentication via 'Password' or authentication via 'fingerprint'."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "The result of the communication activity is a classification of stakeholder requirements:"
+        }
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "inf4-05-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "A requirements delta is a stakeholder requirement not satisfied by the domain.",
+      "accepted": [
+        "A requirements delta is a stakeholder requirement that the domain does not satisfy."
+      ]
+    },
+    {
+      "id": "inf4-05-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "A new variant falls into categories {{A}} or B; a new variation point into categories B, C or {{D}}.",
+      "translation": "Un nouveau variant relève des catégories A ou B ; un nouveau point de variation des catégories B, C ou D."
+    },
+    {
+      "id": "inf4-05-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "The application variability model contains all the variants of the domain.",
+      "error": "contains all the variants of the domain",
+      "corrected": "contains the variants bound for this application",
+      "explanation": {
+        "fr": "Le modèle d’application ne garde que les variants liés pour ce client (plus les deltas réalisés).",
+        "en": "The application model keeps only the variants bound for this customer (plus realised deltas)."
+      }
+    },
+    {
+      "id": "inf4-05-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique les options d’un client face à un delta coûteux.",
+        "en": "In 2-3 English sentences, explain a customer’s options for a costly delta."
+      },
+      "modelAnswer": "If a delta is costly, the customer can still have it realised, or adapt the requirement and accept an 80% solution that reuses existing artefacts. They can also adapt both the requirement and the artefacts, so that the requirement is partially satisfied. Finally, they can give up the requirement.",
+      "keywords": [
+        "realised",
+        "adapt",
+        "80%",
+        "partially",
+        "give up"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité les quatre options.",
+          "en": "I mentioned the four options."
+        }
+      ],
+      "usefulPhrases": [
+        "can still have it realised",
+        "accept an 80% solution",
+        "finally"
+      ]
+    }
+  ]
 }
