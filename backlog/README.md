@@ -14,7 +14,7 @@ Une fiche = une tâche autonome. Frontmatter : `id`, `title`, `lot`, `status` (`
 | 2 — Pratiquer | T23 smoke tous chapitres · T24 dette de revue · T12 tableau de bord · T13 exercices · T14 partiels · T15 atelier anglais · T21 signaler une erreur | Révision complète + boucle qualité |
 | 3 — Arène | T16 spike réseau · T17 Quiz Battle · T18 passe-téléphone | Mode à plusieurs |
 | 4 — Finitions | T19 | Le « wahou » |
-| Contenu | C01-C03 ISI1 · **C07 quiz ISI1** · C04 REC1 · C05 INF4 · C08 qualité des citations · C09 termes EN INF4 · C06 ISI5 | Dès que C00 est fait, en parallèle |
+| Contenu | C01-C03 ISI1 · **C07 quiz ISI1** · C04 REC1 · C05 INF4 · C08 qualité des citations · C09 termes EN INF4 · C06 ISI5 · **C15 ISI7** | Dès que C00 est fait, en parallèle |
 
 ```
 T01 ─┬─ T02 ─┬─ C00 ──────────────────────────────────────────────> contenu (C01…C06)

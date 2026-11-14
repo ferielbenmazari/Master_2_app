@@ -1,0 +1,413 @@
+{
+  "id": "isi7-exam-blanc-04",
+  "courseId": "isi7",
+  "title": {
+    "fr": "Partiel blanc 4 — réflexion et analyse",
+    "en": "Mock exam 4 — reflection and analysis"
+  },
+  "kind": "mock",
+  "durationMinutes": 90,
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Sujet inventé : questions de réflexion qui mobilisent plusieurs chapitres (projet, technologies, réglementation, sobriété), puis deux exercices techniques de modélisation avec calculs. Pas d’annale disponible : style exact du prof inconnu. Durée indicative : 1 h 30. Barème sur 20. Corrigé proposé, non officiel.",
+    "en": "Invented exam: reflection questions mobilising several chapters (project, technologies, regulation, frugality), then two technical modelling exercises with calculations. No past exam is available: the teacher’s exact style is unknown. Indicative duration: 1 h 30. Marked out of 20. Proposed answer key, unofficial."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "A. Questions de réflexion",
+        "en": "A. Reflection questions"
+      },
+      "points": 12,
+      "instructions": {
+        "fr": "Répondez en 6 à 8 lignes argumentées. 3 points chacune.",
+        "en": "Answer in 6 to 8 argued lines. 3 points each."
+      },
+      "questions": [
+        {
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Un projet BI est livré dans les délais et le budget, mais six mois plus tard seuls 15 % des utilisateurs visés se connectent et les anciens tableurs sont toujours utilisés. Quelles erreurs du cours reconnaissez-vous ? Que proposez-vous pour corriger et comment mesurer le succès ?",
+            "en": "A BI project is delivered on time and on budget, but six months later only 15% of target users connect and the old spreadsheets are still in use. Which mistakes from the course do you recognise? What do you propose to fix it and how do you measure success?"
+          },
+          "correction": {
+            "fr": "**Erreurs** : gestion du changement traitée en fin de projet alors qu’elle commence au début ; utilisateurs non impliqués dès l’analyse (interviews, pain points = premier niveau d’acceptation) ; anciens outils non retirés (« replace, don’t add ») ; peu ou pas de formation selon les profils ; le projet ressemble au projet « purement informatique » raconté par le prof.\n**Correction** : retirer les anciens tableurs avec un calendrier, former chaque profil à ce qu’il utilisera, associer des utilisateurs clés, revenir aux pain points.\n**Mesure** : connexions à l’ancien et au nouveau système (taux d’adoption), utilisateurs actifs par période, tableaux de bord réellement ouverts, tableurs retirés.\n*Corrigé proposé.*",
+            "en": "**Mistakes**: change management handled at the end of the project whereas it starts at the beginning; users not involved from analysis (interviews, pain points = first acceptance level); old tools not retired (“replace, don’t add”); little or no training by profile; the project resembles the “purely IT” project the teacher described.\n**Fix**: retire the old spreadsheets on a schedule, train each profile on what it will use, involve key users, go back to the pain points.\n**Measure**: connections to old and new system (adoption ratio), active users per period, dashboards actually opened, spreadsheets retired.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : au moins trois erreurs reconnues (changement tardif, utilisateurs absents, ancien outil non retiré, formation).",
+              "en": "1 point: at least three mistakes recognised (late change, absent users, old tool not retired, training)."
+            },
+            {
+              "fr": "1 point : actions correctives cohérentes.",
+              "en": "1 point: consistent corrective actions."
+            },
+            {
+              "fr": "1 point : indicateurs d’adoption du prof.",
+              "en": "1 point: the teacher’s adoption indicators."
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "no one has ever talked to the customer in the first place. It was a pure IT project."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "You want to involve users from the start of the project."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "Don't wait for the user to take time on their side to train themselves."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "counting the number of active users per period, how many dashboards are actually open, how many spreadsheets from the old system have you retired this period"
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "this cost of charge will grow with each phases"
+            }
+          ],
+          "id": "isi7-exam-blanc-04-q01"
+        },
+        {
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Un directeur propose de supprimer l’entrepôt de données « parce que le data lake peut tout stocker » et que l’IA répondra aux questions. Discutez à l’aide du cours.",
+            "en": "A director proposes removing the data warehouse “because the data lake can store everything” and AI will answer the questions. Discuss using the course."
+          },
+          "correction": {
+            "fr": "**Le lac stocke, il ne qualifie pas** : un data lake stocke des données brutes de tout format à faible coût ; les données sont stockées telles qu’elles sont produites, sans transformation ni conformation ; il faut les qualifier et les traduire en termes métier. Le Big Data **ne remplace rien** en BI : c’est une source.\n**Le lakehouse** ajoute des capacités d’entrepôt (tables structurées, transactions, gouvernance) mais la logique zone de transit / entrepôt / data marts reste au-dessus de l’implémentation ; l’architecte choisit l’implémentation physique.\n**L’IA** (analytique augmentée, machine learning) dépend d’un système décisionnel de qualité : un modèle sur données éparpillées donne des réponses assurées mais fausses (pas de saut de niveau), et il faut vérifier les hallucinations. La BI rend les données fiables.\n*Corrigé proposé.*",
+            "en": "**The lake stores, it does not qualify**: a data lake stores raw data of any format at low cost; data is stored as produced, without transformation or conformation; it must be qualified and translated into business terms. Big Data **replaces nothing** in BI: it is a source.\n**The lakehouse** adds warehouse capabilities (structured tables, transactions, governance) but the staging / warehouse / data mart logic stays on top of the implementation; the architect chooses the physical implementation.\n**AI** (augmented analytics, machine learning) depends on a quality decision-making system: a model on scattered data gives confident but wrong answers (no skipping levels), and hallucinations must be checked. BI makes data reliable.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : le lac stocke brut sans qualifier ; le Big Data ne remplace pas la BI.",
+              "en": "1 point: the lake stores raw without qualifying; Big Data does not replace BI."
+            },
+            {
+              "fr": "1 point : lakehouse et logique en couches conservée.",
+              "en": "1 point: lakehouse and layered logic kept."
+            },
+            {
+              "fr": "1 point : l’IA dépend de la BI (pas de saut de niveau, hallucinations).",
+              "en": "1 point: AI depends on BI (no skipping levels, hallucinations)."
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "Data Lake basically stores raw data of any format at low cost."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "the data are stored as they are produced with no transformation, no conformation of those data."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "So it's not a replacement for anything in the business intelligence."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "The Lakehouse adds warehouse capabilities on top with structure table, transactions and governance."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "The maturity ladder as a bridge",
+              "quote": "Each level depends on the one below. A model trained on scattered data gives confident but wrong answers."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+            }
+          ],
+          "id": "isi7-exam-blanc-04-q02"
+        },
+        {
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Une enseigne conserve, dans une dimension client de type 2, toutes les adresses successives de ses clients depuis dix ans « au cas où ». Analysez cette pratique avec le cours : intérêt, risque, et deux mesures de conception.",
+            "en": "A retailer keeps, in a type 2 customer dimension, all its customers’ successive addresses for ten years “just in case”. Analyse this practice using the course: benefit, risk, and two design measures."
+          },
+          "correction": {
+            "fr": "**Intérêt** : le type 2 conserve l’historique ; les rapports passés par ville gardent leur sens (« les rapports de l’année 1 gardent leur sens », pain point 5, principe prévisible).\n**Risque** : le RGPD impose la limitation des finalités, la minimisation et des durées de rétention limitées, et des droits d’accès et d’effacement ; or les systèmes décisionnels sont historiquement bâtis pour une rétention illimitée ; dix ans « au cas où » ne respecte ni la minimisation ni la limitation de conservation.\n**Mesures** : agréger ou pseudonymiser quand le détail individuel n’est pas nécessaire (par exemple conserver la région plutôt que l’adresse) ; limiter la durée de rétention du détail ; savoir où se trouvent les données individuelles pour accès et suppression ; limiter l’accès à ceux qui en ont besoin.\n*Corrigé proposé ; durée exacte de rétention non fixée par le cours.*",
+            "en": "**Benefit**: type 2 keeps history; past reports by city keep their meaning (“year-1 reports keep their meaning”, pain point 5, predictable principle).\n**Risk**: the GDPR imposes purpose limitation, minimisation and limited retention periods, and rights of access and erasure; yet decision-making systems are historically built for unlimited retention; ten years “just in case” respects neither minimisation nor storage limitation.\n**Measures**: aggregate or pseudonymise when individual detail is not needed (for example keep the region instead of the address); limit the retention period of the detail; know where individual data sits for access and deletion; limit access to those who need it.\n*Proposed answer; the exact retention period is not set by the course.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : intérêt du type 2 pour le critère de l’année 1.",
+              "en": "1 point: benefit of type 2 for the year-1 criterion."
+            },
+            {
+              "fr": "1 point : risque RGPD (minimisation, rétention, droits).",
+              "en": "1 point: GDPR risk (minimisation, retention, rights)."
+            },
+            {
+              "fr": "1 point : deux mesures de conception (agrégation, pseudonymisation, rétention, accès).",
+              "en": "1 point: two design measures (aggregation, pseudonymisation, retention, access)."
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Five pain points, five characteristics",
+              "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+            },
+            {
+              "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+              "loc": "Art. 5 — Principles relating to processing of personal data",
+              "quote": "adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed"
+            },
+            {
+              "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+              "loc": "Art. 5 — Principles relating to processing of personal data",
+              "quote": "kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed"
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "you have to find a way to know where the individual data are located in those systems."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "historically built for... unlimited historical retention"
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+            }
+          ],
+          "id": "isi7-exam-blanc-04-q03"
+        },
+        {
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Un environnement BI actualise chaque nuit un rapport de clôture lu une fois par mois, garde 180 tableaux de bord dont 90 ne sont plus ouverts, et alimente un tableau de bord par streaming alors qu’il est lu le lundi. Proposez des actions et justifiez-les avec le cours, sans oublier ce qui ne doit pas changer.",
+            "en": "A BI environment refreshes every night a closing report read once a month, keeps 180 dashboards of which 90 are no longer opened, and feeds a dashboard by streaming although it is read on Mondays. Propose actions and justify them with the course, without forgetting what must not change."
+          },
+          "correction": {
+            "fr": "**Actions** : rafraîchir le rapport de clôture une fois par mois (« refresh as often as the decision needs, not more » ; une clôture mensuelle n’a pas besoin du temps réel) ; supprimer les 90 tableaux de bord inutilisés d’après le suivi d’usage ; remplacer le streaming par un rafraîchissement hebdomadaire : ne pas courir après la technologie sans pain point utilisateur ; le temps réel a un coût très élevé ; sobriété = critère de conception.\n**Ce qui ne change pas** : définitions partagées, fiabilité, prévisibilité, disponibilité, sécurité ; on ne supprime rien sans vérifier l’usage ni les obligations d’archivage.\n*Corrigé proposé.*",
+            "en": "**Actions**: refresh the closing report once a month (“refresh as often as the decision needs, not more”; a monthly closing does not need real time); remove the 90 unused dashboards based on usage monitoring; replace streaming with a weekly refresh: do not chase technology without a user pain point; real time has a very high cost; sobriety = design criterion.\n**What does not change**: shared definitions, reliability, predictability, availability, security; nothing is removed without checking usage and archiving obligations.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : rafraîchissement aligné sur la décision.",
+              "en": "1 point: refresh aligned with the decision."
+            },
+            {
+              "fr": "1 point : suppression de l’inutilisé et streaming justifié par un pain point.",
+              "en": "1 point: removal of the unused and streaming justified by a pain point."
+            },
+            {
+              "fr": "1 point : invariants (principes, définitions partagées).",
+              "en": "1 point: invariants (principles, shared definitions)."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "Refresh data as often as the decision needs, not more."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "You can remove also unused dashboards based on the user usage."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "You can purge a history that has no queries for a few times"
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "don't fall for the run after the technology if it's not justified by user pain point"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "How users consume it (2/2)",
+              "quote": "A monthly closing does not need real time; a fraud alert does."
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "How users consume it (2/2)",
+              "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+            }
+          ],
+          "id": "isi7-exam-blanc-04-q04"
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "B. Exercices techniques de modélisation",
+        "en": "B. Technical modelling exercises"
+      },
+      "points": 8,
+      "instructions": {
+        "fr": "Calculs détaillés attendus.",
+        "en": "Detailed calculations expected."
+      },
+      "questions": [
+        {
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Voici le produit P9. (a) Construisez la dimension produit en SCD de type 2 (clés de substitution 21 et 22). (b) Rattachez chaque vente à sa clé. (c) Donnez les ventes par catégorie en type 2 puis si la catégorie avait été écrasée (type 1). (d) Quel type respecte « les rapports de l’année 1 gardent leur sens » ? Pourquoi ?",
+            "en": "Here is product P9. (a) Build the product dimension as a type 2 SCD (surrogate keys 21 and 22). (b) Link each sale to its key. (c) Give sales by category in type 2 then if the category had been overwritten (type 1). (d) Which type respects “year-1 reports keep their meaning”? Why?"
+          },
+          "correction": {
+            "fr": "**(a)** Clé 21 : P9, Vélos route, effet 2025-01-01 (début de suivi), expiration 2026-05-31, courante = N. Clé 22 : P9, Vélos gravel, effet 2026-06-01, expiration 9999-12-31, courante = O.\n**(b)** 900 € (10/04) → 21 ; 1 100 € (20/05) → 21 ; 1 300 € (15/06) → 22 ; 1 500 € (02/09) → 22.\n**(c)** Type 2 : Vélos route 2 000 € ; Vélos gravel 2 800 € (total 4 800 €). Type 1 : Vélos gravel 4 800 € ; Vélos route 0 €.\n**(d)** Le **type 2** : le rapport du premier semestre garde Vélos route 2 000 € ; en type 1, il a changé après coup (pain point 5).\n*Corrigé proposé.*",
+            "en": "**(a)** Key 21: P9, Road bikes, effective 2025-01-01 (tracking start), expiration 2026-05-31, current = N. Key 22: P9, Gravel bikes, effective 2026-06-01, expiration 9999-12-31, current = Y.\n**(b)** €900 (10/04) → 21; €1,100 (20/05) → 21; €1,300 (15/06) → 22; €1,500 (02/09) → 22.\n**(c)** Type 2: Road bikes €2,000; Gravel bikes €2,800 (total €4,800). Type 1: Gravel bikes €4,800; Road bikes €0.\n**(d)** **Type 2**: the first-half report keeps Road bikes €2,000; in type 1 it changed after the fact (pain point 5).\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1,5 point : dimension de type 2 correcte (clés, dates, indicateur).",
+              "en": "1.5 points: correct type 2 dimension (keys, dates, indicator)."
+            },
+            {
+              "fr": "0,5 point : rattachement des ventes.",
+              "en": "0.5 point: linking of sales."
+            },
+            {
+              "fr": "1 point : deux rapports (2 000 / 2 800 et 4 800).",
+              "en": "1 point: two reports (2,000 / 2,800 and 4,800)."
+            },
+            {
+              "fr": "1 point : choix du type 2 justifié.",
+              "en": "1 point: type 2 choice justified."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "this technique destroys history"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Séquencement des 10 demi-journées",
+              "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+            }
+          ],
+          "material": "**Produit P9** : catégorie « Vélos route » jusqu’au 31/05/2026, puis « Vélos gravel » à partir du 01/06/2026. Ventes : 900 € le 10/04/2026, 1 100 € le 20/05/2026, 1 300 € le 15/06/2026, 1 500 € le 02/09/2026.\n\n*(English)* **Product P9**: category “Road bikes” until 31/05/2026, then “Gravel bikes” from 01/06/2026. Sales: €900 on 10/04/2026, €1,100 on 20/05/2026, €1,300 on 15/06/2026, €1,500 on 02/09/2026.",
+          "id": "isi7-exam-blanc-04-q05"
+        },
+        {
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Une entreprise doit faire afficher l’affiche de campagne dans ses 20 magasins avant le 15 mars. Les déclarations d’affichage enregistrées concernent 14 magasins. (a) Déclarez le grain d’une table d’événements sans mesure pour ces déclarations et listez les dimensions. (b) Quelle table faut-il construire pour savoir qui n’a pas déclaré, et combien de magasins manquent ? (c) Pourquoi ne pas ajouter des lignes à zéro pour les magasins absents dans la table d’événements ?",
+            "en": "A company must have the campaign poster displayed in its 20 stores before 15 March. Recorded display declarations cover 14 stores. (a) Declare the grain of a factless events table for these declarations and list the dimensions. (b) Which table should be built to know who has not declared, and how many stores are missing? (c) Why not add zero rows for the absent stores in the events table?"
+          },
+          "correction": {
+            "fr": "**(a)** Grain : une ligne par déclaration d’affichage d’un magasin pour une campagne. Dimensions : date, magasin, campagne (éventuellement le déclarant). Pas de mesure ; on compte les lignes.\n**(b)** Une table de **couverture** : les 20 magasins × la campagne (20 lignes). On soustrait l’**activité** (14 déclarations) : 20 − 14 = **6 magasins** n’ont pas déclaré.\n**(c)** Une table d’événements est creuse : les lignes n’existent que si l’événement a eu lieu ; remplir de zéros pour l’absence d’activité submergerait la table ; c’est la couverture qui porte les possibilités.\n*Corrigé proposé.*",
+            "en": "**(a)** Grain: one row per display declaration of a store for a campaign. Dimensions: date, store, campaign (possibly the declarer). No measure; rows are counted.\n**(b)** A **coverage** table: the 20 stores × the campaign (20 rows). Subtract the **activity** (14 declarations): 20 − 14 = **6 stores** have not declared.\n**(c)** An events table is sparse: rows exist only if the event happened; filling it with zeros for no activity would overwhelm the table; it is coverage that carries the possibilities.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : grain et dimensions.",
+              "en": "1 point: grain and dimensions."
+            },
+            {
+              "fr": "2 points : couverture moins activité et calcul (6).",
+              "en": "2 points: coverage minus activity and calculation (6)."
+            },
+            {
+              "fr": "1 point : pas de lignes à zéro, table creuse.",
+              "en": "1 point: no zero rows, sparse table."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Basic fact table techniques",
+              "quote": "Although most measurement events capture numerical results, it is possible that the event merely records a set of dimensional entities coming together at a moment in time."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Basic fact table techniques",
+              "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Basic fact table techniques",
+              "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Basic fact table techniques",
+              "quote": "a fact table always contains foreign keys for each of its associated dimensions"
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+              "loc": "Fact tables for measurements and dimension tables for descriptive context",
+              "quote": "It is important that you do not try to fill the fact table with zeros representing no activity because these zeros would overwhelm most fact tables."
+            }
+          ],
+          "id": "isi7-exam-blanc-04-q06"
+        }
+      ]
+    }
+  ]
+}

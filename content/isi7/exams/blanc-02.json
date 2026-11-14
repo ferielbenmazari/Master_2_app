@@ -1,0 +1,522 @@
+{
+  "id": "isi7-exam-blanc-02",
+  "courseId": "isi7",
+  "title": {
+    "fr": "Partiel blanc 2 — deux interviews et une architecture",
+    "en": "Mock exam 2 — two interviews and an architecture"
+  },
+  "kind": "mock",
+  "durationMinutes": 90,
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Sujet inventé. QCM de concepts, deux interviews à analyser, une architecture à justifier (avec une variante simplifiée) et une bus matrix. Pas d’annale disponible : style exact du prof inconnu. Durée indicative : 1 h 30. Barème sur 20. Corrigé proposé, non officiel.",
+    "en": "Invented exam. Concept MCQs, two interviews to analyse, an architecture to justify (with a simplified variant) and a bus matrix. No past exam is available: the teacher’s exact style is unknown. Indicative duration: 1 h 30. Marked out of 20. Proposed answer key, unofficial."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "A. Questions de cours (QCM)",
+        "en": "A. Course questions (MCQ)"
+      },
+      "points": 5,
+      "instructions": {
+        "fr": "Une seule bonne réponse par question. 1 point chacune.",
+        "en": "One correct answer per question. 1 point each."
+      },
+      "questions": [
+        {
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Parmi ces éléments, lequel est une exigence cachée au sens de la grille d’atelier ?",
+            "en": "Among these elements, which is a hidden requirement in the sense of the workshop grid?"
+          },
+          "options": [
+            {
+              "fr": "La sécurité (chaque responsable ne voit que son périmètre)",
+              "en": "Security (each manager only sees their scope)"
+            },
+            {
+              "fr": "La couleur des graphiques utilisés dans le tableau de bord de la direction",
+              "en": "The colour of the charts used in the executive dashboard"
+            },
+            {
+              "fr": "Le choix du fournisseur de licences pour les outils de reporting",
+              "en": "The choice of licence provider for the reporting tools"
+            },
+            {
+              "fr": "Le nom donné au projet BI lors de son lancement officiel",
+              "en": "The name given to the BI project at its official launch"
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "La grille cite « hidden requirement (security, adaptability...) ».",
+            "en": "The grid cites “hidden requirement (security, adaptability...)”."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Workshop",
+              "quote": "hidden requirement (security, adaptability...)"
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q01"
+        },
+        {
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelle phrase décrit correctement la différence ETL / ELT ?",
+            "en": "Which sentence correctly describes the ETL / ELT difference?"
+          },
+          "options": [
+            {
+              "fr": "L’ETL est une méthode de modélisation dimensionnelle des faits",
+              "en": "ETL is a dimensional modelling method for facts"
+            },
+            {
+              "fr": "L’ELT existe uniquement pour traiter des données non structurées",
+              "en": "ELT exists solely to process unstructured data"
+            },
+            {
+              "fr": "Mêmes trois étapes ; en ELT, le chargement précède la transformation",
+              "en": "Same three steps; in ELT, loading precedes transformation"
+            },
+            {
+              "fr": "L’ELT supprime complètement l’étape de transformation des données",
+              "en": "ELT completely removes the data transformation step"
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "Les mêmes mots, dans un ordre différent : extraction, chargement, puis transformation.",
+            "en": "The same words in a different order: extraction, loading, then transformation."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "extraction, loading, and then transformation. of the data"
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q02"
+        },
+        {
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Pour combiner dans un même rapport les mesures de deux tables de faits, il faut…",
+            "en": "To combine in one report the measures of two fact tables, you need…"
+          },
+          "options": [
+            {
+              "fr": "que les deux tables soient stockées dans le même schéma physique",
+              "en": "both tables to be stored in the same physical schema"
+            },
+            {
+              "fr": "des dimensions conformes partagées entre les deux",
+              "en": "conformed dimensions shared between the two"
+            },
+            {
+              "fr": "que les deux tables aient exactement le même nombre de lignes de faits",
+              "en": "both tables to have exactly the same number of fact rows"
+            },
+            {
+              "fr": "de supprimer la dimension de date de chacune des deux tables",
+              "en": "to remove the date dimension from both tables"
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "Le drill-across aligne les résultats grâce à des attributs conformes identiques : c’est l’essence de l’intégration.",
+            "en": "Drill-across aligns results thanks to identical conformed attributes: this is the essence of integration."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q03"
+        },
+        {
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Avec un SCD de type 2, que se passe-t-il quand un attribut de dimension change ?",
+            "en": "With a type 2 SCD, what happens when a dimension attribute changes?"
+          },
+          "options": [
+            {
+              "fr": "L’ancienne valeur est écrasée par la nouvelle valeur de l’attribut",
+              "en": "The old value is overwritten by the attribute’s new value"
+            },
+            {
+              "fr": "Une nouvelle ligne est ajoutée avec une nouvelle clé de substitution",
+              "en": "A new row is added with a new surrogate key"
+            },
+            {
+              "fr": "La table de faits est supprimée puis entièrement recréée à zéro",
+              "en": "The fact table is deleted then entirely recreated from scratch"
+            },
+            {
+              "fr": "Le changement est refusé par l’entrepôt tant que la source n’est pas corrigée",
+              "en": "The change is refused by the warehouse until the source is corrected"
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "Le type 2 ajoute une ligne ; le type 1 écrase et détruit l’historique.",
+            "en": "Type 2 adds a row; type 1 overwrites and destroys history."
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Slowly changing dimension techniques",
+              "quote": "this technique destroys history"
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q04"
+        },
+        {
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quel élément du cours répond à la tension entre « explorer librement » (pain point 3) et « résultats cohérents » (pain point 5) ?",
+            "en": "Which element of the course answers the tension between “explore freely” (pain point 3) and “consistent results” (pain point 5)?"
+          },
+          "options": [
+            {
+              "fr": "La suppression complète du self-service pour tous les utilisateurs",
+              "en": "The complete removal of self-service for all users"
+            },
+            {
+              "fr": "Un rafraîchissement en temps réel de tous les flux de données",
+              "en": "Real-time refresh of all data flows"
+            },
+            {
+              "fr": "La duplication des tableaux de bord pour chacun des départements",
+              "en": "Duplicating dashboards for each of the departments"
+            },
+            {
+              "fr": "Un modèle gouverné avec des définitions partagées (couche sémantique)",
+              "en": "A governed model with shared definitions (semantic layer)"
+            }
+          ],
+          "correct": [
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse du cours : « a governed model with shared definitions (semantic layer) ».",
+            "en": "The course’s answer: “a governed model with shared definitions (semantic layer)”."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Five pain points, five characteristics",
+              "quote": "Explore freely and consistent results pull in opposite directions: unrestricted self-service multiplies definitions."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "A semantic layer in that case is a shared catalog of business definitions."
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q05"
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "B. Deux interviews",
+        "en": "B. Two interviews"
+      },
+      "points": 8,
+      "instructions": {
+        "fr": "Pour chaque interview, remplissez la grille du cours (pain point ou exigence cachée, caractéristique, principe, niveau de maturité). 4 points chacune.",
+        "en": "For each interview, fill in the course grid (pain point or hidden requirement, characteristic, principle, maturity level). 4 points each."
+      },
+      "questions": [
+        {
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Analysez l’interview du responsable maintenance.",
+            "en": "Analyse the maintenance manager’s interview."
+          },
+          "correction": {
+            "fr": "**Plainte 1** (quarante rapports, pas le temps) + « quels trains risquent une panne cette semaine » : pain point 4 (noyé dans les données, il faut être alerté) ; caractéristique : mise en évidence des situations à surveiller (alertes, scores prédictifs) ; principes : fiable et disponible ; maturité : **prédictif** (anticiper les pannes).\n**Plainte 2** (« les chefs d’atelier ne doivent voir que leur dépôt ») : pas de pain point numéroté : **exigence cachée : sécurité** ; caractéristique : accès restreint par rôle et par ligne ; composant : sécurité par ligne ; principe : disponible et sécurisé.\n*Corrigé proposé.*",
+            "en": "**Complaint 1** (forty reports, no time) + “which trains risk a breakdown this week”: pain point 4 (drowning in data, needs to be alerted); characteristic: highlighting situations to watch (alerts, predictive scores); principles: reliable and available; maturity: **predictive** (anticipating breakdowns).\n**Complaint 2** (“workshop heads must only see their depot”): no numbered pain point: **hidden requirement: security**; characteristic: access restricted by role and by row; component: row-level security; principle: available and secured.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "2,5 points pour la plainte 1 (pain point, caractéristique, principe, niveau).",
+              "en": "2.5 points for complaint 1 (pain point, characteristic, principle, level)."
+            },
+            {
+              "fr": "1,5 point pour la plainte 2 : exigence cachée nommée, sécurité par ligne.",
+              "en": "1.5 points for complaint 2: hidden requirement named, row-level security."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Workshop",
+              "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "The five pain points",
+              "quote": "Drowning in data: be alerted, not just look"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Five pain points, five characteristics",
+              "quote": "Highlighting the situations that need attention KPIs with targets, exception dashboards, alerts, then predictive scores"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Workshop",
+              "quote": "hidden requirement (security, adaptability...)"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Where the data lives",
+              "quote": "Row-level security: each regional manager only sees their region"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "The analytics maturity ladder",
+              "quote": "The levels describe the type of question, not the tool. A dashboard that drills down to causes is diagnostic; a spreadsheet forecast is still predictive."
+            }
+          ],
+          "material": "**Responsable maintenance d’une compagnie ferroviaire** : « Je reçois chaque matin quarante rapports d’état des trains, et je n’ai pas le temps de tous les lire. Ce qu’il me faut, c’est qu’on m’indique quels trains risquent une panne cette semaine. Et les chefs d’atelier ne doivent voir que leur dépôt, alors que moi je vois tout. »\n\n*(English)* **Maintenance manager of a railway company**: “Every morning I receive forty train status reports and I do not have time to read them all. What I need is to be told which trains risk a breakdown this week. And workshop heads must only see their own depot, whereas I see everything.”",
+          "id": "isi7-exam-blanc-02-q06"
+        },
+        {
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Analysez l’interview de la DRH.",
+            "en": "Analyse the HR director’s interview."
+          },
+          "correction": {
+            "fr": "**Plainte 1** (taux publié en janvier corrigé en mars sans prévenir) : pain point 5 (les chiffres publiés ne doivent pas bouger) ; caractéristique : résultats stables dans le temps (historisation, règles versionnées, rafraîchissement contrôlé) ; principe : **prévisible** ; maturité : descriptif.\n**Plainte 2** (tableau de bord pas à jour à 8 h le lundi) : exigence de **disponibilité / fraîcheur** (un tableau de bord indisponible ou périmé un lundi matin) ; caractéristique : accès fiable et à temps aux données ; principe : **disponible** ; exigence de Kimball et Ross : fourni à temps.\n*Corrigé proposé.*",
+            "en": "**Complaint 1** (rate published in January corrected in March without warning): pain point 5 (published figures must not shift); characteristic: results stable over time (historisation, versioned rules, controlled refresh); principle: **predictable**; maturity: descriptive.\n**Complaint 2** (dashboard not up to date at 8 am on Monday): **availability / freshness** requirement (a dashboard unavailable or stale on a Monday morning); characteristic: reliable, timely access to data; principle: **available**; Kimball and Ross requirement: delivered in a timely way.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "2 points pour la plainte 1 dont le principe « prévisible » (et non « fiable »).",
+              "en": "2 points for complaint 1 including the “predictable” principle (not “reliable”)."
+            },
+            {
+              "fr": "2 points pour la plainte 2 : disponibilité / fraîcheur.",
+              "en": "2 points for complaint 2: availability / freshness."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Workshop",
+              "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "The five pain points",
+              "quote": "Published figures must not shift"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Five pain points, five characteristics",
+              "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "From five characteristics to three principles",
+              "quote": "A result that changes from one day to the next"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "From five characteristics to three principles",
+              "quote": "A dashboard unavailable on a Monday morning"
+            }
+          ],
+          "material": "**DRH d’un groupe de distribution** : « Le taux d’absentéisme que nous avons publié en janvier a été corrigé en mars, sans que personne ne me prévienne. Et quand j’ouvre le tableau de bord des ressources humaines à 8 h le lundi, il n’est pas encore à jour. »\n\n*(English)* **HR director of a retail group**: “The absenteeism rate we published in January was corrected in March, without anyone telling me. And when I open the HR dashboard at 8 am on Monday, it is not up to date yet.”",
+          "id": "isi7-exam-blanc-02-q07"
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "C. Architecture et variante simplifiée",
+        "en": "C. Architecture and simplified variant"
+      },
+      "points": 4,
+      "instructions": {
+        "fr": "Répondez en quelques lignes argumentées.",
+        "en": "Answer in a few argued lines."
+      },
+      "questions": [
+        {
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Une PME de 80 personnes a un seul ERP et un seul département utilisateur (la finance) qui veut un suivi mensuel du chiffre d’affaires. Proposez une variante simplifiée de l’architecture en quatre couches et justifiez-la : ce que vous retirez, le principe fragilisé, la mesure compensatoire et le déclencheur de réintroduction.",
+            "en": "An 80-person SME has a single ERP and a single user department (finance) that wants monthly revenue tracking. Propose a simplified variant of the four-layer architecture and justify it: what you remove, the weakened principle, the compensating measure and the reintroduction trigger."
+          },
+          "correction": {
+            "fr": "**Contexte** : une source, un département, une question descriptive mensuelle. **Variante** : on peut se passer de data marts séparés et d’une zone de transit lourde : un modèle dimensionnel unique alimenté depuis l’ERP, avec une définition claire du chiffre d’affaires. **Principe fragilisé** : la fiabilité (définitions partagées) si un deuxième département ou une deuxième source apparaît ; la sécurité par ligne si les accès se différencient. **Mesure compensatoire** : documenter les définitions (dictionnaire de données), garder l’historique des chiffres publiés, limiter les accès. **Déclencheur** : nouvelle source, nouveau département ou exigence réglementaire : on réintroduit zone de transit, entrepôt et data marts. Pragmatisme : « stick to what is requested » ; mise en garde : des data marts indépendants multipliés feraient diverger les chiffres.\n*Corrigé proposé : la variante simplifiée du prof n’est pas dans nos sources.*",
+            "en": "**Context**: one source, one department, a monthly descriptive question. **Variant**: separate data marts and a heavy staging area can be dropped: a single dimensional model fed from the ERP, with a clear revenue definition. **Weakened principle**: reliability (shared definitions) if a second department or source appears; row-level security if access levels differentiate. **Compensating measure**: document definitions (data dictionary), keep the history of published figures, limit access. **Trigger**: new source, new department or regulatory requirement: reintroduce staging, warehouse and data marts. Pragmatism: “stick to what is requested”; caution: multiplying independent data marts would make figures diverge.\n*Proposed answer: the teacher’s simplified variant is not in our sources.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : contexte précis et ce qui est retiré.",
+              "en": "1 point: precise context and what is removed."
+            },
+            {
+              "fr": "1 point : principe fragilisé nommé (fiable / prévisible / disponible).",
+              "en": "1 point: weakened principle named (reliable / predictable / available)."
+            },
+            {
+              "fr": "1 point : mesure compensatoire.",
+              "en": "1 point: compensating measure."
+            },
+            {
+              "fr": "1 point : déclencheur de réintroduction.",
+              "en": "1 point: reintroduction trigger."
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Learning Objectives",
+              "quote": "Architect: Diagram a decision-making architecture, justify the role of each layer, relate guiding principles to architecture choices, and justify a simpler variant."
+            },
+            {
+              "file": "ressources/S3__ISI7/cours_14092026.md",
+              "loc": "Transcript",
+              "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+              "loc": "Alternative DW/BI architectures",
+              "quote": "We strongly discourage the independent data mart approach."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+              "loc": "ETL in the back room and BI in the front room",
+              "quote": "it may be pointless to take the final step of building a 3NF physical database"
+            },
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Where the data lives",
+              "quote": "Integrates, historizes and unifies sources with shared definitions"
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q08"
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "D. Plusieurs interviews : la bus matrix",
+        "en": "D. Several interviews: the bus matrix"
+      },
+      "points": 3,
+      "instructions": {
+        "fr": "Répondez en quelques lignes.",
+        "en": "Answer in a few lines."
+      },
+      "questions": [
+        {
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Trois interviews dans une enseigne : (1) ventes par produit, magasin, client et jour ; (2) retours par produit, magasin et jour ; (3) réapprovisionnement par produit, entrepôt et jour. Dessinez la bus matrix, dites quelles dimensions doivent être conformes et quel premier incrément réaliser.",
+            "en": "Three interviews in a retailer: (1) sales by product, store, customer and day; (2) returns by product, store and day; (3) replenishment by product, warehouse and day. Draw the bus matrix, say which dimensions must be conformed and which first increment to build."
+          },
+          "correction": {
+            "fr": "**Matrice** (lignes = processus, colonnes = dimensions) : Ventes : date, produit, magasin, client. Retours : date, produit, magasin. Réapprovisionnement : date, produit, entrepôt.\n**Dimensions à conformer** : **date** et **produit** (cochées trois fois), **magasin** (ventes et retours) ; client et entrepôt ne concernent qu’un processus.\n**Premier incrément** : la ligne **Ventes** (processus central ; elle construit date, produit, magasin, client) ; chaque ligne suivante réutilise les dimensions conformes, une ligne à la fois ; le drill-across permet ensuite de comparer ventes et retours par produit et par jour.\n*Corrigé proposé.*",
+            "en": "**Matrix** (rows = processes, columns = dimensions): Sales: date, product, store, customer. Returns: date, product, store. Replenishment: date, product, warehouse.\n**Dimensions to conform**: **date** and **product** (ticked three times), **store** (sales and returns); customer and warehouse concern one process only.\n**First increment**: the **Sales** row (central process; it builds date, product, store, customer); each following row reuses the conformed dimensions, one row at a time; drill-across then allows comparing sales and returns by product and day.\n*Proposed answer.*"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1 point : matrice correcte (processus en lignes, dimensions en colonnes).",
+              "en": "1 point: correct matrix (processes as rows, dimensions as columns)."
+            },
+            {
+              "fr": "1 point : dimensions à conformer repérées par les colonnes cochées plusieurs fois.",
+              "en": "1 point: dimensions to conform spotted from the columns ticked several times."
+            },
+            {
+              "fr": "1 point : premier incrément justifié, une ligne à la fois.",
+              "en": "1 point: first increment justified, one row at a time."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__ISI7/markdown/isi7.md",
+              "loc": "Learning Objectives",
+              "quote": "Model: from one or more interviews, produce a dimensional model and make the link between the elements shared from one interview to the next."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "The rows of the matrix are business processes and the columns are dimensions."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "teams should implement one row of the matrix at a time"
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+            },
+            {
+              "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+              "loc": "Integration via conformed dimensions",
+              "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+            }
+          ],
+          "id": "isi7-exam-blanc-02-q09"
+        }
+      ]
+    }
+  ]
+}

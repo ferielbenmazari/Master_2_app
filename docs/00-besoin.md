@@ -20,6 +20,7 @@
 | `rec1` | S3-REC1 | Méthodes de recherche | I. Rychkova | 2 — contrôle semaine du 9 nov. |
 | `inf4` | S3-INF4 | (Software) Product Line Engineering | C. Salinesi, C. Correa | 3 — contrôle semaine du 9 nov. |
 | `isi5` | S3-ISI5 | Sécurité des SI / IA agentique offensive | F. Pizzi | 4 — plus tard |
+| `isi7` | S3-ISI7 | Systèmes décisionnels (Decisional Systems) | R. Bijaoui | 5 — examen le 22 février 2027 (1 h 30) |
 
 ## Fonctionnalités attendues
 
