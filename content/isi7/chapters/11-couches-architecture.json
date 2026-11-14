@@ -1,0 +1,1978 @@
+{
+  "id": "isi7-11-couches-architecture",
+  "courseId": "isi7",
+  "order": 11,
+  "title": {
+    "fr": "Les couches d’une architecture décisionnelle",
+    "en": "The layers of a decision-making architecture"
+  },
+  "hook": {
+    "fr": "Pourquoi ne laisse-t-on pas les analystes fouiller dans la copie brute des sources ?",
+    "en": "Why are analysts not let loose in the raw copy of the sources?"
+  },
+  "question": {
+    "fr": "Quelles sont les couches d’une architecture décisionnelle, quel est le rôle de chacune et quel principe sert-elle ?",
+    "en": "What are the layers of a decision-making architecture, what is the role of each and which principle does it serve?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Décrire le rôle de chaque couche (sources, transit, entrepôt, data marts).",
+        "en": "Describe the role of each layer (sources, staging, warehouse, data marts)."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Relier chaque couche à un pain point et à un principe.",
+        "en": "Link each layer to a pain point and a principle."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Schématiser une architecture pour un cas et justifier chaque couche.",
+        "en": "Diagram an architecture for a case and justify each layer."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Situer le complément Kimball et Ross (sources, ETL, présentation, BI) par rapport au cours.",
+        "en": "Situate the Kimball and Ross supplement (sources, ETL, presentation, BI) relative to the course."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "« Le prochain cours abordera l’architecture (couches, rôles) au niveau conceptuel » ; « you can expect to have a part of the examination on that part » (compte rendu).",
+        "en": "“The next course will cover architecture (layers, roles) at conceptual level”; “you can expect to have a part of the examination on that part” (session notes)."
+      },
+      {
+        "fr": "Objectif « Architecturer » observable à l’examen (diapositives).",
+        "en": "The “Architect” objective is observable in the exam (slides)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Schéma d’architecture à justifier couche par couche : estimation ; le contenu des séances 2 à 4 n’est pas dans nos sources.",
+        "en": "An architecture diagram to justify layer by layer: an estimate; the content of sessions 2 to 4 is not in our sources."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3, 4 et 8 : principes, vocabulaire et couche sémantique.",
+    "en": "Chapters 3, 4 and 8: principles, vocabulary and semantic layer."
+  },
+  "next": {
+    "fr": "Chapitre 12 : choisir et justifier une architecture, y compris une variante simplifiée.",
+    "en": "Chapter 12: choosing and justifying an architecture, including a simplified variant."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Les quatre couches et leur rôle ; zone de transit sans accès utilisateur.",
+        "en": "The four layers and their role; staging with no user access."
+      },
+      {
+        "fr": "Sécurité par rôle et par ligne ; gouvernance et propriétaire de la donnée.",
+        "en": "Security by role and by row; governance and data owner."
+      },
+      {
+        "fr": "Le lien couches ↔ pain points ↔ principes.",
+        "en": "The link layers ↔ pain points ↔ principles."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Schématiser une architecture pour un cas et justifier chaque couche.",
+        "en": "Diagram an architecture for a case and justify each layer."
+      },
+      {
+        "fr": "Dire qui peut accéder à quelle couche.",
+        "en": "Say who can access which layer."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Zone de transit (copie technique) ≠ data mart (sous-ensemble par domaine).",
+        "en": "Staging (technical copy) ≠ data mart (subset per domain)."
+      },
+      {
+        "fr": "Droits par rôle ≠ sécurité par ligne.",
+        "en": "Rights by role ≠ row-level security."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 3 : le tableau pain points → caractéristiques → principes.",
+        "en": "Chapter 3: the pain points → characteristics → principles table."
+      },
+      {
+        "fr": "Chapitre 8 : couche sémantique, lakehouse, ELT.",
+        "en": "Chapter 8: semantic layer, lakehouse, ELT."
+      },
+      {
+        "fr": "Chapitre 12 : choisir et simplifier.",
+        "en": "Chapter 12: choosing and simplifying."
+      }
+    ]
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+    "sources-texte/isi7/ext-armbrust-2021-lakehouse.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce que le prof annonce pour l’architecture",
+        "en": "What the teacher announces for architecture"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Avant de dessiner, un point d’honnêteté. Pour l’architecture (séances 2 à 4 sur 10), nos sources se limitent à l’objectif du cours, au séquencement, à une diapositive sur les couches et à l’annonce orale : couches, rôle de chacune, lien avec les principes, variante simplifiée. Le reste de ce chapitre est complété par des sources externes, signalées comme telles.",
+        "en": "Before drawing anything, a point of honesty. For architecture (sessions 2 to 4 out of 10), our sources are limited to the course objective, the sequencing, one slide on layers and the oral announcement: layers, the role of each, link with principles, simplified variant. The rest of this chapter is completed with external sources, flagged as such."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Course framework",
+          "quote": "Distribution: 1 half-day of context, 3 of architecture, 6 of dimensional modeling."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Le prochain cours abordera l'architecture (couches, rôles) au niveau conceptuel"
+        }
+      ],
+      "notions": [
+        "n-architecture-conceptual"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’objectif « **Architecturer** » : savoir schématiser une architecture décisionnelle, justifier le rôle de chaque couche, relier les principes directeurs aux choix d’architecture et justifier une variante plus simple. Le prof précise que ce sera au niveau **conceptuel**, sans entrer dans la technique, et qu’une partie de l’examen y sera consacrée ; l’architecture précède la modélisation.",
+        "en": "The “**Architect**” objective: being able to diagram a decision-making architecture, justify the role of each layer, link guiding principles to architecture choices and justify a simpler variant. The teacher specifies it will be at **conceptual** level, without technical detail, and that part of the exam will cover it; architecture precedes modelling."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Architect: Diagram a decision-making architecture, justify the role of each layer, relate guiding principles to architecture choices, and justify a simpler variant."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture precedes modelling; sessions 5 to 10 alternate concepts and exercises on paper and on the board"
+        }
+      ],
+      "notions": [
+        "n-architecture-conceptual"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-11-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les quatre couches du cours",
+        "en": "The course’s four layers"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Couche",
+          "en": "Layer"
+        },
+        {
+          "fr": "Rôle (diapositive)",
+          "en": "Role (slide)"
+        },
+        {
+          "fr": "Qui y accède ?",
+          "en": "Who accesses it?"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Systèmes sources",
+            "en": "Source systems"
+          },
+          {
+            "fr": "Applications et fichiers métier où la donnée naît, chacun avec sa propre vue",
+            "en": "Business apps and files where data is created, each with its own view"
+          },
+          {
+            "fr": "Les utilisateurs opérationnels",
+            "en": "Operational users"
+          }
+        ],
+        [
+          {
+            "fr": "Zone de transit (staging)",
+            "en": "Staging area"
+          },
+          {
+            "fr": "Copie technique des données sources avant nettoyage",
+            "en": "Technical copy of source data before cleaning"
+          },
+          {
+            "fr": "Aucun accès utilisateur",
+            "en": "No user access"
+          }
+        ],
+        [
+          {
+            "fr": "Entrepôt de données",
+            "en": "Data warehouse"
+          },
+          {
+            "fr": "Intègre, historise et unifie les sources avec des définitions partagées : version unique de la vérité",
+            "en": "Integrates, historizes and unifies sources with shared definitions: single version of the truth"
+          },
+          {
+            "fr": "Alimente les data marts",
+            "en": "Feeds the data marts"
+          }
+        ],
+        [
+          {
+            "fr": "Data marts",
+            "en": "Data marts"
+          },
+          {
+            "fr": "Sous-ensembles par domaine (ventes, finance, RH), adaptés à ses questions",
+            "en": "Subsets per domain (sales, finance, HR), tailored to its questions"
+          },
+          {
+            "fr": "Les utilisateurs métier du domaine",
+            "en": "Business users of the domain"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Business apps and files where data is created, each with its own view"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "unifies sources with shared definitions Single version of the truth"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notions": [
+        "n-layers-roles"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  SRC[\"Source systems: ERP, e-commerce, files\"] --> STG[\"Staging area: technical copy, no user access\"]\n  STG --> DWH[\"Data warehouse: integrate, historize, unify\"]\n  DWH --> MART[\"Data marts: one per domain\"]\n  MART --> USE[\"Semantic layer, reports, dashboards, analysis\"]\n  SEC[\"Access rights, row-level security, governance, data owners\"] -.-> DWH\n  SEC -.-> MART",
+      "caption": {
+        "fr": "Du système source à l’utilisateur ; sécurité et gouvernance traversent les couches.",
+        "en": "From source system to user; security and governance cut across the layers."
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autour de ces couches, la diapositive ajoute la **sécurité** (droits par rôle : un commercial voit les ventes, pas les salaires ; sécurité par ligne : chaque directeur régional ne voit que sa région) et la **gouvernance** (qui décide comment la donnée est définie, contrôlée et partagée), avec un **propriétaire de la donnée** par domaine, garant des définitions et de la qualité.",
+        "en": "Around these layers, the slide adds **security** (rights by role: a sales rep sees sales, not salaries; row-level security: each regional manager only sees their region) and **governance** (who decides how data is defined, controlled and shared), with a **data owner** per domain, accountable for definitions and quality."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Governance decides how data is defined, controlled and shared"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notions": [
+        "n-security-in-architecture"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "À l’examen conceptuel, retiens pour chaque couche **trois** choses : ce qu’elle fait, qui peut y accéder, et quel problème elle résout. Le piège classique : donner accès à la zone de transit (copie technique avant nettoyage) à des utilisateurs métier.",
+        "en": "In the conceptual exam, retain **three** things for each layer: what it does, who can access it, and which problem it solves. The classic trap: giving business users access to the staging area (technical copy before cleaning)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-11-qz-02"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-11-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi séparer : le point de vue de Kimball et Ross (complément)",
+        "en": "Why separate: Kimball and Ross’s view (supplement)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Kimball et Ross décrivent quatre composants distincts : les **systèmes sources**, le **système ETL**, la **zone de présentation** et les **applications BI**. Ils n’emploient pas le mot « staging » de la diapositive de la même façon, mais le découpage rejoint celui du cours. Ce qui suit n’est pas dit par le prof : c’est notre complément pour justifier les couches.",
+        "en": "Kimball and Ross describe four distinct components: **source systems**, the **ETL system**, the **presentation area** and **BI applications**. They do not use the slide’s word “staging” in the same way, but the split matches the course’s. What follows is not said by the teacher: it is our supplement to justify the layers."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "there are four separate and distinct components to consider in the DW/BI environment: operational source systems, ETL system, data presentation area, and business intelligence applications."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "The term BI application loosely refers to the range of capabilities provided to business users to leverage the presentation area for analytic decision making."
+        }
+      ],
+      "notions": [
+        "n-kimball-components"
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**Systèmes sources** : leurs priorités sont la performance de traitement et la disponibilité ; ils conservent peu d’historique, qu’un bon entrepôt peut prendre en charge.",
+          "en": "**Source systems**: their priorities are processing performance and availability; they keep little history, which a good warehouse can take over."
+        },
+        {
+          "fr": "**ETL** : tout ce qui se trouve entre les sources et la zone de présentation ; nettoyer, combiner plusieurs sources, dédupliquer. Interdit aux utilisateurs métier.",
+          "en": "**ETL**: everything between the sources and the presentation area; cleansing, combining several sources, de-duplicating. Off-limits to business users."
+        },
+        {
+          "fr": "**Zone de présentation** : ce que les utilisateurs voient et touchent ; données détaillées (atomiques), orientées processus métier, dimensionnelles.",
+          "en": "**Presentation area**: what users see and touch; detailed (atomic) data, business-process-centric, dimensional."
+        },
+        {
+          "fr": "**Applications BI** : les capacités offertes aux utilisateurs pour exploiter la zone de présentation.",
+          "en": "**BI applications**: the capabilities offered to users to exploit the presentation area."
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "The main priorities of the source systems are processing performance and availability."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Source systems maintain little historical data; a good data warehouse can relieve the source systems of much of the responsibility for representing the past."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "The ETL system is everything between the operational source systems and the DW/BI presentation area."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "cleansing the data (correcting misspellings, resolving domain conflicts, dealing with missing elements, or parsing into standard formats), combining data from multiple sources, and de-duplicating data."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Finally, ETL system should be off limits to the business users and BI application developers."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Because the back room ETL system is off-limits, the presentation area is the DW/BI environment as far as the business community is concerned"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Data in the queryable presentation area of the DW/BI system must be dimensional, atomic (complemented by performance-enhancing aggregates), business process-centric, and adhere to the enterprise data warehouse bus architecture."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "The term BI application loosely refers to the range of capabilities provided to business users to leverage the presentation area for analytic decision making."
+        }
+      ],
+      "notions": [
+        "n-kimball-components",
+        "n-etl-back-room"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une idée forte de leur argumentation : un entrepôt bien conçu fait travailler l’**arrière-boutique** (ETL) plutôt que la **salle** (applications BI). Le travail de salle est refait sans cesse par les utilisateurs ; celui de l’arrière-boutique est fait une seule fois par l’équipe ETL. C’est le « pourquoi » des définitions partagées placées dans l’entrepôt.",
+        "en": "A strong idea in their argument: a well-designed warehouse makes the **back room** (ETL) work rather than the **front room** (BI applications). Front room work is redone endlessly by users; back room work is done once by the ETL team. It is the “why” of shared definitions placed in the warehouse."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Front room work must be done over and over by business users, whereas back room work is done once by the ETL staff."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Atomic data is required to withstand assaults from unpredictable ad hoc user queries."
+        }
+      ],
+      "notions": [
+        "n-etl-back-room"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Où ranger l’ETL et l’ELT ? Le prof renvoie l’implication de l’ordre (ETL ou ELT) aux séances d’architecture. Quel que soit l’ordre, la logique de couches reste ; et sur un lac ou un lakehouse, la logique zone de transit, entrepôt, data marts reste au-dessus de l’implémentation.",
+        "en": "Where do ETL and ELT fit? The teacher defers the implication of the order (ETL or ELT) to the architecture sessions. Whatever the order, the layered logic remains; and on a lake or lakehouse, the staging / warehouse / data mart logic stays on top of the implementation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what it means in terms of architecture later, you will see, we will see in the architecture class."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "notions": [
+        "n-etl-back-room"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Le mot « staging » : pour le cours, c’est une **copie technique avant nettoyage, sans accès utilisateur**. Pour Kimball et Ross, le système ETL peut même s’appuyer sur de simples fichiers plats. Garde la définition du cours à l’examen.",
+        "en": "The word “staging”: for the course, it is a **technical copy before cleaning, with no user access**. For Kimball and Ross, the ETL system may even rely on simple flat files. Keep the course’s definition for the exam."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "In many cases, the ETL system is not based on relational technology but instead may rely on a system of flat files."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-11-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Justifier chaque couche par les principes",
+        "en": "Justifying each layer with the principles"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours fait le lien dans le tableau du chapitre 3 : « données centralisées et unifiées » se réalise par l’intégration des sources, la zone de transit, l’entrepôt et les données de référence (principes disponible et fiable) ; « résultats stables dans le temps » par l’historisation et des règles versionnées (prévisible) ; « indicateurs documentés » par des définitions partagées (fiable) ; « accès rapide et flexible » par un modèle mesures × axes (disponible).",
+        "en": "The course makes the link in the chapter 3 table: “centralised, unified data” is delivered by source integration, staging, warehouse and master data (available and reliable principles); “results stable over time” by historisation and versioned rules (predictable); “documented indicators” by shared definitions (reliable); “fast, flexible access” by a measures × axes model (available)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Documented, comparable indicators Shared definitions, data dictionary, traceability of each figure to its source Reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Fast, flexible access to data Measures x analysis axes model, self-service, drill-down Available"
+        }
+      ],
+      "notions": [
+        "n-layers-principles"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Couche ou élément",
+          "en": "Layer or element"
+        },
+        {
+          "fr": "Problème résolu (pain point)",
+          "en": "Problem solved (pain point)"
+        },
+        {
+          "fr": "Principe servi",
+          "en": "Principle served"
+        },
+        {
+          "fr": "Source",
+          "en": "Source"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Sources + zone de transit + entrepôt",
+            "en": "Sources + staging + warehouse"
+          },
+          {
+            "fr": "1 : données éparpillées",
+            "en": "1: scattered data"
+          },
+          {
+            "fr": "Disponible et fiable",
+            "en": "Available and reliable"
+          },
+          {
+            "fr": "Cours",
+            "en": "Course"
+          }
+        ],
+        [
+          {
+            "fr": "Entrepôt : historisation",
+            "en": "Warehouse: historisation"
+          },
+          {
+            "fr": "5 : résultats qui bougent",
+            "en": "5: results that shift"
+          },
+          {
+            "fr": "Prévisible",
+            "en": "Predictable"
+          },
+          {
+            "fr": "Cours",
+            "en": "Course"
+          }
+        ],
+        [
+          {
+            "fr": "Définitions partagées (entrepôt, couche sémantique)",
+            "en": "Shared definitions (warehouse, semantic layer)"
+          },
+          {
+            "fr": "2 : chiffres divergents",
+            "en": "2: divergent figures"
+          },
+          {
+            "fr": "Fiable",
+            "en": "Reliable"
+          },
+          {
+            "fr": "Cours",
+            "en": "Course"
+          }
+        ],
+        [
+          {
+            "fr": "Data marts, modèle mesures × axes",
+            "en": "Data marts, measures × axes model"
+          },
+          {
+            "fr": "3 : nouvelles questions, vite",
+            "en": "3: new questions, fast"
+          },
+          {
+            "fr": "Disponible",
+            "en": "Available"
+          },
+          {
+            "fr": "Cours ; rôle des data marts : notre lecture",
+            "en": "Course; data mart role: our reading"
+          }
+        ],
+        [
+          {
+            "fr": "Droits par rôle, sécurité par ligne",
+            "en": "Rights by role, row-level security"
+          },
+          {
+            "fr": "Exigence cachée : sécurité",
+            "en": "Hidden requirement: security"
+          },
+          {
+            "fr": "Disponible et sécurisé",
+            "en": "Available and secured"
+          },
+          {
+            "fr": "Cours (sécurité) ; rattachement : notre lecture",
+            "en": "Course (security); link: our reading"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Documented, comparable indicators Shared definitions, data dictionary, traceability of each figure to its source Reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Fast, flexible access to data Measures x analysis axes model, self-service, drill-down Available"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        }
+      ],
+      "notions": [
+        "n-layers-principles",
+        "n-layers-roles"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Justifier le rôle d’une couche (méthode de l’app)",
+        "en": "Justifying a layer’s role (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Nommer la couche et ce qu’elle fait (diapositive).",
+            "en": "Name the layer and what it does (slide)."
+          },
+          "why": {
+            "fr": "Une justification commence par une définition exacte.",
+            "en": "A justification starts with an exact definition."
+          }
+        },
+        {
+          "do": {
+            "fr": "Citer le pain point ou l’exigence que la couche traite.",
+            "en": "Cite the pain point or requirement the layer addresses."
+          },
+          "why": {
+            "fr": "Une couche existe pour un besoin utilisateur, pas pour la technique.",
+            "en": "A layer exists for a user need, not for technology."
+          }
+        },
+        {
+          "do": {
+            "fr": "Nommer le principe servi : fiable, prévisible ou disponible.",
+            "en": "Name the principle served: reliable, predictable or available."
+          },
+          "why": {
+            "fr": "Le cours relie principes et choix d’architecture.",
+            "en": "The course links principles and architecture choices."
+          }
+        },
+        {
+          "do": {
+            "fr": "Dire qui y accède (et qui ne doit pas).",
+            "en": "Say who accesses it (and who must not)."
+          },
+          "why": {
+            "fr": "Zone de transit sans accès utilisateur ; sécurité par rôle et par ligne ailleurs.",
+            "en": "Staging with no user access; security by role and by row elsewhere."
+          }
+        },
+        {
+          "do": {
+            "fr": "Dire ce qui casse si on la supprime.",
+            "en": "Say what breaks if it is removed."
+          },
+          "why": {
+            "fr": "C’est ce qui prépare la justification d’une variante plus simple (chapitre 12).",
+            "en": "This prepares the justification of a simpler variant (chapter 12)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "justify the role of each layer"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "notions": [
+        "n-justify-layer-method"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le prof n’a pas encore donné (dans nos sources) son propre tableau couche → principe : celui-ci est une lecture à partir de la diapositive des couches et du tableau pain points → caractéristiques → principes. À confirmer avec tes notes de séances 2 à 4.",
+        "en": "The teacher has not (in our sources) yet given his own layer → principle table: this one is a reading based on the layers slide and the pain points → characteristics → principles table. To confirm with your notes from sessions 2 to 4."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Design of these layers: architecture session."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-11-qz-05"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-source-systems",
+      "fr": "systèmes sources",
+      "en": "source systems",
+      "definition": {
+        "fr": "Applications et fichiers métier où la donnée est créée, chacun avec sa propre vue.",
+        "en": "Business applications and files where data is created, each with its own view."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Business apps and files where data is created, each with its own view"
+        }
+      ],
+      "notion": "n-layers-roles"
+    },
+    {
+      "id": "term-staging-area",
+      "fr": "zone de transit (staging area)",
+      "en": "staging area",
+      "definition": {
+        "fr": "Copie technique des données sources avant nettoyage, sans accès utilisateur.",
+        "en": "Technical copy of source data before cleaning, with no user access."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "notion": "n-layers-roles"
+    },
+    {
+      "id": "term-data-warehouse",
+      "fr": "entrepôt de données",
+      "en": "data warehouse",
+      "definition": {
+        "fr": "Couche qui intègre, historise et unifie les sources avec des définitions partagées : version unique de la vérité.",
+        "en": "Layer that integrates, historises and unifies the sources with shared definitions: single version of the truth."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "unifies sources with shared definitions Single version of the truth"
+        }
+      ],
+      "notion": "n-layers-roles"
+    },
+    {
+      "id": "term-data-mart",
+      "fr": "data mart",
+      "en": "data mart",
+      "definition": {
+        "fr": "Sous-ensemble par domaine (ventes, finance, RH), adapté à ses questions.",
+        "en": "A subset per domain (sales, finance, HR), tailored to its questions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notion": "n-layers-roles"
+    },
+    {
+      "id": "term-row-level-security",
+      "fr": "sécurité par ligne",
+      "en": "row-level security",
+      "definition": {
+        "fr": "Chaque directeur régional ne voit que sa région ; à distinguer des droits par rôle.",
+        "en": "Each regional manager only sees their region; to be distinguished from rights by role."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        }
+      ],
+      "notion": "n-security-in-architecture"
+    },
+    {
+      "id": "term-data-governance",
+      "fr": "gouvernance de la donnée",
+      "en": "data governance",
+      "definition": {
+        "fr": "Décide comment la donnée est définie, contrôlée et partagée.",
+        "en": "Decides how data is defined, controlled and shared."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Governance decides how data is defined, controlled and shared"
+        }
+      ],
+      "notion": "n-security-in-architecture"
+    },
+    {
+      "id": "term-data-owner",
+      "fr": "propriétaire de la donnée (data owner)",
+      "en": "data owner",
+      "definition": {
+        "fr": "Responsable métier par domaine, garant des définitions et de la qualité.",
+        "en": "A business lead per domain, accountable for definitions and quality."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notion": "n-security-in-architecture"
+    },
+    {
+      "id": "term-architect-objective",
+      "fr": "objectif « Architecturer »",
+      "en": "“Architect” objective",
+      "definition": {
+        "fr": "Schématiser une architecture décisionnelle, justifier le rôle de chaque couche, relier principes et choix, justifier une variante plus simple.",
+        "en": "Diagram a decision-making architecture, justify each layer’s role, link principles to choices, justify a simpler variant."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Architect: Diagram a decision-making architecture, justify the role of each layer, relate guiding principles to architecture choices, and justify a simpler variant."
+        }
+      ],
+      "notion": "n-justify-layer-method"
+    },
+    {
+      "id": "term-presentation-area",
+      "fr": "zone de présentation",
+      "en": "presentation area",
+      "definition": {
+        "fr": "Chez Kimball et Ross : l’environnement DW/BI tel que le voit le métier ; données dimensionnelles, détaillées, orientées processus.",
+        "en": "In Kimball and Ross: the DW/BI environment as the business sees it; dimensional, detailed, process-oriented data."
+      },
+      "pitfall": {
+        "fr": "Notion externe au cours ; correspond le plus à l’entrepôt et aux data marts.",
+        "en": "A notion external to the course; closest to the warehouse and data marts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Because the back room ETL system is off-limits, the presentation area is the DW/BI environment as far as the business community is concerned"
+        }
+      ],
+      "notion": "n-kimball-components"
+    }
+  ],
+  "notions": [
+    "n-layers-roles",
+    "n-layers-principles",
+    "n-architecture-conceptual",
+    "n-kimball-components",
+    "n-etl-back-room",
+    "n-security-in-architecture",
+    "n-justify-layer-method"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Objectif « Architecturer » : schématiser, justifier le rôle de chaque couche, relier principes et choix, justifier une variante plus simple ; au niveau conceptuel.",
+        "en": "Objective “Architect”: diagram, justify each layer’s role, link principles and choices, justify a simpler variant; at conceptual level."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Architect: Diagram a decision-making architecture, justify the role of each layer, relate guiding principles to architecture choices, and justify a simpler variant."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+        }
+      ],
+      "notions": [
+        "n-architecture-conceptual",
+        "n-justify-layer-method"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sources (la donnée naît), zone de transit (copie technique avant nettoyage, sans accès utilisateur), entrepôt (intègre, historise, unifie), data marts (par domaine).",
+        "en": "Sources (data is created), staging (technical copy before cleaning, no user access), warehouse (integrates, historises, unifies), data marts (per domain)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Business apps and files where data is created, each with its own view"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notions": [
+        "n-layers-roles"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sécurité : droits par rôle et par ligne ; gouvernance et propriétaire de la donnée par domaine.",
+        "en": "Security: rights by role and by row; governance and a data owner per domain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Governance decides how data is defined, controlled and shared"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notions": [
+        "n-security-in-architecture"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Données centralisées → intégration des sources, transit, entrepôt (disponible et fiable) ; résultats stables → historisation (prévisible).",
+        "en": "Centralised data → source integration, staging, warehouse (available and reliable); stable results → historisation (predictable)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ],
+      "notions": [
+        "n-layers-principles"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Complément Kimball et Ross : quatre composants (sources, ETL, présentation, BI) ; l’ETL est interdit aux utilisateurs ; le travail d’arrière-boutique est fait une fois.",
+        "en": "Kimball and Ross supplement: four components (sources, ETL, presentation, BI); ETL is off-limits to users; back-room work is done once."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "there are four separate and distinct components to consider in the DW/BI environment: operational source systems, ETL system, data presentation area, and business intelligence applications."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Finally, ETL system should be off limits to the business users and BI application developers."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Front room work must be done over and over by business users, whereas back room work is done once by the ETL staff."
+        }
+      ],
+      "notions": [
+        "n-kimball-components",
+        "n-etl-back-room"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sur un lac ou un lakehouse, la logique zone de transit / entrepôt / data marts reste au-dessus de l’implémentation physique.",
+        "en": "On a lake or lakehouse, the staging / warehouse / data mart logic stays on top of the physical implementation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "notions": [
+        "n-etl-back-room"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Rôle des systèmes sources ?",
+        "en": "Role of source systems?"
+      },
+      "back": {
+        "fr": "Applications et fichiers métier où la donnée naît, chacun avec sa propre vue.",
+        "en": "Business applications and files where data is created, each with its own view."
+      },
+      "termId": "term-source-systems",
+      "id": "isi7-11-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Zone de transit : rôle et accès ?",
+        "en": "Staging area: role and access?"
+      },
+      "back": {
+        "fr": "Copie technique avant nettoyage ; aucun accès utilisateur.",
+        "en": "Technical copy before cleaning; no user access."
+      },
+      "termId": "term-staging-area",
+      "id": "isi7-11-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Entrepôt de données : trois verbes ?",
+        "en": "Data warehouse: three verbs?"
+      },
+      "back": {
+        "fr": "Intègre, historise, unifie (définitions partagées) : version unique de la vérité.",
+        "en": "Integrates, historises, unifies (shared definitions): single version of the truth."
+      },
+      "termId": "term-data-warehouse",
+      "id": "isi7-11-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Data marts ?",
+        "en": "Data marts?"
+      },
+      "back": {
+        "fr": "Sous-ensembles par domaine, adaptés à ses questions.",
+        "en": "Subsets per domain, tailored to its questions."
+      },
+      "termId": "term-data-mart",
+      "id": "isi7-11-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Droits par rôle vs sécurité par ligne ?",
+        "en": "Rights by role vs row-level security?"
+      },
+      "back": {
+        "fr": "Rôle : un commercial voit les ventes, pas les salaires. Ligne : chaque directeur ne voit que sa région.",
+        "en": "Role: a sales rep sees sales, not salaries. Row: each manager only sees their region."
+      },
+      "termId": "term-row-level-security",
+      "id": "isi7-11-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Gouvernance et propriétaire de la donnée ?",
+        "en": "Governance and data owner?"
+      },
+      "back": {
+        "fr": "Gouvernance : définit, contrôle, partage. Propriétaire : responsable métier par domaine, garant des définitions et de la qualité.",
+        "en": "Governance: defines, controls, shares. Owner: business lead per domain, accountable for definitions and quality."
+      },
+      "termId": "term-data-owner",
+      "id": "isi7-11-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Objectif « Architecturer » ?",
+        "en": "“Architect” objective?"
+      },
+      "back": {
+        "fr": "Schématiser, justifier le rôle de chaque couche, relier principes et choix, justifier une variante simple.",
+        "en": "Diagram, justify each layer’s role, link principles and choices, justify a simpler variant."
+      },
+      "termId": "term-architect-objective",
+      "id": "isi7-11-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Quel principe pour l’historisation dans l’entrepôt ?",
+        "en": "Which principle for historisation in the warehouse?"
+      },
+      "back": {
+        "fr": "Prévisible : résultats stables dans le temps.",
+        "en": "Predictable: results stable over time."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ],
+      "notions": [
+        "n-layers-principles"
+      ],
+      "id": "isi7-11-fc-08"
+    },
+    {
+      "front": {
+        "fr": "À quel niveau l’architecture est-elle vue dans le cours ?",
+        "en": "At which level is architecture taught in the course?"
+      },
+      "back": {
+        "fr": "Au niveau conceptuel : couches et rôles, sans entrer dans la technique.",
+        "en": "At conceptual level: layers and roles, without technical detail."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Le prochain cours abordera l'architecture (couches, rôles) au niveau conceptuel"
+        }
+      ],
+      "notions": [
+        "n-architecture-conceptual"
+      ],
+      "id": "isi7-11-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Quels principes pour « données centralisées et unifiées » ?",
+        "en": "Which principles for “centralised, unified data”?"
+      },
+      "back": {
+        "fr": "Disponible et fiable.",
+        "en": "Available and reliable."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        }
+      ],
+      "notions": [
+        "n-layers-principles"
+      ],
+      "id": "isi7-11-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Kimball et Ross : les quatre composants ?",
+        "en": "Kimball and Ross: the four components?"
+      },
+      "back": {
+        "fr": "Systèmes sources, ETL, zone de présentation, applications BI.",
+        "en": "Source systems, ETL, presentation area, BI applications."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "there are four separate and distinct components to consider in the DW/BI environment: operational source systems, ETL system, data presentation area, and business intelligence applications."
+        }
+      ],
+      "notions": [
+        "n-kimball-components"
+      ],
+      "id": "isi7-11-fc-11"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi travailler dans l’ETL plutôt que dans les applications BI ?",
+        "en": "Why work in the ETL rather than in BI applications?"
+      },
+      "back": {
+        "fr": "Le travail d’arrière-boutique est fait une fois ; celui de la salle est refait par chaque utilisateur.",
+        "en": "Back-room work is done once; front-room work is redone by each user."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Front room work must be done over and over by business users, whereas back room work is done once by the ETL staff."
+        }
+      ],
+      "notions": [
+        "n-etl-back-room"
+      ],
+      "id": "isi7-11-fc-12"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La zone de transit (staging area) est ouverte aux utilisateurs métier pour qu’ils puissent vérifier les données avant nettoyage.",
+        "en": "The staging area is open to business users so they can check data before cleaning."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est une copie technique avant nettoyage, **sans accès utilisateur**.",
+        "en": "FALSE: it is a technical copy before cleaning, with **no user access**."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-layers-roles"
+      ],
+      "trap": {
+        "fr": "Confondre zone de transit et data mart.",
+        "en": "Mixing up staging area and data mart."
+      },
+      "id": "isi7-11-qz-01"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Quelle couche intègre, historise et unifie les sources avec des définitions partagées ?",
+        "en": "Which layer integrates, historises and unifies sources with shared definitions?"
+      },
+      "options": [
+        {
+          "fr": "Les systèmes sources opérationnels",
+          "en": "The operational source systems"
+        },
+        {
+          "fr": "La zone de transit technique",
+          "en": "The technical staging area"
+        },
+        {
+          "fr": "Les data marts de chaque domaine",
+          "en": "The data marts of each domain"
+        },
+        {
+          "fr": "L’entrepôt de données",
+          "en": "The data warehouse"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "L’entrepôt : version unique de la vérité. Les data marts sont des sous-ensembles par domaine.",
+        "en": "The warehouse: single version of the truth. Data marts are subsets per domain."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "unifies sources with shared definitions Single version of the truth"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-layers-roles"
+      ],
+      "id": "isi7-11-qz-02"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un data mart est un sous-ensemble de données par domaine (ventes, finance, RH), adapté aux questions de ce domaine.",
+        "en": "A data mart is a subset of data per domain (sales, finance, HR), tailored to that domain’s questions."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : définition de la diapositive.",
+        "en": "TRUE: the slide’s definition."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-layers-roles"
+      ],
+      "id": "isi7-11-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les droits par rôle et la sécurité par ligne désignent la même règle : chaque utilisateur est limité à ses propres lignes de données.",
+        "en": "Rights by role and row-level security designate the same rule: each user is restricted to their own rows of data."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : par rôle, un commercial voit les ventes mais pas les salaires ; par ligne, chaque directeur régional ne voit que sa région.",
+        "en": "FALSE: by role, a sales rep sees sales but not salaries; by row, each regional manager only sees their region."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-security-in-architecture"
+      ],
+      "trap": {
+        "fr": "Mêler les deux niveaux de sécurité.",
+        "en": "Mixing the two levels of security."
+      },
+      "id": "isi7-11-qz-04"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Quel pain point la combinaison sources + zone de transit + entrepôt + données de référence traite-t-elle d’abord, et avec quels principes ?",
+        "en": "Which pain point does the combination of sources + staging + warehouse + master data address first, and with which principles?"
+      },
+      "options": [
+        {
+          "fr": "Pain point 3 : lenteur des réponses ; disponible et flexible",
+          "en": "Pain point 3: slow answers; available and flexible"
+        },
+        {
+          "fr": "Pain point 1 : données éparpillées ; disponible et fiable",
+          "en": "Pain point 1: scattered data; available and reliable"
+        },
+        {
+          "fr": "Pain point 5 : résultats qui bougent ; prévisible et stable",
+          "en": "Pain point 5: results that shift; predictable and stable"
+        },
+        {
+          "fr": "Pain point 4 : noyade dans les données ; fiable et disponible",
+          "en": "Pain point 4: drowning in data; reliable and available"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Ligne 1 du tableau : données centralisées et unifiées = intégration des sources, transit, entrepôt, données de référence ; principes disponible et fiable.",
+        "en": "Row 1 of the table: centralised, unified data = source integration, staging, warehouse, master data; available and reliable principles."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-layers-principles"
+      ],
+      "id": "isi7-11-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "L’historisation dans l’entrepôt répond au besoin de résultats stables dans le temps, donc au principe prévisible.",
+        "en": "Historisation in the warehouse answers the need for results stable over time, hence the predictable principle."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « Historization, versioned calculation rules, controlled refresh » = prévisible.",
+        "en": "TRUE: “Historization, versioned calculation rules, controlled refresh” = predictable."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-layers-principles"
+      ],
+      "id": "isi7-11-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le prof a annoncé que l’architecture serait vue au niveau technique, avec le choix des outils et des produits.",
+        "en": "The teacher announced that architecture would be taught at technical level, with the choice of tools and products."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : couches et rôles, au niveau conceptuel, sans entrer dans la technique.",
+        "en": "FALSE: layers and roles, at conceptual level, without technical detail."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Le prochain cours abordera l'architecture (couches, rôles) au niveau conceptuel"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-architecture-conceptual"
+      ],
+      "trap": {
+        "fr": "Préparer des noms de produits au lieu de rôles de couches.",
+        "en": "Preparing product names instead of layer roles."
+      },
+      "id": "isi7-11-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une entreprise propose d’ouvrir la zone de transit aux analystes « pour gagner du temps ». Quelle objection du cours est la plus directe ?",
+        "en": "A company proposes opening the staging area to analysts “to save time”. Which objection from the course is the most direct?"
+      },
+      "options": [
+        {
+          "fr": "Elle ne contient aucune donnée provenant des systèmes sources",
+          "en": "It holds no data coming from the source systems"
+        },
+        {
+          "fr": "Elle ne peut techniquement pas être sécurisée par rôle ou par ligne",
+          "en": "It technically cannot be secured by role or by row"
+        },
+        {
+          "fr": "Elle est une copie technique avant nettoyage, sans accès utilisateur prévu",
+          "en": "It is a technical copy before cleaning, with no user access planned"
+        },
+        {
+          "fr": "Elle coûte beaucoup trop cher en stockage pour pouvoir être interrogée",
+          "en": "It costs far too much in storage to be queried"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "« Technical copy of source data before cleaning. No user access. » Les analystes y verraient des données non nettoyées, ce qui menacerait la fiabilité.",
+        "en": "“Technical copy of source data before cleaning. No user access.” Analysts would see uncleaned data, which would threaten reliability."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-justify-layer-method",
+        "n-layers-roles"
+      ],
+      "id": "isi7-11-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon Kimball et Ross, le système ETL doit rester interdit aux utilisateurs métier et aux développeurs d’applications BI.",
+        "en": "According to Kimball and Ross, the ETL system must remain off-limits to business users and BI application developers."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « ETL system should be off limits to the business users and BI application developers » (complément externe).",
+        "en": "TRUE: “ETL system should be off limits to the business users and BI application developers” (external supplement)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Finally, ETL system should be off limits to the business users and BI application developers."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-kimball-components"
+      ],
+      "id": "isi7-11-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans un bon entrepôt, le travail de nettoyage et de combinaison est refait par chaque utilisateur dans son application BI.",
+        "en": "In a good warehouse, cleansing and combining work is redone by each user in their BI application."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le travail d’arrière-boutique est fait une fois par l’équipe ETL ; c’est le travail de salle qui est refait.",
+        "en": "FALSE: back-room work is done once by the ETL team; it is front-room work that is redone."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Front room work must be done over and over by business users, whereas back room work is done once by the ETL staff."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "cleansing the data (correcting misspellings, resolving domain conflicts, dealing with missing elements, or parsing into standard formats), combining data from multiple sources, and de-duplicating data."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-etl-back-room"
+      ],
+      "trap": {
+        "fr": "Inverser arrière-boutique et salle.",
+        "en": "Swapping back room and front room."
+      },
+      "id": "isi7-11-qz-10"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une couche existe pour un besoin utilisateur. Laquelle de ces justifications suit la méthode du cours (couche, besoin, principe, accès, ce qui casse sans elle) ?",
+        "en": "A layer exists for a user need. Which of these justifications follows the course method (layer, need, principle, access, what breaks without it)?"
+      },
+      "options": [
+        {
+          "fr": "« Les data marts : parce que c’est la bonne pratique reconnue du marché depuis des années. »",
+          "en": "“Data marts: because it has been recognised market best practice for years.”"
+        },
+        {
+          "fr": "« Les data marts : parce que la DSI les a toujours utilisés dans ses projets précédents. »",
+          "en": "“Data marts: because IT has always used them in its previous projects.”"
+        },
+        {
+          "fr": "« Les data marts : pour pouvoir utiliser un outil cloud moderne et à la mode. »",
+          "en": "“Data marts: to be able to use a modern, fashionable cloud tool.”"
+        },
+        {
+          "fr": "« Les data marts : pain point 3 ; principe disponible ; accès aux utilisateurs du domaine ; sans eux, les questions nouvelles redeviennent lentes. »",
+          "en": "“Data marts: pain point 3; available principle; access for the domain’s users; without them, new questions become slow again.”"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "La justification part d’un besoin, d’un principe et d’une conséquence ; les autres invoquent l’habitude ou l’outil.",
+        "en": "The justification starts from a need, a principle and a consequence; the others invoke habit or tools."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "justify the role of each layer"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Fast, flexible access to data Measures x analysis axes model, self-service, drill-down Available"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-justify-layer-method"
+      ],
+      "id": "isi7-11-qz-11"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Sur un lakehouse, la logique zone de transit / entrepôt / data marts disparaît, puisque tout est stocké dans un seul système.",
+        "en": "On a lakehouse, the staging / warehouse / data mart logic disappears, since everything is stored in a single system."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elle reste au-dessus de l’implémentation physique, que l’architecte choisit.",
+        "en": "FALSE: it stays on top of the physical implementation, which the architect chooses."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-etl-back-room"
+      ],
+      "trap": {
+        "fr": "Confondre implémentation physique et architecture logique.",
+        "en": "Confusing physical implementation and logical architecture."
+      },
+      "id": "isi7-11-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Schématiser l’architecture d’une chaîne de magasins",
+        "en": "Diagramming a retail chain’s architecture"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Une chaîne de magasins a trois sources : la caisse (ventes), le site e-commerce, et des fichiers CSV de transporteurs. La direction commerciale veut comparer les ventes par magasin ; la logistique veut analyser les retards ; chaque directeur régional ne doit voir que sa région. **(a)** Schématisez l’architecture (couches). **(b)** Justifiez chaque couche avec un pain point et un principe. **(c)** Qui a accès à quoi ? **(d)** Que perd-on si l’on supprime la zone de transit ?",
+        "en": "*(Invented case for practice.)* A store chain has three sources: the till (sales), the e-commerce site, and carriers’ CSV files. Sales management wants to compare sales by store; logistics wants to analyse delays; each regional manager must only see their region. **(a)** Diagram the architecture (layers). **(b)** Justify each layer with a pain point and a principle. **(c)** Who has access to what? **(d)** What is lost if the staging area is removed?"
+      },
+      "hints": [
+        {
+          "fr": "Trois sources → une zone de transit → un entrepôt → des data marts (ventes, logistique).",
+          "en": "Three sources → staging → warehouse → data marts (sales, logistics)."
+        },
+        {
+          "fr": "Pour (d), pensez au nettoyage avant intégration.",
+          "en": "For (d), think of cleaning before integration."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Sources (caisse, e-commerce, CSV transporteurs) → zone de transit → entrepôt → data marts ventes et logistique → rapports et tableaux de bord ; sécurité par ligne et gouvernance transversales.\n**(b)** Sources : où la donnée naît. Transit : copie technique avant nettoyage ; permet de nettoyer sans toucher aux sources. Entrepôt : pain point 1 (éparpillé) et 2 (divergent) ; intègre, historise, unifie avec des définitions partagées ; principes disponible, fiable, prévisible. Data marts : pain point 3 (question nouvelle, vite) ; adaptés aux questions de chaque domaine ; principe disponible.\n**(c)** Zone de transit : aucun utilisateur. Entrepôt : alimente les data marts. Data marts : utilisateurs du domaine ; chaque directeur régional ne voit que sa région (sécurité par ligne).\n**(d)** On ne pourrait plus faire une copie technique avant nettoyage : les données brutes des trois sources seraient intégrées sans étape de contrôle, au risque de chiffres divergents et peu fiables.\n*Ce que l’exercice vérifie* : justifier chaque couche par un besoin, un principe et un accès. *Corrigé proposé.*",
+        "en": "**(a)** Sources (till, e-commerce, carrier CSVs) → staging → warehouse → sales and logistics data marts → reports and dashboards; row-level security and governance cut across.\n**(b)** Sources: where data is created. Staging: technical copy before cleaning; lets you clean without touching the sources. Warehouse: pain points 1 (scattered) and 2 (divergent); integrates, historises, unifies with shared definitions; available, reliable, predictable principles. Data marts: pain point 3 (new question, fast); tailored to each domain’s questions; available principle.\n**(c)** Staging: no users. Warehouse: feeds the data marts. Data marts: the domain’s users; each regional manager only sees their region (row-level security).\n**(d)** You could no longer take a technical copy before cleaning: raw data from three sources would be integrated with no control step, risking divergent, unreliable figures.\n*What the exercise checks*: justifying each layer with a need, a principle and an access. *Proposed answer.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Business apps and files where data is created, each with its own view"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Dessiner des boîtes sans dire à quel besoin elles répondent.",
+        "en": "Drawing boxes without saying which need they answer."
+      },
+      "notions": [
+        "n-layers-roles",
+        "n-layers-principles",
+        "n-justify-layer-method",
+        "n-security-in-architecture"
+      ],
+      "id": "isi7-11-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Qui peut ouvrir quoi ? Quatre demandes d’accès",
+        "en": "Who can open what? Four access requests"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Pour chaque demande, dites si l’accès est acceptable et par quelle couche ou règle.\n1. Un analyste marketing veut interroger la zone de transit pour « voir les données brutes ».\n2. Une commerciale veut consulter les ventes mais pas les salaires.\n3. Chaque directeur régional veut son tableau de bord, sans voir les autres régions.\n4. Le propriétaire de la donnée « clients » veut valider la définition du « client actif ».",
+        "en": "For each request, say whether the access is acceptable and through which layer or rule.\n1. A marketing analyst wants to query the staging area to “see raw data”.\n2. A sales rep wants to view sales but not salaries.\n3. Each regional manager wants their dashboard, without seeing other regions.\n4. The owner of “customer” data wants to validate the definition of “active customer”."
+      },
+      "hints": [
+        {
+          "fr": "Qui peut accéder à la zone de transit ?",
+          "en": "Who can access the staging area?"
+        },
+        {
+          "fr": "Rôle, ligne, propriétaire : trois mécanismes distincts.",
+          "en": "Role, row, owner: three distinct mechanisms."
+        }
+      ],
+      "solution": {
+        "fr": "1. **Non** : la zone de transit n’a aucun accès utilisateur ; il faut passer par une couche nettoyée (data mart). 2. **Oui** par des **droits par rôle** : un commercial voit les ventes, pas les salaires. 3. **Oui** par la **sécurité par ligne** : chaque directeur ne voit que sa région. 4. **Oui** : le propriétaire de la donnée est garant des définitions et de la qualité ; la validation relève de la **gouvernance**.\n*Ce que l’exercice vérifie* : distinguer accès par couche, rôle, ligne et responsabilité.",
+        "en": "1. **No**: the staging area has no user access; go through a cleaned layer (data mart). 2. **Yes** through **rights by role**: a sales rep sees sales, not salaries. 3. **Yes** through **row-level security**: each manager only sees their region. 4. **Yes**: the data owner is accountable for definitions and quality; validation belongs to **governance**.\n*What the exercise checks*: distinguishing access by layer, role, row and responsibility."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Governance decides how data is defined, controlled and shared"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-security-in-architecture",
+        "n-layers-roles"
+      ],
+      "id": "isi7-11-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The staging area has no user access.",
+      "id": "isi7-11-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "The data warehouse {{integrates}}, {{historizes}} and unifies the sources.",
+      "translation": "L’entrepôt intègre, historise et unifie les sources.",
+      "id": "isi7-11-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Data marts are a technical copy of source data before cleaning.",
+      "error": "a technical copy of source data before cleaning",
+      "corrected": "subsets per domain, tailored to its questions",
+      "explanation": {
+        "fr": "La copie technique avant nettoyage est la zone de transit.",
+        "en": "The technical copy before cleaning is the staging area."
+      },
+      "id": "isi7-11-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : justifie le rôle de l’entrepôt de données dans une architecture décisionnelle.",
+        "en": "In three sentences: justify the role of the data warehouse in a decision-making architecture."
+      },
+      "modelAnswer": "The data warehouse integrates, historizes and unifies the sources with shared definitions, which gives a single version of the truth. It answers the scattered data and divergent figures pain points, so it serves the reliable, available and predictable principles. Without it, each user would have to reconcile the sources again.",
+      "keywords": [
+        "integrates",
+        "historizes",
+        "shared definitions",
+        "single version of the truth",
+        "pain point"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité un pain point et un principe.",
+          "en": "I cited a pain point and a principle."
+        }
+      ],
+      "usefulPhrases": [
+        "which gives",
+        "it serves the … principles"
+      ],
+      "id": "isi7-11-wr-04"
+    }
+  ]
+}

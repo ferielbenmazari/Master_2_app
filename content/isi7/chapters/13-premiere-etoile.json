@@ -1,0 +1,2006 @@
+{
+  "id": "isi7-13-premiere-etoile",
+  "courseId": "isi7",
+  "order": 13,
+  "title": {
+    "fr": "Première étoile : grain, faits, dimensions",
+    "en": "First star: grain, facts, dimensions"
+  },
+  "hook": {
+    "fr": "Une interview de deux phrases, six dimensions : par où commencer ?",
+    "en": "A two-sentence interview, six dimensions: where to start?"
+  },
+  "question": {
+    "fr": "Comment transforme-t-on une interview en modèle dimensionnel : quel grain, quels faits, quelles dimensions ?",
+    "en": "How do you turn an interview into a dimensional model: which grain, which facts, which dimensions?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Citer les quatre décisions de conception dans l’ordre.",
+        "en": "Name the four design decisions in order."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Expliquer le rôle du grain, des faits et des dimensions et ce qu’est une étoile.",
+        "en": "Explain the role of the grain, facts and dimensions and what a star is."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Construire une première étoile à partir d’une interview et repérer des erreurs de grain ou de faits.",
+        "en": "Build a first star from an interview and spot grain or fact errors."
+      },
+      "level": "apply"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Séance 5 : « Grain, faits, dimensions : première étoile à partir d’une interview » ; objectif « Modéliser » ; « a short part of the examination » sur les séances 5 à 10 (compte rendu).",
+        "en": "Session 5: “Grain, facts, dimensions: first star from an interview”; “Model” objective; “a short part of the examination” on sessions 5 to 10 (session notes)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Une petite étoile à construire à partir d’une interview : estimation ; le contenu technique exact du prof n’est pas dans nos sources, il vient ici de Kimball et Ross.",
+        "en": "A small star to build from an interview: an estimate; the teacher’s exact technical content is not in our sources, here it comes from Kimball and Ross."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 2, 4 et 6 : dénormalisation, mesure / axe / granularité, interviews.",
+    "en": "Chapters 2, 4 and 6: denormalisation, measure / axis / granularity, interviews."
+  },
+  "next": {
+    "fr": "Chapitre 14 : plusieurs interviews, dimensions conformes et bus matrix.",
+    "en": "Chapter 14: several interviews, conformed dimensions and bus matrix."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Les quatre décisions : processus, grain, dimensions, faits.",
+        "en": "The four decisions: process, grain, dimensions, facts."
+      },
+      {
+        "fr": "Grain : ce que représente une ligne ; déclaré d’abord ; atomique de préférence ; un grain par table.",
+        "en": "Grain: what a row represents; declared first; atomic preferably; one grain per table."
+      },
+      {
+        "fr": "Faits additifs / semi-additifs / non additifs ; dimensions plates et dénormalisées.",
+        "en": "Additive / semi-additive / non-additive facts; flat, denormalised dimensions."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Construire une étoile à partir d’une interview courte.",
+        "en": "Build a star from a short interview."
+      },
+      {
+        "fr": "Repérer les erreurs de grain ou de faits dans un schéma.",
+        "en": "Spot grain or fact errors in a schema."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Fait (mesure numérique) ≠ attribut de dimension (contexte).",
+        "en": "Fact (numeric measurement) ≠ dimension attribute (context)."
+      },
+      {
+        "fr": "Grain (une ligne) ≠ nombre de dimensions.",
+        "en": "Grain (one row) ≠ number of dimensions."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 4 : mesure, axe, granularité deviennent fait, dimension, grain.",
+        "en": "Chapter 4: measure, axis, granularity become fact, dimension, grain."
+      },
+      {
+        "fr": "Chapitre 14 : des dimensions partagées entre plusieurs étoiles.",
+        "en": "Chapter 14: dimensions shared across several stars."
+      },
+      {
+        "fr": "Chapitre 2 : la dénormalisation justifie les dimensions plates.",
+        "en": "Chapter 2: denormalisation justifies flat dimensions."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce qu’on sait des séances 5 à 10",
+        "en": "What we know about sessions 5 to 10"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les séances 5 à 10 (six demi-journées sur dix) portent sur la modélisation dimensionnelle : on y passe de l’interview au modèle, avec des alternances de concepts et d’exercices sur papier et au tableau. L’objectif « **Modéliser** » : à partir d’une ou plusieurs interviews, produire un modèle dimensionnel et relier les éléments partagés d’une interview à l’autre. À l’examen, ce n’est qu’une partie courte.",
+        "en": "Sessions 5 to 10 (six half-days out of ten) deal with dimensional modelling: you go from interview to model, alternating concepts and exercises on paper and on the board. The “**Model**” objective: from one or more interviews, produce a dimensional model and link the elements shared from one interview to the next. In the exam, this is only a short part."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Course framework",
+          "quote": "Distribution: 1 half-day of context, 3 of architecture, 6 of dimensional modeling."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "sessions 5 to 10 alternate concepts and exercises on paper and on the board, each taking up the notions of the previous ones"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Model: from one or more interviews, produce a dimensional model and make the link between the elements shared from one interview to the next."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So, basically the lessons 5 to 10. It's about implementing a dimensional model into the architecture"
+        }
+      ],
+      "notions": [
+        "n-modeling-sessions"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Honnêteté sur les sources : pour ces séances, le cours ne nous donne que le séquencement (la séance 5 s’intitule « Grain, faits, dimensions : première étoile à partir d’une interview ») et le vocabulaire des chapitres 2 et 4 (mesure, axe, granularité). Le contenu technique de ces chapitres vient donc de **Kimball et Ross** (extraits officiels), signalé comme complément ; la modélisation des cas (livraisons) est la nôtre.",
+        "en": "Honesty about sources: for these sessions, the course only gives us the sequencing (session 5 is titled “Grain, facts, dimensions: first star from an interview”) and the vocabulary of chapters 2 and 4 (measure, axis, granularity). The technical content of these chapters therefore comes from **Kimball and Ross** (official extracts), flagged as supplement; the modelling of the cases (deliveries) is ours."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Modeling by measures and analysis axes"
+        }
+      ],
+      "notions": [
+        "n-modeling-sessions"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-13-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Du vocabulaire du cours aux quatre décisions de conception",
+        "en": "From the course vocabulary to the four design decisions"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours a déjà posé les mots : une **mesure** est la valeur numérique que l’on agrège, un **axe d’analyse** (dimension) l’angle de lecture, la **granularité** le niveau de détail stocké, sans possibilité de descendre sous le grain. Le modèle dimensionnel organise exactement cela : des faits (mesures) décrits par des dimensions (axes), à un grain déclaré.",
+        "en": "The course has already set the words: a **measure** is the numeric value that gets aggregated, an **analysis axis** (dimension) is the angle of reading, **granularity** is the stored level of detail, with no way to drill below the grain. The dimensional model organises exactly that: facts (measures) described by dimensions (axes), at a declared grain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ],
+      "notions": [
+        "n-modeling-sessions"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Kimball retient **quatre décisions**, à prendre dans cet ordre avec les utilisateurs : choisir le **processus métier**, déclarer le **grain**, identifier les **dimensions**, identifier les **faits**. On les prend en croisant les besoins métier (interviews) et la réalité des données sources, lors d’ateliers collaboratifs ; un modèle dimensionnel ne se conçoit pas isolé de ceux qui comprennent le métier.",
+        "en": "Kimball retains **four decisions**, to be taken in this order with users: choose the **business process**, declare the **grain**, identify the **dimensions**, identify the **facts**. They are taken by crossing business needs (interviews) and the reality of source data, in collaborative workshops; a dimensional model is not designed in isolation from those who understand the business."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Choosing the process is important because it defines a specific design target and allows the grain, dimensions, and facts to be declared."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "You uncover the requirements via sessions with business representatives to understand their objectives based on key performance indicators, compelling business issues, decision-making processes, and supporting analytic needs."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensional models should not be designed in isolation by folks who don’t fully understand the business and their needs; collaboration is critical!"
+        }
+      ],
+      "notions": [
+        "n-four-step-design"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  P[\"1. Business process\"] --> G[\"2. Grain\"] --> D[\"3. Dimensions\"] --> F[\"4. Facts\"]",
+      "caption": {
+        "fr": "Les quatre décisions de conception dans l’ordre (Kimball).",
+        "en": "The four design decisions in order (Kimball)."
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Mots d’examen : « Quel est le grain ? » se répond par une phrase du type « une ligne = une livraison » ; il se déclare **avant** de choisir dimensions et faits, car chacun doit être cohérent avec lui.",
+        "en": "Exam words: “What is the grain?” is answered with a sentence like “one row = one delivery”; it is declared **before** choosing dimensions and facts, since each must be consistent with it. (Kimball supplement.)"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain must be declared before choosing dimensions or facts because every candidate dimension or fact must be consistent with the grain."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-13-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le grain : le contrat de la conception",
+        "en": "The grain: the contract of the design"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Déclarer le grain est l’étape pivot : il établit exactement ce que représente **une ligne** de la table de faits, et devient un contrat sur la conception. Une ligne de faits correspond à un événement de mesure réel (une vente scannée, une livraison effectuée) et non aux besoins d’un rapport particulier.",
+        "en": "Declaring the grain is the pivotal step: it establishes exactly what **one row** of the fact table represents, and becomes a binding contract on the design. One fact row corresponds to a real measurement event (a scanned sale, a delivery made) and not to the needs of a particular report."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "Each row in a fact table corresponds to a measurement event."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Thus a fact table corresponds to a physical observable event, and not to the demands of a particular report."
+        }
+      ],
+      "notions": [
+        "n-grain"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Kimball recommande de commencer par le grain **atomique**, le niveau le plus bas auquel un processus capture la donnée : il résiste aux requêtes imprévisibles des utilisateurs, alors que les résumés présupposent les questions courantes. Et un grain = une table : on ne mélange jamais des grains dans la même table de faits, sinon on double-compte.",
+        "en": "Kimball recommends starting with the **atomic** grain, the lowest level at which a process captures data: it withstands users’ unpredictable queries, whereas summaries presuppose the common questions. And one grain = one table: grains are never mixed in the same fact table, otherwise you double-count."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Atomic grain refers to the lowest level at which data is captured by a given business process."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "because it withstands the assault of unpredictable user queries"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "different grains must not be mixed in the same fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "One of the core tenets of dimensional modeling is that all the measurement rows in a fact table must be at the same grain."
+        }
+      ],
+      "notions": [
+        "n-grain"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Piège : mélanger des grains. Une table qui contient des ventes à la ligne de ticket et, dans les mêmes colonnes, des objectifs mensuels par magasin mélange deux grains ; chaque grain demande sa propre table de faits.",
+        "en": "Trap: mixing grains. A table holding sales at ticket-line level and, in the same columns, monthly targets per store mixes two grains; each grain needs its own fact table. (Our example of the Kimball rule.)"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "different grains must not be mixed in the same fact table."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-13-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Faits et dimensions",
+        "en": "Facts and dimensions"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les **faits** sont les mesures qui résultent d’un événement du processus, presque toujours numériques. Seuls sont admis les faits cohérents avec le grain déclaré : dans une vente de détail, la quantité vendue et le prix étendu sont de bons faits, le salaire du directeur du magasin est exclu. Une table de faits contient aussi une clé étrangère vers chacune de ses dimensions.",
+        "en": "**Facts** are the measurements that result from a process event, almost always numeric. Only facts consistent with the declared grain are allowed: in a retail sale, the quantity sold and the extended price are good facts, the store manager’s salary is excluded. A fact table also contains a foreign key to each of its dimensions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts are the measurements that result from a business process event and are almost always numeric."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Within a fact table, only facts consistent with the declared grain are allowed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "in a retail sales transaction, the quantity of a product sold and its extended price are good facts, whereas the store manager’s salary is disallowed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "In addition to numeric measures, a fact table always contains foreign keys for each of its associated dimensions"
+        }
+      ],
+      "notions": [
+        "n-fact"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les **dimensions** donnent le contexte : qui, quoi, où, quand, pourquoi, comment. Leurs attributs servent à filtrer et à grouper les faits, et les libellés des rapports en sont les valeurs. Les tables de dimension sont plutôt larges, plates et dénormalisées, avec beaucoup d’attributs texte : on retrouve ici la dénormalisation du chapitre 2.",
+        "en": "**Dimensions** give the context: who, what, where, when, why, how. Their attributes are used to filter and group the facts, and report labels are their values. Dimension tables are usually wide, flat and denormalised, with many text attributes: here we find the denormalisation of chapter 2."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions provide the “who, what, where, when, why, and how” context surrounding a business process event."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimension tables contain the descriptive attributes used by BI applications for filtering and grouping the facts."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension tables are usually wide, flat denormalized tables with many low-cardinality text attributes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "The descriptive labels on reports are typically dimension attribute domain values."
+        }
+      ],
+      "notions": [
+        "n-dimension"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Pour aller plus loin** — (Kimball et Ross) Pour décider si une donnée numérique est un fait ou un attribut de dimension : les observations numériques à valeurs continues sont presque toujours des faits ; les observations numériques discrètes tirées d’une petite liste sont presque toujours des attributs de dimension.",
+        "en": "**Going further** — (Kimball and Ross) To decide whether a numeric data element is a fact or a dimension attribute: continuously valued numeric observations are almost always facts; discrete numeric observations drawn from a small list are almost always dimension attributes."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "observations are almost always facts; discrete numeric observations drawn from a small list are almost always dimension attributes."
+        }
+      ],
+      "notions": [
+        "n-fact-or-attribute"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Type de fait",
+          "en": "Type of fact"
+        },
+        {
+          "fr": "Définition (Kimball)",
+          "en": "Definition (Kimball)"
+        },
+        {
+          "fr": "Exemple",
+          "en": "Example"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Additif",
+            "en": "Additive"
+          },
+          {
+            "fr": "Se somme sur toutes les dimensions de la table de faits",
+            "en": "Can be summed across all dimensions of the fact table"
+          },
+          {
+            "fr": "montant des ventes",
+            "en": "sales amount"
+          }
+        ],
+        [
+          {
+            "fr": "Semi-additif",
+            "en": "Semi-additive"
+          },
+          {
+            "fr": "Se somme sur certaines dimensions, pas toutes ; les soldes sont additifs sauf sur le temps",
+            "en": "Can be summed across some dimensions, not all; balances are additive except across time"
+          },
+          {
+            "fr": "solde de compte",
+            "en": "account balance"
+          }
+        ],
+        [
+          {
+            "fr": "Non additif",
+            "en": "Non-additive"
+          },
+          {
+            "fr": "Ne se somme jamais : on stocke les composants additifs et on calcule le rapport après agrégation",
+            "en": "Never summed: store the additive components and compute the ratio after aggregation"
+          },
+          {
+            "fr": "ratio, prix unitaire",
+            "en": "ratio, unit price"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "The most flexible and useful facts are fully additive; additive measures can be summed across any of the dimensions associated with the fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Semi-additive measures can be summed across some dimensions, but not all; balance amounts are common semi-additive facts because they are additive across all dimensions except time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "store the fully additive components of the non-additive measure and sum these components into the final answer set before calculating the final non-additive fact"
+        }
+      ],
+      "notions": [
+        "n-additivity"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-13-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Assembler l’étoile",
+        "en": "Assembling the star"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Chaque processus métier est représenté par un modèle dimensionnel : une table de faits qui contient les mesures numériques de l’événement, entourée d’un halo de tables de dimension qui contiennent le contexte textuel qui était vrai au moment de l’événement. C’est le **schéma en étoile** ([[term-star-schema]]), quand il est déployé dans une base relationnelle.",
+        "en": "Each business process is represented by a dimensional model: a fact table containing the event’s numeric measurements, surrounded by a halo of dimension tables containing the textual context that was true at the moment of the event. This is the **star schema** ([[term-star-schema]]), when deployed in a relational database."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "a fact table containing the event’s numeric measurements surrounded by a halo of dimension tables that contain the textual context that was true at the moment the event occurred."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Star schemas are dimensional structures deployed in a relational database management system (RDBMS)."
+        }
+      ],
+      "notions": [
+        "n-star-schema"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Son intérêt, selon Kimball et Ross : simplicité et symétrie. Les utilisateurs y reconnaissent leur métier ; ils ont observé des centaines de fois que les utilisateurs approuvent immédiatement le modèle dimensionnel comme étant leur activité. C’est aussi ce qui rend le modèle simple à interroger : les attributs des dimensions filtrent et groupent, les faits apportent les valeurs.",
+        "en": "Its benefit, according to Kimball and Ross: simplicity and symmetry. Users recognise their business in it; they have observed hundreds of times that users immediately agree the dimensional model is their business. It also makes the model simple to query: dimension attributes filter and group, facts supply the values."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "The first thing to notice about the dimensional schema is its simplicity and symmetry."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "We have observed literally hundreds of instances in which users immediately agree that the dimensional model is their business."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "Dimension attributes serve as the primary source of query constraints, groupings, and report labels."
+        }
+      ],
+      "notions": [
+        "n-star-schema"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Construire une première étoile à partir d’une interview (méthode de l’app)",
+        "en": "Building a first star from an interview (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Souligner dans l’interview l’**événement** que l’utilisateur veut mesurer : c’est le processus métier.",
+            "en": "Underline in the interview the **event** the user wants to measure: this is the business process."
+          },
+          "why": {
+            "fr": "Un modèle correspond à un processus réel, pas à un rapport.",
+            "en": "A model corresponds to a real process, not to a report."
+          }
+        },
+        {
+          "do": {
+            "fr": "Déclarer le **grain** en une phrase : « une ligne = … », au niveau le plus fin disponible.",
+            "en": "Declare the **grain** in one sentence: “one row = …”, at the finest level available."
+          },
+          "why": {
+            "fr": "On ne peut pas descendre sous le grain stocké.",
+            "en": "You cannot drill below the stored grain."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lister les **dimensions** : tous les « par… » de l’utilisateur, qui, quoi, où, quand, pourquoi, comment, chacune à une seule valeur par ligne.",
+            "en": "List the **dimensions**: all the user’s “by…”, who, what, where, when, why, how, each with a single value per row."
+          },
+          "why": {
+            "fr": "Une dimension doit rester cohérente avec le grain.",
+            "en": "A dimension must remain consistent with the grain."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lister les **faits** : les mesures numériques cohérentes avec le grain ; vérifier leur additivité.",
+            "en": "List the **facts**: the numeric measurements consistent with the grain; check their additivity."
+          },
+          "why": {
+            "fr": "Un ratio se calcule après agrégation de ses composants.",
+            "en": "A ratio is computed after aggregating its components."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier avec l’utilisateur : le modèle répond-il à ses questions ? Quelles questions futures le grain permet-il ?",
+            "en": "Check with the user: does the model answer their questions? Which future questions does the grain allow?"
+          },
+          "why": {
+            "fr": "Collaboration avec le métier (Kimball) ; un grain atomique résiste aux questions imprévues.",
+            "en": "Collaboration with the business (Kimball); an atomic grain withstands unexpected questions."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions provide the “who, what, where, when, why, and how” context surrounding a business process event."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts are the measurements that result from a business process event and are almost always numeric."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensional models should not be designed in isolation by folks who don’t fully understand the business and their needs; collaboration is critical!"
+        }
+      ],
+      "notions": [
+        "n-first-star-method"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Application à l’extrait C du chapitre 6 (« pourquoi les livraisons vers le sud étaient-elles en retard en mars ? »). **Notre modélisation**, non issue du cours : processus = livraison ; grain = une ligne par livraison effectuée ; dimensions = date promise, date de livraison, client, destination (région), transporteur, produit ; faits = retard en jours, quantité livrée. La date apparaît deux fois, avec deux rôles ; « livraison à l’heure » se calcule ensuite comme un taux, non additif.",
+        "en": "Applying it to extract C of chapter 6 (“why were deliveries to the south late in March?”). **Our modelling**, not from the course: process = delivery; grain = one row per delivery made; dimensions = promised date, delivery date, customer, destination (region), carrier, product; facts = delay in days, quantity delivered. The date appears twice, with two roles; “on-time delivery” is then computed as a rate, non-additive."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Our customer asked yesterday why deliveries to the south were late in March."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "A single physical dimension can be referenced multiple times in a fact table, with each reference linking to a logically distinct role for the dimension."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        }
+      ],
+      "notions": [
+        "n-role-playing-date"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  F[\"Delivery facts: delay days, quantity delivered\"]\n  D1[\"Promised date\"] --- F\n  D2[\"Delivery date\"] --- F\n  C[\"Customer\"] --- F\n  R[\"Destination region\"] --- F\n  T[\"Carrier\"] --- F\n  P[\"Product\"] --- F",
+      "caption": {
+        "fr": "Étoile de notre cas « livraisons » : une table de faits au centre, six dimensions autour (la date a deux rôles).",
+        "en": "Star for our “deliveries” case: a fact table in the centre, six dimensions around it (the date has two roles)."
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Calendrier : une dimension de date est rattachée à presque toute table de faits, pour naviguer par jours, mois, périodes fiscales, jours spéciaux. Plusieurs dates dans une même table (promise, livrée) sont des « rôles » d’une même dimension physique.",
+        "en": "Calendar: a date dimension is attached to almost every fact table, to navigate by days, months, fiscal periods, special days. Several dates in one table (promised, delivered) are “roles” of the same physical dimension."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Calendar date dimensions are attached to virtually every fact table to allow navigation of the fact table through familiar dates, months, fiscal periods, and special days on the calendar."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "A single physical dimension can be referenced multiple times in a fact table, with each reference linking to a logically distinct role for the dimension."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-13-qz-05"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-dimensional-model",
+      "fr": "modèle dimensionnel",
+      "en": "dimensional model",
+      "definition": {
+        "fr": "Modèle qui organise l’analyse en faits (mesures) décrits par des dimensions (axes), à un grain déclaré ; produit à partir d’une ou plusieurs interviews.",
+        "en": "A model that organises analysis into facts (measures) described by dimensions (axes), at a declared grain; produced from one or more interviews."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Model: from one or more interviews, produce a dimensional model and make the link between the elements shared from one interview to the next."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Modeling by measures and analysis axes"
+        }
+      ],
+      "notion": "n-modeling-sessions"
+    },
+    {
+      "id": "term-grain",
+      "fr": "grain",
+      "en": "grain",
+      "definition": {
+        "fr": "Niveau de détail stocké ; pour une table de faits, ce que représente exactement une ligne ; on ne peut pas descendre sous le grain.",
+        "en": "The stored level of detail; for a fact table, what exactly one row represents; you cannot drill below the grain."
+      },
+      "example": {
+        "fr": "une ligne = une livraison effectuée",
+        "en": "one row = one delivery made"
+      },
+      "pitfall": {
+        "fr": "Déclarer le grain avant dimensions et faits.",
+        "en": "Declare the grain before dimensions and facts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        }
+      ],
+      "notion": "n-grain"
+    },
+    {
+      "id": "term-fact",
+      "fr": "fait",
+      "en": "fact",
+      "definition": {
+        "fr": "Mesure numérique d’un événement, que l’on agrège ; doit être cohérente avec le grain.",
+        "en": "A numeric measurement of an event, that gets aggregated; it must be consistent with the grain."
+      },
+      "example": {
+        "fr": "montant des ventes, quantité",
+        "en": "sales amount, quantity"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        }
+      ],
+      "notion": "n-fact"
+    },
+    {
+      "id": "term-dimension",
+      "fr": "dimension (axe d’analyse)",
+      "en": "dimension (analysis axis)",
+      "definition": {
+        "fr": "Angle sous lequel on regarde et filtre les faits : temps, produit, client, site ; donne le contexte (qui, quoi, où, quand…).",
+        "en": "The angle used to view and filter facts: time, product, customer, site; gives context (who, what, where, when…)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "revenue by month and region"
+        }
+      ],
+      "notion": "n-dimension"
+    },
+    {
+      "id": "term-star-schema",
+      "fr": "schéma en étoile",
+      "en": "star schema",
+      "definition": {
+        "fr": "Une table de faits entourée de tables de dimension, dans une base relationnelle ; objet de la séance 5 (« première étoile »).",
+        "en": "A fact table surrounded by dimension tables, in a relational database; the subject of session 5 (“first star”)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Modeling by measures and analysis axes"
+        }
+      ],
+      "notion": "n-star-schema"
+    },
+    {
+      "id": "term-interview",
+      "fr": "interview (source du modèle)",
+      "en": "interview (source of the model)",
+      "definition": {
+        "fr": "Point de départ du modèle dimensionnel : on en tire processus, grain, dimensions et faits.",
+        "en": "The starting point of the dimensional model: process, grain, dimensions and facts are drawn from it."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Model: from one or more interviews, produce a dimensional model and make the link between the elements shared from one interview to the next."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        }
+      ],
+      "notion": "n-first-star-method"
+    },
+    {
+      "id": "term-analysis-granularity",
+      "fr": "granularité (rappel)",
+      "en": "granularity (reminder)",
+      "definition": {
+        "fr": "Niveau de détail stocké ou affiché, transcription de « grain » dans le cours.",
+        "en": "Level of detail stored or displayed, the course’s word for “grain”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ],
+      "notion": "n-grain"
+    }
+  ],
+  "notions": [
+    "n-modeling-sessions",
+    "n-four-step-design",
+    "n-grain",
+    "n-fact",
+    "n-additivity",
+    "n-dimension",
+    "n-star-schema",
+    "n-fact-or-attribute",
+    "n-role-playing-date",
+    "n-first-star-method"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Les séances 5 à 10 passent de l’interview au modèle dimensionnel ; « Modéliser » : produire un modèle à partir d’une ou plusieurs interviews et relier les éléments partagés.",
+        "en": "Sessions 5 to 10 go from interview to dimensional model; “Model”: produce a model from one or more interviews and link the shared elements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Model: from one or more interviews, produce a dimensional model and make the link between the elements shared from one interview to the next."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "sessions 5 to 10 alternate concepts and exercises on paper and on the board, each taking up the notions of the previous ones"
+        }
+      ],
+      "notions": [
+        "n-modeling-sessions"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Quatre décisions dans l’ordre : processus métier, grain, dimensions, faits.",
+        "en": "Four decisions in order: business process, grain, dimensions, facts."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        }
+      ],
+      "notions": [
+        "n-four-step-design"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le grain établit ce que représente une ligne de faits ; il se déclare avant dimensions et faits ; on ne mélange pas les grains ; on commence par le grain atomique.",
+        "en": "The grain establishes what one fact row represents; it is declared before dimensions and facts; grains are not mixed; start with the atomic grain."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain must be declared before choosing dimensions or facts because every candidate dimension or fact must be consistent with the grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "different grains must not be mixed in the same fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Atomic grain refers to the lowest level at which data is captured by a given business process."
+        }
+      ],
+      "notions": [
+        "n-grain"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les faits sont des mesures numériques cohérentes avec le grain ; additifs, semi-additifs (solde) ou non additifs (ratio, à calculer après agrégation).",
+        "en": "Facts are numeric measurements consistent with the grain; additive, semi-additive (balance) or non-additive (ratio, to be computed after aggregation)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts are the measurements that result from a business process event and are almost always numeric."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Within a fact table, only facts consistent with the declared grain are allowed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "The most flexible and useful facts are fully additive; additive measures can be summed across any of the dimensions associated with the fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Semi-additive measures can be summed across some dimensions, but not all; balance amounts are common semi-additive facts because they are additive across all dimensions except time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        }
+      ],
+      "notions": [
+        "n-fact",
+        "n-additivity"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les dimensions donnent le contexte (qui, quoi, où, quand, pourquoi, comment), filtrent et groupent ; plates et dénormalisées.",
+        "en": "Dimensions give context (who, what, where, when, why, how), filter and group; flat and denormalised."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions provide the “who, what, where, when, why, and how” context surrounding a business process event."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimension tables contain the descriptive attributes used by BI applications for filtering and grouping the facts."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension tables are usually wide, flat denormalized tables with many low-cardinality text attributes."
+        }
+      ],
+      "notions": [
+        "n-dimension"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Étoile = une table de faits entourée de dimensions ; elle correspond à un processus réel, pas à un rapport.",
+        "en": "Star = a fact table surrounded by dimensions; it corresponds to a real process, not to a report."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "a fact table containing the event’s numeric measurements surrounded by a halo of dimension tables that contain the textual context that was true at the moment the event occurred."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Thus a fact table corresponds to a physical observable event, and not to the demands of a particular report."
+        }
+      ],
+      "notions": [
+        "n-star-schema"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Les quatre décisions de conception de Kimball ?",
+        "en": "Kimball’s four design decisions?"
+      },
+      "back": {
+        "fr": "Processus métier, grain, dimensions, faits.",
+        "en": "Business process, grain, dimensions, facts."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        }
+      ],
+      "notions": [
+        "n-four-step-design"
+      ],
+      "id": "isi7-13-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Grain ?",
+        "en": "Grain?"
+      },
+      "back": {
+        "fr": "Ce que représente exactement une ligne de la table de faits ; on ne descend pas sous le grain.",
+        "en": "What exactly one row of the fact table represents; you cannot drill below the grain."
+      },
+      "termId": "term-grain",
+      "id": "isi7-13-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Quand déclare-t-on le grain ?",
+        "en": "When is the grain declared?"
+      },
+      "back": {
+        "fr": "Avant de choisir dimensions et faits.",
+        "en": "Before choosing dimensions and facts."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain must be declared before choosing dimensions or facts because every candidate dimension or fact must be consistent with the grain."
+        }
+      ],
+      "notions": [
+        "n-grain"
+      ],
+      "id": "isi7-13-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Grain atomique ?",
+        "en": "Atomic grain?"
+      },
+      "back": {
+        "fr": "Le niveau le plus bas auquel le processus capture la donnée ; il résiste aux requêtes imprévisibles.",
+        "en": "The lowest level at which the process captures data; it withstands unpredictable queries."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Atomic grain refers to the lowest level at which data is captured by a given business process."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "because it withstands the assault of unpredictable user queries"
+        }
+      ],
+      "notions": [
+        "n-grain"
+      ],
+      "id": "isi7-13-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Peut-on mélanger deux grains dans une table de faits ?",
+        "en": "Can two grains be mixed in one fact table?"
+      },
+      "back": {
+        "fr": "Non : un grain, une table.",
+        "en": "No: one grain, one table."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "different grains must not be mixed in the same fact table."
+        }
+      ],
+      "notions": [
+        "n-grain"
+      ],
+      "id": "isi7-13-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Fait ?",
+        "en": "Fact?"
+      },
+      "back": {
+        "fr": "Mesure numérique d’un événement, cohérente avec le grain.",
+        "en": "A numeric measurement of an event, consistent with the grain."
+      },
+      "termId": "term-fact",
+      "id": "isi7-13-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Dimension ?",
+        "en": "Dimension?"
+      },
+      "back": {
+        "fr": "Contexte descriptif : qui, quoi, où, quand, pourquoi, comment ; sert à filtrer et grouper.",
+        "en": "Descriptive context: who, what, where, when, why, how; used to filter and group."
+      },
+      "termId": "term-dimension",
+      "id": "isi7-13-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Fait additif, semi-additif, non additif ?",
+        "en": "Additive, semi-additive, non-additive fact?"
+      },
+      "back": {
+        "fr": "Somme sur toutes / certaines / aucune dimension ; ex. montant / solde (sauf temps) / ratio.",
+        "en": "Summed across all / some / no dimension; e.g. amount / balance (except time) / ratio."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "The most flexible and useful facts are fully additive; additive measures can be summed across any of the dimensions associated with the fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Semi-additive measures can be summed across some dimensions, but not all; balance amounts are common semi-additive facts because they are additive across all dimensions except time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        }
+      ],
+      "notions": [
+        "n-additivity"
+      ],
+      "id": "isi7-13-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Comment traite-t-on un ratio ?",
+        "en": "How is a ratio treated?"
+      },
+      "back": {
+        "fr": "On stocke ses composants additifs et on calcule le ratio après agrégation.",
+        "en": "Store its additive components and compute the ratio after aggregation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "store the fully additive components of the non-additive measure and sum these components into the final answer set before calculating the final non-additive fact"
+        }
+      ],
+      "notions": [
+        "n-additivity"
+      ],
+      "id": "isi7-13-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Fait ou attribut de dimension ?",
+        "en": "Fact or dimension attribute?"
+      },
+      "back": {
+        "fr": "Numérique continu : plutôt un fait ; numérique discret d’une petite liste : plutôt un attribut.",
+        "en": "Continuous numeric: rather a fact; discrete numeric from a small list: rather an attribute."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "observations are almost always facts; discrete numeric observations drawn from a small list are almost always dimension attributes."
+        }
+      ],
+      "notions": [
+        "n-fact-or-attribute"
+      ],
+      "id": "isi7-13-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Schéma en étoile ?",
+        "en": "Star schema?"
+      },
+      "back": {
+        "fr": "Une table de faits entourée de dimensions ; un processus métier par étoile.",
+        "en": "A fact table surrounded by dimensions; one business process per star."
+      },
+      "termId": "term-star-schema",
+      "id": "isi7-13-fc-11"
+    },
+    {
+      "front": {
+        "fr": "Méthode : de l’interview à l’étoile ?",
+        "en": "Method: from interview to star?"
+      },
+      "back": {
+        "fr": "Processus (événement mesuré), grain en une phrase, dimensions (les « par »), faits (mesures cohérentes), validation avec l’utilisateur.",
+        "en": "Process (measured event), grain in one sentence, dimensions (the “by”), facts (consistent measurements), validation with the user."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions provide the “who, what, where, when, why, and how” context surrounding a business process event."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts are the measurements that result from a business process event and are almost always numeric."
+        }
+      ],
+      "notions": [
+        "n-first-star-method"
+      ],
+      "id": "isi7-13-fc-12"
+    },
+    {
+      "front": {
+        "fr": "Quelle place pour la modélisation dimensionnelle à l’examen ?",
+        "en": "What place for dimensional modelling in the exam?"
+      },
+      "back": {
+        "fr": "Une partie courte : séances 5 à 10 ; les sections 1 et 2 font la majeure partie.",
+        "en": "A short part: sessions 5 to 10; sections 1 and 2 make up most."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So, basically the lessons 5 to 10. It's about implementing a dimensional model into the architecture"
+        }
+      ],
+      "notions": [
+        "n-modeling-sessions"
+      ],
+      "id": "isi7-13-fc-13"
+    },
+    {
+      "front": {
+        "fr": "Deux dates dans une table de faits ?",
+        "en": "Two dates in a fact table?"
+      },
+      "back": {
+        "fr": "Deux rôles d’une même dimension de date.",
+        "en": "Two roles of the same date dimension."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "A single physical dimension can be referenced multiple times in a fact table, with each reference linking to a logically distinct role for the dimension."
+        }
+      ],
+      "notions": [
+        "n-role-playing-date"
+      ],
+      "id": "isi7-13-fc-14"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans la méthode de Kimball, on déclare le grain avant de choisir les dimensions et les faits.",
+        "en": "In Kimball’s method, the grain is declared before choosing dimensions and facts."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : chaque dimension ou fait candidat doit être cohérent avec le grain.",
+        "en": "TRUE: every candidate dimension or fact must be consistent with the grain."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain must be declared before choosing dimensions or facts because every candidate dimension or fact must be consistent with the grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-grain",
+        "n-four-step-design"
+      ],
+      "id": "isi7-13-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le grain d’une table de faits est le nombre de dimensions qu’elle référence.",
+        "en": "The grain of a fact table is the number of dimensions it references."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le grain établit ce que représente exactement une ligne de la table de faits.",
+        "en": "FALSE: the grain establishes what exactly one row of the fact table represents."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-grain"
+      ],
+      "trap": {
+        "fr": "Confondre grain et nombre de dimensions.",
+        "en": "Confusing grain and number of dimensions."
+      },
+      "id": "isi7-13-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "« Une ligne = une livraison effectuée » est…",
+        "en": "“One row = one delivery made” is…"
+      },
+      "options": [
+        {
+          "fr": "Une dimension",
+          "en": "A dimension"
+        },
+        {
+          "fr": "Un fait",
+          "en": "A fact"
+        },
+        {
+          "fr": "Une déclaration de grain",
+          "en": "A grain declaration"
+        },
+        {
+          "fr": "Une règle de sécurité",
+          "en": "A security rule"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Une déclaration de grain : elle dit ce que représente une ligne de faits.",
+        "en": "A grain declaration: it says what one fact row represents."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-grain",
+        "n-first-star-method"
+      ],
+      "id": "isi7-13-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une table qui contient des ventes à la ligne de ticket et des objectifs mensuels par magasin dans les mêmes colonnes respecte la règle « un grain par table de faits ».",
+        "en": "A table holding ticket-line sales and monthly targets per store in the same columns respects the “one grain per fact table” rule."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : deux grains différents ne doivent pas être mélangés dans la même table de faits.",
+        "en": "FALSE: different grains must not be mixed in the same fact table."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "different grains must not be mixed in the same fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "One of the core tenets of dimensional modeling is that all the measurement rows in a fact table must be at the same grain."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-grain"
+      ],
+      "trap": {
+        "fr": "Mélanger réel et objectif au même grain.",
+        "en": "Mixing actuals and targets at one grain."
+      },
+      "id": "isi7-13-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un modèle dimensionnel correspond à un événement physique observable et non aux demandes d’un rapport particulier.",
+        "en": "A dimensional model corresponds to a physical observable event and not to the demands of a particular report."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « a fact table corresponds to a physical observable event ».",
+        "en": "TRUE: “a fact table corresponds to a physical observable event”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Thus a fact table corresponds to a physical observable event, and not to the demands of a particular report."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-star-schema"
+      ],
+      "id": "isi7-13-qz-05"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Parmi ces éléments d’une vente de détail, lequel est exclu d’une table de faits au grain « ligne de ticket » ?",
+        "en": "Among these elements of a retail sale, which one is excluded from a fact table at “ticket line” grain?"
+      },
+      "options": [
+        {
+          "fr": "Le salaire du directeur du magasin",
+          "en": "The store manager’s salary"
+        },
+        {
+          "fr": "La quantité vendue",
+          "en": "Quantity sold"
+        },
+        {
+          "fr": "Le prix étendu",
+          "en": "The extended price"
+        },
+        {
+          "fr": "Le montant de la remise de la ligne",
+          "en": "The discount amount of the line"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Le salaire du directeur n’est pas cohérent avec le grain ; quantité et prix étendu sont de bons faits.",
+        "en": "The manager’s salary is not consistent with the grain; quantity and extended price are good facts."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "in a retail sales transaction, the quantity of a product sold and its extended price are good facts, whereas the store manager’s salary is disallowed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Within a fact table, only facts consistent with the declared grain are allowed."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-fact"
+      ],
+      "id": "isi7-13-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un solde de compte est un fait additif sur toutes les dimensions, y compris le temps.",
+        "en": "An account balance is a fact that is additive across all dimensions, including time."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : un solde est semi-additif : additif sur toutes les dimensions sauf le temps.",
+        "en": "FALSE: a balance is semi-additive: additive across all dimensions except time."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Semi-additive measures can be summed across some dimensions, but not all; balance amounts are common semi-additive facts because they are additive across all dimensions except time."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-additivity"
+      ],
+      "trap": {
+        "fr": "Additionner des soldes dans le temps.",
+        "en": "Adding balances across time."
+      },
+      "id": "isi7-13-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour obtenir un taux de livraison à l’heure, on additionne les taux de chaque ligne de livraison.",
+        "en": "To obtain an on-time delivery rate, the rate of each delivery line is summed."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : un ratio est non additif ; on stocke ses composants additifs (livraisons, livraisons à l’heure) et on calcule le taux après agrégation.",
+        "en": "FALSE: a ratio is non-additive; its additive components (deliveries, on-time deliveries) are stored and the rate is computed after aggregation."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "store the fully additive components of the non-additive measure and sum these components into the final answer set before calculating the final non-additive fact"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-additivity"
+      ],
+      "id": "isi7-13-qz-08"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une donnée numérique « prix unitaire standard » varie peu, prend peu de valeurs différentes et sert surtout à filtrer. Fait ou attribut de dimension ?",
+        "en": "A numeric data element “standard unit price” varies little, takes few distinct values and is mostly used to filter. Fact or dimension attribute?"
+      },
+      "options": [
+        {
+          "fr": "Une clé étrangère",
+          "en": "A foreign key"
+        },
+        {
+          "fr": "Un grain",
+          "en": "A grain"
+        },
+        {
+          "fr": "Plutôt un attribut de dimension (numérique discret, petite liste)",
+          "en": "Rather a dimension attribute (discrete numeric, small list)"
+        },
+        {
+          "fr": "Obligatoirement un fait",
+          "en": "Necessarily a fact"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Règle empirique de Kimball et Ross : numérique continu = fait ; numérique discret d’une petite liste = attribut de dimension.",
+        "en": "Kimball and Ross rule of thumb: continuously valued numeric = fact; discrete numeric from a small list = dimension attribute."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "observations are almost always facts; discrete numeric observations drawn from a small list are almost always dimension attributes."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-fact-or-attribute"
+      ],
+      "id": "isi7-13-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les dimensions sont de préférence plates et dénormalisées, avec beaucoup d’attributs texte.",
+        "en": "Dimensions are preferably flat and denormalised, with many text attributes."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « wide, flat denormalized tables with many low-cardinality text attributes ».",
+        "en": "TRUE: “wide, flat denormalized tables with many low-cardinality text attributes”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension tables are usually wide, flat denormalized tables with many low-cardinality text attributes."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-dimension"
+      ],
+      "id": "isi7-13-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans notre cas « livraisons », la date promise et la date de livraison nécessitent deux dimensions de date physiquement distinctes.",
+        "en": "In our “deliveries” case, the promised date and the delivery date need two physically distinct date dimensions."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : une même dimension physique de date peut être référencée plusieurs fois, avec des rôles distincts.",
+        "en": "FALSE: a single physical date dimension can be referenced several times, with distinct roles."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "A single physical dimension can be referenced multiple times in a fact table, with each reference linking to a logically distinct role for the dimension."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-role-playing-date"
+      ],
+      "trap": {
+        "fr": "Dupliquer les tables au lieu de définir des rôles.",
+        "en": "Duplicating tables instead of defining roles."
+      },
+      "id": "isi7-13-qz-11"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "À l’examen, quelle place le prof donne-t-il au modèle dimensionnel (séances 5 à 10) ?",
+        "en": "In the exam, what place does the teacher give the dimensional model (sessions 5 to 10)?"
+      },
+      "options": [
+        {
+          "fr": "La quasi-totalité de l’examen, à cause des six demi-journées",
+          "en": "Almost the whole exam, because of the six half-days"
+        },
+        {
+          "fr": "Aucune place : hors examen",
+          "en": "No place: outside the exam"
+        },
+        {
+          "fr": "Un examen distinct sur ordinateur",
+          "en": "A separate computer-based exam"
+        },
+        {
+          "fr": "Une partie courte de l’examen",
+          "en": "A short part of the exam"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "« A short part of the examination will be on the remaining class », donc les séances 5 à 10 ; les sections 1 et 2 font la majeure partie.",
+        "en": "“A short part of the examination will be on the remaining class”, i.e. sessions 5 to 10; sections 1 and 2 make up most of it."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So, basically the lessons 5 to 10. It's about implementing a dimensional model into the architecture"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Course framework",
+          "quote": "Distribution: 1 half-day of context, 3 of architecture, 6 of dimensional modeling."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-modeling-sessions"
+      ],
+      "id": "isi7-13-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "De l’interview à l’étoile : une pharmacie",
+        "en": "From interview to star: a pharmacy"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Le responsable d’une pharmacie : « Je veux voir, chaque mois, les ventes par produit et par fournisseur, pour chaque pharmacien, et savoir combien de boîtes sont vendues par jour. Je voudrais aussi comparer les mois d’une année sur l’autre. » **(a)** Quel est le processus ? **(b)** Déclarez le grain. **(c)** Listez les dimensions. **(d)** Listez les faits et dites s’ils sont additifs. **(e)** Un taux de marge est demandé : comment le traiter ?",
+        "en": "*(Invented case for practice.)* A pharmacy manager: “I want to see, every month, sales by product and by supplier, for each pharmacist, and know how many boxes are sold per day. I would also like to compare months year on year.” **(a)** What is the process? **(b)** Declare the grain. **(c)** List the dimensions. **(d)** List the facts and say whether they are additive. **(e)** A margin rate is requested: how is it handled?"
+      },
+      "hints": [
+        {
+          "fr": "Le grain doit permettre le « par jour ».",
+          "en": "The grain must allow the “per day”."
+        },
+        {
+          "fr": "Un taux est un ratio.",
+          "en": "A rate is a ratio."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Processus : la vente de médicaments (passage en caisse).\n**(b)** Grain : une ligne par produit vendu sur un ticket (grain atomique) ; il permet « par jour », « par pharmacien » et tout regroupement mensuel.\n**(c)** Dimensions : date, produit, fournisseur (attribut du produit ou dimension liée), pharmacien, pharmacie ; la dimension de date porte les mois, ce qui permet la comparaison d’une année sur l’autre.\n**(d)** Faits : quantité de boîtes (additif), montant des ventes (additif), coût (additif).\n**(e)** Le taux de marge est un ratio, donc non additif : on stocke le montant des ventes et le coût (ou la marge), additifs, et on calcule le taux de marge après agrégation.\n*Barème indicatif* : 1 point par question (a à e). *Ce que l’exercice vérifie* : appliquer les quatre décisions dans l’ordre. *Corrigé proposé : le fournisseur peut aussi être une dimension propre.*",
+        "en": "**(a)** Process: sales of medicines (checkout).\n**(b)** Grain: one row per product sold on a ticket (atomic grain); it allows “per day”, “per pharmacist” and any monthly grouping.\n**(c)** Dimensions: date, product, supplier (product attribute or linked dimension), pharmacist, pharmacy; the date dimension carries months, which enables year-on-year comparison.\n**(d)** Facts: quantity of boxes (additive), sales amount (additive), cost (additive).\n**(e)** The margin rate is a ratio, hence non-additive: store the sales amount and the cost (or margin), which are additive, and compute the margin rate after aggregation.\n*Indicative marking*: 1 point per question (a to e). *What the exercise checks*: applying the four decisions in order. *Proposed answer: the supplier may also be its own dimension.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Select the business process. 2. Declare the grain. 3. Identify the dimensions. 4. Identify the facts"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Atomic grain refers to the lowest level at which data is captured by a given business process."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions provide the “who, what, where, when, why, and how” context surrounding a business process event."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "store the fully additive components of the non-additive measure and sum these components into the final answer set before calculating the final non-additive fact"
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Choisir un grain mensuel parce que la demande dit « chaque mois ».",
+        "en": "Choosing a monthly grain because the request says “every month”."
+      },
+      "notions": [
+        "n-first-star-method",
+        "n-four-step-design",
+        "n-grain",
+        "n-fact",
+        "n-dimension",
+        "n-additivity"
+      ],
+      "id": "isi7-13-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Trouver les erreurs d’un schéma",
+        "en": "Finding the errors in a schema"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Un schéma de « ventes » est décrit ainsi : table de faits **Ventes** avec les colonnes date, produit, magasin, quantité, montant de la vente, objectif mensuel du magasin, taux de marge, salaire du directeur du magasin, solde de caisse. Le grain est « on verra plus tard ». Repérez les erreurs, expliquez-les et corrigez.",
+        "en": "A “sales” schema is described as: fact table **Sales** with columns date, product, store, quantity, sale amount, store monthly target, margin rate, store manager’s salary, cash balance. The grain is “we’ll see later”. Spot the errors, explain them and correct."
+      },
+      "hints": [
+        {
+          "fr": "Relisez la règle sur le grain et la cohérence des faits.",
+          "en": "Reread the rule on grain and the consistency of facts."
+        },
+        {
+          "fr": "Quels éléments ne sont pas des mesures de l’événement ?",
+          "en": "Which elements are not measurements of the event?"
+        }
+      ],
+      "solution": {
+        "fr": "**Erreurs** : (1) grain non déclaré : à déclarer d’abord (ex. une ligne par produit vendu sur un ticket). (2) L’objectif mensuel du magasin est un autre grain : table à part. (3) Le salaire du directeur n’est pas cohérent avec le grain : à supprimer (attribut éventuel d’une dimension, pas un fait). (4) Le taux de marge est un ratio non additif : stocker les composants et calculer après agrégation. (5) Le solde de caisse est semi-additif et ne correspond pas à l’événement de vente (un autre processus et une autre table).\n**Correction** : fait **Ventes** (grain : une ligne par produit vendu sur un ticket) avec date, produit, magasin, quantité, montant, coût ; l’objectif mensuel dans une table de faits à son propre grain ; le taux de marge calculé dans la couche BI.\n*Barème indicatif* : 1 point par erreur trouvée et expliquée, 1 point pour la correction.",
+        "en": "**Errors**: (1) undeclared grain: to be declared first (e.g. one row per product sold on a ticket). (2) The store monthly target is another grain: separate table. (3) The manager’s salary is not consistent with the grain: remove (possibly an attribute of a dimension, not a fact). (4) The margin rate is a non-additive ratio: store the components and compute after aggregation. (5) The cash balance is semi-additive and does not match the sale event (another process and another table).\n**Correction**: **Sales** fact (grain: one row per product sold on a ticket) with date, product, store, quantity, amount, cost; the monthly target in a fact table at its own grain; the margin rate computed in the BI layer.\n*Indicative marking*: 1 point per error found and explained, 1 point for the correction."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Declaring the grain is the pivotal step in a dimensional design. The grain establishes exactly what a single fact table row represents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "different grains must not be mixed in the same fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Within a fact table, only facts consistent with the declared grain are allowed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "in a retail sales transaction, the quantity of a product sold and its extended price are good facts, whereas the store manager’s salary is disallowed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Semi-additive measures can be summed across some dimensions, but not all; balance amounts are common semi-additive facts because they are additive across all dimensions except time."
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Corriger les colonnes sans déclarer le grain.",
+        "en": "Fixing the columns without declaring the grain."
+      },
+      "notions": [
+        "n-grain",
+        "n-fact",
+        "n-additivity"
+      ],
+      "id": "isi7-13-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The grain must be declared before choosing dimensions and facts.",
+      "id": "isi7-13-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "The {{grain}} establishes exactly what a single {{fact}} table row represents.",
+      "translation": "Le grain établit exactement ce que représente une ligne de la table de faits.",
+      "id": "isi7-13-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A ratio is a fully additive fact that can be summed across all dimensions.",
+      "error": "a fully additive fact that can be summed across all dimensions",
+      "corrected": "a non-additive fact",
+      "explanation": {
+        "fr": "Un ratio est non additif : on additionne ses composants puis on calcule le ratio.",
+        "en": "A ratio is non-additive: sum its components then compute the ratio."
+      },
+      "id": "isi7-13-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : comment passe-t-on d’une interview à une étoile ?",
+        "en": "In three sentences: how do you go from an interview to a star?"
+      },
+      "modelAnswer": "First I identify the business process the user wants to measure, then I declare the grain, saying what one row represents. Next I list the dimensions and the facts that are consistent with that grain, and I check with the user that the model answers their questions.",
+      "keywords": [
+        "business process",
+        "grain",
+        "dimensions",
+        "facts",
+        "consistent"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai respecté l’ordre processus, grain, dimensions, faits.",
+          "en": "I followed the order process, grain, dimensions, facts."
+        }
+      ],
+      "usefulPhrases": [
+        "First…, then…, next…",
+        "consistent with the grain"
+      ],
+      "id": "isi7-13-wr-04"
+    }
+  ]
+}

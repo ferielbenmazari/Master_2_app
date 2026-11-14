@@ -1,0 +1,1842 @@
+{
+  "id": "isi7-15-historiser-scd2",
+  "courseId": "isi7",
+  "order": 15,
+  "title": {
+    "fr": "Historiser : le SCD de type 2",
+    "en": "Historising: the type 2 SCD"
+  },
+  "hook": {
+    "fr": "Le client déménage : ses ventes de l’an dernier changent-elles de ville ?",
+    "en": "The customer moves: do last year’s sales change city?"
+  },
+  "question": {
+    "fr": "Comment conserver l’historique des attributs d’une dimension pour que les rapports passés gardent leur sens ?",
+    "en": "How do you keep the history of a dimension’s attributes so that past reports keep their meaning?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Décrire les types 0, 1, 2, 3 et leur effet sur l’historique.",
+        "en": "Describe types 0, 1, 2, 3 and their effect on history."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Construire une dimension de type 2 et en déduire le rapport.",
+        "en": "Build a type 2 dimension and derive the report."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Choisir le type par attribut avec le critère « les rapports de l’année 1 gardent leur sens ».",
+        "en": "Choose the type per attribute with the criterion “year-1 reports keep their meaning”."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Séance 7 : « SCD de type 2 et conservation de l’historique » ; critère « les rapports de l’année 1 gardent leur sens » annoncé en séance 9 (diapositives).",
+        "en": "Session 7: “type 2 SCD and history conservation”; criterion “year-1 reports keep their meaning” announced in session 9 (slides)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Une dimension à historiser avec recalcul d’un rapport : estimation ; détail technique issu de Kimball.",
+        "en": "A dimension to historise with a report recomputation: an estimate; technical detail from Kimball."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3 et 13 : principe prévisible et dimensions.",
+    "en": "Chapters 3 and 13: the predictable principle and dimensions."
+  },
+  "next": {
+    "fr": "Chapitre 16 : les faits sans mesure.",
+    "en": "Chapter 16: factless facts."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Type 0 / 1 / 2 / 3 et leurs effets sur l’historique.",
+        "en": "Types 0 / 1 / 2 / 3 and their effects on history."
+      },
+      {
+        "fr": "Type 2 : nouvelle ligne, clé de substitution, dates d’effet et d’expiration, indicateur courant.",
+        "en": "Type 2: new row, surrogate key, effective and expiration dates, current indicator."
+      },
+      {
+        "fr": "Le critère : « les rapports de l’année 1 gardent leur sens ».",
+        "en": "The criterion: “year-1 reports keep their meaning”."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Construire une dimension de type 2 et recalculer un rapport.",
+        "en": "Build a type 2 dimension and recompute a report."
+      },
+      {
+        "fr": "Choisir le type attribut par attribut.",
+        "en": "Choose the type attribute by attribute."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Type 1 (écrase) ≠ type 2 (ajoute une ligne) ≠ type 3 (ajoute un attribut).",
+        "en": "Type 1 (overwrites) ≠ type 2 (adds a row) ≠ type 3 (adds an attribute)."
+      },
+      {
+        "fr": "Clé naturelle ≠ clé de substitution ≠ clé durable.",
+        "en": "Natural key ≠ surrogate key ≠ durable key."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 3 : pain point 5 et principe prévisible.",
+        "en": "Chapter 3: pain point 5 and predictable principle."
+      },
+      {
+        "fr": "Chapitre 10 : rétention et RGPD.",
+        "en": "Chapter 10: retention and GDPR."
+      },
+      {
+        "fr": "Chapitre 17 : critère d’évolution du cours.",
+        "en": "Chapter 17: the course’s evolution criterion."
+      }
+    ]
+  },
+  "estimatedMinutes": 13,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Quand le client déménage : pourquoi historiser",
+        "en": "When the customer moves: why historise"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un client habite Lyon en 2025 et déménage à Paris le 1ᵉʳ juillet 2026. Un rapport « ventes par ville de client » pour le premier semestre 2026 doit-il compter ces ventes à Lyon ou à Paris ? Le cours répond en deux temps : la séance 7 est consacrée au « **SCD de type 2** et à la **conservation de l’historique** », et la caractéristique « résultats stables dans le temps » appelle l’**historisation** (principe prévisible).",
+        "en": "A customer lives in Lyon in 2025 and moves to Paris on 1 July 2026. Should a “sales by customer city” report for the first half of 2026 count these sales in Lyon or in Paris? The course answers in two steps: session 7 is devoted to “**type 2 SCD** and **history conservation**”, and the characteristic “results stable over time” calls for **historisation** (the predictable principle)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ],
+      "notions": [
+        "n-history-conservation",
+        "n-stable-results"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Rappel du pain point 5 : les chiffres publiés ne doivent pas bouger. Si une simple mise à jour de l’adresse du client réécrit le passé, un rapport déjà publié pour le premier semestre change a posteriori. Et plus tard, au séance 9, le critère de notation sera annoncé : « les rapports de l’année 1 gardent leur sens ».",
+        "en": "Reminder of pain point 5: published figures must not shift. If a simple address update rewrites the past, a report already published for the first half changes after the fact. And later, in session 9, the marking criterion will be announced: “year-1 reports keep their meaning”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notions": [
+        "n-stable-results"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans les termes du cours, c’est l’entrepôt qui « historise » : il intègre, historise et unifie les sources. Le modèle dimensionnel (Kimball et Ross) l’exprime ainsi : une dimension contient le contexte textuel **qui était vrai au moment de l’événement**. Garder ce contexte dans le temps, c’est le sujet de ce chapitre.",
+        "en": "In the course’s terms, it is the warehouse that “historises”: it integrates, historises and unifies the sources. The dimensional model (Kimball and Ross) puts it this way: a dimension holds the textual context **that was true at the moment of the event**. Keeping this context over time is the subject of this chapter."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "dimension tables that contain the textual context that was true at the moment the event occurred"
+        }
+      ],
+      "notions": [
+        "n-history-conservation"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-15-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Quatre réponses à un changement d’attribut (complément Kimball)",
+        "en": "Four answers to an attribute change (Kimball supplement)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce chapitre s’appuie sur Kimball (techniques officielles) pour le détail, le cours ne donnant que l’intitulé de la séance. Kimball nomme les réponses **types** : 0 (conserver l’original), 1 (écraser), 2 (ajouter une ligne), 3 (ajouter un attribut) ; les types 4 à 7 sont des variantes pour des cas particuliers.",
+        "en": "This chapter relies on Kimball (official techniques) for the detail, the course only giving the session title. Kimball names the answers **types**: 0 (retain original), 1 (overwrite), 2 (add a row), 3 (add an attribute); types 4 to 7 are variants for special cases."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "With slowly changing dimension type 0, the dimension attribute value never changes, so facts are always grouped by this original value."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        }
+      ],
+      "notions": [
+        "n-scd-types-0-3"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Type",
+          "en": "Type"
+        },
+        {
+          "fr": "Principe (Kimball)",
+          "en": "Principle (Kimball)"
+        },
+        {
+          "fr": "Effet sur l’historique",
+          "en": "Effect on history"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "0 — conserver l’original",
+            "en": "0 — retain original"
+          },
+          {
+            "fr": "La valeur n’est jamais modifiée ; les faits sont toujours groupés par la valeur d’origine",
+            "en": "The value never changes; facts are always grouped by the original value"
+          },
+          {
+            "fr": "Valeur d’origine seule",
+            "en": "Original value only"
+          }
+        ],
+        [
+          {
+            "fr": "1 — écraser",
+            "en": "1 — overwrite"
+          },
+          {
+            "fr": "L’ancienne valeur est remplacée par la nouvelle",
+            "en": "The old value is overwritten with the new one"
+          },
+          {
+            "fr": "Détruit l’historique ; les agrégats et cubes affectés sont à recalculer",
+            "en": "Destroys history; affected aggregates and cubes must be recomputed"
+          }
+        ],
+        [
+          {
+            "fr": "2 — ajouter une ligne",
+            "en": "2 — add a row"
+          },
+          {
+            "fr": "Une nouvelle ligne avec les valeurs mises à jour et une nouvelle clé de substitution",
+            "en": "A new row with the updated values and a new surrogate key"
+          },
+          {
+            "fr": "Conserve tout l’historique, chaque fait pointe vers la ligne en vigueur",
+            "en": "Keeps full history, each fact points to the row in effect"
+          }
+        ],
+        [
+          {
+            "fr": "3 — ajouter un attribut",
+            "en": "3 — add an attribute"
+          },
+          {
+            "fr": "Un nouvel attribut garde l’ancienne valeur ; la nouvelle écrase l’attribut principal",
+            "en": "A new attribute keeps the old value; the new one overwrites the main attribute"
+          },
+          {
+            "fr": "Une seule ancienne valeur conservée ; utilisé assez rarement",
+            "en": "Only one old value kept; used relatively infrequently"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "With slowly changing dimension type 0, the dimension attribute value never changes, so facts are always grouped by this original value."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "you must be careful that aggregate fact tables and OLAP cubes affected by this change are recomputed"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 3 changes add a new attribute in the dimension to preserve the old attribute value; the new value overwrites the main attribute as in a type 1 change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "This slowly changing dimension technique is used relatively infrequently."
+        }
+      ],
+      "notions": [
+        "n-scd-types-0-3"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Mots à surveiller : le type 1 **détruit** l’historique, le type 2 le **conserve** en ajoutant une ligne, le type 3 ne garde qu’**une** ancienne valeur. Le cours ne retient que le type 2 dans l’intitulé de la séance : c’est lui à maîtriser.",
+        "en": "Words to watch: type 1 **destroys** history, type 2 **keeps** it by adding a row, type 3 keeps only **one** old value. The course only names type 2 in the session title: that is the one to master."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-15-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le type 2 en détail",
+        "en": "Type 2 in detail"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans un SCD de type 2, un changement **ajoute une ligne** dans la dimension avec les nouvelles valeurs. Il faut donc généraliser la clé primaire au-delà de la clé naturelle ou durable, puisqu’il y aura plusieurs lignes pour un même membre : une **clé de substitution** (*surrogate key*), un entier anonyme attribué en séquence. Elle est utilisée comme clé étrangère dans toutes les tables de faits à partir de la date du changement, jusqu’au changement suivant.",
+        "en": "In a type 2 SCD, a change **adds a row** in the dimension with the new values. The primary key must therefore be generalised beyond the natural or durable key, since there will be several rows for one member: a **surrogate key**, an anonymous integer assigned in sequence. It is used as a foreign key in all fact tables from the date of the change until the next change."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "This requires generalizing the primary key of the dimension beyond the natural or durable key because there will potentially be multiple rows describing each member."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "This primary key cannot be the operational system’s natural key because there will be multiple dimension rows for that natural key when changes are tracked over time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "you should create anonymous integer primary keys for every dimension"
+        }
+      ],
+      "notions": [
+        "n-scd-type-2",
+        "n-surrogate-key"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Kimball recommande au minimum trois colonnes de gestion : une date d’**effet** de la ligne, une date d’**expiration** et un **indicateur de ligne courante**. La clé de substitution protège aussi des clés naturelles des systèmes sources, soumises à des règles métier hors du contrôle de l’entrepôt ; et une clé **durable** peut relier les lignes successives d’un même membre.",
+        "en": "Kimball recommends at least three management columns: a row **effective** date, an **expiration** date and a **current row indicator**. The surrogate key also protects against source systems’ natural keys, subject to business rules outside the warehouse’s control; and a **durable** key can link the successive rows of one member."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Natural keys created by operational source systems are subject to business rules outside the control of the DW/BI system."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "While multiple surrogate keys may be associated with an employee over time as their profile changes, the durable key never changes."
+        }
+      ],
+      "notions": [
+        "n-surrogate-key"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Clé de subst.",
+          "en": "Surrogate key"
+        },
+        {
+          "fr": "Client (naturel)",
+          "en": "Customer (natural)"
+        },
+        {
+          "fr": "Ville",
+          "en": "City"
+        },
+        {
+          "fr": "Début",
+          "en": "From"
+        },
+        {
+          "fr": "Fin",
+          "en": "To"
+        },
+        {
+          "fr": "Courante",
+          "en": "Current"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "101",
+            "en": "101"
+          },
+          {
+            "fr": "C42",
+            "en": "C42"
+          },
+          {
+            "fr": "Lyon",
+            "en": "Lyon"
+          },
+          {
+            "fr": "2025-01-01",
+            "en": "2025-01-01"
+          },
+          {
+            "fr": "2026-06-30",
+            "en": "2026-06-30"
+          },
+          {
+            "fr": "N",
+            "en": "N"
+          }
+        ],
+        [
+          {
+            "fr": "102",
+            "en": "102"
+          },
+          {
+            "fr": "C42",
+            "en": "C42"
+          },
+          {
+            "fr": "Paris",
+            "en": "Paris"
+          },
+          {
+            "fr": "2026-07-01",
+            "en": "2026-07-01"
+          },
+          {
+            "fr": "9999-12-31",
+            "en": "9999-12-31"
+          },
+          {
+            "fr": "O",
+            "en": "Y"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        }
+      ],
+      "notions": [
+        "n-scd-type-2",
+        "n-surrogate-key"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "L’exemple ci-dessus est **inventé** pour illustrer la règle de Kimball (trois colonnes de gestion). La date 9999-12-31 est une convention courante pour « jusqu’à nouvel ordre » ; Kimball ne l’impose pas dans ce passage.",
+        "en": "The example above is **invented** to illustrate Kimball’s rule (three management columns). 9999-12-31 is a common convention for “until further notice”; Kimball does not impose it in this passage."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Effet sur les faits. Trois ventes du client C42 : 100 € le 10 mars 2026 (clé 101, Lyon), 150 € le 5 septembre 2026 et 50 € le 20 novembre 2026 (clé 102, Paris). Un rapport « ventes par ville » donne **Lyon 100 € et Paris 200 €** en type 2 : le passé garde son sens. En type 1 (adresse écrasée), il donnerait **Paris 300 €** : le rapport du premier semestre a changé.",
+        "en": "Effect on facts. Three sales for customer C42: €100 on 10 March 2026 (key 101, Lyon), €150 on 5 September 2026 and €50 on 20 November 2026 (key 102, Paris). A “sales by city” report gives **Lyon €100 and Paris €200** in type 2: the past keeps its meaning. In type 1 (address overwritten), it would give **Paris €300**: the first-half report has changed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "dimension tables that contain the textual context that was true at the moment the event occurred"
+        }
+      ],
+      "notions": [
+        "n-scd-type-2",
+        "n-stable-results"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  F1[\"Fact 2026-03-10: 100 EUR\"] --> K1[\"Dim key 101: C42 Lyon (to 2026-06-30)\"]\n  F2[\"Fact 2026-09-05: 150 EUR\"] --> K2[\"Dim key 102: C42 Paris (from 2026-07-01)\"]\n  F3[\"Fact 2026-11-20: 50 EUR\"] --> K2",
+      "caption": {
+        "fr": "Chaque fait pointe vers la ligne de dimension en vigueur à sa date : Lyon 100 €, Paris 200 €.",
+        "en": "Each fact points to the dimension row in effect at its date: Lyon €100, Paris €200."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-15-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Choisir le type, attribut par attribut",
+        "en": "Choosing the type, attribute by attribute"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le type 2 n’est pas gratuit : il fait croître la dimension et complique les requêtes sur la valeur « courante ». Kimball propose des hybrides pour servir à la fois le reporting « tel qu’il était » et « tel qu’il est » (types 6 et 7), et des mini-dimensions pour des attributs qui changent très vite (type 4).",
+        "en": "Type 2 is not free: it makes the dimension grow and complicates queries on the “current” value. Kimball offers hybrids to serve both “as-was” and “as-is” reporting (types 6 and 7), and mini-dimensions for attributes that change very fast (type 4)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "so that fact rows can be filtered or grouped by either the type 2 attribute value in effect when the measurement occurred or the attribute’s current value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the final hybrid technique used to support both as-was and as-is reporting"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 4 is used when a group of attributes in a dimension rapidly changes and is split off to a mini-dimension."
+        }
+      ],
+      "notions": [
+        "n-as-was-as-is"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Choisir le type de SCD pour un attribut (méthode de l’app)",
+        "en": "Choosing the SCD type for an attribute (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lister les attributs de la dimension qui peuvent changer.",
+            "en": "List the dimension attributes that can change."
+          },
+          "why": {
+            "fr": "Tous les attributs n’ont pas besoin d’historique.",
+            "en": "Not every attribute needs history."
+          }
+        },
+        {
+          "do": {
+            "fr": "Pour chacun, demander : « un rapport publié doit-il garder l’ancienne valeur ? » (critère « les rapports de l’année 1 gardent leur sens »).",
+            "en": "For each, ask: “must a published report keep the old value?” (the criterion “year-1 reports keep their meaning”)."
+          },
+          "why": {
+            "fr": "C’est le pain point 5 : les chiffres publiés ne doivent pas bouger.",
+            "en": "This is pain point 5: published figures must not shift."
+          }
+        },
+        {
+          "do": {
+            "fr": "Si oui : type 2 (ou 6 / 7 si l’on veut aussi la valeur courante). Si non, par exemple pour une correction d’erreur : type 1.",
+            "en": "If yes: type 2 (or 6 / 7 if the current value is also wanted). If no, e.g. for an error correction: type 1."
+          },
+          "why": {
+            "fr": "Une correction d’erreur ne doit pas créer de fausse histoire.",
+            "en": "An error correction must not create a false history."
+          }
+        },
+        {
+          "do": {
+            "fr": "Prévoir la clé de substitution, les dates d’effet et d’expiration, l’indicateur de ligne courante.",
+            "en": "Plan the surrogate key, the effective and expiration dates, the current row indicator."
+          },
+          "why": {
+            "fr": "Trois colonnes minimum chez Kimball.",
+            "en": "Three columns minimum in Kimball."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier le coût et les contraintes de rétention de l’historique.",
+            "en": "Check the cost and retention constraints of the history."
+          },
+          "why": {
+            "fr": "Le RGPD limite la rétention des données personnelles (chapitre 10).",
+            "en": "The GDPR limits retention of personal data (chapter 10)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ],
+      "notions": [
+        "n-choose-scd-method",
+        "n-scd-and-gdpr"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Lien proposé (notre lecture) : un SCD de type 2 sur des attributs de personnes conserve les adresses successives ; c’est exactement le type d’historique que le prof a dit devoir réexaminer sous le RGPD (« unlimited historical retention »). On pseudonymise ou on limite la rétention de ce qui n’est pas nécessaire.",
+        "en": "Proposed link (our reading): a type 2 SCD on personal attributes keeps successive addresses; this is exactly the kind of history the teacher said must be reexamined under the GDPR (“unlimited historical retention”). Pseudonymise or limit retention of what is not needed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can question the system about what happened for a population of customers 10 years ago"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-15-qz-04"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-scd-type-2",
+      "fr": "SCD de type 2",
+      "en": "type 2 SCD (slowly changing dimension)",
+      "definition": {
+        "fr": "Technique qui, à chaque changement d’un attribut, ajoute une nouvelle ligne à la dimension : l’historique est conservé.",
+        "en": "A technique that, at each attribute change, adds a new row to the dimension: history is kept."
+      },
+      "example": {
+        "fr": "C42 : ligne 101 Lyon jusqu’au 30/06/2026, ligne 102 Paris depuis le 01/07/2026",
+        "en": "C42: row 101 Lyon until 30/06/2026, row 102 Paris from 01/07/2026"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        }
+      ],
+      "notion": "n-scd-type-2"
+    },
+    {
+      "id": "term-history-conservation",
+      "fr": "conservation de l’historique",
+      "en": "history conservation",
+      "definition": {
+        "fr": "Garder la valeur des attributs telle qu’elle était, pour que les rapports passés gardent leur sens.",
+        "en": "Keeping the value of attributes as it was, so that past reports keep their meaning."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notion": "n-history-conservation"
+    },
+    {
+      "id": "term-historization",
+      "fr": "historisation",
+      "en": "historization",
+      "definition": {
+        "fr": "Composant de la caractéristique « résultats stables dans le temps », avec des règles de calcul versionnées et un rafraîchissement contrôlé.",
+        "en": "A component of the characteristic “results stable over time”, with versioned calculation rules and controlled refresh."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        }
+      ],
+      "notion": "n-stable-results"
+    },
+    {
+      "id": "term-stable-results",
+      "fr": "résultats stables dans le temps",
+      "en": "results stable over time",
+      "definition": {
+        "fr": "Caractéristique attendue du pain point 5 ; principe prévisible : mêmes règles, mêmes chiffres, mêmes résultats.",
+        "en": "Characteristic expected for pain point 5; predictable principle: same rules, same numbers, same results."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Basically, same rules applied on same numbers. Input numbers should output always the same figures."
+        }
+      ],
+      "notion": "n-stable-results"
+    },
+    {
+      "id": "term-reports-keep-meaning",
+      "fr": "les rapports de l’année 1 gardent leur sens",
+      "en": "year-1 reports keep their meaning",
+      "definition": {
+        "fr": "Critère de notation annoncé pour la séance 9 : après un changement, les rapports passés ne doivent pas changer de signification.",
+        "en": "Marking criterion announced for session 9: after a change, past reports must not change meaning."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notion": "n-history-conservation"
+    },
+    {
+      "id": "term-predictable-rule",
+      "fr": "mêmes règles sur mêmes chiffres",
+      "en": "same rules on same numbers",
+      "definition": {
+        "fr": "Principe prévisible : mêmes entrées, mêmes résultats ; il est menacé quand une mise à jour réécrit le passé.",
+        "en": "Predictable principle: same inputs, same results; threatened when an update rewrites the past."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Basically, same rules applied on same numbers. Input numbers should output always the same figures."
+        }
+      ],
+      "notion": "n-stable-results"
+    }
+  ],
+  "notions": [
+    "n-history-conservation",
+    "n-scd-type-2",
+    "n-scd-types-0-3",
+    "n-surrogate-key",
+    "n-as-was-as-is",
+    "n-stable-results",
+    "n-choose-scd-method",
+    "n-scd-and-gdpr"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "La séance 7 porte sur le SCD de type 2 et la conservation de l’historique ; l’historisation sert la caractéristique « résultats stables » (prévisible).",
+        "en": "Session 7 covers the type 2 SCD and history conservation; historisation serves the “stable results” characteristic (predictable)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ],
+      "notions": [
+        "n-history-conservation",
+        "n-stable-results"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Type 0 : original conservé ; type 1 : écrase et détruit l’historique ; type 2 : ajoute une ligne et le conserve ; type 3 : ajoute un attribut, une seule ancienne valeur.",
+        "en": "Type 0: original kept; type 1: overwrites and destroys history; type 2: adds a row and keeps it; type 3: adds an attribute, a single old value."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "With slowly changing dimension type 0, the dimension attribute value never changes, so facts are always grouped by this original value."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 3 changes add a new attribute in the dimension to preserve the old attribute value; the new value overwrites the main attribute as in a type 1 change."
+        }
+      ],
+      "notions": [
+        "n-scd-types-0-3",
+        "n-scd-type-2"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Type 2 : nouvelle ligne, nouvelle clé de substitution, date d’effet, date d’expiration, indicateur de ligne courante ; chaque fait pointe vers la ligne en vigueur.",
+        "en": "Type 2: new row, new surrogate key, effective date, expiration date, current row indicator; each fact points to the row in effect."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        }
+      ],
+      "notions": [
+        "n-scd-type-2",
+        "n-surrogate-key"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La clé de substitution protège des clés naturelles des sources ; une clé durable relie les lignes successives d’un même membre.",
+        "en": "The surrogate key protects against the sources’ natural keys; a durable key links the successive rows of one member."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "This primary key cannot be the operational system’s natural key because there will be multiple dimension rows for that natural key when changes are tracked over time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Natural keys created by operational source systems are subject to business rules outside the control of the DW/BI system."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "While multiple surrogate keys may be associated with an employee over time as their profile changes, the durable key never changes."
+        }
+      ],
+      "notions": [
+        "n-surrogate-key"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Type 6 et 7 : servir à la fois les rapports « tel qu’il était » et « tel qu’il est ».",
+        "en": "Types 6 and 7: serve both “as-was” and “as-is” reports."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "so that fact rows can be filtered or grouped by either the type 2 attribute value in effect when the measurement occurred or the attribute’s current value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the final hybrid technique used to support both as-was and as-is reporting"
+        }
+      ],
+      "notions": [
+        "n-as-was-as-is"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Choisir attribut par attribut selon « un rapport publié doit-il garder l’ancienne valeur ? » ; garder l’œil sur le coût et la rétention (RGPD).",
+        "en": "Choose attribute by attribute according to “must a published report keep the old value?”; keep an eye on cost and retention (GDPR)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ],
+      "notions": [
+        "n-choose-scd-method",
+        "n-scd-and-gdpr"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "SCD de type 2 ?",
+        "en": "Type 2 SCD?"
+      },
+      "back": {
+        "fr": "À chaque changement d’attribut, on ajoute une ligne à la dimension : l’historique est conservé.",
+        "en": "At each attribute change, a row is added to the dimension: history is kept."
+      },
+      "termId": "term-scd-type-2",
+      "id": "isi7-15-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Type 1 : effet sur l’historique ?",
+        "en": "Type 1: effect on history?"
+      },
+      "back": {
+        "fr": "Écrase l’ancienne valeur : détruit l’historique.",
+        "en": "Overwrites the old value: destroys history."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        }
+      ],
+      "notions": [
+        "n-scd-types-0-3"
+      ],
+      "id": "isi7-15-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Type 0 ?",
+        "en": "Type 0?"
+      },
+      "back": {
+        "fr": "La valeur ne change jamais ; les faits sont groupés par la valeur d’origine.",
+        "en": "The value never changes; facts are grouped by the original value."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "With slowly changing dimension type 0, the dimension attribute value never changes, so facts are always grouped by this original value."
+        }
+      ],
+      "notions": [
+        "n-scd-types-0-3"
+      ],
+      "id": "isi7-15-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Type 3 ?",
+        "en": "Type 3?"
+      },
+      "back": {
+        "fr": "Un nouvel attribut garde l’ancienne valeur ; une seule ancienne valeur ; peu utilisé.",
+        "en": "A new attribute keeps the old value; a single old value; rarely used."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 3 changes add a new attribute in the dimension to preserve the old attribute value; the new value overwrites the main attribute as in a type 1 change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "This slowly changing dimension technique is used relatively infrequently."
+        }
+      ],
+      "notions": [
+        "n-scd-types-0-3"
+      ],
+      "id": "isi7-15-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Trois colonnes de gestion d’un type 2 ?",
+        "en": "Three management columns of a type 2?"
+      },
+      "back": {
+        "fr": "Date d’effet, date d’expiration, indicateur de ligne courante.",
+        "en": "Effective date, expiration date, current row indicator."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        }
+      ],
+      "notions": [
+        "n-surrogate-key"
+      ],
+      "id": "isi7-15-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi une clé de substitution ?",
+        "en": "Why a surrogate key?"
+      },
+      "back": {
+        "fr": "Plusieurs lignes par membre ; et les clés naturelles des sources échappent à l’entrepôt.",
+        "en": "Several rows per member; and sources’ natural keys escape the warehouse."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "This primary key cannot be the operational system’s natural key because there will be multiple dimension rows for that natural key when changes are tracked over time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Natural keys created by operational source systems are subject to business rules outside the control of the DW/BI system."
+        }
+      ],
+      "notions": [
+        "n-surrogate-key"
+      ],
+      "id": "isi7-15-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Vers quelle ligne un fait pointe-t-il ?",
+        "en": "Which row does a fact point to?"
+      },
+      "back": {
+        "fr": "Celle en vigueur à la date du fait (clé de substitution).",
+        "en": "The one in effect at the fact’s date (surrogate key)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        }
+      ],
+      "notions": [
+        "n-scd-type-2"
+      ],
+      "id": "isi7-15-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Critère de notation annoncé pour la séance 9 ?",
+        "en": "Marking criterion announced for session 9?"
+      },
+      "back": {
+        "fr": "Les rapports de l’année 1 gardent leur sens.",
+        "en": "Year-1 reports keep their meaning."
+      },
+      "termId": "term-reports-keep-meaning",
+      "id": "isi7-15-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Historisation et principe ?",
+        "en": "Historisation and principle?"
+      },
+      "back": {
+        "fr": "Résultats stables dans le temps : principe prévisible.",
+        "en": "Results stable over time: predictable principle."
+      },
+      "termId": "term-historization",
+      "id": "isi7-15-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Types 6 et 7 ?",
+        "en": "Types 6 and 7?"
+      },
+      "back": {
+        "fr": "Hybrides pour le reporting « tel qu’il était » et « tel qu’il est ».",
+        "en": "Hybrids for “as-was” and “as-is” reporting."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "so that fact rows can be filtered or grouped by either the type 2 attribute value in effect when the measurement occurred or the attribute’s current value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the final hybrid technique used to support both as-was and as-is reporting"
+        }
+      ],
+      "notions": [
+        "n-as-was-as-is"
+      ],
+      "id": "isi7-15-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Choisir le type : la question clé ?",
+        "en": "Choosing the type: the key question?"
+      },
+      "back": {
+        "fr": "Un rapport publié doit-il garder l’ancienne valeur ?",
+        "en": "Must a published report keep the old value?"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        }
+      ],
+      "notions": [
+        "n-choose-scd-method"
+      ],
+      "id": "isi7-15-fc-11"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un SCD de type 1 conserve l’ancienne valeur de l’attribut en plus de la nouvelle.",
+        "en": "A type 1 SCD keeps the attribute’s old value in addition to the new one."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le type 1 écrase l’ancienne valeur ; il détruit l’historique.",
+        "en": "FALSE: type 1 overwrites the old value; it destroys history."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-scd-types-0-3"
+      ],
+      "trap": {
+        "fr": "Confondre type 1 et type 2.",
+        "en": "Mixing up type 1 and type 2."
+      },
+      "id": "isi7-15-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans un SCD de type 2, un changement d’attribut ajoute une nouvelle ligne à la dimension, avec une nouvelle clé de substitution.",
+        "en": "In a type 2 SCD, an attribute change adds a new row to the dimension, with a new surrogate key."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « add a new row … a new primary surrogate key is assigned ».",
+        "en": "TRUE: “add a new row … a new primary surrogate key is assigned”."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-scd-type-2"
+      ],
+      "id": "isi7-15-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Quelles colonnes de gestion Kimball recommande-t-il au minimum pour un type 2 ?",
+        "en": "Which management columns does Kimball recommend at minimum for a type 2?"
+      },
+      "options": [
+        {
+          "fr": "Clé naturelle, clé de produit, numéro de ticket",
+          "en": "Natural key, product key, ticket number"
+        },
+        {
+          "fr": "Version du logiciel, fuseau horaire, couleur du texte",
+          "en": "Software version, time zone, text colour"
+        },
+        {
+          "fr": "Date d’effet, date d’expiration, indicateur de ligne courante",
+          "en": "Effective date, expiration date, current row indicator"
+        },
+        {
+          "fr": "Nom du créateur, date de saisie, longueur du libellé",
+          "en": "Creator name, entry date, label length"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Trois colonnes : effet, expiration, ligne courante.",
+        "en": "Three columns: effective, expiration, current row."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-surrogate-key"
+      ],
+      "id": "isi7-15-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Avec un SCD de type 2, les ventes de mars 2026 d’un client qui a déménagé en juillet restent attribuées à son ancienne ville.",
+        "en": "With a type 2 SCD, the March 2026 sales of a customer who moved in July stay attributed to their former city."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : chaque fait pointe vers la ligne de dimension en vigueur à sa date.",
+        "en": "TRUE: each fact points to the dimension row in effect at its date."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "dimension tables that contain the textual context that was true at the moment the event occurred"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-scd-type-2",
+        "n-history-conservation"
+      ],
+      "id": "isi7-15-qz-04"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un client C42 a deux lignes : clé 101 (Lyon) et clé 102 (Paris). Ses ventes sont 100 € sur la clé 101 et 200 € sur la clé 102. Que donne un rapport « ventes par ville » en type 2 puis en type 1 ?",
+        "en": "A customer C42 has two rows: key 101 (Lyon) and key 102 (Paris). Their sales are €100 on key 101 and €200 on key 102. What does a “sales by city” report give in type 2 then in type 1?"
+      },
+      "options": [
+        {
+          "fr": "Types 1 et 2 : Paris 300",
+          "en": "Types 1 and 2: Paris 300"
+        },
+        {
+          "fr": "Type 2 : Lyon 100, Paris 200 ; type 1 : Paris 300",
+          "en": "Type 2: Lyon 100, Paris 200; type 1: Paris 300"
+        },
+        {
+          "fr": "Type 2 : Paris 300 ; type 1 : Lyon 100, Paris 200",
+          "en": "Type 2: Paris 300; type 1: Lyon 100, Paris 200"
+        },
+        {
+          "fr": "Types 1 et 2 : Lyon 100, Paris 200",
+          "en": "Types 1 and 2: Lyon 100, Paris 200"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Type 2 : chaque fait garde la ville de sa date (Lyon 100, Paris 200). Type 1 : l’adresse est écrasée, tout devient Paris 300.",
+        "en": "Type 2: each fact keeps the city of its date (Lyon 100, Paris 200). Type 1: the address is overwritten, everything becomes Paris 300."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-scd-type-2",
+        "n-scd-types-0-3"
+      ],
+      "id": "isi7-15-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La clé primaire d’une dimension de type 2 peut être la clé naturelle du système source, puisqu’elle est déjà unique.",
+        "en": "The primary key of a type 2 dimension can be the source system’s natural key, since it is already unique."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : plusieurs lignes existent pour une même clé naturelle quand on suit les changements ; il faut une clé de substitution.",
+        "en": "FALSE: several rows exist for the same natural key when changes are tracked; a surrogate key is needed."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "This primary key cannot be the operational system’s natural key because there will be multiple dimension rows for that natural key when changes are tracked over time."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-surrogate-key"
+      ],
+      "trap": {
+        "fr": "Utiliser la clé naturelle comme clé de dimension.",
+        "en": "Using the natural key as the dimension key."
+      },
+      "id": "isi7-15-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un type 3 conserve tout l’historique des valeurs d’un attribut, comme le type 2.",
+        "en": "A type 3 keeps the full history of an attribute’s values, like type 2."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le type 3 ajoute un attribut pour conserver l’ancienne valeur ; il n’en garde qu’une et est assez rarement utilisé.",
+        "en": "FALSE: type 3 adds an attribute to preserve the old value; it keeps only one and is used relatively infrequently."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 3 changes add a new attribute in the dimension to preserve the old attribute value; the new value overwrites the main attribute as in a type 1 change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "This slowly changing dimension technique is used relatively infrequently."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-scd-types-0-3"
+      ],
+      "id": "isi7-15-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Corriger une faute de frappe dans le nom d’un client est un bon cas pour un type 1 plutôt qu’un type 2, car une correction ne doit pas créer de fausse histoire.",
+        "en": "Fixing a typo in a customer’s name is a good case for type 1 rather than type 2, since a correction must not create a false history."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : lecture proposée à partir de la définition du type 1 ; le critère est « le rapport publié doit-il garder l’ancienne valeur ? ».",
+        "en": "TRUE: reading proposed from the type 1 definition; the criterion is “must the published report keep the old value?”."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-choose-scd-method"
+      ],
+      "id": "isi7-15-qz-08"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pourquoi l’historisation relève-t-elle du principe « prévisible » ?",
+        "en": "Why does historisation belong to the “predictable” principle?"
+      },
+      "options": [
+        {
+          "fr": "Parce qu’elle accélère les requêtes imprévisibles",
+          "en": "Because it speeds up unpredictable queries"
+        },
+        {
+          "fr": "Parce qu’elle remplace les définitions partagées",
+          "en": "Because it replaces shared definitions"
+        },
+        {
+          "fr": "Parce qu’elle supprime la sécurité par ligne",
+          "en": "Because it removes row-level security"
+        },
+        {
+          "fr": "Parce qu’elle garantit que des résultats déjà publiés ne bougent pas",
+          "en": "Because it ensures already published results do not move"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Résultats stables dans le temps = historisation, règles versionnées, rafraîchissement contrôlé : principe prévisible (mêmes règles, mêmes chiffres, mêmes résultats).",
+        "en": "Results stable over time = historisation, versioned rules, controlled refresh: predictable principle (same rules, same numbers, same results)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Basically, same rules applied on same numbers. Input numbers should output always the same figures."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-stable-results"
+      ],
+      "id": "isi7-15-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le critère « les rapports de l’année 1 gardent leur sens » est annoncé par le prof pour la séance 9 (évolution).",
+        "en": "The criterion “year-1 reports keep their meaning” is announced by the teacher for session 9 (evolution)."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : séquencement, ligne 9.",
+        "en": "TRUE: sequencing, row 9."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-history-conservation"
+      ],
+      "id": "isi7-15-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un SCD de type 2 sur l’adresse de clients n’a aucun lien avec le RGPD, puisqu’il s’agit d’un choix de modélisation.",
+        "en": "A type 2 SCD on customer addresses has no link with the GDPR, since it is a modelling choice."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : il conserve des attributs personnels dans le temps ; le prof invite à réexaminer la rétention historique sous le RGPD. (Rapprochement proposé.)",
+        "en": "FALSE: it keeps personal attributes over time; the teacher invites reexamining historical retention under the GDPR. (Proposed link.)"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-scd-and-gdpr"
+      ],
+      "trap": {
+        "fr": "Oublier les contraintes réglementaires dans un choix de modélisation.",
+        "en": "Forgetting regulatory constraints in a modelling choice."
+      },
+      "id": "isi7-15-qz-11"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Construire une dimension de type 2 et recalculer un rapport",
+        "en": "Building a type 2 dimension and recomputing a report"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Le produit P7 est dans la catégorie « Audio » jusqu’au 31/03/2026, puis « Casques » à partir du 01/04/2026. Ventes : 80 € le 15/02/2026, 120 € le 10/05/2026, 100 € le 20/06/2026. **(a)** Construisez la dimension produit en type 2 (clés de substitution 11 et 12, dates, indicateur). **(b)** À quelle clé chaque vente est-elle rattachée ? **(c)** Donnez le rapport « ventes par catégorie ». **(d)** Donnez le même rapport si la catégorie avait été écrasée (type 1), et dites lequel respecte « les rapports de l’année 1 gardent leur sens ».",
+        "en": "*(Invented case for practice.)* Product P7 is in the “Audio” category until 31/03/2026, then “Headphones” from 01/04/2026. Sales: €80 on 15/02/2026, €120 on 10/05/2026, €100 on 20/06/2026. **(a)** Build the product dimension as type 2 (surrogate keys 11 and 12, dates, indicator). **(b)** Which key is each sale linked to? **(c)** Give the “sales by category” report. **(d)** Give the same report if the category had been overwritten (type 1), and say which one respects “year-1 reports keep their meaning”."
+      },
+      "hints": [
+        {
+          "fr": "Deux lignes : une avant, une après le changement.",
+          "en": "Two rows: one before, one after the change."
+        },
+        {
+          "fr": "Chaque vente pointe vers la ligne en vigueur à sa date.",
+          "en": "Each sale points to the row in effect at its date."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Clé 11 : P7, Audio, du 2025-01-01 (ou début de suivi) au 2026-03-31, courante = N. Clé 12 : P7, Casques, du 2026-04-01 au 9999-12-31, courante = O.\n**(b)** 80 € (15/02) → clé 11 ; 120 € (10/05) → clé 12 ; 100 € (20/06) → clé 12.\n**(c)** Type 2 : Audio 80 € ; Casques 220 €.\n**(d)** Type 1 : Casques 300 € (la catégorie est écrasée). Le type 2 respecte le critère : le rapport du premier trimestre reste Audio 80 € ; en type 1, il a changé après coup.\n*Barème indicatif* : 1,5 pour (a), 0,5 pour (b), 1 pour (c), 1 pour (d). *Corrigé proposé.*",
+        "en": "**(a)** Key 11: P7, Audio, from 2025-01-01 (or tracking start) to 2026-03-31, current = N. Key 12: P7, Headphones, from 2026-04-01 to 9999-12-31, current = Y.\n**(b)** €80 (15/02) → key 11; €120 (10/05) → key 12; €100 (20/06) → key 12.\n**(c)** Type 2: Audio €80; Headphones €220.\n**(d)** Type 1: Headphones €300 (the category is overwritten). Type 2 respects the criterion: the first-quarter report stays Audio €80; in type 1 it changed after the fact.\n*Indicative marking*: 1.5 for (a), 0.5 for (b), 1 for (c), 1 for (d). *Proposed answer.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "a new primary surrogate key is assigned and used as a foreign key in all fact tables from the moment of the update until a subsequent change creates a new dimension key and updated dimension row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "A minimum of three additional columns should be added to the dimension row with type 2 changes: 1) row effective date or date/time stamp; 2) row expiration date or date/time stamp; and 3) current row indicator."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o2",
+      "examStyle": true,
+      "trap": {
+        "fr": "Rattacher toutes les ventes à la ligne courante.",
+        "en": "Linking all sales to the current row."
+      },
+      "notions": [
+        "n-scd-type-2",
+        "n-surrogate-key",
+        "n-history-conservation",
+        "n-scd-types-0-3"
+      ],
+      "id": "isi7-15-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Quel type pour quel attribut ? Une dimension client",
+        "en": "Which type for which attribute? A customer dimension"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "La dimension Client contient : (1) la date d’inscription ; (2) le nom (une faute de saisie est corrigée) ; (3) la ville ; (4) le segment marketing (« Gold » ou « Silver », réévalué chaque trimestre) ; (5) le score de crédit d’origine à l’ouverture. Choisissez un type de SCD par attribut et justifiez avec le critère « les rapports de l’année 1 gardent leur sens », sans oublier le RGPD.",
+        "en": "The Customer dimension contains: (1) the registration date; (2) the name (an entry error is corrected); (3) the city; (4) the marketing segment (“Gold” or “Silver”, reassessed every quarter); (5) the original credit score at opening. Choose an SCD type per attribute and justify with the criterion “year-1 reports keep their meaning”, without forgetting the GDPR."
+      },
+      "hints": [
+        {
+          "fr": "Quels attributs ne doivent jamais bouger ? Lesquels sont corrigés ? Lesquels évoluent et doivent garder le passé ?",
+          "en": "Which attributes must never move? Which are corrected? Which evolve and must keep the past?"
+        },
+        {
+          "fr": "Type 0 : « original ».",
+          "en": "Type 0: “original”."
+        }
+      ],
+      "solution": {
+        "fr": "(1) **Type 0** : la date d’inscription ne change pas. (2) **Type 1** : correction d’erreur, pas d’histoire à conserver. (3) **Type 2** : la ville évolue ; les rapports passés par ville doivent garder leur sens. (4) **Type 2** : le segment est réévalué ; les ventes d’un trimestre doivent rester attribuées au segment de l’époque. (5) **Type 0** : « original credit score » est l’exemple de Kimball du type 0.\n**RGPD** : (3) et (4) conservent des données personnelles dans le temps : limiter la rétention de ce détail, ou l’agréger / pseudonymiser quand il n’est pas nécessaire.\n*Barème indicatif* : 0,5 par attribut, 1 pour le RGPD, 0,5 pour la justification. *Corrigé proposé.*",
+        "en": "(1) **Type 0**: the registration date does not change. (2) **Type 1**: error correction, no history to keep. (3) **Type 2**: the city changes; past reports by city must keep their meaning. (4) **Type 2**: the segment is reassessed; a quarter’s sales must stay attributed to the segment of the time. (5) **Type 0**: “original credit score” is Kimball’s type 0 example.\n**GDPR**: (3) and (4) keep personal data over time: limit retention of that detail, or aggregate / pseudonymise when not needed.\n*Indicative marking*: 0.5 per attribute, 1 for the GDPR, 0.5 for the justification. *Proposed answer.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "With slowly changing dimension type 0, the dimension attribute value never changes, so facts are always grouped by this original value."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the old attribute value in the dimension row is overwritten with the new value"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Appliquer le type 2 à tous les attributs sans critère.",
+        "en": "Applying type 2 to all attributes without a criterion."
+      },
+      "notions": [
+        "n-choose-scd-method",
+        "n-scd-types-0-3",
+        "n-scd-and-gdpr"
+      ],
+      "id": "isi7-15-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "A type 2 change adds a new row to the dimension.",
+      "id": "isi7-15-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "Type 1 {{overwrites}} the old value and {{destroys}} history.",
+      "translation": "Le type 1 écrase l’ancienne valeur et détruit l’historique.",
+      "id": "isi7-15-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A type 2 dimension keeps the natural key as its primary key.",
+      "error": "keeps the natural key as its primary key",
+      "corrected": "uses a surrogate key as its primary key",
+      "explanation": {
+        "fr": "Plusieurs lignes par membre : la clé primaire est une clé de substitution.",
+        "en": "Several rows per member: the primary key is a surrogate key."
+      },
+      "id": "isi7-15-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : pourquoi un SCD de type 2 aide-t-il les rapports de l’année 1 à garder leur sens ?",
+        "en": "In three sentences: why does a type 2 SCD help year-1 reports keep their meaning?"
+      },
+      "modelAnswer": "A type 2 change adds a new row with a new surrogate key instead of overwriting the old value. Each fact keeps pointing to the dimension row in effect at its date. So a report on past periods still shows the context that was true at that time.",
+      "keywords": [
+        "new row",
+        "surrogate key",
+        "fact",
+        "in effect",
+        "past"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai opposé ajouter une ligne et écraser.",
+          "en": "I contrasted adding a row and overwriting."
+        }
+      ],
+      "usefulPhrases": [
+        "instead of overwriting",
+        "in effect at its date"
+      ],
+      "id": "isi7-15-wr-04"
+    }
+  ]
+}

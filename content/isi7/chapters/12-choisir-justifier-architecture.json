@@ -1,0 +1,1901 @@
+{
+  "id": "isi7-12-choisir-justifier-architecture",
+  "courseId": "isi7",
+  "order": 12,
+  "title": {
+    "fr": "Choisir et justifier une architecture",
+    "en": "Choosing and justifying an architecture"
+  },
+  "hook": {
+    "fr": "Un seul département, une seule source : faut-il vraiment un entrepôt ?",
+    "en": "One department, one source: is a warehouse really needed?"
+  },
+  "question": {
+    "fr": "Comment choisir une architecture à partir des principes, et comment justifier une variante plus simple ?",
+    "en": "How do you choose an architecture from the principles, and how do you justify a simpler variant?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Relier principes directeurs et choix d’architecture.",
+        "en": "Link guiding principles and architecture choices."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Comparer data marts indépendants, CIF, bus de Kimball et hybride (complément).",
+        "en": "Compare independent data marts, CIF, Kimball bus and hybrid (supplement)."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Justifier une variante plus simple en nommant son prix.",
+        "en": "Justify a simpler variant by naming its price."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Distinguer ce qui vient du prof et ce qui vient des sources externes.",
+        "en": "Tell what comes from the teacher from what comes from external sources."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Objectif « Architecturer » (diapositives) et séances 2 à 4 : « variante simplifiée » (séquencement) ; partie de l’examen annoncée sur l’architecture (compte rendu).",
+        "en": "“Architect” objective (slides) and sessions 2 to 4: “simplified variant” (sequencing); a part of the exam on architecture is announced (session notes)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Un cas à schématiser et une variante à justifier : estimation ; le contenu exact des séances 2 à 4 est absent de nos sources.",
+        "en": "A case to diagram and a variant to justify: an estimate; the exact content of sessions 2 to 4 is missing from our sources."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3, 8 et 11 : principes, technologies et couches.",
+    "en": "Chapters 3, 8 and 11: principles, technologies and layers."
+  },
+  "next": {
+    "fr": "Chapitre 13 : on entre dans le modèle dimensionnel, au cœur de la zone de présentation.",
+    "en": "Chapter 13: we enter the dimensional model, at the heart of the presentation area."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Le critère : trois principes tenus. Le choix précède la technologie.",
+        "en": "The criterion: three principles held. The choice precedes technology."
+      },
+      {
+        "fr": "Complément : data marts indépendants (déconseillés), CIF, bus de Kimball, hybride.",
+        "en": "Supplement: independent data marts (discouraged), CIF, Kimball bus, hybrid."
+      },
+      {
+        "fr": "Une variante simplifiée se justifie par un contexte et se paie par un principe fragilisé.",
+        "en": "A simplified variant is justified by a context and paid for with a weakened principle."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Proposer une architecture adaptée à un cas et justifier par principes.",
+        "en": "Propose an architecture suited to a case and justify by principles."
+      },
+      {
+        "fr": "Défendre ou critiquer une variante simplifiée en nommant son prix.",
+        "en": "Defend or criticise a simplified variant by naming its price."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Normalisation ≠ intégration.",
+        "en": "Normalisation ≠ integration."
+      },
+      {
+        "fr": "Implémentation physique (au choix) ≠ logique en couches (qui reste).",
+        "en": "Physical implementation (free choice) ≠ layered logic (which stays)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 11 : les couches et leur rôle.",
+        "en": "Chapter 11: the layers and their role."
+      },
+      {
+        "fr": "Chapitre 14 : les dimensions conformes, ciment de l’intégration.",
+        "en": "Chapter 14: conformed dimensions, the glue of integration."
+      },
+      {
+        "fr": "Chapitre 17 : faire évoluer l’architecture et le modèle.",
+        "en": "Chapter 17: evolving the architecture and the model."
+      }
+    ]
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md",
+    "sources-texte/isi7/ext-armbrust-2021-lakehouse.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Du principe au choix",
+        "en": "From principle to choice"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’objectif « Architecturer » ne s’arrête pas à dessiner : il demande de **relier les principes directeurs aux choix d’architecture** et de **justifier une variante plus simple**. Le séquencement annonce la même chose pour les séances 2 à 4 : couches, rôle de chacune, lien avec les principes, variante simplifiée.",
+        "en": "The “Architect” objective does not stop at drawing: it asks you to **link guiding principles to architecture choices** and to **justify a simpler variant**. The sequencing announces the same for sessions 2 to 4: layers, the role of each, link with principles, simplified variant."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method",
+        "n-simplified-variant"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le fil conducteur est celui du chapitre 3. Les caractéristiques attendues appellent des composants : données centralisées → intégration des sources, transit, entrepôt, données de référence ; indicateurs comparables → définitions partagées ; accès rapide et flexible → modèle mesures × axes, self-service ; résultats stables → historisation et règles versionnées.",
+        "en": "The common thread is that of chapter 3. The expected characteristics call for components: centralised data → source integration, staging, warehouse, master data; comparable indicators → shared definitions; fast, flexible access → measures × axes model, self-service; stable results → historisation and versioned rules."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Documented, comparable indicators Shared definitions, data dictionary, traceability of each figure to its source Reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Fast, flexible access to data Measures x analysis axes model, self-service, drill-down Available"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les éléments de la spécification fonctionnelle (indicateurs et définitions, axes, granularité, profondeur d’historique, fraîcheur, règles d’accès) pilotent ensuite les choix : une définition partagée sert la fiabilité, des règles versionnées la prévisibilité.",
+        "en": "The elements of the functional specification (indicators and definitions, axes, granularity, history depth, freshness, access rules) then drive the choices: a shared definition serves reliability, versioned rules predictability."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you have a shared definition, it's about reliability. When you are versioning the rules, it's about being predictable"
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Choisir et justifier une architecture (méthode de l’app)",
+        "en": "Choosing and justifying an architecture (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Partir des pain points et des exigences du cas (combien de sources, de départements, quelle fraîcheur, quels accès).",
+            "en": "Start from the case’s pain points and requirements (how many sources, departments, what freshness, what access)."
+          },
+          "why": {
+            "fr": "On conçoit « à l’envers » : du besoin vers le composant.",
+            "en": "We design “backwards”: from need to component."
+          }
+        },
+        {
+          "do": {
+            "fr": "Choisir les couches nécessaires : sources, transit, entrepôt, data marts, couche sémantique, sécurité.",
+            "en": "Pick the necessary layers: sources, staging, warehouse, data marts, semantic layer, security."
+          },
+          "why": {
+            "fr": "Chaque couche répond à une caractéristique (chapitre 11).",
+            "en": "Each layer answers a characteristic (chapter 11)."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier que les trois principes sont tenus : fiable, prévisible, disponible.",
+            "en": "Check that the three principles hold: reliable, predictable, available."
+          },
+          "why": {
+            "fr": "C’est le critère du cours pour juger une architecture.",
+            "en": "This is the course’s criterion for judging an architecture."
+          }
+        },
+        {
+          "do": {
+            "fr": "Choisir ensuite l’implémentation physique (bases SQL, lac, lakehouse) : la logique en couches reste.",
+            "en": "Then choose the physical implementation (SQL databases, lake, lakehouse): the layered logic stays."
+          },
+          "why": {
+            "fr": "Le prof place le choix de la technologie après l’architecture.",
+            "en": "The teacher places the choice of technology after the architecture."
+          }
+        },
+        {
+          "do": {
+            "fr": "Rester pragmatique : ne pas dépasser ce qui est demandé.",
+            "en": "Stay pragmatic: do not exceed what is requested."
+          },
+          "why": {
+            "fr": "Sobriété et coût du temps réel (chapitres 8 et 10).",
+            "en": "Frugality and the cost of real time (chapters 8 and 10)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method",
+        "n-pragmatism"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le prof a dit : décider ce qui est bon pour ton produit n’est pas le but du cours ; on est à l’étape d’avant, avant le choix des technologies. Retiens donc le raisonnement, pas des noms de produits.",
+        "en": "The teacher said: deciding what is good for your product is not the point of the class; we are at the step before, the choice of technologies. Retain the reasoning, not product names."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not the point of the class to help you decide what is good for your product"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-12-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Quatre architectures de référence (complément Kimball et Ross)",
+        "en": "Four reference architectures (Kimball and Ross supplement)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce qui suit vient de Kimball et Ross (2013) et **n’est pas dit par le prof** ; il sert de matière de comparaison pour justifier un choix. Les auteurs ajoutent que les différences entre leur architecture et les alternatives se sont atténuées, et que l’architecture doit rester un moyen : faire accepter la BI par le métier pour mieux décider.",
+        "en": "What follows comes from Kimball and Ross (2013) and is **not said by the teacher**; it serves as comparison material to justify a choice. The authors add that the differences between their architecture and the alternatives have softened, and that architecture should remain a means: getting BI accepted by the business to make better decisions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "the differences between the Kimball architecture and the alternatives have softened"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "The architecture should merely be a means to this objective."
+        }
+      ],
+      "notions": [
+        "n-cif-vs-kimball"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Architecture",
+          "en": "Architecture"
+        },
+        {
+          "fr": "Principe",
+          "en": "Principle"
+        },
+        {
+          "fr": "Point fort / risque (Kimball et Ross)",
+          "en": "Strength / risk (Kimball and Ross)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Data marts indépendants",
+            "en": "Independent data marts"
+          },
+          {
+            "fr": "Chaque département déploie ses données analytiques sans partage ni intégration",
+            "en": "Each department deploys its analytic data without sharing or integration"
+          },
+          {
+            "fr": "Rapide et peu coûteux à court terme, mais les chiffres ne concordent pas ; fortement déconseillé",
+            "en": "Fast and cheap in the short run, but numbers do not match; strongly discouraged"
+          }
+        ],
+        [
+          {
+            "fr": "Hub-and-spoke (CIF, Inmon)",
+            "en": "Hub-and-spoke (CIF, Inmon)"
+          },
+          {
+            "fr": "Un entrepôt d’entreprise (EDW) normalisé en 3NF, obligatoire, alimente des data marts",
+            "en": "A normalised (3NF) enterprise data warehouse (EDW), mandatory, feeds data marts"
+          },
+          {
+            "fr": "Intégration par l’EDW normalisé ; Kimball et Ross notent que normaliser n’est pas intégrer",
+            "en": "Integration through the normalised EDW; Kimball and Ross note that normalising is not integrating"
+          }
+        ],
+        [
+          {
+            "fr": "Bus de Kimball",
+            "en": "Kimball bus"
+          },
+          {
+            "fr": "Zone de présentation dimensionnelle, par processus métier, avec dimensions conformes partagées",
+            "en": "Dimensional presentation area, by business process, with shared conformed dimensions"
+          },
+          {
+            "fr": "Intégration par les dimensions conformes ; développement incrémental par processus",
+            "en": "Integration through conformed dimensions; incremental development by process"
+          }
+        ],
+        [
+          {
+            "fr": "Hybride",
+            "en": "Hybrid"
+          },
+          {
+            "fr": "EDW 3NF interdit aux utilisateurs, qui alimente une zone de présentation à la Kimball",
+            "en": "3NF EDW closed to users, feeding a Kimball-style presentation area"
+          },
+          {
+            "fr": "Utile si l’EDW existe déjà ; sinon plus de temps et d’argent",
+            "en": "Useful if the EDW already exists; otherwise more time and money"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "analytic data is deployed on a departmental basis without concern to sharing and integrating information across the enterprise"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "We strongly discourage the independent data mart approach."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "this normalized, atomic repository is referred to as the Enterprise Data Warehouse (EDW) within the CIF architecture"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "The CIF says the normalized EDW fills this role, whereas the Kimball architecture stresses the importance of an enterprise bus with conformed dimensions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "The process of normalization does not technically speak to integration."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The enterprise data warehouse bus architecture provides an incremental approach to building the enterprise DW/BI system."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "If you’re starting with a blank sheet of paper, the hybrid approach will likely cost more time and money"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "If you’ve already invested in the creation of a 3NF EDW, but it’s not delivering on the users’ expectations of fast and flexible reporting and analysis, this hybrid approach might be appropriate for your organization."
+        }
+      ],
+      "notions": [
+        "n-independent-data-marts",
+        "n-cif-vs-kimball",
+        "n-hybrid-architecture"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi les data marts indépendants sont-ils un anti-modèle ? Deux départements intéressés par les mêmes données construisent chacun leur solution, et leurs chiffres ne concordent pas à cause de règles métier et de libellés différents. On retrouve exactement le pain point 2 (chiffres divergents) et la perte de confiance.",
+        "en": "Why are independent data marts an anti-pattern? Two departments interested in the same data each build their own solution, and their numbers do not match because of different business rules and labelling. This is exactly pain point 2 (divergent figures) and loss of trust."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Without any enterprise perspective, this independent approach results in myriad standalone point solutions that perpetuate incompatible views of the organization’s performance"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "It’s the path of least resistance for fast development at relatively low cost, at least in the short run."
+        }
+      ],
+      "notions": [
+        "n-independent-data-marts"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le contraste CIF / Kimball : le CIF fait du **EDW normalisé** un élément obligatoire et le rôle d’intégration ; l’architecture de Kimball insiste sur un **bus avec dimensions conformes**, la normalisation étant optionnelle pour soutenir l’ETL. Sans dimensions partagées, un modèle dimensionnel devient une application isolée (chapitre 14).",
+        "en": "The CIF / Kimball contrast: the CIF makes the **normalised EDW** a mandatory element and the integration role; Kimball’s architecture insists on a **bus with conformed dimensions**, normalisation being optional to support ETL. Without shared dimensions, a dimensional model becomes a standalone application (chapter 14)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Although the Kimball architecture enables optional normalization to support ETL processing, the normalized EDW is a mandatory construct in the CIF."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "The CIF says the normalized EDW fills this role, whereas the Kimball architecture stresses the importance of an enterprise bus with conformed dimensions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        }
+      ],
+      "notions": [
+        "n-cif-vs-kimball"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Retiens le critère de choix, pas le nom du camp : une architecture est bonne si elle tient les principes (fiable, prévisible, disponible). Les data marts indépendants échouent sur « fiable » (chiffres divergents) ; un entrepôt normalisé inaccessible échoue sur « disponible » (questions nouvelles lentes).",
+        "en": "Retain the choice criterion, not the camp’s name: an architecture is good if it holds the principles (reliable, predictable, available). Independent data marts fail on “reliable” (divergent figures); an inaccessible normalised warehouse fails on “available” (new questions slow). (Our reading.)"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Fast, flexible access to data Measures x analysis axes model, self-service, drill-down Available"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-12-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La variante plus simple : quoi retirer, à quel prix",
+        "en": "The simpler variant: what to remove, at what price"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’objectif demande de **justifier une variante plus simple**. Nos sources ne donnent pas la variante du prof ; elles donnent des pistes de simplification, chacune avec son prix. Une simplification se justifie par un contexte (peu de sources, un seul département, une ambition modeste) et se paie par un principe fragilisé.",
+        "en": "The objective asks you to **justify a simpler variant**. Our sources do not give the teacher’s variant; they give simplification leads, each with its price. A simplification is justified by a context (few sources, a single department, a modest ambition) and paid for with a weakened principle."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        }
+      ],
+      "notions": [
+        "n-simplified-variant"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Simplification",
+          "en": "Simplification"
+        },
+        {
+          "fr": "Ce que dit la source",
+          "en": "What the source says"
+        },
+        {
+          "fr": "Principe fragilisé / prix",
+          "en": "Principle weakened / price"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Pas de base 3NF intermédiaire",
+            "en": "No intermediate 3NF database"
+          },
+          {
+            "fr": "Il peut être inutile de construire une base 3NF juste avant de retransformer en structures dénormalisées ; une base normalisée pour l’ETL reste acceptable mais n’est pas le but",
+            "en": "It may be pointless to build a 3NF database just before transforming into denormalised structures; a normalised database for ETL is acceptable but not the goal"
+          },
+          {
+            "fr": "Moins de couches et de copies ; les structures normalisées doivent rester interdites aux requêtes des utilisateurs",
+            "en": "Fewer layers and copies; normalised structures must stay off-limits to user queries"
+          }
+        ],
+        [
+          {
+            "fr": "Un seul niveau : lakehouse au lieu de lac + entrepôt",
+            "en": "One tier: lakehouse instead of lake + warehouse"
+          },
+          {
+            "fr": "L’architecture à deux niveaux est très complexe pour les utilisateurs ; un lakehouse combine le stockage ouvert à bas coût du lac et les fonctions de gestion de l’entrepôt (position d’auteurs d’un éditeur)",
+            "en": "The two-tier architecture is highly complex for users; a lakehouse combines the lake’s low-cost open storage with the warehouse’s management features (position of a vendor’s authors)"
+          },
+          {
+            "fr": "Moins de copies ; la logique en couches reste au-dessus (cours)",
+            "en": "Fewer copies; the layered logic stays on top (course)"
+          }
+        ],
+        [
+          {
+            "fr": "Un seul data mart pour un seul département",
+            "en": "A single data mart for a single department"
+          },
+          {
+            "fr": "Raisonnement de notre part : proche de l’architecture déconseillée tant que d’autres départements ne partagent pas les définitions",
+            "en": "Our reasoning: close to the discouraged architecture as long as other departments do not share the definitions"
+          },
+          {
+            "fr": "Fiabilité menacée dès qu’un 2ᵉ département arrive : prévoir le déclencheur de réintroduction",
+            "en": "Reliability threatened as soon as a 2nd department arrives: plan the trigger for reintroduction"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "it may be pointless to take the final step of building a 3NF physical database"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "It is acceptable to create a normalized database to support the ETL processes; however, this is not the end goal."
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "a two-tier architecture is highly complex for users"
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "The Lakehouse architecture",
+          "quote": "Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "analytic data is deployed on a departmental basis without concern to sharing and integrating information across the enterprise"
+        }
+      ],
+      "notions": [
+        "n-simplified-variant"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La mise en garde de Kimball et Ross : certaines initiatives ont échoué parce qu’elles ont mis toute leur énergie à construire les structures normalisées au lieu de développer une zone de présentation dimensionnelle qui soutient la décision. Simplifier, c’est aussi éviter de construire ce que l’utilisateur ne voit jamais.",
+        "en": "Kimball and Ross’s warning: some initiatives failed because they put all their energy into building the normalised structures instead of developing a dimensional presentation area that supports decisions. Simplifying is also avoiding building what the user never sees."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Unfortunately, some DW/BI initiatives have failed miserably because they focused all their energy and resources on constructing the normalized structures"
+        }
+      ],
+      "notions": [
+        "n-simplified-variant"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Justifier une variante simplifiée (méthode de l’app)",
+        "en": "Justifying a simplified variant (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Poser le contexte : combien de sources, de départements, de volume, de fraîcheur demandée.",
+            "en": "State the context: how many sources, departments, volume, freshness requested."
+          },
+          "why": {
+            "fr": "Une simplification n’a de sens que dans un contexte précis.",
+            "en": "A simplification only makes sense in a specific context."
+          }
+        },
+        {
+          "do": {
+            "fr": "Nommer ce qu’on retire ou fusionne.",
+            "en": "Name what is removed or merged."
+          },
+          "why": {
+            "fr": "Il faut être exact : une couche, une copie, un niveau.",
+            "en": "Be exact: a layer, a copy, a tier."
+          }
+        },
+        {
+          "do": {
+            "fr": "Nommer le principe fragilisé (fiable, prévisible, disponible) et le pain point qui reviendrait.",
+            "en": "Name the weakened principle (reliable, predictable, available) and the pain point that would return."
+          },
+          "why": {
+            "fr": "Toute simplification a un prix ; l’examen attend qu’on le dise.",
+            "en": "Every simplification has a price; the exam expects you to say it."
+          }
+        },
+        {
+          "do": {
+            "fr": "Prévoir la mesure compensatoire (définitions partagées, historisation, contrôle d’accès).",
+            "en": "Plan the compensating measure (shared definitions, historisation, access control)."
+          },
+          "why": {
+            "fr": "On garde ce que les principes exigent même si la couche disparaît.",
+            "en": "You keep what the principles require even if the layer disappears."
+          }
+        },
+        {
+          "do": {
+            "fr": "Fixer le déclencheur pour réintroduire la couche (nouveau département, nouvelle source, exigence réglementaire).",
+            "en": "Set the trigger for reintroducing the layer (new department, new source, regulatory requirement)."
+          },
+          "why": {
+            "fr": "L’architecture évolue avec le besoin (objectif « Évoluer »).",
+            "en": "The architecture evolves with the need (the “Evolve” objective)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "notions": [
+        "n-simplified-variant",
+        "n-pragmatism"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Cette méthode est une construction pédagogique de l’app. La variante simplifiée **du prof** est inconnue (séances 2 à 4 absentes de nos sources) : confirme-la avec tes notes. Les simplifications ci-dessus s’appuient sur des sources externes, dont un article de position écrit par des auteurs d’un éditeur.",
+        "en": "This method is a pedagogical construction of the app. The **teacher’s** simplified variant is unknown (sessions 2 to 4 are missing from our sources): confirm it with your notes. The simplifications above rely on external sources, including a position paper written by authors from a vendor."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "This two-tier data lake + warehouse architecture is now dominant in the industry in our experience"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-12-qz-03"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-12-qz-04"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-simplified-variant",
+      "fr": "variante simplifiée",
+      "en": "simplified variant",
+      "definition": {
+        "fr": "Architecture plus légère à justifier par un contexte : elle retire ou fusionne un élément et assume le principe fragilisé.",
+        "en": "A lighter architecture to be justified by a context: it removes or merges an element and accepts the weakened principle."
+      },
+      "pitfall": {
+        "fr": "La variante du prof n’est pas dans nos sources.",
+        "en": "The teacher’s variant is not in our sources."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        }
+      ],
+      "notion": "n-simplified-variant"
+    },
+    {
+      "id": "term-architecture-choice",
+      "fr": "choix d’architecture",
+      "en": "architecture choice",
+      "definition": {
+        "fr": "Décision reliée aux principes directeurs ; l’objectif « Architecturer » demande de relier principes et choix.",
+        "en": "A decision tied to the guiding principles; the “Architect” objective asks to link principles and choices."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        }
+      ],
+      "notion": "n-choose-architecture-method"
+    },
+    {
+      "id": "term-physical-implementation",
+      "fr": "implémentation physique",
+      "en": "physical implementation",
+      "definition": {
+        "fr": "Choix des bases SQL, d’un lac ou d’un lakehouse : c’est à l’architecte de le décider ; la logique en couches reste au-dessus.",
+        "en": "The choice of SQL databases, a lake or a lakehouse: it is up to the architect to decide; the layered logic stays on top."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "notion": "n-choose-architecture-method"
+    },
+    {
+      "id": "term-pragmatism",
+      "fr": "pragmatisme (se limiter à la demande)",
+      "en": "pragmatism (sticking to the request)",
+      "definition": {
+        "fr": "Ne pas courir après la technologie sans pain point utilisateur, et s’en tenir à ce qui est demandé.",
+        "en": "Not chasing technology without a user pain point, and sticking to what is requested."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So stay pragmatic in the decision of what you want to implement."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        }
+      ],
+      "notion": "n-pragmatism"
+    },
+    {
+      "id": "term-data-warehouse",
+      "fr": "entrepôt de données",
+      "en": "data warehouse",
+      "definition": {
+        "fr": "Couche qui intègre, historise et unifie les sources avec des définitions partagées.",
+        "en": "Layer that integrates, historises and unifies sources with shared definitions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        }
+      ],
+      "notion": "n-choose-architecture-method"
+    },
+    {
+      "id": "term-data-mart",
+      "fr": "data mart",
+      "en": "data mart",
+      "definition": {
+        "fr": "Sous-ensemble par domaine, adapté à ses questions.",
+        "en": "A subset per domain, tailored to its questions."
+      },
+      "pitfall": {
+        "fr": "Des data marts indépendants sans intégration sont un anti-modèle (complément externe).",
+        "en": "Independent data marts without integration are an anti-pattern (external supplement)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notion": "n-choose-architecture-method"
+    },
+    {
+      "id": "term-staging-area",
+      "fr": "zone de transit (staging area)",
+      "en": "staging area",
+      "definition": {
+        "fr": "Copie technique avant nettoyage, sans accès utilisateur.",
+        "en": "Technical copy before cleaning, no user access."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "notion": "n-choose-architecture-method"
+    }
+  ],
+  "notions": [
+    "n-choose-architecture-method",
+    "n-simplified-variant",
+    "n-pragmatism",
+    "n-independent-data-marts",
+    "n-cif-vs-kimball",
+    "n-hybrid-architecture",
+    "n-two-tier-lakehouse"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Architecturer, c’est relier principes et choix, justifier chaque couche et justifier une variante plus simple.",
+        "en": "Architecting means linking principles and choices, justifying each layer and justifying a simpler variant."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method",
+        "n-simplified-variant"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Démarche : du besoin (pain points, exigences) aux couches, vérification des trois principes, puis implémentation physique ; rester pragmatique.",
+        "en": "Approach: from need (pain points, requirements) to layers, check of the three principles, then physical implementation; stay pragmatic."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method",
+        "n-pragmatism"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Complément : data marts indépendants (déconseillés : chiffres divergents), CIF (EDW normalisé obligatoire), bus de Kimball (dimensions conformes), hybride (utile si l’EDW existe déjà).",
+        "en": "Supplement: independent data marts (discouraged: divergent figures), CIF (mandatory normalised EDW), Kimball bus (conformed dimensions), hybrid (useful if the EDW already exists)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Although the Kimball architecture enables optional normalization to support ETL processing, the normalized EDW is a mandatory construct in the CIF."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "If you’ve already invested in the creation of a 3NF EDW, but it’s not delivering on the users’ expectations of fast and flexible reporting and analysis, this hybrid approach might be appropriate for your organization."
+        }
+      ],
+      "notions": [
+        "n-independent-data-marts",
+        "n-cif-vs-kimball",
+        "n-hybrid-architecture"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Une variante simplifiée se justifie par un contexte et se paie par un principe fragilisé ; on prévoit un déclencheur de réintroduction.",
+        "en": "A simplified variant is justified by a context and paid for with a weakened principle; a reintroduction trigger is planned."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        }
+      ],
+      "notions": [
+        "n-simplified-variant"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Pistes de simplification sourcées : ne pas bâtir de base 3NF inutile ; un seul niveau (lakehouse) au lieu de lac + entrepôt ; la logique en couches reste.",
+        "en": "Sourced simplification leads: no needless 3NF database; one tier (lakehouse) instead of lake + warehouse; the layered logic stays."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "it may be pointless to take the final step of building a 3NF physical database"
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "a two-tier architecture is highly complex for users"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "notions": [
+        "n-simplified-variant",
+        "n-two-tier-lakehouse"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La variante du prof (séances 2 à 4) est absente de nos sources : à confirmer.",
+        "en": "The teacher’s variant (sessions 2 to 4) is missing from our sources: to be confirmed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        }
+      ],
+      "notions": [
+        "n-simplified-variant"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Que demande l’objectif « Architecturer » ?",
+        "en": "What does the “Architect” objective ask?"
+      },
+      "back": {
+        "fr": "Schématiser, justifier le rôle de chaque couche, relier principes et choix, justifier une variante plus simple.",
+        "en": "Diagram, justify each layer’s role, link principles and choices, justify a simpler variant."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Architect: Diagram a decision-making architecture, justify the role of each layer, relate guiding principles to architecture choices, and justify a simpler variant."
+        }
+      ],
+      "notions": [
+        "n-choose-architecture-method",
+        "n-simplified-variant"
+      ],
+      "id": "isi7-12-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Critère pour juger une architecture ?",
+        "en": "Criterion for judging an architecture?"
+      },
+      "back": {
+        "fr": "Tient-elle les trois principes : fiable, prévisible, disponible ?",
+        "en": "Does it hold the three principles: reliable, predictable, available?"
+      },
+      "termId": "term-architecture-choice",
+      "id": "isi7-12-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Qui choisit l’implémentation physique ?",
+        "en": "Who chooses the physical implementation?"
+      },
+      "back": {
+        "fr": "L’architecte ; la logique en couches reste au-dessus.",
+        "en": "The architect; the layered logic stays on top."
+      },
+      "termId": "term-physical-implementation",
+      "id": "isi7-12-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Que dit le prof sur la technologie sans pain point ?",
+        "en": "What does the teacher say about technology without a pain point?"
+      },
+      "back": {
+        "fr": "Ne pas courir après la technologie si elle n’est pas justifiée par un pain point ; rester pragmatique.",
+        "en": "Do not chase technology if it is not justified by a pain point; stay pragmatic."
+      },
+      "termId": "term-pragmatism",
+      "id": "isi7-12-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi les data marts indépendants sont-ils déconseillés ?",
+        "en": "Why are independent data marts discouraged?"
+      },
+      "back": {
+        "fr": "Chaque département a ses règles et ses libellés : les chiffres ne concordent pas.",
+        "en": "Each department has its own rules and labels: numbers do not match."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "We strongly discourage the independent data mart approach."
+        }
+      ],
+      "notions": [
+        "n-independent-data-marts"
+      ],
+      "id": "isi7-12-fc-05"
+    },
+    {
+      "front": {
+        "fr": "CIF contre bus de Kimball ?",
+        "en": "CIF versus Kimball bus?"
+      },
+      "back": {
+        "fr": "CIF : EDW normalisé obligatoire. Kimball : bus avec dimensions conformes, normalisation optionnelle.",
+        "en": "CIF: mandatory normalised EDW. Kimball: bus with conformed dimensions, normalisation optional."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Although the Kimball architecture enables optional normalization to support ETL processing, the normalized EDW is a mandatory construct in the CIF."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "The CIF says the normalized EDW fills this role, whereas the Kimball architecture stresses the importance of an enterprise bus with conformed dimensions."
+        }
+      ],
+      "notions": [
+        "n-cif-vs-kimball"
+      ],
+      "id": "isi7-12-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Quand l’hybride est-il approprié ?",
+        "en": "When is hybrid appropriate?"
+      },
+      "back": {
+        "fr": "Si un EDW 3NF existe déjà mais ne donne pas de reporting rapide ; sinon plus de temps et d’argent.",
+        "en": "If a 3NF EDW already exists but does not deliver fast reporting; otherwise more time and money."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "If you’re starting with a blank sheet of paper, the hybrid approach will likely cost more time and money"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "If you’ve already invested in the creation of a 3NF EDW, but it’s not delivering on the users’ expectations of fast and flexible reporting and analysis, this hybrid approach might be appropriate for your organization."
+        }
+      ],
+      "notions": [
+        "n-hybrid-architecture"
+      ],
+      "id": "isi7-12-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Variante simplifiée : cinq étapes de justification ?",
+        "en": "Simplified variant: five steps of justification?"
+      },
+      "back": {
+        "fr": "Contexte, ce qu’on retire, principe fragilisé, mesure compensatoire, déclencheur de réintroduction.",
+        "en": "Context, what is removed, weakened principle, compensating measure, reintroduction trigger."
+      },
+      "termId": "term-simplified-variant",
+      "id": "isi7-12-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Lakehouse et architecture à deux niveaux ?",
+        "en": "Lakehouse and two-tier architecture?"
+      },
+      "back": {
+        "fr": "Le lakehouse vise à réunir lac et entrepôt en un seul niveau ; la logique en couches reste au-dessus.",
+        "en": "The lakehouse aims to merge lake and warehouse into one tier; the layered logic stays on top."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "a two-tier architecture is highly complex for users"
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "The Lakehouse architecture",
+          "quote": "Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter."
+        }
+      ],
+      "notions": [
+        "n-two-tier-lakehouse"
+      ],
+      "id": "isi7-12-fc-09"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le cours, une architecture se juge notamment à sa capacité à tenir les trois principes : fiable, prévisible, disponible.",
+        "en": "According to the course, an architecture is judged in particular by its ability to hold the three principles: reliable, predictable, available."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : l’objectif relie principes et choix d’architecture (lecture à partir du cours).",
+        "en": "TRUE: the objective links principles and architecture choices (reading based on the course)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-choose-architecture-method"
+      ],
+      "id": "isi7-12-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le prof demande à ce que le choix d’un produit logiciel précis soit justifié dans l’examen d’architecture.",
+        "en": "The teacher requires the choice of a specific software product to be justified in the architecture exam."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : on est « à l’étape d’avant, le choix des technologies » ; la logique en couches et les principes comptent.",
+        "en": "FALSE: we are “at the step before, the choice of technologies”; the layered logic and principles matter."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not the point of the class to help you decide what is good for your product"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-choose-architecture-method"
+      ],
+      "trap": {
+        "fr": "Préparer des comparatifs d’outils au lieu de justifier des couches.",
+        "en": "Preparing tool comparisons instead of justifying layers."
+      },
+      "id": "isi7-12-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Deux départements construisent chacun leurs data marts à partir des mêmes données sans partager les définitions. Quel risque Kimball et Ross prévoient-ils ?",
+        "en": "Two departments each build their data marts from the same data without sharing definitions. Which risk do Kimball and Ross foresee?"
+      },
+      "options": [
+        {
+          "fr": "Les chiffres ne concordent pas à cause des règles métier et des libellés différents",
+          "en": "The numbers do not match because of different business rules and labels"
+        },
+        {
+          "fr": "Les requêtes deviennent trop rapides pour pouvoir être auditées correctement par la DSI",
+          "en": "Queries become too fast to be properly audited by IT"
+        },
+        {
+          "fr": "Le stockage devient techniquement impossible dans un entrepôt unique et centralisé",
+          "en": "Storage becomes technically impossible in a single, centralised warehouse"
+        },
+        {
+          "fr": "Les utilisateurs ne peuvent plus du tout accéder à leurs propres données de département",
+          "en": "Users can no longer access their own department data at all"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "« None of the numbers match because of the differences in business rules and labeling » : c’est le pain point 2.",
+        "en": "“None of the numbers match because of the differences in business rules and labeling”: this is pain point 2."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Without any enterprise perspective, this independent approach results in myriad standalone point solutions that perpetuate incompatible views of the organization’s performance"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-independent-data-marts"
+      ],
+      "id": "isi7-12-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans le CIF (hub-and-spoke), l’entrepôt d’entreprise normalisé est facultatif ; dans l’architecture de Kimball, il est obligatoire.",
+        "en": "In the CIF (hub-and-spoke), the normalised enterprise warehouse is optional; in Kimball’s architecture, it is mandatory."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est l’inverse : l’EDW normalisé est obligatoire dans le CIF ; la normalisation est optionnelle chez Kimball.",
+        "en": "FALSE: the reverse: the normalised EDW is mandatory in the CIF; normalisation is optional in Kimball."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Although the Kimball architecture enables optional normalization to support ETL processing, the normalized EDW is a mandatory construct in the CIF."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-cif-vs-kimball"
+      ],
+      "trap": {
+        "fr": "Inverser CIF et Kimball.",
+        "en": "Swapping CIF and Kimball."
+      },
+      "id": "isi7-12-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon Kimball et Ross, normaliser des données suffit à les intégrer.",
+        "en": "According to Kimball and Ross, normalising data is enough to integrate it."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : « normalization does not technically speak to integration » ; l’intégration résout des incohérences entre sources.",
+        "en": "FALSE: “normalization does not technically speak to integration”; integration resolves inconsistencies between sources."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "The process of normalization does not technically speak to integration."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-cif-vs-kimball"
+      ],
+      "trap": {
+        "fr": "Confondre normalisation et intégration.",
+        "en": "Confusing normalisation and integration."
+      },
+      "id": "isi7-12-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "L’architecture hybride peut convenir à une organisation qui possède déjà un EDW 3NF peu performant pour les utilisateurs.",
+        "en": "A hybrid architecture can suit an organisation that already has a 3NF EDW that performs poorly for users."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « If you’ve already invested in the creation of a 3NF EDW, but it’s not delivering… this hybrid approach might be appropriate ».",
+        "en": "TRUE: “If you’ve already invested in the creation of a 3NF EDW, but it’s not delivering… this hybrid approach might be appropriate”."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "If you’ve already invested in the creation of a 3NF EDW, but it’s not delivering on the users’ expectations of fast and flexible reporting and analysis, this hybrid approach might be appropriate for your organization."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-hybrid-architecture"
+      ],
+      "id": "isi7-12-qz-06"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une startup d’un seul département, avec une seule source, veut un tableau de bord rapidement. Quelle démarche suit le cours pour une variante simplifiée ?",
+        "en": "A single-department startup, with a single source, wants a dashboard quickly. Which approach follows the course for a simplified variant?"
+      },
+      "options": [
+        {
+          "fr": "Commencer directement par un lakehouse temps réel complet, par prudence",
+          "en": "Start directly with a complete real-time lakehouse, as a precaution"
+        },
+        {
+          "fr": "Ne rien justifier : une petite entreprise n’a pas besoin d’architecture",
+          "en": "Justify nothing: a small company does not need an architecture"
+        },
+        {
+          "fr": "Retirer une couche, nommer le principe fragilisé et prévoir quand la réintroduire",
+          "en": "Remove a layer, name the weakened principle and plan when to reintroduce it"
+        },
+        {
+          "fr": "Ne conserver que des données brutes, sans définition partagée, par souci de vitesse",
+          "en": "Keep only raw data, with no shared definition, for the sake of speed"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "La variante se justifie par le contexte ; on nomme ce qu’on retire, le principe fragilisé et le déclencheur de réintroduction. Le temps réel complet contredit le pragmatisme.",
+        "en": "The variant is justified by the context; you name what is removed, the weakened principle and the reintroduction trigger. Full real time contradicts pragmatism."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-simplified-variant"
+      ],
+      "id": "isi7-12-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une simplification d’architecture est valable à partir du moment où elle réduit les coûts, sans qu’il soit nécessaire de dire quel principe elle fragilise.",
+        "en": "An architecture simplification is valid as soon as it reduces costs, without needing to say which principle it weakens."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : toute simplification a un prix ; l’exercice attend qu’on nomme le principe fragilisé et le pain point qui reviendrait.",
+        "en": "FALSE: every simplification has a price; the exercise expects you to name the weakened principle and the pain point that would return."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-simplified-variant"
+      ],
+      "trap": {
+        "fr": "Justifier par le coût seul.",
+        "en": "Justifying by cost alone."
+      },
+      "id": "isi7-12-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon Kimball et Ross, il peut être inutile de construire une base 3NF physique juste avant de retransformer les données en structures dénormalisées pour la zone de présentation.",
+        "en": "According to Kimball and Ross, it may be pointless to build a physical 3NF database just before transforming data again into denormalised structures for the presentation area."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : une base normalisée pour l’ETL reste acceptable, mais ce n’est pas le but.",
+        "en": "TRUE: a normalised database for ETL remains acceptable, but it is not the goal."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "it may be pointless to take the final step of building a 3NF physical database"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "It is acceptable to create a normalized database to support the ETL processes; however, this is not the end goal."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-simplified-variant"
+      ],
+      "id": "isi7-12-qz-09"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un lakehouse remplace lac et entrepôt par un seul système. Que dit le prof sur la logique en couches ?",
+        "en": "A lakehouse replaces lake and warehouse with one system. What does the teacher say about the layered logic?"
+      },
+      "options": [
+        {
+          "fr": "Elle disparaît : tout est dans le lakehouse",
+          "en": "It disappears: everything is in the lakehouse"
+        },
+        {
+          "fr": "Elle reste au-dessus de l’implémentation physique, que l’architecte choisit",
+          "en": "It stays on top of the physical implementation, which the architect chooses"
+        },
+        {
+          "fr": "Elle ne s’applique qu’aux bases SQL",
+          "en": "It only applies to SQL databases"
+        },
+        {
+          "fr": "Elle devient obligatoire seulement en temps réel",
+          "en": "It only becomes mandatory in real time"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "« The staging area, the warehouse, the data mart logic, it stays on top of that. »",
+        "en": "“The staging area, the warehouse, the data mart logic, it stays on top of that.”"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-two-tier-lakehouse",
+        "n-simplified-variant"
+      ],
+      "trap": {
+        "fr": "Confondre implémentation physique et logique.",
+        "en": "Confusing physical implementation and logic."
+      },
+      "id": "isi7-12-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les auteurs de l’article sur le lakehouse sont des chercheurs indépendants sans lien avec un éditeur de logiciel.",
+        "en": "The authors of the lakehouse paper are independent researchers with no link to a software vendor."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ils travaillent chez Databricks (et affiliés universitaires) ; c’est un article de position, à lire avec ce recul.",
+        "en": "FALSE: they work at Databricks (with university affiliations); it is a position paper, to be read with that in mind."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "Michael Armbrust, Ali Ghodsi, Reynold Xin, and Matei Zaharia"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-two-tier-lakehouse"
+      ],
+      "trap": {
+        "fr": "Prendre une source éditeur pour une source neutre.",
+        "en": "Taking a vendor source for a neutral one."
+      },
+      "id": "isi7-12-qz-11"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pourquoi ce chapitre signale-t-il que la variante simplifiée du prof est inconnue ?",
+        "en": "Why does this chapter flag that the teacher’s simplified variant is unknown?"
+      },
+      "options": [
+        {
+          "fr": "Parce que le prof a explicitement refusé de parler de variantes simplifiées en cours",
+          "en": "Because the teacher explicitly refused to talk about simplified variants in class"
+        },
+        {
+          "fr": "Parce que la variante est forcément identique au lakehouse présenté en introduction",
+          "en": "Because the variant is necessarily identical to the lakehouse presented in the introduction"
+        },
+        {
+          "fr": "Parce que les data marts indépendants sont la variante officielle de la matière",
+          "en": "Because independent data marts are the subject’s official variant"
+        },
+        {
+          "fr": "Parce que les séances 2 à 4 sont absentes de nos sources, seule leur annonce existant",
+          "en": "Because sessions 2 to 4 are missing from our sources, only their announcement existing"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Le séquencement annonce « variante simplifiée » sans en donner le contenu ; on ne l’invente pas.",
+        "en": "The sequencing announces a “simplified variant” without giving its content; it is not invented."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-simplified-variant"
+      ],
+      "id": "isi7-12-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Choisir et justifier l’architecture de trois entreprises",
+        "en": "Choosing and justifying the architecture of three companies"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventés pour s’entraîner.)* Pour chaque entreprise, proposez les couches, justifiez par pain point et principe, et dites si une variante simplifiée est défendable.\n**A.** Une boulangerie avec un seul logiciel de caisse et un propriétaire qui veut son chiffre d’affaires par jour.\n**B.** Une PME industrielle avec trois départements (ventes, production, finance), quatre sources, des chiffres qui divergent.\n**C.** Un groupe avec douze pays, des exigences RGPD et RSE, et une plateforme de données déjà existante.",
+        "en": "*(Invented cases for practice.)* For each company, propose the layers, justify by pain point and principle, and say whether a simplified variant is defensible.\n**A.** A bakery with a single till software and an owner who wants daily revenue.\n**B.** An industrial SME with three departments (sales, production, finance), four sources, diverging figures.\n**C.** A group with twelve countries, GDPR and CSR requirements, and an existing data platform."
+      },
+      "hints": [
+        {
+          "fr": "Pour A : combien de sources, de départements ? Quel besoin réel ?",
+          "en": "For A: how many sources, departments? What real need?"
+        },
+        {
+          "fr": "Pour B : quel pain point domine ? Pour C : quelles exigences cachées ?",
+          "en": "For B: which pain point dominates? For C: which hidden requirements?"
+        }
+      ],
+      "solution": {
+        "fr": "**A.** Variante très simplifiée : une source, un département, une question simple (descriptive). On peut se passer d’entrepôt et de data marts séparés : un seul modèle alimenté depuis la caisse, avec une définition claire du chiffre d’affaires. Principe fragilisé : fiabilité si un 2ᵉ logiciel (commande en ligne) arrive ; déclencheur : nouvelle source ou nouveau département. Pragmatisme : « stick to what is requested ».\n**B.** Pain points 1 et 2 dominants : architecture en couches complète : sources, transit, entrepôt (définitions partagées, historisation), data marts par département ; principes fiable, prévisible, disponible. Éviter des data marts indépendants qui reproduiraient la divergence.\n**C.** Couches complètes avec gouvernance (propriétaires de la donnée par domaine), sécurité par ligne par pays, pseudonymisation / agrégation et rétention limitée (RGPD), indicateurs RSE fiables et auditables ; implémentation physique libre (lakehouse possible), logique en couches conservée. Une variante simplifiée est difficile à défendre : les exigences cachées (sécurité, conformité) sont lourdes.\n*Ce que l’exercice vérifie* : adapter le niveau d’architecture au contexte en justifiant par les principes. *Corrigé proposé.*",
+        "en": "**A.** A much simplified variant: one source, one department, a simple (descriptive) question. You can do without a separate warehouse and data marts: a single model fed from the till, with a clear revenue definition. Weakened principle: reliability if a 2nd software (online ordering) arrives; trigger: new source or new department. Pragmatism: “stick to what is requested”.\n**B.** Pain points 1 and 2 dominate: full layered architecture: sources, staging, warehouse (shared definitions, historisation), data marts per department; reliable, predictable, available principles. Avoid independent data marts that would reproduce the divergence.\n**C.** Full layers with governance (data owners per domain), row-level security per country, pseudonymisation / aggregation and limited retention (GDPR), reliable and auditable CSR indicators; physical implementation free (lakehouse possible), layered logic kept. A simplified variant is hard to defend: the hidden requirements (security, compliance) are heavy.\n*What the exercise checks*: adapting the level of architecture to the context while justifying by principles. *Proposed answer.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices, and justify a simpler variant"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Without any enterprise perspective, this independent approach results in myriad standalone point solutions that perpetuate incompatible views of the organization’s performance"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data Available and reliable"
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Proposer la même architecture à tout le monde.",
+        "en": "Proposing the same architecture to everyone."
+      },
+      "notions": [
+        "n-choose-architecture-method",
+        "n-simplified-variant",
+        "n-pragmatism"
+      ],
+      "id": "isi7-12-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Critiquer « chaque département construit son data mart »",
+        "en": "Criticising “each department builds its own data mart”"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Un directeur informatique propose que chaque département construise son propre data mart « pour aller plus vite ». Rédigez une critique en cinq lignes avec le cours et Kimball et Ross, puis proposez la correction minimale.",
+        "en": "An IT director proposes that each department builds its own data mart “to go faster”. Write a five-line critique using the course and Kimball and Ross, then propose the minimal correction."
+      },
+      "hints": [
+        {
+          "fr": "Quel pain point reviendrait ?",
+          "en": "Which pain point would return?"
+        },
+        {
+          "fr": "Qu’est-ce qui doit être commun à tous les marts ?",
+          "en": "What must be common to all marts?"
+        }
+      ],
+      "solution": {
+        "fr": "**Critique** : c’est l’architecture de data marts indépendants que Kimball et Ross déconseillent fortement : rapide à court terme, mais les chiffres des départements ne concordent pas à cause des règles métier et des libellés différents. On retrouve le pain point 2 (chiffres divergents, perte de confiance) et le principe « fiable » est violé.\n**Correction minimale** : conserver les data marts par domaine, mais les alimenter depuis un entrepôt qui intègre et unifie avec des définitions partagées (propriétaires de la donnée par domaine) ; chez Kimball, des dimensions conformes partagées.\n*Barème indicatif* : 2 points pour la critique, 2 pour la correction.",
+        "en": "**Critique**: this is the independent data mart architecture that Kimball and Ross strongly discourage: fast in the short run, but department numbers do not match because of different business rules and labels. Pain point 2 (divergent figures, loss of trust) returns and the “reliable” principle is violated.\n**Minimal correction**: keep per-domain data marts, but feed them from a warehouse that integrates and unifies with shared definitions (data owners per domain); in Kimball’s terms, shared conformed dimensions.\n*Indicative marking*: 2 points for the critique, 2 for the correction."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "We strongly discourage the independent data mart approach."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        }
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Ne critiquer que le coût sans parler de divergence.",
+        "en": "Criticising cost only without mentioning divergence."
+      },
+      "notions": [
+        "n-independent-data-marts",
+        "n-choose-architecture-method"
+      ],
+      "id": "isi7-12-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Every simplification has a price.",
+      "id": "isi7-12-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "Independent data marts make the numbers of different departments {{diverge}} because of different business {{rules}} and labels.",
+      "translation": "Des data marts indépendants font diverger les chiffres des départements à cause de règles métier et de libellés différents.",
+      "id": "isi7-12-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "In the CIF, the normalised enterprise warehouse is optional.",
+      "error": "is optional",
+      "corrected": "is mandatory",
+      "explanation": {
+        "fr": "Dans le CIF, l’EDW normalisé est obligatoire ; c’est chez Kimball que la normalisation est optionnelle.",
+        "en": "In the CIF the normalised EDW is mandatory; it is in Kimball that normalisation is optional."
+      },
+      "id": "isi7-12-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : comment justifier une variante simplifiée d’architecture ?",
+        "en": "In three sentences: how do you justify a simplified architecture variant?"
+      },
+      "modelAnswer": "I start from the context, such as one source and one department, and I name what I remove. I then say which principle becomes weaker and which pain point could return. Finally I set a trigger to reintroduce the layer when a new department or source appears.",
+      "keywords": [
+        "context",
+        "remove",
+        "principle",
+        "pain point",
+        "trigger"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai nommé le prix de la simplification.",
+          "en": "I named the price of the simplification."
+        },
+        {
+          "fr": "J’ai fixé un déclencheur.",
+          "en": "I set a trigger."
+        }
+      ],
+      "usefulPhrases": [
+        "I name what I remove",
+        "a trigger to reintroduce"
+      ],
+      "id": "isi7-12-wr-04"
+    }
+  ]
+}

@@ -1,0 +1,1558 @@
+{
+  "id": "isi7-16-faits-sans-mesure",
+  "courseId": "isi7",
+  "order": 16,
+  "title": {
+    "fr": "Faits sans mesure : événements et couverture",
+    "en": "Factless facts: events and coverage"
+  },
+  "hook": {
+    "fr": "Comment compter ceux qui ne sont pas venus ?",
+    "en": "How do you count those who did not come?"
+  },
+  "question": {
+    "fr": "Comment modéliser un événement sans chiffre, et comment analyser ce qui n’a pas eu lieu ?",
+    "en": "How do you model an event without a number, and how do you analyse what did not happen?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir un fait sans mesure et citer ses deux usages (événements, couverture).",
+        "en": "Define a factless fact and name its two uses (events, coverage)."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Expliquer couverture moins activité.",
+        "en": "Explain coverage minus activity."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Modéliser un événement et répondre à une question d’absence.",
+        "en": "Model an event and answer an absence question."
+      },
+      "level": "apply"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Séance 8 : « Faits sans mesure (couverture, événements) » (diapositives).",
+        "en": "Session 8: “Factless facts (coverage, events)” (slides)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Une question d’absence à traiter par couverture et activité : estimation ; détail technique issu de Kimball.",
+        "en": "An absence question to handle with coverage and activity: an estimate; technical detail from Kimball."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 13 et 14 : grain, faits, dimensions conformes.",
+    "en": "Chapters 13 and 14: grain, facts, conformed dimensions."
+  },
+  "next": {
+    "fr": "Chapitre 17 : l’évolution et le cas complet.",
+    "en": "Chapter 17: evolution and the full case."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Fait sans mesure : événements et couverture.",
+        "en": "Factless fact: events and coverage."
+      },
+      {
+        "fr": "Couverture moins activité = ce qui n’a pas eu lieu.",
+        "en": "Coverage minus activity = what did not happen."
+      },
+      {
+        "fr": "Le grain reste déclaré ; on compte les lignes.",
+        "en": "The grain is still declared; rows are counted."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Modéliser un événement sans mesure.",
+        "en": "Model a factless event."
+      },
+      {
+        "fr": "Répondre à une question sur les absences avec couverture et activité.",
+        "en": "Answer an absence question with coverage and activity."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Événement (ce qui a eu lieu) ≠ couverture (ce qui pouvait avoir lieu).",
+        "en": "Event (what happened) ≠ coverage (what might have happened)."
+      },
+      {
+        "fr": "Table de transaction creuse ≠ instantané périodique dense.",
+        "en": "Sparse transaction table ≠ dense periodic snapshot."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 13 : grain, faits, dimensions.",
+        "en": "Chapter 13: grain, facts, dimensions."
+      },
+      {
+        "fr": "Chapitre 14 : la couverture réutilise les dimensions conformes.",
+        "en": "Chapter 14: coverage reuses conformed dimensions."
+      },
+      {
+        "fr": "Chapitre 17 : un nouvel indicateur peut être un fait sans mesure.",
+        "en": "Chapter 17: a new indicator can be a factless fact."
+      }
+    ]
+  },
+  "estimatedMinutes": 11,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Quand l’événement n’a pas de chiffre",
+        "en": "When the event has no number"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La séance 8 s’intitule « **Faits sans mesure** (couverture, événements) ». Jusqu’ici, une ligne de faits portait des mesures numériques. Le cours annonce deux cas où il n’y en a pas : les **événements** et la **couverture**. Nos sources pour ces séances sont, comme au chapitre 13, le séquencement du cours et Kimball (complément).",
+        "en": "Session 8 is titled “**Factless facts** (coverage, events)”. So far, a fact row carried numeric measures. The course announces two cases where there are none: **events** and **coverage**. Our sources for these sessions are, as in chapter 13, the course sequencing and Kimball (supplement)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        }
+      ],
+      "notions": [
+        "n-factless-fact-table",
+        "n-event-factless",
+        "n-coverage-factless"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Premier cas, l’**événement**. Kimball : un événement peut simplement enregistrer un ensemble d’entités dimensionnelles qui se rencontrent à un moment donné. Un étudiant qui assiste à un cours un jour donné n’a pas de fait numérique enregistré, mais une ligne avec les clés du jour, de l’étudiant, de l’enseignant, du lieu et du cours est bien définie. Les communications avec les clients sont aussi des événements, souvent sans mesure.",
+        "en": "First case, the **event**. Kimball: an event may merely record a set of dimensional entities coming together at a moment in time. A student attending a class on a given day has no recorded numeric fact, but a row with the keys of the day, student, teacher, location and class is well defined. Customer communications are also events, often with no measure."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Although most measurement events capture numerical results, it is possible that the event merely records a set of dimensional entities coming together at a moment in time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Likewise, customer communications are events, but there may be no associated metrics."
+        }
+      ],
+      "notions": [
+        "n-event-factless",
+        "n-factless-fact-table"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une table de faits sans mesure reste une table de faits : elle contient une clé étrangère pour chacune de ses dimensions, et une ligne par événement. Cela rejoint le principe du chapitre 13 : une ligne correspond à un événement de mesure, et inversement, au grain le plus bas.",
+        "en": "A factless fact table remains a fact table: it holds a foreign key for each of its dimensions, and one row per event. This joins the principle of chapter 13: one row corresponds to a measurement event, and vice versa, at the lowest grain."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "a fact table always contains foreign keys for each of its associated dimensions"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "At the lowest grain, a fact table row corresponds to a measurement event and vice versa."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "Each row in a fact table corresponds to a measurement event."
+        }
+      ],
+      "notions": [
+        "n-event-factless"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Que mesure-t-on alors ? Lecture proposée à partir du cours (une mesure est une valeur numérique que l’on agrège : sommée, moyennée, **comptée**) : on **compte les lignes**. « Combien de participations par formation et par mois ? » est un comptage de lignes, sans colonne de mesure.",
+        "en": "What is measured then? A reading proposed from the course (a measure is a numeric value that gets aggregated: summed, averaged, **counted**): you **count the rows**. “How many attendances per course and per month?” is a row count, with no measure column."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Fact tables are the primary target of computations and dynamic aggregations arising from queries."
+        }
+      ],
+      "notions": [
+        "n-count-rows"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : « sans mesure » ne veut pas dire « sans table de faits » ni « sans grain ». Le grain reste déclaré : une ligne = un événement (une participation, une communication). C’est la mesure qui manque, pas la clé.",
+        "en": "Trap: “factless” does not mean “no fact table” nor “no grain”. The grain is still declared: one row = one event (an attendance, a communication). It is the measure that is missing, not the key."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-16-qz-01"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-16-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La couverture : analyser ce qui n’a pas eu lieu",
+        "en": "Coverage: analysing what did not happen"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Second cas, la **couverture**. Une table de faits sans mesure sert aussi à analyser ce qui n’a **pas** eu lieu. La requête a toujours deux parties : une table de **couverture** qui contient toutes les possibilités d’événements qui pouvaient avoir lieu, et une table d’**activité** qui contient ceux qui ont eu lieu. Quand on soustrait l’activité à la couverture, le résultat est l’ensemble des événements qui n’ont pas eu lieu.",
+        "en": "Second case, **coverage**. A factless fact table is also used to analyse what did **not** happen. The query always has two parts: a **coverage** table that holds all the possibilities of events that might have happened, and an **activity** table that holds those that did happen. When activity is subtracted from coverage, the result is the set of events that did not happen."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Factless fact tables can also be used to analyze what didn’t happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ],
+      "notions": [
+        "n-coverage-factless",
+        "n-what-did-not-happen"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Table",
+          "en": "Table"
+        },
+        {
+          "fr": "Contenu (exemple inventé : promotions)",
+          "en": "Content (invented example: promotions)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Couverture",
+            "en": "Coverage"
+          },
+          {
+            "fr": "Magasin S1 × 5 produits en promotion : P1, P2, P3, P4, P5 (5 lignes)",
+            "en": "Store S1 × 5 products on promotion: P1, P2, P3, P4, P5 (5 rows)"
+          }
+        ],
+        [
+          {
+            "fr": "Activité",
+            "en": "Activity"
+          },
+          {
+            "fr": "Ventes en promotion du magasin S1 : P1, P2, P4 (3 lignes)",
+            "en": "Promotional sales of store S1: P1, P2, P4 (3 rows)"
+          }
+        ],
+        [
+          {
+            "fr": "Couverture − activité",
+            "en": "Coverage − activity"
+          },
+          {
+            "fr": "P3 et P5 : promotions sans aucune vente (2 lignes)",
+            "en": "P3 and P5: promotions with no sales (2 rows)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ],
+      "notions": [
+        "n-coverage-factless",
+        "n-what-did-not-happen"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Cet exemple est **inventé** pour illustrer la règle de Kimball (couverture moins activité). Notre exemple, pas celui de Kimball. La table d’activité est ici une table de faits de ventes en promotion, avec ses mesures éventuelles ; seule la couverture est « sans mesure ».",
+        "en": "This example is **invented** to illustrate Kimball’s rule (coverage minus activity). It is our example, not Kimball’s. The activity table here is a table of promotional sales facts, with its possible measures; only the coverage is “factless”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi ne pas simplement mettre des lignes à zéro dans la table de ventes ? Kimball et Ross le déconseillent : si un produit n’a aucune vente, on ne met aucune ligne ; remplir la table de zéros représentant l’absence d’activité la submergerait. Une table de transaction reste **creuse** (sparse) : les lignes n’existent que si une mesure a eu lieu. C’est précisément pour cela que la couverture est une table à part.",
+        "en": "Why not simply put zero rows in the sales table? Kimball and Ross advise against it: if a product has no sales, no row is added; filling the table with zeros representing no activity would overwhelm it. A transaction table stays **sparse**: rows exist only if a measurement took place. This is precisely why coverage is a separate table."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "if there is no sales activity for a given product, you don’t put any rows in the table"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "It is important that you do not try to fill the fact table with zeros representing no activity because these zeros would overwhelm most fact tables."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Transaction fact tables may be dense or sparse because rows exist only if measurements take place."
+        }
+      ],
+      "notions": [
+        "n-no-zero-rows"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (Kimball) À l’opposé, une table de faits d’instantané périodique est dense : même sans activité sur la période, une ligne est insérée avec un zéro ou un nul pour chaque fait. Le choix dépend du grain déclaré : un événement, ou une période.",
+        "en": "**Going further** — (Kimball) By contrast, a periodic snapshot fact table is dense: even with no activity in the period, a row is inserted with a zero or null for each fact. The choice depends on the declared grain: an event, or a period."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These fact tables are uniformly dense in their foreign keys because even if no activity takes place during the period, a row is typically inserted in the fact table containing a zero or null for each fact."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-16-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Une méthode pour les deux cas",
+        "en": "A method for both cases"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Modéliser un événement sans mesure et une question de couverture (méthode de l’app)",
+        "en": "Modelling a factless event and a coverage question (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Reconnaître l’**événement** : une rencontre d’entités à un moment donné, sans chiffre à agréger.",
+            "en": "Recognise the **event**: entities coming together at a moment in time, with no number to aggregate."
+          },
+          "why": {
+            "fr": "Le processus n’a pas de mesure, mais il a toujours un grain.",
+            "en": "The process has no measure, but it always has a grain."
+          }
+        },
+        {
+          "do": {
+            "fr": "Déclarer le grain : une ligne = un événement (une participation, une communication).",
+            "en": "Declare the grain: one row = one event (an attendance, a communication)."
+          },
+          "why": {
+            "fr": "Une ligne correspond à un événement et inversement.",
+            "en": "One row corresponds to an event and vice versa."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lister les dimensions : jour, personne, lieu, objet de l’événement…",
+            "en": "List the dimensions: day, person, place, object of the event…"
+          },
+          "why": {
+            "fr": "Une clé étrangère par dimension ; pas de colonne de mesure.",
+            "en": "One foreign key per dimension; no measure column."
+          }
+        },
+        {
+          "do": {
+            "fr": "Si la question porte sur ce qui n’a **pas** eu lieu : construire la table de couverture (toutes les possibilités) en plus de l’activité.",
+            "en": "If the question is about what did **not** happen: build the coverage table (all possibilities) in addition to activity."
+          },
+          "why": {
+            "fr": "On ne remplit pas la table d’activité de zéros.",
+            "en": "The activity table is not filled with zeros."
+          }
+        },
+        {
+          "do": {
+            "fr": "Répondre : compter les lignes (événements) ou soustraire l’activité à la couverture (absences).",
+            "en": "Answer: count rows (events) or subtract activity from coverage (absences)."
+          },
+          "why": {
+            "fr": "Ce sont les deux usages du cours : événements et couverture.",
+            "en": "These are the course’s two uses: events and coverage."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Factless fact tables can also be used to analyze what didn’t happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "At the lowest grain, a fact table row corresponds to a measurement event and vice versa."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "It is important that you do not try to fill the fact table with zeros representing no activity because these zeros would overwhelm most fact tables."
+        }
+      ],
+      "notions": [
+        "n-model-factless-method"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Application à notre fil rouge. **Événement** : « un employé suit une formation de sécurité » (grain : une participation ; dimensions : date, employé, formation, lieu) : on compte les participations. **Couverture** : tous les employés qui devaient suivre cette formation ; en soustrayant l’activité, on obtient ceux qui ne l’ont **pas** suivie. Les deux usages se servent de la même logique de dimensions que les chapitres précédents.",
+        "en": "Application to our thread. **Event**: “an employee takes a safety training” (grain: one attendance; dimensions: date, employee, course, place): we count attendances. **Coverage**: all the employees who were supposed to take this training; by subtracting activity, we get those who did **not** take it. Both uses rely on the same dimension logic as the previous chapters. (Our example.)"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions provide the “who, what, where, when, why, and how” context surrounding a business process event."
+        }
+      ],
+      "notions": [
+        "n-model-factless-method"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-16-qz-04"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-factless-fact-table",
+      "fr": "table de faits sans mesure",
+      "en": "factless fact table",
+      "definition": {
+        "fr": "Table de faits qui n’enregistre que la rencontre d’entités dimensionnelles à un moment donné, sans mesure numérique ; séance 8 du cours.",
+        "en": "A fact table that only records the coming together of dimensional entities at a moment in time, with no numeric measure; session 8 of the course."
+      },
+      "pitfall": {
+        "fr": "Sans mesure ne veut pas dire sans grain.",
+        "en": "Factless does not mean without grain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ],
+      "notion": "n-factless-fact-table"
+    },
+    {
+      "id": "term-event-fact",
+      "fr": "fait sans mesure : événement",
+      "en": "factless fact: event",
+      "definition": {
+        "fr": "Une participation, une communication : une ligne par événement, avec une clé étrangère par dimension.",
+        "en": "An attendance, a communication: one row per event, with one foreign key per dimension."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        }
+      ],
+      "notion": "n-event-factless"
+    },
+    {
+      "id": "term-coverage-fact",
+      "fr": "fait sans mesure : couverture",
+      "en": "factless fact: coverage",
+      "definition": {
+        "fr": "Table de toutes les possibilités d’événements ; moins l’activité, elle donne ce qui n’a pas eu lieu.",
+        "en": "A table of all the possibilities of events; minus activity, it gives what did not happen."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        }
+      ],
+      "notion": "n-coverage-factless"
+    },
+    {
+      "id": "term-measure",
+      "fr": "mesure",
+      "en": "measure",
+      "definition": {
+        "fr": "Valeur numérique que l’on agrège (somme, moyenne, comptage) ; absente dans un fait sans mesure, où l’on compte les lignes.",
+        "en": "The numeric value that gets aggregated (sum, average, count); absent in a factless fact, where rows are counted."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        }
+      ],
+      "notion": "n-count-rows"
+    },
+    {
+      "id": "term-grain",
+      "fr": "grain",
+      "en": "grain",
+      "definition": {
+        "fr": "Niveau de détail stocké ; pour un événement : une ligne = un événement.",
+        "en": "The stored level of detail; for an event: one row = one event."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ],
+      "notion": "n-model-factless-method"
+    },
+    {
+      "id": "term-analysis-axis",
+      "fr": "axe d’analyse (dimension)",
+      "en": "analysis axis (dimension)",
+      "definition": {
+        "fr": "Angle de lecture : jour, personne, lieu, objet de l’événement.",
+        "en": "Angle of reading: day, person, place, object of the event."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        }
+      ],
+      "notion": "n-model-factless-method"
+    }
+  ],
+  "notions": [
+    "n-factless-fact-table",
+    "n-event-factless",
+    "n-coverage-factless",
+    "n-what-did-not-happen",
+    "n-count-rows",
+    "n-no-zero-rows",
+    "n-model-factless-method"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "La séance 8 traite des faits sans mesure : les événements et la couverture.",
+        "en": "Session 8 deals with factless facts: events and coverage."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ],
+      "notions": [
+        "n-factless-fact-table",
+        "n-event-factless",
+        "n-coverage-factless"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Événement : une ligne = une rencontre d’entités à un moment donné (une participation, une communication), avec une clé étrangère par dimension et sans mesure.",
+        "en": "Event: one row = a coming together of entities at a moment in time (an attendance, a communication), with one foreign key per dimension and no measure."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Although most measurement events capture numerical results, it is possible that the event merely records a set of dimensional entities coming together at a moment in time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "a fact table always contains foreign keys for each of its associated dimensions"
+        }
+      ],
+      "notions": [
+        "n-event-factless"
+      ]
+    },
+    {
+      "text": {
+        "fr": "On compte alors les lignes (lecture proposée : une mesure peut être comptée).",
+        "en": "You then count the rows (proposed reading: a measure can be counted)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Fact tables are the primary target of computations and dynamic aggregations arising from queries."
+        }
+      ],
+      "notions": [
+        "n-count-rows"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Couverture : toutes les possibilités d’événements ; moins l’activité (ce qui a eu lieu), on obtient ce qui n’a pas eu lieu.",
+        "en": "Coverage: all the possibilities of events; minus activity (what happened), you get what did not happen."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Factless fact tables can also be used to analyze what didn’t happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ],
+      "notions": [
+        "n-coverage-factless",
+        "n-what-did-not-happen"
+      ]
+    },
+    {
+      "text": {
+        "fr": "On ne remplit pas une table de transaction de zéros pour l’absence d’activité : elle reste creuse ; c’est la couverture qui porte les possibilités.",
+        "en": "You do not fill a transaction table with zeros for no activity: it stays sparse; coverage carries the possibilities."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "if there is no sales activity for a given product, you don’t put any rows in the table"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "It is important that you do not try to fill the fact table with zeros representing no activity because these zeros would overwhelm most fact tables."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Transaction fact tables may be dense or sparse because rows exist only if measurements take place."
+        }
+      ],
+      "notions": [
+        "n-no-zero-rows"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le grain reste déclaré : sans mesure ne veut pas dire sans grain.",
+        "en": "The grain is still declared: factless does not mean grainless."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "At the lowest grain, a fact table row corresponds to a measurement event and vice versa."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "Each row in a fact table corresponds to a measurement event."
+        }
+      ],
+      "notions": [
+        "n-model-factless-method"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Table de faits sans mesure ?",
+        "en": "Factless fact table?"
+      },
+      "back": {
+        "fr": "Enregistre la rencontre d’entités dimensionnelles à un moment donné, sans mesure numérique.",
+        "en": "Records the coming together of dimensional entities at a moment in time, with no numeric measure."
+      },
+      "termId": "term-factless-fact-table",
+      "id": "isi7-16-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Deux usages des faits sans mesure ?",
+        "en": "Two uses of factless facts?"
+      },
+      "back": {
+        "fr": "Les événements et la couverture.",
+        "en": "Events and coverage."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ],
+      "notions": [
+        "n-factless-fact-table"
+      ],
+      "id": "isi7-16-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Exemple d’événement sans mesure ?",
+        "en": "Example of a factless event?"
+      },
+      "back": {
+        "fr": "Un étudiant assiste à un cours un jour donné (clés : jour, étudiant, enseignant, lieu, cours).",
+        "en": "A student attends a class on a given day (keys: day, student, teacher, location, class)."
+      },
+      "termId": "term-event-fact",
+      "id": "isi7-16-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Que compte-t-on dans un fait sans mesure ?",
+        "en": "What is counted in a factless fact?"
+      },
+      "back": {
+        "fr": "Les lignes, c’est-à-dire les événements.",
+        "en": "The rows, that is, the events."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Fact tables are the primary target of computations and dynamic aggregations arising from queries."
+        }
+      ],
+      "notions": [
+        "n-count-rows"
+      ],
+      "id": "isi7-16-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Couverture ?",
+        "en": "Coverage?"
+      },
+      "back": {
+        "fr": "Table de toutes les possibilités d’événements qui pouvaient avoir lieu.",
+        "en": "A table of all the possibilities of events that might have happened."
+      },
+      "termId": "term-coverage-fact",
+      "id": "isi7-16-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Comment obtient-on ce qui n’a pas eu lieu ?",
+        "en": "How do you get what did not happen?"
+      },
+      "back": {
+        "fr": "Couverture moins activité.",
+        "en": "Coverage minus activity."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ],
+      "notions": [
+        "n-what-did-not-happen"
+      ],
+      "id": "isi7-16-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Faut-il des lignes à zéro pour l’absence de ventes ?",
+        "en": "Are zero rows needed for no sales?"
+      },
+      "back": {
+        "fr": "Non : une table de transaction reste creuse ; on utilise une table de couverture.",
+        "en": "No: a transaction table stays sparse; use a coverage table."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "if there is no sales activity for a given product, you don’t put any rows in the table"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "It is important that you do not try to fill the fact table with zeros representing no activity because these zeros would overwhelm most fact tables."
+        }
+      ],
+      "notions": [
+        "n-no-zero-rows"
+      ],
+      "id": "isi7-16-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Sans mesure = sans grain ?",
+        "en": "Factless = no grain?"
+      },
+      "back": {
+        "fr": "Non : une ligne = un événement ; le grain reste déclaré.",
+        "en": "No: one row = one event; the grain is still declared."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "At the lowest grain, a fact table row corresponds to a measurement event and vice versa."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "Each row in a fact table corresponds to a measurement event."
+        }
+      ],
+      "notions": [
+        "n-model-factless-method"
+      ],
+      "id": "isi7-16-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Méthode : événement ou couverture ?",
+        "en": "Method: event or coverage?"
+      },
+      "back": {
+        "fr": "Événement : grain + dimensions, compter les lignes. Couverture : possibilités moins activité.",
+        "en": "Event: grain + dimensions, count rows. Coverage: possibilities minus activity."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        }
+      ],
+      "notions": [
+        "n-model-factless-method"
+      ],
+      "id": "isi7-16-fc-09"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une table de faits sans mesure ne contient aucune clé étrangère, puisqu’elle ne contient aucune mesure.",
+        "en": "A factless fact table has no foreign keys, since it has no measures."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elle contient une clé étrangère pour chaque dimension ; c’est la mesure numérique qui manque.",
+        "en": "FALSE: it holds a foreign key for each dimension; it is the numeric measure that is missing."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "a fact table always contains foreign keys for each of its associated dimensions"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-factless-fact-table"
+      ],
+      "trap": {
+        "fr": "Confondre « sans mesure » et « sans dimensions ».",
+        "en": "Confusing “factless” and “without dimensions”."
+      },
+      "id": "isi7-16-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un étudiant qui assiste à un cours un jour donné est un événement qui peut être enregistré sans fait numérique.",
+        "en": "A student attending a class on a given day is an event that can be recorded without a numeric fact."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : exemple de Kimball.",
+        "en": "TRUE: Kimball’s example."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-event-factless"
+      ],
+      "id": "isi7-16-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pour savoir combien de participations ont eu lieu par formation et par mois, nous…",
+        "en": "To know how many attendances took place per course and per month, we…"
+      },
+      "options": [
+        {
+          "fr": "appliquons un SCD de type 2 à la dimension de date",
+          "en": "apply a type 2 SCD to the date dimension"
+        },
+        {
+          "fr": "comptons les lignes de la table",
+          "en": "count the rows of the table"
+        },
+        {
+          "fr": "sommons la colonne « montant » de la table des ventes",
+          "en": "sum the “amount” column of the sales table"
+        },
+        {
+          "fr": "soustrayons l’activité à la couverture des formations",
+          "en": "subtract activity from the training coverage"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Un fait sans mesure se compte par ses lignes ; la soustraction couverture − activité sert aux absences.",
+        "en": "A factless fact is counted by its rows; the coverage − activity subtraction serves for absences."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Fact tables are the primary target of computations and dynamic aggregations arising from queries."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-count-rows",
+        "n-event-factless"
+      ],
+      "id": "isi7-16-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour trouver les événements qui n’ont pas eu lieu, on soustrait l’activité à la couverture.",
+        "en": "To find the events that did not happen, activity is subtracted from coverage."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « When the activity is subtracted from the coverage, the result is the set of events that did not happen ».",
+        "en": "TRUE: “When the activity is subtracted from the coverage, the result is the set of events that did not happen”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-what-did-not-happen",
+        "n-coverage-factless"
+      ],
+      "id": "isi7-16-qz-04"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "La table de couverture contient…",
+        "en": "The coverage table contains…"
+      },
+      "options": [
+        {
+          "fr": "les mesures agrégées par mois et par région d’activité",
+          "en": "the measures aggregated by month and by region of activity"
+        },
+        {
+          "fr": "les clés naturelles de tous les systèmes sources de l’entreprise",
+          "en": "the natural keys of all the company’s source systems"
+        },
+        {
+          "fr": "les événements qui ont eu lieu dans la période observée",
+          "en": "the events that took place in the observed period"
+        },
+        {
+          "fr": "toutes les possibilités d’événements qui pouvaient avoir lieu",
+          "en": "all the possibilities of events that might happen"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "La couverture contient toutes les possibilités ; l’activité contient ce qui a eu lieu.",
+        "en": "Coverage holds all the possibilities; activity holds what did happen."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-coverage-factless"
+      ],
+      "id": "isi7-16-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans la couverture des promotions, 5 produits sont en promotion dans le magasin S1 et 3 ont été vendus : il y a 3 produits en promotion sans vente.",
+        "en": "In the promotions coverage, 5 products are on promotion in store S1 and 3 were sold: there are 3 products on promotion with no sales."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : couverture (5) − activité (3) = 2 produits en promotion sans vente.",
+        "en": "FALSE: coverage (5) − activity (3) = 2 products on promotion with no sales."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-what-did-not-happen"
+      ],
+      "trap": {
+        "fr": "Prendre l’activité pour le résultat de la soustraction.",
+        "en": "Taking activity for the result of the subtraction."
+      },
+      "id": "isi7-16-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Kimball et Ross recommandent d’insérer des lignes à zéro dans une table de transaction pour chaque produit sans vente.",
+        "en": "Kimball and Ross recommend inserting zero rows in a transaction table for each product without sales."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ils le déconseillent : ces zéros submergeraient la table ; sans vente, on n’ajoute aucune ligne.",
+        "en": "FALSE: they advise against it: these zeros would overwhelm the table; with no sales, no row is added."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "if there is no sales activity for a given product, you don’t put any rows in the table"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "It is important that you do not try to fill the fact table with zeros representing no activity because these zeros would overwhelm most fact tables."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-no-zero-rows"
+      ],
+      "trap": {
+        "fr": "Confondre table de transaction creuse et instantané périodique dense.",
+        "en": "Confusing a sparse transaction table with a dense periodic snapshot."
+      },
+      "id": "isi7-16-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une table d’instantané périodique est « dense » parce que…",
+        "en": "A periodic snapshot table is “dense” because…"
+      },
+      "options": [
+        {
+          "fr": "elle contient bien plus de dimensions que toutes les autres tables de faits",
+          "en": "it holds far more dimensions than all the other fact tables"
+        },
+        {
+          "fr": "elle est stockée dans un entrepôt de données plus grand que les autres",
+          "en": "it is stored in a data warehouse larger than the others"
+        },
+        {
+          "fr": "elle contient exclusivement des faits sans mesure numérique",
+          "en": "it exclusively contains factless facts with no numeric measure"
+        },
+        {
+          "fr": "même sans activité, une ligne est insérée avec zéro ou nul pour chaque fait",
+          "en": "even with no activity, a row is inserted with zero or null for each fact"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Dans un instantané périodique, le grain est la période : une ligne par période même sans activité ; la table de transaction, elle, est creuse.",
+        "en": "In a periodic snapshot, the grain is the period: one row per period even with no activity; the transaction table, by contrast, is sparse."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These fact tables are uniformly dense in their foreign keys because even if no activity takes place during the period, a row is typically inserted in the fact table containing a zero or null for each fact."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Transaction fact tables may be dense or sparse because rows exist only if measurements take place."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-no-zero-rows"
+      ],
+      "id": "isi7-16-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "« Sans mesure » signifie que la table n’a pas de grain déclaré.",
+        "en": "A “factless” table means the table has no declared grain."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : une ligne correspond à un événement ; le grain reste déclaré.",
+        "en": "FALSE: one row corresponds to an event; the grain is still declared."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "At the lowest grain, a fact table row corresponds to a measurement event and vice versa."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "The idea that a measurement event in the physical world has a one-to-one relationship to a single row in the corresponding fact table is a bedrock principle for dimensional modeling."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-model-factless-method"
+      ],
+      "trap": {
+        "fr": "Croire qu’on peut modéliser sans déclarer le grain.",
+        "en": "Believing you can model without declaring the grain."
+      },
+      "id": "isi7-16-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La séance 8 du cours est consacrée aux faits sans mesure, avec les cas « couverture » et « événements ».",
+        "en": "Session 8 of the course is devoted to factless facts, with the “coverage” and “events” cases."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : séquencement, ligne 8.",
+        "en": "TRUE: sequencing, row 8."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-factless-fact-table"
+      ],
+      "id": "isi7-16-qz-10"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Événement et couverture : les formations de sécurité",
+        "en": "Event and coverage: safety trainings"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Une usine doit former tous ses 40 opérateurs à une formation de sécurité avant fin juin. Les participations enregistrées : 31 opérateurs ont suivi la formation. **(a)** Déclarez le grain de la table d’événements. **(b)** Listez les dimensions. **(c)** Que compte-t-on pour « participations par mois » ? **(d)** Quelle table construire pour savoir qui n’a pas suivi la formation, et quel est le résultat ? **(e)** Que reste-t-il à faire si l’on veut aussi connaître la durée suivie ?",
+        "en": "*(Invented case for practice.)* A plant must train all its 40 operators on a safety course before the end of June. Recorded attendances: 31 operators took the course. **(a)** Declare the grain of the events table. **(b)** List the dimensions. **(c)** What is counted for “attendances per month”? **(d)** Which table should be built to know who has not taken the course, and what is the result? **(e)** What changes if the duration attended is also wanted?"
+      },
+      "hints": [
+        {
+          "fr": "Une ligne = une participation.",
+          "en": "One row = one attendance."
+        },
+        {
+          "fr": "Couverture moins activité.",
+          "en": "Coverage minus activity."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Une ligne par participation d’un opérateur à une session de formation.\n**(b)** Date, opérateur, formation, lieu (et éventuellement formateur).\n**(c)** Les lignes, c’est-à-dire les participations.\n**(d)** Une table de couverture : les 40 opérateurs × la formation obligatoire (40 lignes). On soustrait l’activité (31 participations) : 40 − 31 = **9 opérateurs** à former.\n**(e)** La table n’est plus sans mesure : la durée est une mesure numérique cohérente avec le grain ; on la somme.\n*Barème indicatif* : 1 point par question (a à e). *Ce que l’exercice vérifie* : distinguer événement et couverture. *Corrigé proposé.*",
+        "en": "**(a)** One row per attendance of an operator at a training session.\n**(b)** Date, operator, course, place (and possibly trainer).\n**(c)** The rows, that is, the attendances.\n**(d)** A coverage table: the 40 operators × the mandatory course (40 rows). Subtract activity (31 attendances): 40 − 31 = **9 operators** to train.\n**(e)** The table is no longer factless: the duration is a numeric measure consistent with the grain; it is summed.\n*Indicative marking*: 1 point per question (a to e). *What the exercise checks*: telling event from coverage. *Proposed answer.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "an event of a student attending a class on a given day may not have a recorded numeric fact, but a fact row with foreign keys for calendar day, student, teacher, location, and class is well-defined"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "At the lowest grain, a fact table row corresponds to a measurement event and vice versa."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Ajouter des lignes à zéro pour les 9 absents dans la table d’activité.",
+        "en": "Adding zero rows for the 9 absentees in the activity table."
+      },
+      "notions": [
+        "n-model-factless-method",
+        "n-event-factless",
+        "n-coverage-factless",
+        "n-what-did-not-happen"
+      ],
+      "id": "isi7-16-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Événement ou couverture ? Quatre questions à classer",
+        "en": "Event or coverage? Four questions to classify"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Pour chaque question, dites s’il faut compter des événements (table d’événements sans mesure), soustraire l’activité à la couverture, ou utiliser une table avec mesure, et pourquoi.\n1. Combien de réunions clients ont eu lieu en mai ?\n2. Quels magasins n’ont vendu aucun produit de la gamme X le mois dernier ?\n3. Quel est le chiffre d’affaires par région ?\n4. Quels employés n’ont pas suivi la formation RGPD obligatoire ?",
+        "en": "For each question, say whether to count events (factless events table), subtract activity from coverage, or use a table with a measure, and why.\n1. How many customer meetings took place in May?\n2. Which stores sold no product of range X last month?\n3. What is the revenue by region?\n4. Which employees did not take the mandatory GDPR training?"
+      },
+      "hints": [
+        {
+          "fr": "Qu’est-ce qui n’a pas eu lieu ?",
+          "en": "What did not happen?"
+        },
+        {
+          "fr": "Y a-t-il une valeur numérique à sommer ?",
+          "en": "Is there a numeric value to sum?"
+        }
+      ],
+      "solution": {
+        "fr": "1. **Événements** : une ligne par réunion ; on compte les lignes. 2. **Couverture moins activité** : couverture = magasins × gamme X ; activité = ventes de la gamme X ; la différence donne les magasins sans vente. 3. **Table avec mesure** : le chiffre d’affaires est une mesure additive. 4. **Couverture moins activité** : couverture = employés soumis à la formation ; activité = participations ; la différence donne les absents.\n*Ce que l’exercice vérifie* : lire dans la question « a eu lieu » ou « n’a pas eu lieu », et « chiffre » ou « compte ».",
+        "en": "1. **Events**: one row per meeting; count the rows. 2. **Coverage minus activity**: coverage = stores × range X; activity = sales of range X; the difference gives stores without sales. 3. **Table with a measure**: revenue is an additive measure. 4. **Coverage minus activity**: coverage = employees subject to the training; activity = attendances; the difference gives the absentees.\n*What the exercise checks*: reading “did happen” or “did not happen”, and “figure” or “count”, in the question."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Although most measurement events capture numerical results, it is possible that the event merely records a set of dimensional entities coming together at a moment in time."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Factless fact tables can also be used to analyze what didn’t happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "These queries always have two parts: a factless coverage table that contains all the possibilities of events that might happen and an activity table that contains the events that did happen."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-model-factless-method",
+        "n-event-factless",
+        "n-coverage-factless",
+        "n-what-did-not-happen"
+      ],
+      "id": "isi7-16-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "A factless fact table records events without numeric measures.",
+      "id": "isi7-16-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "Subtracting {{activity}} from {{coverage}} gives the events that did not happen.",
+      "translation": "Soustraire l’activité à la couverture donne les événements qui n’ont pas eu lieu.",
+      "id": "isi7-16-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A factless fact table has no foreign keys.",
+      "error": "has no foreign keys",
+      "corrected": "has a foreign key for each dimension",
+      "explanation": {
+        "fr": "Il manque la mesure, pas les clés étrangères.",
+        "en": "The measure is missing, not the foreign keys."
+      },
+      "id": "isi7-16-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En deux ou trois phrases : comment analyse-t-on ce qui n’a pas eu lieu avec un modèle dimensionnel ?",
+        "en": "In two or three sentences: how do you analyse what did not happen with a dimensional model?"
+      },
+      "modelAnswer": "We use two tables: a coverage table that holds all the events that could have happened, and an activity table that holds those that did happen. When we subtract the activity from the coverage, we get the events that did not happen.",
+      "keywords": [
+        "coverage",
+        "activity",
+        "subtract",
+        "did not happen",
+        "events"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai nommé les deux tables.",
+          "en": "I named both tables."
+        }
+      ],
+      "usefulPhrases": [
+        "holds all the events that could have happened",
+        "we subtract the activity from the coverage"
+      ],
+      "id": "isi7-16-wr-04"
+    }
+  ]
+}

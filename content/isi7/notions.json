@@ -1361,6 +1361,958 @@
           "quote": "Les principes fondamentaux restent constants : définitions partagées, modélisation par mesures et axes d'analyse, fiabilité, prédictabilité, disponibilité, sécurité"
         }
       ]
+    },
+    {
+      "id": "n-architecture-conceptual",
+      "label": {
+        "fr": "Architecture vue au niveau conceptuel (couches, rôles)",
+        "en": "Architecture seen at conceptual level (layers, roles)"
+      },
+      "importance": 3,
+      "why": "annonce du prof : couches et rôles, niveau conceptuel ; partie de l’examen",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the layers, the role of each layer, but at the conceptual level, we are not digging into technical stuff there."
+        }
+      ]
+    },
+    {
+      "id": "n-etl-back-room",
+      "label": {
+        "fr": "ETL : le travail se fait une fois, dans les coulisses",
+        "en": "ETL: the work is done once, in the back room"
+      },
+      "importance": 2,
+      "why": "complément externe + oral (ETL / ELT)",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "Front room work must be done over and over by business users, whereas back room work is done once by the ETL staff."
+        }
+      ]
+    },
+    {
+      "id": "n-justify-layer-method",
+      "label": {
+        "fr": "Justifier le rôle d’une couche",
+        "en": "Justifying a layer’s role"
+      },
+      "importance": 3,
+      "why": "objectif « Architecturer » : justifier le rôle de chaque couche",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "justify the role of each layer"
+        }
+      ]
+    },
+    {
+      "id": "n-kimball-components",
+      "label": {
+        "fr": "Architecture Kimball : sources, ETL, zone de présentation, applications BI",
+        "en": "Kimball architecture: sources, ETL, presentation area, BI applications"
+      },
+      "importance": 2,
+      "why": "complément externe (Kimball & Ross) ; non cité comme tel par le prof",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "there are four separate and distinct components to consider in the DW/BI environment: operational source systems, ETL system, data presentation area, and business intelligence applications."
+        }
+      ]
+    },
+    {
+      "id": "n-layers-principles",
+      "label": {
+        "fr": "Relier principes et choix d’architecture",
+        "en": "Linking principles to architecture choices"
+      },
+      "importance": 3,
+      "why": "objectif « Architecturer » + tableau caractéristiques → composants → principes",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices"
+        }
+      ]
+    },
+    {
+      "id": "n-layers-roles",
+      "label": {
+        "fr": "Couches et rôle de chacune : sources, transit, entrepôt, data marts",
+        "en": "Layers and the role of each: sources, staging, warehouse, data marts"
+      },
+      "importance": 3,
+      "why": "diapositive « Where the data lives » ; objectif « Architecturer » ; séances 2 à 4",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ]
+    },
+    {
+      "id": "n-security-in-architecture",
+      "label": {
+        "fr": "Sécurité et gouvernance dans l’architecture",
+        "en": "Security and governance in the architecture"
+      },
+      "importance": 2,
+      "why": "diapositive « Where the data lives » : droits par rôle, sécurité par ligne, gouvernance, data owner",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        }
+      ]
+    },
+    {
+      "id": "n-choose-architecture-method",
+      "label": {
+        "fr": "Choisir et justifier une architecture à partir des principes",
+        "en": "Choosing and justifying an architecture from the principles"
+      },
+      "importance": 3,
+      "why": "objectif « Architecturer » : relier principes et choix",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "relate guiding principles to architecture choices"
+        }
+      ]
+    },
+    {
+      "id": "n-cif-vs-kimball",
+      "label": {
+        "fr": "CIF (hub-and-spoke, EDW normalisé) contre bus de Kimball",
+        "en": "CIF (hub-and-spoke, normalised EDW) versus Kimball bus"
+      },
+      "importance": 1,
+      "why": "complément externe",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "Although the Kimball architecture enables optional normalization to support ETL processing, the normalized EDW is a mandatory construct in the CIF."
+        }
+      ]
+    },
+    {
+      "id": "n-hybrid-architecture",
+      "label": {
+        "fr": "Architecture hybride",
+        "en": "Hybrid architecture"
+      },
+      "importance": 1,
+      "why": "complément externe",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "the hybrid approach will likely cost more time and money"
+        }
+      ]
+    },
+    {
+      "id": "n-independent-data-marts",
+      "label": {
+        "fr": "Data marts indépendants (anti-modèle)",
+        "en": "Independent data marts (anti-pattern)"
+      },
+      "importance": 1,
+      "why": "complément externe (Kimball et Ross)",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "We strongly discourage the independent data mart approach."
+        }
+      ]
+    },
+    {
+      "id": "n-pragmatism",
+      "label": {
+        "fr": "Rester pragmatique : se limiter à ce qui est demandé",
+        "en": "Staying pragmatic: sticking to what is requested"
+      },
+      "importance": 2,
+      "why": "oral : sobriété, streaming, taille de l’ambition",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        }
+      ]
+    },
+    {
+      "id": "n-simplified-variant",
+      "label": {
+        "fr": "Justifier une variante plus simple",
+        "en": "Justifying a simpler variant"
+      },
+      "importance": 3,
+      "why": "objectif « Architecturer » ; séances 2 à 4 : « variante simplifiée »",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Architecture : couches, rôle de chacune, lien avec les principes, variante simplifiée"
+        }
+      ]
+    },
+    {
+      "id": "n-two-tier-lakehouse",
+      "label": {
+        "fr": "Deux niveaux lac + entrepôt contre lakehouse",
+        "en": "Two-tier lake + warehouse versus lakehouse"
+      },
+      "importance": 1,
+      "why": "complément externe (Armbrust et al.)",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "a two-tier architecture is highly complex for users"
+        }
+      ]
+    },
+    {
+      "id": "n-additivity",
+      "label": {
+        "fr": "Faits additifs, semi-additifs, non additifs",
+        "en": "Additive, semi-additive and non-additive facts"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Finally, some measures are completely non-additive, such as ratios."
+        }
+      ]
+    },
+    {
+      "id": "n-dimension",
+      "label": {
+        "fr": "Dimensions : contexte descriptif (qui, quoi, où, quand, pourquoi, comment)",
+        "en": "Dimensions: descriptive context (who, what, where, when, why, how)"
+      },
+      "importance": 3,
+      "why": "séance 5 ; axe d’analyse du glossaire",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        }
+      ]
+    },
+    {
+      "id": "n-fact",
+      "label": {
+        "fr": "Faits : mesures numériques cohérentes avec le grain",
+        "en": "Facts: numeric measurements consistent with the grain"
+      },
+      "importance": 3,
+      "why": "séance 5 ; mesure agrégée du glossaire",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        }
+      ]
+    },
+    {
+      "id": "n-fact-or-attribute",
+      "label": {
+        "fr": "Fait ou attribut de dimension ?",
+        "en": "Fact or dimension attribute?"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "observations are almost always facts; discrete numeric observations drawn from a small list are almost always dimension attributes."
+        }
+      ]
+    },
+    {
+      "id": "n-first-star-method",
+      "label": {
+        "fr": "Construire une première étoile à partir d’une interview",
+        "en": "Building a first star from an interview"
+      },
+      "importance": 3,
+      "why": "séance 5 ; objectif « Modéliser »",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "produce a dimensional model"
+        }
+      ]
+    },
+    {
+      "id": "n-four-step-design",
+      "label": {
+        "fr": "Les quatre décisions : processus, grain, dimensions, faits",
+        "en": "The four decisions: process, grain, dimensions, facts"
+      },
+      "importance": 3,
+      "why": "complément Kimball ; séance 5 « Grain, faits, dimensions »",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        }
+      ]
+    },
+    {
+      "id": "n-grain",
+      "label": {
+        "fr": "Le grain : ce que représente une ligne de faits",
+        "en": "The grain: what one fact row represents"
+      },
+      "importance": 3,
+      "why": "séance 5 ; glossaire du cours (granularité)",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ]
+    },
+    {
+      "id": "n-modeling-sessions",
+      "label": {
+        "fr": "Séances 5 à 10 : de l’interview au modèle dimensionnel",
+        "en": "Sessions 5 to 10: from interview to dimensional model"
+      },
+      "importance": 3,
+      "why": "séquencement + objectif « Modéliser » ; partie courte de l’examen",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Model: from one or more interviews, produce a dimensional model and make the link between the elements shared from one interview to the next."
+        }
+      ]
+    },
+    {
+      "id": "n-role-playing-date",
+      "label": {
+        "fr": "Dates multiples : dimension de date et rôles",
+        "en": "Several dates: date dimension and roles"
+      },
+      "importance": 1,
+      "why": "complément Kimball",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "A single physical dimension can be referenced multiple times in a fact table, with each reference linking to a logically distinct role for the dimension."
+        }
+      ]
+    },
+    {
+      "id": "n-star-schema",
+      "label": {
+        "fr": "Schéma en étoile",
+        "en": "Star schema"
+      },
+      "importance": 3,
+      "why": "séance 5 : « première étoile »",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Grain, faits, dimensions : première étoile à partir d'une interview"
+        }
+      ]
+    },
+    {
+      "id": "n-bus-incremental",
+      "label": {
+        "fr": "Architecture en bus : développement incrémental, une ligne à la fois",
+        "en": "Bus architecture: incremental development, one row at a time"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "teams should implement one row of the matrix at a time"
+        }
+      ]
+    },
+    {
+      "id": "n-bus-matrix",
+      "label": {
+        "fr": "Bus matrix : processus en lignes, dimensions en colonnes",
+        "en": "Bus matrix: processes as rows, dimensions as columns"
+      },
+      "importance": 3,
+      "why": "séance 6",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        }
+      ]
+    },
+    {
+      "id": "n-conformed-dimensions",
+      "label": {
+        "fr": "Dimensions conformes",
+        "en": "Conformed dimensions"
+      },
+      "importance": 3,
+      "why": "séance 6 « Dimensions conformes, bus matrix, plusieurs interviews »",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        }
+      ]
+    },
+    {
+      "id": "n-conformed-facts",
+      "label": {
+        "fr": "Faits conformes : même définition, même nom",
+        "en": "Conformed facts: same definition, same name"
+      },
+      "importance": 2,
+      "why": "complément Kimball ; lien avec la fiabilité",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the same measurement appears in separate fact tables, care must be taken to make sure the technical definitions of the facts are identical if they are to be compared or computed together."
+        }
+      ]
+    },
+    {
+      "id": "n-drill-across",
+      "label": {
+        "fr": "Drill-across : aligner des résultats de plusieurs tables de faits",
+        "en": "Drill-across: aligning results of several fact tables"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        }
+      ]
+    },
+    {
+      "id": "n-link-several-interviews",
+      "label": {
+        "fr": "Relier plusieurs interviews : éléments partagés",
+        "en": "Linking several interviews: shared elements"
+      },
+      "importance": 3,
+      "why": "objectif « Modéliser » ; séance 6",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        }
+      ]
+    },
+    {
+      "id": "n-multi-interview-method",
+      "label": {
+        "fr": "Méthode : conformer les dimensions de plusieurs interviews",
+        "en": "Method: conforming the dimensions of several interviews"
+      },
+      "importance": 3,
+      "why": "objectif « Modéliser » : lien entre éléments partagés",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "produce a dimensional model and make the link between the elements shared from one interview to the next"
+        }
+      ]
+    },
+    {
+      "id": "n-value-chain",
+      "label": {
+        "fr": "Chaîne de valeur : un processus, au moins une table de faits",
+        "en": "Value chain: one process, at least one fact table"
+      },
+      "importance": 1,
+      "why": "complément Kimball",
+      "chapter": "14",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "A value chain identifies the natural flow of an organization’s primary business processes."
+        }
+      ]
+    },
+    {
+      "id": "n-as-was-as-is",
+      "label": {
+        "fr": "Reporting « tel qu’il était » et « tel qu’il est »",
+        "en": "As-was and as-is reporting"
+      },
+      "importance": 2,
+      "why": "complément Kimball (types 6 et 7)",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "the final hybrid technique used to support both as-was and as-is reporting"
+        }
+      ]
+    },
+    {
+      "id": "n-choose-scd-method",
+      "label": {
+        "fr": "Choisir le type de SCD attribut par attribut",
+        "en": "Choosing the SCD type attribute by attribute"
+      },
+      "importance": 2,
+      "why": "objectif « Modéliser » / « Évoluer » ; lecture proposée",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition)"
+        }
+      ]
+    },
+    {
+      "id": "n-history-conservation",
+      "label": {
+        "fr": "Conservation de l’historique",
+        "en": "History conservation"
+      },
+      "importance": 3,
+      "why": "séance 7 ; caractéristique « résultats stables dans le temps » : historisation",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        }
+      ]
+    },
+    {
+      "id": "n-scd-and-gdpr",
+      "label": {
+        "fr": "Historique des dimensions et RGPD (lien proposé)",
+        "en": "Dimension history and GDPR (proposed link)"
+      },
+      "importance": 1,
+      "why": "oral (rétention) ; rapprochement proposé",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ]
+    },
+    {
+      "id": "n-scd-type-2",
+      "label": {
+        "fr": "SCD de type 2 : ajouter une nouvelle ligne",
+        "en": "Type 2 SCD: add a new row"
+      },
+      "importance": 3,
+      "why": "séance 7",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "SCD de type 2 et conservation de l'historique"
+        }
+      ]
+    },
+    {
+      "id": "n-scd-types-0-3",
+      "label": {
+        "fr": "SCD de types 0, 1, 3 (comparaison)",
+        "en": "Type 0, 1, 3 SCDs (comparison)"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        }
+      ]
+    },
+    {
+      "id": "n-stable-results",
+      "label": {
+        "fr": "Résultats stables dans le temps (prévisible) et historisation",
+        "en": "Results stable over time (predictable) and historisation"
+      },
+      "importance": 3,
+      "why": "tableau pain points → caractéristiques ; pain point 5",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        }
+      ]
+    },
+    {
+      "id": "n-surrogate-key",
+      "label": {
+        "fr": "Clé de substitution (surrogate) et ses colonnes de gestion",
+        "en": "Surrogate key and its management columns"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "15",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "you should create anonymous integer primary keys for every dimension"
+        }
+      ]
+    },
+    {
+      "id": "n-count-rows",
+      "label": {
+        "fr": "Compter les lignes comme mesure implicite",
+        "en": "Counting rows as an implicit measure"
+      },
+      "importance": 2,
+      "why": "lecture proposée à partir de Kimball",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Although most measurement events capture numerical results, it is possible that the event merely records a set of dimensional entities coming together at a moment in time."
+        }
+      ]
+    },
+    {
+      "id": "n-coverage-factless",
+      "label": {
+        "fr": "Faits sans mesure : la couverture",
+        "en": "Factless facts: coverage"
+      },
+      "importance": 3,
+      "why": "séance 8 (couverture)",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ]
+    },
+    {
+      "id": "n-event-factless",
+      "label": {
+        "fr": "Faits sans mesure : les événements",
+        "en": "Factless facts: events"
+      },
+      "importance": 3,
+      "why": "séance 8 (événements)",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ]
+    },
+    {
+      "id": "n-factless-fact-table",
+      "label": {
+        "fr": "Table de faits sans mesure",
+        "en": "Factless fact table"
+      },
+      "importance": 3,
+      "why": "séance 8 « Faits sans mesure (couverture, événements) »",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Faits sans mesure (couverture, événements)"
+        }
+      ]
+    },
+    {
+      "id": "n-model-factless-method",
+      "label": {
+        "fr": "Modéliser un événement sans mesure et une question de couverture",
+        "en": "Modelling a factless event and a coverage question"
+      },
+      "importance": 3,
+      "why": "séance 8 ; objectif « Modéliser »",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "produce a dimensional model"
+        }
+      ]
+    },
+    {
+      "id": "n-no-zero-rows",
+      "label": {
+        "fr": "Pas de lignes à zéro dans une table de transaction",
+        "en": "No zero rows in a transaction table"
+      },
+      "importance": 1,
+      "why": "complément Kimball (Kimball et Ross)",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "By including only true activity, fact tables tend to be quite sparse."
+        }
+      ]
+    },
+    {
+      "id": "n-what-did-not-happen",
+      "label": {
+        "fr": "Analyser ce qui n’a pas eu lieu : couverture moins activité",
+        "en": "Analysing what did not happen: coverage minus activity"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "16",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "When the activity is subtracted from the coverage, the result is the set of events that did not happen."
+        }
+      ]
+    },
+    {
+      "id": "n-cousin-indicator",
+      "label": {
+        "fr": "Indicateur cousin : nouvelle définition proche d’une définition existante",
+        "en": "Cousin indicator: a new definition close to an existing one"
+      },
+      "importance": 2,
+      "why": "séance 9 ; interprétation proposée",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        }
+      ]
+    },
+    {
+      "id": "n-default-dimension-row",
+      "label": {
+        "fr": "Ligne par défaut « inconnu » pour une dimension ajoutée",
+        "en": "Default “unknown” row for an added dimension"
+      },
+      "importance": 1,
+      "why": "complément Kimball",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition"
+        }
+      ]
+    },
+    {
+      "id": "n-evolve-method",
+      "label": {
+        "fr": "Mesurer l’impact et choisir l’option qui préserve l’existant",
+        "en": "Measuring impact and choosing the option that preserves what exists"
+      },
+      "importance": 3,
+      "why": "objectif « Évoluer »",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "measure the impact on the model and on the architecture"
+        }
+      ]
+    },
+    {
+      "id": "n-evolve-objective",
+      "label": {
+        "fr": "Objectif « Évoluer » : mesurer l’impact et préserver l’existant",
+        "en": "Objective “Evolve”: measuring impact and preserving what exists"
+      },
+      "importance": 3,
+      "why": "objectif du cours observable à l’examen ; séance 9",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        }
+      ]
+    },
+    {
+      "id": "n-four-changes",
+      "label": {
+        "fr": "Quatre changements : nouvelle source, contrat d’interface, nouvelle dimension, nouvelle définition d’indicateur",
+        "en": "Four changes: new source, interface contract, new dimension, new indicator definition"
+      },
+      "importance": 3,
+      "why": "objectif « Évoluer »",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        }
+      ]
+    },
+    {
+      "id": "n-full-exam-case",
+      "label": {
+        "fr": "Cas complet au format d’examen (séance 10)",
+        "en": "Full case in exam format (session 10)"
+      },
+      "importance": 2,
+      "why": "séance 10",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Cas complet au format d'examen, correction collective"
+        }
+      ]
+    },
+    {
+      "id": "n-graceful-extensions",
+      "label": {
+        "fr": "Extensions sans casse : un modèle dimensionnel est résilient au changement",
+        "en": "Graceful extensions: a dimensional model is resilient to change"
+      },
+      "importance": 2,
+      "why": "complément Kimball",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensional models are resilient when data relationships change."
+        }
+      ]
+    },
+    {
+      "id": "n-year-plus-one",
+      "label": {
+        "fr": "Interview « année +1 » : nouvelle source, indicateur cousin, impact sur l’architecture",
+        "en": "Year +1 interview: new source, cousin indicator, architecture impact"
+      },
+      "importance": 3,
+      "why": "séance 9",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        }
+      ]
+    },
+    {
+      "id": "n-year1-reports-keep-meaning",
+      "label": {
+        "fr": "Critère : les rapports de l’année 1 gardent leur sens",
+        "en": "Criterion: year-1 reports keep their meaning"
+      },
+      "importance": 3,
+      "why": "critère de notation annoncé en séance 9",
+      "chapter": "17",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ]
     }
   ]
 }

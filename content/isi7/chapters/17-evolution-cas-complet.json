@@ -1,0 +1,1924 @@
+{
+  "id": "isi7-17-evolution-cas-complet",
+  "courseId": "isi7",
+  "order": 17,
+  "title": {
+    "fr": "Faire évoluer le modèle : l’année +1",
+    "en": "Evolving the model: year +1"
+  },
+  "hook": {
+    "fr": "Une nouvelle interview un an plus tard : va-t-on casser les rapports de l’an dernier ?",
+    "en": "A new interview a year later: will last year’s reports break?"
+  },
+  "question": {
+    "fr": "Face à un changement (source, interface, dimension, indicateur), comment mesurer l’impact et préserver l’existant ?",
+    "en": "Faced with a change (source, interface, dimension, indicator), how do you measure the impact and preserve what exists?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Énoncer l’objectif « Évoluer », ses quatre changements et le critère de notation.",
+        "en": "State the “Evolve” objective, its four changes and the marking criterion."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Expliquer pourquoi des ajouts ne changent pas les rapports existants et des réécritures oui.",
+        "en": "Explain why additions do not change existing reports and rewrites do."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Analyser un changement : impact modèle et architecture, option qui préserve l’existant, vérification du critère.",
+        "en": "Analyse a change: model and architecture impact, option preserving what exists, check of the criterion."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Objectif « Évoluer » (diapositives) ; séance 9 : critère « les rapports de l’année 1 gardent leur sens » ; séance 10 : « cas complet au format d’examen » (diapositives).",
+        "en": "“Evolve” objective (slides); session 9: criterion “year-1 reports keep their meaning”; session 10: “full case in exam format” (slides)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Un cas avec une ou plusieurs demandes « année +1 » à analyser : estimation ; la réponse du prof n’est pas dans nos sources, le contenu technique vient de Kimball et de notre lecture.",
+        "en": "A case with one or more “year +1” requests to analyse: an estimate; the teacher’s answer is not in our sources, the technical content comes from Kimball and our reading."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 11-16 : architecture, grain, dimensions conformes, historique.",
+    "en": "Chapters 11-16: architecture, grain, conformed dimensions, history."
+  },
+  "next": {
+    "fr": "Les partiels blancs : cas complets au format d’examen.",
+    "en": "The mock exams: full cases in exam format."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Objectif « Évoluer » : impact sur le modèle et l’architecture, option qui préserve l’existant.",
+        "en": "Objective “Evolve”: impact on model and architecture, option that preserves what exists."
+      },
+      {
+        "fr": "Les quatre changements ; le critère « les rapports de l’année 1 gardent leur sens ».",
+        "en": "The four changes; the criterion “year-1 reports keep their meaning”."
+      },
+      {
+        "fr": "Ce qu’un modèle dimensionnel absorbe sans casse (Kimball).",
+        "en": "What a dimensional model absorbs without breakage (Kimball)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Classer les options d’un changement (ajout avant réécriture) et justifier.",
+        "en": "Rank the options of a change (addition before rewrite) and justify."
+      },
+      {
+        "fr": "Traiter un cas complet de séance 10 avec impact et critère.",
+        "en": "Handle a full session 10 case with impact and criterion."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Ajouter (colonne, clé, attribut, nouveau nom) ≠ réécrire (écraser, redéfinir).",
+        "en": "Adding (column, key, attribute, new name) ≠ rewriting (overwriting, redefining)."
+      },
+      {
+        "fr": "Clé nulle ≠ ligne « inconnu ».",
+        "en": "Null key ≠ “unknown” row."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 14 : dimensions conformes pour intégrer une nouvelle source.",
+        "en": "Chapter 14: conformed dimensions to integrate a new source."
+      },
+      {
+        "fr": "Chapitre 15 : SCD de type 2 pour garder l’historique.",
+        "en": "Chapter 15: type 2 SCD to keep history."
+      },
+      {
+        "fr": "Partiels blancs : cas complets au format d’examen.",
+        "en": "Mock exams: full cases in exam format."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "L’objectif « Évoluer » et le critère de notation",
+        "en": "The “Evolve” objective and the marking criterion"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le dernier objectif du cours : **Évoluer**. Face à un changement (nouvelle source de données, contrat d’interface modifié, nouvelle dimension, nouvelle définition d’indicateur), il faut **mesurer l’impact sur le modèle et sur l’architecture**, et **choisir l’option qui préserve le plus l’existant**. La séance 9 le travaille avec une interview « année +1 », une nouvelle source, un indicateur cousin et l’impact sur l’architecture.",
+        "en": "The course’s last objective: **Evolve**. Faced with a change (new data source, modified interface contract, new dimension, new indicator definition), you must **measure the impact on the model and on the architecture**, and **choose the option that best preserves what exists**. Session 9 works on it with a “year +1” interview, a new source, a cousin indicator and the impact on architecture."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        }
+      ],
+      "notions": [
+        "n-evolve-objective",
+        "n-year-plus-one"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof annonce en séance 9 le **critère de notation** : « les rapports de l’année 1 gardent leur sens ». C’est le pain point 5 (les chiffres publiés ne doivent pas bouger) et le principe prévisible appliqués au changement. La séance 10 propose ensuite un cas complet au format d’examen, avec correction collective.",
+        "en": "The teacher announces in session 9 the **marking criterion**: “year-1 reports keep their meaning”. This is pain point 5 (published figures must not shift) and the predictable principle applied to change. Session 10 then offers a full case in exam format, with collective correction."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh Predictable"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Cas complet au format d'examen, correction collective"
+        }
+      ],
+      "notions": [
+        "n-year1-reports-keep-meaning",
+        "n-full-exam-case"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’adaptabilité figurait déjà dans le cours : exigence cachée de la grille d’atelier, et contrainte devant absorber les changements réglementaires. Kimball et Ross en font une exigence : le système doit s’adapter au changement sans invalider les données ni les applications existantes ; et si des données descriptives doivent être modifiées, on en rend compte et on rend les changements transparents pour les utilisateurs.",
+        "en": "Adaptability was already in the course: a hidden requirement of the workshop grid, and a constraint that must absorb regulatory changes. Kimball and Ross make it a requirement: the system must adapt to change without invalidating existing data or applications; and if descriptive data must be modified, you account for it and make the changes transparent to users."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "The DW/BI system must adapt to change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "Existing data and applications should not be changed or disrupted when the business community asks new questions or new data is added to the warehouse."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "if descriptive data in the DW/BI system must be modified, you must appropriately account for the changes and make these changes transparent to the users"
+        }
+      ],
+      "notions": [
+        "n-evolve-objective"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-17-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce qu’un modèle dimensionnel absorbe sans casser (complément Kimball)",
+        "en": "What a dimensional model absorbs without breaking (Kimball supplement)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Selon Kimball, les modèles dimensionnels sont résilients quand les relations entre données changent. Quatre changements peuvent être faits **sans modifier aucune requête ou application BI existante et sans changer aucun résultat de requête**.",
+        "en": "According to Kimball, dimensional models are resilient when data relationships change. Four changes can be made **without altering any existing BI query or application and without any change in query results**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensional models are resilient when data relationships change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        }
+      ],
+      "notions": [
+        "n-graceful-extensions"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Changement",
+          "en": "Change"
+        },
+        {
+          "fr": "Comment (Kimball)",
+          "en": "How (Kimball)"
+        },
+        {
+          "fr": "Condition",
+          "en": "Condition"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Nouveau fait",
+            "en": "New fact"
+          },
+          {
+            "fr": "Ajouter une colonne à la table de faits",
+            "en": "Add a column to the fact table"
+          },
+          {
+            "fr": "Cohérent avec le grain existant",
+            "en": "Consistent with the existing grain"
+          }
+        ],
+        [
+          {
+            "fr": "Nouvelle dimension",
+            "en": "New dimension"
+          },
+          {
+            "fr": "Ajouter une clé étrangère à la table de faits",
+            "en": "Add a foreign key column to the fact table"
+          },
+          {
+            "fr": "Ne change pas le grain (une valeur par ligne de faits existante)",
+            "en": "Does not alter the grain (a single value per existing fact row)"
+          }
+        ],
+        [
+          {
+            "fr": "Nouvel attribut",
+            "en": "New attribute"
+          },
+          {
+            "fr": "Ajouter une colonne à une dimension existante",
+            "en": "Add a column to an existing dimension"
+          },
+          {
+            "fr": "Aucune",
+            "en": "None"
+          }
+        ],
+        [
+          {
+            "fr": "Grain plus fin",
+            "en": "Finer grain"
+          },
+          {
+            "fr": "Ajouter des attributs à la dimension, puis restituer la table de faits au grain inférieur",
+            "en": "Add attributes to the dimension, then restate the fact table at the lower grain"
+          },
+          {
+            "fr": "Conserver les noms de colonnes existants",
+            "en": "Preserve the existing column names"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts consistent with the grain of an existing fact table can be added by creating new columns."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Attributes can be added to an existing dimension table by creating new columns."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain of a fact table can be made more atomic by adding attributes to an existing dimension table, and then restating the fact table at the lower grain"
+        }
+      ],
+      "notions": [
+        "n-graceful-extensions"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Kimball et Ross précisent la raison : on peut ajouter de nouvelles dimensions pourvu qu’une valeur unique soit définie pour chaque ligne de faits existante, et l’on modifie les tables en place, sans recharger les données, de sorte que les applications BI existantes continuent de tourner **sans donner de résultats différents**. Pour les lignes de faits existantes qui n’ont pas de valeur dans la nouvelle dimension, on utilise une ligne « inconnu / sans objet » plutôt qu’une clé étrangère nulle.",
+        "en": "Kimball and Ross give the reason: new dimensions can be added provided a single value is defined for each existing fact row, and tables are changed in place, without reloading data, so existing BI applications keep running **without yielding different results**. For existing fact rows that have no value in the new dimension, a “unknown / not applicable” row is used instead of a null foreign key."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "you can add completely new dimensions to the schema as long as a single value of that dimension is defined for each existing fact row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "Data would not need to be reloaded, and existing BI applications would continue to run without yielding different results."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        }
+      ],
+      "notions": [
+        "n-graceful-extensions",
+        "n-default-dimension-row"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Test « année 1 » à retenir : un changement qui **ajoute** (colonne, clé étrangère, attribut) préserve les rapports existants ; un changement qui **réécrit** (écraser, redéfinir, changer le grain) les menace. Le critère du prof est exactement ce test.",
+        "en": "The “year 1” test to remember: a change that **adds** (column, foreign key, attribute) preserves existing reports; a change that **rewrites** (overwrite, redefine, change the grain) threatens them. The teacher’s criterion is exactly this test. (Our synthesis.)"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-17-qz-02"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-17-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Les quatre changements du cours, un par un",
+        "en": "The course’s four changes, one by one"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour chacun des quatre changements de l’objectif, voici l’impact probable et l’option qui préserve le plus l’existant. **C’est notre lecture** à partir de l’objectif, de la séance 9 et de Kimball : le cours ne détaille pas, dans nos sources, la réponse du prof. L’« indicateur cousin » est interprété ici comme une définition voisine d’un indicateur existant.",
+        "en": "For each of the objective’s four changes, here is the likely impact and the option that best preserves what exists. **This is our reading**, from the objective, session 9 and Kimball: in our sources the course does not detail the teacher’s answer. The “cousin indicator” is interpreted here as a definition close to an existing indicator."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        }
+      ],
+      "notions": [
+        "n-four-changes",
+        "n-cousin-indicator"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Changement",
+          "en": "Change"
+        },
+        {
+          "fr": "Impact",
+          "en": "Impact"
+        },
+        {
+          "fr": "Option qui préserve l’existant",
+          "en": "Option that preserves what exists"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Nouvelle source de données",
+            "en": "New data source"
+          },
+          {
+            "fr": "Nouvelles données à intégrer ; risque de codes et de définitions différents (ex. produit codé autrement)",
+            "en": "New data to integrate; risk of different codes and definitions (e.g. product coded differently)"
+          },
+          {
+            "fr": "L’intégrer par les dimensions conformes existantes (même noms, mêmes contenus) ; zone de transit pour contrôler avant intégration ; ne pas toucher aux faits passés",
+            "en": "Integrate it through the existing conformed dimensions (same names, same contents); staging to control before integration; do not touch past facts"
+          }
+        ],
+        [
+          {
+            "fr": "Contrat d’interface modifié",
+            "en": "Modified interface contract"
+          },
+          {
+            "fr": "La source change de format ou de structure ; l’entrepôt ne doit pas être touché en aval",
+            "en": "The source changes format or structure; the warehouse must not be touched downstream"
+          },
+          {
+            "fr": "Absorber le changement dans la zone de transit et le chargement ; garder inchangée la couche en aval (lecture proposée)",
+            "en": "Absorb the change in staging and loading; keep the downstream layer unchanged (proposed reading)"
+          }
+        ],
+        [
+          {
+            "fr": "Nouvelle dimension",
+            "en": "New dimension"
+          },
+          {
+            "fr": "Un nouvel axe d’analyse demandé par l’interview « année +1 »",
+            "en": "A new analysis axis requested by the “year +1” interview"
+          },
+          {
+            "fr": "Ajouter une clé étrangère à la table de faits ; ligne « inconnu » pour les faits passés ; les rapports existants sont inchangés",
+            "en": "Add a foreign key to the fact table; “unknown” row for past facts; existing reports unchanged"
+          }
+        ],
+        [
+          {
+            "fr": "Nouvelle définition d’indicateur (« cousin »)",
+            "en": "New indicator definition (“cousin”)"
+          },
+          {
+            "fr": "Une définition voisine d’une existante : risque de deux chiffres du même nom",
+            "en": "A definition close to an existing one: risk of two figures with the same name"
+          },
+          {
+            "fr": "Nouveau fait avec un nom différent ; l’ancien reste inchangé ; on ne redéfinit pas la mesure existante",
+            "en": "New fact with a different name; the old one stays unchanged; the existing measure is not redefined"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "notions": [
+        "n-four-changes"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cas de l’indicateur cousin est le plus piégeux : si deux mesures portent le même nom, elles doivent signifier la même chose ; si leurs définitions sont incompatibles, on les nomme différemment pour prévenir les utilisateurs. Redéfinir l’indicateur existant ferait changer les rapports de l’année 1 : c’est ce que le critère interdit.",
+        "en": "The cousin indicator case is the trickiest: if two measures have the same name, they must mean the same thing; if their definitions are incompatible, they are given different names to warn users. Redefining the existing indicator would change year-1 reports: this is what the criterion forbids."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "If two performance measures have the same name, they must mean the same thing."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notions": [
+        "n-cousin-indicator"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-17-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Une méthode : mesurer l’impact, choisir l’option",
+        "en": "A method: measure the impact, choose the option"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Faire évoluer un modèle et son architecture (méthode de l’app)",
+        "en": "Evolving a model and its architecture (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Nommer le changement : nouvelle source, contrat d’interface, nouvelle dimension ou nouvelle définition d’indicateur.",
+            "en": "Name the change: new source, interface contract, new dimension or new indicator definition."
+          },
+          "why": {
+            "fr": "Ce sont les quatre changements de l’objectif.",
+            "en": "These are the objective’s four changes."
+          }
+        },
+        {
+          "do": {
+            "fr": "Mesurer l’impact sur le **modèle** : quelles tables de faits, quelles dimensions, quel grain, quelles mesures changent ?",
+            "en": "Measure the impact on the **model**: which fact tables, which dimensions, which grain, which measures change?"
+          },
+          "why": {
+            "fr": "Tout ce qui change menace les rapports existants.",
+            "en": "Whatever changes threatens existing reports."
+          }
+        },
+        {
+          "do": {
+            "fr": "Mesurer l’impact sur l’**architecture** : quelle couche absorbe le changement (transit, entrepôt, data mart, couche sémantique) ?",
+            "en": "Measure the impact on the **architecture**: which layer absorbs the change (staging, warehouse, data mart, semantic layer)?"
+          },
+          "why": {
+            "fr": "Plus la couche absorbante est en amont, moins l’aval est touché.",
+            "en": "The further upstream the absorbing layer, the less downstream is touched."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lister les options et les classer : d’abord celles qui **ajoutent** (colonne, clé, attribut, nouveau fait nommé autrement), en dernier celles qui **réécrivent**.",
+            "en": "List the options and rank them: first those that **add** (column, key, attribute, differently named new fact), last those that **rewrite**."
+          },
+          "why": {
+            "fr": "Les ajouts ne changent aucun résultat existant (Kimball).",
+            "en": "Additions change no existing result (Kimball)."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier le critère : les rapports de l’année 1 gardent-ils leur sens ? Sinon, trouver une option plus conservatrice (SCD de type 2, nouveau nom).",
+            "en": "Check the criterion: do year-1 reports keep their meaning? If not, find a more conservative option (type 2 SCD, new name)."
+          },
+          "why": {
+            "fr": "C’est le critère de notation annoncé.",
+            "en": "This is the announced marking criterion."
+          }
+        },
+        {
+          "do": {
+            "fr": "Justifier : citer l’option retenue, celle écartée et la raison.",
+            "en": "Justify: cite the option retained, the one discarded, and the reason."
+          },
+          "why": {
+            "fr": "L’examen attend un choix argumenté, pas seulement une liste.",
+            "en": "The exam expects an argued choice, not just a list."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "measure the impact on the model and on the architecture"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "choose the option that maximize preservation of the existing one"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notions": [
+        "n-evolve-method"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Cette méthode est une construction pédagogique de l’app. Le cours donne l’objectif et le critère de notation, pas la procédure ; l’ordre des options vient de Kimball (ajouts sans casse) et de notre lecture.",
+        "en": "This method is a pedagogical construction of the app. The course gives the objective and the marking criterion, not the procedure; the ranking of options comes from Kimball (additions without breakage) and from our reading."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Cas guidé (inventé), pour s’entraîner avant les partiels blancs. **Année 1** : étoile « livraisons » (grain : une livraison ; dimensions : dates promise et livrée, client, région, transporteur, produit ; faits : retard en jours). **Interview année +1** : la logistique veut aussi suivre le canal de vente (web / magasin), intégrer les livraisons d’un nouveau transporteur partenaire (autre format de fichier) et suivre un indicateur « livraison à l’heure client » proche de « livraison à l’heure promise ».",
+        "en": "A guided case (invented), to practise before the mock exams. **Year 1**: “deliveries” star (grain: one delivery; dimensions: promised and delivered dates, customer, region, carrier, product; facts: delay in days). **Year +1 interview**: logistics also wants to track the sales channel (web / store), integrate deliveries from a new partner carrier (different file format) and track an “on-time to customer” indicator close to “on-time to promise”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        }
+      ],
+      "notions": [
+        "n-full-exam-case"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Demande « année +1 »",
+          "en": "Year +1 request"
+        },
+        {
+          "fr": "Changement",
+          "en": "Change"
+        },
+        {
+          "fr": "Option retenue",
+          "en": "Option retained"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Canal de vente",
+            "en": "Sales channel"
+          },
+          {
+            "fr": "Nouvelle dimension",
+            "en": "New dimension"
+          },
+          {
+            "fr": "Clé étrangère « canal » dans la table de faits ; ligne « inconnu » pour les livraisons passées",
+            "en": "A “channel” foreign key in the fact table; “unknown” row for past deliveries"
+          }
+        ],
+        [
+          {
+            "fr": "Nouveau transporteur, autre format",
+            "en": "New carrier, different format"
+          },
+          {
+            "fr": "Nouvelle source + contrat d’interface différent",
+            "en": "New source + different interface contract"
+          },
+          {
+            "fr": "Absorber le format dans la zone de transit ; alimenter la dimension transporteur conforme ; faits passés inchangés",
+            "en": "Absorb the format in staging; feed the conformed carrier dimension; past facts unchanged"
+          }
+        ],
+        [
+          {
+            "fr": "« À l’heure client »",
+            "en": "On-time to customer"
+          },
+          {
+            "fr": "Indicateur cousin",
+            "en": "Cousin indicator"
+          },
+          {
+            "fr": "Nouveau fait ou nouvelle date de référence avec un nom distinct ; « à l’heure promise » reste inchangé",
+            "en": "A new fact or reference date with a distinct name; “on-time to promise” stays unchanged"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "notions": [
+        "n-full-exam-case",
+        "n-four-changes"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Vérification finale du cas : chaque option **ajoute** sans réécrire ; les rapports de l’année 1 donnent donc les mêmes chiffres. Si une option réécrivait (par ex. redéfinir « à l’heure »), ce serait la faute à éviter.",
+        "en": "Final check of the case: each option **adds** without rewriting; year-1 reports therefore give the same figures. If an option rewrote (e.g. redefining “on time”), that would be the mistake to avoid."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-17-qz-05"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-evolve-objective",
+      "fr": "objectif « Évoluer »",
+      "en": "“Evolve” objective",
+      "definition": {
+        "fr": "Face à un changement, mesurer l’impact sur le modèle et l’architecture et choisir l’option qui préserve le plus l’existant.",
+        "en": "Faced with a change, measure the impact on the model and architecture and choose the option that best preserves what exists."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        }
+      ],
+      "notion": "n-evolve-objective"
+    },
+    {
+      "id": "term-year-plus-one",
+      "fr": "interview « année +1 »",
+      "en": "year +1 interview",
+      "definition": {
+        "fr": "Séance 9 : une seconde interview un an après, qui apporte une nouvelle source, un indicateur cousin et un impact sur l’architecture.",
+        "en": "Session 9: a second interview a year later, bringing a new source, a cousin indicator and an impact on architecture."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        }
+      ],
+      "notion": "n-year-plus-one"
+    },
+    {
+      "id": "term-year1-reports-keep-meaning",
+      "fr": "les rapports de l’année 1 gardent leur sens",
+      "en": "year-1 reports keep their meaning",
+      "definition": {
+        "fr": "Critère de notation annoncé : après un changement, les rapports passés ne changent pas de signification.",
+        "en": "Announced marking criterion: after a change, past reports do not change meaning."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notion": "n-year1-reports-keep-meaning"
+    },
+    {
+      "id": "term-four-changes",
+      "fr": "quatre changements",
+      "en": "four changes",
+      "definition": {
+        "fr": "Nouvelle source de données, contrat d’interface modifié, nouvelle dimension, nouvelle définition d’indicateur.",
+        "en": "New data source, modified interface contract, new dimension, new indicator definition."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        }
+      ],
+      "notion": "n-four-changes"
+    },
+    {
+      "id": "term-cousin-indicator",
+      "fr": "indicateur cousin",
+      "en": "cousin indicator",
+      "definition": {
+        "fr": "Mot de la séance 9 ; interprété ici comme une définition voisine d’un indicateur existant, à nommer différemment.",
+        "en": "A session 9 word; interpreted here as a definition close to an existing indicator, to be named differently."
+      },
+      "pitfall": {
+        "fr": "Interprétation proposée : à confirmer avec tes notes.",
+        "en": "Proposed interpretation: to be confirmed with your notes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Évolution : interview « année +1 », nouvelle source, indicateur cousin, impact sur l'architecture."
+        }
+      ],
+      "notion": "n-cousin-indicator"
+    },
+    {
+      "id": "term-interface-contract",
+      "fr": "contrat d’interface",
+      "en": "interface contract",
+      "definition": {
+        "fr": "Accord de format entre une source et le système décisionnel ; sa modification est un des quatre changements du cours.",
+        "en": "Format agreement between a source and the decision-making system; modifying it is one of the course’s four changes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        }
+      ],
+      "notion": "n-four-changes"
+    },
+    {
+      "id": "term-preserve-existing",
+      "fr": "préserver l’existant",
+      "en": "preserving what exists",
+      "definition": {
+        "fr": "Choisir, parmi les options, celle qui préserve le plus l’existant : critère de l’objectif « Évoluer ».",
+        "en": "Choosing, among the options, the one that best preserves what exists: criterion of the “Evolve” objective."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "choose the option that maximize preservation of the existing one"
+        }
+      ],
+      "notion": "n-evolve-method"
+    },
+    {
+      "id": "term-adaptability",
+      "fr": "adaptabilité",
+      "en": "adaptability",
+      "definition": {
+        "fr": "Exigence cachée de la grille d’atelier ; doit absorber les changements réglementaires.",
+        "en": "A hidden requirement of the workshop grid; must absorb regulatory changes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        }
+      ],
+      "notion": "n-evolve-objective"
+    }
+  ],
+  "notions": [
+    "n-evolve-objective",
+    "n-year-plus-one",
+    "n-year1-reports-keep-meaning",
+    "n-four-changes",
+    "n-graceful-extensions",
+    "n-cousin-indicator",
+    "n-default-dimension-row",
+    "n-evolve-method",
+    "n-full-exam-case"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Objectif « Évoluer » : face à un changement, mesurer l’impact sur le modèle et l’architecture et choisir l’option qui préserve le plus l’existant.",
+        "en": "Objective “Evolve”: faced with a change, measure the impact on the model and architecture and choose the option that best preserves what exists."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        }
+      ],
+      "notions": [
+        "n-evolve-objective",
+        "n-evolve-method"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Quatre changements : nouvelle source, contrat d’interface modifié, nouvelle dimension, nouvelle définition d’indicateur.",
+        "en": "Four changes: new source, modified interface contract, new dimension, new indicator definition."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        }
+      ],
+      "notions": [
+        "n-four-changes"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Critère de notation annoncé : les rapports de l’année 1 gardent leur sens.",
+        "en": "Announced marking criterion: year-1 reports keep their meaning."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notions": [
+        "n-year1-reports-keep-meaning"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Kimball : ajouter un fait (colonne), une dimension (clé étrangère), un attribut ou affiner le grain en conservant les noms ne change aucun résultat existant.",
+        "en": "Kimball: adding a fact (column), a dimension (foreign key), an attribute or refining the grain while preserving names changes no existing result."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts consistent with the grain of an existing fact table can be added by creating new columns."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Attributes can be added to an existing dimension table by creating new columns."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain of a fact table can be made more atomic by adding attributes to an existing dimension table, and then restating the fact table at the lower grain"
+        }
+      ],
+      "notions": [
+        "n-graceful-extensions"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Une dimension ajoutée à des faits existants utilise une ligne « inconnu » plutôt qu’une clé étrangère nulle.",
+        "en": "A dimension added to existing facts uses an “unknown” row rather than a null foreign key."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        }
+      ],
+      "notions": [
+        "n-default-dimension-row"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Deux mesures de même nom signifient la même chose ; sinon, noms différents : on ne redéfinit pas un indicateur existant.",
+        "en": "Two measures with the same name mean the same thing; otherwise, different names: an existing indicator is not redefined."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "If two performance measures have the same name, they must mean the same thing."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        }
+      ],
+      "notions": [
+        "n-cousin-indicator"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Objectif « Évoluer » ?",
+        "en": "“Evolve” objective?"
+      },
+      "back": {
+        "fr": "Face à un changement, mesurer l’impact sur le modèle et l’architecture, choisir l’option qui préserve le plus l’existant.",
+        "en": "Faced with a change, measure impact on model and architecture, choose the option that best preserves what exists."
+      },
+      "termId": "term-evolve-objective",
+      "id": "isi7-17-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Les quatre changements ?",
+        "en": "The four changes?"
+      },
+      "back": {
+        "fr": "Nouvelle source, contrat d’interface modifié, nouvelle dimension, nouvelle définition d’indicateur.",
+        "en": "New source, modified interface contract, new dimension, new indicator definition."
+      },
+      "termId": "term-four-changes",
+      "id": "isi7-17-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Critère de notation de la séance 9 ?",
+        "en": "Marking criterion of session 9?"
+      },
+      "back": {
+        "fr": "Les rapports de l’année 1 gardent leur sens.",
+        "en": "Year-1 reports keep their meaning."
+      },
+      "termId": "term-year1-reports-keep-meaning",
+      "id": "isi7-17-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Séance 9 : contenu ?",
+        "en": "Session 9: content?"
+      },
+      "back": {
+        "fr": "Interview « année +1 », nouvelle source, indicateur cousin, impact sur l’architecture.",
+        "en": "Year +1 interview, new source, cousin indicator, architecture impact."
+      },
+      "termId": "term-year-plus-one",
+      "id": "isi7-17-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Séance 10 ?",
+        "en": "Session 10?"
+      },
+      "back": {
+        "fr": "Cas complet au format d’examen, avec correction collective.",
+        "en": "Full case in exam format, with collective correction."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Cas complet au format d'examen, correction collective"
+        }
+      ],
+      "notions": [
+        "n-full-exam-case"
+      ],
+      "id": "isi7-17-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Quels changements un modèle dimensionnel absorbe-t-il sans casse ?",
+        "en": "Which changes does a dimensional model absorb without breakage?"
+      },
+      "back": {
+        "fr": "Nouveau fait cohérent avec le grain, nouvelle dimension, nouvel attribut, grain plus fin avec noms conservés.",
+        "en": "New fact consistent with the grain, new dimension, new attribute, finer grain with names preserved."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Facts consistent with the grain of an existing fact table can be added by creating new columns."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Attributes can be added to an existing dimension table by creating new columns."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "The grain of a fact table can be made more atomic by adding attributes to an existing dimension table, and then restating the fact table at the lower grain"
+        }
+      ],
+      "notions": [
+        "n-graceful-extensions"
+      ],
+      "id": "isi7-17-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Que mettre dans une dimension ajoutée pour les faits passés ?",
+        "en": "What goes in an added dimension for past facts?"
+      },
+      "back": {
+        "fr": "Une ligne par défaut « inconnu / sans objet », pas une clé nulle.",
+        "en": "A default “unknown / not applicable” row, not a null key."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        }
+      ],
+      "notions": [
+        "n-default-dimension-row"
+      ],
+      "id": "isi7-17-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Indicateur cousin : que faire ?",
+        "en": "Cousin indicator: what to do?"
+      },
+      "back": {
+        "fr": "Un nouveau fait avec un nom différent ; ne pas redéfinir l’existant.",
+        "en": "A new fact with a different name; do not redefine the existing one."
+      },
+      "termId": "term-cousin-indicator",
+      "id": "isi7-17-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Comment classer les options ?",
+        "en": "How to rank the options?"
+      },
+      "back": {
+        "fr": "D’abord celles qui ajoutent, en dernier celles qui réécrivent.",
+        "en": "First those that add, last those that rewrite."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "notions": [
+        "n-evolve-method"
+      ],
+      "id": "isi7-17-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Contrat d’interface modifié : quelle couche absorbe ?",
+        "en": "Modified interface contract: which layer absorbs?"
+      },
+      "back": {
+        "fr": "La zone de transit et le chargement (lecture proposée) ; l’aval reste inchangé.",
+        "en": "Staging and loading (proposed reading); downstream stays unchanged."
+      },
+      "termId": "term-interface-contract",
+      "id": "isi7-17-fc-10"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "L’objectif « Évoluer » demande de choisir l’option qui préserve le plus l’existant.",
+        "en": "The “Evolve” objective asks you to choose the option that best preserves what exists."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « choose the option that maximize preservation of the existing one ».",
+        "en": "TRUE: “choose the option that maximize preservation of the existing one”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "choose the option that maximize preservation of the existing one"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-evolve-objective",
+        "n-evolve-method"
+      ],
+      "id": "isi7-17-qz-01"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Lequel de ces changements n’est PAS cité parmi les quatre de l’objectif « Évoluer » ?",
+        "en": "Which of these changes is NOT among the four of the “Evolve” objective?"
+      },
+      "options": [
+        {
+          "fr": "Une nouvelle source de données à intégrer",
+          "en": "A new data source to integrate"
+        },
+        {
+          "fr": "Un contrat d’interface modifié par une source",
+          "en": "An interface contract modified by a source"
+        },
+        {
+          "fr": "Un changement de fournisseur de cloud",
+          "en": "A change of cloud provider"
+        },
+        {
+          "fr": "Une nouvelle définition d’un indicateur existant",
+          "en": "A new definition of an existing indicator"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Les quatre : nouvelle source, contrat d’interface modifié, nouvelle dimension, nouvelle définition d’indicateur.",
+        "en": "The four: new source, modified interface contract, new dimension, new indicator definition."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-four-changes"
+      ],
+      "id": "isi7-17-qz-02"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le critère de notation annoncé pour la séance 9 est « les rapports de l’année 1 gardent leur sens ».",
+        "en": "The marking criterion announced for session 9 is “year-1 reports keep their meaning”."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : séquencement, ligne 9.",
+        "en": "TRUE: sequencing, row 9."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-year1-reports-keep-meaning"
+      ],
+      "id": "isi7-17-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Ajouter une clé étrangère de dimension à une table de faits existante, sans changer le grain, modifie les résultats des rapports existants.",
+        "en": "Adding a dimension foreign key to an existing fact table, without changing the grain, changes the results of existing reports."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : selon Kimball, c’est un changement qui peut être fait sans altérer les requêtes existantes ni leurs résultats.",
+        "en": "FALSE: according to Kimball, this is a change that can be made without altering existing queries or their results."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-graceful-extensions"
+      ],
+      "trap": {
+        "fr": "Confondre ajout et réécriture.",
+        "en": "Confusing addition and rewrite."
+      },
+      "id": "isi7-17-qz-04"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "L’interview « année +1 » demande un nouvel axe « canal de vente ». Quelle option préserve le mieux les rapports de l’année 1 ?",
+        "en": "The “year +1” interview asks for a new “sales channel” axis. Which option best preserves year-1 reports?"
+      },
+      "options": [
+        {
+          "fr": "Supprimer les rapports de l’année 1 afin d’éviter toute incohérence avec les nouveaux",
+          "en": "Delete the year-1 reports in order to avoid any inconsistency with the new ones"
+        },
+        {
+          "fr": "Ajouter une clé étrangère « canal », avec une ligne « inconnu » pour les faits passés",
+          "en": "Add a “channel” foreign key, with an “unknown” row for past facts"
+        },
+        {
+          "fr": "Recréer entièrement la table de faits avec le canal et recharger tout l’historique de la société",
+          "en": "Recreate the fact table entirely with the channel and reload the company’s whole history"
+        },
+        {
+          "fr": "Écraser la dimension client en y mettant le canal à la place du segment commercial",
+          "en": "Overwrite the customer dimension by putting the channel in place of the commercial segment"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Ajout d’une dimension par clé étrangère : aucun résultat existant ne change ; une ligne « inconnu » couvre les faits passés. Les autres options réécrivent ou détruisent.",
+        "en": "Adding a dimension through a foreign key: no existing result changes; an “unknown” row covers past facts. The other options rewrite or destroy."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Facts and dimensions joined in a star schema",
+          "quote": "you can add completely new dimensions to the schema as long as a single value of that dimension is defined for each existing fact row"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-four-changes",
+        "n-default-dimension-row",
+        "n-year-plus-one"
+      ],
+      "id": "isi7-17-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour les faits existants qui n’ont pas de valeur dans une nouvelle dimension, la bonne pratique est de laisser la clé étrangère à NULL.",
+        "en": "For existing facts that have no value in a new dimension, good practice is to leave the foreign key NULL."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : Kimball veut une ligne par défaut « inconnu / sans objet » dans la dimension plutôt qu’une clé étrangère nulle.",
+        "en": "FALSE: Kimball wants a default “unknown / not applicable” row in the dimension rather than a null foreign key."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-default-dimension-row"
+      ],
+      "trap": {
+        "fr": "Utiliser des NULL dans les clés étrangères.",
+        "en": "Using NULLs in foreign keys."
+      },
+      "id": "isi7-17-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Face à un indicateur cousin, il est préférable de redéfinir l’indicateur existant pour éviter d’avoir deux chiffres proches.",
+        "en": "Faced with a cousin indicator, it is preferable to redefine the existing indicator to avoid having two close figures."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : redéfinir l’existant ferait changer les rapports de l’année 1 ; si les définitions sont incompatibles, on nomme le nouveau fait différemment.",
+        "en": "FALSE: redefining the existing one would change year-1 reports; if definitions are incompatible, the new fact is named differently."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cousin-indicator"
+      ],
+      "trap": {
+        "fr": "Redéfinir un indicateur publié.",
+        "en": "Redefining a published indicator."
+      },
+      "id": "isi7-17-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un nouveau transporteur envoie ses données dans un autre format. Quelle réponse suit la lecture proposée dans ce chapitre ?",
+        "en": "A new carrier sends its data in a different format. Which answer follows the reading proposed in this chapter?"
+      },
+      "options": [
+        {
+          "fr": "Modifier toutes les tables de faits passées pour qu’elles adoptent le nouveau format",
+          "en": "Modify all past fact tables so they adopt the new format"
+        },
+        {
+          "fr": "Refuser le nouveau transporteur tant que son format de fichier n’est pas identique",
+          "en": "Refuse the new carrier until its file format is identical"
+        },
+        {
+          "fr": "Absorber le format dans la zone de transit et alimenter la dimension conforme existante",
+          "en": "Absorb the format in staging and feed the existing conformed dimension"
+        },
+        {
+          "fr": "Créer une seconde dimension transporteur complètement indépendante de la première",
+          "en": "Create a second carrier dimension completely independent of the first"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "L’amont (transit, chargement) absorbe le changement ; l’aval et les faits passés restent inchangés ; la dimension conforme évite deux versions du transporteur.",
+        "en": "Upstream (staging, loading) absorbs the change; downstream and past facts remain unchanged; the conformed dimension avoids two versions of the carrier."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-four-changes"
+      ],
+      "id": "isi7-17-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un SCD de type 1 sur le segment client est une bonne option si les rapports de l’année 1 doivent garder leur sens.",
+        "en": "A type 1 SCD on the customer segment is a good option if year-1 reports must keep their meaning."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le type 1 écrase l’ancienne valeur et détruit l’historique ; le type 2 conserve l’historique (chapitre 15).",
+        "en": "FALSE: type 1 overwrites the old value and destroys history; type 2 keeps history (chapter 15)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "this technique destroys history"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Slowly changing dimension techniques",
+          "quote": "Slowly changing dimension type 2 changes add a new row in the dimension with the updated attribute values."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-year1-reports-keep-meaning"
+      ],
+      "trap": {
+        "fr": "Choisir le type 1 par simplicité.",
+        "en": "Choosing type 1 for simplicity."
+      },
+      "id": "isi7-17-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Kimball et Ross demandent que le système s’adapte au changement sans invalider les données ni les applications existantes.",
+        "en": "Kimball and Ross require the system to adapt to change without invalidating existing data or applications."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : exigence n° 3.",
+        "en": "TRUE: requirement no. 3."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "The DW/BI system must adapt to change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "Existing data and applications should not be changed or disrupted when the business community asks new questions or new data is added to the warehouse."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-evolve-objective"
+      ],
+      "id": "isi7-17-qz-10"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "La séance 10 est décrite comme…",
+        "en": "Session 10 is described as…"
+      },
+      "options": [
+        {
+          "fr": "Un cas complet au format d’examen, avec correction collective",
+          "en": "A full case in exam format, with collective correction"
+        },
+        {
+          "fr": "Un travail pratique de programmation SQL sur machine individuelle",
+          "en": "A hands-on SQL programming exercise on individual machines"
+        },
+        {
+          "fr": "Une visite d’un entrepôt de données dans une grande entreprise",
+          "en": "A visit to a data warehouse in a large company"
+        },
+        {
+          "fr": "Un cours magistral sur les outils de BI du marché actuel",
+          "en": "A lecture on the tools of the current BI market"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Séquencement : « Cas complet au format d’examen, correction collective ».",
+        "en": "Sequencing: “Full case in exam format, collective correction”."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Cas complet au format d'examen, correction collective"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-full-exam-case"
+      ],
+      "id": "isi7-17-qz-11"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Interview année +1 : quatre demandes, quatre options",
+        "en": "Year +1 interview: four requests, four options"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Année 1 : étoile « ventes » (grain : une ligne de ticket ; dimensions : date, produit, magasin, client ; faits : quantité, montant). Interview année +1 : **(1)** ajouter le mode de paiement ; **(2)** intégrer les ventes d’un site web partenaire, livrées par fichier CSV avec un codage produit différent ; **(3)** introduire un « chiffre d’affaires net » proche du « chiffre d’affaires » existant (remises déduites) ; **(4)** le système source des tickets change le format de son export. Pour chaque demande : changement, impact sur le modèle et sur l’architecture, option retenue, et vérification du critère « les rapports de l’année 1 gardent leur sens ».",
+        "en": "*(Invented case for practice.)* Year 1: “sales” star (grain: one ticket line; dimensions: date, product, store, customer; facts: quantity, amount). Year +1 interview: **(1)** add the payment method; **(2)** integrate sales from a partner website, delivered by CSV file with a different product coding; **(3)** introduce a “net revenue” close to the existing “revenue” (discounts deducted); **(4)** the ticket source system changes the format of its export. For each request: change, impact on model and architecture, option retained, and check of the criterion “year-1 reports keep their meaning”."
+      },
+      "hints": [
+        {
+          "fr": "Les quatre changements de l’objectif : dimension, source, définition d’indicateur, contrat d’interface.",
+          "en": "The four changes of the objective: dimension, source, indicator definition, interface contract."
+        },
+        {
+          "fr": "Les options qui ajoutent passent avant celles qui réécrivent.",
+          "en": "Options that add come before those that rewrite."
+        }
+      ],
+      "solution": {
+        "fr": "**(1) Nouvelle dimension** (mode de paiement). Impact modèle : une clé étrangère de plus ; architecture : rien en amont. Option : clé étrangère + ligne « inconnu » pour les tickets passés. Critère : respecté, aucun rapport existant ne change.\n**(2) Nouvelle source**. Impact modèle : nouveaux faits au même grain ; produit codé autrement : dimension non conforme. Architecture : zone de transit pour contrôler le CSV. Option : rattacher les codes du partenaire à la dimension produit conforme (table de correspondance), charger les faits au même grain ; ne pas toucher aux faits passés. Critère : respecté.\n**(3) Indicateur cousin**. Impact : deux chiffres proches. Option : nouveau fait « chiffre d’affaires net », nom distinct ; « chiffre d’affaires » inchangé. Critère : respecté ; redéfinir l’existant le violerait.\n**(4) Contrat d’interface modifié**. Impact modèle : aucun ; architecture : zone de transit et chargement. Option : adapter le chargement ; garder l’aval inchangé. Critère : respecté.\n*Barème indicatif* : 1,5 point par demande (changement, impact, option, critère). *Corrigé proposé ; la réponse du prof n’est pas dans nos sources.*",
+        "en": "**(1) New dimension** (payment method). Model impact: one more foreign key; architecture: nothing upstream. Option: foreign key + “unknown” row for past tickets. Criterion: met, no existing report changes.\n**(2) New source**. Model impact: new facts at the same grain; product coded differently: non-conformed dimension. Architecture: staging to control the CSV. Option: map the partner’s codes to the conformed product dimension (mapping table), load facts at the same grain; do not touch past facts. Criterion: met.\n**(3) Cousin indicator**. Impact: two close figures. Option: new fact “net revenue”, distinct name; “revenue” unchanged. Criterion: met; redefining the existing one would violate it.\n**(4) Modified interface contract**. Model impact: none; architecture: staging and loading. Option: adapt loading; keep downstream unchanged. Criterion: met.\n*Indicative marking*: 1.5 points per request (change, impact, option, criterion). *Proposed answer; the teacher’s answer is not in our sources.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition), measure the impact on the model and on the architecture, and choose the option that maximize preservation of the existing one."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "new data source, modified interface contract, new dimension, new indicator definition"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "Dimensions can be added to an existing fact table by creating new foreign key columns, presuming they don’t alter the fact table’s grain."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "Rather than a null foreign key, the associated dimension table must have a default row (and surrogate key) representing the unknown or not applicable condition."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Redéfinir « chiffre d’affaires » pour y mettre les remises.",
+        "en": "Redefining “revenue” to include discounts."
+      },
+      "notions": [
+        "n-evolve-method",
+        "n-four-changes",
+        "n-year1-reports-keep-meaning",
+        "n-cousin-indicator",
+        "n-default-dimension-row"
+      ],
+      "id": "isi7-17-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Défendre deux options contre « on refait tout, c’est plus propre »",
+        "en": "Defending two options against “let’s redo everything, it’s cleaner”"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Un architecte propose, à l’arrivée d’une nouvelle source, de reconstruire entièrement l’entrepôt « pour repartir sur une base propre ». Rédigez une critique en 6 lignes avec les critères du cours (mesurer l’impact, préserver l’existant, rapports de l’année 1) et proposez une alternative qui ajoute plutôt que de réécrire.",
+        "en": "When a new source arrives, an architect proposes rebuilding the whole warehouse “to start from a clean base”. Write a 6-line critique using the course criteria (measuring impact, preserving what exists, year-1 reports) and propose an alternative that adds rather than rewrites."
+      },
+      "hints": [
+        {
+          "fr": "Que deviennent les rapports de l’année 1 ?",
+          "en": "What happens to year-1 reports?"
+        },
+        {
+          "fr": "Qu’est-ce qui peut s’ajouter sans toucher à l’existant ?",
+          "en": "What can be added without touching what exists?"
+        }
+      ],
+      "solution": {
+        "fr": "**Critique** : une reconstruction complète n’est pas une option qui préserve l’existant : elle réécrit tout et menace « les rapports de l’année 1 gardent leur sens » ; elle ne mesure pas l’impact réel ; elle expose au pain point 5 (chiffres publiés qui bougent) et au coût d’un changement tardif. Kimball et Ross : on ne doit pas perturber les données et applications existantes quand de nouvelles données sont ajoutées.\n**Alternative** : intégrer la nouvelle source par la zone de transit et les dimensions conformes existantes ; ajouter les faits au même grain ; ajouter, si besoin, une clé étrangère ou un attribut ; noter les différences de définition par de nouveaux noms ; vérifier le critère sur un rapport de l’année 1.\n*Barème indicatif* : 3 points pour la critique, 2 pour l’alternative.",
+        "en": "**Critique**: a full rebuild is not an option that preserves what exists: it rewrites everything and threatens “year-1 reports keep their meaning”; it does not measure the real impact; it exposes pain point 5 (published figures that move) and the cost of late change. Kimball and Ross: existing data and applications should not be disrupted when new data is added.\n**Alternative**: integrate the new source through staging and the existing conformed dimensions; add the facts at the same grain; add, if needed, a foreign key or an attribute; mark definition differences with new names; check the criterion on a year-1 report.\n*Indicative marking*: 3 points for the critique, 2 for the alternative."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "choose the option that maximize preservation of the existing one"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Annoncer ici le critère de notation « les rapports de l'année 1 gardent leur sens »"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "Existing data and applications should not be changed or disrupted when the business community asks new questions or new data is added to the warehouse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Fundamental concepts",
+          "quote": "All the following changes can be implemented without altering any existing BI query or application, and without any change in query results."
+        }
+      ],
+      "objective": "o3",
+      "trap": {
+        "fr": "Chercher la propreté plutôt que la préservation.",
+        "en": "Seeking cleanliness rather than preservation."
+      },
+      "notions": [
+        "n-evolve-method",
+        "n-year1-reports-keep-meaning",
+        "n-graceful-extensions"
+      ],
+      "id": "isi7-17-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Year-1 reports must keep their meaning.",
+      "id": "isi7-17-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "Choose the option that {{preserves}} the {{existing}} model as much as possible.",
+      "translation": "Choisir l’option qui préserve le plus possible le modèle existant.",
+      "id": "isi7-17-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "To add a dimension to existing facts, leave the foreign key NULL.",
+      "error": "leave the foreign key NULL",
+      "corrected": "use a default “unknown” row",
+      "explanation": {
+        "fr": "Kimball veut une ligne par défaut « inconnu » plutôt qu’une clé nulle.",
+        "en": "Kimball wants a default “unknown” row rather than a null key."
+      },
+      "id": "isi7-17-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : comment répondrais-tu à une nouvelle définition d’indicateur proche d’une définition existante ?",
+        "en": "In three sentences: how would you respond to a new indicator definition close to an existing one?"
+      },
+      "modelAnswer": "I would not redefine the existing indicator, because year-1 reports must keep their meaning. I would add a new fact with a different name and document the difference. This way, the two figures cannot be mixed up and existing reports stay unchanged.",
+      "keywords": [
+        "not redefine",
+        "year-1 reports",
+        "new fact",
+        "different name",
+        "unchanged"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité le critère.",
+          "en": "I mentioned the criterion."
+        },
+        {
+          "fr": "J’ai proposé un nouveau nom.",
+          "en": "I proposed a new name."
+        }
+      ],
+      "usefulPhrases": [
+        "must keep their meaning",
+        "with a different name"
+      ],
+      "id": "isi7-17-wr-04"
+    }
+  ]
+}

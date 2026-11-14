@@ -1,0 +1,1829 @@
+{
+  "id": "isi7-14-dimensions-conformes-bus",
+  "courseId": "isi7",
+  "order": 14,
+  "title": {
+    "fr": "Dimensions conformes et bus matrix",
+    "en": "Conformed dimensions and bus matrix"
+  },
+  "hook": {
+    "fr": "Les ventes d’un côté, les livraisons de l’autre : comment les mettre dans le même rapport ?",
+    "en": "Sales on one side, deliveries on the other: how do you get them in the same report?"
+  },
+  "question": {
+    "fr": "Comment relier les modèles issus de plusieurs interviews pour qu’ils s’intègrent au lieu de diverger ?",
+    "en": "How do you link the models coming from several interviews so they integrate instead of diverging?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir dimension conforme, drill-across et faits conformes.",
+        "en": "Define conformed dimension, drill-across and conformed facts."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Construire et lire une bus matrix.",
+        "en": "Build and read a bus matrix."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Relier deux interviews et diagnostiquer des dimensions non conformes.",
+        "en": "Link two interviews and diagnose non-conformed dimensions."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Séance 6 : « Dimensions conformes, bus matrix, plusieurs interviews » ; objectif « Modéliser » : relier les éléments partagés d’une interview à l’autre (diapositives).",
+        "en": "Session 6: “Conformed dimensions, bus matrix, several interviews”; “Model” objective: link the elements shared from one interview to the next (slides)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Deux interviews à relier : estimation ; contenu technique issu de Kimball, le contenu exact du prof n’étant pas dans nos sources.",
+        "en": "Two interviews to link: an estimate; technical content from Kimball, the teacher’s exact content not being in our sources."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 13 : une étoile par interview.",
+    "en": "Chapter 13: one star per interview."
+  },
+  "next": {
+    "fr": "Chapitre 15 : l’historique des dimensions (SCD de type 2).",
+    "en": "Chapter 15: the history of dimensions (type 2 SCD)."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Dimensions conformes : mêmes noms d’attributs et mêmes contenus ; définies une fois, réutilisées.",
+        "en": "Conformed dimensions: same attribute names and contents; defined once, reused."
+      },
+      {
+        "fr": "Bus matrix : lignes = processus, colonnes = dimensions ; une ligne à la fois.",
+        "en": "Bus matrix: rows = processes, columns = dimensions; one row at a time."
+      },
+      {
+        "fr": "Drill-across et faits conformes.",
+        "en": "Drill-across and conformed facts."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Dessiner une bus matrix à partir de plusieurs interviews.",
+        "en": "Draw a bus matrix from several interviews."
+      },
+      {
+        "fr": "Diagnostiquer deux dimensions non conformes et les corriger.",
+        "en": "Diagnose two non-conformed dimensions and fix them."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Conforme ≠ identique à tous les niveaux (sous-ensembles possibles).",
+        "en": "Conformed ≠ identical at every level (subsets possible)."
+      },
+      {
+        "fr": "Drill-across (plusieurs tables de faits) ≠ drill-down (détail d’une table).",
+        "en": "Drill-across (several fact tables) ≠ drill-down (detail of one table)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 3 : définitions partagées et fiabilité.",
+        "en": "Chapter 3: shared definitions and reliability."
+      },
+      {
+        "fr": "Chapitre 12 : data marts indépendants contre bus.",
+        "en": "Chapter 12: independent data marts versus bus."
+      },
+      {
+        "fr": "Chapitre 15 : l’historique des dimensions.",
+        "en": "Chapter 15: the history of dimensions."
+      }
+    ]
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Deux interviews, deux étoiles… et des chiffres qui ne s’alignent pas",
+        "en": "Two interviews, two stars… and figures that do not line up"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La séance 6 s’intitule « Dimensions conformes, bus matrix, plusieurs interviews ». L’objectif « Modéliser » demande de **relier les éléments partagés d’une interview à l’autre**. Voici pourquoi : si chaque interview donne sa propre étoile avec ses propres dimensions, on retombe dans le pain point 2 (chiffres divergents) que le cours cherche à guérir.",
+        "en": "Session 6 is titled “Conformed dimensions, bus matrix, several interviews”. The “Model” objective asks you to **link the elements shared from one interview to the next**. Here is why: if each interview yields its own star with its own dimensions, we fall back into pain point 2 (divergent figures) that the course aims to cure."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions",
+        "n-link-several-interviews"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours a déjà dit la visée : l’entrepôt intègre, historise et unifie les sources avec des définitions partagées, pour une version unique de la vérité ; et des définitions partagées, quel que soit l’outil, pour que « combien de clients actifs ? » n’ait qu’une réponse convenue. Les dimensions conformes en sont la traduction dans le modèle dimensionnel.",
+        "en": "The course has already stated the aim: the warehouse integrates, historises and unifies sources with shared definitions, for a single version of the truth; and shared definitions, whatever the tool, so that “how many active customers?” has only one agreed answer. Conformed dimensions are its translation in the dimensional model."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "unifies sources with shared definitions Single version of the truth"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Shared definitions, whatever the tool, how many active customers still need one agreed answer."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-14-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Dimensions conformes et drill-across (complément Kimball)",
+        "en": "Conformed dimensions and drill-across (Kimball supplement)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Selon Kimball, des dimensions **se conforment** quand leurs attributs ont les mêmes noms de colonnes et les mêmes contenus de domaine. On peut alors combiner dans un seul rapport l’information de tables de faits différentes, en utilisant les attributs conformes comme en-têtes de lignes. C’est l’essence de l’intégration dans un entrepôt d’entreprise.",
+        "en": "According to Kimball, dimensions **conform** when their attributes have the same column names and domain contents. Information from different fact tables can then be combined in a single report, using the conformed attributes as row headers. This is the essence of integration in an enterprise warehouse."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "This is the essence of integration in an enterprise DW/ BI system."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Elles sont définies **une fois**, avec les représentants de la gouvernance des données du métier, et réutilisées par les tables de faits : cohérence analytique et moindre coût de développement. Sans dimensions conformes partagées, un modèle dimensionnel devient une application isolée, un « stovepipe », et les vues de l’entreprise restent incompatibles.",
+        "en": "They are defined **once**, with the business’s data governance representatives, and reused by fact tables: analytic consistency and lower development cost. Without shared conformed dimensions, a dimensional model becomes a standalone application, a “stovepipe”, and views of the enterprise remain incompatible."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "they deliver both analytic consistency and reduced future development costs because the wheel is not repeatedly re-created"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Isolated stovepipe data sets that cannot be tied together are the bane of the DW/BI movement as they perpetuate incompatible views of the enterprise."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le **drill-across** (« forage transversal ») consiste à interroger séparément deux tables de faits ou plus, avec des en-têtes de lignes faits d’attributs conformes identiques, puis à aligner les résultats par une fusion-tri sur ces en-têtes communs. Les outils BI l’appellent parfois « stitch » ou requête multi-passes.",
+        "en": "**Drill-across** means querying two or more fact tables separately, with row headers made of identical conformed attributes, then aligning the results through a sort-merge on those common headers. BI tools sometimes call it “stitch” or multipass query."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The answer sets from the two queries are aligned by performing a sort-merge operation on the common dimension attribute row headers."
+        }
+      ],
+      "notions": [
+        "n-drill-across"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Même logique pour les **faits** : si une même mesure figure dans des tables de faits différentes, leurs définitions techniques doivent être identiques pour qu’on puisse les comparer ; on les nomme alors de la même façon, et sinon avec des noms différents pour prévenir les utilisateurs. C’est le principe de fiabilité du chapitre 3 : deux mesures de même nom doivent signifier la même chose.",
+        "en": "The same logic applies to **facts**: if the same measurement appears in different fact tables, their technical definitions must be identical so they can be compared; they are then named identically, and otherwise given different names to warn users. This is the reliability principle of chapter 3: two measures with the same name must mean the same thing."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "care must be taken to make sure the technical definitions of the facts are identical if they are to be compared or computed together"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "If two performance measures have the same name, they must mean the same thing."
+        }
+      ],
+      "notions": [
+        "n-conformed-facts"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : « conforme » ne veut pas dire « identique à tous les niveaux ». Des dimensions conformes ont les mêmes noms d’attributs et les mêmes contenus ; une dimension peut aussi être un sous-ensemble (« shrunken ») d’une dimension de base, par exemple pour une prévision au mois et à la marque plutôt qu’au jour et au produit.",
+        "en": "Trap: “conformed” does not mean “identical at every level”. Conformed dimensions have the same attribute names and contents; a dimension can also be a subset (“shrunken”) of a base dimension, for example for a forecast by month and brand rather than by day and product."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Shrunken dimensions are conformed dimensions that are a subset of rows and /or columns of a base dimension."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "a forecast by month and brand (instead of the more atomic date and product associated with sales data)"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-14-qz-02"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-14-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "La bus matrix : la carte du modèle",
+        "en": "The bus matrix: the map of the model"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La **bus matrix** est l’outil essentiel pour concevoir et communiquer l’architecture en bus : les **lignes** sont des processus métier, les **colonnes** des dimensions, et les cellules grisées indiquent qu’une dimension est associée à un processus. On lit chaque ligne pour vérifier qu’une dimension candidate est bien définie pour le processus, et chaque colonne pour repérer où une dimension doit être conformée sur plusieurs processus.",
+        "en": "The **bus matrix** is the essential tool for designing and communicating the bus architecture: **rows** are business processes, **columns** are dimensions, and shaded cells show that a dimension is associated with a process. You read each row to check that a candidate dimension is well-defined for the process, and each column to see where a dimension must be conformed across several processes."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The enterprise data warehouse bus matrix is the essential tool for designing and communicating the enterprise data warehouse bus architecture."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The rows of the matrix are business processes and the columns are dimensions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The shaded cells of the matrix indicate whether a dimension is associated with a given business process."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+        }
+      ],
+      "notions": [
+        "n-bus-matrix"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Elle sert aussi à planifier : l’architecture en bus décompose la conception de l’entrepôt en morceaux gérables, centrés sur les processus métier, tout en assurant l’intégration par des dimensions conformes standardisées et réutilisées. Les équipes réalisent **une ligne de la matrice à la fois**, ce qui rend le développement incrémental.",
+        "en": "It also serves for planning: the bus architecture breaks warehouse design into manageable pieces, centred on business processes, while delivering integration through standardised, reused conformed dimensions. Teams implement **one row of the matrix at a time**, which makes development incremental."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The enterprise data warehouse bus architecture provides an incremental approach to building the enterprise DW/BI system."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "This architecture decomposes the DW/ BI planning process into manageable pieces by focusing on business processes, while delivering integration via standardized conformed dimensions that are reused across processes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "teams should implement one row of the matrix at a time"
+        }
+      ],
+      "notions": [
+        "n-bus-incremental"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Processus (lignes)",
+          "en": "Process (rows)"
+        },
+        {
+          "fr": "Date",
+          "en": "Date"
+        },
+        {
+          "fr": "Produit",
+          "en": "Product"
+        },
+        {
+          "fr": "Magasin / région",
+          "en": "Store / region"
+        },
+        {
+          "fr": "Client",
+          "en": "Customer"
+        },
+        {
+          "fr": "Transporteur",
+          "en": "Carrier"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Ventes en magasin",
+            "en": "Store sales"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "–",
+            "en": "–"
+          }
+        ],
+        [
+          {
+            "fr": "Livraisons",
+            "en": "Deliveries"
+          },
+          {
+            "fr": "X (2 rôles)",
+            "en": "X (2 roles)"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X (région)",
+            "en": "X (region)"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          }
+        ],
+        [
+          {
+            "fr": "Réapprovisionnement",
+            "en": "Replenishment"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          },
+          {
+            "fr": "–",
+            "en": "–"
+          },
+          {
+            "fr": "X",
+            "en": "X"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The rows of the matrix are business processes and the columns are dimensions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The shaded cells of the matrix indicate whether a dimension is associated with a given business process."
+        }
+      ],
+      "notions": [
+        "n-bus-matrix"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Cette matrice est **inventée** pour l’exemple (ventes, livraisons, réapprovisionnement : processus d’une chaîne de magasins). Lecture : la colonne « Date » est cochée partout, donc la dimension de date doit être conforme ; la ligne « Livraisons » est le prochain incrément à réaliser une fois les ventes construites.",
+        "en": "This matrix is **invented** for the example (sales, deliveries, replenishment: processes of a store chain). Reading: the “Date” column is ticked everywhere, so the date dimension must be conformed; the “Deliveries” row is the next increment to build once sales are done."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (Kimball) Une chaîne de valeur identifie l’enchaînement naturel des processus principaux (ex. achat → entreposage → vente) ; chaque processus engendre au moins une table de faits atomique. Une matrice opportunité / parties prenantes remplace les colonnes de dimensions par des fonctions (marketing, ventes, finance) pour savoir qui inviter aux ateliers.",
+        "en": "**Going further** — (Kimball) A value chain identifies the natural flow of the primary business processes (e.g. purchasing → warehousing → sales); each process spawns at least one atomic fact table. An opportunity / stakeholder matrix replaces the dimension columns with functions (marketing, sales, finance) to know who to invite to the workshops."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "A value chain identifies the natural flow of an organization’s primary business processes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "each process typically spawns at least one atomic fact table"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "you can draft a different matrix by replacing the dimension columns with business functions, such as marketing, sales, and finance"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-14-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Relier plusieurs interviews",
+        "en": "Linking several interviews"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Conformer les dimensions de plusieurs interviews (méthode de l’app)",
+        "en": "Conforming the dimensions of several interviews (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Pour chaque interview, construire son étoile (processus, grain, dimensions, faits).",
+            "en": "For each interview, build its star (process, grain, dimensions, facts)."
+          },
+          "why": {
+            "fr": "On part de processus réels, un par ligne de matrice.",
+            "en": "We start from real processes, one per matrix row."
+          }
+        },
+        {
+          "do": {
+            "fr": "Mettre les dimensions de toutes les étoiles dans une bus matrix : lignes = processus, colonnes = dimensions.",
+            "en": "Put the dimensions of all stars into a bus matrix: rows = processes, columns = dimensions."
+          },
+          "why": {
+            "fr": "Les colonnes cochées plusieurs fois sont les candidates à la conformité.",
+            "en": "Columns ticked several times are candidates for conformance."
+          }
+        },
+        {
+          "do": {
+            "fr": "Comparer les dimensions qui désignent la même chose : mêmes noms d’attributs ? mêmes valeurs de domaine ? même définition ?",
+            "en": "Compare dimensions that denote the same thing: same attribute names? same domain values? same definition?"
+          },
+          "why": {
+            "fr": "La conformité exige les mêmes noms de colonnes et les mêmes contenus.",
+            "en": "Conformance requires the same column names and contents."
+          }
+        },
+        {
+          "do": {
+            "fr": "Définir une fois la dimension commune, avec le propriétaire de la donnée ; renommer ou documenter ce qui reste différent.",
+            "en": "Define the common dimension once, with the data owner; rename or document what stays different."
+          },
+          "why": {
+            "fr": "Définie une fois avec la gouvernance, réutilisée partout.",
+            "en": "Defined once with governance, reused everywhere."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier un drill-across : un rapport peut-il aligner les mesures des deux étoiles sur les mêmes lignes ?",
+            "en": "Check a drill-across: can a report align the measures of both stars on the same rows?"
+          },
+          "why": {
+            "fr": "C’est le test de l’intégration.",
+            "en": "This is the test of integration."
+          }
+        },
+        {
+          "do": {
+            "fr": "Traiter les faits partagés : même définition et même nom, ou noms différents.",
+            "en": "Handle shared facts: same definition and same name, or different names."
+          },
+          "why": {
+            "fr": "Deux mesures de même nom doivent signifier la même chose.",
+            "en": "Two measures with the same name must mean the same thing."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        }
+      ],
+      "notions": [
+        "n-multi-interview-method"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Application à nos cas : l’interview « ventes » donne une étoile (date, produit, magasin, client) ; l’interview « livraisons » (extrait C du chapitre 6) une autre (date promise et livrée, produit, région de destination, client, transporteur). Date, produit et client sont partagés : ils doivent être conformes, par exemple avec le même code et le même libellé de produit. La géographie diffère de niveau (magasin / région de destination) : une dimension « région » peut être un sous-ensemble conforme du magasin.",
+        "en": "Applying it to our cases: the “sales” interview yields one star (date, product, store, customer); the “deliveries” interview (chapter 6 extract C) another (promised and delivered date, product, destination region, customer, carrier). Date, product and customer are shared: they must be conformed, for example with the same product code and label. Geography differs in level (store / destination region): a “region” dimension can be a conformed subset of the store."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Shrunken dimensions are conformed dimensions that are a subset of rows and /or columns of a base dimension."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        }
+      ],
+      "notions": [
+        "n-multi-interview-method"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : deux interviews donnent deux étoiles correctes séparément, mais « produit » défini différemment (code article contre référence, catégories différentes) empêche le drill-across. Le diagnostic à faire : même nom ? même contenu ? même définition ?",
+        "en": "Trap: two interviews give two stars that are correct separately, but “product” defined differently (article code vs reference, different categories) prevents drill-across. The diagnosis to make: same name? same contents? same definition?"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-14-qz-05"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-conformed-dimension",
+      "fr": "dimension conforme",
+      "en": "conformed dimension",
+      "definition": {
+        "fr": "Dimension dont les attributs ont les mêmes noms de colonnes et les mêmes contenus de domaine d’une étoile à l’autre, définie une fois et réutilisée.",
+        "en": "A dimension whose attributes have the same column names and domain contents from one star to the next, defined once and reused."
+      },
+      "pitfall": {
+        "fr": "Dimensions conformes ≠ dimensions identiques à tous les niveaux : un sous-ensemble conforme est possible.",
+        "en": "Conformed dimensions ≠ dimensions identical at every level: a conformed subset is possible."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        }
+      ],
+      "notion": "n-conformed-dimensions"
+    },
+    {
+      "id": "term-bus-matrix",
+      "fr": "bus matrix",
+      "en": "bus matrix",
+      "definition": {
+        "fr": "Matrice dont les lignes sont des processus métier et les colonnes des dimensions ; sert à concevoir, communiquer et planifier l’architecture en bus.",
+        "en": "A matrix whose rows are business processes and columns are dimensions; used to design, communicate and plan the bus architecture."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        }
+      ],
+      "notion": "n-bus-matrix"
+    },
+    {
+      "id": "term-shared-elements",
+      "fr": "éléments partagés entre interviews",
+      "en": "elements shared between interviews",
+      "definition": {
+        "fr": "Dimensions et mesures que deux interviews ont en commun : l’objectif « Modéliser » demande de les relier.",
+        "en": "Dimensions and measures two interviews have in common: the “Model” objective asks you to link them."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        }
+      ],
+      "notion": "n-link-several-interviews"
+    },
+    {
+      "id": "term-single-version-of-truth",
+      "fr": "version unique de la vérité",
+      "en": "single version of the truth",
+      "definition": {
+        "fr": "Visée de l’entrepôt, qui intègre, historise et unifie les sources avec des définitions partagées.",
+        "en": "The warehouse’s aim, which integrates, historises and unifies sources with shared definitions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "unifies sources with shared definitions Single version of the truth"
+        }
+      ],
+      "notion": "n-conformed-dimensions"
+    },
+    {
+      "id": "term-shared-definitions",
+      "fr": "définitions partagées",
+      "en": "shared definitions",
+      "definition": {
+        "fr": "Une seule réponse convenue à « combien de clients actifs ? », quel que soit l’outil.",
+        "en": "One agreed answer to “how many active customers?”, whatever the tool."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Shared definitions, whatever the tool, how many active customers still need one agreed answer."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        }
+      ],
+      "notion": "n-conformed-dimensions"
+    },
+    {
+      "id": "term-several-interviews",
+      "fr": "plusieurs interviews",
+      "en": "several interviews",
+      "definition": {
+        "fr": "Cas de la séance 6 : chaque interview donne une étoile ; il faut les relier par des dimensions conformes.",
+        "en": "The case of session 6: each interview yields a star; they must be linked through conformed dimensions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        }
+      ],
+      "notion": "n-multi-interview-method"
+    }
+  ],
+  "notions": [
+    "n-conformed-dimensions",
+    "n-bus-matrix",
+    "n-link-several-interviews",
+    "n-drill-across",
+    "n-conformed-facts",
+    "n-bus-incremental",
+    "n-value-chain",
+    "n-multi-interview-method"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "La séance 6 relie plusieurs interviews : dimensions conformes et bus matrix ; objectif « Modéliser » : relier les éléments partagés.",
+        "en": "Session 6 links several interviews: conformed dimensions and bus matrix; “Model” objective: link the shared elements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Séquencement des 10 demi-journées",
+          "quote": "Dimensions conformes, bus matrix, plusieurs interviews"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions",
+        "n-bus-matrix",
+        "n-link-several-interviews"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des dimensions conformes ont les mêmes noms d’attributs et les mêmes contenus ; elles permettent de combiner des tables de faits dans un même rapport : c’est l’essence de l’intégration.",
+        "en": "Conformed dimensions have the same attribute names and contents; they let fact tables be combined in one report: this is the essence of integration."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "This is the essence of integration in an enterprise DW/ BI system."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Elles sont définies une fois, avec la gouvernance, et réutilisées ; sans elles, un modèle dimensionnel est une application isolée.",
+        "en": "They are defined once, with governance, and reused; without them, a dimensional model is a standalone application."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Drill-across : requêtes séparées sur plusieurs tables de faits, alignées par fusion-tri sur des en-têtes conformes identiques.",
+        "en": "Drill-across: separate queries on several fact tables, aligned by sort-merge on identical conformed headers."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The answer sets from the two queries are aligned by performing a sort-merge operation on the common dimension attribute row headers."
+        }
+      ],
+      "notions": [
+        "n-drill-across"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Bus matrix : lignes = processus, colonnes = dimensions ; on lit les lignes pour valider et les colonnes pour conformer ; une ligne à la fois.",
+        "en": "Bus matrix: rows = processes, columns = dimensions; rows are read to validate and columns to conform; one row at a time."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The rows of the matrix are business processes and the columns are dimensions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "teams should implement one row of the matrix at a time"
+        }
+      ],
+      "notions": [
+        "n-bus-matrix",
+        "n-bus-incremental"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Faits conformes : même définition → même nom ; incompatibles → noms différents.",
+        "en": "Conformed facts: same definition → same name; incompatible → different names."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        }
+      ],
+      "notions": [
+        "n-conformed-facts"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Dimension conforme ?",
+        "en": "Conformed dimension?"
+      },
+      "back": {
+        "fr": "Mêmes noms d’attributs et mêmes contenus de domaine d’une étoile à l’autre ; définie une fois, réutilisée.",
+        "en": "Same attribute names and domain contents from one star to the next; defined once, reused."
+      },
+      "termId": "term-conformed-dimension",
+      "id": "isi7-14-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi des dimensions conformes ?",
+        "en": "Why conformed dimensions?"
+      },
+      "back": {
+        "fr": "Pour combiner des tables de faits dans un rapport : c’est l’essence de l’intégration.",
+        "en": "To combine fact tables in one report: the essence of integration."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "This is the essence of integration in an enterprise DW/ BI system."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "id": "isi7-14-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Sans dimensions conformes ?",
+        "en": "Without conformed dimensions?"
+      },
+      "back": {
+        "fr": "Le modèle devient une application isolée (stovepipe), aux vues incompatibles.",
+        "en": "The model becomes a standalone application (stovepipe), with incompatible views."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Isolated stovepipe data sets that cannot be tied together are the bane of the DW/BI movement as they perpetuate incompatible views of the enterprise."
+        }
+      ],
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "id": "isi7-14-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Bus matrix : lignes et colonnes ?",
+        "en": "Bus matrix: rows and columns?"
+      },
+      "back": {
+        "fr": "Lignes : processus métier. Colonnes : dimensions.",
+        "en": "Rows: business processes. Columns: dimensions."
+      },
+      "termId": "term-bus-matrix",
+      "id": "isi7-14-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Comment lit-on une bus matrix ?",
+        "en": "How is a bus matrix read?"
+      },
+      "back": {
+        "fr": "Ligne : la dimension est-elle bien définie pour ce processus ? Colonne : où conformer ?",
+        "en": "Row: is the dimension well defined for this process? Column: where to conform?"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+        }
+      ],
+      "notions": [
+        "n-bus-matrix"
+      ],
+      "id": "isi7-14-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Combien de lignes de la matrice à la fois ?",
+        "en": "How many matrix rows at a time?"
+      },
+      "back": {
+        "fr": "Une : développement incrémental.",
+        "en": "One: incremental development."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "teams should implement one row of the matrix at a time"
+        }
+      ],
+      "notions": [
+        "n-bus-incremental"
+      ],
+      "id": "isi7-14-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Drill-across ?",
+        "en": "Drill-across?"
+      },
+      "back": {
+        "fr": "Requêtes séparées sur plusieurs tables de faits, en-têtes conformes identiques, résultats alignés par fusion-tri.",
+        "en": "Separate queries on several fact tables, identical conformed headers, results aligned by sort-merge."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The answer sets from the two queries are aligned by performing a sort-merge operation on the common dimension attribute row headers."
+        }
+      ],
+      "notions": [
+        "n-drill-across"
+      ],
+      "id": "isi7-14-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Faits conformes : nommage ?",
+        "en": "Conformed facts: naming?"
+      },
+      "back": {
+        "fr": "Même définition : même nom ; incompatibles : noms différents.",
+        "en": "Same definition: same name; incompatible: different names."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        }
+      ],
+      "notions": [
+        "n-conformed-facts"
+      ],
+      "id": "isi7-14-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Relier deux interviews : quels éléments ?",
+        "en": "Linking two interviews: which elements?"
+      },
+      "back": {
+        "fr": "Les éléments partagés : dimensions et mesures communes.",
+        "en": "The shared elements: common dimensions and measures."
+      },
+      "termId": "term-shared-elements",
+      "id": "isi7-14-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Méthode pour plusieurs interviews ?",
+        "en": "Method for several interviews?"
+      },
+      "back": {
+        "fr": "Une étoile par interview, bus matrix, comparer les dimensions, définir une fois, vérifier un drill-across, traiter les faits.",
+        "en": "One star per interview, bus matrix, compare dimensions, define once, check a drill-across, handle facts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "make the link between the elements shared from one interview to the next"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        }
+      ],
+      "notions": [
+        "n-multi-interview-method"
+      ],
+      "id": "isi7-14-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Version unique de la vérité ?",
+        "en": "Single version of the truth?"
+      },
+      "back": {
+        "fr": "Visée de l’entrepôt qui unifie les sources avec des définitions partagées.",
+        "en": "The warehouse’s aim, unifying sources with shared definitions."
+      },
+      "termId": "term-single-version-of-truth",
+      "id": "isi7-14-fc-11"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Des dimensions se conforment lorsque leurs attributs ont les mêmes noms de colonnes et les mêmes contenus de domaine.",
+        "en": "Dimensions conform when their attributes have the same column names and domain contents."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : définition de Kimball.",
+        "en": "TRUE: Kimball’s definition."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "id": "isi7-14-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Des dimensions conformes sont définies séparément dans chaque projet, pour laisser chaque équipe libre de ses libellés.",
+        "en": "Conformed dimensions are defined separately in each project, to leave each team free with its labels."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elles sont définies une fois, avec la gouvernance, et réutilisées par les tables de faits.",
+        "en": "FALSE: they are defined once, with governance, and reused across fact tables."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "trap": {
+        "fr": "Confondre conformité et liberté locale.",
+        "en": "Confusing conformance and local freedom."
+      },
+      "id": "isi7-14-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Que permet un drill-across ?",
+        "en": "What does a drill-across allow?"
+      },
+      "options": [
+        {
+          "fr": "Descendre jusqu’au niveau de détail le plus fin d’une seule table de faits",
+          "en": "Drilling to the finest level of detail of a single fact table"
+        },
+        {
+          "fr": "Aligner sur les mêmes lignes les résultats de requêtes sur plusieurs tables de faits",
+          "en": "Aligning on the same rows the results of queries on several fact tables"
+        },
+        {
+          "fr": "Remplacer l’historique complet d’une dimension par sa valeur la plus récente",
+          "en": "Replacing the full history of a dimension with its latest value"
+        },
+        {
+          "fr": "Supprimer tous les doublons présents dans la zone de transit des sources",
+          "en": "Removing all duplicates found in the staging area of the sources"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Le drill-across fait des requêtes séparées sur plusieurs tables de faits et aligne les résultats par fusion-tri sur les attributs conformes. Descendre au détail d’une table est un drill-down.",
+        "en": "Drill-across runs separate queries on several fact tables and aligns the results by sort-merge on the conformed attributes. Going to the detail of one table is a drill-down."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The answer sets from the two queries are aligned by performing a sort-merge operation on the common dimension attribute row headers."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-drill-across"
+      ],
+      "trap": {
+        "fr": "Confondre drill-across et drill-down.",
+        "en": "Mixing up drill-across and drill-down."
+      },
+      "id": "isi7-14-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans une bus matrix, les lignes sont des dimensions et les colonnes des processus métier.",
+        "en": "In a bus matrix, rows are dimensions and columns are business processes."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l’inverse : lignes = processus métier, colonnes = dimensions.",
+        "en": "FALSE: the reverse: rows = business processes, columns = dimensions."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The rows of the matrix are business processes and the columns are dimensions."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-bus-matrix"
+      ],
+      "trap": {
+        "fr": "Inverser lignes et colonnes.",
+        "en": "Swapping rows and columns."
+      },
+      "id": "isi7-14-qz-04"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "On scrute une colonne de la bus matrix cochée pour quatre processus. Que cherche-t-on ?",
+        "en": "You scan a bus matrix column ticked for four processes. What are you looking for?"
+      },
+      "options": [
+        {
+          "fr": "Quelle table de faits est la plus volumineuse et doit être purgée en premier",
+          "en": "Which fact table is the largest and must be purged first"
+        },
+        {
+          "fr": "Quel groupe d’utilisateurs doit recevoir la formation en priorité cette année",
+          "en": "Which group of users must receive training first this year"
+        },
+        {
+          "fr": "Où la dimension doit être conforme entre plusieurs processus",
+          "en": "Where the dimension must be conformed across several processes"
+        },
+        {
+          "fr": "Quel processus supprimer du projet pour gagner du temps de développement",
+          "en": "Which process to remove from the project to save development time"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "On lit les colonnes pour repérer où une dimension doit être conformée sur plusieurs processus ; on lit les lignes pour tester qu’une dimension est bien définie pour un processus.",
+        "en": "Columns are read to see where a dimension must be conformed across several processes; rows are read to test that a dimension is well defined for a process."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-bus-matrix"
+      ],
+      "id": "isi7-14-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "L’architecture en bus permet de réaliser l’entrepôt une ligne de la matrice à la fois, ce qui rend le développement incrémental.",
+        "en": "The bus architecture lets the warehouse be built one matrix row at a time, which makes development incremental."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « teams should implement one row of the matrix at a time ».",
+        "en": "TRUE: “teams should implement one row of the matrix at a time”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "teams should implement one row of the matrix at a time"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The enterprise data warehouse bus architecture provides an incremental approach to building the enterprise DW/BI system."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-bus-incremental"
+      ],
+      "id": "isi7-14-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Deux tables de faits qui contiennent la même mesure doivent, si elles sont comparées, avoir des définitions techniques identiques ; sinon on leur donne des noms différents.",
+        "en": "Two fact tables that contain the same measure must, if compared, have identical technical definitions; otherwise they are given different names."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : faits conformes (même principe que « deux mesures de même nom signifient la même chose »).",
+        "en": "TRUE: conformed facts (same principle as “two measures with the same name mean the same thing”)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic fact table techniques",
+          "quote": "If the separate fact definitions are consistent, the conformed facts should be identically named; but if they are incompatible, they should be differently named to alert the business users and BI applications."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Goals of data warehousing and business intelligence (the seven requirements)",
+          "quote": "If two performance measures have the same name, they must mean the same thing."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-conformed-facts"
+      ],
+      "id": "isi7-14-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "L’interview « ventes » code le produit « P-0042 » et l’interview « livraisons » « 4200-A », avec des catégories différentes. Quel est le diagnostic le plus juste ?",
+        "en": "The “sales” interview codes the product “P-0042” and the “deliveries” interview “4200-A”, with different categories. What is the most accurate diagnosis?"
+      },
+      "options": [
+        {
+          "fr": "Il faut supprimer l’une des deux étoiles pour ne conserver que la plus récente",
+          "en": "One of the two stars must be deleted so only the most recent is kept"
+        },
+        {
+          "fr": "Les dimensions « produit » ne sont pas conformes : le drill-across ne peut pas aligner les deux",
+          "en": "The “product” dimensions are not conformed: a drill-across cannot align the two"
+        },
+        {
+          "fr": "C’est normal : chaque processus métier doit toujours garder son propre codage des produits",
+          "en": "This is normal: each business process must keep its own product coding"
+        },
+        {
+          "fr": "Le grain est mal déclaré dans l’une des deux étoiles, qui mélange plusieurs niveaux",
+          "en": "The grain is wrongly declared in one of the two stars, which mixes several levels"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Mêmes noms d’attributs et mêmes contenus sont requis : sans cela, impossible d’aligner les résultats. Il faut définir une dimension produit commune.",
+        "en": "The same attribute names and contents are required: without them, results cannot be aligned. A common product dimension must be defined."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Alternative DW/BI architectures",
+          "quote": "none of the numbers match because of the differences in business rules and labeling"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-conformed-dimensions",
+        "n-multi-interview-method",
+        "n-link-several-interviews"
+      ],
+      "id": "isi7-14-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un modèle dimensionnel sans dimensions partagées devient une application isolée qui entretient des vues incompatibles de l’entreprise.",
+        "en": "A dimensional model without shared dimensions becomes a standalone application that perpetuates incompatible views of the enterprise."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « Without shared, conformed dimensions, a dimensional model becomes a standalone application ».",
+        "en": "TRUE: “Without shared, conformed dimensions, a dimensional model becomes a standalone application”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Isolated stovepipe data sets that cannot be tied together are the bane of the DW/BI movement as they perpetuate incompatible views of the enterprise."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "id": "isi7-14-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une dimension conforme doit être strictement identique, jusqu’au même nombre de lignes, dans toutes les étoiles.",
+        "en": "A conformed dimension must be strictly identical, down to the same number of rows, in every star."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : une dimension peut être un sous-ensemble de lignes et/ou de colonnes d’une dimension de base (dimension réduite, « shrunken »).",
+        "en": "FALSE: a dimension can be a subset of rows and/or columns of a base dimension (a “shrunken” dimension)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Shrunken dimensions are conformed dimensions that are a subset of rows and /or columns of a base dimension."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "a forecast by month and brand (instead of the more atomic date and product associated with sales data)"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "trap": {
+        "fr": "Confondre conforme et identique.",
+        "en": "Confusing conformed and identical."
+      },
+      "id": "isi7-14-qz-10"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Quel lien fait le prof entre dimensions conformes et définitions partagées ?",
+        "en": "What link does the course make between conformed dimensions and shared definitions?"
+      },
+      "options": [
+        {
+          "fr": "Les dimensions conformes traduisent dans le modèle la visée de version unique de la vérité",
+          "en": "Conformed dimensions translate the aim of a single version of the truth into the model"
+        },
+        {
+          "fr": "Les définitions partagées remplacent entièrement les dimensions dans une couche sémantique",
+          "en": "Shared definitions entirely replace dimensions in a semantic layer"
+        },
+        {
+          "fr": "Les définitions partagées servent surtout pour la protection des données personnelles",
+          "en": "Shared definitions mainly serve for the protection of personal data"
+        },
+        {
+          "fr": "Aucun lien : les dimensions concernent le stockage, les définitions concernent le métier seulement",
+          "en": "No link: dimensions concern storage, definitions concern the business alone"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Lecture à partir du cours : l’entrepôt vise des définitions partagées et une version unique de la vérité ; les dimensions conformes en sont la mise en œuvre dimensionnelle (notre rapprochement, le prof ne le dit pas en ces termes).",
+        "en": "Reading based on the course: the warehouse aims at shared definitions and a single version of the truth; conformed dimensions are its dimensional implementation (our link; the teacher does not put it in these terms)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "unifies sources with shared definitions Single version of the truth"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "This is the essence of integration in an enterprise DW/ BI system."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-conformed-dimensions"
+      ],
+      "id": "isi7-14-qz-11"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Bus matrix de trois interviews",
+        "en": "Bus matrix of three interviews"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Trois interviews dans une entreprise de vente en ligne : **(1)** marketing : ventes par produit, client, canal (web / appli), jour ; **(2)** logistique : colis expédiés par entrepôt, transporteur, produit, jour d’expédition et jour de livraison ; **(3)** finance : encaissements par client, mode de paiement, jour. **(a)** Dessinez la bus matrix. **(b)** Quelles dimensions doivent être conformes ? **(c)** Quelle ligne réaliser d’abord, et pourquoi ? **(d)** Quel drill-across est possible ?",
+        "en": "*(Invented case for practice.)* Three interviews in an online retailer: **(1)** marketing: sales by product, customer, channel (web / app), day; **(2)** logistics: parcels shipped by warehouse, carrier, product, shipping day and delivery day; **(3)** finance: payments by customer, payment method, day. **(a)** Draw the bus matrix. **(b)** Which dimensions must be conformed? **(c)** Which row should be built first, and why? **(d)** Which drill-across is possible?"
+      },
+      "hints": [
+        {
+          "fr": "Lignes : ventes, expéditions, encaissements. Colonnes : toutes les dimensions citées.",
+          "en": "Rows: sales, shipments, payments. Columns: all the dimensions cited."
+        },
+        {
+          "fr": "Une colonne cochée plusieurs fois est candidate à la conformité.",
+          "en": "A column ticked several times is a candidate for conformance."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Lignes : Ventes, Expéditions, Encaissements. Colonnes : Date, Produit, Client, Canal, Entrepôt, Transporteur, Mode de paiement. Ventes : date, produit, client, canal. Expéditions : date (2 rôles), produit, entrepôt, transporteur (et client si connu). Encaissements : date, client, mode de paiement.\n**(b)** **Date** (3 processus), **Client** (ventes, encaissements, éventuellement expéditions) et **Produit** (ventes, expéditions) : colonnes cochées plusieurs fois.\n**(c)** La ligne **Ventes** : processus central qui porte Date, Produit, Client ; chaque ligne suivante réutilise les dimensions déjà conformées (une ligne à la fois).\n**(d)** Ventes et expéditions par produit et par jour ; ventes et encaissements par client et par jour : en-têtes conformes identiques.\n*Barème indicatif* : 1,5 pour la matrice, 1 pour (b), 1 pour (c), 0,5 pour (d). *Corrigé proposé.*",
+        "en": "**(a)** Rows: Sales, Shipments, Payments. Columns: Date, Product, Customer, Channel, Warehouse, Carrier, Payment method. Sales: date, product, customer, channel. Shipments: date (2 roles), product, warehouse, carrier (and customer if known). Payments: date, customer, payment method.\n**(b)** **Date** (3 processes), **Customer** (sales, payments, possibly shipments) and **Product** (sales, shipments): columns ticked several times.\n**(c)** The **Sales** row: the central process that carries Date, Product, Customer; each next row reuses already conformed dimensions (one row at a time).\n**(d)** Sales and shipments by product and day; sales and payments by customer and day: identical conformed headers.\n*Indicative marking*: 1.5 for the matrix, 1 for (b), 1 for (c), 0.5 for (d). *Proposed answer.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The rows of the matrix are business processes and the columns are dimensions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "The design team scans each row to test whether a candidate dimension is well-defined for the business process and also scans each column to see where a dimension should be conformed across multiple business processes."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "teams should implement one row of the matrix at a time"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Drilling across simply means making separate queries against two or more fact tables where the row headers of each query consist of identical conformed attributes."
+        }
+      ],
+      "objective": "o2",
+      "examStyle": true,
+      "trap": {
+        "fr": "Cocher les cellules sans repérer les colonnes à conformer.",
+        "en": "Ticking cells without spotting the columns to conform."
+      },
+      "notions": [
+        "n-bus-matrix",
+        "n-conformed-dimensions",
+        "n-bus-incremental",
+        "n-drill-across",
+        "n-multi-interview-method"
+      ],
+      "id": "isi7-14-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Diagnostiquer et corriger deux dimensions « client »",
+        "en": "Diagnosing and fixing two “customer” dimensions"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Dans l’étoile « ventes », la dimension Client a les attributs (nom_client, ville, segment : « Gold », « Silver »). Dans l’étoile « SAV », la dimension Client a (name, city_name, tier : « 1 », « 2 »). Le directeur veut un rapport par segment avec ventes et réclamations. **(a)** Que se passe-t-il ? **(b)** Pourquoi ? **(c)** Proposez la correction. **(d)** Quel est l’impact sur la confiance des utilisateurs ?",
+        "en": "In the “sales” star, the Customer dimension has the attributes (customer_name, town, segment: “Gold”, “Silver”). In the “support” star, the Customer dimension has (name, city_name, tier: “1”, “2”). The director wants a report by segment with sales and complaints. **(a)** What happens? **(b)** Why? **(c)** Propose the correction. **(d)** What is the impact on users’ trust?"
+      },
+      "hints": [
+        {
+          "fr": "Comparez les noms de colonnes et les valeurs.",
+          "en": "Compare the column names and the values."
+        },
+        {
+          "fr": "Pensez au drill-across.",
+          "en": "Think of drill-across."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Impossible d’aligner ventes et réclamations par segment sur les mêmes lignes.\n**(b)** Les dimensions ne sont pas conformes : noms d’attributs différents (nom_client / name, ville / city_name, segment / tier) et contenus de domaine différents (« Gold » / « 1 »).\n**(c)** Définir **une** dimension Client commune avec la gouvernance et le propriétaire de la donnée : mêmes noms, même domaine de valeurs (table de correspondance Gold ↔ 1…), puis alimenter les deux étoiles par cette dimension.\n**(d)** Sans correction, deux équipes sortiraient deux chiffres par segment : pain point 2 et perte de confiance ; avec la correction, un drill-across donne un seul rapport cohérent.\n*Ce que l’exercice vérifie* : reconnaître la non-conformité et la corriger. *Cas inventé.*",
+        "en": "**(a)** Sales and complaints cannot be aligned by segment on the same rows.\n**(b)** The dimensions are not conformed: different attribute names (customer_name / name, town / city_name, segment / tier) and different domain contents (“Gold” / “1”).\n**(c)** Define **one** common Customer dimension with governance and the data owner: same names, same value domain (mapping table Gold ↔ 1…), then feed both stars with this dimension.\n**(d)** Without correction, two teams would produce two figures per segment: pain point 2 and loss of trust; with the correction, a drill-across gives a single consistent report.\n*What the exercise checks*: recognising non-conformance and fixing it. *Invented case.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Dimension tables conform when attributes in separate dimension tables have the same column names and domain contents."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Information from separate fact tables can be combined in a single report by using conformed dimension attributes that are associated with each fact table."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Integration via conformed dimensions",
+          "quote": "Conformed dimensions, defined once in collaboration with the business’s data governance representatives, are reused across fact tables"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Kimball DW/BI architecture",
+          "quote": "Without shared, conformed dimensions, a dimensional model becomes a standalone application."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        }
+      ],
+      "objective": "o3",
+      "trap": {
+        "fr": "Renommer les colonnes sans harmoniser les valeurs du domaine.",
+        "en": "Renaming columns without harmonising the domain values."
+      },
+      "notions": [
+        "n-conformed-dimensions",
+        "n-multi-interview-method"
+      ],
+      "id": "isi7-14-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "In a bus matrix, the rows are business processes.",
+      "id": "isi7-14-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "Conformed dimensions are {{defined}} once and {{reused}} across fact tables.",
+      "translation": "Les dimensions conformes sont définies une fois et réutilisées par les tables de faits.",
+      "id": "isi7-14-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "In a bus matrix, the columns are business processes and the rows are dimensions.",
+      "error": "the columns are business processes and the rows are dimensions",
+      "corrected": "the rows are business processes and the columns are dimensions",
+      "explanation": {
+        "fr": "Lignes = processus ; colonnes = dimensions.",
+        "en": "Rows = processes; columns = dimensions."
+      },
+      "id": "isi7-14-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : pourquoi les dimensions conformes sont-elles essentielles ?",
+        "en": "In three sentences: why are conformed dimensions essential?"
+      },
+      "modelAnswer": "Conformed dimensions have the same attribute names and contents in different stars. They let us combine results from several fact tables in one report, which is the essence of integration. Without them, each model becomes a standalone application with incompatible views.",
+      "keywords": [
+        "conformed",
+        "same attribute names",
+        "integration",
+        "standalone",
+        "incompatible"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité l’intégration.",
+          "en": "I mentioned integration."
+        },
+        {
+          "fr": "J’ai cité le risque sans conformité.",
+          "en": "I mentioned the risk without conformance."
+        }
+      ],
+      "usefulPhrases": [
+        "the essence of integration",
+        "standalone application"
+      ],
+      "id": "isi7-14-wr-04"
+    }
+  ]
+}
