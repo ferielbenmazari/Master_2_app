@@ -15,10 +15,11 @@
 | 02 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | cours rédigé (draft) |
 | 03 | `03-cadre-ple.json` | Le cadre PLE : domaine vs application, problème vs solution | 5__soft_ple_detailed.md + 6__ple.md | cours rédigé (draft) |
 | 04 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | cours rédigé (draft) |
-| 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/2) : exigences et variantes | 3__application_engineering.md (1re moitié) | cours rédigé (draft) |
-| 06 | `06-ingenierie-application-2.json` | Ingénierie d'application (2/2) : architecture, réalisation, tests | 3__application_engineering.md (2e moitié) | draft |
+| 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/3) : exigences et variantes | 3__application_engineering.md (1re moitié) | cours rédigé (draft) |
+| 06 | `06-ingenierie-application-2.json` | Ingénierie d'application (2/3) : architecture, coût et réalisation | 3__application_engineering.md (ch. 16-17) | refonte pédagogique (draft) |
+| 10 | `10-test-application.json` | Ingénierie d'application (3/3) : tester sans tout retester | 3__application_engineering.md (ch. 18) | refonte pédagogique (draft) — issu de la coupure du 06 (20 min) |
 | 07 | `07-transformation-verification.json` | Transformation de modèles, vérification et diagnostic | 7__ple.md | cours rédigé (draft) |
-| 08 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | cours rédigé (draft) |
+| 08 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | refonte pédagogique (draft) |
 
 Ressource d'exercice : `EPI/5__configuration ILP(1).xlsx` (configuration par programmation linéaire en nombres entiers) → exercices du chapitre 07 ou 08.
 

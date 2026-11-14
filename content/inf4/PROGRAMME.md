@@ -43,7 +43,8 @@ _Source : `3__application_engineering.md`_
 - [ ] Application requirements engineering · communication de la variabilité · requirements deltas → ch.05
 - [ ] Application design · binding of variants · configuration → ch.06
 - [ ] Application realisation · configuration → ch.06
-- [ ] Differences from single-system engineering → ch.05 (exigences ; design/réalisation/test → ch.06)
+- [ ] Application testing (réutilisation des tests de domaine, tests liés à la variabilité, couverture) → ch.10
+- [ ] Differences from single-system engineering → ch.05 (exigences) · ch.06 (conception, réalisation) · ch.10 (test)
 
 ## Transformation, vérification, diagnostic
 _Source : `7__ple.md`_

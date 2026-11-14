@@ -1,0 +1,2811 @@
+{
+  "id": "inf4-10-test-application",
+  "courseId": "inf4",
+  "order": 9,
+  "title": {
+    "fr": "Ingénierie d'application (3/3) : tester sans tout retester",
+    "en": "Application engineering (3/3): testing without retesting everything"
+  },
+  "hook": {
+    "fr": "Les tests du domaine existent déjà : lesquels rejoue-t-on, lesquels adapte-t-on, lesquels écrit-on de zéro, et que faut-il vérifier qu'un système unique ignore ?",
+    "en": "The domain tests already exist: which ones do you re-run, which ones adapt, which ones write from scratch, and what must be checked that a single system ignores?"
+  },
+  "estimatedMinutes": 12,
+  "sources": [
+    "ressources/S3__INF4/mardown/3__application_engineering.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Tester une application sans tout retester",
+        "en": "Testing an application without retesting everything"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une partie des exigences, de l'architecture et des composants de l'application vient du domaine. Faut-il tout retester ? Le test d'application vise une qualité **suffisante** de l'application testée et **complète** le test de domaine. Idée directrice : développer les artefacts de test **une seule fois pour toute la ligne**, les mettre dans les artefacts de domaine et les réutiliser pour plusieurs applications — pour les parties communes **et** variables.",
+        "en": "Part of the application's requirements, architecture and components comes from the domain. Must everything be retested? Application testing aims at a **sufficient** quality of the application under test and **complements** domain testing. Guiding idea: develop test artefacts **once for the entire product line**, put them in the domain artefacts and reuse them for several applications — for common **and** variable parts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.1",
+          "quote": "The goal of the application testing sub-process is to achieve a sufficient quality of the application under test."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "The key idea of establishing test artefact reuse is to develop test artefacts once for the entire product line, include them in the domain artefacts, and reuse them for multiple applications."
+        }
+      ],
+      "notions": [
+        "n-application-testing-goal",
+        "n-domain-test-reuse"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Si la stratégie CRS est appliquée, les cas de test de domaine ont des parties communes et variables explicites : les parties communes sont réutilisées telles quelles, les points de variation sont liés selon le modèle de variabilité d'application avant exécution. Avec la stratégie SAS, on part des cas de test de l'application exemple et on les adapte d'après les différences de liaisons de variabilité.",
+        "en": "With the CRS strategy, domain test cases have explicit common and variable parts: common parts are reused as they are, variation points are bound according to the application variability model before execution. With the SAS strategy, one starts from the sample application's test cases and adapts them based on the differences in variability bindings."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "Test cases for common parts can be reused as they are."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "For test cases that contain variability the variation points must be bound according to the application variability model before the test cases can be executed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "Based on the differences in the variability bindings, the required adaptations of the test artefacts can be determined."
+        }
+      ],
+      "notions": [
+        "n-domain-test-reuse",
+        "n-binding-variability-in-tests"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Exemple du livre : un scénario de test de domaine contient trois variants d'authentification (lecteur d'empreinte, clavier, lecteur de carte magnétique). Le modèle de variabilité d'application a lié « fingerprint scanner » ; l'ingénieur de test lie ce même variant dans le scénario de domaine pour obtenir le scénario d'application.",
+        "en": "Book example: a domain test scenario contains three authentication variants (fingerprint scanner, keypad, magnetic card reader). The application variability model bound \"fingerprint scanner\"; the test engineer binds the same variant in the domain scenario to obtain the application scenario."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.1",
+          "quote": "In order to derive the application test case scenario, the test engineer binds this variant also in the domain test case scenario."
+        }
+      ],
+      "notions": [
+        "n-binding-variability-in-tests"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour **retrouver** les tests réutilisables, on s'appuie sur la **traçabilité** : les traces des exigences d'application vers les exigences de domaine, puis des exigences de domaine vers les tests de domaine. La traçabilité est la première clé de la réutilisation structurée ; la seconde est l'information de **deltas** d'exigences, qui dit si un cas de test est réutilisé tel quel, adapté ou créé de zéro.",
+        "en": "To **retrieve** reusable tests, **traceability** is used: traces from application requirements to domain requirements, then from domain requirements to domain tests. Traceability is the first keystone of structured reuse; the second is the requirements **delta** information, which tells whether a test case is reused unchanged, adapted or created anew."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Thus, based on the domain requirements, the reusable domain test artefacts can be retrieved."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Traceability is the first keystone for structured reuse."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "The deltas are the basis for determining whether a test case can be reused without changes, must be adapted, or created anew."
+        }
+      ],
+      "notions": [
+        "n-test-traceability"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Réutiliser un test de domaine pour une application",
+        "en": "Reusing a domain test for an application"
+      },
+      "notions": [
+        "n-domain-test-reuse",
+        "n-binding-variability-in-tests",
+        "n-test-traceability"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Thus, based on the domain requirements, the reusable domain test artefacts can be retrieved."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "The deltas are the basis for determining whether a test case can be reused without changes, must be adapted, or created anew."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "For test cases that contain variability the variation points must be bound according to the application variability model before the test cases can be executed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "Based on the differences in the variability bindings, the required adaptations of the test artefacts can be determined."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.1",
+          "quote": "The application test engineer thus has to learn how to bind the variability defined in the domain test artefacts according to the application variability model."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "The domain unit test cases are reexecuted during application testing, as it is still unclear whether the plug-in component behaves correctly for the particular configuration of sensors required for the application."
+        }
+      ],
+      "steps": [
+        {
+          "do": {
+            "fr": "Repère les exigences d'application **réutilisées** du domaine grâce aux traces de l'ingénierie des exigences d'application.",
+            "en": "Spot the application requirements **reused** from the domain thanks to the traces of application requirements engineering."
+          },
+          "why": {
+            "fr": "Les traces disent quelles exigences de domaine sont réutilisées.",
+            "en": "The traces say which domain requirements are reused."
+          }
+        },
+        {
+          "do": {
+            "fr": "Suis les traces des exigences de domaine vers les **tests de domaine** correspondants.",
+            "en": "Follow the traces from the domain requirements to the corresponding **domain tests**."
+          },
+          "why": {
+            "fr": "Le domaine sait quel test se rapporte à quelle exigence : on retrouve ainsi les artefacts de test réutilisables.",
+            "en": "Domain testing knows which test relates to which requirement: this is how reusable test artefacts are retrieved."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lis les **deltas** d'exigences : le cas de test est-il réutilisé tel quel, à adapter, ou à créer ?",
+            "en": "Read the requirements **deltas**: is the test case reused as it is, to be adapted, or to be created?"
+          },
+          "why": {
+            "fr": "Les deltas sont la base pour décider du sort de chaque cas de test.",
+            "en": "The deltas are the basis for deciding the fate of each test case."
+          }
+        },
+        {
+          "do": {
+            "fr": "Avec la stratégie **CRS**, lie les points de variation du cas de test selon le modèle de variabilité d'application ; avec la stratégie **SAS**, compare les variants de l'application exemple et de l'application testée pour déduire les adaptations.",
+            "en": "With the **CRS** strategy, bind the variation points of the test case according to the application variability model; with the **SAS** strategy, compare the variants of the sample application and of the application under test to deduce the adaptations."
+          },
+          "why": {
+            "fr": "Un cas de test qui contient de la variabilité ne s'exécute qu'une fois ses points de variation liés.",
+            "en": "A test case that contains variability can only be executed once its variation points are bound."
+          }
+        },
+        {
+          "do": {
+            "fr": "Rejoue, y compris pour la partie commune, puis écris à part les tests des exigences propres à l'application.",
+            "en": "Re-run, including for the common part, then write separately the tests of the application-specific requirements."
+          },
+          "why": {
+            "fr": "La configuration de l'application peut modifier le résultat d'un composant commun.",
+            "en": "The application's configuration may change the result of a common component."
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-10-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce qu'un système unique ne teste pas : la liaison de la variabilité",
+        "en": "What single-system engineering does not test: variability binding"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L'ingénieur de test cherche **trois défauts** de liaison : des variants liés qui **ne devraient pas** être dans l'application ; des variants **omis** qui devraient l'être ; une configuration qui **viole** les dépendances de contrainte ou de variabilité. Un variant en trop peut gêner l'usage ou consommer des ressources ; un variant omis fait manquer une fonction ; une dépendance violée peut faire dysfonctionner l'application.",
+        "en": "The test engineer looks for **three binding defects**: bound variants that **should not** be in the application; variants that were **omitted** though they should be bound; a configuration that **violates** constraint or variability dependencies. An extra variant may hinder usability or use resources; an omitted variant leaves a function missing; a violated dependency may make the application malfunction."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Application engineers have bound variants for the application that should not be part of the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Application engineers have omitted variants that should be bound for the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Application engineers have configured the application in a way that violates the constraint and/or variability dependencies."
+        }
+      ],
+      "notions": [
+        "n-tests-related-to-variability"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Défaut",
+          "en": "Defect"
+        },
+        {
+          "fr": "Test qui le détecte",
+          "en": "Test that detects it"
+        },
+        {
+          "fr": "Question posée",
+          "en": "Question asked"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Variant lié en trop",
+            "en": "Extra variant bound"
+          },
+          {
+            "fr": "Test d'absence de variant",
+            "en": "Variant absence test"
+          },
+          {
+            "fr": "N'y a-t-il pas **trop** de variants ?",
+            "en": "Are there **too many** variants?"
+          }
+        ],
+        [
+          {
+            "fr": "Variant choisi mais omis",
+            "en": "Chosen variant omitted"
+          },
+          {
+            "fr": "Test de variants d'application",
+            "en": "Application variant test"
+          },
+          {
+            "fr": "Tous les variants choisis sont-ils présents et corrects ?",
+            "en": "Are all the chosen variants present and correct?"
+          }
+        ],
+        [
+          {
+            "fr": "Dépendance violée",
+            "en": "Dependency violated"
+          },
+          {
+            "fr": "Test de dépendances d'application",
+            "en": "Application dependency test"
+          },
+          {
+            "fr": "Les variants présents ou absents respectent-ils requires, excludes, mandatory, [min..max] ?",
+            "en": "Do the present or absent variants respect requires, excludes, mandatory, [min..max]?"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        }
+      ],
+      "notions": [
+        "n-tests-related-to-variability",
+        "n-variant-absence-test",
+        "n-application-dependency-test",
+        "n-application-variant-test"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "explain": true,
+      "text": {
+        "fr": "Le livre introduit en §18.3 les deux tests propres à la variabilité (absence et dépendances) ; le troisième défaut, un variant omis, relève du test de variants vu en §18.5.2, qui vérifie que tous les variants sélectionnés sont présents.",
+        "en": "The book introduces the two variability-specific tests in §18.3 (absence and dependencies); the omitted-variant defect falls under the variant test of §18.5.2, which checks that all selected variants are present."
+      },
+      "notions": [
+        "n-tests-related-to-variability"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le [[term-absence-test|test d'absence de variant]] vérifie qu'il n'y a **pas plus** que les variants choisis. Pour savoir si un variant est présent, on peut appeler une fonction qu'il fournit et observer la réaction de l'application. Il concerne tous les niveaux : au niveau unitaire la variabilité est dans le code, souvent liée à la compilation (ex. IFDEF) ; aux niveaux intégration et système, il s'agit de composants entiers, liés à l'édition de liens, au chargement ou à l'exécution.",
+        "en": "The [[term-absence-test|variant absence test]] checks that **no more** than the chosen variants are present. To know whether a variant is present, one may call a function it provides and observe the application's reaction. It affects all levels: at unit level variability is inside the code, often bound at compile time (e.g. IFDEF); at integration and system level it concerns whole components, bound at link time, load time or run time."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "the variant absence test may call a function that is provided by the variant and observe the reaction of the application"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "This kind of variability is often realised by compile time configuration mechanisms (e.g. IFDEF statements)."
+        }
+      ],
+      "notions": [
+        "n-variant-absence-test"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le [[term-dependency-test|test de dépendances d'application]] vérifie la conformité aux dépendances de contrainte et de variabilité des modèles de domaine et d'application, dans deux sens : la **présence** de variants viole-t-elle une restriction (ex. *excludes*) ? leur **absence** en viole-t-elle une (ex. variant *mandatory*, intervalle `[min..max]` d'un choix alternatif) ? Exemple du livre : le chauffage automatique exige les fenêtres automatiques ; le test vérifie que celles-ci sont présentes.",
+        "en": "The [[term-dependency-test|application dependency test]] checks conformance with the constraint and variability dependencies of the domain and application models, in two directions: does the **presence** of variants violate a restriction (e.g. *excludes*)? does their **absence** violate one (e.g. a *mandatory* variant, the `[min..max]` range of an alternative choice)? Book example: automatic heating requires automatic windows; the test checks that the windows are present."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the presence of variants violates any restrictions imposed by variability and constraint dependencies (e.g. \"excludes\" constraint dependencies)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the absence of variants violates any restrictions (e.g. \"mandatory\" variability dependencies or the \"[min..max]\" range of an alternative choice)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Hence, the application dependency test checks whether the application also contains the automatic windows variant."
+        }
+      ],
+      "notions": [
+        "n-application-dependency-test"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Chercher un défaut de liaison de la variabilité",
+        "en": "Looking for a variability binding defect"
+      },
+      "notions": [
+        "n-tests-related-to-variability",
+        "n-variant-absence-test",
+        "n-application-dependency-test"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "the variant absence test may call a function that is provided by the variant and observe the reaction of the application"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the presence of variants violates any restrictions imposed by variability and constraint dependencies (e.g. \"excludes\" constraint dependencies)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the absence of variants violates any restrictions (e.g. \"mandatory\" variability dependencies or the \"[min..max]\" range of an alternative choice)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        }
+      ],
+      "steps": [
+        {
+          "do": {
+            "fr": "Prends comme référence les variants **choisis** dans le modèle de variabilité d'application.",
+            "en": "Take as reference the variants **chosen** in the application variability model."
+          },
+          "why": {
+            "fr": "Les tests de liaison comparent l'application à ce modèle.",
+            "en": "The binding tests compare the application with this model."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Absence** : cherche la présence de variants non choisis, par exemple en appelant une fonction du variant et en observant la réaction.",
+            "en": "**Absence**: look for the presence of unchosen variants, for example by calling a function of the variant and observing the reaction."
+          },
+          "why": {
+            "fr": "C'est la méthode donnée pour savoir si un variant est présent.",
+            "en": "This is the method given to know whether a variant is present."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Variants** : vérifie que chaque variant choisi est présent et se comporte correctement.",
+            "en": "**Variants**: check that each chosen variant is present and behaves correctly."
+          },
+          "why": {
+            "fr": "Un variant omis laisse une fonction manquante.",
+            "en": "An omitted variant leaves a function missing."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Dépendances, présence** : une présence est-elle interdite (excludes) ?",
+            "en": "**Dependencies, presence**: is a presence forbidden (excludes)?"
+          },
+          "why": {
+            "fr": "Deux variants en conflit présents ensemble peuvent provoquer des erreurs.",
+            "en": "Two conflicting variants present together may cause errors."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Dépendances, absence** : une absence est-elle interdite (mandatory, requires, intervalle `[min..max]`) ?",
+            "en": "**Dependencies, absence**: is an absence forbidden (mandatory, requires, `[min..max]` range)?"
+          },
+          "why": {
+            "fr": "Un variant exigé par un autre et absent empêche les composants qui en dépendent de bien fonctionner.",
+            "en": "A variant required by another and absent prevents the components that depend on it from working properly."
+          }
+        },
+        {
+          "do": {
+            "fr": "Répète à chaque niveau (code, composants, application entière) selon la granularité des artefacts liés.",
+            "en": "Repeat at each level (code, components, whole application) according to the granularity of the bound artefacts."
+          },
+          "why": {
+            "fr": "Les deux tests propres à la variabilité concernent tous les niveaux de test.",
+            "en": "The two variability-specific tests affect all test levels."
+          }
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : ne pas confondre les deux tests propres à la variabilité. **Absence** = « n'y a-t-il pas *trop* de variants ? » (on peut appeler une fonction du variant et observer la réaction). **Dépendances** = « les variants présents/absents respectent-ils *requires/excludes/mandatory/[min..max]* ? ». Autre piège : on **rejoue** les tests unitaires du domaine même pour la partie commune d'un composant, car la configuration de l'application peut influencer le résultat.",
+        "en": "**Exam trap**: do not mix up the two variability tests. **Absence** = \"are there too many variants?\" (a function provided by the variant can be called to observe the reaction). **Dependency** = \"do present/absent variants respect *requires/excludes/mandatory/[min..max]*?\". Another trap: domain unit tests are **re-run** even for the common part of a component, because the application's configuration may influence the result."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "the variant absence test may call a function that is provided by the variant and observe the reaction of the application"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the presence of variants violates any restrictions imposed by variability and constraint dependencies (e.g. \"excludes\" constraint dependencies)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "It is necessary to repeat unit tests even for common functionality as the specific configuration of the application may influence the test results (Section 13.3)."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-10-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Trois niveaux de test, quatre catégories d'exigences",
+        "en": "Three test levels, four requirement categories"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Niveau",
+          "en": "Level"
+        },
+        {
+          "fr": "But",
+          "en": "Goal"
+        },
+        {
+          "fr": "Entrée",
+          "en": "Input"
+        },
+        {
+          "fr": "Tests de domaine",
+          "en": "Domain tests"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Unitaire",
+            "en": "Unit"
+          },
+          {
+            "fr": "Valider les composants contre leurs spécifications",
+            "en": "Validate components against their specifications"
+          },
+          {
+            "fr": "De la réalisation d'application",
+            "en": "From application realisation"
+          },
+          {
+            "fr": "Rejoués, même pour la partie commune : la configuration peut changer le résultat",
+            "en": "Re-run, even for the common part: the configuration may change the result"
+          }
+        ],
+        [
+          {
+            "fr": "Intégration",
+            "en": "Integration"
+          },
+          {
+            "fr": "Valider les interactions entre composants (communs, variants liés, spécifiques)",
+            "en": "Validate interactions between components (common, bound variants, specific)"
+          },
+          {
+            "fr": "De la conception d'application ; composants ayant passé le test unitaire",
+            "en": "From application design; components that passed the unit test"
+          },
+          {
+            "fr": "Réutilisés, variants liés selon le modèle de variabilité d'application",
+            "en": "Reused, variants bound according to the application variability model"
+          }
+        ],
+        [
+          {
+            "fr": "Système",
+            "en": "System"
+          },
+          {
+            "fr": "Valider que l'application satisfait ses exigences",
+            "en": "Validate that the application satisfies its requirements"
+          },
+          {
+            "fr": "Des exigences d'application",
+            "en": "From application requirements"
+          },
+          {
+            "fr": "Cas système du domaine, variants liés",
+            "en": "Domain system cases, variants bound"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "The goal of the application unit test is to validate single components against the component specifications."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "The domain unit test cases are reexecuted during application testing, as it is still unclear whether the plug-in component behaves correctly for the particular configuration of sensors required for the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.2",
+          "quote": "The goal of the application integration test is to validate the interactions between the components of the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.2",
+          "quote": "The inputs for the application integration test are components that have passed the application unit test."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.3",
+          "quote": "The goal of the application system test is to validate that the application satisfies the application requirements specification."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.1",
+          "quote": "The unit test in application testing requires input from application realisation. The integration test requires input from application design, and the system test is performed on the basis of application requirements."
+        }
+      ],
+      "notions": [
+        "n-test-levels"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Au niveau système, les exigences d'application se classent en **quatre catégories** : exigences communes réutilisées, exigences variables réutilisées (variabilité liée), exigences adaptées (réutilisées avec adaptation spécifique) et exigences nouvelles. À chacune son test.",
+        "en": "At system level, application requirements fall into **four categories**: reused common requirements, reused variable requirements (bound variability), adapted requirements (reused with specific adaptation) and new requirements. Each has its own test."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused common domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements with bound variability."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements containing application-specific adaptations."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        }
+      ],
+      "notions": [
+        "n-test-coverage-categories"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Catégorie d'exigence",
+          "en": "Requirement category"
+        },
+        {
+          "fr": "Test",
+          "en": "Test"
+        },
+        {
+          "fr": "Ce qu'on reprend du domaine",
+          "en": "What is reused from the domain"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Commune réutilisée",
+            "en": "Reused common"
+          },
+          {
+            "fr": "Test de communalité",
+            "en": "Commonality test"
+          },
+          {
+            "fr": "Tests rejoués tels quels : un composant inchangé peut échouer dans un nouveau contexte (variables partagées, héritage)",
+            "en": "Tests re-run as they are: an unchanged component may fail in a new context (shared variables, inheritance)"
+          }
+        ],
+        [
+          {
+            "fr": "Variable réutilisée",
+            "en": "Reused variable"
+          },
+          {
+            "fr": "Test de variants",
+            "en": "Variant test"
+          },
+          {
+            "fr": "Cas logiques réutilisés ; cas détaillés à écrire (ex. exactement trois serrures magnétiques)",
+            "en": "Logical cases reused; detailed cases to write (e.g. exactly three magnetic locks)"
+          }
+        ],
+        [
+          {
+            "fr": "Adaptée",
+            "en": "Adapted"
+          },
+          {
+            "fr": "Test de modification",
+            "en": "Modification test"
+          },
+          {
+            "fr": "Pas de réutilisation sans adaptation des artefacts de test",
+            "en": "No reuse without adapting the test artefacts"
+          }
+        ],
+        [
+          {
+            "fr": "Nouvelle",
+            "en": "New"
+          },
+          {
+            "fr": "Test d'extension",
+            "en": "Extension test"
+          },
+          {
+            "fr": "Rien : tests créés de zéro ; densité de défauts nettement plus élevée",
+            "en": "Nothing: tests created from scratch; significantly higher defect density"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.1",
+          "quote": "If, for instance, a common component is placed in the context of a specific application with its specific selection of variants, the component can fail even though it has not changed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.1",
+          "quote": "Coupling mechanisms like shared variables or inheritance can cause such failures, even if the components have been tested extensively."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application under test contains exactly three magnetic door locks."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "For this category of requirements it is not possible to reuse the domain test artefacts without adapting them."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The test artefacts for this category of requirements have to be created from scratch."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "In addition, the newly implemented artefacts typically have a significantly higher defect density than reused artefacts."
+        }
+      ],
+      "notions": [
+        "n-test-coverage-categories",
+        "n-application-commonality-test",
+        "n-application-variant-test",
+        "n-application-specific-tests"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Choisir le test d'une exigence d'application",
+        "en": "Choosing the test for an application requirement"
+      },
+      "notions": [
+        "n-test-coverage-categories",
+        "n-application-commonality-test",
+        "n-application-variant-test",
+        "n-application-specific-tests"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused common domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements with bound variability."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements containing application-specific adaptations."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The application modification test covers adapted requirements, i.e. the parts of application requirements models that are modified versions of domain requirements models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The application extension test covers parts of the application requirements models that were newly developed for a specific application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The test artefacts for this category of requirements have to be created from scratch."
+        }
+      ],
+      "steps": [
+        {
+          "do": {
+            "fr": "Est-ce une exigence **commune** réutilisée telle quelle ? → **test de communalité** : rejoue les tests de domaine.",
+            "en": "Is it a **common** requirement reused as it is? → **commonality test**: re-run the domain tests."
+          },
+          "why": {
+            "fr": "Un composant commun inchangé peut échouer dans le contexte de l'application.",
+            "en": "An unchanged common component may fail in the application's context."
+          }
+        },
+        {
+          "do": {
+            "fr": "Est-ce une exigence **variable** dont la variabilité est liée ? → **test de variants** : tous les variants choisis sont présents et corrects.",
+            "en": "Is it a **variable** requirement whose variability is bound? → **variant test**: all chosen variants are present and correct."
+          },
+          "why": {
+            "fr": "Les artefacts de test se réutilisent en liant les variants du modèle de variabilité d'application.",
+            "en": "The test artefacts are reused by binding the variants of the application variability model."
+          }
+        },
+        {
+          "do": {
+            "fr": "Est-ce une exigence du domaine **adaptée** pour cette application ? → **test de modification**.",
+            "en": "Is it a domain requirement **adapted** for this application? → **modification test**."
+          },
+          "why": {
+            "fr": "On ne peut pas réutiliser les tests de domaine sans les adapter.",
+            "en": "The domain tests cannot be reused without adapting them."
+          }
+        },
+        {
+          "do": {
+            "fr": "Est-ce une exigence **nouvelle**, propre à l'application ? → **test d'extension** : tests créés de zéro.",
+            "en": "Is it a **new** requirement, specific to the application? → **extension test**: tests created from scratch."
+          },
+          "why": {
+            "fr": "Ces artefacts neufs ont une densité de défauts nettement plus élevée que les artefacts réutilisés.",
+            "en": "These new artefacts have a significantly higher defect density than reused ones."
+          }
+        },
+        {
+          "do": {
+            "fr": "Ajoute, pour toute l'application, les tests propres à la variabilité (absence, dépendances).",
+            "en": "Add, for the whole application, the variability-specific tests (absence, dependencies)."
+          },
+          "why": {
+            "fr": "Un système unique n'a pas à les passer.",
+            "en": "A single system does not have to run them."
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-10-qz-08"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Planifier, spécifier, exécuter",
+        "en": "Plan, specify, execute"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Activité",
+          "en": "Activity"
+        },
+        {
+          "fr": "Ce qui se fait",
+          "en": "What is done"
+        },
+        {
+          "fr": "Ce qui vient du domaine",
+          "en": "What comes from the domain"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Planification",
+            "en": "Planning"
+          },
+          {
+            "fr": "Plan de test propre à chaque application",
+            "en": "Test plan specific to each application"
+          },
+          {
+            "fr": "Stratégie et outillage, adaptés seulement exceptionnellement",
+            "en": "Strategy and tooling, adapted only exceptionally"
+          }
+        ],
+        [
+          {
+            "fr": "Spécification",
+            "en": "Specification"
+          },
+          {
+            "fr": "Cas logiques et détaillés, scénarios",
+            "en": "Logical and detailed cases, scenarios"
+          },
+          {
+            "fr": "Communalité : tout ; variants : cas logiques (détaillés à écrire) ; spécifiques : de zéro ou adaptés",
+            "en": "Commonality: everything; variants: logical cases (detailed ones to write); specific: from scratch or adapted"
+          }
+        ],
+        [
+          {
+            "fr": "Exécution",
+            "en": "Execution"
+          },
+          {
+            "fr": "Exécuter, enregistrer les résultats, déterminer les classes d'erreurs, remonter les défauts",
+            "en": "Execute, record results, determine error classes, report defects"
+          },
+          {
+            "fr": "—",
+            "en": "—"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6",
+          "quote": "The application test process consists of three main activities: application test planning, application test specification, and application test execution."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6.1",
+          "quote": "The test strategy and the tool support for executing the tests have already been determined during domain engineering."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6.2",
+          "quote": "For application commonality tests, logical and detailed test cases are available from domain testing and can be reused in application testing."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6.2",
+          "quote": "Detailed test cases have to be developed by the application test engineers."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6.3",
+          "quote": "They record the results and complete the tests by determining the error classes."
+        }
+      ],
+      "notions": [
+        "n-test-activities"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Par rapport à un système unique : exigences et application sont créées en partie en domaine, en partie en application. Ce qui est identique au domaine est testé en **rejouant** les tests de domaine ; ce qui est spécifique se teste comme en système unique, avec des cas à créer ou à adapter. S'y ajoute la validation de la **liaison de la variabilité**, que l'on ne fait pas en système unique.",
+        "en": "Compared with a single system: requirements and application are created partly in domain engineering, partly in application engineering. What is identical to the domain is tested by **re-running** domain tests; what is specific is tested as in single-system engineering, with cases to create or adapt. On top comes the validation of the **variability binding**, which is not done in single-system engineering."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application requirements and components that are identical to domain artefacts are tested by repeating tests that have been created in domain testing."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application test engineers must validate that the variability binding for the application complies with the application requirements specification"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "In single-system engineering, there is usually no need to perform this kind of test."
+        }
+      ],
+      "notions": [
+        "n-at-differences-single-system"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : un test approfondi, **même du code réutilisé**, reste nécessaire à cause des dépendances entre parties réutilisées et spécifiques. Ne réponds pas « le code réutilisé est déjà testé en domaine, donc on ne le reteste pas ».",
+        "en": "**Exam trap**: a thorough test, **even of reused code**, is still necessary because of dependencies between reused and application-specific parts. Do not answer \"reused code is already tested in the domain, so it is not retested\"."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.8",
+          "quote": "A thorough test, even of reused code, is necessary due to dependencies between reused and application-specific parts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "It is necessary to repeat unit tests even for common functionality as the specific configuration of the application may influence the test results (Section 13.3)."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-10-qz-14"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-absence-test",
+      "fr": "test d'absence de variant",
+      "en": "variant absence test",
+      "definition": {
+        "fr": "Test qui garantit qu'une application n'inclut pas de variants dont l'inclusion n'était pas prévue.",
+        "en": "Test ensuring that an application does not include variants that were not defined to be included."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        }
+      ],
+      "notion": "n-variant-absence-test"
+    },
+    {
+      "id": "term-dependency-test",
+      "fr": "test de dépendances d'application",
+      "en": "application dependency test",
+      "definition": {
+        "fr": "Test qui vérifie que l'application respecte les dépendances de contrainte et de variabilité des modèles de domaine et d'application.",
+        "en": "Test checking that the application conforms to the constraint and variability dependencies of the domain and application variability models."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        }
+      ],
+      "notion": "n-application-dependency-test"
+    },
+    {
+      "id": "term-commonality-test",
+      "fr": "test de communalité d'application",
+      "en": "application commonality test",
+      "definition": {
+        "fr": "Test qui couvre les parties communes des modèles d'exigences : les cas de test du domaine sont rejoués dans le contexte de l'application.",
+        "en": "Test covering the common parts of requirements models: domain test cases are re-executed in the context of the application."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.1",
+          "quote": "Consequently, domain test cases for common requirements are reexecuted in application testing."
+        }
+      ],
+      "notion": "n-application-commonality-test"
+    },
+    {
+      "id": "term-variant-test",
+      "fr": "test de variants d'application",
+      "en": "application variant test",
+      "definition": {
+        "fr": "Test qui vérifie que tous les variants sélectionnés sont présents dans l'application et se comportent correctement.",
+        "en": "Test verifying that all selected variants are part of the application and behave correctly."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        }
+      ],
+      "notion": "n-application-variant-test"
+    },
+    {
+      "id": "term-modification-test",
+      "fr": "test de modification d'application",
+      "en": "application modification test",
+      "notion": "n-application-specific-tests",
+      "definition": {
+        "fr": "Test qui couvre les exigences adaptées, c'est-à-dire les versions modifiées d'exigences de domaine : les artefacts de test du domaine ne sont pas réutilisables sans adaptation.",
+        "en": "Test that covers adapted requirements, i.e. modified versions of domain requirements: the domain test artefacts cannot be reused without adapting them."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The application modification test covers adapted requirements, i.e. the parts of application requirements models that are modified versions of domain requirements models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "For this category of requirements it is not possible to reuse the domain test artefacts without adapting them."
+        }
+      ]
+    },
+    {
+      "id": "term-extension-test",
+      "fr": "test d'extension d'application",
+      "en": "application extension test",
+      "notion": "n-application-specific-tests",
+      "definition": {
+        "fr": "Test qui couvre les exigences nouvelles, développées pour une application précise : ses artefacts de test sont créés de zéro.",
+        "en": "Test that covers newly developed requirements, specific to one application: its test artefacts are created from scratch."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The application extension test covers parts of the application requirements models that were newly developed for a specific application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The test artefacts for this category of requirements have to be created from scratch."
+        }
+      ]
+    },
+    {
+      "id": "term-test-traceability",
+      "fr": "traçabilité des tests",
+      "en": "traceability",
+      "notion": "n-test-traceability",
+      "definition": {
+        "fr": "Traces des exigences d'application vers les exigences de domaine, puis de celles-ci vers les tests de domaine : première clé de la réutilisation structurée des tests.",
+        "en": "Traces from application requirements to domain requirements, then from these to domain tests: the first keystone of structured test reuse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Thus, based on the domain requirements, the reusable domain test artefacts can be retrieved."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Traceability is the first keystone for structured reuse."
+        }
+      ]
+    }
+  ],
+  "notions": [
+    "n-application-testing-goal",
+    "n-domain-test-reuse",
+    "n-binding-variability-in-tests",
+    "n-test-traceability",
+    "n-tests-related-to-variability",
+    "n-variant-absence-test",
+    "n-application-dependency-test",
+    "n-test-levels",
+    "n-test-coverage-categories",
+    "n-application-commonality-test",
+    "n-application-variant-test",
+    "n-application-specific-tests",
+    "n-test-activities",
+    "n-at-differences-single-system"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Le test d'application **complète** le test de domaine : on développe les artefacts de test une fois pour toute la ligne et on les réutilise pour les parties communes **et** variables, en liant leurs points de variation selon le modèle de variabilité d'application.",
+        "en": "Application testing **complements** domain testing: test artefacts are developed once for the whole line and reused for common **and** variable parts, binding their variation points according to the application variability model."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "The key idea of establishing test artefact reuse is to develop test artefacts once for the entire product line, include them in the domain artefacts, and reuse them for multiple applications."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "For test cases that contain variability the variation points must be bound according to the application variability model before the test cases can be executed."
+        }
+      ],
+      "notions": [
+        "n-domain-test-reuse",
+        "n-binding-variability-in-tests"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La **traçabilité** (exigences d'application → exigences de domaine → tests de domaine) retrouve les tests réutilisables ; les **deltas** d'exigences disent s'ils sont réutilisés tels quels, adaptés ou créés.",
+        "en": "**Traceability** (application requirements → domain requirements → domain tests) retrieves the reusable tests; the requirements **deltas** say whether they are reused as they are, adapted or created."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Thus, based on the domain requirements, the reusable domain test artefacts can be retrieved."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Traceability is the first keystone for structured reuse."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "The deltas are the basis for determining whether a test case can be reused without changes, must be adapted, or created anew."
+        }
+      ],
+      "notions": [
+        "n-test-traceability"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Deux tests propres à la variabilité : **absence de variant** (pas de variant non prévu) et **dépendances d'application** (présence interdite, absence interdite : excludes, requires, mandatory, [min..max]).",
+        "en": "Two variability-specific tests: **variant absence** (no unplanned variant) and **application dependency** (forbidden presence, forbidden absence: excludes, requires, mandatory, [min..max])."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the presence of variants violates any restrictions imposed by variability and constraint dependencies (e.g. \"excludes\" constraint dependencies)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the absence of variants violates any restrictions (e.g. \"mandatory\" variability dependencies or the \"[min..max]\" range of an alternative choice)."
+        }
+      ],
+      "notions": [
+        "n-tests-related-to-variability",
+        "n-variant-absence-test",
+        "n-application-dependency-test"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Quatre catégories d'exigences au niveau système : communes (test de communalité), variables liées (test de variants), adaptées (test de modification), nouvelles (test d'extension).",
+        "en": "Four requirement categories at system level: common (commonality test), bound variable (variant test), adapted (modification test), new (extension test)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused common domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements with bound variability."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements containing application-specific adaptations."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        }
+      ],
+      "notions": [
+        "n-test-coverage-categories",
+        "n-application-commonality-test",
+        "n-application-variant-test",
+        "n-application-specific-tests"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Trois niveaux : unitaire (entrée : réalisation), intégration (entrée : conception ; composants ayant passé l'unitaire), système (entrée : exigences d'application) ; on rejoue les tests unitaires de domaine, même pour la partie commune.",
+        "en": "Three levels: unit (input: realisation), integration (input: design; components that passed the unit test), system (input: application requirements); domain unit tests are re-run, even for the common part."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.1",
+          "quote": "The unit test in application testing requires input from application realisation. The integration test requires input from application design, and the system test is performed on the basis of application requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.2",
+          "quote": "The inputs for the application integration test are components that have passed the application unit test."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "It is necessary to repeat unit tests even for common functionality as the specific configuration of the application may influence the test results (Section 13.3)."
+        }
+      ],
+      "notions": [
+        "n-test-levels"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Trois activités (planification, spécification, exécution) ; différences avec un système unique : tests de liaison de la variabilité en plus, rejeu des tests de domaine, et test approfondi même du code réutilisé.",
+        "en": "Three activities (planning, specification, execution); differences from single-system engineering: variability binding tests in addition, re-running domain tests, and thorough testing even of reused code."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6",
+          "quote": "The application test process consists of three main activities: application test planning, application test specification, and application test execution."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application requirements and components that are identical to domain artefacts are tested by repeating tests that have been created in domain testing."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application test engineers must validate that the variability binding for the application complies with the application requirements specification"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.8",
+          "quote": "A thorough test, even of reused code, is necessary due to dependencies between reused and application-specific parts."
+        }
+      ],
+      "notions": [
+        "n-test-activities",
+        "n-at-differences-single-system"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "inf4-10-fc-01",
+      "front": {
+        "fr": "test d'absence de variant ?",
+        "en": "variant absence test?"
+      },
+      "back": {
+        "fr": "Test qui garantit qu'une application n'inclut pas de variants dont l'inclusion n'était pas prévue.",
+        "en": "Test ensuring that an application does not include variants that were not defined to be included."
+      },
+      "termId": "term-absence-test"
+    },
+    {
+      "id": "inf4-10-fc-02",
+      "front": {
+        "fr": "test de dépendances d'application ?",
+        "en": "application dependency test?"
+      },
+      "back": {
+        "fr": "Test qui vérifie que l'application respecte les dépendances de contrainte et de variabilité des modèles de domaine et d'application.",
+        "en": "Test checking that the application conforms to the constraint and variability dependencies of the domain and application variability models."
+      },
+      "termId": "term-dependency-test"
+    },
+    {
+      "id": "inf4-10-fc-03",
+      "front": {
+        "fr": "test de communalité d'application ?",
+        "en": "application commonality test?"
+      },
+      "back": {
+        "fr": "Test qui couvre les parties communes des modèles d'exigences : les cas de test du domaine sont rejoués dans le contexte de l'application.",
+        "en": "Test covering the common parts of requirements models: domain test cases are re-executed in the context of the application."
+      },
+      "termId": "term-commonality-test"
+    },
+    {
+      "id": "inf4-10-fc-04",
+      "front": {
+        "fr": "test de variants d'application ?",
+        "en": "application variant test?"
+      },
+      "back": {
+        "fr": "Test qui vérifie que tous les variants sélectionnés sont présents dans l'application et se comportent correctement.",
+        "en": "Test verifying that all selected variants are part of the application and behave correctly."
+      },
+      "termId": "term-variant-test"
+    },
+    {
+      "id": "inf4-10-fc-05",
+      "front": {
+        "fr": "test de modification d'application ?",
+        "en": "application modification test?"
+      },
+      "back": {
+        "fr": "Test qui couvre les exigences adaptées, c'est-à-dire les versions modifiées d'exigences de domaine : les artefacts de test du domaine ne sont pas réutilisables sans adaptation.",
+        "en": "Test that covers adapted requirements, i.e. modified versions of domain requirements: the domain test artefacts cannot be reused without adapting them."
+      },
+      "termId": "term-modification-test"
+    },
+    {
+      "id": "inf4-10-fc-06",
+      "front": {
+        "fr": "test d'extension d'application ?",
+        "en": "application extension test?"
+      },
+      "back": {
+        "fr": "Test qui couvre les exigences nouvelles, développées pour une application précise : ses artefacts de test sont créés de zéro.",
+        "en": "Test that covers newly developed requirements, specific to one application: its test artefacts are created from scratch."
+      },
+      "termId": "term-extension-test"
+    },
+    {
+      "id": "inf4-10-fc-07",
+      "front": {
+        "fr": "traçabilité des tests ?",
+        "en": "traceability?"
+      },
+      "back": {
+        "fr": "Traces des exigences d'application vers les exigences de domaine, puis de celles-ci vers les tests de domaine : première clé de la réutilisation structurée des tests.",
+        "en": "Traces from application requirements to domain requirements, then from these to domain tests: the first keystone of structured test reuse."
+      },
+      "termId": "term-test-traceability"
+    },
+    {
+      "id": "inf4-10-fc-08",
+      "front": {
+        "fr": "Idée clé de la réutilisation des tests ?",
+        "en": "Key idea of test reuse?"
+      },
+      "back": {
+        "fr": "Développer les artefacts de test une fois pour toute la ligne, les inclure dans les artefacts de domaine et les réutiliser pour plusieurs applications (parties communes et variables).",
+        "en": "Develop test artefacts once for the whole product line, include them in the domain artefacts and reuse them for several applications (common and variable parts)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "The key idea of establishing test artefact reuse is to develop test artefacts once for the entire product line, include them in the domain artefacts, and reuse them for multiple applications."
+        }
+      ],
+      "notions": [
+        "n-domain-test-reuse"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-09",
+      "front": {
+        "fr": "Les deux clés de la réutilisation structurée ?",
+        "en": "The two keystones of structured reuse?"
+      },
+      "back": {
+        "fr": "La traçabilité, et l'information de deltas d'exigences (réutilisé tel quel, adapté ou créé de zéro).",
+        "en": "Traceability, and the requirements delta information (reused as it is, adapted or created anew)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Traceability is the first keystone for structured reuse."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "The deltas are the basis for determining whether a test case can be reused without changes, must be adapted, or created anew."
+        }
+      ],
+      "notions": [
+        "n-test-traceability",
+        "n-domain-test-reuse"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-10",
+      "front": {
+        "fr": "CRS ou SAS : comment obtient-on les tests de l'application ?",
+        "en": "CRS or SAS: how do we get the application's tests?"
+      },
+      "back": {
+        "fr": "CRS : on lie les points de variation des cas de test de domaine. SAS : on adapte les cas de l'application exemple d'après les différences de liaisons.",
+        "en": "CRS: bind the variation points of the domain test cases. SAS: adapt the sample application's cases according to the differences in variability bindings."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "For test cases that contain variability the variation points must be bound according to the application variability model before the test cases can be executed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "Based on the differences in the variability bindings, the required adaptations of the test artefacts can be determined."
+        }
+      ],
+      "notions": [
+        "n-binding-variability-in-tests"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-11",
+      "front": {
+        "fr": "Les trois défauts de liaison à tester ?",
+        "en": "The three binding defects to test?"
+      },
+      "back": {
+        "fr": "Variants liés qui ne devraient pas l'être ; variants omis qui devraient l'être ; configuration qui viole les dépendances de contrainte ou de variabilité.",
+        "en": "Bound variants that should not be; omitted variants that should be bound; a configuration that violates constraint or variability dependencies."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Application engineers have bound variants for the application that should not be part of the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Application engineers have omitted variants that should be bound for the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Application engineers have configured the application in a way that violates the constraint and/or variability dependencies."
+        }
+      ],
+      "notions": [
+        "n-tests-related-to-variability"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-12",
+      "front": {
+        "fr": "Quatre catégories d'exigences → quatre tests ?",
+        "en": "Four requirement categories → four tests?"
+      },
+      "back": {
+        "fr": "Communes → communalité ; variables liées → variants ; adaptées → modification ; nouvelles → extension.",
+        "en": "Common → commonality; bound variable → variant; adapted → modification; new → extension."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused common domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements with bound variability."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements containing application-specific adaptations."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        }
+      ],
+      "notions": [
+        "n-test-coverage-categories"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-13",
+      "front": {
+        "fr": "Entrées des trois niveaux de test ?",
+        "en": "Inputs of the three test levels?"
+      },
+      "back": {
+        "fr": "Unitaire : de la réalisation. Intégration : de la conception. Système : des exigences d'application.",
+        "en": "Unit: from realisation. Integration: from design. System: from application requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.1",
+          "quote": "The unit test in application testing requires input from application realisation. The integration test requires input from application design, and the system test is performed on the basis of application requirements."
+        }
+      ],
+      "notions": [
+        "n-test-levels"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-14",
+      "front": {
+        "fr": "Pourquoi rejouer les tests unitaires du domaine pour la partie commune ?",
+        "en": "Why re-run the domain unit tests for the common part?"
+      },
+      "back": {
+        "fr": "La configuration propre à l'application peut influencer le résultat : une combinaison de variants ou une modification propre peut faire échouer la partie commune.",
+        "en": "The application-specific configuration may influence the result: a combination of variants or an application-specific modification may make the common part fail."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "It is necessary to repeat unit tests even for common functionality as the specific configuration of the application may influence the test results (Section 13.3)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "The common parts of a component may not work properly due to a particular combination of variants or due to application-specific modifications."
+        }
+      ],
+      "notions": [
+        "n-test-levels",
+        "n-application-commonality-test"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-15",
+      "front": {
+        "fr": "Trois activités du test d'application ?",
+        "en": "Three activities of application testing?"
+      },
+      "back": {
+        "fr": "Planification, spécification, exécution.",
+        "en": "Planning, specification, execution."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6",
+          "quote": "The application test process consists of three main activities: application test planning, application test specification, and application test execution."
+        }
+      ],
+      "notions": [
+        "n-test-activities"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-16",
+      "front": {
+        "fr": "Test d'application : différences avec un système unique ?",
+        "en": "Application testing: differences from a single system?"
+      },
+      "back": {
+        "fr": "Tests de liaison de la variabilité en plus ; ce qui est identique au domaine est testé en rejouant les tests de domaine ; le spécifique, comme en système unique ; test approfondi même du code réutilisé.",
+        "en": "Variability binding tests in addition; what is identical to the domain is tested by re-running domain tests; what is specific, as in single-system engineering; thorough testing even of reused code."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application requirements and components that are identical to domain artefacts are tested by repeating tests that have been created in domain testing."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application test engineers must validate that the variability binding for the application complies with the application requirements specification"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.8",
+          "quote": "A thorough test, even of reused code, is necessary due to dependencies between reused and application-specific parts."
+        }
+      ],
+      "notions": [
+        "n-at-differences-single-system"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "inf4-10-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour retrouver les tests de domaine réutilisables, on s'appuie sur la traçabilité : traces des exigences d'application vers les exigences de domaine, puis des exigences de domaine vers les tests de domaine.",
+        "en": "To retrieve the reusable domain tests, traceability is used: traces from application requirements to domain requirements, then from domain requirements to domain tests."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : les traces enregistrées par l'ingénierie des exigences d'application désignent les exigences de domaine réutilisées ; le domaine sait quel test se rapporte à quelle exigence ; on retrouve ainsi les tests réutilisables.",
+        "en": "TRUE: the traces recorded by application requirements engineering designate the reused domain requirements; domain testing knows which test relates to which requirement; this is how the reusable tests are retrieved."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Thus, based on the domain requirements, the reusable domain test artefacts can be retrieved."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Traceability is the first keystone for structured reuse."
+        }
+      ],
+      "notions": [
+        "n-test-traceability",
+        "n-domain-test-reuse"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-10-qz-02",
+      "type": "true_false",
+      "statement": {
+        "fr": "La traçabilité suffit à décider si un cas de test de domaine est réutilisé tel quel, adapté ou créé de zéro : les deltas d'exigences n'y interviennent pas.",
+        "en": "Traceability alone is enough to decide whether a domain test case is reused as it is, adapted or created anew: requirements deltas play no part."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la traçabilité est la première clé de la réutilisation structurée ; la seconde est l'information de **deltas** d'exigences, qui est la base pour décider si un cas de test est réutilisé sans changement, adapté ou créé.",
+        "en": "FALSE: traceability is the first keystone of structured reuse; the second is the requirements **delta** information, which is the basis for deciding whether a test case is reused without changes, adapted or created."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Traceability is the first keystone for structured reuse."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "The deltas are the basis for determining whether a test case can be reused without changes, must be adapted, or created anew."
+        }
+      ],
+      "notions": [
+        "n-test-traceability"
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Oublier que la traçabilité retrouve les tests, mais que ce sont les deltas qui disent quoi en faire.",
+        "en": "Forgetting that traceability retrieves the tests, but the deltas say what to do with them."
+      }
+    },
+    {
+      "id": "inf4-10-qz-03",
+      "type": "mcq",
+      "question": {
+        "fr": "Avec la stratégie SAS, comment obtient-on les cas de test de l'application testée ?",
+        "en": "With the SAS strategy, how are the test cases of the application under test obtained?"
+      },
+      "options": [
+        {
+          "fr": "En liant les points de variation de cas de test de domaine à parties communes et variables explicites",
+          "en": "By binding the variation points of domain test cases that have explicit common and variable parts"
+        },
+        {
+          "fr": "En adaptant les cas de test de l'application exemple selon les différences de liaisons",
+          "en": "By adapting the sample application's test cases according to the differences in bindings"
+        },
+        {
+          "fr": "En créant tous les cas de test de zéro pour chaque nouvelle application de la ligne de produits",
+          "en": "By creating all the test cases from scratch for each new application of the product line"
+        },
+        {
+          "fr": "En reprenant les cas de test de l'application exemple sans aucune adaptation, quelles que soient les différences",
+          "en": "By taking over the sample application's test cases without any adaptation, whatever the differences"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "SAS part des cas de test de l'application exemple, probablement à adapter : on compare les variants de l'exemple et de l'application testée et on déduit les adaptations. Lier les points de variation de cas de domaine explicites, c'est la stratégie CRS.",
+        "en": "SAS starts from the sample application's test cases, which will probably need adapting: the variants of the sample and of the application under test are compared and the adaptations deduced. Binding the variation points of explicit domain cases is the CRS strategy."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "Based on the differences in the variability bindings, the required adaptations of the test artefacts can be determined."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2",
+          "quote": "For test cases that contain variability the variation points must be bound according to the application variability model before the test cases can be executed."
+        }
+      ],
+      "notions": [
+        "n-binding-variability-in-tests",
+        "n-domain-test-reuse"
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Confondre SAS (on part de l'application exemple) et CRS (on lie les points de variation de cas de domaine).",
+        "en": "Mixing up SAS (starting from the sample application) and CRS (binding the variation points of domain cases)."
+      }
+    },
+    {
+      "id": "inf4-10-qz-04",
+      "type": "mcq",
+      "question": {
+        "fr": "Le chauffage automatique exige les fenêtres automatiques. Le testeur vérifie que toute application incluant le chauffage automatique contient aussi le variant « fenêtres automatiques ». De quel test s'agit-il ?",
+        "en": "Automatic heating requires automatic windows. The tester checks that any application including automatic heating also contains the \"automatic windows\" variant. Which test is this?"
+      },
+      "options": [
+        {
+          "fr": "Le test d'absence de variant, qui cherche les variants non prévus dans l'application",
+          "en": "The variant absence test, which looks for unplanned variants in the application"
+        },
+        {
+          "fr": "Le test de communalité, qui rejoue les tests de domaine des exigences communes",
+          "en": "The commonality test, which re-runs the domain tests of the common requirements"
+        },
+        {
+          "fr": "Le test d'extension, qui couvre les exigences nouvelles de l'application",
+          "en": "The extension test, which covers the application's new requirements"
+        },
+        {
+          "fr": "Le test de dépendances d'application",
+          "en": "The application dependency test"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "C'est le test de dépendances d'application : il vérifie la conformité aux dépendances de contrainte (requires/excludes) et de variabilité (mandatory, [min..max]). Le test d'absence vérifie plutôt qu'il n'y a pas de variants non prévus.",
+        "en": "This is the application dependency test: it checks conformance to constraint (requires/excludes) and variability (mandatory, [min..max]) dependencies. The absence test rather checks that there are no unintended variants."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Hence, the application dependency test checks whether the application also contains the automatic windows variant."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-application-dependency-test"
+      ],
+      "trap": {
+        "fr": "Confondre le test de dépendances (requires/excludes) avec le test d'absence (variants non prévus).",
+        "en": "Mixing up the dependency test (requires/excludes) with the absence test (unplanned variants)."
+      }
+    },
+    {
+      "id": "inf4-10-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le test d'absence de variant vérifie que les variants obligatoires du modèle de variabilité sont bien présents dans l'application.",
+        "en": "The variant absence test checks that the mandatory variants of the variability model are present in the application."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le test d'absence vérifie que l'application n'inclut pas de variants qui n'étaient pas prévus. Vérifier qu'un variant « mandatory » n'est pas absent relève du test de dépendances d'application.",
+        "en": "FALSE: the absence test checks that the application does not include variants that were not meant to be included. Checking that a \"mandatory\" variant is not missing belongs to the application dependency test."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the absence of variants violates any restrictions"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-variant-absence-test",
+        "n-application-dependency-test"
+      ],
+      "trap": {
+        "fr": "Croire que le test d'absence cherche les variants obligatoires manquants : cela relève du test de dépendances.",
+        "en": "Believing the absence test looks for missing mandatory variants: that is the dependency test."
+      }
+    },
+    {
+      "id": "inf4-10-qz-06",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour savoir si un variant est présent dans l'application, le test d'absence de variant peut appeler une fonction fournie par ce variant et observer la réaction de l'application.",
+        "en": "To know whether a variant is present in the application, the variant absence test may call a function provided by that variant and observe the application's reaction."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c'est la méthode donnée pour vérifier la présence d'un variant ; le test concerne tous les niveaux (code, composants, système).",
+        "en": "TRUE: this is the method given to check whether a variant is present; the test affects all levels (code, components, system)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "the variant absence test may call a function that is provided by the variant and observe the reaction of the application"
+        }
+      ],
+      "notions": [
+        "n-variant-absence-test"
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-10-qz-07",
+      "type": "mcq",
+      "question": {
+        "fr": "Une application contient à la fois deux variants reliés par une dépendance « excludes ». Quel test détecte ce défaut ?",
+        "en": "An application contains two variants that are linked by an \"excludes\" dependency, both present. Which test detects this defect?"
+      },
+      "options": [
+        {
+          "fr": "Le test d'absence de variant, car un variant non prévu est présent dans l'application livrée",
+          "en": "The variant absence test, because an unplanned variant is present in the delivered application"
+        },
+        {
+          "fr": "Le test de dépendances, car la présence viole une restriction",
+          "en": "The dependency test, because the presence violates a restriction"
+        },
+        {
+          "fr": "Le test de communalité, car une exigence commune est rejouée dans le contexte de l'application",
+          "en": "The commonality test, because a common requirement is re-run in the application's context"
+        },
+        {
+          "fr": "Le test d'extension, car il s'agit d'une exigence entièrement nouvelle pour la ligne",
+          "en": "The extension test, because it is an entirely new requirement for the line"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Le test de dépendances vérifie, entre autres, si la présence de variants viole une restriction des modèles de variabilité (ex. excludes). Le test d'absence vérifie qu'aucun variant non choisi n'est présent : ici les deux variants peuvent avoir été choisis, c'est leur coexistence qui est interdite.",
+        "en": "The dependency test checks, among other things, whether the presence of variants violates a restriction of the variability models (e.g. excludes). The absence test checks that no unchosen variant is present: here both variants may have been chosen, it is their coexistence that is forbidden."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the presence of variants violates any restrictions imposed by variability and constraint dependencies (e.g. \"excludes\" constraint dependencies)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        }
+      ],
+      "notions": [
+        "n-application-dependency-test"
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Réduire tout défaut de liaison au test d'absence.",
+        "en": "Reducing every binding defect to the absence test."
+      }
+    },
+    {
+      "id": "inf4-10-qz-08",
+      "type": "mcq",
+      "question": {
+        "fr": "Le test système doit vérifier que l'application sous test contient exactement trois serrures magnétiques. De quel test s'agit-il ?",
+        "en": "The system test must verify that the application under test contains exactly three magnetic door locks. Which test is it?"
+      },
+      "options": [
+        {
+          "fr": "Le commonality test",
+          "en": "The commonality test"
+        },
+        {
+          "fr": "Le variant test",
+          "en": "The variant test"
+        },
+        {
+          "fr": "Le modification test",
+          "en": "The modification test"
+        },
+        {
+          "fr": "L'extension test",
+          "en": "The extension test"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Le variant test vérifie que tous les variants sélectionnés font partie de l'application et se comportent correctement. Le commonality test rejoue les tests des exigences communes ; modification : exigences adaptées ; extension : exigences nouvelles.",
+        "en": "The variant test verifies that all selected variants are part of the application and behave correctly. The commonality test replays tests of common requirements; modification: adapted requirements; extension: new requirements."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application under test contains exactly three magnetic door locks."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-application-variant-test",
+        "n-test-coverage-categories"
+      ],
+      "trap": {
+        "fr": "Confondre test de variants (variants sélectionnés présents) et test de communalité (exigences communes).",
+        "en": "Mixing up the variant test (selected variants present) with the commonality test (common requirements)."
+      }
+    },
+    {
+      "id": "inf4-10-qz-09",
+      "type": "mcq",
+      "question": {
+        "fr": "Des serrures magnétiques d'un autre fournisseur doivent être intégrées : la carte se glisse dans le lecteur au lieu d'être posée dessus. Quel test couvre cette exigence ?",
+        "en": "Magnetic card locks from another provider have to be incorporated: the card is pulled through a reader instead of being placed on it. Which test covers this requirement?"
+      },
+      "options": [
+        {
+          "fr": "Le test de communalité : on rejoue pour chaque application les tests de domaine tels quels",
+          "en": "The commonality test: the domain tests are re-run as they are for each application"
+        },
+        {
+          "fr": "Le test d'absence de variant : un variant non prévu est présent dans l'application",
+          "en": "The variant absence test: an unplanned variant is present in the application"
+        },
+        {
+          "fr": "Le test de modification : exigence adaptée, tests à adapter",
+          "en": "The modification test: adapted requirement, tests to be adapted"
+        },
+        {
+          "fr": "Le test d'extension : exigence nouvelle, tests créés de zéro pour cette application",
+          "en": "The extension test: new requirement, tests created from scratch for this application"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Il s'agit d'une exigence **adaptée** : version modifiée d'une exigence de domaine (serrures magnétiques). Les tests de domaine ne sont pas réutilisables sans adaptation : test de modification. L'extension concerne une exigence purement nouvelle (ex. un lecteur d'iris).",
+        "en": "This is an **adapted** requirement: a modified version of a domain requirement (magnetic locks). Domain tests cannot be reused without adaptation: modification test. Extension concerns a purely new requirement (e.g. an iris reader)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The application modification test covers adapted requirements, i.e. the parts of application requirements models that are modified versions of domain requirements models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The test cases regarding the magnetic card locks must be adapted to cope with the new hardware, for instance, pull the card through a card reader instead of placing it on the card reader."
+        }
+      ],
+      "notions": [
+        "n-application-specific-tests"
+      ],
+      "objective": "o3",
+      "trap": {
+        "fr": "Confondre exigence adaptée (modification) et exigence nouvelle (extension).",
+        "en": "Mixing up an adapted requirement (modification) and a new requirement (extension)."
+      }
+    },
+    {
+      "id": "inf4-10-qz-10",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les cas de test d'une exigence purement nouvelle sont retrouvés dans le domaine par traçabilité, puis simplement rejoués.",
+        "en": "The test cases of a purely new requirement are retrieved from the domain through traceability, then simply re-run."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : une exigence nouvelle n'est pas dérivée d'une exigence de domaine ; ses artefacts de test (test d'extension) sont créés de zéro, et ces artefacts neufs ont une densité de défauts nettement plus élevée que les artefacts réutilisés.",
+        "en": "FALSE: a new requirement is not derived from a domain requirement; its test artefacts (extension test) are created from scratch, and these new artefacts have a significantly higher defect density than reused ones."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The test artefacts for this category of requirements have to be created from scratch."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "In addition, the newly implemented artefacts typically have a significantly higher defect density than reused artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        }
+      ],
+      "notions": [
+        "n-application-specific-tests",
+        "n-test-coverage-categories"
+      ],
+      "objective": "o3",
+      "trap": {
+        "fr": "Croire que tout test se retrouve par traçabilité, même pour une exigence qui n'existe pas dans le domaine.",
+        "en": "Believing every test can be found through traceability, even for a requirement that does not exist in the domain."
+      }
+    },
+    {
+      "id": "inf4-10-qz-11",
+      "type": "true_false",
+      "statement": {
+        "fr": "Même pour la partie commune d'un composant, les cas de test unitaire du domaine sont rejoués pendant le test d'application, car on ne sait pas si le plug-in se comporte correctement pour la configuration de capteurs de cette application.",
+        "en": "Even for the common part of a component, the domain unit test cases are re-executed during application testing, as it is not known whether the plug-in behaves correctly for this application's sensor configuration."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : un composant inchangé peut échouer dans le contexte d'une application avec sa sélection de variants (variables partagées, héritage) : les tests du domaine sont donc rejoués.",
+        "en": "TRUE: an unchanged component can fail in the context of an application with its selection of variants (shared variables, inheritance): domain tests are therefore re-run."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.1",
+          "quote": "The domain unit test cases are reexecuted during application testing, as it is still unclear whether the plug-in component behaves correctly for the particular configuration of sensors required for the application."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-test-levels",
+        "n-application-commonality-test"
+      ],
+      "trap": {
+        "fr": "Penser qu'un composant commun déjà testé en domaine n'a plus besoin d'être retesté.",
+        "en": "Thinking a common component already tested in the domain no longer needs retesting."
+      }
+    },
+    {
+      "id": "inf4-10-qz-12",
+      "type": "mcq",
+      "question": {
+        "fr": "Quelle est l'entrée du test d'intégration d'application ?",
+        "en": "What is the input of the application integration test?"
+      },
+      "options": [
+        {
+          "fr": "Les exigences d'application, prises comme références de test de l'ensemble",
+          "en": "The application requirements, taken as test references for the whole"
+        },
+        {
+          "fr": "Les interfaces de domaine seules, sans aucun composant réalisé",
+          "en": "The domain interfaces alone, without any realised component"
+        },
+        {
+          "fr": "Les composants qui ont passé le test unitaire",
+          "en": "The components that passed the unit test"
+        },
+        {
+          "fr": "L'application entière, déjà déployée chez le client final",
+          "en": "The whole application, already deployed at the end customer"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Le test d'intégration valide les interactions entre composants ; son entrée est constituée de composants qui ont passé le test unitaire d'application (et il s'appuie sur l'architecture d'application). Les exigences d'application servent de référence au test système.",
+        "en": "The integration test validates interactions between components; its input is made of components that passed the application unit test (and it relies on the application architecture). Application requirements are the reference of the system test."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.2",
+          "quote": "The inputs for the application integration test are components that have passed the application unit test."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.2",
+          "quote": "The goal of the application integration test is to validate the interactions between the components of the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.1",
+          "quote": "The unit test in application testing requires input from application realisation. The integration test requires input from application design, and the system test is performed on the basis of application requirements."
+        }
+      ],
+      "notions": [
+        "n-test-levels"
+      ],
+      "objective": "o4",
+      "trap": {
+        "fr": "Confondre l'entrée du test d'intégration avec celle du test système.",
+        "en": "Mixing up the input of the integration test with that of the system test."
+      }
+    },
+    {
+      "id": "inf4-10-qz-13",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le test système d'application prend l'architecture d'application comme référence et valide la liaison des composants entre eux.",
+        "en": "The application system test takes the application architecture as its reference and validates how components are linked together."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le test système valide que l'application satisfait la **spécification de ses exigences**, qui lui servent de référence. C'est le test d'intégration qui s'appuie sur l'architecture et valide les interactions entre composants.",
+        "en": "FALSE: the system test validates that the application satisfies its **requirements specification**, which is its reference. It is the integration test that relies on the architecture and validates interactions between components."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.3",
+          "quote": "The goal of the application system test is to validate that the application satisfies the application requirements specification."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.1",
+          "quote": "The unit test in application testing requires input from application realisation. The integration test requires input from application design, and the system test is performed on the basis of application requirements."
+        }
+      ],
+      "notions": [
+        "n-test-levels"
+      ],
+      "objective": "o4",
+      "trap": {
+        "fr": "Mélanger test d'intégration (architecture) et test système (exigences).",
+        "en": "Mixing up the integration test (architecture) and the system test (requirements)."
+      }
+    },
+    {
+      "id": "inf4-10-qz-14",
+      "type": "true_false",
+      "statement": {
+        "fr": "En ingénierie d'un système unique, on vérifie aussi que la liaison de la variabilité respecte le modèle de variabilité : le test d'application de ligne de produits n'ajoute donc aucun test.",
+        "en": "In single-system engineering, one also checks that the variability binding respects the variability model: product line application testing therefore adds no test."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : valider que la liaison de la variabilité respecte le modèle de variabilité d'application (et ne viole pas celui du domaine) est un test propre à la ligne ; « in single-system engineering, there is usually no need to perform this kind of test ».",
+        "en": "FALSE: validating that the variability binding respects the application variability model (and does not violate the domain one) is a product-line-specific test; \"in single-system engineering, there is usually no need to perform this kind of test\"."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "Application test engineers must validate that the variability binding for the application complies with the application requirements specification"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.7",
+          "quote": "In single-system engineering, there is usually no need to perform this kind of test."
+        }
+      ],
+      "notions": [
+        "n-at-differences-single-system"
+      ],
+      "objective": "o5",
+      "trap": {
+        "fr": "Croire que les tests de liaison existent aussi en système unique.",
+        "en": "Believing binding tests also exist in single-system engineering."
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "inf4-10-ex-01",
+      "title": {
+        "fr": "Quel test pour quelle exigence ? (la serrure)",
+        "en": "Which test for which requirement? (the lock)"
+      },
+      "difficulty": 2,
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-test-coverage-categories",
+        "n-application-commonality-test",
+        "n-application-variant-test",
+        "n-application-specific-tests"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused common domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements with bound variability."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are reused domain requirements containing application-specific adaptations."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.1",
+          "quote": "The test case is re-executed for each application to ensure correct behaviour."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application under test contains exactly three magnetic door locks."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The test cases regarding the magnetic card locks must be adapted to cope with the new hardware, for instance, pull the card through a card reader instead of placing it on the card reader."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "New test cases have to be derived to validate this requirement."
+        }
+      ],
+      "statement": {
+        "fr": "Application de contrôle de serrures. Pour chaque exigence d'application : catégorie (commune réutilisée, variable réutilisée, adaptée, nouvelle), test à lancer, et ce qu'on peut reprendre du domaine.\n\n1. Le détecteur de mouvement, présent dans toutes les applications.\n2. L'application contient exactement trois serrures magnétiques (variant lié).\n3. Des serrures magnétiques d'un autre fournisseur : la carte se glisse dans le lecteur au lieu d'être posée dessus.\n4. Un lecteur d'iris, que le domaine ne connaît pas.",
+        "en": "Lock-control application. For each application requirement: category (reused common, reused variable, adapted, new), test to run, and what can be reused from the domain.\n\n1. The motion detection sensor, present in every application.\n2. The application contains exactly three magnetic door locks (bound variant).\n3. Magnetic card locks from another provider: the card is pulled through a reader instead of being placed on it.\n4. An iris reader, which the domain does not know."
+      },
+      "hints": [
+        {
+          "fr": "Pour chaque ligne, demande-toi : cette exigence existe-t-elle dans le domaine, telle quelle, avec variabilité liée, modifiée, ou pas du tout ?",
+          "en": "For each line, ask: does this requirement exist in the domain as it is, with bound variability, modified, or not at all?"
+        }
+      ],
+      "solution": {
+        "fr": "| Exigence | Catégorie | Test | Domaine |\n|---|---|---|---|\n| 1. Détecteur de mouvement | commune réutilisée | **communalité** | tests rejoués tels quels pour chaque application |\n| 2. Exactement trois serrures magnétiques | variable réutilisée (variabilité liée) | **variants** | cas logiques réutilisés ; cas détaillés à écrire : trois serrures, chacune verrouille sa porte |\n| 3. Serrures d'un autre fournisseur | adaptée | **modification** | tests de serrures adaptés au nouveau matériel (glisser la carte) |\n| 4. Lecteur d'iris | nouvelle | **extension** | rien : nouveaux cas de test à dériver, densité de défauts plus élevée |\n\n**Commentaire.** Le critère est toujours le même : que devient l'exigence par rapport au domaine ? Telle quelle → on rejoue ; variabilité liée → on lie et on vérifie les variants ; modifiée → on adapte les tests ; absente → on crée.",
+        "en": "| Requirement | Category | Test | Domain |\n|---|---|---|---|\n| 1. Motion detection sensor | reused common | **commonality** | tests re-run as they are for each application |\n| 2. Exactly three magnetic locks | reused variable (bound variability) | **variant** | logical cases reused; detailed cases to write: three locks, each locks its door |\n| 3. Locks from another provider | adapted | **modification** | lock tests adapted to the new hardware (pull the card) |\n| 4. Iris reader | new | **extension** | nothing: new test cases to derive, higher defect density |\n\n**Comment.** The criterion is always the same: what becomes of the requirement with respect to the domain? As it is → re-run; variability bound → bind and check the variants; modified → adapt the tests; absent → create."
+      },
+      "trap": {
+        "fr": "Ranger l'exigence 3 en « nouvelle » : elle existe dans le domaine, en version modifiée.",
+        "en": "Filing requirement 3 as \"new\": it exists in the domain, in a modified version."
+      }
+    },
+    {
+      "id": "inf4-10-ex-02",
+      "title": {
+        "fr": "Absence ou dépendances ? Cinq défauts",
+        "en": "Absence or dependencies? Five defects"
+      },
+      "difficulty": 3,
+      "level": "analyze",
+      "objective": "o2",
+      "notions": [
+        "n-variant-absence-test",
+        "n-application-dependency-test",
+        "n-application-variant-test",
+        "n-tests-related-to-variability"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the presence of variants violates any restrictions imposed by variability and constraint dependencies (e.g. \"excludes\" constraint dependencies)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Checking whether the absence of variants violates any restrictions (e.g. \"mandatory\" variability dependencies or the \"[min..max]\" range of an alternative choice)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "Hence, the application dependency test checks whether the application also contains the automatic windows variant."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        }
+      ],
+      "statement": {
+        "fr": "Pour chaque défaut de configuration, nomme le test qui le détecte (absence de variant, dépendances d'application, variants) et ce qu'il vérifie.\n\n**A.** Le chauffage automatique est présent ; les fenêtres automatiques, que le chauffage exige, sont absentes.\n**B.** Le lecteur d'empreinte n'a pas été choisi, mais ses composants sont présents.\n**C.** Deux variants reliés par « excludes » sont présents en même temps.\n**D.** Un variant « mandatory » du modèle de variabilité est absent.\n**E.** Le client a choisi le clavier, mais l'application n'en contient pas.",
+        "en": "For each configuration defect, name the test that detects it (variant absence, application dependency, variant) and what it checks.\n\n**A.** Automatic heating is present; the automatic windows, which heating requires, are absent.\n**B.** The fingerprint scanner was not chosen, but its components are present.\n**C.** Two variants linked by \"excludes\" are present at the same time.\n**D.** A \"mandatory\" variant of the variability model is absent.\n**E.** The customer chose the keypad, but the application does not contain one."
+      },
+      "hints": [
+        {
+          "fr": "Pose deux questions : le variant devait-il être là ? Une dépendance est-elle violée ?",
+          "en": "Ask two questions: should the variant be there? Is a dependency violated?"
+        }
+      ],
+      "solution": {
+        "fr": "| Défaut | Test | Pourquoi |\n|---|---|---|\n| A | **dépendances** | l'**absence** de variants viole une dépendance (le chauffage exige les fenêtres : exemple du livre) |\n| B | **absence de variant** | un variant **non choisi** est présent : l'application inclut plus que prévu |\n| C | **dépendances** | la **présence** de variants viole une restriction (excludes) |\n| D | **dépendances** | l'**absence** d'un variant viole une restriction (mandatory ; ou intervalle `[min..max]`) |\n| E | **variants** | un variant **choisi** manque : le test de variants vérifie que tous les variants sélectionnés sont présents (livre §18.5.2) |\n\n**À retenir.** Le test d'absence ne regarde que les variants **en trop**. Les manques liés à une règle (mandatory, requires) relèvent des dépendances ; un variant choisi mais absent sans règle en cause relève du test de variants.",
+        "en": "| Defect | Test | Why |\n|---|---|---|\n| A | **dependencies** | the **absence** of variants violates a dependency (heating requires windows: the book's example) |\n| B | **variant absence** | an **unchosen** variant is present: the application includes more than planned |\n| C | **dependencies** | the **presence** of variants violates a restriction (excludes) |\n| D | **dependencies** | the **absence** of a variant violates a restriction (mandatory; or `[min..max]` range) |\n| E | **variant** | a **chosen** variant is missing: the variant test checks that all selected variants are present (book §18.5.2) |\n\n**Take-away.** The absence test only looks at **extra** variants. Missing variants tied to a rule (mandatory, requires) fall under dependencies; a chosen variant that is missing with no rule involved falls under the variant test."
+      },
+      "trap": {
+        "fr": "Ranger A, D ou E dans le test d'absence parce qu'« il manque quelque chose ».",
+        "en": "Filing A, D or E under the absence test because \"something is missing\"."
+      }
+    },
+    {
+      "id": "inf4-10-ex-03",
+      "title": {
+        "fr": "Corrigé commenté : retrouver et lier un test de domaine",
+        "en": "Worked solution: retrieving and binding a domain test"
+      },
+      "difficulty": 3,
+      "level": "analyze",
+      "objective": "o1",
+      "notions": [
+        "n-domain-test-reuse",
+        "n-binding-variability-in-tests",
+        "n-test-traceability",
+        "n-test-levels"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.1",
+          "quote": "In order to derive the application test case scenario, the test engineer binds this variant also in the domain test case scenario."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "The domain test case is reused for a new application test case that validates the realisation of the corresponding application requirement."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.1",
+          "quote": "The application test engineer thus has to learn how to bind the variability defined in the domain test artefacts according to the application variability model."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.4.2",
+          "quote": "The application integration test cases are created by reusing the domain integration test cases and by binding the variants defined in the application variability model."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.6.2",
+          "quote": "Furthermore, the exact number of locks is incorporated into the detailed application test cases and application test case scenarios."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.2.2",
+          "quote": "Thus, based on the domain requirements, the reusable domain test artefacts can be retrieved."
+        }
+      ],
+      "statement": {
+        "fr": "Le domaine contient un scénario de test d'authentification à trois variants : lecteur d'empreinte, clavier, lecteur de carte magnétique. L'application testée a trois serrures magnétiques reliées à un serveur ; son modèle de variabilité a lié « lecteur de carte magnétique ».\n\n1. Comment retrouve-t-on le scénario de domaine ?\n2. Comment obtient-on le scénario d'application ?\n3. Que reste-t-il à écrire à la main ?\n4. À quel niveau valide-t-on les interactions entre les trois serrures et le serveur ?",
+        "en": "The domain contains an authentication test scenario with three variants: fingerprint scanner, keypad, magnetic card reader. The application under test has three magnetic locks linked to a server; its variability model has bound \"magnetic card reader\".\n\n1. How is the domain scenario retrieved?\n2. How is the application scenario obtained?\n3. What is left to write by hand?\n4. At which level are the interactions between the three locks and the server validated?"
+      },
+      "hints": [
+        {
+          "fr": "Pense à la chaîne : exigence d'application → exigence de domaine → test de domaine.",
+          "en": "Think of the chain: application requirement → domain requirement → domain test."
+        }
+      ],
+      "solution": {
+        "fr": "**1. Retrouver.** Par **traçabilité** : une trace relie l'exigence de domaine « serrures électroniques » au scénario de test (le livre l'appelle « Domain Door Lock TestTrace ») ; quand un variant de serrure est repris dans une application, la dépendance entre exigences de domaine et d'application est enregistrée aussi. On suit ces traces pour identifier le cas de test réutilisable.\n\n**2. Obtenir le scénario d'application.** On **lie** dans le scénario de domaine le variant choisi par le modèle de variabilité d'application : on garde « lecteur de carte magnétique » et on écarte empreinte et clavier.\n\n**3. À écrire à la main.** Les cas de test **détaillés** : on y intègre le nombre exact de serrures (trois). Les cas logiques, eux, se réutilisent (test de variants).\n\n**4. Niveau.** Au **test d'intégration** : on réutilise les cas d'intégration du domaine, on lie les variants du modèle d'application, et on valide les interactions entre les trois serrures magnétiques et le serveur.",
+        "en": "**1. Retrieve.** By **traceability**: a trace links the domain requirement \"electronic door locks\" to the test scenario (the book calls it \"Domain Door Lock TestTrace\"); when a door lock variant is incorporated into an application, the dependency between domain and application requirements is recorded as well. These traces are followed to identify the reusable test case.\n\n**2. Get the application scenario.** In the domain scenario, **bind** the variant chosen by the application variability model: keep \"magnetic card reader\" and drop fingerprint and keypad.\n\n**3. To write by hand.** The **detailed** test cases: they incorporate the exact number of locks (three). The logical cases are reused (variant test).\n\n**4. Level.** At the **integration test**: the domain integration cases are reused, the variants of the application model are bound, and the interactions between the three magnetic locks and the server are validated."
+      },
+      "trap": {
+        "fr": "Réécrire le scénario d'authentification de zéro au lieu de lier le variant choisi dans le scénario de domaine.",
+        "en": "Rewriting the authentication scenario from scratch instead of binding the chosen variant in the domain scenario."
+      }
+    },
+    {
+      "id": "inf4-10-ex-04",
+      "title": {
+        "fr": "Transfert : tester une application de machines à café",
+        "en": "Transfer: testing a coffee-machine application"
+      },
+      "difficulty": 3,
+      "level": "analyze",
+      "objective": "o3",
+      "notions": [
+        "n-variant-absence-test",
+        "n-application-dependency-test",
+        "n-application-variant-test",
+        "n-application-commonality-test",
+        "n-application-specific-tests",
+        "n-test-coverage-categories"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.3",
+          "quote": "The application dependency test checks if the application is in conformance with the constraint and variability dependencies specified in the domain and application variability models."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.2",
+          "quote": "The application variant test verifies that all selected variants are part of the application and ensures the correct behaviour of these variants."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.1",
+          "quote": "If, for instance, a common component is placed in the context of a specific application with its specific selection of variants, the component can fail even though it has not changed."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.3",
+          "quote": "The application extension test covers parts of the application requirements models that were newly developed for a specific application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5",
+          "quote": "This category includes all application requirements that are purely application-specific and are not derived from domain requirements."
+        }
+      ],
+      "statement": {
+        "fr": "Cas absent du cours. Une ligne de machines à café a : « moulin » (commun à toutes), « mousseur à lait » (variant), « capteur de réservoir » (variant), « alerte de détartrage » (variant) avec `alerte requires capteur`, et « mode voyage » (variant) avec `mode voyage excludes mousseur`.\n\nL'application X a pour modèle de variabilité : mousseur à lait et alerte de détartrage. Elle ajoute une exigence nouvelle : un « programme vapeur ». La version livrée au test contient : moulin, mousseur, alerte de détartrage, mode voyage, programme vapeur, et **pas** de capteur de réservoir.\n\nQuels tests lancer, et que détecte chacun ?",
+        "en": "A case that is not in the course. A coffee-machine line has: \"grinder\" (common to all), \"milk frother\" (variant), \"tank sensor\" (variant), \"descaling alert\" (variant) with `alert requires sensor`, and \"travel mode\" (variant) with `travel mode excludes frother`.\n\nApplication X has the variability model: milk frother and descaling alert. It adds a new requirement: a \"steam programme\". The version delivered to testing contains: grinder, frother, descaling alert, travel mode, steam programme, and **no** tank sensor.\n\nWhich tests should be run, and what does each detect?"
+      },
+      "hints": [
+        {
+          "fr": "Compare la version livrée au modèle de variabilité d'application, puis aux dépendances.",
+          "en": "Compare the delivered version with the application variability model, then with the dependencies."
+        }
+      ],
+      "solution": {
+        "fr": "- **Test de communalité** (moulin, exigence commune) : on rejoue les tests de domaine du moulin dans le contexte de X ; aucun défaut annoncé ici, mais le test est quand même lancé.\n- **Test de variants** : mousseur et alerte de détartrage sont bien présents et doivent se comporter correctement ✓.\n- **Test d'absence de variant** : le **mode voyage** n'a pas été choisi mais il est présent → **défaut** (variant en trop).\n- **Test de dépendances** : (1) l'alerte de détartrage exige le capteur de réservoir, **absent** → absence interdite, **défaut** ; (2) le mode voyage **exclut** le mousseur, tous deux présents → présence interdite, **défaut** (le mode voyage cumule donc deux défauts).\n- **Test d'extension** (programme vapeur, exigence nouvelle) : pas de test de domaine à reprendre, les cas sont **créés de zéro** ; on s'attend à une densité de défauts plus élevée.\n\n**Lecture.** La configuration n'est pas conforme au modèle d'application ni aux dépendances du domaine : les défauts de configuration sont remontés à l'ingénierie des exigences et à la réalisation d'application.",
+        "en": "- **Commonality test** (grinder, common requirement): the domain tests of the grinder are re-run in X's context; no defect is announced here, but the test is still run.\n- **Variant test**: frother and descaling alert are indeed present and must behave correctly ✓.\n- **Variant absence test**: **travel mode** was not chosen but is present → **defect** (extra variant).\n- **Dependency test**: (1) the descaling alert requires the tank sensor, which is **absent** → forbidden absence, **defect**; (2) travel mode **excludes** the frother, both present → forbidden presence, **defect** (so travel mode accounts for two defects).\n- **Extension test** (steam programme, new requirement): no domain test to reuse, the cases are **created from scratch**; a higher defect density is expected.\n\n**Reading.** The configuration does not comply with the application model nor with the domain dependencies: the configuration defects are reported back to requirements engineering and to application realisation."
+      },
+      "trap": {
+        "fr": "Oublier que le même variant (mode voyage) peut échouer à deux tests différents : absence et dépendances.",
+        "en": "Forgetting that the same variant (travel mode) can fail two different tests: absence and dependencies."
+      }
+    }
+  ],
+  "writing": [
+    {
+      "id": "inf4-10-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l'ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+    },
+    {
+      "id": "inf4-10-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète la définition 18-2.",
+        "en": "Complete definition 18-2."
+      },
+      "text": "The application dependency test checks if the application is in {{conformance}} with the constraint and variability {{dependencies}} specified in the domain and application variability {{models}}.",
+      "translation": "Le test de dépendances d'application vérifie que l'application est conforme aux dépendances de contrainte et de variabilité spécifiées dans les modèles de variabilité de domaine et d'application."
+    },
+    {
+      "id": "inf4-10-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Trouve l'erreur sur les tests unitaires de domaine.",
+        "en": "Find the error about domain unit tests."
+      },
+      "sentence": "Domain unit test cases are not repeated in application testing for the common parts of a component.",
+      "error": "are not repeated",
+      "corrected": "are repeated",
+      "explanation": {
+        "fr": "Il est nécessaire de **répéter** les tests unitaires même pour la partie commune : la configuration propre à l'application peut influencer le résultat.",
+        "en": "It is necessary to **repeat** unit tests even for common functionality: the application's specific configuration may influence the result."
+      }
+    },
+    {
+      "id": "inf4-10-wr-04",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Trouve l'erreur de préposition (typique des francophones).",
+        "en": "Find the preposition error (typical of French speakers)."
+      },
+      "sentence": "Domain test cases for common requirements are reexecuted on application testing.",
+      "error": "on application testing",
+      "corrected": "in application testing",
+      "explanation": {
+        "fr": "On dit « in application testing » : la préposition « in » pour un sous-processus, pas « on » (calque de « sur »).",
+        "en": "We say \"in application testing\": the preposition \"in\" for a sub-process, not \"on\" (a calque of French \"sur\")."
+      }
+    },
+    {
+      "id": "inf4-10-wr-05",
+      "kind": "free",
+      "prompt": {
+        "fr": "Explique en 3 ou 4 phrases pourquoi on rejoue les tests de domaine en test d'application, et quels tests sont propres aux lignes de produits.",
+        "en": "Explain in 3 or 4 sentences why domain tests are re-run in application testing, and which tests are specific to product lines."
+      },
+      "modelAnswer": "Domain tests are reused so that test artefacts do not have to be developed from scratch for each application. However, they are re-run, even for common parts, because the configuration of the application may influence the results. Two tests are specific to product lines: the variant absence test checks that no unplanned variant is included, and the application dependency test checks the constraint and variability dependencies.",
+      "keywords": [
+        "reused",
+        "re-run",
+        "configuration",
+        "absence",
+        "dependency"
+      ],
+      "checklist": [
+        {
+          "fr": "Dire pourquoi on réutilise les tests du domaine.",
+          "en": "Say why the domain tests are reused."
+        },
+        {
+          "fr": "Dire pourquoi on les rejoue malgré tout.",
+          "en": "Say why they are re-run all the same."
+        },
+        {
+          "fr": "Citer test d'absence et test de dépendances.",
+          "en": "Name the absence test and the dependency test."
+        }
+      ],
+      "usefulPhrases": [
+        "so that",
+        "however",
+        "may influence",
+        "checks that"
+      ]
+    }
+  ],
+  "question": {
+    "fr": "Comment tester une application dérivée de la ligne en réutilisant les tests du domaine, tout en vérifiant ce qu'un système unique n'a pas à vérifier : la liaison de la variabilité ?",
+    "en": "How do you test an application derived from the line by reusing the domain tests, while checking what a single system does not have to check: variability binding?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "level": "understand",
+      "text": {
+        "fr": "Expliquer comment on réutilise les tests du domaine : lier leurs points de variation, retrouver les tests par traçabilité, lire les deltas.",
+        "en": "Explain how domain tests are reused: bind their variation points, retrieve tests by traceability, read the deltas."
+      }
+    },
+    {
+      "id": "o2",
+      "level": "analyze",
+      "text": {
+        "fr": "Distinguer test d'absence de variant et test de dépendances d'application, et dire quel défaut chacun détecte.",
+        "en": "Distinguish the variant absence test from the application dependency test, and say which defect each one detects."
+      }
+    },
+    {
+      "id": "o3",
+      "level": "apply",
+      "text": {
+        "fr": "Choisir le test d'une exigence selon sa catégorie (commune, variable, adaptée, nouvelle) et dire ce qu'on reprend du domaine.",
+        "en": "Choose the test of a requirement according to its category (common, variable, adapted, new) and say what is reused from the domain."
+      }
+    },
+    {
+      "id": "o4",
+      "level": "understand",
+      "text": {
+        "fr": "Décrire les trois niveaux de test (unitaire, intégration, système), leur entrée, et pourquoi on rejoue des tests de domaine.",
+        "en": "Describe the three test levels (unit, integration, system), their input, and why domain tests are re-run."
+      }
+    },
+    {
+      "id": "o5",
+      "level": "understand",
+      "text": {
+        "fr": "Citer les trois activités du test d'application et les différences avec l'ingénierie d'un système unique.",
+        "en": "Name the three application test activities and the differences from single-system engineering."
+      }
+    }
+  ],
+  "examFocus": {
+    "probable": [
+      {
+        "fr": "Objectif de chapitre du livre en « How to… » : « How to reuse domain test artefacts for a particular application » ; définitions numérotées 18-1 (variant absence test) et 18-2 (application dependency test) (PROFIL-PROF §2, §4).",
+        "en": "Book chapter objective in \"How to…\" form: \"How to reuse domain test artefacts for a particular application\"; numbered definitions 18-1 (variant absence test) and 18-2 (application dependency test) (PROFIL-PROF §2, §4)."
+      },
+      {
+        "fr": "Section « Differences from Single-System Engineering » du chapitre 18 (PROFIL-PROF §7). Aucune annale : à confirmer.",
+        "en": "Section \"Differences from Single-System Engineering\" of chapter 18 (PROFIL-PROF §7). No past exam: to be confirmed."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 5 (deltas d'exigences, traçabilité), chapitre 6 (conception et réalisation d'application) et chapitre 4 (variabilité).",
+    "en": "Chapter 5 (requirements deltas, traceability), chapter 6 (application design and realisation) and chapter 4 (variability)."
+  },
+  "next": {
+    "fr": "Le chapitre 8 (RED-PL) revient en amont : comment dériver les exigences d'un produit depuis ses besoins.",
+    "en": "Chapter 8 (RED-PL) goes back upstream: how to derive a product's requirements from its needs."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Idée clé : développer les tests une fois pour toute la ligne et les réutiliser, pour les parties communes et variables ; on lie les points de variation des cas de test selon le modèle de variabilité d'application.",
+        "en": "Key idea: develop tests once for the whole line and reuse them, for common and variable parts; the variation points of test cases are bound according to the application variability model."
+      },
+      {
+        "fr": "Deux clés de la réutilisation : la traçabilité (exigences d'application → exigences de domaine → tests de domaine) et les deltas d'exigences (réutilisé, adapté ou créé).",
+        "en": "Two keystones of reuse: traceability (application requirements → domain requirements → domain tests) and requirements deltas (reused, adapted or created)."
+      },
+      {
+        "fr": "Tests propres à la variabilité : absence de variant (pas de variant non prévu) et dépendances d'application (requires, excludes, mandatory, [min..max]).",
+        "en": "Variability-specific tests: variant absence (no unplanned variant) and application dependency (requires, excludes, mandatory, [min..max])."
+      },
+      {
+        "fr": "Quatre catégories d'exigences, quatre tests : commune → communalité ; variable → variants ; adaptée → modification ; nouvelle → extension.",
+        "en": "Four requirement categories, four tests: common → commonality; variable → variants; adapted → modification; new → extension."
+      },
+      {
+        "fr": "Trois niveaux (unitaire, intégration, système) et trois activités (planification, spécification, exécution) ; même le code réutilisé est testé à fond.",
+        "en": "Three levels (unit, integration, system) and three activities (planning, specification, execution); even reused code is thoroughly tested."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Associer chaque exigence d'application à son test selon sa catégorie.",
+        "en": "Match each application requirement to its test according to its category."
+      },
+      {
+        "fr": "Dire, pour un défaut de configuration, s'il relève du test d'absence, de variants ou de dépendances.",
+        "en": "Say, for a configuration defect, whether it falls under the absence, variant or dependency test."
+      },
+      {
+        "fr": "Dérouler la réutilisation d'un test de domaine : trace, deltas, liaison des variants.",
+        "en": "Walk through the reuse of a domain test: trace, deltas, variant binding."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Test d'absence (« n'y a-t-il pas trop de variants ? ») ≠ test de dépendances (« les dépendances sont-elles respectées ? »).",
+        "en": "Absence test (\"are there too many variants?\") ≠ dependency test (\"are the dependencies respected?\")."
+      },
+      {
+        "fr": "Test de modification (exigence adaptée) ≠ test d'extension (exigence nouvelle).",
+        "en": "Modification test (adapted requirement) ≠ extension test (new requirement)."
+      },
+      {
+        "fr": "CRS (cas de test de domaine avec parties communes et variables explicites) ≠ SAS (on part des cas de l'application exemple).",
+        "en": "CRS (domain test cases with explicit common and variable parts) ≠ SAS (starting from the sample application's cases)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 5 : les deltas d'exigences et la traçabilité servent ici à décider quoi réutiliser.",
+        "en": "Chapter 5: requirements deltas and traceability are used here to decide what to reuse."
+      },
+      {
+        "fr": "Chapitre 6 : le test porte sur l'application configurée et assemblée en réalisation.",
+        "en": "Chapter 6: testing applies to the application configured and assembled in realisation."
+      },
+      {
+        "fr": "Chapitre 7 : la vérification d'un modèle de ligne, côté domaine, répond au même souci de fiabilité.",
+        "en": "Chapter 7: verifying a product line model, on the domain side, answers the same reliability concern."
+      }
+    ]
+  }
+}
