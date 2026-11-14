@@ -15,8 +15,8 @@ import type { Course } from './schema'
 const REC1_05 = 'rec1-05-qualite-validite-ethique'
 
 describe('loader', () => {
-  it('liste les 4 matières', () => {
-    expect(getCourses().map((c) => c.id)).toEqual(['inf4', 'isi1', 'isi5', 'rec1'])
+  it('liste les 5 matières', () => {
+    expect(getCourses().map((c) => c.id)).toEqual(['inf4', 'isi1', 'isi5', 'isi7', 'rec1'])
     expect(getCourse('rec1')?.code).toBe('S3-REC1')
     expect(getCourse('zzz')).toBeUndefined()
   })

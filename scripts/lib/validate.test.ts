@@ -92,11 +92,11 @@ describe('contenu actuel', () => {
   it('le contenu actuel passe : 0 erreur', () => {
     const r = validateTree(real, readText)
     expect(errors(r)).toEqual([])
-    expect(r.stats.courses).toBe(4)
+    expect(r.stats.courses).toBe(5)
     expect(r.stats.chapters).toBeGreaterThanOrEqual(1)
     expect(r.stats.citations).toBeGreaterThanOrEqual(143)
     expect(formatSummary(r)).toMatch(
-      /^✔ 4 matières · \d+ chapitres? · (?:\d+ examens? · )?\d+ citations vérifiées · couverture ★★★ \d+\/\d+/,
+      /^✔ 5 matières · \d+ chapitres? · (?:\d+ examens? · )?\d+ citations vérifiées · couverture ★★★ \d+\/\d+/,
     )
   }, 60_000) // ~7 s : 5000+ citations à vérifier
   it('formate les messages comme spécifié', () => {

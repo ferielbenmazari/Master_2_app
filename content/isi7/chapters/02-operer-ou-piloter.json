@@ -1,0 +1,1711 @@
+{
+  "id": "isi7-02-operer-ou-piloter",
+  "courseId": "isi7",
+  "order": 2,
+  "title": {
+    "fr": "Opérer ou piloter ?",
+    "en": "Operate or manage?"
+  },
+  "hook": {
+    "fr": "Le stock à 14 h et la comparaison à l’an dernier : deux besoins, deux systèmes.",
+    "en": "Stock at 2 pm and the comparison with last year: two needs, two systems."
+  },
+  "question": {
+    "fr": "Pourquoi ne peut-on pas piloter une entreprise avec les systèmes qui servent à l’opérer ?",
+    "en": "Why can a company not be managed with the systems that run it?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Énoncer la phrase clé : les pain points naissent quand on pilote avec des systèmes qui servent à opérer.",
+        "en": "State the key sentence: pain points arise when one manages with systems built to operate."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Comparer opérer et piloter sur les six critères du tableau.",
+        "en": "Compare operating and managing on the six criteria of the table."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Classer un besoin concret en opérer ou piloter.",
+        "en": "Classify a concrete need as operating or managing."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Justifier qu’un système analytique impose d’autres choix de conception (séparation, dénormalisation).",
+        "en": "Justify why an analytical system calls for different design choices (separation, denormalisation)."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Reconnaître que le pilotage opérationnel reste du pilotage.",
+        "en": "Recognise that operational steering is still management."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Objectif « Situer » : « explain why an analytical system imposes different design choices than a transactional system (denormalization, for example) » (diapositive « Learning Objectives »).",
+        "en": "The “Situate” objective: “explain why an analytical system imposes different design choices than a transactional system (denormalization, for example)” (“Learning Objectives” slide)."
+      },
+      {
+        "fr": "Sections 1 et 2 = majeure partie de l’examen (compte rendu).",
+        "en": "Sections 1 and 2 = most of the exam (session notes)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Classement d’un besoin en opérer / piloter ou justification de la séparation de l’entrepôt : estimation, aucune annale.",
+        "en": "Classifying a need as operating / managing or justifying the separate warehouse: an estimate, no past exam exists."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 1 : les pressions externes et internes qui poussent à piloter.",
+    "en": "Chapter 1: the external and internal pressures pushing towards managing."
+  },
+  "next": {
+    "fr": "Chapitre 3 : les cinq pain points, version utilisateur de cet écart.",
+    "en": "Chapter 3: the five pain points, the user-side version of this gap."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Les six critères qui opposent opérer et piloter.",
+        "en": "The six criteria that oppose operating and managing."
+      },
+      {
+        "fr": "Pain points = piloter avec des systèmes qui servent à opérer.",
+        "en": "Pain points = managing with systems built to operate."
+      },
+      {
+        "fr": "Les raisons de séparer l’entrepôt : performance, historique, consolidation, organisation.",
+        "en": "The reasons for a separate warehouse: performance, history, consolidation, organisation."
+      },
+      {
+        "fr": "Dénormaliser : même information, mais simple et rapide.",
+        "en": "Denormalising: same information, but simple and fast."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Classer un besoin en opérer / piloter avec deux critères.",
+        "en": "Classify a need as operating / managing with two criteria."
+      },
+      {
+        "fr": "Argumenter contre « on branche les dashboards sur la base de production ».",
+        "en": "Argue against “plug the dashboards into the production database”."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Opérationnel (niveau de détail du pilotage) ≠ opérer (exécuter un processus).",
+        "en": "Operational (level of detail of management) ≠ operating (executing a process)."
+      },
+      {
+        "fr": "Normaliser (opérationnel) ≠ dénormaliser (analytique) : choix pour des besoins différents.",
+        "en": "Normalising (operational) ≠ denormalising (analytical): choices for different needs."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 1 : les pressions qui poussent à piloter.",
+        "en": "Chapter 1: the pressures pushing towards managing."
+      },
+      {
+        "fr": "Chapitre 3 : ces écarts engendrent les cinq pain points.",
+        "en": "Chapter 3: these gaps produce the five pain points."
+      },
+      {
+        "fr": "Chapitre 13 : le modèle dimensionnel en détail.",
+        "en": "Chapter 13: the dimensional model in detail."
+      }
+    ]
+  },
+  "estimatedMinutes": 13,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md",
+    "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+    "sources-texte/isi7/ext-kimball-2013-techniques.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Deux besoins, pas un",
+        "en": "Two needs, not one"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un client passe en caisse à 14 h ; un directeur régional compare, le lundi, les ventes de ses magasins à celles de l’an dernier. Pour le cours, ce sont deux besoins distincts : **opérer** (faire tourner les processus, par exemple commander ou facturer) et **piloter** (comprendre, décider, suivre l’effet des décisions).",
+        "en": "A customer checks out at 2 pm; on Monday a regional director compares the sales of their stores with last year’s. For the course these are two distinct needs: **operating** (running processes, for example ordering or invoicing) and **managing** (understanding, deciding, tracking the effect of decisions)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Understand, decide, track the effect of decisions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A regional director compares sales per store with the prior year, like-for-like."
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Critère",
+          "en": "Criterion"
+        },
+        {
+          "fr": "Opérer",
+          "en": "Operating"
+        },
+        {
+          "fr": "Piloter",
+          "en": "Managing"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Objet",
+            "en": "Object"
+          },
+          {
+            "fr": "La transaction individuelle",
+            "en": "The individual transaction"
+          },
+          {
+            "fr": "Des agrégats : totaux, taux, tendances",
+            "en": "Aggregates: totals, rates, trends"
+          }
+        ],
+        [
+          {
+            "fr": "Temps",
+            "en": "Time"
+          },
+          {
+            "fr": "L’état courant (stock à l’instant T)",
+            "en": "The current state (stock at time T)"
+          },
+          {
+            "fr": "L’historique (comparer à l’an dernier, suivre une tendance)",
+            "en": "History (compare with prior year, follow a trend)"
+          }
+        ],
+        [
+          {
+            "fr": "Périmètre",
+            "en": "Scope"
+          },
+          {
+            "fr": "Un couple application / processus",
+            "en": "One application & process pair"
+          },
+          {
+            "fr": "Transversal : combine plusieurs processus",
+            "en": "Cross-functional: combine multiple processes"
+          }
+        ],
+        [
+          {
+            "fr": "Questions",
+            "en": "Questions"
+          },
+          {
+            "fr": "Connues d’avance, répétitives",
+            "en": "Known in advance, repetitive"
+          },
+          {
+            "fr": "Imprévisibles : la question d’aujourd’hui n’existait pas hier",
+            "en": "Unpredictable: today’s question did not exist yesterday"
+          }
+        ],
+        [
+          {
+            "fr": "Usage",
+            "en": "Usage"
+          },
+          {
+            "fr": "Lectures / écritures, temps réel",
+            "en": "Reads / writes, real time"
+          },
+          {
+            "fr": "Surtout des lectures",
+            "en": "Mostly reads"
+          }
+        ],
+        [
+          {
+            "fr": "Définitions",
+            "en": "Definitions"
+          },
+          {
+            "fr": "Propres à chaque application",
+            "en": "Specific to each application"
+          },
+          {
+            "fr": "Partagées entre processus et stables dans le temps",
+            "en": "Shared across processes and stable over time"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "The individual transaction Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Known in advance, repetitive"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Unpredictable: today's question did not exist yesterday"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Reads / writes, real time"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Specific to each application"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Shared across processes and stable over time"
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Lis le tableau en colonnes. À gauche, un monde de petites actions répétées sur l’état présent, avec des définitions locales ; à droite, un monde d’agrégats sur l’historique, qui croisent plusieurs processus avec des définitions communes. Les deux colonnes ne se règlent pas avec les mêmes choix de conception.",
+        "en": "Read the table by column. On the left, a world of small repeated actions on the present state, with local definitions; on the right, a world of aggregates over history, crossing several processes with common definitions. The two columns are not settled with the same design choices."
+      },
+      "explain": true,
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Exemple de retail du cours : encaisser un client ou expédier un colis = opérer ; comparer les ventes par magasin à l’année précédente à périmètre constant = piloter.",
+        "en": "The course’s retail example: ringing up a customer or shipping a parcel = operating; comparing sales per store with the prior year, like-for-like = managing."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Ringing up a customer, shipping a parcel"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-02-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le piège : piloter avec ce qui sert à opérer",
+        "en": "The trap: managing with what is built to operate"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La phrase à retenir de la diapositive : les pain points apparaissent quand une entreprise pilote avec des systèmes construits pour opérer.",
+        "en": "The sentence to remember from the slide: pain points arise when a company steers with systems built to operate."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Pain points arise when a company steers with systems built to operate."
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi ne pas simplement interroger les bases opérationnelles ? Chaudhuri et Dayal (1997) donnent quatre raisons de séparer l’entrepôt des bases opérationnelles.",
+        "en": "Why not simply query the operational databases? Chaudhuri and Dayal (1997) give four reasons to keep the warehouse separate from operational databases."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "It is for all these reasons that data warehouses are implemented separately from operational databases."
+        }
+      ],
+      "notions": [
+        "n-oltp-olap"
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**Performance** : lancer des requêtes OLAP complexes sur des bases réglées pour les charges OLTP connues donnerait des performances inacceptables.",
+          "en": "**Performance**: running complex OLAP queries on databases tuned for known OLTP workloads would give unacceptable performance."
+        },
+        {
+          "fr": "**Historique** : comprendre les tendances ou prévoir exige de l’historique, alors que les bases opérationnelles ne stockent que l’état courant.",
+          "en": "**History**: understanding trends or making predictions requires historical data, whereas operational databases store only current data."
+        },
+        {
+          "fr": "**Consolidation** : l’aide à la décision rassemble des données de nombreuses sources hétérogènes, de qualité et de codage inégaux.",
+          "en": "**Consolidation**: decision support brings together data from many heterogeneous sources, of varying quality and coding."
+        },
+        {
+          "fr": "**Organisation** : le modèle multidimensionnel exige une organisation de données et des méthodes d’accès que les SGBD orientés OLTP ne fournissent pas.",
+          "en": "**Organisation**: the multidimensional model requires data organisation and access methods that OLTP-oriented DBMSs do not provide."
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "trying to execute complex OLAP queries against the operational databases would result in unacceptable performance"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "understanding trends or making predictions requires historical data, whereas operational databases store only current data"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "Decision support usually requires consolidating data from many heterogeneous sources"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "requires special data organization, access methods, and implementation methods"
+        }
+      ],
+      "notions": [
+        "n-oltp-olap"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) Chaudhuri et Dayal définissent l’entrepôt de données comme une collection de données « subject-oriented, integrated, time-varying, non-volatile » utilisée surtout pour la prise de décision organisationnelle.",
+        "en": "**Going further** — (outside the course materials) Chaudhuri and Dayal define a data warehouse as a “subject-oriented, integrated, time-varying, non-volatile” collection of data used primarily in organizational decision making."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "non-volatile collection of data that is used primarily in organizational decision making"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-02-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Transactionnel contre analytique : ce que ça change à la conception",
+        "en": "Transactional versus analytical: what it changes in design"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans un système **OLTP**, les tâches sont structurées et répétitives : des transactions courtes, atomiques et isolées, qui lisent ou modifient quelques enregistrements. Dans un système **OLAP**, l’historique, les données résumées et consolidées priment sur les enregistrements détaillés, et la charge est faite de requêtes complexes ad hoc qui parcourent des millions de lignes.",
+        "en": "In an **OLTP** system, tasks are structured and repetitive: short, atomic, isolated transactions that read or update a few records. In an **OLAP** system, historical, summarised and consolidated data matters more than detailed records, and the workload is made of complex ad hoc queries scanning millions of rows."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "These tasks are structured and repetitive, and consist of short, atomic, isolated transactions."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "Historical, summarized and consolidated data is more important than detailed, individual records."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "The workloads are query intensive with mostly ad hoc, complex queries that can access millions of records"
+        }
+      ],
+      "notions": [
+        "n-oltp-olap"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Cela change le modèle de données. Les structures normalisées (3NF) sont précieuses pour les traitements opérationnels, parce qu’une mise à jour ne touche la base qu’à un seul endroit. Mais, selon Kimball et Ross, elles sont trop compliquées pour des requêtes BI.",
+        "en": "This changes the data model. Normalised (3NF) structures are valuable for operational processing, because an update touches the database in only one place. But, according to Kimball and Ross, they are too complicated for BI queries."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "Normalized 3NF structures are immensely useful in operational processing because an update or insert transaction touches the database in only one place."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "Normalized models, however, are too complicated for BI queries."
+        }
+      ],
+      "notions": [
+        "n-denormalization"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "D’où la **dénormalisation** de l’analytique : on répète la marque et la catégorie sur chaque ligne de produit au lieu de les isoler dans des tables de référence. Le modèle dimensionnel contient la même information qu’un modèle normalisé, mais la présente pour être comprise, rapide à interroger et résistante au changement.",
+        "en": "Hence the **denormalisation** of analytics: brand and category are repeated on each product row instead of being isolated in lookup tables. The dimensional model holds the same information as a normalised model, but packages it to be understandable, fast to query and resilient to change."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "A dimensional model contains the same information as a normalized model, but packages the data in a format that delivers user understandability, query performance, and resilience to change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "You should almost always trade off dimension table space for simplicity and accessibility."
+        }
+      ],
+      "notions": [
+        "n-denormalization"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Piège : la dénormalisation n’est pas une erreur de conception. Dans un système analytique, la redondance est choisie : simplicité et vitesse plutôt qu’économie d’espace.",
+        "en": "Trap: denormalisation is not a design mistake. In an analytical system, redundancy is chosen: simplicity and speed rather than saving space."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension denormalization supports dimensional modeling’s twin objectives of simplicity and speed."
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  OP[\"Operational systems: current state, short transactions, normalised\"] --> DW[\"Data warehouse: history, aggregates, denormalised model\"]\n  DW --> BI[\"Reports, dashboards, ad hoc analysis\"]",
+      "caption": {
+        "fr": "Les systèmes qui opèrent alimentent un entrepôt conçu autrement, qui sert le pilotage.",
+        "en": "Systems that operate feed a warehouse designed differently, which serves management."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-02-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Piloter à l’échelle opérationnelle, c’est encore piloter",
+        "en": "Managing at the operational level is still managing"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une nuance explicite du cours : « operational steering » reste du pilotage. Un chef d’équipe qui suit le taux de service du jour fait du pilotage, même au niveau opérationnel. Ici, les niveaux stratégique, tactique et opérationnel décrivent l’horizon, la fréquence et le niveau de détail.",
+        "en": "An explicit nuance in the course: “operational steering” is still steering. A team lead tracking today’s service rate is doing management, even at the operational level. Here, the strategic, tactical and operational levels describe horizon, frequency and level of detail."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A team lead tracking today's service rate is management, even at the operational level."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "the strategic / tactical / operational levels describe horizon, frequency and level of detail"
+        }
+      ],
+      "notions": [
+        "n-operational-steering"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : « opérationnel » (niveau de détail et d’horizon d’une décision de pilotage) n’est pas « opérer » (exécuter un processus). Suivre le taux de service du jour = piloter ; encaisser = opérer.",
+        "en": "Trap: “operational” (level of detail and horizon of a management decision) is not “operating” (executing a process). Tracking today’s service rate = managing; ringing up a sale = operating."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A team lead tracking today's service rate is management, even at the operational level."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Fil rouge pour la suite : l’objectif « Situer » du cours demande précisément de justifier pourquoi un système analytique impose d’autres choix qu’un système transactionnel, la dénormalisation étant l’exemple cité.",
+        "en": "A thread for what follows: the course’s “Situate” objective asks precisely to justify why an analytical system calls for different choices than a transactional one, with denormalisation as the example given."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "explain why an analytical system imposes different design choices than a transactional system (denormalization, for example)"
+        }
+      ],
+      "notions": [
+        "n-oltp-olap"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-02-qz-04"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-operating-need",
+      "fr": "opérer",
+      "en": "operating",
+      "definition": {
+        "fr": "Faire tourner les processus de l’entreprise (commander, facturer) : objet = la transaction individuelle, temps = l’état courant.",
+        "en": "Running the company’s processes (ordering, invoicing): object = the individual transaction, time = the current state."
+      },
+      "example": {
+        "fr": "Encaisser un client, expédier un colis.",
+        "en": "Ringing up a customer, shipping a parcel."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Understand, decide, track the effect of decisions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "The individual transaction Aggregates: totals, rates, trends"
+        }
+      ],
+      "notion": "n-operating-vs-managing"
+    },
+    {
+      "id": "term-managing-need",
+      "fr": "piloter",
+      "en": "managing",
+      "definition": {
+        "fr": "Comprendre, décider et suivre l’effet des décisions : objet = des agrégats, temps = l’historique, périmètre transversal.",
+        "en": "Understanding, deciding and tracking the effect of decisions: object = aggregates, time = history, cross-functional scope."
+      },
+      "pitfall": {
+        "fr": "« Opérationnel » (niveau de détail) ne veut pas dire « opérer ».",
+        "en": "“Operational” (level of detail) does not mean “operating”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Understand, decide, track the effect of decisions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Aggregates: totals, rates, trends"
+        }
+      ],
+      "notion": "n-operating-vs-managing"
+    },
+    {
+      "id": "term-oltp",
+      "fr": "OLTP (traitement transactionnel en ligne)",
+      "en": "OLTP (online transaction processing)",
+      "definition": {
+        "fr": "Famille de systèmes qui opèrent : transactions courtes, atomiques, isolées sur quelques enregistrements, questions connues d’avance.",
+        "en": "Family of systems that operate: short, atomic, isolated transactions on a few records, questions known in advance."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Course framework",
+          "quote": "Intern students who know infrastructure and transactional DBMS (OLTP), not analytics (OLAP)."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "These tasks are structured and repetitive, and consist of short, atomic, isolated transactions."
+        }
+      ],
+      "notion": "n-oltp-olap"
+    },
+    {
+      "id": "term-olap",
+      "fr": "OLAP (traitement analytique en ligne)",
+      "en": "OLAP (online analytical processing)",
+      "definition": {
+        "fr": "Famille de systèmes qui pilotent : requêtes ad hoc complexes sur l’historique et des données consolidées.",
+        "en": "Family of systems that manage: complex ad hoc queries over history and consolidated data."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Course framework",
+          "quote": "Intern students who know infrastructure and transactional DBMS (OLTP), not analytics (OLAP)."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "The workloads are query intensive with mostly ad hoc, complex queries that can access millions of records"
+        }
+      ],
+      "notion": "n-oltp-olap"
+    },
+    {
+      "id": "term-denormalization",
+      "fr": "dénormalisation",
+      "en": "denormalization",
+      "definition": {
+        "fr": "Choix de conception analytique qui répète des informations (par ex. marque et catégorie sur chaque produit) pour la simplicité et la vitesse des requêtes.",
+        "en": "An analytical design choice that repeats information (e.g. brand and category on each product) for simplicity and query speed."
+      },
+      "pitfall": {
+        "fr": "Ce n’est pas un défaut : c’est un choix, par opposition à la normalisation des systèmes transactionnels.",
+        "en": "It is not a defect: it is a choice, as opposed to the normalisation of transactional systems."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "explain why an analytical system imposes different design choices than a transactional system (denormalization, for example)"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension denormalization supports dimensional modeling’s twin objectives of simplicity and speed."
+        }
+      ],
+      "notion": "n-denormalization"
+    },
+    {
+      "id": "term-data-warehouse",
+      "fr": "entrepôt de données",
+      "en": "data warehouse",
+      "definition": {
+        "fr": "Couche qui intègre, historise et unifie les sources avec des définitions partagées ; elle vise une version unique de la vérité.",
+        "en": "Layer that integrates, historises and unifies sources with shared definitions; it aims at a single version of the truth."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        }
+      ],
+      "notion": "n-dw-properties"
+    },
+    {
+      "id": "term-operational-steering",
+      "fr": "pilotage opérationnel",
+      "en": "operational steering",
+      "definition": {
+        "fr": "Pilotage à horizon court et à fort niveau de détail ; c’est toujours du pilotage, pas de l’opération.",
+        "en": "Management at a short horizon and a high level of detail; it is still management, not operating."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A team lead tracking today's service rate is management, even at the operational level."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "the strategic / tactical / operational levels describe horizon, frequency and level of detail"
+        }
+      ],
+      "notion": "n-operational-steering"
+    },
+    {
+      "id": "term-decision-levels-detail",
+      "fr": "niveaux stratégique / tactique / opérationnel",
+      "en": "strategic / tactical / operational levels",
+      "definition": {
+        "fr": "Niveaux qui décrivent l’horizon, la fréquence et le niveau de détail d’une décision de pilotage.",
+        "en": "Levels that describe the horizon, frequency and level of detail of a management decision."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "the strategic / tactical / operational levels describe horizon, frequency and level of detail"
+        }
+      ],
+      "notion": "n-operational-steering"
+    }
+  ],
+  "notions": [
+    "n-operating-vs-managing",
+    "n-oltp-olap",
+    "n-denormalization",
+    "n-operational-steering",
+    "n-dw-properties"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Opérer (faire tourner les processus) et piloter (comprendre, décider, suivre l’effet des décisions) sont deux besoins distincts.",
+        "en": "Operating (running processes) and managing (understanding, deciding, tracking the effect of decisions) are two distinct needs."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Understand, decide, track the effect of decisions"
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Six critères opposent les deux : objet (transaction / agrégats), temps (état courant / historique), périmètre, questions (connues / imprévisibles), usage (lectures-écritures / lectures), définitions (locales / partagées et stables).",
+        "en": "Six criteria oppose the two: object, time, scope, questions (known / unpredictable), usage (read-write / mostly reads), definitions (local / shared and stable)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "The individual transaction Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Known in advance, repetitive"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Unpredictable: today's question did not exist yesterday"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Reads / writes, real time"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Shared across processes and stable over time"
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les pain points apparaissent quand une entreprise pilote avec des systèmes construits pour opérer.",
+        "en": "Pain points arise when a company steers with systems built to operate."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Pain points arise when a company steers with systems built to operate."
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ]
+    },
+    {
+      "text": {
+        "fr": "On sépare l’entrepôt des bases opérationnelles : performance, historique, consolidation de sources hétérogènes, organisation des données.",
+        "en": "The warehouse is kept separate from operational databases: performance, history, consolidation of heterogeneous sources, data organisation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "It is for all these reasons that data warehouses are implemented separately from operational databases."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "understanding trends or making predictions requires historical data, whereas operational databases store only current data"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "Decision support usually requires consolidating data from many heterogeneous sources"
+        }
+      ],
+      "notions": [
+        "n-oltp-olap"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un système analytique dénormalise : même information, mais comprise, rapide et résistante au changement.",
+        "en": "An analytical system denormalises: same information, but understandable, fast and resilient to change."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "A dimensional model contains the same information as a normalized model, but packages the data in a format that delivers user understandability, query performance, and resilience to change."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension denormalization supports dimensional modeling’s twin objectives of simplicity and speed."
+        }
+      ],
+      "notions": [
+        "n-denormalization"
+      ]
+    },
+    {
+      "text": {
+        "fr": "« Operational steering » reste du pilotage ; stratégique / tactique / opérationnel décrivent horizon, fréquence et niveau de détail.",
+        "en": "“Operational steering” is still steering; strategic / tactical / operational describe horizon, frequency and level of detail."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A team lead tracking today's service rate is management, even at the operational level."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "the strategic / tactical / operational levels describe horizon, frequency and level of detail"
+        }
+      ],
+      "notions": [
+        "n-operational-steering"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Opérer vs piloter : objet et temps ?",
+        "en": "Operating vs managing: object and time?"
+      },
+      "back": {
+        "fr": "Opérer : la transaction individuelle, l’état courant. Piloter : des agrégats, l’historique.",
+        "en": "Operating: the individual transaction, the current state. Managing: aggregates, history."
+      },
+      "termId": "term-operating-need",
+      "id": "isi7-02-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Piloter, c’est…",
+        "en": "Managing is…"
+      },
+      "back": {
+        "fr": "Comprendre, décider, suivre l’effet des décisions.",
+        "en": "Understanding, deciding, tracking the effect of decisions."
+      },
+      "termId": "term-managing-need",
+      "id": "isi7-02-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Questions de l’opérationnel et du pilotage ?",
+        "en": "Questions in operating and in managing?"
+      },
+      "back": {
+        "fr": "Connues d’avance et répétitives / imprévisibles : la question d’aujourd’hui n’existait pas hier.",
+        "en": "Known in advance and repetitive / unpredictable: today’s question did not exist yesterday."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Known in advance, repetitive"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Unpredictable: today's question did not exist yesterday"
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Définitions : opérer vs piloter ?",
+        "en": "Definitions: operating vs managing?"
+      },
+      "back": {
+        "fr": "Propres à chaque application / partagées entre processus et stables dans le temps.",
+        "en": "Specific to each application / shared across processes and stable over time."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Specific to each application"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Shared across processes and stable over time"
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Quand apparaissent les pain points ?",
+        "en": "When do pain points arise?"
+      },
+      "back": {
+        "fr": "Quand on pilote avec des systèmes construits pour opérer.",
+        "en": "When a company steers with systems built to operate."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Pain points arise when a company steers with systems built to operate."
+        }
+      ],
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi un entrepôt séparé ?",
+        "en": "Why a separate warehouse?"
+      },
+      "back": {
+        "fr": "Performance, historique, consolidation de sources hétérogènes, organisation spéciale des données.",
+        "en": "Performance, history, consolidation of heterogeneous sources, special data organisation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "It is for all these reasons that data warehouses are implemented separately from operational databases."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "trying to execute complex OLAP queries against the operational databases would result in unacceptable performance"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "understanding trends or making predictions requires historical data, whereas operational databases store only current data"
+        }
+      ],
+      "notions": [
+        "n-oltp-olap"
+      ],
+      "id": "isi7-02-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi dénormaliser en analytique ?",
+        "en": "Why denormalise in analytics?"
+      },
+      "back": {
+        "fr": "Simplicité et vitesse : même information, mais lisible et rapide à interroger.",
+        "en": "Simplicity and speed: same information, but readable and fast to query."
+      },
+      "termId": "term-denormalization",
+      "id": "isi7-02-fc-07"
+    },
+    {
+      "front": {
+        "fr": "OLTP : trois caractéristiques ?",
+        "en": "OLTP: three characteristics?"
+      },
+      "back": {
+        "fr": "Tâches structurées et répétitives ; transactions courtes, atomiques, isolées ; quelques enregistrements lus ou modifiés.",
+        "en": "Structured and repetitive tasks; short, atomic, isolated transactions; a few records read or updated."
+      },
+      "termId": "term-oltp",
+      "id": "isi7-02-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Stratégique / tactique / opérationnel ?",
+        "en": "Strategic / tactical / operational?"
+      },
+      "back": {
+        "fr": "Trois niveaux d’horizon, de fréquence et de détail du pilotage.",
+        "en": "Three levels of horizon, frequency and detail of management."
+      },
+      "termId": "term-decision-levels-detail",
+      "id": "isi7-02-fc-09"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un système transactionnel répond à des questions imprévisibles : la question d’aujourd’hui n’existait pas hier.",
+        "en": "A transactional system answers unpredictable questions: today’s question did not exist yesterday."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est la colonne pilotage. L’opération pose des questions connues d’avance et répétitives.",
+        "en": "FALSE: this is the managing column. Operating asks questions known in advance and repetitive."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Known in advance, repetitive"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Unpredictable: today's question did not exist yesterday"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "trap": {
+        "fr": "Inverser les colonnes du tableau.",
+        "en": "Swapping the columns of the table."
+      },
+      "id": "isi7-02-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le pilotage porte sur des agrégats et sur l’historique, tandis que l’opération porte sur la transaction individuelle et l’état courant.",
+        "en": "Managing deals with aggregates and history, whereas operating deals with the individual transaction and the current state."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : lignes « Object » et « Time » du tableau.",
+        "en": "TRUE: the “Object” and “Time” rows of the table."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "The individual transaction Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Aggregates: totals, rates, trends"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Lequel de ces besoins relève du pilotage plutôt que de l’opération ?",
+        "en": "Which of these needs belongs to managing rather than operating?"
+      },
+      "options": [
+        {
+          "fr": "Encaisser un client à la caisse d’un magasin donné",
+          "en": "Ringing up a customer at the till of a given store"
+        },
+        {
+          "fr": "Expédier un colis commandé en ligne par un client",
+          "en": "Shipping a parcel ordered online by a customer"
+        },
+        {
+          "fr": "Comparer les ventes par magasin à l’année précédente",
+          "en": "Comparing sales per store with the prior year"
+        },
+        {
+          "fr": "Consulter le stock d’un produit à l’instant T dans un magasin",
+          "en": "Checking a product’s stock at time T in a store"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Comparer à l’année précédente = historique + agrégats. Encaisser, expédier et consulter le stock courant sont des opérations.",
+        "en": "Comparing with the prior year = history + aggregates. Ringing up, shipping and checking current stock are operating."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A regional director compares sales per store with the prior year, like-for-like."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour piloter, les définitions des indicateurs peuvent rester propres à chaque application.",
+        "en": "To manage, indicator definitions can stay specific to each application."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le pilotage demande des définitions partagées entre processus et stables dans le temps ; « spécifiques à chaque application » décrit l’opération.",
+        "en": "FALSE: managing requires definitions shared across processes and stable over time; “specific to each application” describes operating."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Specific to each application"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Shared across processes and stable over time"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "trap": {
+        "fr": "Garder les définitions locales tout en voulant un chiffre commun : source des définitions divergentes.",
+        "en": "Keeping definitions local while wanting a common figure: the source of divergent definitions."
+      },
+      "id": "isi7-02-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un chef d’équipe qui suit le taux de service du jour fait du pilotage, même au niveau opérationnel.",
+        "en": "A team lead tracking today’s service rate is doing management, even at the operational level."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « operational steering is still steering ».",
+        "en": "TRUE: “operational steering is still steering”."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A team lead tracking today's service rate is management, even at the operational level."
+        }
+      ],
+      "objective": "o5",
+      "notions": [
+        "n-operational-steering"
+      ],
+      "trap": {
+        "fr": "Confondre « opérationnel » et « opérer ».",
+        "en": "Confusing “operational” and “operating”."
+      },
+      "id": "isi7-02-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les niveaux stratégique, tactique et opérationnel désignent des types de systèmes informatiques.",
+        "en": "The strategic, tactical and operational levels designate types of IT systems."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ils décrivent l’horizon, la fréquence et le niveau de détail d’un pilotage.",
+        "en": "FALSE: they describe the horizon, frequency and level of detail of management."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "the strategic / tactical / operational levels describe horizon, frequency and level of detail"
+        }
+      ],
+      "objective": "o5",
+      "notions": [
+        "n-operational-steering"
+      ],
+      "id": "isi7-02-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le cours, les pain points apparaissent quand une entreprise pilote avec des systèmes construits pour opérer.",
+        "en": "According to the course, pain points arise when a company steers with systems built to operate."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : phrase de la diapositive.",
+        "en": "TRUE: sentence from the slide."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Pain points arise when a company steers with systems built to operate."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un analyste veut lancer, sur la base de production des commandes, des requêtes ad hoc sur trois ans d’historique. Quelle conclusion Chaudhuri et Dayal soutiennent-ils ?",
+        "en": "An analyst wants to run ad hoc queries over three years of history directly on the production orders database. Which conclusion do Chaudhuri and Dayal support?"
+      },
+      "options": [
+        {
+          "fr": "Cela donnerait des performances inacceptables et la base opérationnelle ne conserve que l’état courant : on sépare un entrepôt.",
+          "en": "It would give unacceptable performance and the operational database only keeps the current state: a separate warehouse is built."
+        },
+        {
+          "fr": "Il suffit d’ajouter des index sur la base de production pour obtenir à la fois l’historique et la consolidation des sources.",
+          "en": "Adding indexes on the production database is enough to get both history and consolidation of sources."
+        },
+        {
+          "fr": "La base opérationnelle conserve normalement tout l’historique des trois années ; seule la performance des requêtes est en jeu ici.",
+          "en": "The operational database normally keeps the whole three-year history; only query performance is at stake here."
+        },
+        {
+          "fr": "L’entrepôt n’est utile que lorsque la base opérationnelle est devenue trop petite pour contenir les données.",
+          "en": "A warehouse is only useful when the operational database has become too small to hold the data."
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Les raisons sont cumulées : performance des requêtes complexes sur des bases réglées pour l’OLTP **et** absence d’historique (les bases opérationnelles ne stockent que l’état courant).",
+        "en": "The reasons add up: performance of complex queries on databases tuned for OLTP **and** lack of history (operational databases only store the current state)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "trying to execute complex OLAP queries against the operational databases would result in unacceptable performance"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "understanding trends or making predictions requires historical data, whereas operational databases store only current data"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-oltp-olap"
+      ],
+      "id": "isi7-02-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les structures normalisées (3NF) sont mal adaptées aux traitements opérationnels, car elles répartissent l’information en de nombreuses tables.",
+        "en": "Normalised (3NF) structures are ill-suited to operational processing because they spread information over many tables."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : selon Kimball et Ross, elles sont précieuses pour l’opérationnel puisqu’une mise à jour ne touche la base qu’à un seul endroit ; c’est pour les requêtes BI qu’elles sont trop compliquées.",
+        "en": "FALSE: according to Kimball and Ross they are valuable for operations since an update touches the database in only one place; it is for BI queries that they are too complicated."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "Normalized 3NF structures are immensely useful in operational processing because an update or insert transaction touches the database in only one place."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "Normalized models, however, are too complicated for BI queries."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-denormalization"
+      ],
+      "trap": {
+        "fr": "Dire que la normalisation est « mauvaise » en soi.",
+        "en": "Saying normalisation is “bad” in itself."
+      },
+      "id": "isi7-02-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans un modèle dimensionnel, répéter la marque et la catégorie sur chaque ligne de produit est un choix qui facilite la lecture et accélère les requêtes.",
+        "en": "In a dimensional model, repeating brand and category on every product row is a choice that makes reading easier and speeds up queries."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la hiérarchie est stockée de façon redondante « in the spirit of ease of use and query performance ».",
+        "en": "TRUE: the hierarchy is stored redundantly “in the spirit of ease of use and query performance”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "The hierarchical descriptive information is stored redundantly in the spirit of ease of use and query performance."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-denormalization"
+      ],
+      "id": "isi7-02-qz-10"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pourquoi un système analytique dénormalise-t-il son modèle de données ?",
+        "en": "Why does an analytical system denormalise its data model?"
+      },
+      "options": [
+        {
+          "fr": "Pour garantir qu’une mise à jour ne touche qu’une seule table et reste cohérente",
+          "en": "To guarantee that an update touches only one table and stays consistent"
+        },
+        {
+          "fr": "Pour que les données restent compréhensibles et les requêtes imprévisibles rapides",
+          "en": "So that data stays understandable and unpredictable queries fast"
+        },
+        {
+          "fr": "Parce que les moteurs SQL ne savent pas faire de jointures entre plusieurs grandes tables",
+          "en": "Because SQL engines cannot join several large tables"
+        },
+        {
+          "fr": "Pour réduire au minimum l’espace disque occupé par les tables de dimension",
+          "en": "To minimise the disk space taken by the dimension tables"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Simplicité et vitesse. Le premier choix décrit la raison de **normaliser** en opérationnel ; l’espace disque est sacrifié volontairement.",
+        "en": "Simplicity and speed. The first option is the reason to **normalise** in operations; disk space is deliberately traded away."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-2013-techniques.md",
+          "loc": "Basic dimension table techniques",
+          "quote": "Dimension denormalization supports dimensional modeling’s twin objectives of simplicity and speed."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Fact tables for measurements and dimension tables for descriptive context",
+          "quote": "You should almost always trade off dimension table space for simplicity and accessibility."
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "Normalized 3NF structures are immensely useful in operational processing because an update or insert transaction touches the database in only one place."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-denormalization"
+      ],
+      "trap": {
+        "fr": "Confondre la raison de normaliser (opérationnel) et celle de dénormaliser (analytique).",
+        "en": "Mixing up the reason to normalise (operational) and to denormalise (analytical)."
+      },
+      "id": "isi7-02-qz-11"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Opérer ou piloter ? Classer six besoins avec les critères du cours",
+        "en": "Operating or managing? Classify six needs with the course criteria"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Pour chaque besoin, dites s’il relève de l’opération ou du pilotage et justifiez avec **deux** critères du tableau (objet, temps, périmètre, questions, usage, définitions).\n1. Enregistrer une commande en ligne.\n2. Comparer le chiffre d’affaires du trimestre à celui du trimestre précédent, par région.\n3. Savoir à l’instant T combien d’unités restent en stock.\n4. Expliquer pourquoi la marge a baissé en croisant ventes, achats et retours.\n5. Facturer un client.\n6. Suivre aujourd’hui le taux de service de son équipe.",
+        "en": "For each need, say whether it is operating or managing and justify with **two** criteria of the table (object, time, scope, questions, usage, definitions).\n1. Recording an online order.\n2. Comparing this quarter’s revenue with the previous quarter’s, by region.\n3. Knowing at time T how many units are left in stock.\n4. Explaining why margin fell by crossing sales, purchases and returns.\n5. Invoicing a customer.\n6. Tracking one’s team’s service rate today."
+      },
+      "hints": [
+        {
+          "fr": "Le tableau a six lignes ; choisissez les deux qui tranchent le mieux.",
+          "en": "The table has six rows; pick the two that decide best."
+        },
+        {
+          "fr": "Le point 6 est un piège : relisez la note sous le tableau.",
+          "en": "Item 6 is a trap: reread the note under the table."
+        }
+      ],
+      "solution": {
+        "fr": "1. **Opérer** : objet = la transaction individuelle ; usage = écriture temps réel.\n2. **Piloter** : objet = agrégats ; temps = historique (comparaison avec la période précédente).\n3. **Opérer** : temps = état courant ; périmètre = une application.\n4. **Piloter** : périmètre transversal (plusieurs processus) ; questions imprévisibles.\n5. **Opérer** : transaction individuelle, processus connu et répétitif.\n6. **Piloter** : même au niveau opérationnel, suivre le taux de service du jour est du pilotage (« operational steering is still steering ») ; l’objet est un taux agrégé.\n*Ce que l’exercice vérifie* : appliquer les critères et ne pas confondre « opérationnel » et « opérer ».",
+        "en": "1. **Operating**: object = the individual transaction; usage = real-time writing.\n2. **Managing**: object = aggregates; time = history (comparison with the previous period).\n3. **Operating**: time = current state; scope = one application.\n4. **Managing**: cross-functional scope (several processes); unpredictable questions.\n5. **Operating**: individual transaction, known and repetitive process.\n6. **Managing**: even at operational level, tracking today’s service rate is management (“operational steering is still steering”); the object is an aggregated rate.\n*What the exercise checks*: applying the criteria and not confusing “operational” with “operating”."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "The individual transaction Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Aggregates: totals, rates, trends"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "A team lead tracking today's service rate is management, even at the operational level."
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Classer le point 6 en « opérer » parce que c’est quotidien.",
+        "en": "Classifying item 6 as “operating” because it is daily."
+      },
+      "notions": [
+        "n-operating-vs-managing",
+        "n-operational-steering"
+      ],
+      "id": "isi7-02-ex-01"
+    },
+    {
+      "title": {
+        "fr": "« Branchons les tableaux de bord sur la base de commandes » : argumenter contre",
+        "en": "Let’s plug the dashboards into the order database: arguing against"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Un chef de projet propose de brancher directement les tableaux de bord de la direction sur la base transactionnelle de prise de commandes, « pour aller plus vite ». Rédigez une réponse argumentée (8 à 10 lignes) qui mobilise le tableau du cours et les raisons de séparer l’entrepôt, puis décrivez le changement de modèle de données que vous proposez.",
+        "en": "A project manager proposes plugging management dashboards directly into the transactional order-entry database “to go faster”. Write an argued answer (8 to 10 lines) using the course table and the reasons for keeping a warehouse separate, then describe the change of data model you propose."
+      },
+      "hints": [
+        {
+          "fr": "Quatre raisons : performance, historique, consolidation, organisation des données.",
+          "en": "Four reasons: performance, history, consolidation, data organisation."
+        },
+        {
+          "fr": "Pensez aux colonnes du tableau : qui change quand on passe d’opérer à piloter ?",
+          "en": "Think about the table columns: what changes from operating to managing?"
+        }
+      ],
+      "solution": {
+        "fr": "**Argumentation.** (1) Besoins différents : la direction pose des questions imprévisibles sur des agrégats et un historique, alors que la base est réglée pour des transactions courtes et répétitives (tableau, colonnes questions, objet, usage). (2) Performance : des requêtes complexes sur une base réglée pour l’OLTP donneraient des performances inacceptables et gêneraient la prise de commandes. (3) Historique : la base ne stocke que l’état courant. (4) Consolidation : la direction veut croiser plusieurs processus et plusieurs sources, avec des définitions partagées et stables, alors que chaque application a les siennes. (5) Pain point : c’est précisément piloter avec un système construit pour opérer.\n**Proposition.** Un entrepôt alimenté depuis les sources, avec un modèle **dénormalisé** (faits et dimensions) qui garde l’information mais la rend lisible et rapide à interroger. Le gain « aller plus vite » est apparent : il déplace le coût vers les utilisateurs et fait diverger les chiffres.\n*Barème indicatif* : 3 points pour les arguments (au moins 3 sur 5), 1 point pour la dénormalisation justifiée, 1 point pour la conclusion.",
+        "en": "**Argument.** (1) Different needs: management asks unpredictable questions on aggregates and history, whereas the database is tuned for short repetitive transactions (table: questions, object, usage). (2) Performance: complex queries on an OLTP-tuned database would give unacceptable performance and hamper order entry. (3) History: the database only stores the current state. (4) Consolidation: management wants to cross several processes and sources with shared, stable definitions, whereas each application has its own. (5) Pain point: this is exactly managing with a system built to operate.\n**Proposal.** A warehouse fed from the sources, with a **denormalised** model (facts and dimensions) that keeps the information but makes it readable and fast to query. The “faster” gain is only apparent: it shifts cost to users and makes figures diverge.\n*Indicative marking*: 3 points for arguments (at least 3 of 5), 1 point for the justified denormalisation, 1 point for the conclusion."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Operating and managing are two distinct needs",
+          "quote": "Pain points arise when a company steers with systems built to operate."
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "trying to execute complex OLAP queries against the operational databases would result in unacceptable performance"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "understanding trends or making predictions requires historical data, whereas operational databases store only current data"
+        },
+        {
+          "file": "sources-texte/isi7/ext-chaudhuri-dayal-1997.md",
+          "loc": "Introduction",
+          "quote": "Decision support usually requires consolidating data from many heterogeneous sources"
+        },
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "Dimensional modeling introduction",
+          "quote": "A dimensional model contains the same information as a normalized model, but packages the data in a format that delivers user understandability, query performance, and resilience to change."
+        }
+      ],
+      "objective": "o4",
+      "examStyle": true,
+      "trap": {
+        "fr": "Ne répondre que par la performance, en oubliant l’historique, la consolidation et les définitions.",
+        "en": "Answering only with performance, forgetting history, consolidation and definitions."
+      },
+      "notions": [
+        "n-oltp-olap",
+        "n-denormalization",
+        "n-operating-vs-managing"
+      ],
+      "id": "isi7-02-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Operating is not the same as managing.",
+      "accepted": [
+        "Operating is not the same thing as managing."
+      ],
+      "id": "isi7-02-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "Operating works on the {{current|present}} state of one {{application|process}}, whereas managing works on {{history|historical data}} across several processes.",
+      "translation": "Opérer porte sur l’état courant d’une application ; piloter porte sur l’historique, à travers plusieurs processus.",
+      "id": "isi7-02-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Pain points arise when a company operates with systems built to steer.",
+      "error": "operates with systems built to steer",
+      "corrected": "steers with systems built to operate",
+      "explanation": {
+        "fr": "Le piège est l’inversion : on pilote avec des systèmes construits pour opérer.",
+        "en": "The trap is the inversion: the company steers with systems built to operate."
+      },
+      "id": "isi7-02-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : pourquoi un système analytique ne peut-il pas être conçu comme un système transactionnel ?",
+        "en": "In three sentences: why can an analytical system not be designed like a transactional one?"
+      },
+      "modelAnswer": "An analytical system answers unpredictable questions on history and aggregates, whereas a transactional system handles short, repeated transactions on the current state. That is why analytical systems denormalise their model for simplicity and speed. The warehouse is also kept separate for performance, history and consolidation of sources.",
+      "keywords": [
+        "unpredictable",
+        "history",
+        "aggregates",
+        "denormalise",
+        "separate"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai opposé au moins deux critères du tableau.",
+          "en": "I contrasted at least two criteria of the table."
+        },
+        {
+          "fr": "J’ai cité la dénormalisation.",
+          "en": "I mentioned denormalisation."
+        },
+        {
+          "fr": "J’ai utilisé whereas / while pour comparer.",
+          "en": "I used whereas / while to compare."
+        }
+      ],
+      "usefulPhrases": [
+        "whereas",
+        "That is why…",
+        "for simplicity and speed"
+      ],
+      "id": "isi7-02-wr-04"
+    }
+  ]
+}

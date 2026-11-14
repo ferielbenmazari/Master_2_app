@@ -54,7 +54,7 @@ beforeEach(() => {
 })
 
 describe('accueil', () => {
-  it('affiche toutes les matières du contenu, y compris une 5ᵉ ajoutée, sans code spécifique', () => {
+  it('affiche toutes les matières du contenu, y compris une 6ᵉ ajoutée, sans code spécifique', () => {
     renderAt('/')
     const links = screen
       .getAllByRole('link')
@@ -63,6 +63,7 @@ describe('accueil', () => {
       '/matiere/inf4',
       '/matiere/isi1',
       '/matiere/isi5',
+      '/matiere/isi7',
       '/matiere/rec1',
       '/matiere/test',
     ])
