@@ -1,0 +1,2042 @@
+{
+  "id": "isi7-08-pile-technologique",
+  "courseId": "isi7",
+  "order": 8,
+  "title": {
+    "fr": "Une BI qui évolue : piles, lacs et IA",
+    "en": "An evolving BI: stacks, lakes and AI"
+  },
+  "hook": {
+    "fr": "Tous les deux à trois ans, une nouvelle technologie : à quoi sert encore la BI ?",
+    "en": "Every two to three years a new technology: what is BI still for?"
+  },
+  "question": {
+    "fr": "Comment les technologies modernes (ELT, self-service, lakehouse, streaming, IA) s’articulent-elles avec les principes de la BI ?",
+    "en": "How do modern technologies (ELT, self-service, lakehouse, streaming, AI) fit with the principles of BI?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Comparer pile classique et moderne, et ETL et ELT.",
+        "en": "Compare classic and modern stacks, and ETL and ELT."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Expliquer le rôle de la couche sémantique face au self-service.",
+        "en": "Explain the semantic layer’s role in the face of self-service."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Définir Big Data, data lake et lakehouse et dire pourquoi le Big Data ne remplace pas la BI.",
+        "en": "Define Big Data, data lake and lakehouse and say why Big Data does not replace BI."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Justifier ou non un rafraîchissement en temps réel.",
+        "en": "Justify, or not, real-time refresh."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Expliquer pourquoi l’analytique augmentée dépend de la BI.",
+        "en": "Explain why augmented analytics depends on BI."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Le compte rendu liste ces notions (stack, semantic layer, self-service, analytique augmentée, Big Data, data lake, lakehouse, streaming) parmi les sujets de la séance ; leur poids à l’examen n’est pas précisé.",
+        "en": "The notes list these notions (stack, semantic layer, self-service, augmented analytics, Big Data, data lake, lakehouse, streaming) among the session topics; their weight in the exam is not specified."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Définitions courtes (ETL/ELT, couche sémantique, lakehouse) et justification du streaming par un pain point : estimation.",
+        "en": "Short definitions (ETL/ELT, semantic layer, lakehouse) and justification of streaming by a pain point: an estimate."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3, 5 et 7 : principes, maturité et projet.",
+    "en": "Chapters 3, 5 and 7: principles, maturity and project."
+  },
+  "next": {
+    "fr": "Chapitre 9 : data mesh, ontologies et graphes de connaissances.",
+    "en": "Chapter 9: data mesh, ontologies and knowledge graphs."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Pile classique contre pile moderne ; ETL contre ELT.",
+        "en": "Classic versus modern stack; ETL versus ELT."
+      },
+      {
+        "fr": "Self-service et couche sémantique (réponse à la tension 3/5).",
+        "en": "Self-service and the semantic layer (answer to the 3/5 tension)."
+      },
+      {
+        "fr": "Big Data (3 V), data lake, lakehouse ; le Big Data ne remplace pas la BI.",
+        "en": "Big Data (3 Vs), data lake, lakehouse; Big Data does not replace BI."
+      },
+      {
+        "fr": "Streaming : coût, justification par un pain point ; analytique augmentée : relire.",
+        "en": "Streaming: cost, justified by a pain point; augmented analytics: review."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Justifier un rythme de rafraîchissement par la décision et le coût.",
+        "en": "Justify a refresh rhythm by the decision and the cost."
+      },
+      {
+        "fr": "Placer un symptôme sur la pile classique ou moderne.",
+        "en": "Place a symptom on the classic or modern stack."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "ETL (transformer avant de charger) ≠ ELT (charger avant de transformer).",
+        "en": "ETL (transform before loading) ≠ ELT (load before transforming)."
+      },
+      {
+        "fr": "Data lake (brut) ≠ lakehouse (+ tables, transactions, gouvernance).",
+        "en": "Data lake (raw) ≠ lakehouse (+ tables, transactions, governance)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 3 : la tension 3/5 trouve ici sa réponse.",
+        "en": "Chapter 3: the 3/5 tension finds its answer here."
+      },
+      {
+        "fr": "Chapitres 11-12 : l’architecture en couches reste valable sur un lakehouse.",
+        "en": "Chapters 11-12: the layered architecture remains valid on a lakehouse."
+      },
+      {
+        "fr": "Chapitre 10 : sobriété, rafraîchissement et coût du streaming.",
+        "en": "Chapter 10: frugality, refresh and the cost of streaming."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__ISI7/cours_14092026.md",
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+    "sources-texte/isi7/ext-nist-sp1500-1-big-data.md",
+    "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+    "sources-texte/isi7/ext-dbt-semantic-layer.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Deux piles, un même service",
+        "en": "Two stacks, one service"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof distingue une **pile classique** et une **pile moderne** ([[term-classic-stack]], [[term-modern-stack]]) et précise que, au fond, c’est le **service rendu** qui fait la différence, pas la technologie. Les principes de BI restent ; chaque nouvelle technologie oblige à les réinterpréter.",
+        "en": "The teacher distinguishes a **classic stack** and a **modern stack** ([[term-classic-stack]], [[term-modern-stack]]) and stresses that, in the end, it is the **service delivered** that makes the difference, not the technology. BI principles remain; each new technology forces us to reinterpret them."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's the kind of service that they can deliver that will make the difference"
+        }
+      ],
+      "notions": [
+        "n-classic-vs-modern-stack"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Aspect",
+          "en": "Aspect"
+        },
+        {
+          "fr": "Pile classique",
+          "en": "Classic stack"
+        },
+        {
+          "fr": "Pile moderne",
+          "en": "Modern stack"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Entrepôt",
+            "en": "Warehouse"
+          },
+          {
+            "fr": "Entrepôts de données sur site (on-premise)",
+            "en": "On-premise data warehouses"
+          },
+          {
+            "fr": "Plateformes de données cloud, stockage et calcul élastiques",
+            "en": "Cloud data platforms, elastic storage and compute"
+          }
+        ],
+        [
+          {
+            "fr": "Chargement",
+            "en": "Loading"
+          },
+          {
+            "fr": "Lots ETL nocturnes",
+            "en": "Nightly ETL batches"
+          },
+          {
+            "fr": "ELT",
+            "en": "ELT"
+          }
+        ],
+        [
+          {
+            "fr": "Rapports",
+            "en": "Reports"
+          },
+          {
+            "fr": "Gérés par la DSI : un nouveau besoin = un projet de reporting, des semaines",
+            "en": "Managed by IT: each new need = a reporting project, weeks"
+          },
+          {
+            "fr": "Self-service : l’utilisateur transforme, explore et construit",
+            "en": "Self-service: the user transforms, explores and builds"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Nightly ETL batches, the reporting tools were managed by the IT each time you want a new report."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And it was then a matter of weeks, each time you have a new need"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with the emergence of cloud data platforms, with elastic storage and compute, ELT"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "passage des data warehouses on-premise avec ETL nocturnes vers des plateformes cloud avec ELT et stockage élastique"
+        }
+      ],
+      "notions": [
+        "n-classic-vs-modern-stack"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**ETL** (*Extract, Transform, Load*) et **ELT** ([[term-etl]], [[term-elt]]) sont les mêmes mots dans un autre ordre. En ELT, on extrait, on charge d’abord les données dans la plateforme, puis on les transforme à l’intérieur. Les conséquences sur l’architecture seront vues dans les séances d’architecture (chapitres 11-12).",
+        "en": "**ETL** (*Extract, Transform, Load*) and **ELT** ([[term-etl]], [[term-elt]]) are the same words in a different order. In ELT, you extract, first load the data into the platform, then transform it inside. The consequences for architecture will be seen in the architecture sessions (chapters 11-12)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It stands for Extraction, Transformation and Loading of Data in one hand, ETL, Extract, Transform and Load."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extraction, loading, and then transformation. of the data"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extract and load, and then after that just transform this information inside the platform."
+        }
+      ],
+      "notions": [
+        "n-etl-elt"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) Kimball et Ross définissent le système ETL comme tout ce qui se trouve entre les systèmes sources opérationnels et la zone de présentation DW/BI. Et Armbrust et al. (2021) décrivent l’architecture dominante dite « à deux niveaux » : les données sont d’abord « ETLed » dans un lac, puis de nouveau « ELTed » dans des entrepôts, ce qui crée complexité, délais et nouveaux modes de défaillance.",
+        "en": "**Going further** — (outside the course materials) Kimball and Ross define the ETL system as everything between the operational source systems and the DW/BI presentation area. And Armbrust et al. (2021) describe the dominant “two-tier” architecture: data is first ETLed into lakes, then again ELTed into warehouses, creating complexity, delays and new failure modes."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-kimball-ross-2013-ch1.md",
+          "loc": "ETL in the back room and BI in the front room",
+          "quote": "The ETL system is everything between the operational source systems and the DW/BI presentation area."
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "Résumé et introduction",
+          "quote": "ETLed into lakes, and then again ELTed into warehouses, creating complexity, delays, and new failure modes."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : ETL et ELT contiennent les mêmes trois mots. Ce qui change est **l’ordre** : en ELT, le chargement précède la transformation.",
+        "en": "Trap: ETL and ELT contain the same three words. What changes is the **order**: in ELT, loading comes before transformation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extraction, loading, and then transformation. of the data"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-08-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Self-service et couche sémantique",
+        "en": "Self-service and the semantic layer"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le **self-service** ([[term-self-service]]) a deux niveaux : laisser des utilisateurs transformer des données avec des outils low-code ou no-code, et leur laisser construire des rapports s’ils sont formés. Hier, les pipelines étaient des outils techniques ou des procédures stockées SQL, à la courbe d’apprentissage raide : inutile de demander à un utilisateur d’écrire ses requêtes. Aujourd’hui, avec une modélisation bien faite, du glisser-déposer et des filtres dynamiques, il le peut, et même, avec l’IA générative, discuter avec ses données.",
+        "en": "**Self-service** ([[term-self-service]]) has two levels: letting users transform data with low-code or no-code tools, and letting them build reports if trained. Yesterday, pipelines were technical tools or SQL stored procedures, with a steep learning curve: no point asking a user to write their own queries. Today, with sound modelling, drag-and-drop and dynamic filters, they can, and even, with generative AI, chat with their data."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can leave some end-users, do some data transformation with low-code, no-code tools, for example"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can also leave the build of reports to end-users that are trained for that"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Nowadays, with this kind of tools, we don't need to write so much code as in the past."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you have done your modelization right well with drag-and-drops and dynamic filters, end-users can really well write down its own query."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "chat with your data"
+        }
+      ],
+      "notions": [
+        "n-self-service"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Mais le self-service pose le problème du chapitre 3 : l’exploration libre multiplie les définitions. La réponse du cours est la **couche sémantique** ([[term-semantic-layer]]) : un catalogue partagé de définitions métier (ce qu’est un chiffre d’affaires, un client actif) utilisable par tous les outils.",
+        "en": "But self-service raises the chapter 3 problem: free exploration multiplies definitions. The course’s answer is the **semantic layer** ([[term-semantic-layer]]): a shared catalog of business definitions (what revenue or an active customer is) usable by every tool."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A semantic layer in that case is a shared catalog of business definitions."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's defined what a revenue and active consumer is. And this semantic layer can be used by every tool."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Answer: a governed model with shared definitions (semantic layer, section 8)."
+        }
+      ],
+      "notions": [
+        "n-semantic-layer"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof en fait l’implémentation technique de l’exigence n° 2 de Kimball et Ross (partager les définitions entre tous). Elle répond aux pain points 2 et 5, et réconcilie 3 et 5 : l’utilisateur explore librement, tandis que la définition des calculs est imposée.",
+        "en": "The teacher makes it the technical implementation of Kimball and Ross requirement no. 2 (sharing definitions between everyone). It answers pain points 2 and 5 and reconciles 3 and 5: the user explores freely, while the definition of calculations is enforced."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The second requirement, I want to be able to share definitions between everyone"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The user can export freely."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "nous pouvons enforcer la définition des calculs"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "catalogue partagé de définitions métier utilisable par tous les outils, implémentation technique de l'exigence 2"
+        }
+      ],
+      "notions": [
+        "n-semantic-layer"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours ; source éditeur) La documentation de dbt décrit sa couche sémantique ainsi : en centralisant les définitions de métriques, les équipes de données assurent un accès self-service cohérent à ces métriques dans les outils et applications en aval.",
+        "en": "**Going further** — (outside the course materials; vendor source) dbt’s documentation describes its semantic layer this way: by centralising metric definitions, data teams ensure consistent self-service access to these metrics in downstream tools and applications."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-dbt-semantic-layer.md",
+          "loc": "Description",
+          "quote": "By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-08-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Big Data, data lake, lakehouse",
+        "en": "Big Data, data lake, lakehouse"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le **Big Data** ([[term-big-data]]) naît de la conjonction de l’accès ouvert à Internet et de la mobilité, qui génèrent beaucoup de données en **volume**, en **variété** (journaux, images, texte, capteurs) et en **vélocité**. C’est la réunion de ces trois paramètres qui donne le terme, et cela dépasse ce pour quoi un entrepôt classique est conçu.",
+        "en": "**Big Data** ([[term-big-data]]) arises from the conjunction of open Internet access and mobility, which generate a lot of data in **volume**, **variety** (logs, images, text, sensors) and **velocity**. It is these three parameters together that give the term, and it goes beyond what a classic warehouse is designed for."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A lot of data in terms of volumes, a lot of data in terms of their variety."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "but also in terms of the velocity, the rate at which those information, those new information are generated."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's basically those three parameters together that leads to the term big data"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And it's really beyond what a classic data warehouse is designed for."
+        }
+      ],
+      "notions": [
+        "n-big-data"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le piège : ces systèmes stockent les données telles qu’elles sont produites, sans transformation. Elles doivent être qualifiées et traduites en termes métier pour être exploitables. Le Big Data **ne remplace rien** en BI : il est une source d’information. Les images ou vidéos exigent d’en extraire de l’information (données non structurées) avant de les charger dans un rapport décisionnel.",
+        "en": "The catch: these systems store data as produced, without transformation. It must be qualified and translated into business terms to be actionable. Big Data **replaces nothing** in BI: it is a source of information. Images or videos require information to be extracted (unstructured data) before loading it into a decision report."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the data are stored as they are produced with no transformation, no conformation of those data."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's not a replacement for anything in the business intelligence."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's more a source of information for us"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You will need to extract information from these formats, which is called unstructured kind of data, before being able to load them into a decisional report."
+        }
+      ],
+      "notions": [
+        "n-big-data-not-replacement"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le **data lake** ([[term-data-lake]]) stocke des données brutes de tout format à faible coût ; il est souvent la couche technique sous le Big Data. Le **lakehouse** ([[term-lakehouse]]) y ajoute des capacités d’entrepôt : tables structurées, transactions, gouvernance. Quelle que soit l’implémentation, la logique zone de transit, entrepôt, data marts reste au-dessus ; c’est à l’architecte de choisir l’implémentation physique.",
+        "en": "The **data lake** ([[term-data-lake]]) stores raw data of any format at low cost; it is often the technical layer under Big Data. The **lakehouse** ([[term-lakehouse]]) adds warehouse capabilities: structured tables, transactions, governance. Whatever the implementation, the staging / warehouse / data mart logic stays on top; the architect chooses the physical implementation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Data Lake basically stores raw data of any format at low cost."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The Lakehouse adds warehouse capabilities on top with structure table, transactions and governance."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        }
+      ],
+      "notions": [
+        "n-data-lake-lakehouse"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) Le NIST définit le Big Data comme des jeux de données volumineux, caractérisés surtout par le volume, la variété, la vélocité et/ou la variabilité. Armbrust et al. (2021) définissent un lakehouse comme un système de gestion de données sur stockage à bas coût et directement accessible, qui offre aussi des fonctions d’un SGBD analytique : transactions ACID, versionnage des données, audit, indexation, cache et optimisation de requêtes.",
+        "en": "**Going further** — (outside the course materials) NIST defines Big Data as extensive datasets primarily characterised by volume, variety, velocity and/or variability. Armbrust et al. (2021) define a lakehouse as a data management system on low-cost, directly accessible storage that also provides analytical DBMS features: ACID transactions, data versioning, auditing, indexing, caching and query optimisation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-nist-sp1500-1-big-data.md",
+          "loc": "Définition du Big Data",
+          "quote": "Big Data consists of extensive datasets"
+        },
+        {
+          "file": "sources-texte/isi7/ext-armbrust-2021-lakehouse.md",
+          "loc": "The Lakehouse architecture",
+          "quote": "that also provides traditional analytical DBMS management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization."
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  SRC[\"Sources: apps, logs, images, sensors\"] --> LAKE[\"Data lake / lakehouse: raw data, low cost\"]\n  LAKE --> STG[\"Staging area\"]\n  STG --> DWH[\"Data warehouse: shared definitions\"]\n  DWH --> MART[\"Data marts\"]\n  MART --> USER[\"Reports, dashboards, analysis\"]",
+      "caption": {
+        "fr": "Le lac ou lakehouse peut être l’implémentation physique ; la logique en couches reste au-dessus.",
+        "en": "The lake or lakehouse can be the physical implementation; the layered logic stays on top."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-08-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Streaming : le temps réel a un prix",
+        "en": "Streaming: real time has a price"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le **streaming** ([[term-streaming]]) traite les données en continu dès que les événements arrivent, au lieu d’une intégration par lots nocturnes. Il fait passer la fraîcheur du jour à des minutes ou des secondes, quand la décision l’exige vraiment. Mais le temps réel a un coût très élevé : si tout ce qu’il faut est un rapport descriptif sur la veille, il ne faut pas courir après la technologie si elle n’est pas justifiée par un pain point utilisateur.",
+        "en": "**Streaming** ([[term-streaming]]) processes data continuously as events arrive, instead of nightly batch integration. It moves freshness from a day to minutes or seconds, when the decision really needs it. But real time has a very high cost: if all that is needed is a descriptive report on yesterday, do not chase the technology if it is not justified by a user pain point."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with our streaming data, it's data processed continuously as events arrive, rather than a batch integration in nightly batches."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It pushes them data freshness from the day to minutes or seconds when the decision really needs it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Et le coût en temps réel est vraiment élevé."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "don't fall for the run after the technology if it's not justified by user pain point. So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "notions": [
+        "n-streaming-pragmatism"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Décider si le temps réel se justifie (méthode de l’app)",
+        "en": "Deciding whether real time is justified (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Identifier la **décision** que l’indicateur soutient et son rythme réel.",
+            "en": "Identify the **decision** the indicator supports and its real rhythm."
+          },
+          "why": {
+            "fr": "Une clôture mensuelle n’a pas besoin du temps réel, une alerte à la fraude oui.",
+            "en": "A monthly closing does not need real time; a fraud alert does."
+          }
+        },
+        {
+          "do": {
+            "fr": "Demander quel **pain point** la fraîcheur actuelle crée vraiment.",
+            "en": "Ask which **pain point** current freshness really creates."
+          },
+          "why": {
+            "fr": "« Pas de technologie sans pain point utilisateur » : c’est la règle du prof.",
+            "en": "“No technology without a user pain point” is the teacher’s rule."
+          }
+        },
+        {
+          "do": {
+            "fr": "Comparer le **coût** du temps réel (élevé) au bénéfice de la décision.",
+            "en": "Compare the **cost** of real time (high) to the benefit of the decision."
+          },
+          "why": {
+            "fr": "Le temps réel a un coût vraiment élevé.",
+            "en": "Real time has a really high cost."
+          }
+        },
+        {
+          "do": {
+            "fr": "Choisir la fraîcheur **suffisante** : jour, heure, minutes, secondes.",
+            "en": "Choose the **sufficient** freshness: day, hour, minutes, seconds."
+          },
+          "why": {
+            "fr": "Rafraîchir aussi souvent que nécessaire, pas plus (chapitre 10).",
+            "en": "Refresh as often as needed, no more (chapter 10)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "don't fall for the run after the technology if it's not justified by user pain point. So stay pragmatic in the decision of what you want to implement."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "A monthly closing does not need real time; a fraud alert does."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Et le coût en temps réel est vraiment élevé."
+        }
+      ],
+      "notions": [
+        "n-streaming-pragmatism"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-08-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Analytique augmentée et IA : sur quoi reposent-elles ?",
+        "en": "Augmented analytics and AI: what do they rest on?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’**analytique augmentée** ([[term-augmented-analytics]]), apparue il y a deux à trois ans, donne un accès en langage naturel aux systèmes décisionnels : « discuter avec ses données » au lieu de glisser-déposer. Si les données sont bien préparées, ces systèmes peuvent aussi générer des explications et rédiger les rapports trimestriels ; il faudra relire et vérifier que le système n’a pas halluciné.",
+        "en": "**Augmented analytics** ([[term-augmented-analytics]]), which appeared two to three years ago, gives natural-language access to decision-making systems: “chat with your data” instead of drag-and-drop. If the data is well prepared, these systems can also generate explanations and write quarterly reports; you must review them and check the system has not hallucinated."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "augmented analytics, so natural language, access to decisional systems"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "those kind of systems can now automatically generate explanations."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What you will have to do is to review that and to verify that the system has not hallucinated."
+        }
+      ],
+      "notions": [
+        "n-augmented-analytics"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le message du prof : tout cela **dépend** du système décisionnel, ne le remplace pas ; la qualité de ce que la BI fournit fera le succès ou l’échec de ces initiatives. La BI est un processus qui rend les données fiables : à exploiter pour le machine learning et l’IA.",
+        "en": "The teacher’s message: all of this **depends on** the decision-making system and does not replace it; the quality of what BI provides will make these initiatives succeed or fail. BI is a process that makes data reliable: to be leveraged for machine learning and AI."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "dépend du système décisif, ils ne le remplacent pas"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Business intelligence is a process that makes data reliable, so don't hesitate to leverage that."
+        }
+      ],
+      "notions": [
+        "n-new-tech-depends-on-bi"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : « l’IA remplace la BI ». Le cours dit l’inverse : le Big Data comme l’analytique augmentée **dépendent** de données fiables et qualifiées, donc d’un système décisionnel de qualité.",
+        "en": "Trap: “AI replaces BI”. The course says the opposite: Big Data and augmented analytics **depend on** reliable, qualified data, hence on a quality decision-making system."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "dépend du système décisif, ils ne le remplacent pas"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's not a replacement for anything in the business intelligence."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-08-qz-05"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-classic-stack",
+      "fr": "pile classique",
+      "en": "classic stack",
+      "definition": {
+        "fr": "Entrepôts de données sur site, lots ETL nocturnes, outils de reporting gérés par la DSI : des semaines pour chaque nouveau besoin.",
+        "en": "On-premise data warehouses, nightly ETL batches, reporting tools managed by IT: weeks for each new need."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Nightly ETL batches, the reporting tools were managed by the IT each time you want a new report."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And it was then a matter of weeks, each time you have a new need"
+        }
+      ],
+      "notion": "n-classic-vs-modern-stack"
+    },
+    {
+      "id": "term-modern-stack",
+      "fr": "pile moderne",
+      "en": "modern stack",
+      "definition": {
+        "fr": "Plateformes de données cloud à stockage et calcul élastiques, ELT, self-service.",
+        "en": "Cloud data platforms with elastic storage and compute, ELT, self-service."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with the emergence of cloud data platforms, with elastic storage and compute, ELT"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "passage des data warehouses on-premise avec ETL nocturnes vers des plateformes cloud avec ELT et stockage élastique"
+        }
+      ],
+      "notion": "n-classic-vs-modern-stack"
+    },
+    {
+      "id": "term-etl",
+      "fr": "ETL",
+      "en": "ETL",
+      "definition": {
+        "fr": "Extraire, transformer, charger : la transformation précède le chargement.",
+        "en": "Extract, transform, load: transformation comes before loading."
+      },
+      "pitfall": {
+        "fr": "Mêmes trois mots que l’ELT, ordre différent.",
+        "en": "Same three words as ELT, different order."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It stands for Extraction, Transformation and Loading of Data in one hand, ETL, Extract, Transform and Load."
+        }
+      ],
+      "notion": "n-etl-elt"
+    },
+    {
+      "id": "term-elt",
+      "fr": "ELT",
+      "en": "ELT",
+      "definition": {
+        "fr": "Extraire, charger, puis transformer à l’intérieur de la plateforme.",
+        "en": "Extract, load, then transform inside the platform."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extraction, loading, and then transformation. of the data"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extract and load, and then after that just transform this information inside the platform."
+        }
+      ],
+      "notion": "n-etl-elt"
+    },
+    {
+      "id": "term-self-service",
+      "fr": "self-service BI",
+      "en": "self-service BI",
+      "definition": {
+        "fr": "Laisser des utilisateurs formés transformer des données (low-code / no-code) et construire leurs rapports.",
+        "en": "Letting trained users transform data (low-code / no-code) and build their reports."
+      },
+      "pitfall": {
+        "fr": "Sans cadre, il multiplie les définitions (tension 3/5).",
+        "en": "Without a framework, it multiplies definitions (3/5 tension)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can leave some end-users, do some data transformation with low-code, no-code tools, for example"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can also leave the build of reports to end-users that are trained for that"
+        }
+      ],
+      "notion": "n-self-service"
+    },
+    {
+      "id": "term-semantic-layer",
+      "fr": "couche sémantique",
+      "en": "semantic layer",
+      "definition": {
+        "fr": "Catalogue partagé de définitions métier (ce qu’est un chiffre d’affaires, un client actif), utilisable par tous les outils.",
+        "en": "A shared catalog of business definitions (what revenue, an active customer is), usable by every tool."
+      },
+      "example": {
+        "fr": "l’utilisateur explore librement, la définition des calculs est imposée",
+        "en": "the user explores freely, the calculation definition is enforced"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A semantic layer in that case is a shared catalog of business definitions."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's defined what a revenue and active consumer is. And this semantic layer can be used by every tool."
+        }
+      ],
+      "notion": "n-semantic-layer"
+    },
+    {
+      "id": "term-big-data",
+      "fr": "Big Data",
+      "en": "Big Data",
+      "definition": {
+        "fr": "Confluence du volume, de la variété et de la vélocité des données générées ; stockées brutes, sans transformation.",
+        "en": "Confluence of the volume, variety and velocity of the data generated; stored raw, without transformation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A lot of data in terms of volumes, a lot of data in terms of their variety."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "but also in terms of the velocity, the rate at which those information, those new information are generated."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's basically those three parameters together that leads to the term big data"
+        }
+      ],
+      "notion": "n-big-data"
+    },
+    {
+      "id": "term-unstructured-data",
+      "fr": "données non structurées",
+      "en": "unstructured data",
+      "definition": {
+        "fr": "Images, vidéos… dont il faut extraire de l’information avant de les charger dans un rapport décisionnel.",
+        "en": "Images, videos… from which information must be extracted before loading them into a decision report."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You will need to extract information from these formats, which is called unstructured kind of data, before being able to load them into a decisional report."
+        }
+      ],
+      "notion": "n-big-data-not-replacement"
+    },
+    {
+      "id": "term-data-lake",
+      "fr": "data lake",
+      "en": "data lake",
+      "definition": {
+        "fr": "Stockage de données brutes de tout format à faible coût, souvent sous le Big Data.",
+        "en": "Storage of raw data of any format at low cost, often under Big Data."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Data Lake basically stores raw data of any format at low cost."
+        }
+      ],
+      "notion": "n-data-lake-lakehouse"
+    },
+    {
+      "id": "term-lakehouse",
+      "fr": "lakehouse",
+      "en": "lakehouse",
+      "definition": {
+        "fr": "Ajoute au data lake des capacités d’entrepôt : tables structurées, transactions, gouvernance.",
+        "en": "Adds warehouse capabilities to the data lake: structured tables, transactions, governance."
+      },
+      "pitfall": {
+        "fr": "La logique staging / entrepôt / data marts reste au-dessus.",
+        "en": "The staging / warehouse / data mart logic stays on top."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The Lakehouse adds warehouse capabilities on top with structure table, transactions and governance."
+        }
+      ],
+      "notion": "n-data-lake-lakehouse"
+    },
+    {
+      "id": "term-streaming",
+      "fr": "streaming",
+      "en": "streaming",
+      "definition": {
+        "fr": "Traitement continu des données à l’arrivée des événements, par opposition aux lots nocturnes ; fraîcheur de quelques minutes ou secondes.",
+        "en": "Continuous processing of data as events arrive, as opposed to nightly batches; freshness of minutes or seconds."
+      },
+      "pitfall": {
+        "fr": "Coût très élevé : à justifier par un pain point.",
+        "en": "Very high cost: to be justified by a pain point."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with our streaming data, it's data processed continuously as events arrive, rather than a batch integration in nightly batches."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It pushes them data freshness from the day to minutes or seconds when the decision really needs it."
+        }
+      ],
+      "notion": "n-streaming-pragmatism"
+    },
+    {
+      "id": "term-augmented-analytics",
+      "fr": "analytique augmentée",
+      "en": "augmented analytics",
+      "definition": {
+        "fr": "Accès en langage naturel aux systèmes décisionnels et génération automatique d’explications ; il faut vérifier l’absence d’hallucinations.",
+        "en": "Natural-language access to decision-making systems and automatic generation of explanations; hallucinations must be checked."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "augmented analytics, so natural language, access to decisional systems"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "those kind of systems can now automatically generate explanations."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What you will have to do is to review that and to verify that the system has not hallucinated."
+        }
+      ],
+      "notion": "n-augmented-analytics"
+    }
+  ],
+  "notions": [
+    "n-classic-vs-modern-stack",
+    "n-etl-elt",
+    "n-self-service",
+    "n-semantic-layer",
+    "n-big-data",
+    "n-big-data-not-replacement",
+    "n-data-lake-lakehouse",
+    "n-streaming-pragmatism",
+    "n-augmented-analytics",
+    "n-new-tech-depends-on-bi"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Pile classique (sur site, ETL nocturne, reporting par la DSI) contre pile moderne (cloud élastique, ELT, self-service) ; c’est le service rendu qui compte.",
+        "en": "Classic stack (on-premise, nightly ETL, IT-run reporting) versus modern stack (elastic cloud, ELT, self-service); what matters is the service delivered."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's the kind of service that they can deliver that will make the difference"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Nightly ETL batches, the reporting tools were managed by the IT each time you want a new report."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with the emergence of cloud data platforms, with elastic storage and compute, ELT"
+        }
+      ],
+      "notions": [
+        "n-classic-vs-modern-stack"
+      ]
+    },
+    {
+      "text": {
+        "fr": "ETL et ELT : mêmes trois mots ; en ELT on charge avant de transformer.",
+        "en": "ETL and ELT: same three words; in ELT, you load before transforming."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It stands for Extraction, Transformation and Loading of Data in one hand, ETL, Extract, Transform and Load."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extraction, loading, and then transformation. of the data"
+        }
+      ],
+      "notions": [
+        "n-etl-elt"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La couche sémantique est un catalogue partagé de définitions métier utilisé par tous les outils ; elle implémente l’exigence 2 et concilie exploration libre et résultats cohérents.",
+        "en": "The semantic layer is a shared catalog of business definitions used by every tool; it implements requirement 2 and reconciles free exploration and consistent results."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A semantic layer in that case is a shared catalog of business definitions."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The second requirement, I want to be able to share definitions between everyone"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The user can export freely."
+        }
+      ],
+      "notions": [
+        "n-semantic-layer"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Big Data = volume + variété + vélocité ; données stockées brutes ; il ne remplace pas la BI, il en est une source.",
+        "en": "Big Data = volume + variety + velocity; data stored raw; it does not replace BI, it is a source for it."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's basically those three parameters together that leads to the term big data"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the data are stored as they are produced with no transformation, no conformation of those data."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's not a replacement for anything in the business intelligence."
+        }
+      ],
+      "notions": [
+        "n-big-data",
+        "n-big-data-not-replacement"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Data lake : brut, tout format, bas coût ; lakehouse : + tables structurées, transactions, gouvernance ; la logique en couches reste au-dessus.",
+        "en": "Data lake: raw, any format, low cost; lakehouse: + structured tables, transactions, governance; the layered logic stays on top."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Data Lake basically stores raw data of any format at low cost."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The Lakehouse adds warehouse capabilities on top with structure table, transactions and governance."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "notions": [
+        "n-data-lake-lakehouse"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Streaming : continu, minutes ou secondes, coût très élevé ; on ne le met en place que si un pain point utilisateur le justifie. Analytique augmentée : à vérifier (hallucinations) et dépendante de la BI.",
+        "en": "Streaming: continuous, minutes or seconds, very high cost; only set up if a user pain point justifies it. Augmented analytics: to be verified (hallucinations) and dependent on BI."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It pushes them data freshness from the day to minutes or seconds when the decision really needs it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "don't fall for the run after the technology if it's not justified by user pain point. So stay pragmatic in the decision of what you want to implement."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What you will have to do is to review that and to verify that the system has not hallucinated."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "dépend du système décisif, ils ne le remplacent pas"
+        }
+      ],
+      "notions": [
+        "n-streaming-pragmatism",
+        "n-augmented-analytics",
+        "n-new-tech-depends-on-bi"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Pile classique ?",
+        "en": "Classic stack?"
+      },
+      "back": {
+        "fr": "Entrepôts sur site, lots ETL nocturnes, reporting géré par la DSI, des semaines par besoin.",
+        "en": "On-premise warehouses, nightly ETL batches, IT-run reporting, weeks per need."
+      },
+      "termId": "term-classic-stack",
+      "id": "isi7-08-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Pile moderne ?",
+        "en": "Modern stack?"
+      },
+      "back": {
+        "fr": "Plateformes cloud élastiques, ELT, self-service.",
+        "en": "Elastic cloud platforms, ELT, self-service."
+      },
+      "termId": "term-modern-stack",
+      "id": "isi7-08-fc-02"
+    },
+    {
+      "front": {
+        "fr": "ETL ou ELT : où est la différence ?",
+        "en": "ETL or ELT: what is the difference?"
+      },
+      "back": {
+        "fr": "L’ordre : ELT charge d’abord puis transforme dans la plateforme.",
+        "en": "The order: ELT loads first then transforms inside the platform."
+      },
+      "termId": "term-elt",
+      "id": "isi7-08-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Deux niveaux de self-service ?",
+        "en": "Two levels of self-service?"
+      },
+      "back": {
+        "fr": "Transformer des données (low-code / no-code) et construire des rapports, par des utilisateurs formés.",
+        "en": "Transforming data (low-code / no-code) and building reports, by trained users."
+      },
+      "termId": "term-self-service",
+      "id": "isi7-08-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Couche sémantique ?",
+        "en": "Semantic layer?"
+      },
+      "back": {
+        "fr": "Catalogue partagé de définitions métier utilisable par tous les outils.",
+        "en": "A shared catalog of business definitions usable by every tool."
+      },
+      "termId": "term-semantic-layer",
+      "id": "isi7-08-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Que résout la couche sémantique ?",
+        "en": "What does the semantic layer solve?"
+      },
+      "back": {
+        "fr": "La tension entre explorer librement (3) et résultats cohérents (5) ; implémente l’exigence 2 de Kimball et Ross.",
+        "en": "The tension between exploring freely (3) and consistent results (5); implements Kimball and Ross requirement 2."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The second requirement, I want to be able to share definitions between everyone"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The user can export freely."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "nous pouvons enforcer la définition des calculs"
+        }
+      ],
+      "notions": [
+        "n-semantic-layer"
+      ],
+      "id": "isi7-08-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Les trois V du Big Data ?",
+        "en": "The three Vs of Big Data?"
+      },
+      "back": {
+        "fr": "Volume, variété, vélocité.",
+        "en": "Volume, variety, velocity."
+      },
+      "termId": "term-big-data",
+      "id": "isi7-08-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Big Data et BI : lequel remplace l’autre ?",
+        "en": "Big Data and BI: which replaces which?"
+      },
+      "back": {
+        "fr": "Aucun : le Big Data est une source d’information pour la BI, stockée brute et à qualifier.",
+        "en": "Neither: Big Data is a source of information for BI, stored raw and to be qualified."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's not a replacement for anything in the business intelligence."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's more a source of information for us"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the data are stored as they are produced with no transformation, no conformation of those data."
+        }
+      ],
+      "notions": [
+        "n-big-data-not-replacement"
+      ],
+      "id": "isi7-08-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Data lake vs lakehouse ?",
+        "en": "Data lake vs lakehouse?"
+      },
+      "back": {
+        "fr": "Lake : brut, tout format, bas coût. Lakehouse : + tables structurées, transactions, gouvernance.",
+        "en": "Lake: raw, any format, low cost. Lakehouse: + structured tables, transactions, governance."
+      },
+      "termId": "term-lakehouse",
+      "id": "isi7-08-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Streaming : promesse et réserve ?",
+        "en": "Streaming: promise and caveat?"
+      },
+      "back": {
+        "fr": "Fraîcheur en minutes ou secondes ; coût très élevé, à justifier par un pain point.",
+        "en": "Freshness in minutes or seconds; very high cost, to be justified by a pain point."
+      },
+      "termId": "term-streaming",
+      "id": "isi7-08-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Analytique augmentée : précaution ?",
+        "en": "Augmented analytics: precaution?"
+      },
+      "back": {
+        "fr": "Relire et vérifier que le système n’a pas halluciné.",
+        "en": "Review and check the system has not hallucinated."
+      },
+      "termId": "term-augmented-analytics",
+      "id": "isi7-08-fc-11"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La différence entre ETL et ELT tient aux mots utilisés : ELT ne comporte pas d’étape de transformation.",
+        "en": "The difference between ETL and ELT lies in the words used: ELT has no transformation step."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : les mêmes trois mots ; seul l’ordre change. En ELT on charge d’abord, puis on transforme dans la plateforme.",
+        "en": "FALSE: the same three words; only the order changes. In ELT you load first, then transform in the platform."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extraction, loading, and then transformation. of the data"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "extract and load, and then after that just transform this information inside the platform."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-etl-elt"
+      ],
+      "trap": {
+        "fr": "Croire que ELT supprime la transformation.",
+        "en": "Believing ELT removes transformation."
+      },
+      "id": "isi7-08-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une plateforme cloud avec stockage et calcul élastiques et chargement ELT relève de la pile moderne.",
+        "en": "A cloud platform with elastic storage and compute and ELT loading belongs to the modern stack."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : définition donnée à l’oral.",
+        "en": "TRUE: definition given orally."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with the emergence of cloud data platforms, with elastic storage and compute, ELT"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "passage des data warehouses on-premise avec ETL nocturnes vers des plateformes cloud avec ELT et stockage élastique"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-classic-vs-modern-stack"
+      ],
+      "id": "isi7-08-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une équipe veut que les analystes explorent librement les données tout en gardant une définition unique du « client actif ». Quel élément du cours répond à ce besoin ?",
+        "en": "A team wants analysts to explore data freely while keeping a single definition of “active customer”. Which element of the course answers this need?"
+      },
+      "options": [
+        {
+          "fr": "Le streaming de tous les flux vers le tableau de bord de la direction",
+          "en": "Streaming of all flows to the executive dashboard"
+        },
+        {
+          "fr": "Un data lake de données brutes de tous formats, ouvert à tous",
+          "en": "A data lake of raw data of every format, open to everyone"
+        },
+        {
+          "fr": "Une couche sémantique de définitions partagées",
+          "en": "A semantic layer of shared definitions"
+        },
+        {
+          "fr": "Un nouveau tableur central tenu par le service financier",
+          "en": "A new central spreadsheet kept by the finance department"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "La couche sémantique : catalogue partagé de définitions utilisable par tous les outils ; l’utilisateur explore librement, la définition est imposée.",
+        "en": "The semantic layer: a shared catalog of definitions usable by every tool; the user explores freely, the definition is enforced."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A semantic layer in that case is a shared catalog of business definitions."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The user can export freely."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "nous pouvons enforcer la définition des calculs"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-semantic-layer"
+      ],
+      "id": "isi7-08-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le prof, le Big Data remplace le système décisionnel parce qu’il stocke toutes les données sans les transformer.",
+        "en": "According to the teacher, Big Data replaces the decision-making system because it stores all the data without transforming it."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ces données non transformées doivent être qualifiées et traduites en termes métier ; le Big Data n’est pas un remplacement mais une source d’information.",
+        "en": "FALSE: untransformed data must be qualified and translated into business terms; Big Data is not a replacement but a source of information."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the data are stored as they are produced with no transformation, no conformation of those data."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's not a replacement for anything in the business intelligence."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's more a source of information for us"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-big-data-not-replacement"
+      ],
+      "trap": {
+        "fr": "Prendre « stocker sans transformer » pour un avantage décisionnel.",
+        "en": "Taking “storing without transforming” as a decision-making advantage."
+      },
+      "id": "isi7-08-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le Big Data résulte de la conjonction du volume, de la variété et de la vélocité des données générées.",
+        "en": "Big Data results from the confluence of the volume, variety and velocity of the data generated."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « those three parameters together ».",
+        "en": "TRUE: “those three parameters together”."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's basically those three parameters together that leads to the term big data"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-big-data"
+      ],
+      "id": "isi7-08-qz-05"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Qu’ajoute un lakehouse à un data lake, selon le cours ?",
+        "en": "What does a lakehouse add to a data lake, according to the course?"
+      },
+      "options": [
+        {
+          "fr": "Des modèles de machine learning prêts à l’emploi pour les métiers",
+          "en": "Ready-to-use machine learning models for business lines"
+        },
+        {
+          "fr": "Des tables structurées, des transactions et de la gouvernance",
+          "en": "Structured tables, transactions and governance"
+        },
+        {
+          "fr": "Un traitement en temps réel obligatoire sur toutes les sources de données",
+          "en": "Mandatory real-time processing of every data source"
+        },
+        {
+          "fr": "La suppression complète de la logique entrepôt et data marts au-dessus",
+          "en": "The complete removal of the warehouse and data mart logic on top"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Des capacités d’entrepôt : tables structurées, transactions, gouvernance. La logique en couches reste au-dessus.",
+        "en": "Warehouse capabilities: structured tables, transactions, governance. The layered logic stays on top."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The Lakehouse adds warehouse capabilities on top with structure table, transactions and governance."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-data-lake-lakehouse"
+      ],
+      "id": "isi7-08-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Si le lakehouse est utilisé comme implémentation, la logique zone de transit / entrepôt / data marts disparaît.",
+        "en": "If a lakehouse is used as the implementation, the staging / warehouse / data mart logic disappears."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elle reste au-dessus ; l’architecte choisit l’implémentation physique (lakehouse ou bases SQL).",
+        "en": "FALSE: it stays on top; the architect chooses the physical implementation (lakehouse or SQL databases)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the staging area, the warehouse, the data map logic, it stays on top of that."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So it's up to the architect to decide what is the physical implementation of the data house."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-data-lake-lakehouse"
+      ],
+      "trap": {
+        "fr": "Confondre implémentation physique et logique en couches.",
+        "en": "Confusing physical implementation and layered logic."
+      },
+      "id": "isi7-08-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un directeur demande des données en temps réel pour un rapport mensuel de clôture. Quelle réponse est la plus conforme au cours ?",
+        "en": "A director asks for real-time data for a monthly closing report. Which answer is most in line with the course?"
+      },
+      "options": [
+        {
+          "fr": "Proposer du streaming sur la moitié des flux de données de l’entreprise",
+          "en": "Offer streaming on half of the company’s data flows"
+        },
+        {
+          "fr": "Passer d’abord à un lakehouse avant d’examiner le besoin du directeur",
+          "en": "Move to a lakehouse first before examining the director’s need"
+        },
+        {
+          "fr": "Accepter : le temps réel est toujours préférable à l’intégration par lots",
+          "en": "Accept: real time is always preferable to batch integration"
+        },
+        {
+          "fr": "Refuser : une clôture mensuelle n’en a pas besoin et son coût est très élevé",
+          "en": "Refuse: a monthly closing does not need it and its cost is very high"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Une clôture mensuelle n’a pas besoin du temps réel (une alerte à la fraude, oui) et le temps réel coûte très cher : on reste pragmatique.",
+        "en": "A monthly closing does not need real time (a fraud alert does) and real time is very expensive: stay pragmatic."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "A monthly closing does not need real time; a fraud alert does."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Et le coût en temps réel est vraiment élevé."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "don't fall for the run after the technology if it's not justified by user pain point. So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-streaming-pragmatism"
+      ],
+      "trap": {
+        "fr": "Réclamer le temps réel parce que la technologie existe.",
+        "en": "Asking for real time because the technology exists."
+      },
+      "id": "isi7-08-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le streaming fait passer la fraîcheur des données du jour à quelques minutes ou secondes lorsque la décision l’exige vraiment.",
+        "en": "Streaming moves data freshness from a day to minutes or seconds when the decision really requires it."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : formulation du prof.",
+        "en": "TRUE: the teacher’s wording."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It pushes them data freshness from the day to minutes or seconds when the decision really needs it."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-streaming-pragmatism"
+      ],
+      "id": "isi7-08-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un rapport trimestriel généré automatiquement par un système d’analytique augmentée peut être publié tel quel, puisque le système s’appuie sur des données préparées.",
+        "en": "A quarterly report generated automatically by an augmented-analytics system can be published as is, since the system relies on prepared data."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : il faut le relire et vérifier que le système n’a pas halluciné.",
+        "en": "FALSE: it must be reviewed and checked for hallucination."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What you will have to do is to review that and to verify that the system has not hallucinated."
+        }
+      ],
+      "objective": "o5",
+      "notions": [
+        "n-augmented-analytics"
+      ],
+      "trap": {
+        "fr": "Faire confiance à un texte généré parce que les données sont fiables.",
+        "en": "Trusting generated text because the data is reliable."
+      },
+      "id": "isi7-08-qz-10"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pourquoi l’analytique augmentée et le machine learning ne remplacent-ils pas la BI, selon le prof ?",
+        "en": "Why do augmented analytics and machine learning not replace BI, according to the teacher?"
+      },
+      "options": [
+        {
+          "fr": "Ils sont trop coûteux pour être utilisés dans une entreprise de taille moyenne",
+          "en": "They are too expensive to be used in a mid-sized company"
+        },
+        {
+          "fr": "Ils ne savent pas traiter le langage naturel des utilisateurs métier",
+          "en": "They cannot process business users’ natural language"
+        },
+        {
+          "fr": "Ils exigent obligatoirement un lakehouse pour fonctionner correctement",
+          "en": "They necessarily require a lakehouse to work properly"
+        },
+        {
+          "fr": "Ils dépendent d’un système décisionnel de qualité qui rend les données fiables",
+          "en": "They depend on a quality decision-making system that makes data reliable"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "« Tout ce que nous avons mentionné dépend du système décisionnel » : sa qualité fait le succès ou l’échec de ces initiatives.",
+        "en": "“Everything we mentioned depends on the decision-making system”: its quality makes these initiatives succeed or fail."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "dépend du système décisif, ils ne le remplacent pas"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Business intelligence is a process that makes data reliable, so don't hesitate to leverage that."
+        }
+      ],
+      "objective": "o5",
+      "notions": [
+        "n-new-tech-depends-on-bi"
+      ],
+      "id": "isi7-08-qz-11"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le self-service est de plus en plus possible, car une modélisation bien faite permet à l’utilisateur d’écrire ses requêtes par glisser-déposer et filtres dynamiques.",
+        "en": "Self-service is increasingly possible, because sound modelling lets users write their queries with drag-and-drop and dynamic filters."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : explication du prof.",
+        "en": "TRUE: the teacher’s explanation."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you have done your modelization right well with drag-and-drops and dynamic filters, end-users can really well write down its own query."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-self-service"
+      ],
+      "id": "isi7-08-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Pile classique ou moderne ? Classer huit constats",
+        "en": "Classic or modern stack? Classify eight observations"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Classez chaque constat en pile **classique** ou **moderne**.\n1. Chaque nouveau rapport est un projet de reporting géré par la DSI.\n2. Les données sont extraites, chargées dans la plateforme, puis transformées à l’intérieur.\n3. Lots ETL exécutés chaque nuit sur un entrepôt hébergé dans la salle serveurs.\n4. Les analystes formés transforment les données avec des outils low-code.\n5. Le stockage et le calcul s’adaptent à la demande.\n6. Chaque nouveau besoin se compte en semaines.\n7. Les utilisateurs posent leurs questions en langage naturel.\n8. Les définitions sont partagées dans une couche sémantique utilisée par tous les outils.",
+        "en": "Classify each observation as **classic** or **modern** stack.\n1. Every new report is a reporting project run by IT.\n2. Data is extracted, loaded into the platform, then transformed inside.\n3. ETL batches run every night on a warehouse hosted in the server room.\n4. Trained analysts transform data with low-code tools.\n5. Storage and compute adapt on demand.\n6. Every new need takes weeks.\n7. Users ask their questions in natural language.\n8. Definitions are shared in a semantic layer used by all tools."
+      },
+      "hints": [
+        {
+          "fr": "La pile classique : sur site, nocturne, géré par la DSI.",
+          "en": "Classic: on-premise, nightly, IT-run."
+        },
+        {
+          "fr": "La pile moderne : cloud, ELT, self-service.",
+          "en": "Modern: cloud, ELT, self-service."
+        }
+      ],
+      "solution": {
+        "fr": "1. **Classique**. 2. **Moderne** (ELT). 3. **Classique** (ETL nocturne, sur site). 4. **Moderne** (self-service). 5. **Moderne** (élasticité). 6. **Classique** (« a matter of weeks »). 7. **Moderne** (analytique augmentée). 8. **Moderne** (la couche sémantique répond aux limites du self-service).\n*Ce que l’exercice vérifie* : placer des symptômes sur les deux piles. *Rappel du prof : au fond, c’est le service rendu qui fait la différence.* *Le placement du 8 est notre lecture : le cours présente la couche sémantique dans la partie « moderne ».*",
+        "en": "1. **Classic**. 2. **Modern** (ELT). 3. **Classic** (nightly on-premise ETL). 4. **Modern** (self-service). 5. **Modern** (elasticity). 6. **Classic** (“a matter of weeks”). 7. **Modern** (augmented analytics). 8. **Modern** (the semantic layer answers the limits of self-service).\n*What the exercise checks*: placing symptoms on the two stacks. *Teacher’s reminder: in the end, it is the service delivered that makes the difference.* *Placing 8 is our reading: the course presents the semantic layer in the “modern” part.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Nightly ETL batches, the reporting tools were managed by the IT each time you want a new report."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And it was then a matter of weeks, each time you have a new need"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "with the emergence of cloud data platforms, with elastic storage and compute, ELT"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can leave some end-users, do some data transformation with low-code, no-code tools, for example"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A semantic layer in that case is a shared catalog of business definitions."
+        }
+      ],
+      "objective": "o1",
+      "examStyle": true,
+      "trap": {
+        "fr": "Classer par l’outil plutôt que par le service rendu.",
+        "en": "Classifying by tool rather than by the service delivered."
+      },
+      "notions": [
+        "n-classic-vs-modern-stack",
+        "n-etl-elt",
+        "n-self-service",
+        "n-semantic-layer"
+      ],
+      "id": "isi7-08-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Quel rythme de rafraîchissement ? Trois cas à justifier",
+        "en": "Which refresh rhythm? Three cases to justify"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Pour chaque besoin, choisissez la fraîcheur (mensuelle, quotidienne, minutes/secondes), dites si le streaming est justifié et expliquez avec le cours.\n1. Le comité de direction suit chaque mois les KPI du plan stratégique.\n2. Un site de e-commerce veut bloquer les paiements suspects avant validation.\n3. Un responsable d’entrepôt consulte chaque matin le tableau de bord de la veille.",
+        "en": "For each need, choose the freshness (monthly, daily, minutes/seconds), say whether streaming is justified and explain with the course.\n1. The executive committee follows the strategic plan KPIs every month.\n2. An e-commerce site wants to block suspicious payments before validation.\n3. A warehouse manager looks every morning at yesterday’s dashboard."
+      },
+      "hints": [
+        {
+          "fr": "Quelle décision, à quel rythme ?",
+          "en": "Which decision, at which rhythm?"
+        },
+        {
+          "fr": "Le temps réel a un coût très élevé.",
+          "en": "Real time has a very high cost."
+        }
+      ],
+      "solution": {
+        "fr": "1. **Mensuelle** : une clôture mensuelle n’a pas besoin du temps réel ; streaming non justifié.\n2. **Minutes ou secondes** : comme l’alerte à la fraude du cours, la décision doit être prise avant validation ; streaming justifié malgré son coût.\n3. **Quotidienne** : rapport descriptif sur la veille ; streaming non justifié (« don’t fall for the run after the technology »).\n*Ce que l’exercice vérifie* : relier fraîcheur, décision et coût, sans réclamer le temps réel partout. *Cas inventés.*",
+        "en": "1. **Monthly**: a monthly closing does not need real time; streaming not justified.\n2. **Minutes or seconds**: like the course’s fraud alert, the decision must be taken before validation; streaming justified despite its cost.\n3. **Daily**: a descriptive report on yesterday; streaming not justified (“don’t fall for the run after the technology”).\n*What the exercise checks*: linking freshness, decision and cost, without asking for real time everywhere. *Invented cases.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "A monthly closing does not need real time; a fraud alert does."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It pushes them data freshness from the day to minutes or seconds when the decision really needs it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Et le coût en temps réel est vraiment élevé."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "don't fall for the run after the technology if it's not justified by user pain point. So stay pragmatic in the decision of what you want to implement."
+        }
+      ],
+      "objective": "o4",
+      "examStyle": true,
+      "trap": {
+        "fr": "Réclamer le temps réel parce que la technologie existe.",
+        "en": "Asking for real time because the technology exists."
+      },
+      "notions": [
+        "n-streaming-pragmatism"
+      ],
+      "id": "isi7-08-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "In ELT, data is loaded before it is transformed.",
+      "id": "isi7-08-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "A semantic layer is a {{shared}} catalog of {{business}} definitions.",
+      "translation": "Une couche sémantique est un catalogue partagé de définitions métier.",
+      "id": "isi7-08-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Big Data replaces the decision-making system because the data is stored without transformation.",
+      "error": "replaces the decision-making system",
+      "corrected": "does not replace the decision-making system",
+      "explanation": {
+        "fr": "Les données non transformées doivent être qualifiées : le Big Data est une source, pas un remplacement.",
+        "en": "Untransformed data must be qualified: Big Data is a source, not a replacement."
+      },
+      "id": "isi7-08-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En deux ou trois phrases : pourquoi ne faut-il pas mettre du streaming partout ?",
+        "en": "In two or three sentences: why should streaming not be used everywhere?"
+      },
+      "modelAnswer": "Streaming brings freshness down to minutes or seconds, but real time has a very high cost. A monthly closing does not need it, so we should only use it when a user pain point justifies it, as for a fraud alert.",
+      "keywords": [
+        "streaming",
+        "real time",
+        "cost",
+        "pain point",
+        "fraud alert"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité le coût.",
+          "en": "I mentioned the cost."
+        },
+        {
+          "fr": "J’ai donné un exemple justifié et un non justifié.",
+          "en": "I gave one justified and one unjustified example."
+        }
+      ],
+      "usefulPhrases": [
+        "has a very high cost",
+        "is justified by"
+      ],
+      "id": "isi7-08-wr-04"
+    }
+  ]
+}

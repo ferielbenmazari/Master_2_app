@@ -1,0 +1,2117 @@
+{
+  "id": "isi7-07-projet-bi",
+  "courseId": "isi7",
+  "order": 7,
+  "title": {
+    "fr": "Conduire un projet BI : de l’analyse au changement",
+    "en": "Running a BI project: from analysis to change"
+  },
+  "hook": {
+    "fr": "Un projet purement informatique que personne n’utilise : comment l’éviter ?",
+    "en": "A purely IT project nobody uses: how to avoid it?"
+  },
+  "question": {
+    "fr": "Comment un projet BI se découpe-t-il, qui fait quoi, et pourquoi la gestion du changement commence-t-elle dès l’analyse ?",
+    "en": "How is a BI project split, who does what, and why does change management start at analysis?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Citer les cinq phases d’un projet BI et le périmètre du cours.",
+        "en": "Name the five phases of a BI project and the course scope."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Distinguer spécification fonctionnelle et technique, et citer les rôles.",
+        "en": "Distinguish functional and technical specification, and name the roles."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Expliquer pourquoi le coût d’une erreur croît à chaque phase.",
+        "en": "Explain why the cost of an error grows with each phase."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Appliquer les cinq points de gestion du changement et mesurer l’adoption.",
+        "en": "Apply the five change-management points and measure adoption."
+      },
+      "level": "apply"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Le compte rendu liste, parmi les sujets de la séance, les phases d’un projet BI, les rôles et le change management ; il ne dit pas explicitement que ces points sont à l’examen.",
+        "en": "The notes list, among the session topics, BI project phases, roles and change management; they do not state explicitly that these are in the exam."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Question de cours sur la différence entre spécifications ou sur le coût d’une erreur : estimation, la part de l’examen sur ce point n’est pas précisée.",
+        "en": "A course question on the difference between specifications or on the cost of an error: an estimate, the weight of this topic in the exam is not specified."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3 et 6 : pain points, caractéristiques et interviews.",
+    "en": "Chapters 3 and 6: pain points, characteristics and interviews."
+  },
+  "next": {
+    "fr": "Chapitre 8 : l’écosystème technologique qui évolue autour du projet.",
+    "en": "Chapter 8: the technology ecosystem that evolves around the project."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Les cinq phases ; le cours : analyse et design.",
+        "en": "The five phases; the course: analysis and design."
+      },
+      {
+        "fr": "Spécification fonctionnelle (contrat, termes métier) contre technique (comment).",
+        "en": "Functional specification (contract, business terms) versus technical (how)."
+      },
+      {
+        "fr": "Les rôles et le coût d’une erreur par phase.",
+        "en": "The roles and the cost of an error per phase."
+      },
+      {
+        "fr": "Les cinq points du changement et la mesure d’adoption.",
+        "en": "The five points of change and the adoption measure."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Classer une ligne de spécification en fonctionnelle ou technique.",
+        "en": "Classify a specification line as functional or technical."
+      },
+      {
+        "fr": "Critiquer un plan de projet qui ignore les utilisateurs et proposer un plan de changement.",
+        "en": "Criticise a project plan that ignores users and propose a change plan."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Fonctionnelle (public : utilisateurs) ≠ technique (public : constructeurs).",
+        "en": "Functional (audience: users) ≠ technical (audience: builders)."
+      },
+      {
+        "fr": "Se connecter au nouvel outil ≠ abandonner l’ancien.",
+        "en": "Logging in to the new tool ≠ abandoning the old one."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 3 : exigence n° 7 de Kimball et Ross et pain points comme premier niveau d’acceptation.",
+        "en": "Chapter 3: Kimball and Ross requirement no. 7 and pain points as the first acceptance level."
+      },
+      {
+        "fr": "Chapitres 11-12 : la spécification technique décrit l’architecture.",
+        "en": "Chapters 11-12: the technical specification describes the architecture."
+      },
+      {
+        "fr": "Chapitre 14 : les interviews alimentent le modèle dimensionnel.",
+        "en": "Chapter 14: interviews feed the dimensional model."
+      }
+    ]
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__ISI7/cours_14092026.md",
+    "ressources/S3__ISI7/markdown/isi7.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Cinq phases, deux sur lesquelles on travaille",
+        "en": "Five phases, two we work on"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un projet BI se découpe le plus souvent en **cinq phases** ([[term-five-phases]]) : analyse, design, build, test et déploiement. Le découpage varie : certains regroupent analyse et design en une seule phase, d’autres scindent le test, ou ajoutent après le déploiement une phase de garantie ou d’hypercare. À toi de rapprocher ce que tu verras en entreprise de ce schéma.",
+        "en": "A BI project is most often divided into **five phases** ([[term-five-phases]]): analysis, design, build, test and deployment. The split varies: some merge analysis and design into one phase, others split testing, or add a guarantee or hypercare phase after deployment. It is up to you to relate what you see in companies to this scheme."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can divide a project in five phases. First phase, the analysis. then the design, the build, the test, and the deployment."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "some consider analysis and design as a single phase, for example"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "adding also, for example, hypercare or guarantee after the deployment as dedicated phases"
+        }
+      ],
+      "notions": [
+        "n-bi-project-phases"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  A[\"1. Analysis\"] --> D[\"2. Design\"] --> B[\"3. Build\"] --> T[\"4. Test\"] --> P[\"5. Deployment\"]\n  A -. \"course scope\" .- D",
+      "caption": {
+        "fr": "Les cinq phases ; le cours se concentre sur l’analyse et le design.",
+        "en": "The five phases; the course focuses on analysis and design."
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le périmètre du cours : l’analyse et le design. Le build, le test et le déploiement ne sont pas couverts ; le prof préfère une conversation en profondeur sur les premières phases plutôt qu’une vue superficielle de tout. Pour qui veut construire quelque chose, l’outil est libre et le prof reste disponible après le cours.",
+        "en": "The course scope: analysis and design. Build, test and deployment are not covered; the teacher prefers a deep conversation on the first phases rather than a surface view of everything. For anyone who wants to build something, the tool is free and the teacher is available after class."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are focusing on analysis and design phase"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "but they are not covered in this class like i said"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "I would prefer to go more deeper on the first phases."
+        }
+      ],
+      "notions": [
+        "n-bi-project-phases"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Retiens la phrase d’intention du prof : le but n’est pas d’apprendre à conduire un projet BI, mais à **comprendre les besoins métier** et à en dériver une modernisation. Les phases build, test et déploiement sont hors périmètre.",
+        "en": "Keep the teacher’s statement of intent: the aim is not to learn to lead a BI project, but to **understand business needs** and derive a modernisation from them. Build, test and deployment are out of scope."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we want to focus on how to understand the business requirements"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "but they are not covered in this class like i said"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-07-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Deux spécifications, deux publics",
+        "en": "Two specifications, two audiences"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "À la fin de l’analyse, on produit la **spécification fonctionnelle** ([[term-functional-spec]]) : elle découle de l’expression des besoins des utilisateurs, en termes métier, et sert de **contrat avec les utilisateurs**. Si elle est sans ambiguïté, chacun comprend ce qui sera construit : on gère les attentes. C’est le travail de l’ingénieur de la traduire ensuite en exigences techniques.",
+        "en": "At the end of analysis, you produce the **functional specification** ([[term-functional-spec]]): it derives from the users’ expression of needs, in business terms, and serves as a **contract with the users**. If it is unambiguous, everyone understands what will be built: expectations are managed. It is then the engineer’s job to translate it into technical requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "functional specification is derived directly from user needs expression"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what you are producing at the end of the analysis phase is a document that can serve as a contract with the users"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "basically you are managing expectations by doing that"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we should be able to translate them into technical requirements"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification fonctionnelle traduit les besoins utilisateurs en termes métier et sert de contrat avec les utilisateurs"
+        }
+      ],
+      "notions": [
+        "n-functional-spec"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La **spécification technique** ([[term-technical-spec]]) dit, elle, **comment** la solution sera livrée : identification des systèmes sources, modèles de données, façon de représenter l’information, architecture (zone de transit, entrepôt, data marts), flux de données et fréquence de rafraîchissement.",
+        "en": "The **technical specification** ([[term-technical-spec]]) says **how** the solution will be delivered: identification of source systems, data models, how information is represented, architecture (staging, warehouse, data marts), data flows and refresh frequency."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Technical specification on the other hand is more about how the solution will deliver it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are talking about source systems, identification, data models, and how we want to represent the information."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Dataflows also, and refresh frequency for example."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification technique définit comment la solution sera livrée (systèmes sources, modèles de données, architecture, dataflows)"
+        }
+      ],
+      "notions": [
+        "n-technical-spec"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Aspect",
+          "en": "Aspect"
+        },
+        {
+          "fr": "Spécification fonctionnelle",
+          "en": "Functional specification"
+        },
+        {
+          "fr": "Spécification technique",
+          "en": "Technical specification"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Répond à",
+            "en": "Answers"
+          },
+          {
+            "fr": "Que veulent les utilisateurs ? (termes métier)",
+            "en": "What do users want? (business terms)"
+          },
+          {
+            "fr": "Comment la solution sera-t-elle livrée ?",
+            "en": "How will the solution be delivered?"
+          }
+        ],
+        [
+          {
+            "fr": "Contient",
+            "en": "Contains"
+          },
+          {
+            "fr": "Indicateurs et définitions, axes, granularité, historique, fraîcheur, règles d’accès",
+            "en": "Indicators and definitions, axes, granularity, history, freshness, access rules"
+          },
+          {
+            "fr": "Systèmes sources, modèles de données, architecture, flux, fréquence de rafraîchissement",
+            "en": "Source systems, data models, architecture, data flows, refresh frequency"
+          }
+        ],
+        [
+          {
+            "fr": "Rôle",
+            "en": "Role"
+          },
+          {
+            "fr": "Contrat avec les utilisateurs, gestion des attentes",
+            "en": "Contract with users, managing expectations"
+          },
+          {
+            "fr": "Contrat avec ceux qui construisent",
+            "en": "Contract with those who build"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what you are producing at the end of the analysis phase is a document that can serve as a contract with the users"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Technical specification on the other hand is more about how the solution will deliver it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are talking about source systems, identification, data models, and how we want to represent the information."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Dataflows also, and refresh frequency for example."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification technique définit comment la solution sera livrée (systèmes sources, modèles de données, architecture, dataflows)"
+        }
+      ],
+      "notions": [
+        "n-functional-spec",
+        "n-technical-spec"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Chaque ligne d’une spécification doit servir un but précis. Une définition partagée sert la fiabilité, des règles versionnées la prévisibilité, la fraîcheur et les règles d’accès la disponibilité et la sécurité : on retrouve les principes du chapitre 3.",
+        "en": "Every line of a specification must serve a specific purpose. A shared definition serves reliability, versioned rules predictability, freshness and access rules availability and security: this is where the principles of chapter 3 come back."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Every line of the specification should serve a specific purpose."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you have a shared definition, it's about reliability. When you are versioning the rules, it's about being predictable"
+        }
+      ],
+      "notions": [
+        "n-functional-spec"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : « fonctionnelle » ne veut pas dire « qui fonctionne ». La spécification fonctionnelle est écrite en **termes métier** et sert de contrat avec les **utilisateurs** ; la technique décrit la solution (sources, modèles, architecture, flux).",
+        "en": "Trap: “functional” does not mean “that works”. The functional specification is written in **business terms** and serves as a contract with **users**; the technical one describes the solution (sources, models, architecture, flows)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification fonctionnelle traduit les besoins utilisateurs en termes métier et sert de contrat avec les utilisateurs"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification technique définit comment la solution sera livrée (systèmes sources, modèles de données, architecture, dataflows)"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-07-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Qui fait quoi ?",
+        "en": "Who does what?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Au démarrage, on identifie des personnes pour chaque rôle : un **analyste métier** ou **architecte BI** (*business analyst* ou *BI architect*), des **propriétaires de données** et des **ingénieurs de données** qui construisent les pipelines d’ingestion, des **développeurs BI** pour les rapports et tableaux de bord, et des **utilisateurs clés** (*key users*) pour les tests et l’adoption.",
+        "en": "At the start, people are identified for each role: a **business analyst** or **BI architect**, **data owners** and **data engineers** who build the ingestion pipelines, **BI developers** for reports and dashboards, and **key users** for testing and adoption."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Usually what you need is a business analyst or a BI architect. You need also to identify data owners and data engineers."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the BI developers for reports and dashboards, and key users for testing and adoption."
+        }
+      ],
+      "notions": [
+        "n-bi-project-roles"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Sur les petits et moyens projets, une personne tient souvent plusieurs rôles : par exemple, des développeurs couvrent à la fois les rôles d’ingénieur de données et de développeur BI. Seuls les très gros projets dédient une personne par rôle.",
+        "en": "On small and medium projects, one person often holds several roles: for example, developers cover both the data engineer and the BI developer roles. Only very large projects dedicate one person per role."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in small to medium-sized projects, some. For example, developers can cover data engineers and BI developers roles at the same time."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Sur les petits et moyens projets, une personne peut tenir plusieurs rôles"
+        }
+      ],
+      "notions": [
+        "n-bi-project-roles"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-07-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi commencer par l’analyse : le coût d’une erreur",
+        "en": "Why start with analysis: the cost of an error"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "On commence toujours par l’analyse : un excellent travail technique sur de mauvaises fondations ne sert à rien, personne n’utilisera le résultat. Le **coût d’une erreur** de compréhension des besoins **augmente à chaque phase**.",
+        "en": "We always start with analysis: excellent technical work on wrong foundations is useless, nobody will use the result. The **cost of an error** in understanding needs **grows with each phase**."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "this cost of charge will grow with each phases"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you are putting the foundation of the success of your project right in the first phase"
+        }
+      ],
+      "notions": [
+        "n-cost-of-change"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Où l’erreur est découverte",
+          "en": "Where the error is found"
+        },
+        {
+          "fr": "Ce que dit le prof",
+          "en": "What the teacher says"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Analyse",
+            "en": "Analysis"
+          },
+          {
+            "fr": "Une définition corrigée dans le contrat avec l’utilisateur : rapide et facile.",
+            "en": "A definition corrected in the contract with the user: quick and easy."
+          }
+        ],
+        [
+          {
+            "fr": "Design",
+            "en": "Design"
+          },
+          {
+            "fr": "Exemple : on conçoit une réplication de tout partout pour une disponibilité 24 h sur 24, 7 j sur 7, alors que le besoin est 9 h-17 h en semaine : réparable, mais avec plus d’effort.",
+            "en": "Example: a replication of everything everywhere is designed for 24/7 availability, whereas the need is 9 to 5 on weekdays: fixable, but with more effort."
+          }
+        ],
+        [
+          {
+            "fr": "Build, test, déploiement",
+            "en": "Build, test, deployment"
+          },
+          {
+            "fr": "Chaque phase suivante rend la correction plus coûteuse ; après le déploiement, c’est le pire cas : on peut perdre la confiance des clients.",
+            "en": "Each next phase makes correction more expensive; after deployment it is the worst case: customers’ trust can be lost."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A definition corrected. In the analysis phase, for example in a contract document"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "hours a day, seven days a week and you design a replication of everything everywhere in your design"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "We just only need a 9 to 5 availability open day in the week."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The worst case scenario is that you can lose trust of customers based on that"
+        }
+      ],
+      "notions": [
+        "n-cost-of-change"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Règle de conduite : on ne passe à la phase suivante que lorsque l’on est sûr à 100 % que tout le monde est aligné sur les objectifs et le résultat attendu.",
+        "en": "Rule of conduct: move to the next phase only when you are 100% sure everyone is aligned on the objectives and the expected outcome."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you only transition to the next one. if you are 100% sure that everyone is aligned with the objectives"
+        }
+      ],
+      "notions": [
+        "n-cost-of-change"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-07-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le changement se prépare dès le premier jour",
+        "en": "Change starts on day one"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Rappel du chapitre 3 : l’exigence n° 7 de Kimball et Ross dit qu’un système BI n’est réussi que si la communauté métier l’accepte. Donc la gestion du changement n’est **pas une étape finale après le déploiement** : elle commence au début du projet.",
+        "en": "Reminder from chapter 3: Kimball and Ross requirement no. 7 says a BI system is only successful if the business community accepts it. So change management is **not a final step after deployment**: it starts at the beginning of the project."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "A BA system is only successful if the business community accepts it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+        }
+      ],
+      "notions": [
+        "n-change-management"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’anecdote du prof : sur un très gros projet, on lui demande à la fin d’aller parler aux utilisateurs finaux, qu’il rencontre pour la première fois. Personne ne leur avait jamais parlé : c’était un projet purement informatique, mené pour remplacer un outil. Les utilisateurs, satisfaits de leur outil, ne voyaient pas l’intérêt du changement. Leçon : ne sous-estime pas la capacité des utilisateurs à résister, même s’ils demandent quelque chose, et plus encore s’ils ne demandent rien.",
+        "en": "The teacher’s anecdote: on a very large project, at the end he is asked to go and talk to the end users, whom he meets for the first time. Nobody had ever talked to them: it was a purely IT project, run to replace a tool. The users, happy with their tool, saw no point in the change. Lesson: do not underestimate users’ ability to resist, even if they ask for something, and even more if they ask for nothing."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "no one has ever talked to the customer in the first place. It was a pure IT project."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "don't underestimate the capability of the end user to resist."
+        }
+      ],
+      "notions": [
+        "n-change-management"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Point",
+          "en": "Point"
+        },
+        {
+          "fr": "Ce que dit le cours",
+          "en": "What the course says"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1. Anticiper",
+            "en": "1. Anticipate"
+          },
+          {
+            "fr": "Le changement commence au démarrage du projet, pas après le déploiement",
+            "en": "Change starts at project start, not after deployment"
+          }
+        ],
+        [
+          {
+            "fr": "2. Impliquer les utilisateurs",
+            "en": "2. Involve users"
+          },
+          {
+            "fr": "Dès le départ : interviews, citations, liste des pain points = premier niveau d’acceptation ; les utilisateurs adoptent ce qu’ils ont défini",
+            "en": "From the start: interviews, quotes, list of pain points = first acceptance level; users adopt what they have defined"
+          }
+        ],
+        [
+          {
+            "fr": "3. Remplacer, pas ajouter",
+            "en": "3. Replace, don’t add"
+          },
+          {
+            "fr": "Planifier le remplacement des anciens systèmes (tableurs, rapports manuels, systèmes) ; changer des règles de calcul alors qu’on garde l’ancien outil fait comparer les chiffres et ruine la confiance",
+            "en": "Plan the replacement of old systems (spreadsheets, manual reports, systems); changing calculation rules while keeping the old tool makes users compare figures and ruins trust"
+          }
+        ],
+        [
+          {
+            "fr": "4. Former et accompagner",
+            "en": "4. Train and support"
+          },
+          {
+            "fr": "Ne pas attendre que l’utilisateur se forme seul ; former selon son profil (pas de prédictif pour qui n’utilisera que du descriptif)",
+            "en": "Do not wait for users to train themselves; train according to profile (no predictive for those who will only use descriptive)"
+          }
+        ],
+        [
+          {
+            "fr": "5. Mesurer l’adoption",
+            "en": "5. Measure adoption"
+          },
+          {
+            "fr": "Connexions à l’ancien vs au nouveau système, utilisateurs actifs, tableaux de bord ouverts, tableurs retirés",
+            "en": "Connections to old vs new system, active users, dashboards opened, spreadsheets retired"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You want to involve users from the start of the project."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You will list all the pain points because those are the first acceptance level of the project that you are building."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "user adopt what they have defined"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you have changed rules of calculation, for example, in a new system, they will compare figures with the old one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't wait for the user to take time on their side to train themselves."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have different kind of profiles of end-users."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't bother them about understanding predictive reports or prescriptive reports."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "By measuring connection to the old system and comparing the daily connection to the new one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "counting the number of active users per period, how many dashboards are actually open, how many spreadsheets from the old system have you retired this period"
+        }
+      ],
+      "notions": [
+        "n-change-five-points"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le prof dit avoir vu « trop de projets échouer à cause d’un de ces cinq points ». Le découpage en cinq points ci-dessus suit le résumé de la séance (anticiper, impliquer, remplacer, former, mesurer) ; le compte rendu ne numérote pas les points, c’est notre mise en forme.",
+        "en": "The teacher says he has seen “too many projects fail because of one of these five points”. The five-point split above follows the session summary (anticipate, involve, replace, train, measure); the notes do not number the points, this is our layout."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "I've seen too much. project failing because of one of these five points"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-07-qz-05"
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Mesurer l’adoption en pratique (exemple du prof)",
+        "en": "Measuring adoption in practice (the teacher’s example)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Prendre une **référence** : les connexions quotidiennes à l’ancien système avant le changement (ex. 100 le lundi).",
+            "en": "Take a **baseline**: daily connections to the old system before the change (e.g. 100 on Monday)."
+          },
+          "why": {
+            "fr": "Sans point de départ, on ne peut pas dire qu’une activité a été transférée.",
+            "en": "Without a starting point, you cannot say an activity was transferred."
+          }
+        },
+        {
+          "do": {
+            "fr": "Suivre sur une période les connexions à l’ancien et au nouveau système.",
+            "en": "Over a period, follow the connections to the old and the new system."
+          },
+          "why": {
+            "fr": "On compare les deux courbes pour voir les utilisateurs basculer.",
+            "en": "You compare both curves to watch users switch."
+          }
+        },
+        {
+          "do": {
+            "fr": "Calculer la part d’activité transférée : si en fin de semaine 70 % de l’activité d’origine est passée au nouveau système, on annonce un taux d’adoption de 70 %.",
+            "en": "Compute the share of activity transferred: if by the end of the week 70% of the original activity has moved to the new system, you report a 70% adoption ratio."
+          },
+          "why": {
+            "fr": "C’est l’exemple chiffré du prof.",
+            "en": "This is the teacher’s numeric example."
+          }
+        },
+        {
+          "do": {
+            "fr": "Compléter par le nombre d’utilisateurs actifs par période, de tableaux de bord réellement ouverts et de tableurs retirés.",
+            "en": "Complete with the number of active users per period, dashboards actually opened and spreadsheets retired."
+          },
+          "why": {
+            "fr": "Ce sont les premiers indicateurs de succès du projet BI.",
+            "en": "These are the first success indicators of the BI project."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "By measuring connection to the old system and comparing the daily connection to the new one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you start by 100 connections on Monday on the old system and no connection on the new one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can advertise a 70% ratio of adoption, for example."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "counting the number of active users per period, how many dashboards are actually open, how many spreadsheets from the old system have you retired this period"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And those are the first success indicators of the BIX project."
+        }
+      ],
+      "notions": [
+        "n-adoption-measure"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-07-qz-06"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-five-phases",
+      "fr": "cinq phases d’un projet",
+      "en": "five project phases",
+      "definition": {
+        "fr": "Analyse, design, build, test, déploiement ; certains fusionnent analyse et design, scindent le test ou ajoutent une phase de garantie (hypercare).",
+        "en": "Analysis, design, build, test, deployment; some merge analysis and design, split testing or add a guarantee (hypercare) phase."
+      },
+      "pitfall": {
+        "fr": "Le cours ne couvre que l’analyse et le design.",
+        "en": "The course only covers analysis and design."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can divide a project in five phases. First phase, the analysis. then the design, the build, the test, and the deployment."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "some consider analysis and design as a single phase, for example"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "adding also, for example, hypercare or guarantee after the deployment as dedicated phases"
+        }
+      ],
+      "notion": "n-bi-project-phases"
+    },
+    {
+      "id": "term-functional-spec",
+      "fr": "spécification fonctionnelle",
+      "en": "functional specification",
+      "definition": {
+        "fr": "Document, issu de l’expression des besoins en termes métier, qui sert de contrat avec les utilisateurs et gère les attentes.",
+        "en": "Document, derived from the expression of needs in business terms, serving as a contract with users and managing expectations."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what you are producing at the end of the analysis phase is a document that can serve as a contract with the users"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification fonctionnelle traduit les besoins utilisateurs en termes métier et sert de contrat avec les utilisateurs"
+        }
+      ],
+      "notion": "n-functional-spec"
+    },
+    {
+      "id": "term-technical-spec",
+      "fr": "spécification technique",
+      "en": "technical specification",
+      "definition": {
+        "fr": "Décrit comment la solution sera livrée : systèmes sources, modèles de données, architecture, flux, fréquence de rafraîchissement.",
+        "en": "Describes how the solution will be delivered: source systems, data models, architecture, data flows, refresh frequency."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Technical specification on the other hand is more about how the solution will deliver it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification technique définit comment la solution sera livrée (systèmes sources, modèles de données, architecture, dataflows)"
+        }
+      ],
+      "notion": "n-technical-spec"
+    },
+    {
+      "id": "term-business-analyst",
+      "fr": "analyste métier / architecte BI",
+      "en": "business analyst / BI architect",
+      "definition": {
+        "fr": "Rôle clé du démarrage d’un projet BI, avec les propriétaires et ingénieurs de données, les développeurs BI et les utilisateurs clés.",
+        "en": "Key role at the start of a BI project, along with data owners and data engineers, BI developers and key users."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Usually what you need is a business analyst or a BI architect. You need also to identify data owners and data engineers."
+        }
+      ],
+      "notion": "n-bi-project-roles"
+    },
+    {
+      "id": "term-data-engineer",
+      "fr": "ingénieur de données",
+      "en": "data engineer",
+      "definition": {
+        "fr": "Construit les pipelines d’ingestion de données ; sur les petits projets, ce rôle peut être tenu par le développeur BI.",
+        "en": "Builds the data ingestion pipelines; on small projects, this role can be held by the BI developer."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Usually what you need is a business analyst or a BI architect. You need also to identify data owners and data engineers."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in small to medium-sized projects, some. For example, developers can cover data engineers and BI developers roles at the same time."
+        }
+      ],
+      "notion": "n-bi-project-roles"
+    },
+    {
+      "id": "term-key-user",
+      "fr": "utilisateur clé (key user)",
+      "en": "key user",
+      "definition": {
+        "fr": "Utilisateur impliqué pour les tests et l’adoption.",
+        "en": "A user involved for testing and adoption."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the BI developers for reports and dashboards, and key users for testing and adoption."
+        }
+      ],
+      "notion": "n-bi-project-roles"
+    },
+    {
+      "id": "term-cost-of-change",
+      "fr": "coût d’une erreur (de changement)",
+      "en": "cost of change",
+      "definition": {
+        "fr": "Coût d’avoir mal compris les besoins : il augmente à chaque phase, le pire cas étant après le déploiement.",
+        "en": "Cost of having misunderstood the needs: it grows with each phase, the worst case being after deployment."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "this cost of charge will grow with each phases"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The worst case scenario is that you can lose trust of customers based on that"
+        }
+      ],
+      "notion": "n-cost-of-change"
+    },
+    {
+      "id": "term-change-management",
+      "fr": "gestion du changement",
+      "en": "change management",
+      "definition": {
+        "fr": "Ensemble d’actions qui commencent au début du projet : impliquer, remplacer, former, mesurer l’adoption ; pas une étape finale.",
+        "en": "Actions starting at project start: involve, replace, train, measure adoption; not a final step."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        }
+      ],
+      "notion": "n-change-management"
+    },
+    {
+      "id": "term-replace-dont-add",
+      "fr": "remplacer, pas ajouter",
+      "en": "replace, don’t add",
+      "definition": {
+        "fr": "Planifier le retrait des anciens outils (tableurs, rapports manuels, systèmes) : sinon les utilisateurs ne basculent pas spontanément.",
+        "en": "Plan the retirement of old tools (spreadsheets, manual reports, systems): otherwise users do not switch spontaneously."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "before being able to call the new project a success, one good advice would be to retire the old system"
+        }
+      ],
+      "notion": "n-change-five-points"
+    },
+    {
+      "id": "term-adoption-rate",
+      "fr": "taux d’adoption",
+      "en": "adoption ratio",
+      "definition": {
+        "fr": "Part de l’activité de l’ancien système transférée au nouveau, mesurée par les connexions ; ex. 70 %.",
+        "en": "Share of the old system’s activity moved to the new one, measured by connections; e.g. 70%."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "By measuring connection to the old system and comparing the daily connection to the new one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can advertise a 70% ratio of adoption, for example."
+        }
+      ],
+      "notion": "n-adoption-measure"
+    }
+  ],
+  "notions": [
+    "n-bi-project-phases",
+    "n-functional-spec",
+    "n-technical-spec",
+    "n-bi-project-roles",
+    "n-cost-of-change",
+    "n-change-management",
+    "n-change-five-points",
+    "n-adoption-measure"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Cinq phases : analyse, design, build, test, déploiement ; le cours couvre l’analyse et le design.",
+        "en": "Five phases: analysis, design, build, test, deployment; the course covers analysis and design."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can divide a project in five phases. First phase, the analysis. then the design, the build, the test, and the deployment."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are focusing on analysis and design phase"
+        }
+      ],
+      "notions": [
+        "n-bi-project-phases"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La spécification fonctionnelle (besoins en termes métier) est un contrat avec les utilisateurs ; la technique dit comment la solution sera livrée.",
+        "en": "The functional specification (needs in business terms) is a contract with users; the technical one says how the solution will be delivered."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what you are producing at the end of the analysis phase is a document that can serve as a contract with the users"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Technical specification on the other hand is more about how the solution will deliver it."
+        }
+      ],
+      "notions": [
+        "n-functional-spec",
+        "n-technical-spec"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Rôles : analyste métier ou architecte BI, propriétaires et ingénieurs de données, développeurs BI, utilisateurs clés ; sur petits projets, plusieurs rôles par personne.",
+        "en": "Roles: business analyst or BI architect, data owners and engineers, BI developers, key users; on small projects, several roles per person."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Usually what you need is a business analyst or a BI architect. You need also to identify data owners and data engineers."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the BI developers for reports and dashboards, and key users for testing and adoption."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in small to medium-sized projects, some. For example, developers can cover data engineers and BI developers roles at the same time."
+        }
+      ],
+      "notions": [
+        "n-bi-project-roles"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le coût d’une erreur de compréhension augmente à chaque phase ; on ne passe à la suivante que si tout le monde est aligné.",
+        "en": "The cost of a misunderstanding grows with each phase; move to the next only if everyone is aligned."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "this cost of charge will grow with each phases"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you only transition to the next one. if you are 100% sure that everyone is aligned with the objectives"
+        }
+      ],
+      "notions": [
+        "n-cost-of-change"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La gestion du changement commence au début : impliquer les utilisateurs, remplacer les anciens outils, former selon les profils, mesurer l’adoption.",
+        "en": "Change management starts at the beginning: involve users, replace old tools, train by profile, measure adoption."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You want to involve users from the start of the project."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have different kind of profiles of end-users."
+        }
+      ],
+      "notions": [
+        "n-change-management",
+        "n-change-five-points"
+      ]
+    },
+    {
+      "text": {
+        "fr": "L’adoption se mesure par les connexions anciennes et nouvelles, les utilisateurs actifs, les tableaux de bord ouverts, les tableurs retirés.",
+        "en": "Adoption is measured by old and new connections, active users, dashboards opened, spreadsheets retired."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "By measuring connection to the old system and comparing the daily connection to the new one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "counting the number of active users per period, how many dashboards are actually open, how many spreadsheets from the old system have you retired this period"
+        }
+      ],
+      "notions": [
+        "n-adoption-measure"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Les cinq phases d’un projet ?",
+        "en": "The five phases of a project?"
+      },
+      "back": {
+        "fr": "Analyse, design, build, test, déploiement.",
+        "en": "Analysis, design, build, test, deployment."
+      },
+      "termId": "term-five-phases",
+      "id": "isi7-07-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Phases couvertes par le cours ?",
+        "en": "Phases covered by the course?"
+      },
+      "back": {
+        "fr": "Analyse et design.",
+        "en": "Analysis and design."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are focusing on analysis and design phase"
+        }
+      ],
+      "notions": [
+        "n-bi-project-phases"
+      ],
+      "id": "isi7-07-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Spécification fonctionnelle ?",
+        "en": "Functional specification?"
+      },
+      "back": {
+        "fr": "Besoins en termes métier ; contrat avec les utilisateurs ; gère les attentes.",
+        "en": "Needs in business terms; contract with users; manages expectations."
+      },
+      "termId": "term-functional-spec",
+      "id": "isi7-07-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Spécification technique ?",
+        "en": "Technical specification?"
+      },
+      "back": {
+        "fr": "Comment la solution sera livrée : sources, modèles, architecture, flux, rafraîchissement.",
+        "en": "How the solution will be delivered: sources, models, architecture, flows, refresh."
+      },
+      "termId": "term-technical-spec",
+      "id": "isi7-07-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Rôles d’un projet BI ?",
+        "en": "Roles in a BI project?"
+      },
+      "back": {
+        "fr": "Analyste métier / architecte BI, propriétaires et ingénieurs de données, développeurs BI, utilisateurs clés.",
+        "en": "Business analyst / BI architect, data owners and engineers, BI developers, key users."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Usually what you need is a business analyst or a BI architect. You need also to identify data owners and data engineers."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "the BI developers for reports and dashboards, and key users for testing and adoption."
+        }
+      ],
+      "notions": [
+        "n-bi-project-roles"
+      ],
+      "id": "isi7-07-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi commencer par l’analyse ?",
+        "en": "Why start with analysis?"
+      },
+      "back": {
+        "fr": "Le coût d’une erreur de compréhension des besoins augmente à chaque phase.",
+        "en": "The cost of misunderstanding needs grows with each phase."
+      },
+      "termId": "term-cost-of-change",
+      "id": "isi7-07-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Exemple du prof de coût d’erreur en design ?",
+        "en": "The teacher’s example of an error cost at design?"
+      },
+      "back": {
+        "fr": "Réplication de tout partout pour du 24/7 alors que le besoin est 9 h-17 h en semaine.",
+        "en": "Replication of everything for 24/7 whereas the need is 9 to 5 on weekdays."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "hours a day, seven days a week and you design a replication of everything everywhere in your design"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "We just only need a 9 to 5 availability open day in the week."
+        }
+      ],
+      "notions": [
+        "n-cost-of-change"
+      ],
+      "id": "isi7-07-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Quand commence la gestion du changement ?",
+        "en": "When does change management start?"
+      },
+      "back": {
+        "fr": "Au début du projet, pas après le déploiement.",
+        "en": "At project start, not after deployment."
+      },
+      "termId": "term-change-management",
+      "id": "isi7-07-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Les cinq points de la gestion du changement ?",
+        "en": "The five points of change management?"
+      },
+      "back": {
+        "fr": "Anticiper, impliquer les utilisateurs, remplacer et pas ajouter, former et accompagner, mesurer l’adoption.",
+        "en": "Anticipate, involve users, replace and don’t add, train and support, measure adoption."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You want to involve users from the start of the project."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't wait for the user to take time on their side to train themselves."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "By measuring connection to the old system and comparing the daily connection to the new one"
+        }
+      ],
+      "notions": [
+        "n-change-five-points"
+      ],
+      "id": "isi7-07-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Remplacer, pas ajouter : pourquoi ?",
+        "en": "Replace, don’t add: why?"
+      },
+      "back": {
+        "fr": "Les utilisateurs ne basculent pas spontanément et comparent les chiffres avec l’ancien outil, ce qui ruine la confiance.",
+        "en": "Users do not switch spontaneously and compare figures with the old tool, which ruins trust."
+      },
+      "termId": "term-replace-dont-add",
+      "id": "isi7-07-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Comment mesure-t-on l’adoption ?",
+        "en": "How is adoption measured?"
+      },
+      "back": {
+        "fr": "Connexions ancien vs nouveau, utilisateurs actifs, tableaux de bord ouverts, tableurs retirés ; ex. 70 %.",
+        "en": "Old vs new connections, active users, dashboards opened, spreadsheets retired; e.g. 70%."
+      },
+      "termId": "term-adoption-rate",
+      "id": "isi7-07-fc-11"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans le cours, un projet BI se découpe le plus souvent en cinq phases : analyse, design, build, test et déploiement, et le cours se concentre sur analyse et design.",
+        "en": "In the course, a BI project is most often split into five phases: analysis, design, build, test and deployment, and the course focuses on analysis and design."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : phases et périmètre dits à l’oral.",
+        "en": "TRUE: phases and scope stated orally."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can divide a project in five phases. First phase, the analysis. then the design, the build, the test, and the deployment."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are focusing on analysis and design phase"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-bi-project-phases"
+      ],
+      "id": "isi7-07-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le découpage en cinq phases est universel : l’analyse et le design ne sont jamais regroupés en une seule phase.",
+        "en": "The split into five phases is universal: analysis and design are never merged into one phase."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le prof précise que certains regroupent analyse et design, d’autres scindent le test ou ajoutent l’hypercare.",
+        "en": "FALSE: the teacher says some merge analysis and design, others split testing or add hypercare."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "some consider analysis and design as a single phase, for example"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "adding also, for example, hypercare or guarantee after the deployment as dedicated phases"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-bi-project-phases"
+      ],
+      "trap": {
+        "fr": "Croire qu’il n’existe qu’un seul découpage.",
+        "en": "Believing there is only one split."
+      },
+      "id": "isi7-07-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Quel document sert de contrat avec les utilisateurs à la fin de l’analyse ?",
+        "en": "Which document serves as a contract with users at the end of analysis?"
+      },
+      "options": [
+        {
+          "fr": "La spécification technique, rédigée pour les équipes de construction",
+          "en": "The technical specification, written for the build teams"
+        },
+        {
+          "fr": "La spécification fonctionnelle",
+          "en": "The functional specification"
+        },
+        {
+          "fr": "Le plan de test rédigé avant la mise en production",
+          "en": "The test plan written before going live"
+        },
+        {
+          "fr": "Le modèle de données physique de l’entrepôt",
+          "en": "The physical data model of the warehouse"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "La spécification fonctionnelle, écrite en termes métier. La technique décrit comment la solution sera livrée.",
+        "en": "The functional specification, written in business terms. The technical one describes how the solution will be delivered."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what you are producing at the end of the analysis phase is a document that can serve as a contract with the users"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-functional-spec"
+      ],
+      "id": "isi7-07-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La ligne « le chiffre d’affaires est copié chaque nuit depuis le système de commande vers une zone de transit » relève de la spécification technique.",
+        "en": "The line “revenue is copied every night from the order system to a staging area” belongs to the technical specification."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : systèmes sources, flux, fréquence de rafraîchissement et architecture (zone de transit) sont des éléments de la spécification technique.",
+        "en": "TRUE: source systems, data flows, refresh frequency and architecture (staging area) are elements of the technical specification."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are talking about source systems, identification, data models, and how we want to represent the information."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Dataflows also, and refresh frequency for example."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La spécification technique définit comment la solution sera livrée (systèmes sources, modèles de données, architecture, dataflows)"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-technical-spec"
+      ],
+      "id": "isi7-07-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une spécification fonctionnelle est rédigée dans le vocabulaire technique des ingénieurs, pour les équipes de développement.",
+        "en": "A functional specification is written in the engineers’ technical vocabulary, for development teams."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elle est en termes métier, pour servir de contrat avec les utilisateurs ; la traduction technique vient après.",
+        "en": "FALSE: it is in business terms, to serve as a contract with users; the technical translation comes after."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "functional specification is derived directly from user needs expression"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we should be able to translate them into technical requirements"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-functional-spec"
+      ],
+      "trap": {
+        "fr": "Prendre « fonctionnelle » pour « technique ».",
+        "en": "Mistaking “functional” for “technical”."
+      },
+      "id": "isi7-07-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Sur un petit projet, un même développeur peut tenir à la fois le rôle d’ingénieur de données et celui de développeur BI.",
+        "en": "On a small project, the same developer can hold both the data engineer and the BI developer roles."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : exemple du prof.",
+        "en": "TRUE: the teacher’s example."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in small to medium-sized projects, some. For example, developers can cover data engineers and BI developers roles at the same time."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-bi-project-roles"
+      ],
+      "id": "isi7-07-qz-06"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un client découvre, après le déploiement, que la disponibilité 24 h sur 24 conçue au design était inutile (besoin : 9 h-17 h en semaine). Quel est l’enseignement du prof ?",
+        "en": "A customer discovers, after deployment, that the 24/7 availability designed at the design phase was unnecessary (need: 9 to 5 on weekdays). What is the teacher’s lesson?"
+      },
+      "options": [
+        {
+          "fr": "Ce n’est pas une erreur d’analyse mais une erreur de test, à corriger plus tard",
+          "en": "It is not an analysis error but a testing error, to be fixed later"
+        },
+        {
+          "fr": "Il faut raccourcir la phase d’analyse, qui ralentit trop le projet",
+          "en": "The analysis phase should be shortened, as it slows the project too much"
+        },
+        {
+          "fr": "Elle coûte plus cher qu’en analyse et peut faire perdre la confiance des clients",
+          "en": "It costs more than in analysis and may lose customers’ trust"
+        },
+        {
+          "fr": "Elle coûte exactement le même prix à chaque phase du projet, où qu’on la corrige",
+          "en": "It costs exactly the same price in every phase of the project, wherever it is fixed"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Le coût d’une erreur augmente à chaque phase ; après le déploiement, c’est le pire cas (perte de confiance).",
+        "en": "The cost of an error grows with each phase; after deployment it is the worst case (loss of trust)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "this cost of charge will grow with each phases"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The worst case scenario is that you can lose trust of customers based on that"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "hours a day, seven days a week and you design a replication of everything everywhere in your design"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cost-of-change"
+      ],
+      "id": "isi7-07-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une équipe découvre en fin de design qu’un besoin a été mal compris. Selon le conseil du prof, elle ne passe au build qu’une fois sûre que tout le monde est de nouveau aligné sur les objectifs et le résultat attendu.",
+        "en": "A team finds at the end of design that a need was misunderstood. According to the teacher’s advice, it moves on to build only once sure that everyone is aligned again on the objectives and the expected outcome."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : on ne passe à la phase suivante que si l’on est sûr à 100 % de l’alignement, car la correction coûte plus cher à chaque phase.",
+        "en": "TRUE: you only move to the next phase if you are 100% sure of alignment, since correction costs more in each phase."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you only transition to the next one. if you are 100% sure that everyone is aligned with the objectives"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "this cost of charge will grow with each phases"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-cost-of-change"
+      ],
+      "id": "isi7-07-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La gestion du changement est l’étape finale du projet, après le déploiement.",
+        "en": "Change management is the final step of the project, after deployment."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elle commence dès le début du projet.",
+        "en": "FALSE: it starts at the beginning of the project."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And change management is not the final step after deployment. And it should really start at the start of the product."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-change-management"
+      ],
+      "trap": {
+        "fr": "Penser « conduite du changement = formation de fin de projet ».",
+        "en": "Thinking “change management = end-of-project training”."
+      },
+      "id": "isi7-07-qz-09"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pour réussir le changement, que recommande le prof à propos des anciens outils (tableurs, rapports manuels) ?",
+        "en": "To succeed in the change, what does the teacher recommend about the old tools (spreadsheets, manual reports)?"
+      },
+      "options": [
+        {
+          "fr": "Planifier leur remplacement : on les retire, sinon les utilisateurs ne basculent pas",
+          "en": "Plan their replacement: retire them, otherwise users do not switch"
+        },
+        {
+          "fr": "Les conserver comme référence officielle des chiffres",
+          "en": "Keep them as the official reference for figures"
+        },
+        {
+          "fr": "Les migrer à l’identique dans le nouvel outil, sans changer les règles de calcul",
+          "en": "Migrate them identically into the new tool, without changing calculation rules"
+        },
+        {
+          "fr": "Les laisser disponibles quelques mois en parallèle pour rassurer",
+          "en": "Leave them available in parallel for a few months to reassure"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "« Replace, don’t add » : on planifie le retrait de l’ancien système. Si des règles de calcul ont changé, les utilisateurs comparent avec l’ancien outil et perdent confiance.",
+        "en": "“Replace, don’t add”: plan the retirement of the old system. If calculation rules changed, users compare with the old tool and lose trust."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "before being able to call the new project a success, one good advice would be to retire the old system"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you have changed rules of calculation, for example, in a new system, they will compare figures with the old one"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-change-five-points"
+      ],
+      "trap": {
+        "fr": "Croire que garder l’ancien outil rassure : il empêche l’adoption.",
+        "en": "Believing that keeping the old tool reassures: it prevents adoption."
+      },
+      "id": "isi7-07-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le prof recommande de former tous les utilisateurs à tous les types de rapports (descriptifs, prédictifs, prescriptifs).",
+        "en": "The teacher recommends training all users on all types of reports (descriptive, predictive, prescriptive)."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : on forme chaque profil à ce qu’il utilisera ; qui n’utilisera que le descriptif n’a pas à être embêté avec le prédictif ou le prescriptif.",
+        "en": "FALSE: each profile is trained on what it will use; someone who will only use descriptive should not be bothered with predictive or prescriptive."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have different kind of profiles of end-users."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't bother them about understanding predictive reports or prescriptive reports."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-change-five-points"
+      ],
+      "id": "isi7-07-qz-11"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une semaine après la bascule, l’ancien système compte 30 connexions par jour au lieu des 100 du lundi initial, et le nouveau en compte 70. Quel taux d’adoption annonce-t-on, selon l’exemple du prof ?",
+        "en": "One week after the switch, the old system has 30 connections a day instead of the initial Monday’s 100, and the new one has 70. Which adoption ratio is reported, following the teacher’s example?"
+      },
+      "options": [
+        {
+          "fr": "30 %",
+          "en": "30%"
+        },
+        {
+          "fr": "70 %",
+          "en": "70%"
+        },
+        {
+          "fr": "100 %",
+          "en": "100%"
+        },
+        {
+          "fr": "Impossible à dire sans indicateur de satisfaction",
+          "en": "Impossible to say without a satisfaction indicator"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "70 % : 70 des 100 connexions initiales ont basculé (exemple du prof : « 70 % de l’activité précédente a été transférée »).",
+        "en": "70%: 70 of the initial 100 connections moved over (the teacher’s example: “70% of the previous activity has been transferred”)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "if you start by 100 connections on Monday on the old system and no connection on the new one"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can advertise a 70% ratio of adoption, for example."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-adoption-measure"
+      ],
+      "id": "isi7-07-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Spécification fonctionnelle ou technique ? Huit lignes à classer",
+        "en": "Functional or technical specification? Eight lines to classify"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Classez chaque ligne d’une spécification en **fonctionnelle** ou **technique** et justifiez en une phrase.\n1. « Le directeur régional ne voit que sa région. »\n2. « Le chiffre d’affaires est rafraîchi chaque nuit à 3 h depuis le système de commande. »\n3. « Le taux de livraison à l’heure se calcule sur les commandes livrées dans le délai promis. »\n4. « Le modèle de données comporte une table des faits de livraison. »\n5. « Les ventes sont consultables au jour, au magasin et au produit. »\n6. « Les données sources sont copiées dans une zone de transit avant nettoyage. »\n7. « L’historique est conservé trois ans. »\n8. « Le tableau de bord doit afficher huit KPI. »",
+        "en": "Classify each line of a specification as **functional** or **technical** and justify in one sentence.\n1. “The regional director only sees their region.”\n2. “Revenue is refreshed every night at 3 am from the order system.”\n3. “The on-time delivery rate is computed on orders delivered within the promised time.”\n4. “The data model includes a delivery fact table.”\n5. “Sales can be viewed by day, store and product.”\n6. “Source data is copied into a staging area before cleaning.”\n7. “History is kept for three years.”\n8. “The dashboard must display eight KPIs.”"
+      },
+      "hints": [
+        {
+          "fr": "Une ligne fonctionnelle est en termes métier : indicateur, axes, historique, accès.",
+          "en": "A functional line is in business terms: indicator, axes, history, access."
+        },
+        {
+          "fr": "Une ligne technique parle de sources, de modèles, de flux, de rafraîchissement.",
+          "en": "A technical line speaks of sources, models, flows, refresh."
+        }
+      ],
+      "solution": {
+        "fr": "1. **Fonctionnelle** (règle d’accès, en termes métier). 2. **Technique** (flux et fréquence de rafraîchissement depuis un système source) ; le besoin fonctionnel sous-jacent est la fraîcheur. 3. **Fonctionnelle** (définition d’un indicateur). 4. **Technique** (modèle de données). 5. **Fonctionnelle** (axes d’analyse et granularité). 6. **Technique** (architecture : zone de transit). 7. **Fonctionnelle** (profondeur d’historique). 8. **Fonctionnelle** (format de tableau de bord : besoin de l’utilisateur).\n*Ce que l’exercice vérifie* : distinguer le « quoi » métier du « comment ». *La 2 est la plus discutable : la fraîcheur est un besoin fonctionnel, la planification nocturne est technique.*",
+        "en": "1. **Functional** (access rule, in business terms). 2. **Technical** (data flow and refresh frequency from a source system); the underlying functional need is freshness. 3. **Functional** (definition of an indicator). 4. **Technical** (data model). 5. **Functional** (analysis axes and granularity). 6. **Technical** (architecture: staging). 7. **Functional** (history depth). 8. **Functional** (dashboard format: user need).\n*What the exercise checks*: telling the business “what” from the “how”. *Line 2 is the most debatable: freshness is a functional need, nightly scheduling is technical.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "functional specification is derived directly from user needs expression"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we are talking about source systems, identification, data models, and how we want to represent the information."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Dataflows also, and refresh frequency for example."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        }
+      ],
+      "objective": "o2",
+      "examStyle": true,
+      "trap": {
+        "fr": "Classer par le vocabulaire (« refresh », « données ») plutôt que par le public visé.",
+        "en": "Classifying by vocabulary (“refresh”, “data”) rather than by intended audience."
+      },
+      "notions": [
+        "n-functional-spec",
+        "n-technical-spec"
+      ],
+      "id": "isi7-07-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Remplacer des tableurs : plan de changement et mesure d’adoption",
+        "en": "Replacing spreadsheets: change plan and adoption measure"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Une banque veut remplacer 40 tableurs de suivi de risques utilisés par 120 analystes par une plateforme BI. L’équipe informatique a déjà choisi l’outil et prévoit de le présenter aux utilisateurs « au moment du déploiement ». Rédigez (a) trois critiques de ce plan selon le cours ; (b) un plan en cinq points ; (c) le calcul du taux d’adoption si, après un mois, 84 des 120 analystes se connectent chaque semaine à la plateforme et 20 tableurs sur 40 ont été retirés ; (d) pourquoi 84/120 ne suffit pas à conclure.",
+        "en": "*(Invented case for practice.)* A bank wants to replace 40 risk-tracking spreadsheets used by 120 analysts with a BI platform. IT has already chosen the tool and plans to present it to users “at deployment time”. Write (a) three criticisms of this plan according to the course; (b) a five-point plan; (c) the adoption calculation if, after one month, 84 of the 120 analysts log in every week and 20 of 40 spreadsheets have been retired; (d) why 84/120 is not enough to conclude."
+      },
+      "hints": [
+        {
+          "fr": "Pensez à l’anecdote du projet « purement informatique ».",
+          "en": "Think of the anecdote about the “purely IT” project."
+        },
+        {
+          "fr": "Les indicateurs du prof : connexions, utilisateurs actifs, tableaux de bord, tableurs retirés.",
+          "en": "The teacher’s indicators: connections, active users, dashboards, spreadsheets retired."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** (1) Les utilisateurs sont impliqués trop tard : le changement doit commencer au début. (2) Le choix de l’outil vient de l’informatique, pas des pain points des utilisateurs : c’est le projet « purement IT » qui provoque la résistance. (3) Aucun plan de retrait des tableurs : « replace, don’t add ».\n**(b)** Anticiper dès le démarrage ; interviewer les analystes et lister leurs pain points ; planifier le retrait des 40 tableurs ; former selon les profils ; mesurer l’adoption.\n**(c)** Utilisateurs actifs : 84/120 = 70 % ; tableurs retirés : 20/40 = 50 %.\n**(d)** Se connecter n’est pas abandonner l’ancien outil : tant que 50 % des tableurs restent en usage, les analystes peuvent comparer les chiffres et perdre confiance ; il faut suivre les connexions à l’ancien système et les tableurs retirés, pas seulement les connexions au nouveau.\n*Barème indicatif* : 1,5 point pour (a), 1,5 pour (b), 1 pour (c), 1 pour (d).",
+        "en": "**(a)** (1) Users are involved too late: change must start at the beginning. (2) The tool choice comes from IT, not from users’ pain points: this is the “purely IT” project that provokes resistance. (3) No plan to retire the spreadsheets: “replace, don’t add”.\n**(b)** Anticipate from the start; interview the analysts and list their pain points; plan the retirement of the 40 spreadsheets; train by profile; measure adoption.\n**(c)** Active users: 84/120 = 70%; spreadsheets retired: 20/40 = 50%.\n**(d)** Logging in is not abandoning the old tool: as long as 50% of spreadsheets remain in use, analysts can compare figures and lose trust; track connections to the old system and spreadsheets retired, not only connections to the new one.\n*Indicative marking*: 1.5 points for (a), 1.5 for (b), 1 for (c), 1 for (d)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "no one has ever talked to the customer in the first place. It was a pure IT project."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You want to involve users from the start of the project."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The third point, replace, don't add, you have to plan the replacement of the old systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "counting the number of active users per period, how many dashboards are actually open, how many spreadsheets from the old system have you retired this period"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can advertise a 70% ratio of adoption, for example."
+        }
+      ],
+      "objective": "o4",
+      "examStyle": true,
+      "trap": {
+        "fr": "Ne mesurer que les connexions au nouvel outil.",
+        "en": "Measuring only connections to the new tool."
+      },
+      "notions": [
+        "n-change-five-points",
+        "n-adoption-measure",
+        "n-change-management"
+      ],
+      "id": "isi7-07-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The cost of an error grows with each phase.",
+      "id": "isi7-07-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "The functional specification serves as a {{contract}} with the {{users}}.",
+      "translation": "La spécification fonctionnelle sert de contrat avec les utilisateurs.",
+      "id": "isi7-07-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Change management is the last step, after deployment.",
+      "error": "the last step, after deployment",
+      "corrected": "something that starts at the beginning of the project",
+      "explanation": {
+        "fr": "Le prof insiste : le changement se prépare dès le début.",
+        "en": "The teacher insists: change is prepared from the start."
+      },
+      "id": "isi7-07-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En deux ou trois phrases : pourquoi faut-il remplacer les anciens outils au lieu d’en ajouter un nouveau ?",
+        "en": "In two or three sentences: why must old tools be replaced rather than adding a new one?"
+      },
+      "modelAnswer": "If users keep the old tool, they will not switch spontaneously, because they have no habits on the new one. They also compare figures with the old system they already trust, so the new project cannot be called a success until the old system is retired.",
+      "keywords": [
+        "replace",
+        "old tool",
+        "switch",
+        "compare",
+        "trust"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai donné les deux raisons (habitude, comparaison).",
+          "en": "I gave both reasons (habit, comparison)."
+        }
+      ],
+      "usefulPhrases": [
+        "will not switch spontaneously",
+        "they already trust"
+      ],
+      "id": "isi7-07-wr-04"
+    }
+  ]
+}

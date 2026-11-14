@@ -1,0 +1,2166 @@
+{
+  "id": "isi7-10-reglementation-durabilite-sobriete",
+  "courseId": "isi7",
+  "order": 10,
+  "title": {
+    "fr": "RGPD, RSE et BI frugale : de nouvelles contraintes",
+    "en": "GDPR, CSR and frugal BI: new constraints"
+  },
+  "hook": {
+    "fr": "Dix ans d’historique, mais une cliente demande qu’on l’efface : et maintenant ?",
+    "en": "Ten years of history, but a customer asks to be erased: now what?"
+  },
+  "question": {
+    "fr": "Comment la réglementation, la durabilité et la sobriété modifient-elles la conception d’un système décisionnel, et qu’est-ce qui ne change pas ?",
+    "en": "How do regulation, sustainability and frugality change the design of a decision-making system, and what does not change?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Expliquer l’impact du RGPD sur la conception d’un système décisionnel.",
+        "en": "Explain the GDPR’s impact on the design of a decision-making system."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Proposer pseudonymisation, agrégation et limitation d’accès là où le détail n’est pas nécessaire.",
+        "en": "Propose pseudonymisation, aggregation and access limitation where detail is not needed."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Décrire les exigences des indicateurs RSE et leur intégration au tableau de bord prospectif.",
+        "en": "Describe the requirements of CSR indicators and their integration into the balanced scorecard."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Appliquer les cinq pratiques de BI frugale à un environnement.",
+        "en": "Apply the five frugal BI practices to an environment."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Dire ce qui ne change pas en BI malgré l’évolution des technologies.",
+        "en": "Say what does not change in BI despite evolving technologies."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Le compte rendu liste RGPD, RSE, BI frugale et « messages clés » parmi les sujets de la fin de la séance d’introduction ; leur poids à l’examen n’est pas précisé.",
+        "en": "The notes list GDPR, CSR, frugal BI and “key messages” among the topics at the end of the introduction session; their weight in the exam is not specified."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Une question sur ce qui reste constant en BI ou sur les pratiques de sobriété : estimation.",
+        "en": "A question on what remains constant in BI or on frugality practices: an estimate."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 1, 8 et 9 : pressions externes, pile technologique, gouvernance.",
+    "en": "Chapters 1, 8 and 9: external pressures, technology stack, governance."
+  },
+  "next": {
+    "fr": "Chapitres 11-12 : l’architecture, couches et rôles, qui incarne ces choix.",
+    "en": "Chapters 11-12: the architecture, layers and roles, which embodies these choices."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "RGPD : limitation des finalités, minimisation, rétention limitée, droits individuels ; impact sur la conception.",
+        "en": "GDPR: purpose limitation, minimisation, limited retention, individual rights; impact on design."
+      },
+      {
+        "fr": "RSE : nouveaux indicateurs aussi fiables et auditables que la finance ; extension du BSC ; propriétaires de données.",
+        "en": "CSR: new indicators as reliable and auditable as finance; BSC extension; data owners."
+      },
+      {
+        "fr": "Cinq pratiques de BI frugale ; cloud : élasticité mais surconsommation.",
+        "en": "Five frugal BI practices; cloud: elasticity but overconsumption."
+      },
+      {
+        "fr": "Ce qui ne change pas : définitions partagées, mesures et axes, principes, analyse et design.",
+        "en": "What does not change: shared definitions, measures and axes, principles, analysis and design."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Proposer des choix de conception conformes au RGPD pour un cas donné.",
+        "en": "Propose GDPR-compliant design choices for a given case."
+      },
+      {
+        "fr": "Auditer un environnement BI avec les cinq pratiques de sobriété.",
+        "en": "Audit a BI environment with the five frugality practices."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Pseudonymiser (information supplémentaire conservée à part) ≠ agréger (on ne remonte plus aux individus).",
+        "en": "Pseudonymising (additional information kept apart) ≠ aggregating (individuals can no longer be traced)."
+      },
+      {
+        "fr": "Empreinte (fournisseurs compris) ≠ impact.",
+        "en": "Footprint (suppliers included) ≠ impact."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 1 : pression « État et réglementation » et BSC.",
+        "en": "Chapter 1: “State & regulation” pressure and the BSC."
+      },
+      {
+        "fr": "Chapitre 8 : coût du streaming et du réentraînement.",
+        "en": "Chapter 8: cost of streaming and retraining."
+      },
+      {
+        "fr": "Chapitres 11-12 : sécurité et gouvernance dans l’architecture.",
+        "en": "Chapters 11-12: security and governance in the architecture."
+      }
+    ]
+  },
+  "estimatedMinutes": 14,
+  "sources": [
+    "ressources/S3__ISI7/cours_14092026.md",
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "sources-texte/isi7/ext-gdpr-2016-679.md",
+    "sources-texte/isi7/ext-ec-csrd-2026.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "RGPD : ce que le droit change à un système décisionnel",
+        "en": "GDPR: what the law changes in a decision-making system"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Au chapitre 1, « État et réglementation » figurait parmi les pressions externes, avec le RGPD. Le prof y revient : le **RGPD** ([[term-gdpr]]) impose la limitation des finalités, la minimisation des données, des durées de rétention limitées et des droits individuels. Cela pèse sur la **conception** des systèmes décisionnels et sur la rétention de l’historique.",
+        "en": "In chapter 1, “State & regulation” was among the external pressures, with the GDPR. The teacher comes back to it: the **GDPR** ([[term-gdpr]]) imposes purpose limitation, data minimisation, limited retention periods and individual rights. This weighs on the **design** of decision-making systems and on historical retention."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The external environment",
+          "quote": "State & regulation: tax, GDPR, CSRD, industry standards"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "GDPR : impose la limitation des finalités, minimisation des données, périodes de rétention limitées et droits individuels"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Impact sur la conception des systèmes et la rétention historique"
+        }
+      ],
+      "notions": [
+        "n-gdpr-impact"
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**Limitation des finalités** : collecter pour des finalités déterminées, explicites et légitimes et ne pas les traiter ensuite de manière incompatible.",
+          "en": "**Purpose limitation**: collect for specified, explicit and legitimate purposes and not process further in an incompatible way."
+        },
+        {
+          "fr": "**Minimisation** : des données adéquates, pertinentes et limitées à ce qui est nécessaire.",
+          "en": "**Minimisation**: data adequate, relevant and limited to what is necessary."
+        },
+        {
+          "fr": "**Limitation de la conservation** : pas d’identification des personnes plus longtemps que nécessaire.",
+          "en": "**Storage limitation**: no identification of persons for longer than necessary."
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 5 — Principles relating to processing of personal data",
+          "quote": "collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes"
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 5 — Principles relating to processing of personal data",
+          "quote": "adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed"
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 5 — Principles relating to processing of personal data",
+          "quote": "kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed"
+        }
+      ],
+      "notions": [
+        "n-gdpr-impact"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours ; texte reproduit, voir les réserves dans `sources.json`) Ces trois principes sont l’article 5 du règlement (UE) 2016/679. Les droits individuels que le prof cite sont notamment l’accès (art. 15 : obtenir la confirmation que des données sont traitées) et l’effacement (art. 17).",
+        "en": "**Going further** — (outside the course materials; reproduced text, see caveats in `sources.json`) These three principles are Article 5 of Regulation (EU) 2016/679. The individual rights the teacher cites include access (Art. 15: obtaining confirmation that data is being processed) and erasure (Art. 17)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 15 — Right of access by the data subject",
+          "quote": "The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed"
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 17 — Right to erasure (‘right to be forgotten’)",
+          "quote": "The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Conséquence pour la BI : une personne peut appeler l’entreprise et demander l’accès à toutes les données qui la concernent. Il faut donc savoir **où se trouvent les données individuelles** dans le système décisionnel, pour y donner accès et, si on le demande, les supprimer. Or les systèmes décisionnels sont historiquement construits pour une rétention historique illimitée.",
+        "en": "Consequence for BI: a person can call the company and ask for access to all the data concerning them. You therefore need to know **where individual data sits** in the decision-making system, to give access and, if requested, to delete it. Yet decision-making systems are historically built for unlimited historical retention."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have to find a way to know where the individual data are located in those systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ],
+      "notions": [
+        "n-gdpr-impact"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux réponses du prof : la **pseudonymisation** et l’**agrégation** des données personnelles quand le détail n’est pas nécessaire (si l’on ne peut plus remonter aux individus, on se met à l’abri des exigences) ; et des droits d’accès limités à ceux qui ont réellement besoin des données. Il ajoute que les modèles prédictifs sur données personnelles soulèvent des questions de transparence.",
+        "en": "Two answers from the teacher: **pseudonymisation** and **aggregation** of personal data when detail is not needed (if you can no longer trace back to individuals, you cope with the requirements); and access rights limited to those who really need the data. He adds that predictive models on personal data raise questions of transparency."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Pseudonymisation et agrégation des données personnelles lorsque le détail n'est pas nécessaire"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Only the people who really need the data should have access to it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "predictive models on personal data raise additional questions of transparency"
+        }
+      ],
+      "notions": [
+        "n-pseudonymisation-aggregation"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Nuance de lecture : selon l’article 4(5), la pseudonymisation suppose une information supplémentaire conservée séparément qui permettrait de ré-attribuer la donnée à une personne : ce n’est donc pas la même chose qu’agréger au point de ne plus pouvoir remonter aux individus. (Notre rapprochement ; à confirmer avec le cours.)",
+        "en": "Reading nuance: under Article 4(5), pseudonymisation presupposes additional information kept separately that would allow re-attributing the data to a person: it is therefore not the same as aggregating until individuals can no longer be traced. (Our link; to be confirmed with the course.)"
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 4 — Definitions (1) personal data, (5) pseudonymisation",
+          "quote": "the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-10-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "RSE : des indicateurs aussi fiables que la finance",
+        "en": "CSR: indicators as reliable as finance"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le reporting de durabilité est une réglementation : il faut produire de nouveaux indicateurs, comme l’empreinte carbone, l’énergie et les données sociales et de gouvernance. Même s’ils ne sont pas financiers, ils doivent être **aussi fiables et auditables** que les chiffres financiers.",
+        "en": "Sustainability reporting is a regulation: new indicators must be produced, such as carbon footprint, energy and social and governance data. Even though they are not financial, they must be **as reliable and auditable** as financial figures."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You have to bring new indicators like carbon footprint, energy, social and governance data to be reportable."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that must be as reliable. and auditable as financial figures, of course."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "RSE (Corporate Social Responsibility) : nouveaux indicateurs à reporter (empreinte carbone, énergie, données sociales et de gouvernance)"
+        }
+      ],
+      "notions": [
+        "n-csr-indicators"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une grande partie de ces données vient de l’extérieur : fournisseurs, partenaires logistiques, fournisseurs d’énergie. Il faut les collecter, puis les agréger avec les données internes. Le prof distingue l’**impact** de l’**empreinte** : l’empreinte prend en compte tous les fournisseurs et la façon dont eux-mêmes pèsent sur la durabilité.",
+        "en": "Much of this data comes from outside: suppliers, logistics partners, energy providers. It must be collected, then aggregated with internal data. The teacher distinguishes **impact** from **footprint**: the footprint takes into account all suppliers and the way they themselves affect sustainability."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "much of this data comes from the outside world, as suppliers, logistic partners, energy providers."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "when we call about footprints, we take into account all the suppliers"
+        }
+      ],
+      "notions": [
+        "n-csr-indicators"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) D’après la Commission européenne (page du 12 novembre 2026), les règles de l’UE imposent aux grandes entreprises et aux sociétés cotées de publier des rapports réguliers sur les risques sociaux et environnementaux et sur l’impact de leurs activités ; les entreprises soumises à la CSRD rapportent selon les normes ESRS. Le champ d’application a évolué : un accord politique sur le paquet de simplification « Omnibus I » est intervenu le 9 décembre 2025. Vérifie sur la page de la Commission le périmètre actuel avant de le citer.",
+        "en": "**Going further** — (outside the course materials) According to the European Commission (page of 12 November 2026), EU rules require large and listed companies to publish regular reports on social and environmental risks and on the impact of their activities; companies subject to the CSRD report according to the ESRS. The scope has evolved: a political agreement on the “Omnibus I” simplification package was reached on 9 December 2025. Check the Commission page for the current scope before quoting it."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-ec-csrd-2026.md",
+          "loc": "Présentation et calendrier",
+          "quote": "EU rules require large companies and listed companies to publish regular reports on the social and environmental risks they face, and on how their activities impact people and the environment."
+        },
+        {
+          "file": "sources-texte/isi7/ext-ec-csrd-2026.md",
+          "loc": "Présentation et calendrier",
+          "quote": "Companies subject to the CSRD have to report according to European Sustainability Reporting Standards (ESRS)."
+        },
+        {
+          "file": "sources-texte/isi7/ext-ec-csrd-2026.md",
+          "loc": "Présentation et calendrier",
+          "quote": "Political agreement between the European Parliament and the Council on Omnibus I simplification package ."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans l’entreprise, les départements reçoivent désormais des cibles RSE à côté des cibles financières. Le prof y voit une extension du tableau de bord prospectif : chaque indicateur d’un étage contribue à l’indicateur parent ; on peut y intégrer une couche ou une partie dédiée aux indicateurs RSE. Si la RSE se comporte mal, l’impact peut être énorme sur les indicateurs financiers : on peut être sanctionné par les États.",
+        "en": "Inside the company, departments now receive CSR targets alongside financial ones. The teacher sees an extension of the balanced scorecard: each indicator at one level contributes to its parent indicator; a layer or part dedicated to CSR indicators can be integrated. If CSR behaves badly, the impact on financial indicators can be huge: you can be fined by states."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "departments receive CSR target alongside financial ones usually now"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it can be seen as an extension of the balanced score count"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can integrate now with CSR a new layer or a dedicated part or one of the layer dedicated to CSR indicators"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can be fined by the states"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Balancing viewpoints",
+          "quote": "Strategy defines what to measure; BI feeds balanced indicators consistently."
+        }
+      ],
+      "notions": [
+        "n-csr-in-bsc"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Et il faut des **propriétaires de données** pour ces indicateurs : ceux qui suivent leur évolution, en rendent compte, et agissent en cas d’écart négatif pour atteindre les objectifs de fin d’année.",
+        "en": "And **data owners** are needed for these indicators: those who monitor their evolution, report on them, and take action in case of negative deviation to reach year-end objectives."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have also to identify data owners for those indicators"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "make sure that if they have a negative deviation on them to take action."
+        }
+      ],
+      "notions": [
+        "n-csr-in-bsc"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-10-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "BI frugale : la sobriété comme critère de conception",
+        "en": "Frugal BI: sobriety as a design criterion"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof demande de tendre vers une **BI frugale** ([[term-frugal-bi]]). Avant le cloud, on lançait un projet en s’engageant sur dix ans de machines ; l’élasticité permet aujourd’hui de démarrer petit. La conséquence : réduire les ambitions et s’en tenir à ce qui est demandé, sans trop anticiper.",
+        "en": "The teacher asks us to move towards a **frugal BI** ([[term-frugal-bi]]). Before the cloud, a project meant committing to ten years of machines; elasticity now lets you start small. The consequence: scale down ambitions and stick to what is requested, without anticipating too much."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "We should turn to a more frugal BI"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Just to stick to what is requested and not to anticipate too much about those evolutions"
+        }
+      ],
+      "notions": [
+        "n-frugal-bi"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Pratique",
+          "en": "Practice"
+        },
+        {
+          "fr": "Ce que dit le prof",
+          "en": "What the teacher says"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1. Rafraîchir à la demande de la décision",
+            "en": "1. Refresh at the decision’s pace"
+          },
+          {
+            "fr": "Aussi souvent que la décision le demande, pas plus : une décision mensuelle n’appelle pas un rafraîchissement quotidien.",
+            "en": "As often as the decision needs, not more: a monthly decision does not call for a daily refresh."
+          }
+        ],
+        [
+          {
+            "fr": "2. Supprimer les tableaux de bord inutilisés",
+            "en": "2. Remove unused dashboards"
+          },
+          {
+            "fr": "Sur la base du suivi d’usage ; repérer aussi les jeux de données en double.",
+            "en": "Based on usage monitoring; also spot duplicate datasets."
+          }
+        ],
+        [
+          {
+            "fr": "3. Purger l’historique",
+            "en": "3. Purge history"
+          },
+          {
+            "fr": "Purger l’historique sans requêtes depuis longtemps.",
+            "en": "Purge history with no queries for a long time."
+          }
+        ],
+        [
+          {
+            "fr": "4. Questionner le streaming et le réentraînement",
+            "en": "4. Question streaming and retraining"
+          },
+          {
+            "fr": "Sans besoin de réaction en temps réel, le streaming n’a pas de sens et coûte cher en énergie.",
+            "en": "Without a need for real-time reaction, streaming makes no sense and is costly in energy."
+          }
+        ],
+        [
+          {
+            "fr": "5. Questionner le cloud par défaut",
+            "en": "5. Question the default cloud"
+          },
+          {
+            "fr": "Certaines entreprises rapatrient leurs plateformes (coût, souveraineté, empreinte énergétique) ; d’autres choisissent l’hybride.",
+            "en": "Some companies repatriate their platforms (cost, sovereignty, energy footprint); others choose hybrid."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Refresh data as often as the decision needs, not more."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't schedule the refresh of the data every day."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can remove also unused dashboards based on the user usage."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can purge a history that has no queries for a few times"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "question the cost of streaming and of training data models again and again."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "For the sake of cost, for the sake of sovereignty, and control of our energy footprints."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Supprimer les dashboards non utilisés basé sur le monitoring d'usage"
+        }
+      ],
+      "notions": [
+        "n-frugal-bi"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cloud offre de l’élasticité mais peut encourager la surconsommation ; avec la bonne gouvernance, on peut l’atténuer. Dans le cloud, on ne sait pas toujours ce que « petit » ou « grand » veut dire en énergie, ces données étant rarement mises à disposition : posséder sa machine permet de mesurer la consommation. Certaines entreprises rapatrient donc leurs plateformes, d’autres adoptent l’hybride, selon leur stratégie et leurs objectifs.",
+        "en": "The cloud offers elasticity but can encourage overconsumption; with the right governance, this can be mitigated. In the cloud, you do not always know what “small” or “big” means in energy terms, since such data is rarely available: owning your machine lets you measure consumption. Some companies therefore repatriate their platforms, others adopt hybrid, depending on strategy and objectives."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Le cloud offre de l'élasticité mais peut encourager la surconsommation"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "même si l'élasticité encourage l'overconsumption, avec la bonne gouvernance en place, nous pouvons mitiger cela"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "For the sake of cost, for the sake of sovereignty, and control of our energy footprints."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Certaines entreprises rapatrient leurs plateformes on-premise pour maîtriser les coûts et l'empreinte énergétique"
+        }
+      ],
+      "notions": [
+        "n-cloud-vs-onprem"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Sur le bilan environnemental comparé du cloud et du sur-site, le prof donne des arguments des deux côtés et ne tranche pas (la fin de ce passage est peu lisible dans la transcription automatique). Retiens la logique : mesurer avant de décider.",
+        "en": "On the comparative environmental balance of cloud and on-premise, the teacher gives arguments on both sides and does not settle (the end of this passage is hard to read in the automatic transcription). Retain the logic: measure before deciding."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "For the sake of cost, for the sake of sovereignty, and control of our energy footprints."
+        }
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Auditer la sobriété d’un environnement BI (méthode de l’app)",
+        "en": "Auditing the frugality of a BI environment (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lister les tableaux de bord et jeux de données avec leur usage (qui ouvre quoi, quand).",
+            "en": "List the dashboards and datasets with their usage (who opens what, when)."
+          },
+          "why": {
+            "fr": "Sans suivi d’usage, on ne peut pas décider de supprimer.",
+            "en": "Without usage monitoring, you cannot decide to remove."
+          }
+        },
+        {
+          "do": {
+            "fr": "Supprimer ou fusionner ceux qui ne sont pas utilisés ou qui font doublon.",
+            "en": "Remove or merge those that are not used or are duplicated."
+          },
+          "why": {
+            "fr": "« The best dashboard is the one that is used. »",
+            "en": "“The best dashboard is the one that is used.”"
+          }
+        },
+        {
+          "do": {
+            "fr": "Comparer le rythme de rafraîchissement au rythme de la décision et l’aligner.",
+            "en": "Compare the refresh rhythm to the decision rhythm and align them."
+          },
+          "why": {
+            "fr": "« The best refresh is the one that is needed. »",
+            "en": "“The best refresh is the one that is needed.”"
+          }
+        },
+        {
+          "do": {
+            "fr": "Purger l’historique sans requêtes et vérifier le coût du streaming et du réentraînement.",
+            "en": "Purge history with no queries and check the cost of streaming and retraining."
+          },
+          "why": {
+            "fr": "Le temps réel et le réentraînement répétés coûtent en énergie.",
+            "en": "Repeated real time and retraining cost energy."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can remove also unused dashboards based on the user usage."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can purge a history that has no queries for a few times"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "question the cost of streaming and of training data models again and again."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And the best dashboard is the one that is used. The best refresh is the one that is needed."
+        }
+      ],
+      "notions": [
+        "n-frugal-bi"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-10-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ce qui ne change pas",
+        "en": "What does not change"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof ferme l’introduction sur trois idées : la BI est une discipline vivante, qui évolue avec les technologies ; ces contraintes s’**ajoutent** aux exigences des chapitres précédents ; et certains fondamentaux ne bougent pas.",
+        "en": "The teacher closes the introduction on three ideas: BI is a living discipline that evolves with technologies; these constraints are **added** to the requirements of previous chapters; and some fundamentals do not move."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La BI est une discipline vivante qui évolue avec les technologies"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        }
+      ],
+      "notions": [
+        "n-new-constraints"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Exigence ancienne",
+          "en": "Earlier requirement"
+        },
+        {
+          "fr": "Devient…",
+          "en": "Becomes…"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Sécurité",
+            "en": "Security"
+          },
+          {
+            "fr": "Conformité",
+            "en": "Compliance"
+          }
+        ],
+        [
+          {
+            "fr": "Adaptabilité",
+            "en": "Adaptability"
+          },
+          {
+            "fr": "Doit absorber les changements réglementaires",
+            "en": "Must absorb regulatory changes"
+          }
+        ],
+        [
+          {
+            "fr": "(nouveau)",
+            "en": "(new)"
+          },
+          {
+            "fr": "La sobriété devient un critère de conception à part entière",
+            "en": "Sobriety becomes a design criterion in its own right"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        }
+      ],
+      "notions": [
+        "n-new-constraints"
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**Des définitions partagées**, quel que soit l’outil : combien de clients actifs ? Une seule réponse convenue.",
+          "en": "**Shared definitions**, whatever the tool: how many active customers? One agreed answer."
+        },
+        {
+          "fr": "**La modélisation par mesures et axes d’analyse** : base de l’analyse dans un entrepôt, un lakehouse ou une couche sémantique, valable depuis plus de trente ans.",
+          "en": "**Modelling by measures and analysis axes**: the basis of analysis in a warehouse, a lakehouse or a semantic layer, valid for more than thirty years."
+        },
+        {
+          "fr": "**Les principes** : fiabilité, prévisibilité, disponibilité, sécurité, confiance, valables pour un tableau de bord comme pour un modèle de machine learning.",
+          "en": "**The principles**: reliability, predictability, availability, security, trust, valid for a dashboard as for a machine learning model."
+        },
+        {
+          "fr": "**L’analyse et le design** : comprendre les besoins avant de choisir une technologie, cœur du métier.",
+          "en": "**Analysis and design**: understanding needs before choosing a technology, the core of the job."
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Shared definitions, whatever the tool, how many active customers still need one agreed answer."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Is it still the basis of analysis in a warehouse, in a lake house, or in a semantic layer?"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "more than 30 years now, it's still the same now that it was in the old days."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "they all apply to a dashboard as much as to machine learning model"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Analysis and design, understanding the user needs before choosing a technology, before planning the project, it remains the core of the job."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Les principes fondamentaux restent constants : définitions partagées, modélisation par mesures et axes d'analyse, fiabilité, prédictabilité, disponibilité, sécurité"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "La modélisation de données (vue dans la suite du cours) reste pertinente après plus de 30 ans"
+        }
+      ],
+      "notions": [
+        "n-what-does-not-change"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Retiens le contraste : les **technologies** changent tous les deux ou trois ans, les **principes** (définitions partagées, mesures et axes, fiable / prévisible / disponible, sécurité) non. À l’examen, on peut te demander ce qui reste constant.",
+        "en": "Retain the contrast: **technologies** change every two to three years, the **principles** (shared definitions, measures and axes, reliable / predictable / available, security) do not. In the exam you may be asked what remains constant."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Les principes fondamentaux restent constants : définitions partagées, modélisation par mesures et axes d'analyse, fiabilité, prédictabilité, disponibilité, sécurité"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "they all apply to a dashboard as much as to machine learning model"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-10-qz-04"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-gdpr",
+      "fr": "RGPD (GDPR)",
+      "en": "GDPR",
+      "definition": {
+        "fr": "Réglementation qui impose limitation des finalités, minimisation des données, durées de rétention limitées et droits individuels ; elle pèse sur la conception des systèmes décisionnels.",
+        "en": "Regulation that imposes purpose limitation, data minimisation, limited retention periods and individual rights; it weighs on the design of decision-making systems."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "GDPR : impose la limitation des finalités, minimisation des données, périodes de rétention limitées et droits individuels"
+        }
+      ],
+      "notion": "n-gdpr-impact"
+    },
+    {
+      "id": "term-purpose-limitation",
+      "fr": "limitation des finalités",
+      "en": "purpose limitation",
+      "definition": {
+        "fr": "Collecter des données pour des finalités déterminées et ne pas les traiter ensuite de manière incompatible.",
+        "en": "Collecting data for specified purposes and not processing it further in an incompatible way."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 5 — Principles relating to processing of personal data",
+          "quote": "collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes"
+        }
+      ],
+      "notion": "n-gdpr-impact"
+    },
+    {
+      "id": "term-data-minimisation",
+      "fr": "minimisation des données",
+      "en": "data minimisation",
+      "definition": {
+        "fr": "Ne garder que les données adéquates, pertinentes et nécessaires aux finalités.",
+        "en": "Keeping only data that is adequate, relevant and necessary for the purposes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 5 — Principles relating to processing of personal data",
+          "quote": "adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed"
+        }
+      ],
+      "notion": "n-gdpr-impact"
+    },
+    {
+      "id": "term-pseudonymisation",
+      "fr": "pseudonymisation",
+      "en": "pseudonymisation",
+      "definition": {
+        "fr": "Traiter des données personnelles pour qu’on ne puisse plus les attribuer à une personne sans information supplémentaire conservée séparément ; le cours la cite avec l’agrégation quand le détail n’est pas nécessaire.",
+        "en": "Processing personal data so that it can no longer be attributed to a person without additional information kept separately; the course cites it with aggregation when detail is not needed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Pseudonymisation et agrégation des données personnelles lorsque le détail n'est pas nécessaire"
+        }
+      ],
+      "notion": "n-pseudonymisation-aggregation"
+    },
+    {
+      "id": "term-aggregation-personal-data",
+      "fr": "agrégation de données personnelles",
+      "en": "aggregation of personal data",
+      "definition": {
+        "fr": "Réunir assez de données individuelles et retirer la notion d’individu pour ne plus pouvoir remonter aux personnes.",
+        "en": "Gathering enough individual data and removing the notion of individuals so people can no longer be traced."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+        }
+      ],
+      "notion": "n-pseudonymisation-aggregation"
+    },
+    {
+      "id": "term-csr",
+      "fr": "RSE (Corporate Social Responsibility)",
+      "en": "CSR (Corporate Social Responsibility)",
+      "definition": {
+        "fr": "Nouveaux indicateurs à reporter (empreinte carbone, énergie, données sociales et de gouvernance), aussi fiables et auditables que les données financières.",
+        "en": "New indicators to report (carbon footprint, energy, social and governance data), as reliable and auditable as financial data."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You have to bring new indicators like carbon footprint, energy, social and governance data to be reportable."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that must be as reliable. and auditable as financial figures, of course."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "RSE (Corporate Social Responsibility) : nouveaux indicateurs à reporter (empreinte carbone, énergie, données sociales et de gouvernance)"
+        }
+      ],
+      "notion": "n-csr-indicators"
+    },
+    {
+      "id": "term-footprint-vs-impact",
+      "fr": "empreinte contre impact",
+      "en": "footprint versus impact",
+      "definition": {
+        "fr": "L’impact concerne l’entreprise elle-même ; l’empreinte prend en compte tous les fournisseurs et leur propre effet sur la durabilité.",
+        "en": "Impact concerns the company itself; the footprint takes into account all suppliers and their own effect on sustainability."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "when we call about footprints, we take into account all the suppliers"
+        }
+      ],
+      "notion": "n-csr-indicators"
+    },
+    {
+      "id": "term-frugal-bi",
+      "fr": "BI frugale",
+      "en": "frugal BI",
+      "definition": {
+        "fr": "BI qui rafraîchit aussi souvent que nécessaire, supprime ce qui n’est pas utilisé, purge l’historique inutile et questionne le coût du streaming et du réentraînement.",
+        "en": "BI that refreshes as often as needed, removes what is unused, purges useless history and questions the cost of streaming and retraining."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Refresh data as often as the decision needs, not more."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can remove also unused dashboards based on the user usage."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can purge a history that has no queries for a few times"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "question the cost of streaming and of training data models again and again."
+        }
+      ],
+      "notion": "n-frugal-bi"
+    },
+    {
+      "id": "term-sobriety-criterion",
+      "fr": "sobriété comme critère de conception",
+      "en": "sobriety as a design criterion",
+      "definition": {
+        "fr": "La sobriété devient un critère de conception à part entière, à côté de la conformité et de l’adaptabilité.",
+        "en": "Sobriety becomes a design criterion in its own right, alongside compliance and adaptability."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        }
+      ],
+      "notion": "n-new-constraints"
+    },
+    {
+      "id": "term-fundamentals-constant",
+      "fr": "fondamentaux constants de la BI",
+      "en": "constant fundamentals of BI",
+      "definition": {
+        "fr": "Définitions partagées, modélisation par mesures et axes, fiabilité / prévisibilité / disponibilité, sécurité, analyse et design avant la technologie.",
+        "en": "Shared definitions, modelling by measures and axes, reliability / predictability / availability, security, analysis and design before technology."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Les principes fondamentaux restent constants : définitions partagées, modélisation par mesures et axes d'analyse, fiabilité, prédictabilité, disponibilité, sécurité"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Analysis and design, understanding the user needs before choosing a technology, before planning the project, it remains the core of the job."
+        }
+      ],
+      "notion": "n-what-does-not-change"
+    }
+  ],
+  "notions": [
+    "n-gdpr-impact",
+    "n-pseudonymisation-aggregation",
+    "n-csr-indicators",
+    "n-csr-in-bsc",
+    "n-frugal-bi",
+    "n-cloud-vs-onprem",
+    "n-new-constraints",
+    "n-what-does-not-change"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Le RGPD impose limitation des finalités, minimisation, durées de rétention limitées et droits individuels : il pèse sur la conception et la rétention historique.",
+        "en": "The GDPR imposes purpose limitation, minimisation, limited retention periods and individual rights: it weighs on design and historical retention."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Impact sur la conception des systèmes et la rétention historique"
+        }
+      ],
+      "notions": [
+        "n-gdpr-impact"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il faut savoir où sont les données individuelles pour donner accès et supprimer ; réponses : pseudonymisation, agrégation, accès limité.",
+        "en": "You must know where individual data is to give access and delete; answers: pseudonymisation, aggregation, limited access."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have to find a way to know where the individual data are located in those systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Only the people who really need the data should have access to it."
+        }
+      ],
+      "notions": [
+        "n-pseudonymisation-aggregation",
+        "n-gdpr-impact"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les indicateurs RSE (empreinte carbone, énergie, données sociales et de gouvernance) doivent être aussi fiables et auditables que la finance ; données souvent externes.",
+        "en": "CSR indicators (carbon footprint, energy, social and governance data) must be as reliable and auditable as finance; data often external."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You have to bring new indicators like carbon footprint, energy, social and governance data to be reportable."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that must be as reliable. and auditable as financial figures, of course."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "much of this data comes from the outside world, as suppliers, logistic partners, energy providers."
+        }
+      ],
+      "notions": [
+        "n-csr-indicators"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La RSE s’intègre au tableau de bord prospectif ; chaque indicateur a un propriétaire qui agit en cas d’écart négatif.",
+        "en": "CSR fits into the balanced scorecard; each indicator has an owner who acts in case of negative deviation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it can be seen as an extension of the balanced score count"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can integrate now with CSR a new layer or a dedicated part or one of the layer dedicated to CSR indicators"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have also to identify data owners for those indicators"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "make sure that if they have a negative deviation on them to take action."
+        }
+      ],
+      "notions": [
+        "n-csr-in-bsc"
+      ]
+    },
+    {
+      "text": {
+        "fr": "BI frugale : rafraîchir à la demande de la décision, supprimer les tableaux de bord inutilisés, purger l’historique, questionner streaming et réentraînement, questionner le cloud par défaut.",
+        "en": "Frugal BI: refresh at the decision’s pace, remove unused dashboards, purge history, question streaming and retraining, question the default cloud."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Refresh data as often as the decision needs, not more."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can remove also unused dashboards based on the user usage."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can purge a history that has no queries for a few times"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "question the cost of streaming and of training data models again and again."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "For the sake of cost, for the sake of sovereignty, and control of our energy footprints."
+        }
+      ],
+      "notions": [
+        "n-frugal-bi",
+        "n-cloud-vs-onprem"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sécurité devient conformité, adaptabilité absorbe la réglementation, sobriété devient critère de conception ; les fondamentaux (définitions partagées, mesures et axes, principes, analyse et design) ne changent pas.",
+        "en": "Security becomes compliance, adaptability absorbs regulation, sobriety becomes a design criterion; fundamentals (shared definitions, measures and axes, principles, analysis and design) do not change."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Les principes fondamentaux restent constants : définitions partagées, modélisation par mesures et axes d'analyse, fiabilité, prédictabilité, disponibilité, sécurité"
+        }
+      ],
+      "notions": [
+        "n-new-constraints",
+        "n-what-does-not-change"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Quatre exigences du RGPD citées par le prof ?",
+        "en": "Four GDPR requirements cited by the teacher?"
+      },
+      "back": {
+        "fr": "Limitation des finalités, minimisation des données, durées de rétention limitées, droits individuels.",
+        "en": "Purpose limitation, data minimisation, limited retention periods, individual rights."
+      },
+      "termId": "term-gdpr",
+      "id": "isi7-10-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Pourquoi le RGPD pèse-t-il sur un entrepôt ?",
+        "en": "Why does the GDPR weigh on a warehouse?"
+      },
+      "back": {
+        "fr": "Il faut savoir où sont les données individuelles (accès, suppression) alors que l’entrepôt est conçu pour une rétention illimitée.",
+        "en": "You must know where individual data is (access, deletion) whereas the warehouse is designed for unlimited retention."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have to find a way to know where the individual data are located in those systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        }
+      ],
+      "notions": [
+        "n-gdpr-impact"
+      ],
+      "id": "isi7-10-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Deux réponses du prof au RGPD ?",
+        "en": "Two answers from the teacher to the GDPR?"
+      },
+      "back": {
+        "fr": "Pseudonymisation et agrégation quand le détail n’est pas nécessaire ; accès limité à ceux qui en ont besoin.",
+        "en": "Pseudonymisation and aggregation when detail is not needed; access limited to those who need it."
+      },
+      "termId": "term-pseudonymisation",
+      "id": "isi7-10-fc-03"
+    },
+    {
+      "front": {
+        "fr": "RSE : nouveaux indicateurs ?",
+        "en": "CSR: new indicators?"
+      },
+      "back": {
+        "fr": "Empreinte carbone, énergie, données sociales et de gouvernance.",
+        "en": "Carbon footprint, energy, social and governance data."
+      },
+      "termId": "term-csr",
+      "id": "isi7-10-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Exigence de qualité des données RSE ?",
+        "en": "Quality requirement for CSR data?"
+      },
+      "back": {
+        "fr": "Aussi fiables et auditables que les données financières.",
+        "en": "As reliable and auditable as financial data."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that must be as reliable. and auditable as financial figures, of course."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "RSE (Corporate Social Responsibility) : nouveaux indicateurs à reporter (empreinte carbone, énergie, données sociales et de gouvernance)"
+        }
+      ],
+      "notions": [
+        "n-csr-indicators"
+      ],
+      "id": "isi7-10-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Empreinte vs impact ?",
+        "en": "Footprint vs impact?"
+      },
+      "back": {
+        "fr": "L’empreinte prend en compte tous les fournisseurs et leur effet sur la durabilité.",
+        "en": "The footprint takes into account all suppliers and their effect on sustainability."
+      },
+      "termId": "term-footprint-vs-impact",
+      "id": "isi7-10-fc-06"
+    },
+    {
+      "front": {
+        "fr": "RSE et tableau de bord prospectif ?",
+        "en": "CSR and the balanced scorecard?"
+      },
+      "back": {
+        "fr": "Extension : une couche dédiée aux indicateurs RSE ; chaque indicateur contribue au parent.",
+        "en": "Extension: a layer dedicated to CSR indicators; each indicator contributes to its parent."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it can be seen as an extension of the balanced score count"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can integrate now with CSR a new layer or a dedicated part or one of the layer dedicated to CSR indicators"
+        }
+      ],
+      "notions": [
+        "n-csr-in-bsc"
+      ],
+      "id": "isi7-10-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Cinq pratiques de BI frugale ?",
+        "en": "Five frugal BI practices?"
+      },
+      "back": {
+        "fr": "Rafraîchir au rythme de la décision, supprimer l’inutilisé, purger l’historique, questionner streaming et réentraînement, questionner le cloud.",
+        "en": "Refresh at the decision’s pace, remove the unused, purge history, question streaming and retraining, question the cloud."
+      },
+      "termId": "term-frugal-bi",
+      "id": "isi7-10-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Le meilleur tableau de bord, le meilleur rafraîchissement ?",
+        "en": "The best dashboard, the best refresh?"
+      },
+      "back": {
+        "fr": "Le tableau de bord utilisé ; le rafraîchissement nécessaire.",
+        "en": "The dashboard that is used; the refresh that is needed."
+      },
+      "termId": "term-sobriety-criterion",
+      "id": "isi7-10-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Sécurité, adaptabilité, sobriété : que deviennent-elles ?",
+        "en": "Security, adaptability, sobriety: what do they become?"
+      },
+      "back": {
+        "fr": "Conformité ; absorbent les changements réglementaires ; critère de conception à part entière.",
+        "en": "Compliance; absorb regulatory changes; a design criterion in its own right."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        }
+      ],
+      "notions": [
+        "n-new-constraints"
+      ],
+      "id": "isi7-10-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Qu’est-ce qui ne change pas en BI ?",
+        "en": "What does not change in BI?"
+      },
+      "back": {
+        "fr": "Définitions partagées, modélisation par mesures et axes, fiable / prévisible / disponible, sécurité, analyse et design.",
+        "en": "Shared definitions, modelling by measures and axes, reliable / predictable / available, security, analysis and design."
+      },
+      "termId": "term-fundamentals-constant",
+      "id": "isi7-10-fc-11"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le cours, le RGPD impose notamment la limitation des finalités, la minimisation des données, des périodes de rétention limitées et des droits individuels.",
+        "en": "According to the course, the GDPR imposes in particular purpose limitation, data minimisation, limited retention periods and individual rights."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : liste du compte rendu.",
+        "en": "TRUE: list from the session notes."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "GDPR : impose la limitation des finalités, minimisation des données, périodes de rétention limitées et droits individuels"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-gdpr-impact"
+      ],
+      "id": "isi7-10-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un entrepôt de données conçu pour une rétention historique illimitée échappe au RGPD dès lors qu’il ne contient pas de données financières.",
+        "en": "A data warehouse designed for unlimited historical retention escapes the GDPR as long as it holds no financial data."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est la présence de données personnelles qui compte ; le RGPD touche la conception et la rétention des systèmes décisionnels.",
+        "en": "FALSE: what matters is the presence of personal data; the GDPR affects the design and retention of decision-making systems."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "historically built for... unlimited historical retention"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Impact sur la conception des systèmes et la rétention historique"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-gdpr-impact"
+      ],
+      "trap": {
+        "fr": "Réduire le RGPD aux données financières.",
+        "en": "Reducing the GDPR to financial data."
+      },
+      "id": "isi7-10-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une cliente demande l’accès à toutes les données qui la concernent, puis leur suppression. Quelle conséquence de conception pour la BI le prof en tire-t-il ?",
+        "en": "A customer asks for access to all the data concerning her, then for deletion. What design consequence for BI does the teacher draw?"
+      },
+      "options": [
+        {
+          "fr": "Passer tous les traitements de données en streaming temps réel continu",
+          "en": "Moving all data processing to continuous real-time streaming"
+        },
+        {
+          "fr": "Savoir où se trouvent les données individuelles dans le système",
+          "en": "Knowing where individual data sits in the system"
+        },
+        {
+          "fr": "Dupliquer toutes les données clients dans un deuxième entrepôt de secours bien protégé",
+          "en": "Duplicating all customer data into a second, well-protected backup warehouse"
+        },
+        {
+          "fr": "Désactiver l’historique de tous les tableaux de bord de l’ensemble de l’entreprise",
+          "en": "Switching off history in all dashboards across the whole company"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Il faut savoir où sont les données individuelles pour donner accès et supprimer sur demande.",
+        "en": "You must know where individual data sits to give access and delete on request."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have to find a way to know where the individual data are located in those systems."
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 15 — Right of access by the data subject",
+          "quote": "The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed"
+        },
+        {
+          "file": "sources-texte/isi7/ext-gdpr-2016-679.md",
+          "loc": "Art. 17 — Right to erasure (‘right to be forgotten’)",
+          "quote": "The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-gdpr-impact"
+      ],
+      "id": "isi7-10-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Agréger des données personnelles jusqu’à ne plus pouvoir remonter aux individus, quand le détail n’est pas nécessaire, est une façon de répondre aux exigences du RGPD.",
+        "en": "Aggregating personal data until individuals can no longer be traced, when detail is not needed, is one way of meeting GDPR requirements."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : réponse donnée par le prof, avec la pseudonymisation.",
+        "en": "TRUE: answer given by the teacher, with pseudonymisation."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Pseudonymisation et agrégation des données personnelles lorsque le détail n'est pas nécessaire"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-pseudonymisation-aggregation"
+      ],
+      "id": "isi7-10-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les indicateurs RSE ne sont pas financiers, ils peuvent donc être moins fiables et moins auditables que les chiffres de la comptabilité.",
+        "en": "CSR indicators are not financial, so they can be less reliable and less auditable than accounting figures."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ils doivent être aussi fiables et auditables que les données financières.",
+        "en": "FALSE: they must be as reliable and auditable as financial data."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that must be as reliable. and auditable as financial figures, of course."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-csr-indicators"
+      ],
+      "trap": {
+        "fr": "Croire qu’un indicateur non financier tolère une moindre rigueur.",
+        "en": "Believing a non-financial indicator tolerates less rigour."
+      },
+      "id": "isi7-10-qz-05"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Pour calculer son empreinte carbone, une entreprise doit-elle seulement compter ses propres émissions ?",
+        "en": "To calculate its carbon footprint, must a company only count its own emissions?"
+      },
+      "options": [
+        {
+          "fr": "Oui : les fournisseurs ne font pas partie du périmètre de la RSE de l’entreprise",
+          "en": "Yes: suppliers are not part of the scope of the company’s CSR"
+        },
+        {
+          "fr": "Non : seuls les clients de l’entreprise comptent dans le calcul de l’empreinte",
+          "en": "No: only the company’s customers count in the footprint calculation"
+        },
+        {
+          "fr": "Oui : l’empreinte est strictement identique à l’impact de l’entreprise elle-même",
+          "en": "Yes: the footprint is strictly identical to the company’s own impact"
+        },
+        {
+          "fr": "Non : l’empreinte prend aussi en compte les fournisseurs et leur effet",
+          "en": "No: the footprint also takes into account suppliers and their effect"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "« When we talk about footprints, we take into account all the suppliers ». Une grande partie des données vient de l’extérieur.",
+        "en": "“When we talk about footprints, we take into account all the suppliers”. Much of the data comes from outside."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "when we call about footprints, we take into account all the suppliers"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "much of this data comes from the outside world, as suppliers, logistic partners, energy providers."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-csr-indicators"
+      ],
+      "id": "isi7-10-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Les départements reçoivent désormais des cibles RSE en plus des cibles financières, ce que le prof relie à une extension du tableau de bord prospectif.",
+        "en": "Departments now receive CSR targets in addition to financial ones, which the teacher links to an extension of the balanced scorecard."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « departments receive CSR target alongside financial ones » ; « an extension of the balanced scorecard ».",
+        "en": "TRUE: “departments receive CSR target alongside financial ones”; “an extension of the balanced scorecard”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "departments receive CSR target alongside financial ones usually now"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it can be seen as an extension of the balanced score count"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-csr-in-bsc"
+      ],
+      "id": "isi7-10-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans une BI frugale, on rafraîchit les données chaque jour même si la décision est mensuelle, pour être prêt en cas de question.",
+        "en": "In frugal BI, data is refreshed every day even if the decision is monthly, to be ready in case of a question."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : on rafraîchit aussi souvent que la décision le demande, pas plus ; une décision mensuelle n’appelle pas un rafraîchissement quotidien.",
+        "en": "FALSE: data is refreshed as often as the decision needs, not more; a monthly decision does not call for a daily refresh."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Refresh data as often as the decision needs, not more."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't schedule the refresh of the data every day."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-frugal-bi"
+      ],
+      "trap": {
+        "fr": "Anticiper un besoin qui n’existe pas.",
+        "en": "Anticipating a need that does not exist."
+      },
+      "id": "isi7-10-qz-08"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un audit révèle 200 tableaux de bord, dont 120 non ouverts depuis un an, et dix ans d’historique que personne n’interroge. Quelle action le cours recommande-t-il ?",
+        "en": "An audit shows 200 dashboards, 120 of them not opened for a year, and ten years of history nobody queries. Which action does the course recommend?"
+      },
+      "options": [
+        {
+          "fr": "Conserver le tout tel quel, car le stockage cloud est élastique et peu coûteux",
+          "en": "Keep everything as is, since cloud storage is elastic and cheap"
+        },
+        {
+          "fr": "Migrer le tout vers un lakehouse sans rien supprimer ni auditer au préalable",
+          "en": "Migrate everything to a lakehouse without deleting or auditing anything first"
+        },
+        {
+          "fr": "Passer tous les tableaux de bord encore utilisés en temps réel pour mieux les servir",
+          "en": "Move all dashboards still in use to real time to serve them better"
+        },
+        {
+          "fr": "Supprimer les tableaux de bord inutilisés et purger l’historique sans requêtes",
+          "en": "Remove the unused dashboards and purge the history without queries"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "« Remove unused dashboards based on usage monitoring » et « purge a history that has no queries ». L’élasticité du cloud peut encourager la surconsommation.",
+        "en": "“Remove unused dashboards based on usage monitoring” and “purge a history that has no queries”. Cloud elasticity can encourage overconsumption."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can remove also unused dashboards based on the user usage."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can purge a history that has no queries for a few times"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Le cloud offre de l'élasticité mais peut encourager la surconsommation"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-frugal-bi"
+      ],
+      "id": "isi7-10-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le cloud offre de l’élasticité mais peut encourager la surconsommation ; certaines entreprises rapatrient leurs plateformes pour le coût, la souveraineté et la maîtrise de leur empreinte énergétique.",
+        "en": "The cloud offers elasticity but can encourage overconsumption; some companies repatriate their platforms for cost, sovereignty and control of their energy footprint."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : propos du prof ; il ne dit pas que le cloud est à proscrire (certains choisissent l’hybride).",
+        "en": "TRUE: the teacher’s words; he does not say the cloud is to be banned (some choose hybrid)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Le cloud offre de l'élasticité mais peut encourager la surconsommation"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "For the sake of cost, for the sake of sovereignty, and control of our energy footprints."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-cloud-vs-onprem"
+      ],
+      "id": "isi7-10-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le prof, la sécurité devient la conformité, l’adaptabilité doit absorber les changements réglementaires et la sobriété devient un critère de conception à part entière.",
+        "en": "According to the teacher, security becomes compliance, adaptability must absorb regulatory changes and sobriety becomes a design criterion in its own right."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : ces contraintes s’ajoutent aux exigences des chapitres précédents.",
+        "en": "TRUE: these constraints add to the requirements of previous chapters."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Security becomes compliance. Adaptability must absorb regulatory changes. Sobriety becomes a design criterion in its own."
+        }
+      ],
+      "objective": "o5",
+      "notions": [
+        "n-new-constraints"
+      ],
+      "id": "isi7-10-qz-11"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le prof, les nouvelles technologies rendent obsolètes la modélisation par mesures et axes d’analyse et les principes de fiabilité, prévisibilité et disponibilité.",
+        "en": "According to the teacher, new technologies make modelling by measures and analysis axes and the principles of reliability, predictability and availability obsolete."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ces fondamentaux restent constants, qu’il s’agisse d’un entrepôt, d’un lakehouse, d’une couche sémantique, d’un tableau de bord ou d’un modèle de machine learning.",
+        "en": "FALSE: these fundamentals remain constant, whether in a warehouse, a lakehouse, a semantic layer, a dashboard or a machine learning model."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Les principes fondamentaux restent constants : définitions partagées, modélisation par mesures et axes d'analyse, fiabilité, prédictabilité, disponibilité, sécurité"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Is it still the basis of analysis in a warehouse, in a lake house, or in a semantic layer?"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "they all apply to a dashboard as much as to machine learning model"
+        }
+      ],
+      "objective": "o5",
+      "notions": [
+        "n-what-does-not-change"
+      ],
+      "trap": {
+        "fr": "Confondre l’évolution des outils et celle des principes.",
+        "en": "Confusing the evolution of tools with that of principles."
+      },
+      "id": "isi7-10-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Concevoir un entrepôt clients conforme au RGPD",
+        "en": "Designing a GDPR-compliant customer warehouse"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Une enseigne veut analyser pendant dix ans les achats de ses clients (par magasin, produit, mois) et envoie des promotions ciblées. Un client demande l’accès à toutes ses données puis leur suppression. En vous appuyant sur le cours : **(a)** quels principes sont en jeu ; **(b)** que faut-il savoir du système ; **(c)** deux choix de conception (pseudonymisation, agrégation, rétention, accès) et pour quelles analyses ; **(d)** quel point de vigilance pour un modèle prédictif de promotion ciblée.",
+        "en": "*(Invented case for practice.)* A retailer wants to analyse its customers’ purchases (by store, product, month) over ten years and sends targeted promotions. A customer asks for access to all their data then for deletion. Based on the course: **(a)** which principles are at stake; **(b)** what must be known about the system; **(c)** two design choices (pseudonymisation, aggregation, retention, access) and for which analyses; **(d)** what caution for a predictive targeted-promotion model."
+      },
+      "hints": [
+        {
+          "fr": "Pensez à « où sont les données individuelles ? ».",
+          "en": "Think about “where is the individual data?”."
+        },
+        {
+          "fr": "Le détail est-il nécessaire pour chaque analyse ?",
+          "en": "Is detail necessary for each analysis?"
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Limitation des finalités, minimisation, durée de rétention limitée, droits individuels (accès et suppression).\n**(b)** Où se trouvent les données individuelles dans l’entrepôt, les data marts et les copies, pour donner accès et supprimer sur demande.\n**(c)** Agréger (par magasin, produit, mois) pour les analyses qui n’ont pas besoin de l’individu ; pseudonymiser les données individuelles conservées ; limiter la rétention du détail individuel (ne pas garder dix ans par défaut) et restreindre l’accès à ceux qui en ont besoin.\n**(d)** Les modèles prédictifs sur données personnelles soulèvent des questions de transparence.\n*Barème indicatif* : 1 point par question. *Réponse proposée à partir du cours ; la durée de rétention exacte dépend de la finalité et n’est pas fixée par le cours.*",
+        "en": "**(a)** Purpose limitation, minimisation, limited retention period, individual rights (access and deletion).\n**(b)** Where individual data sits in the warehouse, data marts and copies, to give access and delete on request.\n**(c)** Aggregate (by store, product, month) for analyses that do not need the individual; pseudonymise retained individual data; limit retention of individual detail (do not keep ten years by default) and restrict access to those who need it.\n**(d)** Predictive models on personal data raise questions of transparency.\n*Indicative marking*: 1 point per question. *Answer proposed from the course; the exact retention period depends on the purpose and is not set by the course.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "So GDPR forces us to have purpose limitation and data minimization, limited retention period, and even individual rights."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have to find a way to know where the individual data are located in those systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "pseudonymization and aggregation of personal data when the detail is not needed"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Only the people who really need the data should have access to it."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "predictive models on personal data raise additional questions of transparency"
+        }
+      ],
+      "objective": "o2",
+      "examStyle": true,
+      "trap": {
+        "fr": "Garder dix ans de détail individuel « au cas où ».",
+        "en": "Keeping ten years of individual detail “just in case”."
+      },
+      "notions": [
+        "n-gdpr-impact",
+        "n-pseudonymisation-aggregation"
+      ],
+      "id": "isi7-10-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Auditer un environnement BI : où est le gaspillage ?",
+        "en": "Auditing a BI environment: where is the waste?"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Une entreprise rafraîchit chaque nuit un rapport de clôture consulté une fois par mois, maintient 180 tableaux de bord dont 90 ne sont plus ouverts, conserve tout l’historique depuis 2012 (aucune requête avant 2020), alimente un tableau de bord par streaming alors qu’il est lu le lundi, et réentraîne un modèle chaque jour. Proposez cinq actions, chacune reliée à une pratique du cours.",
+        "en": "*(Invented case for practice.)* A company refreshes every night a closing report consulted once a month, maintains 180 dashboards of which 90 are no longer opened, keeps all history since 2012 (no queries before 2020), feeds a dashboard by streaming although it is read on Mondays, and retrains a model every day. Propose five actions, each linked to a practice from the course."
+      },
+      "hints": [
+        {
+          "fr": "Cinq pratiques de BI frugale.",
+          "en": "Five frugal BI practices."
+        },
+        {
+          "fr": "Une décision mensuelle n’appelle pas un rafraîchissement quotidien.",
+          "en": "A monthly decision does not call for a daily refresh."
+        }
+      ],
+      "solution": {
+        "fr": "1. Rafraîchir le rapport de clôture une fois par mois (à la demande de la décision). 2. Supprimer les 90 tableaux de bord inutilisés d’après le suivi d’usage, et repérer les doublons. 3. Purger l’historique sans requêtes (avant 2020), sous réserve des obligations d’archivage. 4. Remplacer le streaming par un rafraîchissement hebdomadaire (pas de réaction en temps réel). 5. Questionner le coût du réentraînement quotidien et le réduire à ce qui est nécessaire.\n*Ce que l’exercice vérifie* : appliquer les pratiques du prof avec leur justification. *Réserve : la purge doit rester compatible avec les obligations légales d’archivage, que le cours ne détaille pas.*",
+        "en": "1. Refresh the closing report once a month (at the decision’s pace). 2. Remove the 90 unused dashboards based on usage monitoring, and spot duplicates. 3. Purge history with no queries (before 2020), subject to archiving obligations. 4. Replace streaming with a weekly refresh (no real-time reaction). 5. Question the cost of daily retraining and reduce it to what is necessary.\n*What the exercise checks*: applying the teacher’s practices with their justification. *Caveat: purging must remain compatible with legal archiving obligations, which the course does not detail.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Refresh data as often as the decision needs, not more."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can remove also unused dashboards based on the user usage."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You can purge a history that has no queries for a few times"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "question the cost of streaming and of training data models again and again."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "And the best dashboard is the one that is used. The best refresh is the one that is needed."
+        }
+      ],
+      "objective": "o4",
+      "examStyle": true,
+      "trap": {
+        "fr": "Tout supprimer sans suivi d’usage ni obligations légales.",
+        "en": "Deleting everything without usage monitoring or legal obligations."
+      },
+      "notions": [
+        "n-frugal-bi"
+      ],
+      "id": "isi7-10-ex-02"
+    },
+    {
+      "title": {
+        "fr": "Ajouter une perspective RSE au tableau de bord prospectif",
+        "en": "Adding a CSR perspective to the balanced scorecard"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Une usine doit désormais rendre compte de son énergie consommée et des émissions de ses fournisseurs. Placez trois indicateurs RSE dans le tableau de bord prospectif (couche dédiée ou perspective existante), nommez un propriétaire de la donnée par indicateur et dites ce qui doit être garanti sur ces données.",
+        "en": "A plant must now report on its energy consumed and its suppliers’ emissions. Place three CSR indicators in the balanced scorecard (dedicated layer or existing perspective), name a data owner for each indicator and say what must be guaranteed on this data."
+      },
+      "hints": [
+        {
+          "fr": "Chaque indicateur d’un étage contribue au parent.",
+          "en": "Each indicator at one level contributes to its parent."
+        },
+        {
+          "fr": "Fiables et auditables comme la finance.",
+          "en": "Reliable and auditable like finance."
+        }
+      ],
+      "solution": {
+        "fr": "**Exemples** (inventés) : (1) énergie consommée par unité produite (couche RSE ; contribue au coût, perspective financière) ; (2) empreinte carbone des fournisseurs (couche RSE ; données externes) ; (3) taux de conformité aux exigences de reporting (couche RSE ; risque de sanctions financières).\n**Propriétaires** : un responsable métier par indicateur, qui suit l’évolution, en rend compte et agit en cas d’écart négatif.\n**À garantir** : des données aussi fiables et auditables que les données financières, avec traçabilité vers leurs sources externes (fournisseurs, énergéticiens).\n*Réponse proposée ; le cours ne détaille pas les indicateurs, il indique seulement qu’on peut intégrer une couche RSE.*",
+        "en": "**Examples** (invented): (1) energy consumed per unit produced (CSR layer; contributes to cost, financial perspective); (2) suppliers’ carbon footprint (CSR layer; external data); (3) compliance rate with reporting requirements (CSR layer; risk of financial penalties).\n**Owners**: a business lead per indicator, who monitors evolution, reports on it and acts on negative deviation.\n**To guarantee**: data as reliable and auditable as financial data, with traceability to external sources (suppliers, energy providers).\n*Proposed answer; the course does not detail indicators, it only says a CSR layer can be integrated.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "You have to bring new indicators like carbon footprint, energy, social and governance data to be reportable."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that must be as reliable. and auditable as financial figures, of course."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "we can integrate now with CSR a new layer or a dedicated part or one of the layer dedicated to CSR indicators"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you have also to identify data owners for those indicators"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "make sure that if they have a negative deviation on them to take action."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-csr-in-bsc",
+        "n-csr-indicators"
+      ],
+      "id": "isi7-10-ex-03"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The best refresh is the one that is needed.",
+      "id": "isi7-10-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "CSR data must be as {{reliable}} and {{auditable}} as financial data.",
+      "translation": "Les données RSE doivent être aussi fiables et auditables que les données financières.",
+      "id": "isi7-10-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "In frugal BI, data is refreshed every day, even if decisions are monthly.",
+      "error": "every day, even if decisions are monthly",
+      "corrected": "as often as the decision needs, not more",
+      "explanation": {
+        "fr": "Le prof : rafraîchir aussi souvent que nécessaire, pas plus.",
+        "en": "The teacher: refresh as often as needed, no more."
+      },
+      "id": "isi7-10-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : que change le RGPD pour la conception d’un système décisionnel ?",
+        "en": "In three sentences: what does the GDPR change for the design of a decision-making system?"
+      },
+      "modelAnswer": "The GDPR imposes purpose limitation, data minimisation, limited retention periods and individual rights. A decision-making system must therefore know where individual data is located, so that it can give access and delete it. Pseudonymisation and aggregation help when detail is not needed.",
+      "keywords": [
+        "purpose limitation",
+        "minimisation",
+        "retention",
+        "individual data",
+        "pseudonymisation"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité au moins trois exigences.",
+          "en": "I named at least three requirements."
+        },
+        {
+          "fr": "J’ai relié aux droits d’accès et de suppression.",
+          "en": "I linked it to access and deletion rights."
+        }
+      ],
+      "usefulPhrases": [
+        "must therefore know where",
+        "help when detail is not needed"
+      ],
+      "id": "isi7-10-wr-04"
+    }
+  ]
+}

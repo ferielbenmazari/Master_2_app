@@ -1,0 +1,2214 @@
+{
+  "id": "isi7-04-vocabulaire-decisionnel",
+  "courseId": "isi7",
+  "order": 4,
+  "title": {
+    "fr": "Le vocabulaire du décisionnel",
+    "en": "The vocabulary of decision-making systems"
+  },
+  "hook": {
+    "fr": "Indicateur, KPI, mesure : trois mots, trois pièges.",
+    "en": "Indicator, KPI, measure: three words, three traps."
+  },
+  "question": {
+    "fr": "Quels mots faut-il maîtriser pour décrire sans ambiguïté un besoin décisionnel ?",
+    "en": "Which words must be mastered to describe a decision-making need unambiguously?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir indicateur, KPI, mesure, axe d’analyse, granularité, avancé / retardé et les distinguer.",
+        "en": "Define indicator, KPI, measure, analysis axis, granularity, leading / lagging and tell them apart."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Distinguer niveaux de décision, reporting / analyse et rapport / tableau de bord.",
+        "en": "Distinguish decision levels, reporting / analysis and report / dashboard."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Expliquer drill-down, alerte et fraîcheur et choisir une fraîcheur adaptée.",
+        "en": "Explain drill-down, alert and freshness and choose a suitable freshness."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Nommer le rôle de chaque couche (sources, transit, entrepôt, data marts) et les règles d’accès.",
+        "en": "Name the role of each layer (sources, staging, warehouse, data marts) and the access rules."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "« L’examen comprendra des questions sur les définitions et concepts clés vus en classe » (compte rendu de séance).",
+        "en": "“The exam will include questions on the key definitions and concepts seen in class” (session notes)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Définitions courtes de la famille 1 et 3 (KPI vs indicateur, reporting vs analyse…) : estimation, aucune annale.",
+        "en": "Short definitions from families 1 and 3 (KPI vs indicator, reporting vs analysis…): an estimate, no past exam exists."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitre 3 : les pain points qu’on veut traduire en spécification.",
+    "en": "Chapter 3: the pain points to translate into a specification."
+  },
+  "next": {
+    "fr": "Chapitre 5 : l’échelle de maturité des questions posées.",
+    "en": "Chapter 5: the maturity ladder of the questions asked."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Indicateur, KPI, mesure, axe, granularité, avancé / retardé (famille 1).",
+        "en": "Indicator, KPI, measure, axis, granularity, leading / lagging (family 1)."
+      },
+      {
+        "fr": "Niveaux de décision, reporting / analyse, rapport / tableau de bord, drill-down, alerte, fraîcheur (famille 3).",
+        "en": "Decision levels, reporting / analysis, report / dashboard, drill-down, alert, freshness (family 3)."
+      },
+      {
+        "fr": "Les quatre couches, la sécurité par rôle et par ligne, la gouvernance et le propriétaire de la donnée (famille 2).",
+        "en": "The four layers, security by role and by row, governance and the data owner (family 2)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Lire une phrase d’utilisateur et en extraire axes, granularité, historique, fraîcheur et règles d’accès.",
+        "en": "Read a user sentence and extract axes, granularity, history, freshness and access rules."
+      },
+      {
+        "fr": "Choisir le format (rapport, tableau de bord, analyse, alerte) et la fraîcheur adaptés à un besoin.",
+        "en": "Choose the format (report, dashboard, analysis, alert) and freshness suited to a need."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "KPI ⊂ indicateur ; mesure ≠ axe ; granularité = limite du détail.",
+        "en": "KPI ⊂ indicator; measure ≠ axis; granularity = limit of detail."
+      },
+      {
+        "fr": "Reporting (connu, fixe) ≠ analyse (nouveau, exploratoire) ; rapport (complet) ≠ tableau de bord (synthétique).",
+        "en": "Reporting (known, fixed) ≠ analysis (new, exploratory); report (complete) ≠ dashboard (synthetic)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 5 : l’échelle de maturité, un autre vocabulaire de « ce qu’on veut savoir ».",
+        "en": "Chapter 5: the maturity ladder, another vocabulary for “what we want to know”."
+      },
+      {
+        "fr": "Chapitre 11 : le détail des couches.",
+        "en": "Chapter 11: the layers in detail."
+      },
+      {
+        "fr": "Chapitres 12-15 : mesure, axe, granularité deviennent faits, dimensions et grain.",
+        "en": "Chapters 12-15: measure, axis, granularity become facts, dimensions and grain."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Six mots pour dire ce qu’on mesure",
+        "en": "Six words for what we measure"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le vocabulaire du cours s’organise en trois familles : **ce qu’on mesure** (indicateurs et axes de lecture), **où vivent les données** (les couches entre sources et utilisateurs) et **comment les utilisateurs consomment** (niveaux de décision, formats, navigation). Commençons par la première.",
+        "en": "The course vocabulary falls into three families: **what we measure** (indicators and how they are sliced), **where the data lives** (the layers between sources and users) and **how users consume it** (decision levels, formats, navigation). Let us start with the first."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "Family 1: indicators and how they are sliced"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Family 2: the layers between sources and users"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Family 3: decision levels and formats"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Terme",
+          "en": "Term"
+        },
+        {
+          "fr": "Définition du cours",
+          "en": "Course definition"
+        },
+        {
+          "fr": "Exemple du cours",
+          "en": "Course example"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Indicateur",
+            "en": "Indicator"
+          },
+          {
+            "fr": "Un chiffre qui décrit une situation ou une performance ; il lui faut une définition, une règle de calcul et une source.",
+            "en": "A figure describing a situation or a performance; it needs a definition, a calculation rule and a source."
+          },
+          {
+            "fr": "chiffre d’affaires, taux d’absentéisme",
+            "en": "revenue, absenteeism rate"
+          }
+        ],
+        [
+          {
+            "fr": "KPI",
+            "en": "KPI"
+          },
+          {
+            "fr": "Un indicateur lié à un objectif et à une cible ; tout KPI est un indicateur, pas l’inverse.",
+            "en": "An indicator tied to an objective and a target; every KPI is an indicator, not the reverse."
+          },
+          {
+            "fr": "livraison à l’heure, cible 95 %",
+            "en": "on-time delivery, target 95%"
+          }
+        ],
+        [
+          {
+            "fr": "Mesure",
+            "en": "Measure"
+          },
+          {
+            "fr": "La valeur numérique que l’on agrège : sommée, moyennée, comptée.",
+            "en": "The numeric value that gets aggregated: summed, averaged, counted."
+          },
+          {
+            "fr": "montant des ventes, quantité",
+            "en": "sales amount, quantity"
+          }
+        ],
+        [
+          {
+            "fr": "Axe d’analyse (dimension)",
+            "en": "Analysis axis (dimension)"
+          },
+          {
+            "fr": "L’angle sous lequel on regarde et filtre une mesure : temps, produit, client, site.",
+            "en": "The angle used to view and filter a measure: time, product, customer, site."
+          },
+          {
+            "fr": "chiffre d’affaires par mois et par région",
+            "en": "revenue by month and region"
+          }
+        ],
+        [
+          {
+            "fr": "Granularité",
+            "en": "Granularity"
+          },
+          {
+            "fr": "Le niveau de détail stocké ou affiché ; on ne peut pas descendre sous le grain stocké.",
+            "en": "The level of detail stored or displayed; you cannot drill below the stored grain."
+          },
+          {
+            "fr": "transaction, jour, mois",
+            "en": "transaction, day, month"
+          }
+        ],
+        [
+          {
+            "fr": "Avancé / retardé",
+            "en": "Leading / lagging"
+          },
+          {
+            "fr": "Un indicateur retardé enregistre un résultat après coup ; un indicateur avancé le signale à l’avance.",
+            "en": "Lagging records a result after the fact; leading signals it in advance."
+          },
+          {
+            "fr": "prises de commandes / marge trimestrielle",
+            "en": "order intake / quarterly margin"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "A figure describing a situation or a performance. Needs a definition, a calculation rule and a source."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "An indicator tied to an objective and a target. Every KPI is an indicator, not the reverse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "Lagging records a result after the fact; leading signals it in advance."
+        }
+      ],
+      "notions": [
+        "n-indicator-kpi",
+        "n-measure-axis-grain",
+        "n-leading-lagging"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un seul exemple relie quatre de ces mots : « le chiffre d’affaires (indicateur) par mois et par région (axes) » agrège le montant des ventes (mesure), qui n’existe qu’à la granularité à laquelle on l’a stocké (par exemple la transaction).",
+        "en": "A single example links four of these words: “revenue (indicator) by month and region (axes)” aggregates the sales amount (measure), which only exists at the granularity at which it was stored (for example the transaction)."
+      },
+      "explain": true,
+      "notions": [
+        "n-indicator-kpi",
+        "n-measure-axis-grain"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Deux pièges de sens unique : tout KPI est un indicateur, mais tout indicateur n’est pas un KPI (il faut un objectif et une cible). Et on ne peut pas descendre sous la granularité stockée : un chiffre stocké au mois ne se détaille pas par jour.",
+        "en": "Two one-way traps: every KPI is an indicator, but not every indicator is a KPI (it needs an objective and a target). And you cannot drill below the stored grain: a figure stored by month cannot be broken down by day."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "An indicator tied to an objective and a target. Every KPI is an indicator, not the reverse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-04-qz-01"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-04-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Niveaux, formats et navigation",
+        "en": "Levels, formats and navigation"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les utilisateurs consomment l’information à trois niveaux de décision : opérationnel (quotidien, détaillé, horizon court), tactique (mensuel ou trimestriel, agrégé, horizon moyen) et stratégique (annuel, très consolidé, horizon long). Rappel du chapitre 2 : ces niveaux décrivent l’horizon, la fréquence et le niveau de détail, pas des types de systèmes.",
+        "en": "Users consume information at three decision levels: operational (daily, detailed, short horizon), tactical (monthly or quarterly, aggregated, medium horizon) and strategic (yearly, highly consolidated, long horizon). Reminder from chapter 2: these levels describe horizon, frequency and level of detail, not types of systems."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Daily · detailed · short horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Monthly or quarterly · aggregated · medium horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Yearly · highly consolidated · long horizon"
+        }
+      ],
+      "notions": [
+        "n-decision-levels"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Niveau",
+          "en": "Level"
+        },
+        {
+          "fr": "Fréquence",
+          "en": "Frequency"
+        },
+        {
+          "fr": "Détail",
+          "en": "Detail"
+        },
+        {
+          "fr": "Horizon",
+          "en": "Horizon"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Opérationnel",
+            "en": "Operational"
+          },
+          {
+            "fr": "Quotidienne",
+            "en": "Daily"
+          },
+          {
+            "fr": "Détaillé",
+            "en": "Detailed"
+          },
+          {
+            "fr": "Court",
+            "en": "Short"
+          }
+        ],
+        [
+          {
+            "fr": "Tactique",
+            "en": "Tactical"
+          },
+          {
+            "fr": "Mensuelle ou trimestrielle",
+            "en": "Monthly or quarterly"
+          },
+          {
+            "fr": "Agrégé",
+            "en": "Aggregated"
+          },
+          {
+            "fr": "Moyen",
+            "en": "Medium"
+          }
+        ],
+        [
+          {
+            "fr": "Stratégique",
+            "en": "Strategic"
+          },
+          {
+            "fr": "Annuelle",
+            "en": "Yearly"
+          },
+          {
+            "fr": "Très consolidé",
+            "en": "Highly consolidated"
+          },
+          {
+            "fr": "Long",
+            "en": "Long"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Daily · detailed · short horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Monthly or quarterly · aggregated · medium horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Yearly · highly consolidated · long horizon"
+        }
+      ],
+      "notions": [
+        "n-decision-levels"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux oppositions de formats à ne pas confondre. Le **reporting** donne des réponses récurrentes et standardisées à des questions connues, au format fixe et planifié ; l’**analyse** est l’exploration ouverte de questions nouvelles en combinant axes et filtres (pain point 3). Et le **rapport** est détaillé et complet, alors que le **tableau de bord** est une vue synthétique et visuelle de quelques KPI, lue d’un coup d’œil.",
+        "en": "Two format oppositions not to confuse. **Reporting** gives recurring, standardised answers to known questions, in a fixed, scheduled format; **analysis** is open exploration of new questions by combining axes and filters (pain point 3). And a **report** is detailed and complete, whereas a **dashboard** is a synthetic, visual view of a few KPIs, read at a glance."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Report Detailed and complete. Dashboard Synthetic, visual view of a few KPIs"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Synthetic, visual view of a few KPIs, read at a glance."
+        }
+      ],
+      "notions": [
+        "n-reporting-analysis",
+        "n-report-dashboard"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Critère rapide : question **connue d’avance** et format fixe = reporting ; question **nouvelle**, axes et filtres combinés = analyse. Beaucoup de KPI lus **d’un coup d’œil** = tableau de bord ; **détaillé et complet** = rapport.",
+        "en": "Quick test: question **known in advance** and fixed format = reporting; **new** question, combined axes and filters = analysis. A few KPIs read **at a glance** = dashboard; **detailed and complete** = report."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-04-qz-03"
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Naviguer et être prévenu : le **drill-down** va d’un chiffre agrégé au détail qui le compose (région → magasins → transactions) ; le **drill-up** est l’inverse. Une **alerte** est une notification automatique quand un indicateur franchit un seuil ou sort de sa tendance : être alerté, pas seulement regarder (pain point 4).",
+        "en": "Navigating and being warned: **drill-down** goes from an aggregated figure to the detail behind it (region → stores → transactions); **drill-up** is the reverse. An **alert** is an automatic notification when an indicator crosses a threshold or leaves its trend: being alerted, not just looking (pain point 4)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "From an aggregated figure to the detail behind it: region → stores → transactions. Drill-up is the reverse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Automatic notification when an indicator crosses a threshold or leaves its trend. Being alerted, not just looking (pain point 4)."
+        }
+      ],
+      "notions": [
+        "n-drill-down",
+        "n-alert"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Enfin la **fraîcheur** (ou latence) mesure le délai entre un événement dans une source et sa disponibilité en BI. Le cours donne la règle du bon sens : une clôture mensuelle n’a pas besoin du temps réel, une alerte à la fraude oui.",
+        "en": "Finally **freshness** (or latency) is the delay between an event in a source and its availability in BI. The course gives the common-sense rule: a monthly closing does not need real time; a fraud alert does."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+        }
+      ],
+      "notions": [
+        "n-data-freshness"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le cours annonce que « single version of the truth », « master data » (données de référence) et « data quality » reviendront dans les séances d’architecture et de gouvernance : retiens les mots, pas encore le détail.",
+        "en": "The course announces that “single version of the truth”, “master data” (reference data) and “data quality” will come back in the architecture and governance sessions: remember the words, not yet the detail."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Single version of the truth · master data (reference data) · data quality: architecture and governance sessions"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-04-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Où vivent les données : un aperçu",
+        "en": "Where the data lives: an overview"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Entre la donnée créée et l’utilisateur, le cours place quatre couches. Les **systèmes sources** sont les applications et fichiers métier où la donnée naît, chacun avec sa propre vue. La **zone de transit** (*staging area*) est une copie technique avant nettoyage, sans accès utilisateur. L’**entrepôt de données** intègre, historise et unifie les sources avec des définitions partagées : c’est la version unique de la vérité. Les **data marts** sont des sous-ensembles par domaine (ventes, finance, RH), adaptés à ses questions.",
+        "en": "Between the data created and the user, the course places four layers. **Source systems** are the business applications and files where data is created, each with its own view. The **staging area** is a technical copy before cleaning, with no user access. The **data warehouse** integrates, historises and unifies the sources with shared definitions: it is the single version of the truth. **Data marts** are subsets per domain (sales, finance, HR), tailored to its questions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Business apps and files where data is created, each with its own view"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notions": [
+        "n-layers-overview"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux règles de sécurité s’ajoutent : les **droits par rôle** (un commercial voit les ventes, pas les salaires) et la **sécurité par ligne** (chaque directeur régional ne voit que sa région). Et deux responsabilités : la **gouvernance** décide comment la donnée est définie, contrôlée et partagée ; le **propriétaire de la donnée** (*data owner*) est un responsable métier par domaine, garant des définitions et de la qualité.",
+        "en": "Two security rules are added: **rights by role** (a sales rep sees sales, not salaries) and **row-level security** (each regional manager only sees their region). And two responsibilities: **governance** decides how data is defined, controlled and shared; the **data owner** is a business lead per domain, accountable for definitions and quality."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager sees only their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Governance decides how data is defined, controlled and shared"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notions": [
+        "n-access-governance"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "La conception de ces couches est renvoyée aux séances d’architecture (chapitres 11 et 12) : ici, on ne retient que le rôle de chacune.",
+        "en": "The design of these layers is left to the architecture sessions (chapters 11 and 12): here, only the role of each one is retained."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Design of these layers: architecture session."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-04-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "De la parole de l’utilisateur à la spécification",
+        "en": "From the user’s words to the specification"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ces mots servent à un exercice central : lire ce que dit l’utilisateur. Le prof cite ce qu’on peut en tirer : indicateurs et leurs définitions, axes d’analyse, granularité, profondeur d’historique, fraîcheur, règles d’accès. Et il prévient : n’attends pas de l’utilisateur qu’il fournisse la matière correctement qualifiée ni spécifiée.",
+        "en": "These words serve a central exercise: reading what the user says. The teacher lists what can be drawn from it: indicators and their definitions, analysis axes, granularity, history depth, data freshness, access rules. And he warns: do not expect the user to hand you the material correctly qualified or specified."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Don't expect the end user just to give you the material, correctly qualified, correctly specified."
+        }
+      ],
+      "notions": [
+        "n-functional-spec-elements"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Lire une phrase d’utilisateur comme une spécification (méthode de l’app)",
+        "en": "Reading a user sentence as a specification (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Souligner ce qu’on veut **voir** : le ou les indicateurs, et la mesure agrégée derrière.",
+            "en": "Underline what the user wants to **see**: the indicator(s) and the aggregated measure behind."
+          },
+          "why": {
+            "fr": "Sans indicateur défini (règle de calcul, source), il n’y a rien à spécifier.",
+            "en": "Without a defined indicator (calculation rule, source) there is nothing to specify."
+          }
+        },
+        {
+          "do": {
+            "fr": "Repérer les mots « par… » : ce sont les **axes d’analyse**, et le plus fin donne la **granularité** minimale.",
+            "en": "Spot the “by…” words: these are the **analysis axes**, and the finest gives the minimal **granularity**."
+          },
+          "why": {
+            "fr": "On ne peut pas descendre sous le grain stocké.",
+            "en": "You cannot drill below the stored grain."
+          }
+        },
+        {
+          "do": {
+            "fr": "Relever la **profondeur d’historique** et la **fraîcheur** (« depuis… », « chaque jour », « en temps réel »).",
+            "en": "Note the **history depth** and **freshness** (“since…”, “every day”, “in real time”)."
+          },
+          "why": {
+            "fr": "Une clôture mensuelle n’a pas besoin du temps réel ; une alerte à la fraude, si.",
+            "en": "A monthly closing does not need real time; a fraud alert does."
+          }
+        },
+        {
+          "do": {
+            "fr": "Noter les **règles d’accès** (qui voit quoi : rôle, ligne).",
+            "en": "Note the **access rules** (who sees what: role, row)."
+          },
+          "why": {
+            "fr": "Droits par rôle et sécurité par ligne se spécifient dès l’analyse.",
+            "en": "Rights by role and row-level security are specified at analysis time."
+          }
+        },
+        {
+          "do": {
+            "fr": "Reformuler le tout dans un document sans ambiguïté que l’utilisateur peut valider.",
+            "en": "Reword it all into an unambiguous document the user can validate."
+          },
+          "why": {
+            "fr": "La spécification fonctionnelle sert de contrat avec les utilisateurs (chapitre 7).",
+            "en": "The functional specification serves as a contract with users (chapter 7)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager sees only their region"
+        }
+      ],
+      "notions": [
+        "n-functional-spec-elements"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Cette méthode est une construction pédagogique de l’app, bâtie sur la liste du prof (indicateurs, définitions, axes, granularité, profondeur d’historique, fraîcheur, règles d’accès). Le cours ne donne pas d’ordre d’étapes.",
+        "en": "This method is a pedagogical construction of the app, built on the teacher’s list (indicators, definitions, axes, granularity, history depth, freshness, access rules). The course does not give an order of steps."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-04-qz-06"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-indicator",
+      "fr": "indicateur",
+      "en": "indicator",
+      "definition": {
+        "fr": "Chiffre qui décrit une situation ou une performance ; il lui faut une définition, une règle de calcul et une source.",
+        "en": "A figure describing a situation or a performance; it needs a definition, a calculation rule and a source."
+      },
+      "example": {
+        "fr": "chiffre d’affaires, taux d’absentéisme",
+        "en": "revenue, absenteeism rate"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "A figure describing a situation or a performance. Needs a definition, a calculation rule and a source."
+        }
+      ],
+      "notion": "n-indicator-kpi"
+    },
+    {
+      "id": "term-kpi",
+      "fr": "KPI (indicateur clé de performance)",
+      "en": "KPI (key performance indicator)",
+      "definition": {
+        "fr": "Indicateur lié à un objectif et à une cible.",
+        "en": "An indicator tied to an objective and a target."
+      },
+      "example": {
+        "fr": "livraison à l’heure, cible 95 %",
+        "en": "on-time delivery, target 95%"
+      },
+      "pitfall": {
+        "fr": "Tout KPI est un indicateur, pas l’inverse.",
+        "en": "Every KPI is an indicator, not the reverse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "An indicator tied to an objective and a target. Every KPI is an indicator, not the reverse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "on-time delivery, target 95%"
+        }
+      ],
+      "notion": "n-indicator-kpi"
+    },
+    {
+      "id": "term-measure",
+      "fr": "mesure",
+      "en": "measure",
+      "definition": {
+        "fr": "Valeur numérique que l’on agrège (somme, moyenne, comptage).",
+        "en": "The numeric value that gets aggregated (summed, averaged, counted)."
+      },
+      "example": {
+        "fr": "montant des ventes, quantité",
+        "en": "sales amount, quantity"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        }
+      ],
+      "notion": "n-measure-axis-grain"
+    },
+    {
+      "id": "term-analysis-axis",
+      "fr": "axe d’analyse (dimension)",
+      "en": "analysis axis (dimension)",
+      "definition": {
+        "fr": "Angle sous lequel on regarde et filtre une mesure : temps, produit, client, site.",
+        "en": "The angle used to view and filter a measure: time, product, customer, site."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "revenue by month and region"
+        }
+      ],
+      "notion": "n-measure-axis-grain"
+    },
+    {
+      "id": "term-granularity",
+      "fr": "granularité",
+      "en": "granularity",
+      "definition": {
+        "fr": "Niveau de détail stocké ou affiché ; on ne peut pas descendre sous le grain stocké.",
+        "en": "The level of detail stored or displayed; you cannot drill below the stored grain."
+      },
+      "example": {
+        "fr": "transaction, jour, mois",
+        "en": "transaction, day, month"
+      },
+      "pitfall": {
+        "fr": "Le détail non stocké est perdu : le drill-down s’arrête au grain.",
+        "en": "Detail that is not stored is lost: drill-down stops at the grain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ],
+      "notion": "n-measure-axis-grain"
+    },
+    {
+      "id": "term-leading-lagging",
+      "fr": "indicateur avancé / retardé",
+      "en": "leading / lagging indicator",
+      "definition": {
+        "fr": "Un indicateur retardé enregistre un résultat après coup ; un indicateur avancé le signale à l’avance.",
+        "en": "A lagging indicator records a result after the fact; a leading one signals it in advance."
+      },
+      "example": {
+        "fr": "prises de commandes (avancé), marge trimestrielle (retardé)",
+        "en": "order intake (leading), quarterly margin (lagging)"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "Lagging records a result after the fact; leading signals it in advance."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "order intake vs quarterly margin"
+        }
+      ],
+      "notion": "n-leading-lagging"
+    },
+    {
+      "id": "term-decision-levels",
+      "fr": "niveaux de décision",
+      "en": "decision levels",
+      "definition": {
+        "fr": "Opérationnel (quotidien, détaillé, court terme), tactique (mensuel ou trimestriel, agrégé), stratégique (annuel, très consolidé, long terme).",
+        "en": "Operational (daily, detailed, short horizon), tactical (monthly or quarterly, aggregated), strategic (yearly, highly consolidated, long horizon)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Daily · detailed · short horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Monthly or quarterly · aggregated · medium horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Yearly · highly consolidated · long horizon"
+        }
+      ],
+      "notion": "n-decision-levels"
+    },
+    {
+      "id": "term-reporting",
+      "fr": "reporting",
+      "en": "reporting",
+      "definition": {
+        "fr": "Réponses récurrentes et standardisées à des questions connues, au format fixe et planifié.",
+        "en": "Recurring, standardised answers to known questions, in a fixed and scheduled format."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        }
+      ],
+      "notion": "n-reporting-analysis"
+    },
+    {
+      "id": "term-analysis",
+      "fr": "analyse (exploration)",
+      "en": "analysis",
+      "definition": {
+        "fr": "Exploration ouverte de questions nouvelles en combinant axes et filtres (pain point 3).",
+        "en": "Open exploration of new questions by combining axes and filters (pain point 3)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        }
+      ],
+      "notion": "n-reporting-analysis"
+    },
+    {
+      "id": "term-dashboard",
+      "fr": "tableau de bord",
+      "en": "dashboard",
+      "definition": {
+        "fr": "Vue synthétique et visuelle de quelques KPI, lue d’un coup d’œil ; le rapport est, lui, détaillé et complet.",
+        "en": "A synthetic, visual view of a few KPIs, read at a glance; a report, by contrast, is detailed and complete."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Report Detailed and complete. Dashboard Synthetic, visual view of a few KPIs"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Synthetic, visual view of a few KPIs, read at a glance."
+        }
+      ],
+      "notion": "n-report-dashboard"
+    },
+    {
+      "id": "term-drill-down",
+      "fr": "drill-down (forage)",
+      "en": "drill-down",
+      "definition": {
+        "fr": "Passage d’un chiffre agrégé au détail qui le compose ; le drill-up est l’inverse.",
+        "en": "Going from an aggregated figure to the detail behind it; drill-up is the reverse."
+      },
+      "example": {
+        "fr": "région → magasins → transactions",
+        "en": "region → stores → transactions"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "From an aggregated figure to the detail behind it: region → stores → transactions. Drill-up is the reverse."
+        }
+      ],
+      "notion": "n-drill-down"
+    },
+    {
+      "id": "term-alert",
+      "fr": "alerte",
+      "en": "alert",
+      "definition": {
+        "fr": "Notification automatique quand un indicateur franchit un seuil ou sort de sa tendance.",
+        "en": "Automatic notification when an indicator crosses a threshold or leaves its trend."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Automatic notification when an indicator crosses a threshold or leaves its trend. Being alerted, not just looking (pain point 4)."
+        }
+      ],
+      "notion": "n-alert"
+    },
+    {
+      "id": "term-data-freshness",
+      "fr": "fraîcheur des données (latence)",
+      "en": "data freshness (latency)",
+      "definition": {
+        "fr": "Délai entre un événement dans une source et sa disponibilité en BI.",
+        "en": "Delay between an event in a source and its availability in BI."
+      },
+      "example": {
+        "fr": "clôture mensuelle : pas de temps réel ; alerte à la fraude : temps réel.",
+        "en": "monthly closing: no real time needed; fraud alert: real time."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+        }
+      ],
+      "notion": "n-data-freshness"
+    },
+    {
+      "id": "term-staging-area",
+      "fr": "zone de transit (staging area)",
+      "en": "staging area",
+      "definition": {
+        "fr": "Copie technique des données sources avant nettoyage ; aucun accès utilisateur.",
+        "en": "Technical copy of source data before cleaning; no user access."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "notion": "n-layers-overview"
+    },
+    {
+      "id": "term-data-mart",
+      "fr": "data mart",
+      "en": "data mart",
+      "definition": {
+        "fr": "Sous-ensemble de données par domaine (ventes, finance, RH), adapté à ses questions.",
+        "en": "A subset of data per domain (sales, finance, HR), tailored to its questions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notion": "n-layers-overview"
+    },
+    {
+      "id": "term-row-level-security",
+      "fr": "sécurité par ligne",
+      "en": "row-level security",
+      "definition": {
+        "fr": "Chaque directeur régional ne voit que sa région ; à distinguer des droits par rôle (un commercial voit les ventes, pas les salaires).",
+        "en": "Each regional manager only sees their region; to be distinguished from rights by role (a sales rep sees sales, not salaries)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager sees only their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        }
+      ],
+      "notion": "n-access-governance"
+    },
+    {
+      "id": "term-data-owner",
+      "fr": "propriétaire de la donnée (data owner)",
+      "en": "data owner",
+      "definition": {
+        "fr": "Responsable métier par domaine, garant des définitions et de la qualité.",
+        "en": "A business lead per domain, accountable for definitions and quality."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notion": "n-access-governance"
+    }
+  ],
+  "notions": [
+    "n-indicator-kpi",
+    "n-measure-axis-grain",
+    "n-leading-lagging",
+    "n-decision-levels",
+    "n-reporting-analysis",
+    "n-report-dashboard",
+    "n-drill-down",
+    "n-alert",
+    "n-data-freshness",
+    "n-layers-overview",
+    "n-access-governance",
+    "n-functional-spec-elements"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Un indicateur décrit une situation et exige définition, règle de calcul et source ; un KPI est un indicateur lié à un objectif et à une cible ; tout KPI est un indicateur, pas l’inverse.",
+        "en": "An indicator describes a situation and requires a definition, a calculation rule and a source; a KPI is an indicator tied to an objective and a target; every KPI is an indicator, not the reverse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "A figure describing a situation or a performance. Needs a definition, a calculation rule and a source."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "An indicator tied to an objective and a target. Every KPI is an indicator, not the reverse."
+        }
+      ],
+      "notions": [
+        "n-indicator-kpi"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Mesure = valeur agrégée ; axe d’analyse = angle de lecture ; granularité = niveau de détail stocké, on ne descend pas sous le grain.",
+        "en": "Measure = aggregated value; analysis axis = angle of reading; granularity = stored level of detail, you cannot go below the grain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The numeric value that gets aggregated: summed, averaged, counted."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ],
+      "notions": [
+        "n-measure-axis-grain"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Trois niveaux de décision : opérationnel (quotidien, détaillé), tactique (mensuel/trimestriel, agrégé), stratégique (annuel, très consolidé).",
+        "en": "Three decision levels: operational (daily, detailed), tactical (monthly/quarterly, aggregated), strategic (yearly, highly consolidated)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Daily · detailed · short horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Monthly or quarterly · aggregated · medium horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Yearly · highly consolidated · long horizon"
+        }
+      ],
+      "notions": [
+        "n-decision-levels"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Reporting = questions connues, format fixe, planifié ; analyse = questions nouvelles, axes et filtres combinés ; rapport détaillé et complet ≠ tableau de bord synthétique.",
+        "en": "Reporting = known questions, fixed format, scheduled; analysis = new questions, combined axes and filters; detailed, complete report ≠ synthetic dashboard."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Report Detailed and complete. Dashboard Synthetic, visual view of a few KPIs"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Synthetic, visual view of a few KPIs, read at a glance."
+        }
+      ],
+      "notions": [
+        "n-reporting-analysis",
+        "n-report-dashboard"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Drill-down (agrégé → détail), alerte (seuil ou tendance), fraîcheur (délai source → BI : clôture mensuelle sans temps réel, alerte à la fraude avec).",
+        "en": "Drill-down (aggregated → detail), alert (threshold or trend), freshness (source → BI delay: monthly closing without real time, fraud alert with)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "From an aggregated figure to the detail behind it: region → stores → transactions. Drill-up is the reverse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Automatic notification when an indicator crosses a threshold or leaves its trend. Being alerted, not just looking (pain point 4)."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+        }
+      ],
+      "notions": [
+        "n-drill-down",
+        "n-alert",
+        "n-data-freshness"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Quatre couches : sources, zone de transit (sans accès utilisateur), entrepôt (version unique de la vérité), data marts (par domaine) ; sécurité par rôle et par ligne ; gouvernance et propriétaire de la donnée.",
+        "en": "Four layers: sources, staging (no user access), warehouse (single version of the truth), data marts (per domain); security by role and by row; governance and data owner."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager sees only their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notions": [
+        "n-layers-overview",
+        "n-access-governance"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Indicateur ?",
+        "en": "Indicator?"
+      },
+      "back": {
+        "fr": "Un chiffre qui décrit une situation ou une performance ; définition, règle de calcul, source.",
+        "en": "A figure describing a situation or performance; definition, calculation rule, source."
+      },
+      "termId": "term-indicator",
+      "id": "isi7-04-fc-01"
+    },
+    {
+      "front": {
+        "fr": "KPI vs indicateur ?",
+        "en": "KPI vs indicator?"
+      },
+      "back": {
+        "fr": "Un KPI est un indicateur lié à un objectif et une cible ; l’inverse est faux.",
+        "en": "A KPI is an indicator tied to an objective and a target; the reverse is false."
+      },
+      "termId": "term-kpi",
+      "id": "isi7-04-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Mesure ?",
+        "en": "Measure?"
+      },
+      "back": {
+        "fr": "La valeur numérique que l’on agrège.",
+        "en": "The numeric value that gets aggregated."
+      },
+      "termId": "term-measure",
+      "id": "isi7-04-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Axe d’analyse ?",
+        "en": "Analysis axis?"
+      },
+      "back": {
+        "fr": "L’angle sous lequel on regarde et filtre une mesure : temps, produit, client, site.",
+        "en": "The angle used to view and filter a measure: time, product, customer, site."
+      },
+      "termId": "term-analysis-axis",
+      "id": "isi7-04-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Granularité : quelle limite ?",
+        "en": "Granularity: what limit?"
+      },
+      "back": {
+        "fr": "On ne peut pas descendre sous le grain stocké.",
+        "en": "You cannot drill below the stored grain."
+      },
+      "termId": "term-granularity",
+      "id": "isi7-04-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Avancé ou retardé : prises de commandes / marge trimestrielle ?",
+        "en": "Leading or lagging: order intake / quarterly margin?"
+      },
+      "back": {
+        "fr": "Prises de commandes : avancé ; marge trimestrielle : retardé.",
+        "en": "Order intake: leading; quarterly margin: lagging."
+      },
+      "termId": "term-leading-lagging",
+      "id": "isi7-04-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Trois niveaux de décision ?",
+        "en": "Three decision levels?"
+      },
+      "back": {
+        "fr": "Opérationnel (quotidien), tactique (mensuel/trimestriel), stratégique (annuel).",
+        "en": "Operational (daily), tactical (monthly/quarterly), strategic (yearly)."
+      },
+      "termId": "term-decision-levels",
+      "id": "isi7-04-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Reporting vs analyse ?",
+        "en": "Reporting vs analysis?"
+      },
+      "back": {
+        "fr": "Reporting : questions connues, format fixe. Analyse : questions nouvelles, axes et filtres combinés.",
+        "en": "Reporting: known questions, fixed format. Analysis: new questions, combined axes and filters."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        }
+      ],
+      "notions": [
+        "n-reporting-analysis"
+      ],
+      "id": "isi7-04-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Rapport vs tableau de bord ?",
+        "en": "Report vs dashboard?"
+      },
+      "back": {
+        "fr": "Rapport : détaillé et complet. Tableau de bord : synthèse visuelle de quelques KPI.",
+        "en": "Report: detailed and complete. Dashboard: visual synthesis of a few KPIs."
+      },
+      "termId": "term-dashboard",
+      "id": "isi7-04-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Drill-down et drill-up ?",
+        "en": "Drill-down and drill-up?"
+      },
+      "back": {
+        "fr": "Du chiffre agrégé au détail (région → magasins → transactions) ; drill-up : l’inverse.",
+        "en": "From aggregated figure to detail (region → stores → transactions); drill-up: the reverse."
+      },
+      "termId": "term-drill-down",
+      "id": "isi7-04-fc-10"
+    },
+    {
+      "front": {
+        "fr": "Alerte ?",
+        "en": "Alert?"
+      },
+      "back": {
+        "fr": "Notification automatique au franchissement d’un seuil ou à la sortie d’une tendance.",
+        "en": "Automatic notification when a threshold is crossed or a trend left."
+      },
+      "termId": "term-alert",
+      "id": "isi7-04-fc-11"
+    },
+    {
+      "front": {
+        "fr": "Fraîcheur : exemples ?",
+        "en": "Freshness: examples?"
+      },
+      "back": {
+        "fr": "Clôture mensuelle : pas de temps réel. Alerte à la fraude : temps réel.",
+        "en": "Monthly closing: no real time. Fraud alert: real time."
+      },
+      "termId": "term-data-freshness",
+      "id": "isi7-04-fc-12"
+    },
+    {
+      "front": {
+        "fr": "Les quatre couches du cours ?",
+        "en": "The course’s four layers?"
+      },
+      "back": {
+        "fr": "Systèmes sources, zone de transit, entrepôt de données, data marts.",
+        "en": "Source systems, staging area, data warehouse, data marts."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Business apps and files where data is created, each with its own view"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Integrates, historizes and unifies sources with shared definitions"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Subsets per domain (sales, finance, HR) tailored to its questions"
+        }
+      ],
+      "notions": [
+        "n-layers-overview"
+      ],
+      "id": "isi7-04-fc-13"
+    },
+    {
+      "front": {
+        "fr": "Éléments à tirer de la parole d’un utilisateur ?",
+        "en": "What to draw from a user’s words?"
+      },
+      "back": {
+        "fr": "Indicateurs et définitions, axes, granularité, profondeur d’historique, fraîcheur, règles d’accès.",
+        "en": "Indicators and definitions, axes, granularity, history depth, freshness, access rules."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        }
+      ],
+      "notions": [
+        "n-functional-spec-elements"
+      ],
+      "id": "isi7-04-fc-14"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Tout indicateur est un KPI dès lors qu’il est calculé avec une règle précise.",
+        "en": "Every indicator is a KPI as soon as it is calculated with a precise rule."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : un KPI est un indicateur lié à un objectif et à une cible ; tout KPI est un indicateur, pas l’inverse.",
+        "en": "FALSE: a KPI is an indicator tied to an objective and a target; every KPI is an indicator, not the reverse."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "An indicator tied to an objective and a target. Every KPI is an indicator, not the reverse."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-indicator-kpi"
+      ],
+      "trap": {
+        "fr": "Le sens de l’inclusion KPI ⊂ indicateur.",
+        "en": "The direction of the inclusion KPI ⊂ indicator."
+      },
+      "id": "isi7-04-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "« Livraison à l’heure, cible 95 % » est un KPI au sens du cours.",
+        "en": "“On-time delivery, target 95%” is a KPI in the course’s sense."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : un indicateur lié à un objectif et à une cible.",
+        "en": "TRUE: an indicator tied to an objective and a target."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "An indicator tied to an objective and a target. Every KPI is an indicator, not the reverse."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "on-time delivery, target 95%"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-indicator-kpi"
+      ],
+      "id": "isi7-04-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Dans « chiffre d’affaires par mois et par région », que sont « mois » et « région » ?",
+        "en": "In “revenue by month and region”, what are “month” and “region”?"
+      },
+      "options": [
+        {
+          "fr": "Des mesures",
+          "en": "Measures"
+        },
+        {
+          "fr": "Des axes d’analyse (dimensions)",
+          "en": "Analysis axes (dimensions)"
+        },
+        {
+          "fr": "Des KPI",
+          "en": "KPIs"
+        },
+        {
+          "fr": "Des granularités",
+          "en": "Granularities"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Des axes d’analyse : les angles sous lesquels on regarde la mesure. La mesure est le montant des ventes ; la granularité est le niveau de détail stocké.",
+        "en": "Analysis axes: the angles under which the measure is viewed. The measure is the sales amount; granularity is the stored level of detail."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The angle used to view and filter a measure: time, product, customer, site."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "revenue by month and region"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-measure-axis-grain"
+      ],
+      "id": "isi7-04-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Si les ventes sont stockées par mois, on peut obtenir un détail par jour en descendant d’un niveau dans le tableau de bord.",
+        "en": "If sales are stored by month, a daily breakdown can be obtained by drilling down one level in the dashboard."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : on ne peut pas descendre sous le grain stocké.",
+        "en": "FALSE: you cannot drill below the stored grain."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-measure-axis-grain"
+      ],
+      "trap": {
+        "fr": "Croire que le drill-down invente un détail non stocké.",
+        "en": "Believing drill-down invents detail that is not stored."
+      },
+      "id": "isi7-04-qz-04"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Parmi « prises de commandes » et « marge trimestrielle », lequel est un indicateur avancé ?",
+        "en": "Between “order intake” and “quarterly margin”, which one is a leading indicator?"
+      },
+      "options": [
+        {
+          "fr": "Les deux, car ce sont des KPI",
+          "en": "Both, since they are KPIs"
+        },
+        {
+          "fr": "Aucun, les deux enregistrent un résultat après coup",
+          "en": "Neither, both record a result after the fact"
+        },
+        {
+          "fr": "La marge trimestrielle : elle signale la performance à l’avance",
+          "en": "Quarterly margin: it signals performance in advance"
+        },
+        {
+          "fr": "Les prises de commandes : elles signalent le résultat à l’avance",
+          "en": "Order intake: it signals the result in advance"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Prises de commandes (leading) ; la marge trimestrielle enregistre un résultat après coup (lagging).",
+        "en": "Order intake (leading); quarterly margin records a result after the fact (lagging)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "Lagging records a result after the fact; leading signals it in advance."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "order intake vs quarterly margin"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-leading-lagging"
+      ],
+      "id": "isi7-04-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le niveau opérationnel est quotidien, détaillé et à horizon court ; le niveau stratégique est annuel, très consolidé et à horizon long.",
+        "en": "The operational level is daily, detailed and short-horizon; the strategic level is yearly, highly consolidated and long-horizon."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : diapositive des niveaux de décision.",
+        "en": "TRUE: decision levels slide."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Daily · detailed · short horizon"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Yearly · highly consolidated · long horizon"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-decision-levels"
+      ],
+      "id": "isi7-04-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un rapport mensuel au format fixe, envoyé automatiquement à la même date, relève de l’analyse.",
+        "en": "A monthly report in a fixed format, sent automatically on the same date, is analysis."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est du reporting (réponses récurrentes et standardisées à des questions connues, format fixe et planifié). L’analyse explore des questions nouvelles.",
+        "en": "FALSE: it is reporting (recurring, standardised answers to known questions, fixed and scheduled). Analysis explores new questions."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-reporting-analysis"
+      ],
+      "trap": {
+        "fr": "Parce que le document est « analytique », le prendre pour de l’analyse.",
+        "en": "Calling it analysis because the document looks “analytical”."
+      },
+      "id": "isi7-04-qz-07"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Un directeur veut voir en un coup d’œil cinq KPI de son activité. Quel format convient ?",
+        "en": "A director wants to see five KPIs of their business at a glance. Which format fits?"
+      },
+      "options": [
+        {
+          "fr": "Un drill-down jusqu’aux transactions",
+          "en": "A drill-down to transactions"
+        },
+        {
+          "fr": "Un rapport détaillé et complet",
+          "en": "A detailed, complete report"
+        },
+        {
+          "fr": "Un tableau de bord",
+          "en": "A dashboard"
+        },
+        {
+          "fr": "Une analyse exploratoire",
+          "en": "An exploratory analysis"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Un tableau de bord : vue synthétique et visuelle de quelques KPI, lue d’un coup d’œil. Le rapport est détaillé et complet.",
+        "en": "A dashboard: a synthetic, visual view of a few KPIs, read at a glance. A report is detailed and complete."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Report Detailed and complete. Dashboard Synthetic, visual view of a few KPIs"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Synthetic, visual view of a few KPIs, read at a glance."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-report-dashboard"
+      ],
+      "id": "isi7-04-qz-08"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une alerte se déclenche aussi quand un indicateur sort de sa tendance, pas seulement quand il franchit un seuil.",
+        "en": "An alert also triggers when an indicator leaves its trend, not only when it crosses a threshold."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « crosses a threshold or leaves its trend ».",
+        "en": "TRUE: “crosses a threshold or leaves its trend”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Automatic notification when an indicator crosses a threshold or leaves its trend. Being alerted, not just looking (pain point 4)."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-alert"
+      ],
+      "id": "isi7-04-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une alerte à la fraude et une clôture mensuelle ont besoin de la même fraîcheur de données.",
+        "en": "A fraud alert and a monthly closing need the same data freshness."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : une clôture mensuelle n’a pas besoin du temps réel, une alerte à la fraude oui.",
+        "en": "FALSE: a monthly closing does not need real time; a fraud alert does."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-data-freshness"
+      ],
+      "trap": {
+        "fr": "Réclamer le temps réel partout, sans le coût associé (chapitre 8).",
+        "en": "Asking for real time everywhere, ignoring its cost (chapter 8)."
+      },
+      "id": "isi7-04-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "La zone de transit (staging area) est une copie technique des données sources avant nettoyage, accessible aux utilisateurs pour leurs analyses.",
+        "en": "The staging area is a technical copy of source data before cleaning, accessible to users for their analyses."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la zone de transit est une copie technique **sans accès utilisateur**.",
+        "en": "FALSE: the staging area is a technical copy **with no user access**."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Technical copy of source data before cleaning. No user access"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-layers-overview"
+      ],
+      "trap": {
+        "fr": "Confondre zone de transit et data mart.",
+        "en": "Mixing up staging area and data mart."
+      },
+      "id": "isi7-04-qz-11"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "« Chaque directeur régional ne voit que sa région » est un exemple de…",
+        "en": "“Each regional manager only sees their region” is an example of…"
+      },
+      "options": [
+        {
+          "fr": "droits par rôle",
+          "en": "rights by role"
+        },
+        {
+          "fr": "sécurité par ligne",
+          "en": "row-level security"
+        },
+        {
+          "fr": "gouvernance de la donnée",
+          "en": "data governance"
+        },
+        {
+          "fr": "propriété de la donnée",
+          "en": "data ownership"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Sécurité par ligne. Les droits par rôle, c’est « un commercial voit les ventes, pas les salaires ».",
+        "en": "Row-level security. Rights by role is “a sales rep sees sales, not salaries”."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Rights by role: a sales rep sees sales, not salaries"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager sees only their region"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-access-governance"
+      ],
+      "trap": {
+        "fr": "Confondre droits par rôle et sécurité par ligne.",
+        "en": "Mixing up rights by role and row-level security."
+      },
+      "id": "isi7-04-qz-12"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Lire une phrase d’utilisateur comme une spécification",
+        "en": "Reading a user sentence as a specification"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* « Je veux suivre chaque jour, par magasin et par produit, les quantités vendues et le chiffre d’affaires, sur trois ans, pour comparer à l’année dernière ; chaque directeur régional ne doit voir que sa région ; et je veux être prévenu si le chiffre d’affaires d’un magasin chute de plus de 20 % sous sa tendance. »\nTirez-en : **(a)** les indicateurs et mesures ; **(b)** les axes ; **(c)** la granularité minimale ; **(d)** profondeur d’historique et fraîcheur ; **(e)** la règle d’accès ; **(f)** la nature de la demande d’alerte.",
+        "en": "*(Invented case for practice.)* “I want to track every day, by store and by product, quantities sold and revenue, over three years, to compare with last year; each regional manager must only see their region; and I want to be warned if a store’s revenue drops more than 20% below its trend.”\nDraw out: **(a)** indicators and measures; **(b)** axes; **(c)** minimal granularity; **(d)** history depth and freshness; **(e)** the access rule; **(f)** the nature of the alert request."
+      },
+      "hints": [
+        {
+          "fr": "Cherchez les mots « par », « sur », « chaque » et « ne doit voir que ».",
+          "en": "Look for the words “by”, “over”, “every” and “must only see”."
+        },
+        {
+          "fr": "Le grain doit permettre le détail le plus fin demandé.",
+          "en": "The grain must allow the finest detail requested."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Indicateur : chiffre d’affaires ; mesures agrégées : quantités vendues et montant des ventes.\n**(b)** Axes : temps, magasin, produit (et région pour l’accès).\n**(c)** Granularité : au plus fin le **jour × magasin × produit** (on ne descendrait pas sous le grain stocké) ; comme la demande est quotidienne, un stockage mensuel serait insuffisant.\n**(d)** Historique : trois ans ; fraîcheur : quotidienne (la demande est « chaque jour » ; pas de temps réel exigé).\n**(e)** Sécurité par ligne : chaque directeur régional ne voit que sa région.\n**(f)** Alerte : notification quand l’indicateur sort de sa tendance (pain point 4).\n*Ce que l’exercice vérifie* : retrouver, dans une phrase naturelle, les éléments d’une spécification fonctionnelle. *Cas inventé ; la correspondance est celle de la liste du prof.*",
+        "en": "**(a)** Indicator: revenue; aggregated measures: quantities sold and sales amount.\n**(b)** Axes: time, store, product (and region for access).\n**(c)** Granularity: at the finest **day × store × product** (one could not go below the stored grain); since the request is daily, monthly storage would be insufficient.\n**(d)** History: three years; freshness: daily (the request says “every day”; no real time required).\n**(e)** Row-level security: each regional manager only sees their region.\n**(f)** Alert: notification when the indicator leaves its trend (pain point 4).\n*What the exercise checks*: finding, in a natural sentence, the elements of a functional specification. *Invented case; the mapping is the teacher’s list.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Indicators, their definitions, analysis axis, granularity, history depth, data freshness, access rules, all those stuff."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "What we measure",
+          "quote": "The level of detail stored or displayed. You cannot drill below the stored grain."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager sees only their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Automatic notification when an indicator crosses a threshold or leaves its trend. Being alerted, not just looking (pain point 4)."
+        }
+      ],
+      "objective": "o3",
+      "examStyle": true,
+      "trap": {
+        "fr": "Retenir une granularité mensuelle alors que l’utilisateur veut du quotidien.",
+        "en": "Retaining a monthly granularity when the user wants daily."
+      },
+      "notions": [
+        "n-functional-spec-elements",
+        "n-measure-axis-grain",
+        "n-access-governance",
+        "n-alert"
+      ],
+      "id": "isi7-04-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Rapport, tableau de bord, analyse ou alerte ? Choisir le format",
+        "en": "Report, dashboard, analysis or alert? Choosing the format"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Pour chaque besoin, choisissez le format le plus adapté parmi : rapport, tableau de bord, analyse exploratoire, alerte ; indiquez le niveau de décision et la fraîcheur nécessaire.\n1. Le comité de direction veut, chaque mois, huit KPI stratégiques lus en deux minutes.\n2. Un analyste veut comprendre pourquoi la marge d’une gamme a baissé en croisant produit, client et canal.\n3. La comptabilité doit recevoir, le premier jour ouvré du mois, le détail complet de toutes les factures.\n4. La sécurité bancaire doit être prévenue si une carte est utilisée dans deux pays à dix minutes d’intervalle.",
+        "en": "For each need, choose the most suitable format among: report, dashboard, exploratory analysis, alert; give the decision level and the required freshness.\n1. The executive committee wants, every month, eight strategic KPIs read in two minutes.\n2. An analyst wants to understand why a range’s margin fell by crossing product, customer and channel.\n3. Accounting must receive, on the first business day of the month, the full detail of all invoices.\n4. Banking security must be warned if a card is used in two countries ten minutes apart."
+      },
+      "hints": [
+        {
+          "fr": "Posez trois questions : la question est-elle connue ? Veut-on le détail ou la synthèse ? Faut-il réagir en direct ?",
+          "en": "Ask three questions: is the question known? Detail or synthesis? Must someone react live?"
+        },
+        {
+          "fr": "Rappel : une alerte à la fraude exige le temps réel.",
+          "en": "Reminder: a fraud alert requires real time."
+        }
+      ],
+      "solution": {
+        "fr": "1. **Tableau de bord** (synthèse visuelle de quelques KPI) ; niveau **stratégique** (très consolidé) ; fraîcheur **mensuelle**.\n2. **Analyse exploratoire** (question nouvelle, axes et filtres combinés, pain point 3) ; niveau **tactique** ; fraîcheur de l’ordre du jour ou du mois, sans exiger le temps réel.\n3. **Rapport** (détaillé et complet, format fixe, planifié) ; niveau **opérationnel** pour le détail ; fraîcheur **mensuelle planifiée**.\n4. **Alerte** (franchit un seuil) ; niveau **opérationnel** ; fraîcheur **temps réel** : c’est le cas où le coût du temps réel se justifie.\n*Ce que l’exercice vérifie* : relier format, niveau et fraîcheur à un besoin plutôt qu’à un outil.",
+        "en": "1. **Dashboard** (visual synthesis of a few KPIs); **strategic** level (highly consolidated); **monthly** freshness.\n2. **Exploratory analysis** (new question, combined axes and filters, pain point 3); **tactical** level; daily or monthly freshness, no real time required.\n3. **Report** (detailed and complete, fixed format, scheduled); **operational** level for the detail; **scheduled monthly** freshness.\n4. **Alert** (crosses a threshold); **operational** level; **real-time** freshness: the case where the cost of real time is justified.\n*What the exercise checks*: linking format, level and freshness to a need rather than to a tool."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Recurring, standardized answers to known questions. Fixed format, scheduled."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Open exploration of new questions by combining axes and filters (pain point 3)."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (1/2)",
+          "quote": "Synthetic, visual view of a few KPIs, read at a glance."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Automatic notification when an indicator crosses a threshold or leaves its trend. Being alerted, not just looking (pain point 4)."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Delay between an event in a source and its availability in BI. A monthly closing does not need real time; a fraud alert does."
+        }
+      ],
+      "objective": "o2",
+      "examStyle": true,
+      "trap": {
+        "fr": "Livrer un tableau de bord là où l’on demande du détail, ou du temps réel partout.",
+        "en": "Delivering a dashboard where detail is requested, or real time everywhere."
+      },
+      "notions": [
+        "n-reporting-analysis",
+        "n-report-dashboard",
+        "n-alert",
+        "n-data-freshness",
+        "n-decision-levels"
+      ],
+      "id": "isi7-04-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Every KPI is an indicator, but not every indicator is a KPI.",
+      "id": "isi7-04-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "You cannot drill {{below|under}} the stored {{grain|granularity}}.",
+      "translation": "On ne peut pas descendre sous le grain stocké.",
+      "id": "isi7-04-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A dashboard is a detailed and complete view, while a report is read at a glance.",
+      "error": "A dashboard is a detailed and complete view, while a report is read at a glance",
+      "corrected": "A report is detailed and complete, while a dashboard is read at a glance",
+      "explanation": {
+        "fr": "Le rapport est détaillé et complet ; le tableau de bord est synthétique.",
+        "en": "The report is detailed and complete; the dashboard is synthetic."
+      },
+      "id": "isi7-04-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En deux phrases : quelle différence entre reporting et analyse ?",
+        "en": "In two sentences: what is the difference between reporting and analysis?"
+      },
+      "modelAnswer": "Reporting gives recurring, standardised answers to known questions, in a fixed, scheduled format. Analysis is the open exploration of new questions by combining axes and filters.",
+      "keywords": [
+        "reporting",
+        "recurring",
+        "known questions",
+        "analysis",
+        "axes"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai opposé questions connues et nouvelles.",
+          "en": "I contrasted known and new questions."
+        },
+        {
+          "fr": "J’ai cité format fixe et axes / filtres.",
+          "en": "I mentioned fixed format and axes / filters."
+        }
+      ],
+      "usefulPhrases": [
+        "whereas",
+        "known questions",
+        "new questions"
+      ],
+      "id": "isi7-04-wr-04"
+    }
+  ]
+}

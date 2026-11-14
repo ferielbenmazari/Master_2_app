@@ -10,3 +10,4 @@ dbt Semantic Layer dbt platform | Starter, Enterprise, Enterprise+ ⓘ
 The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handling data joins.
  Connect your AI to your metrics 
 AI tools like Claude and ChatGPT can connect to the Semantic Layer through the dbt MCP server , so their answers use your governed metrics instead of guessing at raw tables. 
+The dbt Semantic Layer, powered by MetricFlow , simplifies the process of defining and using critical business metrics, like  revenue in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. 

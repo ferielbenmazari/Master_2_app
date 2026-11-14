@@ -1,0 +1,1766 @@
+{
+  "id": "isi7-09-data-mesh-ontologies",
+  "courseId": "isi7",
+  "order": 9,
+  "title": {
+    "fr": "Data mesh, ontologies et graphes de connaissances",
+    "en": "Data mesh, ontologies and knowledge graphs"
+  },
+  "hook": {
+    "fr": "Un produit, trois codes : comment savoir que c’est le même ?",
+    "en": "One product, three codes: how do you know it is the same?"
+  },
+  "question": {
+    "fr": "Comment décentraliser la propriété des données et donner un sens partagé et lisible par les machines à une entreprise ?",
+    "en": "How do you decentralise data ownership and give a company a shared, machine-readable meaning?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir le data mesh et le distinguer d’une approche centralisée.",
+        "en": "Define data mesh and distinguish it from a centralised approach."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Définir une ontologie et dire ce qui la distingue d’un modèle relationnel.",
+        "en": "Define an ontology and say what distinguishes it from a relational model."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Distinguer ontologie et graphe de connaissances (concept et instance).",
+        "en": "Distinguish ontology and knowledge graph (concept and instance)."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Expliquer le lien avec la BI : définition partagée, codage des entités, hallucinations.",
+        "en": "Explain the link with BI: shared definition, entity coding, hallucinations."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Le compte rendu liste data mesh, ontologies et knowledge graphs parmi les sujets de la séance ; leur poids à l’examen n’est pas précisé.",
+        "en": "The notes list data mesh, ontologies and knowledge graphs among the session topics; their weight in the exam is not specified."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Une question de définition courte ou de distinction (ontologie / graphe) : estimation.",
+        "en": "A short definition or distinction question (ontology / graph): an estimate."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3, 4 et 8 : définitions partagées, propriétaires de la donnée, couche sémantique.",
+    "en": "Chapters 3, 4 and 8: shared definitions, data owners, semantic layer."
+  },
+  "next": {
+    "fr": "Chapitre 10 : réglementation, durabilité et sobriété.",
+    "en": "Chapter 10: regulation, sustainability and frugality."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Data mesh : approche organisationnelle, domaines propriétaires de leurs data products, gouvernance partagée.",
+        "en": "Data mesh: organisational approach, domains owning their data products, shared governance."
+      },
+      {
+        "fr": "Ontologie (concepts et relations, lisible par les machines) contre graphe de connaissances (entités liées selon l’ontologie).",
+        "en": "Ontology (concepts and relationships, machine-readable) versus knowledge graph (entities linked following the ontology)."
+      },
+      {
+        "fr": "Lien avec la BI : version la plus formelle d’une définition partagée.",
+        "en": "Link with BI: the most formal version of a shared definition."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Distinguer concept et instance.",
+        "en": "Distinguish concept and instance."
+      },
+      {
+        "fr": "Expliquer le problème du codage produit et le rôle de l’ontologie.",
+        "en": "Explain the product coding problem and the ontology’s role."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Centralisé ≠ data mesh (organisation, pas outil).",
+        "en": "Centralised ≠ data mesh (organisation, not tool)."
+      },
+      {
+        "fr": "Ontologie (modèle) ≠ graphe de connaissances (instances).",
+        "en": "Ontology (model) ≠ knowledge graph (instances)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitre 3 : pain point 2 et exigence 2 (définitions partagées).",
+        "en": "Chapter 3: pain point 2 and requirement 2 (shared definitions)."
+      },
+      {
+        "fr": "Chapitre 8 : la couche sémantique, version outillée de la définition partagée.",
+        "en": "Chapter 8: the semantic layer, the tooled version of the shared definition."
+      },
+      {
+        "fr": "Chapitre 10 : propriétaires de la donnée, gouvernance et RGPD.",
+        "en": "Chapter 10: data owners, governance and the GDPR."
+      }
+    ]
+  },
+  "estimatedMinutes": 13,
+  "sources": [
+    "ressources/S3__ISI7/cours_14092026.md",
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "sources-texte/isi7/ext-dehghani-2020-data-mesh.md",
+    "sources-texte/isi7/ext-gruber-1993-ontology.md",
+    "sources-texte/isi7/ext-hogan-2021-knowledge-graphs.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Data mesh : décentraliser la propriété des données",
+        "en": "Data mesh: decentralising data ownership"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Jusqu’ici, le cours a décrit une BI plutôt centralisée. Le **data mesh** ([[term-data-mesh]]) est le contre-pied : une approche **organisationnelle** où chaque domaine possède et publie son propre **data product** ([[term-data-product]]), sous des règles de gouvernance partagées, ce qui rejoint la notion de propriétaire de la donnée vue au chapitre 4.",
+        "en": "So far, the course has described a rather centralised BI. **Data mesh** ([[term-data-mesh]]) is the counterpoint: an **organisational** approach where each domain owns and publishes its own **data product** ([[term-data-product]]), under shared governance rules, which links to the data owner notion from chapter 4."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Approche organisationnelle décentralisée où chaque domaine possède et publie son propre data product"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "notions": [
+        "n-data-mesh"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le message du prof : au lieu d’un moyen centralisé pour gérer toutes les données, on gère les outils et les données hébergées de manière **décentralisée**. N’attends plus, dans une entreprise, un point de contact unique qui a accès à tout : les données sont réparties à plusieurs endroits, et chaque département peut avoir ses propres règles de gouvernance.",
+        "en": "The teacher’s message: instead of a centralised way to manage all data, tools and the data they host are managed in a **decentralised** way. Do not expect, in a company, a single point of contact with access to everything: data is spread across several places, and each department may have its own governance rules."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "au lieu d'avoir un moyen centralisé pour gérer tous les données"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that has access to everything in terms of data, but rather it's dispatched in different places of an enterprise."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Chaque département peut avoir ses propres règles de gouvernance"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Contraste avec l'approche centralisée traditionnelle"
+        }
+      ],
+      "notions": [
+        "n-data-mesh",
+        "n-mesh-governance"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Aspect",
+          "en": "Aspect"
+        },
+        {
+          "fr": "Approche centralisée traditionnelle",
+          "en": "Traditional centralised approach"
+        },
+        {
+          "fr": "Data mesh",
+          "en": "Data mesh"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Qui gère les données ?",
+            "en": "Who manages the data?"
+          },
+          {
+            "fr": "Un point central qui a accès à tout",
+            "en": "A central point with access to everything"
+          },
+          {
+            "fr": "Chaque domaine possède et publie ses data products",
+            "en": "Each domain owns and publishes its data products"
+          }
+        ],
+        [
+          {
+            "fr": "Gouvernance",
+            "en": "Governance"
+          },
+          {
+            "fr": "Règles centrales",
+            "en": "Central rules"
+          },
+          {
+            "fr": "Règles partagées, avec des règles propres à chaque département",
+            "en": "Shared rules, with each department’s own rules"
+          }
+        ],
+        [
+          {
+            "fr": "Responsable",
+            "en": "Accountable"
+          },
+          {
+            "fr": "Équipe centrale",
+            "en": "Central team"
+          },
+          {
+            "fr": "Le propriétaire de la donnée du domaine",
+            "en": "The domain’s data owner"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Approche organisationnelle décentralisée où chaque domaine possède et publie son propre data product"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Contraste avec l'approche centralisée traditionnelle"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Chaque département peut avoir ses propres règles de gouvernance"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        }
+      ],
+      "notions": [
+        "n-data-mesh",
+        "n-mesh-governance"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) Dehghani (2020) fonde le data mesh sur quatre principes : propriété décentralisée des données par domaine, données comme produit, infrastructure de données en libre-service comme plateforme, et gouvernance fédérée et calculée. Elle décrit le cœur du mesh comme la décentralisation et la distribution de la responsabilité aux personnes les plus proches des données.",
+        "en": "**Going further** — (outside the course materials) Dehghani (2020) founds data mesh on four principles: domain-oriented decentralised data ownership, data as a product, self-serve data infrastructure as a platform, and federated computational governance. She describes the core of the mesh as decentralisation and distribution of responsibility to the people closest to the data."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-dehghani-2020-data-mesh.md",
+          "loc": "Résumé",
+          "quote": "founded in four principles: domain-oriented decentralized data ownership and architecture, data as a product, self-serve data infrastructure as a platform, and federated computational governance."
+        },
+        {
+          "file": "sources-texte/isi7/ext-dehghani-2020-data-mesh.md",
+          "loc": "Les quatre principes",
+          "quote": "Data mesh, at core, is founded in decentralization and distribution of responsibility to people who are closest to the data"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : le data mesh est une approche **organisationnelle**, pas un outil ni une base de données. Et il ne supprime pas la gouvernance : les data products sont publiés sous des règles de gouvernance partagées.",
+        "en": "Trap: data mesh is an **organisational** approach, not a tool or a database. And it does not remove governance: data products are published under shared governance rules."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-09-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Ontologie : rendre les relations explicites",
+        "en": "Ontology: making relationships explicit"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une **ontologie** ([[term-ontology]]) est une description formelle des concepts d’un domaine et de leurs relations, lisible par les machines. Exemple du prof : un client passe une commande, une commande contient des produits, un produit appartient à une famille. Sachant quel est le client et quelle est la famille du produit, on peut en déduire par transitivité des liens entre toutes ces catégories.",
+        "en": "An **ontology** ([[term-ontology]]) is a formal description of the concepts of a domain and their relationships, readable by machines. The teacher’s example: a customer places an order, an order contains products, a product belongs to a family. Knowing who the customer is and what the product family is, links between all these categories can be deduced by transitivity."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Anthologies being defined by a formal description of concepts, of a domain, and their relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "a customer place an order, an order contains products, a product belongs to a family."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The advantage of an ontology is to make those kinds of relationships explicit and machine-readable."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Ontologie : description formelle des concepts d'un domaine et de leurs relations, lisible par les machines"
+        }
+      ],
+      "notions": [
+        "n-ontology"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) La définition classique de Gruber (1993) : une ontologie est une spécification explicite d’une conceptualisation.",
+        "en": "**Going further** — (outside the course materials) Gruber’s classic definition (1993): an ontology is an explicit specification of a conceptualization."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-gruber-1993-ontology.md",
+          "loc": "Ontology definition",
+          "quote": "An ontology is an explicit specification of a conceptualization."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Quelle différence avec un modèle relationnel ? On peut y penser comme à un modèle entité-association, mais l’ontologie s’applique à des systèmes structurés, non structurés ou semi-structurés pour retrouver les ressources où elles sont, au lieu de les faire entrer dans un modèle de données unique. Elle sert à raisonner sur les données là où elles se trouvent, sans attendre leur ingestion et leur confirmation en un seul endroit.",
+        "en": "What is the difference with a relational model? One can think of it as an entity-relationship model, but the ontology applies to structured, unstructured or semi-structured systems to find resources where they are, rather than making them fit a single data model. It is used to reason over data where it lives, without waiting for it to be ingested and confirmed in a single place."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "La différence est que l'on peut appliquer l'anthologie à différents systèmes structurés, non-structurés, semi-structurés"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What they are good for is reasoning over data, where they are, rather than waiting for them to be ingested and confirmed in a single place."
+        }
+      ],
+      "notions": [
+        "n-ontology-vs-relational"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Autre usage cité : limiter les **hallucinations** des modèles de langage ([[term-llm-hallucination]]). Un modèle de langage s’appuie sur un modèle statistique : il peut paraître sûr de lui sans fondement. Une ontologie n’est pas LA technologie clé, mais l’une d’elles : donnée à un LLM jouant le juge avec le raisonnement d’un autre LLM, elle sert de base pour repérer où le raisonnement échoue.",
+        "en": "Another cited use: limiting the **hallucinations** of language models ([[term-llm-hallucination]]). A language model rests on a statistical model: it can seem sure of itself without grounding. An ontology is not THE key technology, but one of them: given to an LLM acting as judge with another LLM’s reasoning, it serves as a base to spot where the reasoning fails."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontologies... is not the key technology right now, but one of the key technology to avoid LLM hallucination."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "they can use that as a base of reasoning to try to spot where is the failure in the reasonment of LLMs"
+        }
+      ],
+      "notions": [
+        "n-ontology-llm"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-09-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Graphes de connaissances : des instances reliées",
+        "en": "Knowledge graphs: linked instances"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un **graphe de connaissances** ([[term-knowledge-graph]]) organise les données comme des **entités liées par des relations**, et ces relations suivent celles de l’ontologie. Il convient bien aux questions sur les connexions. Attention au niveau : ce n’est pas le concept « un fournisseur sert des usines » qui compte, mais l’**instance** « le fournisseur A sert l’usine B ».",
+        "en": "A **knowledge graph** ([[term-knowledge-graph]]) organises data as **entities linked by relationships**, and these relationships follow those of the ontology. It is well suited to questions about connections. Mind the level: it is not the concept “a supplier serves plants” that counts, but the **instance** “supplier A serves plant B”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Knowledge graphs, on their side, are data organized as entities linked by relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in the knowledge graph, those relationships follow the one of ontology."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's well suited to questions about connections."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not a matter of the concept of supplier serving plants but the particular instance"
+        }
+      ],
+      "notions": [
+        "n-knowledge-graph"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Pour aller plus loin** — (hors supports du cours) Hogan et al. (2021) adoptent une définition large : un graphe de données destiné à accumuler et transmettre des connaissances sur le monde réel, dont les nœuds représentent des entités d’intérêt et dont les arêtes représentent des relations entre ces entités.",
+        "en": "**Going further** — (outside the course materials) Hogan et al. (2021) adopt an inclusive definition: a graph of data intended to accumulate and convey knowledge of the real world, whose nodes represent entities of interest and whose edges represent relations between these entities."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi7/ext-hogan-2021-knowledge-graphs.md",
+          "loc": "Introduction et définition",
+          "quote": "a graph of data intended to accumulate and convey knowledge of the real world, whose nodes represent entities of interest and whose edges represent relations between these entities."
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  C[\"Customer\"] -- places --> O[\"Order\"]\n  O -- contains --> P[\"Product\"]\n  P -- belongs to --> F[\"Product family\"]\n  S[\"Supplier A\"] -- serves --> PL[\"Plant B\"]",
+      "caption": {
+        "fr": "Concepts d’une ontologie (client, commande, produit, famille) ; l’instance « fournisseur A sert usine B » est l’affaire du graphe de connaissances.",
+        "en": "Concepts of an ontology (customer, order, product, family); the instance “supplier A serves plant B” is the knowledge graph’s business."
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : ontologie = le **modèle** (concepts et relations, niveau général) ; graphe de connaissances = les **instances** reliées selon ce modèle (le fournisseur A, l’usine B).",
+        "en": "Trap: ontology = the **model** (concepts and relationships, general level); knowledge graph = the **instances** linked following that model (supplier A, plant B)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in the knowledge graph, those relationships follow the one of ontology."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not a matter of the concept of supplier serving plants but the particular instance"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-09-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Pourquoi cela concerne la BI",
+        "en": "Why this matters for BI"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le lien avec la BI, selon le prof : une ontologie est la **version la plus formelle d’une définition partagée**. Elle aide aussi les systèmes d’IA à répondre correctement aux questions métier, parce qu’ils s’appuient sur des significations documentées plutôt que sur des devinettes à partir du nom d’une colonne.",
+        "en": "The link with BI, according to the teacher: an ontology is the **most formal version of a shared definition**. It also helps AI systems answer business questions correctly, because they rely on documented meanings rather than guessing from a column’s name."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The link with BI is that an ontology is the most formal version of a shared definition"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "because they rely on documented meanings rather than guessing."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Lien avec BI : version la plus formelle d'une définition partagée, aide les systèmes IA à répondre correctement"
+        }
+      ],
+      "notions": [
+        "n-ontology-bi-link"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Cas concret : chaque système source code les produits à sa façon, pour des raisons historiques, car chaque système opérationnel est autonome. Quand on fusionne les données produit de plusieurs systèmes, le code d’un produit dans l’un ne correspond pas à son code dans l’autre. Une ontologie bien appliquée peut en résoudre une partie.",
+        "en": "A concrete case: each source system codes products its own way, for historical reasons, since each operational system is autonomous. When product data from several systems is merged, a product’s code in one does not match its code in another. An ontology, well applied, can solve part of this."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "each core system is coding the products in its own way, because it is like that. It has been done historically."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "a code of a given product in a system does not match the code of the same product in other systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontology, if they are applied well in the enterprise, can solve a little bit of that difficulties"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Utile pour résoudre le problème de codage différent des entités (ex: produits) dans plusieurs systèmes sources"
+        }
+      ],
+      "notions": [
+        "n-product-coding-problem"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Rapprocher des codes produit avec une ontologie (explication du prof)",
+        "en": "Matching product codes with an ontology (the teacher’s explanation)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Définir l’entité « produit » dans l’ontologie, avec une courte définition.",
+            "en": "Define the “product” entity in the ontology, with a short definition."
+          },
+          "why": {
+            "fr": "Tout le monde parle alors du même concept, quel que soit le codage.",
+            "en": "Everyone then speaks of the same concept, whatever the coding."
+          }
+        },
+        {
+          "do": {
+            "fr": "Relier cette entité à toutes les tables, tous les champs et tous les systèmes de l’entreprise qui mentionnent le produit.",
+            "en": "Link this entity to all the tables, fields and systems of the company that mention the product."
+          },
+          "why": {
+            "fr": "Le nom des colonnes ou le codage importent peu : le lien par l’ontologie dit que c’est la même nature d’objet.",
+            "en": "Column names or coding matter little: the link via the ontology says it is the same kind of thing."
+          }
+        },
+        {
+          "do": {
+            "fr": "Interroger via l’ontologie plutôt que de deviner les correspondances de code.",
+            "en": "Query through the ontology instead of guessing code correspondences."
+          },
+          "why": {
+            "fr": "On retrouve les données là où elles sont, ce qui atténue le pain point 2 (difficulté à les trouver).",
+            "en": "You find the data where it is, which eases pain point 2 (difficulty finding it)."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "for a given entity named product in an ontology, you can point this. entity in the anthology to all the instance of table and field in those tables and also system in the company that mentioned the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontology, if they are applied well in the enterprise, can solve a little bit of that difficulties"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What they are good for is reasoning over data, where they are, rather than waiting for them to be ingested and confirmed in a single place."
+        }
+      ],
+      "notions": [
+        "n-product-coding-problem"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le prof rattache cet usage au pain point 2 (difficile à trouver, interroger, comparer). Il cite aussi « master data (reference data) » parmi les termes qui reviendront en séances d’architecture et de gouvernance : ici, seulement le problème de codage.",
+        "en": "The teacher links this use to pain point 2 (hard to find, query, compare). He also cites “master data (reference data)” among the terms that will return in the architecture and governance sessions: here, only the coding problem."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Single version of the truth · master data (reference data) · data quality: architecture and governance sessions"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-09-qz-04"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-data-mesh",
+      "fr": "data mesh",
+      "en": "data mesh",
+      "definition": {
+        "fr": "Approche organisationnelle décentralisée où chaque domaine possède et publie son propre data product, sous des règles de gouvernance partagées.",
+        "en": "A decentralised organisational approach where each domain owns and publishes its own data product, under shared governance rules."
+      },
+      "pitfall": {
+        "fr": "Approche organisationnelle, pas un outil ; la gouvernance reste.",
+        "en": "An organisational approach, not a tool; governance remains."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Approche organisationnelle décentralisée où chaque domaine possède et publie son propre data product"
+        }
+      ],
+      "notion": "n-data-mesh"
+    },
+    {
+      "id": "term-data-product",
+      "fr": "data product",
+      "en": "data product",
+      "definition": {
+        "fr": "Jeu de données qu’un domaine possède, publie et met à disposition des autres.",
+        "en": "A dataset a domain owns, publishes and makes available to others."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Approche organisationnelle décentralisée où chaque domaine possède et publie son propre data product"
+        }
+      ],
+      "notion": "n-data-mesh"
+    },
+    {
+      "id": "term-ontology",
+      "fr": "ontologie",
+      "en": "ontology",
+      "definition": {
+        "fr": "Description formelle des concepts d’un domaine et de leurs relations, lisible par les machines.",
+        "en": "Formal description of the concepts of a domain and their relationships, machine-readable."
+      },
+      "example": {
+        "fr": "un client passe une commande ; une commande contient des produits ; un produit appartient à une famille",
+        "en": "a customer places an order; an order contains products; a product belongs to a family"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Anthologies being defined by a formal description of concepts, of a domain, and their relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Ontologie : description formelle des concepts d'un domaine et de leurs relations, lisible par les machines"
+        }
+      ],
+      "notion": "n-ontology"
+    },
+    {
+      "id": "term-knowledge-graph",
+      "fr": "graphe de connaissances",
+      "en": "knowledge graph",
+      "definition": {
+        "fr": "Données organisées en entités liées par des relations qui suivent celles d’une ontologie ; adapté aux questions sur les connexions.",
+        "en": "Data organised as entities linked by relationships that follow those of an ontology; suited to questions about connections."
+      },
+      "example": {
+        "fr": "le fournisseur A sert l’usine B",
+        "en": "supplier A serves plant B"
+      },
+      "pitfall": {
+        "fr": "On parle d’instances (A, B), pas du concept général.",
+        "en": "It is about instances (A, B), not the general concept."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Knowledge graphs, on their side, are data organized as entities linked by relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in the knowledge graph, those relationships follow the one of ontology."
+        }
+      ],
+      "notion": "n-knowledge-graph"
+    },
+    {
+      "id": "term-machine-readable",
+      "fr": "lisible par les machines",
+      "en": "machine-readable",
+      "definition": {
+        "fr": "Se dit d’une ontologie : ses relations sont explicites et exploitables par des programmes, pas seulement par des humains.",
+        "en": "Said of an ontology: its relationships are explicit and usable by programs, not only by humans."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The advantage of an ontology is to make those kinds of relationships explicit and machine-readable."
+        }
+      ],
+      "notion": "n-ontology"
+    },
+    {
+      "id": "term-llm-hallucination",
+      "fr": "hallucination d’un LLM",
+      "en": "LLM hallucination",
+      "definition": {
+        "fr": "Réponse assurée sans fondement d’un modèle de langage, dont le modèle statistique n’a pas une confiance de 100 %.",
+        "en": "A confident answer without grounding from a language model, whose statistical model is not 100% sure."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontologies... is not the key technology right now, but one of the key technology to avoid LLM hallucination."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "they can use that as a base of reasoning to try to spot where is the failure in the reasonment of LLMs"
+        }
+      ],
+      "notion": "n-ontology-llm"
+    },
+    {
+      "id": "term-master-data",
+      "fr": "données de référence (master data)",
+      "en": "master data (reference data)",
+      "definition": {
+        "fr": "Terme annoncé par le cours pour les séances d’architecture et de gouvernance ; ici : l’entité « produit » codée différemment dans plusieurs systèmes.",
+        "en": "A term announced by the course for the architecture and governance sessions; here: the “product” entity coded differently across systems."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "How users consume it (2/2)",
+          "quote": "Single version of the truth · master data (reference data) · data quality: architecture and governance sessions"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "each core system is coding the products in its own way, because it is like that. It has been done historically."
+        }
+      ],
+      "notion": "n-product-coding-problem"
+    }
+  ],
+  "notions": [
+    "n-data-mesh",
+    "n-mesh-governance",
+    "n-ontology",
+    "n-ontology-vs-relational",
+    "n-knowledge-graph",
+    "n-ontology-llm",
+    "n-ontology-bi-link",
+    "n-product-coding-problem"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Data mesh : approche organisationnelle décentralisée où chaque domaine possède et publie son data product, sous des règles de gouvernance partagées.",
+        "en": "Data mesh: a decentralised organisational approach where each domain owns and publishes its data product, under shared governance rules."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Approche organisationnelle décentralisée où chaque domaine possède et publie son propre data product"
+        }
+      ],
+      "notions": [
+        "n-data-mesh"
+      ]
+    },
+    {
+      "text": {
+        "fr": "On n’attend plus un point de contact unique ayant accès à tout : les données sont réparties et chaque département peut avoir ses règles de gouvernance.",
+        "en": "Do not expect a single point of contact with access to everything: data is spread and each department may have its own governance rules."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that has access to everything in terms of data, but rather it's dispatched in different places of an enterprise."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Chaque département peut avoir ses propres règles de gouvernance"
+        }
+      ],
+      "notions": [
+        "n-data-mesh",
+        "n-mesh-governance"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Ontologie : description formelle des concepts d’un domaine et de leurs relations, lisible par les machines ; elle rend les relations explicites.",
+        "en": "Ontology: a formal description of the concepts of a domain and their relationships, machine-readable; it makes relationships explicit."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Anthologies being defined by a formal description of concepts, of a domain, and their relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The advantage of an ontology is to make those kinds of relationships explicit and machine-readable."
+        }
+      ],
+      "notions": [
+        "n-ontology"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Elle raisonne sur les données là où elles sont, sans les réunir dans un modèle unique, et aide à limiter les hallucinations des LLM (une technologie clé parmi d’autres).",
+        "en": "It reasons over data where it is, without gathering it in a single model, and helps limit LLM hallucinations (one key technology among others)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What they are good for is reasoning over data, where they are, rather than waiting for them to be ingested and confirmed in a single place."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontologies... is not the key technology right now, but one of the key technology to avoid LLM hallucination."
+        }
+      ],
+      "notions": [
+        "n-ontology-vs-relational",
+        "n-ontology-llm"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Graphe de connaissances : entités liées par des relations qui suivent l’ontologie ; on parle d’instances.",
+        "en": "Knowledge graph: entities linked by relationships that follow the ontology; it is about instances."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Knowledge graphs, on their side, are data organized as entities linked by relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in the knowledge graph, those relationships follow the one of ontology."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not a matter of the concept of supplier serving plants but the particular instance"
+        }
+      ],
+      "notions": [
+        "n-knowledge-graph"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Pour la BI, l’ontologie est la version la plus formelle d’une définition partagée ; elle aide à relier les codes d’une même entité dans plusieurs systèmes.",
+        "en": "For BI, the ontology is the most formal version of a shared definition; it helps link the codes of the same entity across systems."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The link with BI is that an ontology is the most formal version of a shared definition"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "for a given entity named product in an ontology, you can point this. entity in the anthology to all the instance of table and field in those tables and also system in the company that mentioned the product."
+        }
+      ],
+      "notions": [
+        "n-ontology-bi-link",
+        "n-product-coding-problem"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Data mesh ?",
+        "en": "Data mesh?"
+      },
+      "back": {
+        "fr": "Approche organisationnelle décentralisée : chaque domaine possède et publie son data product, sous gouvernance partagée.",
+        "en": "Decentralised organisational approach: each domain owns and publishes its data product, under shared governance."
+      },
+      "termId": "term-data-mesh",
+      "id": "isi7-09-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Data mesh vs approche centralisée ?",
+        "en": "Data mesh vs centralised approach?"
+      },
+      "back": {
+        "fr": "Pas de point de contact unique ayant accès à tout ; données réparties par domaine.",
+        "en": "No single point of contact with access to everything; data spread by domain."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that has access to everything in terms of data, but rather it's dispatched in different places of an enterprise."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Contraste avec l'approche centralisée traditionnelle"
+        }
+      ],
+      "notions": [
+        "n-data-mesh"
+      ],
+      "id": "isi7-09-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Ontologie ?",
+        "en": "Ontology?"
+      },
+      "back": {
+        "fr": "Description formelle des concepts d’un domaine et de leurs relations, lisible par les machines.",
+        "en": "Formal description of the concepts of a domain and their relationships, machine-readable."
+      },
+      "termId": "term-ontology",
+      "id": "isi7-09-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Exemple d’ontologie du prof ?",
+        "en": "The teacher’s ontology example?"
+      },
+      "back": {
+        "fr": "Un client passe une commande ; une commande contient des produits ; un produit appartient à une famille.",
+        "en": "A customer places an order; an order contains products; a product belongs to a family."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "a customer place an order, an order contains products, a product belongs to a family."
+        }
+      ],
+      "notions": [
+        "n-ontology"
+      ],
+      "id": "isi7-09-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Ontologie vs modèle relationnel ?",
+        "en": "Ontology vs relational model?"
+      },
+      "back": {
+        "fr": "L’ontologie s’applique à des systèmes variés pour raisonner sur les données là où elles sont, sans un modèle unique.",
+        "en": "The ontology applies to varied systems to reason over data where it lives, with no single model."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "La différence est que l'on peut appliquer l'anthologie à différents systèmes structurés, non-structurés, semi-structurés"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What they are good for is reasoning over data, where they are, rather than waiting for them to be ingested and confirmed in a single place."
+        }
+      ],
+      "notions": [
+        "n-ontology-vs-relational"
+      ],
+      "id": "isi7-09-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Graphe de connaissances ?",
+        "en": "Knowledge graph?"
+      },
+      "back": {
+        "fr": "Données organisées en entités liées par des relations qui suivent l’ontologie.",
+        "en": "Data organised as entities linked by relationships following the ontology."
+      },
+      "termId": "term-knowledge-graph",
+      "id": "isi7-09-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Ontologie ou graphe : « le fournisseur A sert l’usine B » ?",
+        "en": "Ontology or graph: “supplier A serves plant B”?"
+      },
+      "back": {
+        "fr": "Graphe de connaissances : une instance, pas le concept général.",
+        "en": "Knowledge graph: an instance, not the general concept."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not a matter of the concept of supplier serving plants but the particular instance"
+        }
+      ],
+      "notions": [
+        "n-knowledge-graph"
+      ],
+      "id": "isi7-09-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Ontologie et hallucinations ?",
+        "en": "Ontology and hallucinations?"
+      },
+      "back": {
+        "fr": "Une technologie clé parmi d’autres : elle sert de base pour repérer où le raisonnement d’un LLM échoue.",
+        "en": "One key technology among others: it serves as a base to spot where an LLM’s reasoning fails."
+      },
+      "termId": "term-llm-hallucination",
+      "id": "isi7-09-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Lien entre ontologie et BI ?",
+        "en": "Link between ontology and BI?"
+      },
+      "back": {
+        "fr": "Version la plus formelle d’une définition partagée ; aide l’IA à répondre sur des significations documentées.",
+        "en": "The most formal version of a shared definition; helps AI answer on documented meanings."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The link with BI is that an ontology is the most formal version of a shared definition"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "because they rely on documented meanings rather than guessing."
+        }
+      ],
+      "notions": [
+        "n-ontology-bi-link"
+      ],
+      "id": "isi7-09-fc-09"
+    },
+    {
+      "front": {
+        "fr": "Problème du codage produit ?",
+        "en": "The product coding problem?"
+      },
+      "back": {
+        "fr": "Chaque système code les produits à sa façon : le code d’un produit dans l’un ne correspond pas à l’autre.",
+        "en": "Each system codes products its own way: a product’s code in one does not match another’s."
+      },
+      "termId": "term-master-data",
+      "id": "isi7-09-fc-10"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le data mesh est une approche organisationnelle où chaque domaine possède et publie son propre data product, sous des règles de gouvernance partagées.",
+        "en": "Data mesh is an organisational approach where each domain owns and publishes its own data product, under shared governance rules."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : définition du prof.",
+        "en": "TRUE: the teacher’s definition."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-data-mesh"
+      ],
+      "id": "isi7-09-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le data mesh supprime la gouvernance de la donnée, puisque chaque domaine gère ses données comme il l’entend.",
+        "en": "Data mesh removes data governance, since each domain manages its data as it sees fit."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : les data products sont publiés sous des règles de gouvernance partagées, même si chaque département peut avoir ses propres règles.",
+        "en": "FALSE: data products are published under shared governance rules, even if each department may have its own rules."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "publishes its own data product, but of course under shared governance rules"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Chaque département peut avoir ses propres règles de gouvernance"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-data-mesh",
+        "n-mesh-governance"
+      ],
+      "trap": {
+        "fr": "Confondre décentralisation et absence de gouvernance.",
+        "en": "Confusing decentralisation with no governance."
+      },
+      "id": "isi7-09-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Une entreprise veut qu’aucune équipe centrale n’ait accès à tout et que chaque direction publie ses jeux de données. Quelle approche du cours décrit ce choix ?",
+        "en": "A company wants no central team with access to everything and each division to publish its datasets. Which approach in the course describes this choice?"
+      },
+      "options": [
+        {
+          "fr": "Le data mesh",
+          "en": "Data mesh"
+        },
+        {
+          "fr": "Un entrepôt de données unique géré par la DSI",
+          "en": "A single warehouse managed by IT"
+        },
+        {
+          "fr": "Le streaming des données",
+          "en": "Data streaming"
+        },
+        {
+          "fr": "Un data lake central unique",
+          "en": "A single central data lake"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Le data mesh : chaque domaine possède et publie son data product ; pas de point de contact unique ayant accès à tout.",
+        "en": "Data mesh: each domain owns and publishes its data product; no single point of contact with access to everything."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that has access to everything in terms of data, but rather it's dispatched in different places of an enterprise."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-data-mesh"
+      ],
+      "id": "isi7-09-qz-03"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une ontologie est une description formelle des concepts d’un domaine et de leurs relations, rendue lisible par les machines.",
+        "en": "An ontology is a formal description of the concepts of a domain and their relationships, made readable by machines."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : définition du cours.",
+        "en": "TRUE: the course’s definition."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Anthologies being defined by a formal description of concepts, of a domain, and their relationships."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Ontologie : description formelle des concepts d'un domaine et de leurs relations, lisible par les machines"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-ontology"
+      ],
+      "id": "isi7-09-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une ontologie exige de recopier toutes les données de l’entreprise dans un modèle unique avant de pouvoir raisonner dessus.",
+        "en": "An ontology requires copying all of a company’s data into a single model before reasoning over it."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : au contraire, elle permet de raisonner sur les données là où elles sont, sans les faire entrer dans un modèle unique ni attendre leur ingestion.",
+        "en": "FALSE: on the contrary, it lets you reason over data where it lives, without fitting it into a single model or waiting for ingestion."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "What they are good for is reasoning over data, where they are, rather than waiting for them to be ingested and confirmed in a single place."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "La différence est que l'on peut appliquer l'anthologie à différents systèmes structurés, non-structurés, semi-structurés"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-ontology-vs-relational"
+      ],
+      "trap": {
+        "fr": "Prendre l’ontologie pour un entrepôt.",
+        "en": "Mistaking the ontology for a warehouse."
+      },
+      "id": "isi7-09-qz-05"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "« Le fournisseur A sert l’usine B » : à quoi correspond cette phrase ?",
+        "en": "“Supplier A serves plant B”: what does this sentence correspond to?"
+      },
+      "options": [
+        {
+          "fr": "Un concept de l’ontologie",
+          "en": "A concept of the ontology"
+        },
+        {
+          "fr": "Une instance dans un graphe de connaissances",
+          "en": "An instance in a knowledge graph"
+        },
+        {
+          "fr": "Une règle de gouvernance du data mesh",
+          "en": "A governance rule of data mesh"
+        },
+        {
+          "fr": "Un niveau de maturité prescriptif",
+          "en": "A prescriptive maturity level"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Une instance : le graphe de connaissances parle d’entités particulières reliées, pas du concept général « un fournisseur sert des usines ».",
+        "en": "An instance: the knowledge graph is about particular linked entities, not the general concept “a supplier serves plants”."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not a matter of the concept of supplier serving plants but the particular instance"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Knowledge graphs, on their side, are data organized as entities linked by relationships."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-knowledge-graph"
+      ],
+      "trap": {
+        "fr": "Confondre le concept (ontologie) et l’instance (graphe).",
+        "en": "Confusing the concept (ontology) and the instance (graph)."
+      },
+      "id": "isi7-09-qz-06"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans un graphe de connaissances, les relations entre entités suivent celles de l’ontologie.",
+        "en": "In a knowledge graph, the relationships between entities follow those of the ontology."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « those relationships follow the one of ontology ».",
+        "en": "TRUE: “those relationships follow the one of ontology”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "in the knowledge graph, those relationships follow the one of ontology."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-knowledge-graph"
+      ],
+      "id": "isi7-09-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le prof, l’ontologie est LA technologie clé pour éviter les hallucinations des LLM.",
+        "en": "According to the teacher, ontology is THE key technology for avoiding LLM hallucinations."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : « not the key technology right now, but one of the key technology ». Elle aide, par exemple, un LLM juge à repérer où le raisonnement d’un autre échoue.",
+        "en": "FALSE: “not the key technology right now, but one of the key technology”. It helps, for example, a judge LLM spot where another’s reasoning fails."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontologies... is not the key technology right now, but one of the key technology to avoid LLM hallucination."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "they can use that as a base of reasoning to try to spot where is the failure in the reasonment of LLMs"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-ontology-llm"
+      ],
+      "trap": {
+        "fr": "Transformer « l’une des technologies » en « la technologie ».",
+        "en": "Turning “one of the technologies” into “the technology”."
+      },
+      "id": "isi7-09-qz-08"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Deux systèmes sources codent le même produit avec des codes différents. Que permet une ontologie bien appliquée, selon le prof ?",
+        "en": "Two source systems code the same product with different codes. What does a well-applied ontology allow, according to the teacher?"
+      },
+      "options": [
+        {
+          "fr": "Supprimer l’un des deux systèmes sources",
+          "en": "Removing one of the two source systems"
+        },
+        {
+          "fr": "Remplacer les codes par des noms de colonnes plus clairs",
+          "en": "Replacing codes with clearer column names"
+        },
+        {
+          "fr": "Relier l’entité « produit » à toutes les tables, champs et systèmes qui la mentionnent, quel que soit le codage",
+          "en": "Linking the “product” entity to all tables, fields and systems that mention it, whatever the coding"
+        },
+        {
+          "fr": "Imposer à tous les systèmes sources le même code produit",
+          "en": "Forcing all source systems to use the same product code"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Elle relie l’entité « produit » aux instances (tables, champs, systèmes) qui en parlent ; on sait qu’elles désignent la même chose malgré des codes différents.",
+        "en": "It links the “product” entity to the instances (tables, fields, systems) that mention it; we know they denote the same thing despite different codes."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "for a given entity named product in an ontology, you can point this. entity in the anthology to all the instance of table and field in those tables and also system in the company that mentioned the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "Ontology, if they are applied well in the enterprise, can solve a little bit of that difficulties"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-product-coding-problem"
+      ],
+      "id": "isi7-09-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le prof présente l’ontologie comme la version la plus formelle d’une définition partagée.",
+        "en": "The teacher presents the ontology as the most formal version of a shared definition."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : lien avec la BI.",
+        "en": "TRUE: the link with BI."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The link with BI is that an ontology is the most formal version of a shared definition"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Lien avec BI : version la plus formelle d'une définition partagée, aide les systèmes IA à répondre correctement"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-ontology-bi-link"
+      ],
+      "id": "isi7-09-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour répondre correctement aux questions métier, un système d’IA peut se contenter de deviner le sens des colonnes à partir de leur nom.",
+        "en": "To answer business questions correctly, an AI system can just guess the meaning of columns from their names."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l’ontologie aide l’IA précisément parce qu’elle s’appuie sur des significations documentées plutôt que sur des devinettes à partir du nom de la colonne.",
+        "en": "FALSE: the ontology helps AI precisely because it relies on documented meanings rather than guessing from the column’s name."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "because they rely on documented meanings rather than guessing."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-ontology-bi-link"
+      ],
+      "id": "isi7-09-qz-11"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Centralisé ou data mesh ? Trois situations",
+        "en": "Centralised or data mesh? Three situations"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "Pour chaque situation, dites si elle décrit une approche **centralisée** ou **data mesh** et justifiez avec les mots du cours.\n1. Une équipe unique de la DSI gère toutes les données de l’entreprise et reçoit toutes les demandes.\n2. La direction logistique publie elle-même ses données de livraison, avec un propriétaire de la donnée identifié.\n3. Chaque département a ses propres règles de gouvernance, mais toutes les données publiées respectent un socle de règles partagées.",
+        "en": "For each situation, say whether it describes a **centralised** approach or **data mesh** and justify with the course’s words.\n1. A single IT team manages all the company’s data and receives all requests.\n2. The logistics department publishes its own delivery data, with an identified data owner.\n3. Each department has its own governance rules, but all published data respects a base of shared rules."
+      },
+      "hints": [
+        {
+          "fr": "Qui possède et publie ?",
+          "en": "Who owns and publishes?"
+        },
+        {
+          "fr": "Y a-t-il un point de contact unique ?",
+          "en": "Is there a single point of contact?"
+        }
+      ],
+      "solution": {
+        "fr": "1. **Centralisée** : un point central a accès à tout (« single point of contact »).\n2. **Data mesh** : un domaine possède et publie son data product, avec un propriétaire de la donnée.\n3. **Data mesh** : décentralisé, avec des règles propres à chaque département, mais publié sous des règles de gouvernance partagées.\n*Ce que l’exercice vérifie* : lire « qui possède et publie » plutôt que « quel outil ». *Cas inventés.*",
+        "en": "1. **Centralised**: a central point has access to everything (“single point of contact”).\n2. **Data mesh**: a domain owns and publishes its data product, with a data owner.\n3. **Data mesh**: decentralised, with each department’s own rules but published under shared governance rules.\n*What the exercise checks*: reading “who owns and publishes” rather than “which tool”. *Invented cases.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "It's more an organizational approach where each domain owns and publishes"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "that has access to everything in terms of data, but rather it's dispatched in different places of an enterprise."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Summary",
+          "quote": "Chaque département peut avoir ses propres règles de gouvernance"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Data owner: a business lead per domain, accountable for definitions and quality"
+        }
+      ],
+      "objective": "o1",
+      "examStyle": true,
+      "trap": {
+        "fr": "Chercher un outil précis au lieu de lire la propriété.",
+        "en": "Looking for a specific tool instead of reading ownership."
+      },
+      "notions": [
+        "n-data-mesh",
+        "n-mesh-governance"
+      ],
+      "id": "isi7-09-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Trois systèmes, un même produit : ontologie et graphe",
+        "en": "Three systems, one product: ontology and graph"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Le système de commandes code un produit « P-0042 », l’entrepôt « 4200-A » et le site web « casque-bleu ». **(a)** Quel problème décrit le prof ? **(b)** Décrivez en quatre lignes ce que fait une ontologie pour le résoudre. **(c)** Écrivez deux relations du niveau ontologie et deux instances du graphe de connaissances (par ex. pour « client », « commande », « produit », « famille »). **(d)** Quel pain point en est atténué ?",
+        "en": "*(Invented case for practice.)* The order system codes a product “P-0042”, the warehouse “4200-A” and the website “blue-headset”. **(a)** Which problem does the teacher describe? **(b)** Describe in four lines what an ontology does to solve it. **(c)** Write two ontology-level relationships and two knowledge-graph instances (e.g. for “customer”, “order”, “product”, “family”). **(d)** Which pain point does it ease?"
+      },
+      "hints": [
+        {
+          "fr": "Pensez aux tables, champs et systèmes qui mentionnent le produit.",
+          "en": "Think of the tables, fields and systems that mention the product."
+        },
+        {
+          "fr": "Relation (concept) ≠ instance (cas particulier).",
+          "en": "Relationship (concept) ≠ instance (particular case)."
+        }
+      ],
+      "solution": {
+        "fr": "**(a)** Chaque système source code l’entité « produit » à sa façon ; le code d’un produit dans l’un ne correspond pas à son code dans l’autre.\n**(b)** On définit l’entité « produit » dans l’ontologie (avec une courte définition) ; on la relie à toutes les tables, champs et systèmes qui en parlent (P-0042, 4200-A, casque-bleu) ; on sait qu’ils désignent la même chose malgré les codes ; on interroge via l’ontologie.\n**(c)** Ontologie : « un client passe une commande », « un produit appartient à une famille ». Graphe (instances) : « le client Dupont passe la commande 1001 », « le produit P-0042 appartient à la famille Audio » (exemples inventés).\n**(d)** Le pain point 2 (difficulté à trouver, comparer), en partie.\n*Barème indicatif* : 1 point pour (a), 1,5 pour (b), 1,5 pour (c), 1 pour (d).",
+        "en": "**(a)** Each source system codes the “product” entity its own way; a product’s code in one does not match its code in another.\n**(b)** Define the “product” entity in the ontology (with a short definition); link it to all the tables, fields and systems that mention it (P-0042, 4200-A, blue-headset); we know they denote the same thing despite the codes; query via the ontology.\n**(c)** Ontology: “a customer places an order”, “a product belongs to a family”. Graph (instances): “customer Dupont places order 1001”, “product P-0042 belongs to family Audio” (invented examples).\n**(d)** Pain point 2 (difficulty finding, comparing), in part.\n*Indicative marking*: 1 point for (a), 1.5 for (b), 1.5 for (c), 1 for (d)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "a code of a given product in a system does not match the code of the same product in other systems."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "for a given entity named product in an ontology, you can point this. entity in the anthology to all the instance of table and field in those tables and also system in the company that mentioned the product."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "a customer place an order, an order contains products, a product belongs to a family."
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "it's not a matter of the concept of supplier serving plants but the particular instance"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        }
+      ],
+      "objective": "o4",
+      "examStyle": true,
+      "trap": {
+        "fr": "Écrire des instances pour des concepts, ou l’inverse.",
+        "en": "Writing instances for concepts, or the reverse."
+      },
+      "notions": [
+        "n-product-coding-problem",
+        "n-ontology",
+        "n-knowledge-graph"
+      ],
+      "id": "isi7-09-ex-02"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "An ontology makes relationships explicit and machine-readable.",
+      "id": "isi7-09-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "In a data mesh, each {{domain}} owns and publishes its own data {{product}}.",
+      "translation": "Dans un data mesh, chaque domaine possède et publie son propre data product.",
+      "id": "isi7-09-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Ontology is the key technology to avoid LLM hallucination.",
+      "error": "the key technology",
+      "corrected": "one of the key technologies",
+      "explanation": {
+        "fr": "Le prof nuance : une technologie clé parmi d’autres.",
+        "en": "The teacher nuances: one key technology among others."
+      },
+      "id": "isi7-09-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En deux phrases : quelle est la différence entre une ontologie et un graphe de connaissances ?",
+        "en": "In two sentences: what is the difference between an ontology and a knowledge graph?"
+      },
+      "modelAnswer": "An ontology is a formal description of the concepts of a domain and their relationships. A knowledge graph organises data as entities linked by relationships, and those relationships follow the ontology.",
+      "keywords": [
+        "ontology",
+        "concepts",
+        "knowledge graph",
+        "entities",
+        "follow"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai opposé concepts et entités / instances.",
+          "en": "I contrasted concepts and entities / instances."
+        }
+      ],
+      "usefulPhrases": [
+        "is a formal description of",
+        "follow the ontology"
+      ],
+      "id": "isi7-09-wr-04"
+    }
+  ]
+}

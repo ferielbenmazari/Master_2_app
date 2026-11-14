@@ -1,0 +1,2171 @@
+{
+  "id": "isi7-06-atelier-diagnostic",
+  "courseId": "isi7",
+  "order": 6,
+  "title": {
+    "fr": "L’atelier : diagnostiquer une interview",
+    "en": "The workshop: diagnosing an interview"
+  },
+  "hook": {
+    "fr": "Trois verbatims, cinq colonnes : sauras-tu remplir la grille avant la fin de l’heure ?",
+    "en": "Three quotes, five columns: can you fill the grid before the hour is up?"
+  },
+  "question": {
+    "fr": "Comment passe-t-on d’une phrase d’utilisateur à une ligne complète de la grille (pain point, caractéristique, principe, maturité) ?",
+    "en": "How do you go from a user’s sentence to a complete grid row (pain point, characteristic, principle, maturity)?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Décrire la grille d’atelier et sa place à l’examen.",
+        "en": "Describe the workshop grid and its place in the exam."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Repérer dans un verbatim chaque pain point, y compris plusieurs.",
+        "en": "Identify each pain point in a quote, including several."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Remplir caractéristique, principe et niveau de maturité pour une ligne.",
+        "en": "Fill characteristic, principle and maturity level for a row."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Nommer une exigence cachée (sécurité, adaptabilité) quand aucun pain point ne convient.",
+        "en": "Name a hidden requirement (security, adaptability) when no pain point fits."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "« Un exercice pratique sera proposé pour identifier les pain points, caractéristiques, principes et niveaux de maturité à partir d’exemples concrets » (compte rendu de séance).",
+        "en": "“A practical exercise will be proposed to identify pain points, characteristics, principles and maturity levels from concrete examples” (session notes)."
+      },
+      {
+        "fr": "Le prof : « you can expect to have one exercise of that type » : une petite interview.",
+        "en": "The teacher: “you can expect to have one exercise of that type”: one small interview."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Un extrait de 2 à 3 phrases à classer sur les cinq colonnes ; les corrigés de ce chapitre sont proposés, pas officiels.",
+        "en": "An extract of 2 to 3 sentences to classify on five columns; this chapter’s answers are proposed, not official."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Chapitres 3, 4 et 5 : pain points, vocabulaire, maturité.",
+    "en": "Chapters 3, 4 and 5: pain points, vocabulary, maturity."
+  },
+  "next": {
+    "fr": "Chapitre 7 : on sort de l’atelier pour conduire un projet BI.",
+    "en": "Chapter 7: we leave the workshop to run a BI project."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Les cinq colonnes de la grille.",
+        "en": "The five columns of the grid."
+      },
+      {
+        "fr": "Les corrigés proposés de A, B et C (pain points, principes, niveau).",
+        "en": "The proposed answers for A, B and C (pain points, principles, level)."
+      },
+      {
+        "fr": "Un verbatim peut évoquer plusieurs pain points ; une exigence cachée est possible.",
+        "en": "A quote can evoke several pain points; a hidden requirement is possible."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Remplir une ligne complète de la grille pour un extrait nouveau.",
+        "en": "Fill a complete grid row for a new extract."
+      },
+      {
+        "fr": "Justifier le niveau de maturité par le type de question.",
+        "en": "Justify the maturity level by the type of question."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Symptôme ≠ besoin ≠ caractéristique ≠ composant.",
+        "en": "Symptom ≠ need ≠ characteristic ≠ component."
+      },
+      {
+        "fr": "Cause (divergence) ≠ conséquence (retard).",
+        "en": "Cause (divergence) ≠ consequence (delay)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Chapitres 3 et 5 : tout le contenu de la grille.",
+        "en": "Chapters 3 and 5: all the content of the grid."
+      },
+      {
+        "fr": "Chapitres 11-12 : l’architecture met les composants derrière les caractéristiques.",
+        "en": "Chapters 11-12: the architecture puts components behind the characteristics."
+      },
+      {
+        "fr": "Chapitre 14 : une interview se traduit ensuite en modèle dimensionnel.",
+        "en": "Chapter 14: an interview is then translated into a dimensional model."
+      }
+    ]
+  },
+  "estimatedMinutes": 15,
+  "sources": [
+    "ressources/S3__ISI7/markdown/isi7.md",
+    "ressources/S3__ISI7/cours_14092026.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Le format de l’exercice",
+        "en": "The format of the exercise"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le compte rendu de la séance annonce que l’examen comportera « un exercice de ce type » : une petite interview, à partir de laquelle on doit relier concepts et définitions à un exemple réaliste. L’atelier du cours est donc le meilleur entraînement possible.",
+        "en": "The session notes announce that the exam will contain “one exercise of that type”: one small interview, from which you must link concepts and definitions to a realistic example. The course workshop is therefore the best possible training."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can expect to have one exercise of that type during the"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "during the examination, okay? One small interview"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the pain points, the characteristics that correspond to the pain points. and the principle and requirement maturity level for these examples"
+        }
+      ],
+      "notions": [
+        "n-workshop-grid"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La grille d’analyse a **une ligne par frustration**. Pour chaque verbatim, on remplit cinq colonnes : le pain point (de 1 à 5) **ou** une exigence cachée (sécurité, adaptabilité…), la caractéristique attendue, le principe ou l’exigence (Kimball / Ross), et le niveau de maturité.",
+        "en": "The analysis grid has **one row per frustration**. For each quote, you fill five columns: the pain point (1 to 5) **or** a hidden requirement (security, adaptability…), the expected characteristic, the principle or requirement (Kimball / Ross), and the maturity level."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "Analysis grid: one row per frustration"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        }
+      ],
+      "notions": [
+        "n-workshop-grid"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Colonne",
+          "en": "Column"
+        },
+        {
+          "fr": "Ce qu’on y met",
+          "en": "What goes in it"
+        },
+        {
+          "fr": "Où on l’a vu",
+          "en": "Where it was taught"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Verbatim",
+            "en": "User quote"
+          },
+          {
+            "fr": "La phrase de l’utilisateur : un symptôme, pas une solution",
+            "en": "The user’s sentence: a symptom, not a solution"
+          },
+          {
+            "fr": "Chapitre 3",
+            "en": "Chapter 3"
+          }
+        ],
+        [
+          {
+            "fr": "Pain point ou exigence cachée",
+            "en": "Pain point or hidden requirement"
+          },
+          {
+            "fr": "Un numéro de 1 à 5, ou sécurité / adaptabilité…",
+            "en": "A number from 1 to 5, or security / adaptability…"
+          },
+          {
+            "fr": "Chapitre 3",
+            "en": "Chapter 3"
+          }
+        ],
+        [
+          {
+            "fr": "Caractéristique attendue",
+            "en": "Expected characteristic"
+          },
+          {
+            "fr": "La garantie que la BI doit donner",
+            "en": "The guarantee BI must give"
+          },
+          {
+            "fr": "Chapitre 3",
+            "en": "Chapter 3"
+          }
+        ],
+        [
+          {
+            "fr": "Principe / exigence (Kimball / Ross)",
+            "en": "Principle / requirement (Kimball / Ross)"
+          },
+          {
+            "fr": "Fiable, prévisible, disponible, ou une exigence de Kimball et Ross",
+            "en": "Reliable, predictable, available, or a Kimball and Ross requirement"
+          },
+          {
+            "fr": "Chapitre 3",
+            "en": "Chapter 3"
+          }
+        ],
+        [
+          {
+            "fr": "Niveau de maturité",
+            "en": "Maturity level"
+          },
+          {
+            "fr": "Descriptif, diagnostique, prédictif ou prescriptif",
+            "en": "Descriptive, diagnostic, predictive or prescriptive"
+          },
+          {
+            "fr": "Chapitre 5",
+            "en": "Chapter 5"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        }
+      ],
+      "notions": [
+        "n-workshop-grid"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le cours annonce quatre lignes (A distribution, B hôpital, C logistique, D groupe industriel) mais la transcription ne contient que les extraits A, B et C. L’extrait D est donc absent des sources : le chapitre fournit un cas D **inventé**, clairement marqué.",
+        "en": "The course announces four rows (A retail, B hospital, C logistics, D industrial group) but the transcription only contains extracts A, B and C. Extract D is therefore missing from the sources: the chapter provides an **invented** case D, clearly marked."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "A. Retail B. Hospital C. Logistics D. Industrial group"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-06-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Une méthode pour remplir la grille",
+        "en": "A method to fill the grid"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Du verbatim à la ligne complète (méthode de l’app)",
+        "en": "From quote to complete row (the app’s method)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lire le verbatim et **souligner chaque plainte** : il peut y en avoir plusieurs.",
+            "en": "Read the quote and **underline each complaint**: there may be several."
+          },
+          "why": {
+            "fr": "Un extrait peut cumuler plusieurs pain points ; en oublier un fait perdre des points.",
+            "en": "An extract can combine several pain points; missing one loses points."
+          }
+        },
+        {
+          "do": {
+            "fr": "Pour chaque plainte, nommer le **symptôme** : éparpillé, divergent, lent, noyé, instable… ou une exigence cachée (sécurité, adaptabilité).",
+            "en": "For each complaint, name the **symptom**: scattered, divergent, slow, drowning, unstable… or a hidden requirement (security, adaptability)."
+          },
+          "why": {
+            "fr": "On repère le pain point d’après le symptôme, pas le secteur.",
+            "en": "The pain point is identified from the symptom, not the sector."
+          }
+        },
+        {
+          "do": {
+            "fr": "En déduire la **caractéristique** attendue (tableau du chapitre 3).",
+            "en": "Derive the expected **characteristic** (chapter 3 table)."
+          },
+          "why": {
+            "fr": "La caractéristique est la garantie, pas la solution technique.",
+            "en": "The characteristic is the guarantee, not the technical solution."
+          }
+        },
+        {
+          "do": {
+            "fr": "Choisir le **principe** (fiable, prévisible, disponible) et, si possible, l’exigence de Kimball et Ross.",
+            "en": "Choose the **principle** (reliable, predictable, available) and, if possible, the Kimball and Ross requirement."
+          },
+          "why": {
+            "fr": "Le contre-exemple du cours aide : deux chiffres, un résultat qui bouge, un tableau de bord indisponible.",
+            "en": "The course counter-example helps: two figures, a result that moves, an unavailable dashboard."
+          }
+        },
+        {
+          "do": {
+            "fr": "Déterminer le **niveau de maturité** de la question réellement posée.",
+            "en": "Determine the **maturity level** of the question actually asked."
+          },
+          "why": {
+            "fr": "Le niveau désigne le type de question, pas l’outil.",
+            "en": "The level describes the type of question, not the tool."
+          }
+        },
+        {
+          "do": {
+            "fr": "Relire : chaque case répond-elle au **verbatim**, et non à une solution que l’on aime ?",
+            "en": "Reread: does each cell answer the **quote**, and not a solution you like?"
+          },
+          "why": {
+            "fr": "Un symptôme, pas une solution : on ne cite un composant que pour illustrer.",
+            "en": "A symptom, not a solution: a component is only cited to illustrate."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "A symptom, not a solution"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "The levels describe the type of question, not the tool."
+        }
+      ],
+      "notions": [
+        "n-fill-the-grid-method"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Cette méthode en six étapes est une construction pédagogique de l’app, bâtie sur les colonnes de la grille, la chaîne symptôme → composant et l’échelle de maturité. Le cours ne fournit **pas de corrigé** pour A, B et C : les lignes ci-dessous sont des corrigés **proposés**.",
+        "en": "This six-step method is a pedagogical construction of the app, built on the grid columns, the symptom → component chain and the maturity ladder. The course provides **no answer key** for A, B and C: the rows below are **proposed** answers."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-06-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Extrait A — la distribution : trois chiffres et un rapport modifié",
+        "en": "Extract A — retail: three figures and an amended report"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le responsable commercial régional demande chaque lundi les ventes du week-end à trois personnes (le système magasin, l’e-commerce, la finance) et reçoit trois nombres. Le temps de se mettre d’accord, c’est mercredi et la promotion est finie. Et le chiffre présenté au conseil le mois dernier a été modifié après coup, sans que personne ne le prévienne.",
+        "en": "The regional sales manager asks three people every Monday for the weekend’s sales (the store system, the e-commerce team and finance) and gets three numbers. By the time they agree, it is Wednesday and the promotion is over. And last month the figure presented to the board was changed afterwards without anyone telling them."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "By the time we agree, it's Wednesday and the promotion is over."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        }
+      ],
+      "notions": [
+        "n-extract-a"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Colonne",
+          "en": "Column"
+        },
+        {
+          "fr": "Corrigé proposé pour A",
+          "en": "Proposed answer for A"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Pain points",
+            "en": "Pain points"
+          },
+          {
+            "fr": "**2** (trois nombres : chiffres divergents, perte de confiance) ; **5** (chiffre publié modifié après coup) ; éventuellement **1** (trois sources) et le délai, à rattacher à l’exigence « à temps »",
+            "en": "**2** (three numbers: divergent figures, loss of trust); **5** (published figure changed afterwards); possibly **1** (three sources) and the delay, linked to the “timely” requirement"
+          }
+        ],
+        [
+          {
+            "fr": "Caractéristiques",
+            "en": "Characteristics"
+          },
+          {
+            "fr": "Indicateurs documentés et comparables ; résultats stables dans le temps (et données centralisées)",
+            "en": "Documented, comparable indicators; results stable over time (and centralised data)"
+          }
+        ],
+        [
+          {
+            "fr": "Principes / exigences",
+            "en": "Principles / requirements"
+          },
+          {
+            "fr": "**Fiable** (trois chiffres pour un indicateur) et **prévisible** (un chiffre qui change) ; Kimball et Ross : présenter l’information de façon cohérente",
+            "en": "**Reliable** (three figures for one indicator) and **predictable** (a figure that changes); Kimball and Ross: present information consistently"
+          }
+        ],
+        [
+          {
+            "fr": "Maturité",
+            "en": "Maturity"
+          },
+          {
+            "fr": "**Descriptif** : « que s’est-il passé ce week-end ? »",
+            "en": "**Descriptive**: “what happened this weekend?”"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Documented, comparable indicators Shared definitions, data dictionary, traceability of each figure to its source"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From five characteristics to three principles",
+          "quote": "Two different figures for the same indicator"
+        }
+      ],
+      "notions": [
+        "n-extract-a",
+        "n-one-quote-several-pain-points"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : n’écris pas « prédictif » parce que la promotion est future. La question posée est « combien a-t-on vendu ? » : passé = descriptif. Et note qu’un même verbatim porte **deux** pain points.",
+        "en": "Trap: do not write “predictive” because the promotion is in the future. The question asked is “how much did we sell?”: past = descriptive. And note that a single quote carries **two** pain points."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "The levels describe the type of question, not the tool."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        }
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-06-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Extrait B — l’hôpital : noyée de rapports, il faut être prévenue",
+        "en": "Extract B — hospital: drowning in reports, needing to be warned"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La responsable des soins infirmiers a des dizaines de rapports (occupation des lits, heures de personnel, absences) et pas le temps de les lire. Ce dont elle a besoin : savoir **avant 8 h** quelles unités manqueront de personnel ce soir ; aujourd’hui, elle l’apprend quand une infirmière l’appelle.",
+        "en": "The head of nursing has dozens of reports (bed occupancy, staff hours, absences) and no time to read them. What she needs: to know **before 8 am** which units will be short-staffed tonight; today she finds out when a nurse calls her."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract B: Hospital",
+          "quote": "I have dozens of reports on bed occupancy, staff hours, absences. I don't have time to read them."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract B: Hospital",
+          "quote": "What I need is to know, before 8 a.m., which units will be short-staffed tonight. Today I find out when a nurse calls me."
+        }
+      ],
+      "notions": [
+        "n-extract-b"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Colonne",
+          "en": "Column"
+        },
+        {
+          "fr": "Corrigé proposé pour B",
+          "en": "Proposed answer for B"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Pain point",
+            "en": "Pain point"
+          },
+          {
+            "fr": "**4** : noyée dans les données, être alertée, pas seulement regarder",
+            "en": "**4**: drowning in data, be alerted, not just look"
+          }
+        ],
+        [
+          {
+            "fr": "Caractéristique",
+            "en": "Characteristic"
+          },
+          {
+            "fr": "Mettre en évidence les situations qui demandent de l’attention (KPI avec cibles, alertes, puis scores prédictifs)",
+            "en": "Highlighting the situations that need attention (KPIs with targets, alerts, then predictive scores)"
+          }
+        ],
+        [
+          {
+            "fr": "Principes / exigences",
+            "en": "Principles / requirements"
+          },
+          {
+            "fr": "**Fiable et disponible** (disponible avant 8 h) ; Kimball et Ross : accessible et fourni à temps",
+            "en": "**Reliable and available** (available before 8 am); Kimball and Ross: accessible and timely"
+          }
+        ],
+        [
+          {
+            "fr": "Maturité",
+            "en": "Maturity"
+          },
+          {
+            "fr": "**Prédictif** : « quelles unités manqueront de personnel *ce soir* ? » (anticiper) ; une alerte sur seuil serait une première marche descriptive",
+            "en": "**Predictive**: “which units will be short-staffed *tonight*?” (anticipating); a threshold alert would be a first descriptive step"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Drowning in data: be alerted, not just look"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Highlighting the situations that need attention KPIs with targets, exception dashboards, alerts, then predictive scores"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The maturity ladder as a bridge",
+          "quote": "Predictive What will happen? 4: anticipating what needs attention Operations, customer-facing"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The maturity ladder as a bridge",
+          "quote": "Descriptive What happened? 1, 2, 5 and threshold alerts (4) Mgmt control, support, executive reporting"
+        }
+      ],
+      "notions": [
+        "n-extract-b"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-06-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Extrait C — la logistique : trois semaines pour une question simple",
+        "en": "Extract C — logistics: three weeks for a simple question"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un client demande hier pourquoi les livraisons vers le sud étaient en retard en mars. Question simple, mais la DSI annonce **trois semaines** pour construire le rapport. Et le directeur des opérations n’est pas sûr que les données de livraison du système d’entrepôt correspondent à celles des transporteurs.",
+        "en": "A customer asked yesterday why deliveries to the south were late in March. A simple question, but IT says it will take **three weeks** to build the report. And the operations director is not sure the delivery data in the warehouse system matches the carriers’ data."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Our customer asked yesterday why deliveries to the south were late in March."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Simple question, but IT told me it would take three weeks to build the report."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "And I'm not sure the delivery data in the warehouse system matches the carriers' data anyway."
+        }
+      ],
+      "notions": [
+        "n-extract-c"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Colonne",
+          "en": "Column"
+        },
+        {
+          "fr": "Corrigé proposé pour C",
+          "en": "Proposed answer for C"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Pain points",
+            "en": "Pain points"
+          },
+          {
+            "fr": "**3** (des semaines pour répondre, contre des jours pour décider) ; **2** et **1** (données d’entrepôt et des transporteurs qui peuvent diverger : deux sources, pas de confiance)",
+            "en": "**3** (weeks to answer vs days to decide); **2** and **1** (warehouse and carrier data that may diverge: two sources, no trust)"
+          }
+        ],
+        [
+          {
+            "fr": "Caractéristiques",
+            "en": "Characteristics"
+          },
+          {
+            "fr": "Accès rapide et flexible aux données (mesures × axes, self-service, drill-down) ; indicateurs documentés et comparables ; données centralisées",
+            "en": "Fast, flexible access to data (measures × axes, self-service, drill-down); documented, comparable indicators; centralised data"
+          }
+        ],
+        [
+          {
+            "fr": "Principes / exigences",
+            "en": "Principles / requirements"
+          },
+          {
+            "fr": "**Disponible** (accès rapide) et **fiable** (concordance des données) ; Kimball et Ross : facilement accessible, cohérent",
+            "en": "**Available** (fast access) and **reliable** (matching data); Kimball and Ross: easily accessible, consistent"
+          }
+        ],
+        [
+          {
+            "fr": "Maturité",
+            "en": "Maturity"
+          },
+          {
+            "fr": "**Diagnostique** : « pourquoi les livraisons étaient-elles en retard ? »",
+            "en": "**Diagnostic**: “why were deliveries late?”"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Weeks to answer vs. days to decide"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Fast, flexible access to data Measures x analysis axes model, self-service, drill-down"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Documented, comparable indicators Shared definitions, data dictionary, traceability of each figure to its source"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The maturity ladder as a bridge",
+          "quote": "Diagnostic Why did it happen? 3: exploring causes freely Management control, operations"
+        }
+      ],
+      "notions": [
+        "n-extract-c",
+        "n-one-quote-several-pain-points"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-06-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "Extrait D — un cas pour compléter la grille (inventé)",
+        "en": "Extract D — a case to complete the grid (invented)"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Ce cas D est **inventé par l’app** : le prof a prévu une ligne « D. Industrial group » dont l’extrait n’est pas dans les sources. Il sert à s’entraîner sur une exigence cachée et un niveau prescriptif ; ce n’est pas le cas du cours.",
+        "en": "This case D is **invented by the app**: the teacher planned a row “D. Industrial group” whose extract is not in the sources. It is for practice on a hidden requirement and a prescriptive level; it is not the course’s case."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "A. Retail B. Hospital C. Logistics D. Industrial group"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "*(Cas inventé.)* Un directeur de maintenance de groupe industriel : « Chaque usine tient son tableur des arrêts machines et aucune n’a la même définition d’un « arrêt ». J’aimerais que le système me dise quelles pièces commander avant qu’une ligne ne s’arrête. Et chaque directeur d’usine ne doit voir que les coûts de son usine, alors que moi je vois toutes les usines. »",
+        "en": "*(Invented case.)* A maintenance director in an industrial group: “Each plant keeps its own spreadsheet of machine downtime and none uses the same definition of a ‘stoppage’. I’d like the system to tell me which spare parts to order before a line stops. And each plant manager must only see their plant’s costs, whereas I see all the plants.”"
+      },
+      "explain": true,
+      "notions": [
+        "n-extract-d-missing"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Colonne",
+          "en": "Column"
+        },
+        {
+          "fr": "Corrigé proposé pour D",
+          "en": "Proposed answer for D"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Pain points / exigence",
+            "en": "Pain points / requirement"
+          },
+          {
+            "fr": "**2** (définitions divergentes de l’« arrêt ») ; **4** (être guidé vers l’action) ; **exigence cachée : sécurité** (chaque directeur ne voit que son usine : sécurité par ligne)",
+            "en": "**2** (divergent definitions of “stoppage”); **4** (being guided to action); **hidden requirement: security** (each manager only sees their plant: row-level security)"
+          }
+        ],
+        [
+          {
+            "fr": "Caractéristiques",
+            "en": "Characteristics"
+          },
+          {
+            "fr": "Indicateurs documentés et comparables ; mise en évidence des situations à traiter ; accès restreint par rôle et par ligne",
+            "en": "Documented, comparable indicators; highlighting situations to handle; restricted access by role and by row"
+          }
+        ],
+        [
+          {
+            "fr": "Principes / exigences",
+            "en": "Principles / requirements"
+          },
+          {
+            "fr": "**Fiable** ; **disponible** et sécurisé ; Kimball et Ross : cohérence (n° 2) et « bastion sécurisé » (n° 5)",
+            "en": "**Reliable**; **available** and secured; Kimball and Ross: consistency (no. 2) and “secure bastion” (no. 5)"
+          }
+        ],
+        [
+          {
+            "fr": "Maturité",
+            "en": "Maturity"
+          },
+          {
+            "fr": "**Prescriptif** : « quelles pièces commander ? » est « que devons-nous faire ? » ; le prédictif (quand une ligne s’arrêtera) en est le palier inférieur",
+            "en": "**Prescriptive**: “which parts to order?” is “what should we do?”; predictive (when a line will stop) is the step below"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "Optimization, simulation: replenishment, next best offer"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        }
+      ],
+      "notions": [
+        "n-extract-d-missing"
+      ]
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi7-06-qz-06"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-analysis-grid",
+      "fr": "grille d’analyse (atelier)",
+      "en": "analysis grid (workshop)",
+      "definition": {
+        "fr": "Tableau à une ligne par frustration : verbatim, pain point ou exigence cachée, caractéristique attendue, principe ou exigence (Kimball / Ross), niveau de maturité.",
+        "en": "A table with one row per frustration: user quote, pain point or hidden requirement, expected characteristic, principle or requirement (Kimball / Ross), maturity level."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "Analysis grid: one row per frustration"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        }
+      ],
+      "notion": "n-workshop-grid"
+    },
+    {
+      "id": "term-verbatim",
+      "fr": "verbatim (extrait d’interview)",
+      "en": "user quote (interview extract)",
+      "definition": {
+        "fr": "Phrase d’un utilisateur, prise telle quelle : un symptôme, pas une solution.",
+        "en": "A user’s sentence taken as is: a symptom, not a solution."
+      },
+      "pitfall": {
+        "fr": "Ne pas répondre par un outil : répondre par la garantie attendue.",
+        "en": "Do not answer with a tool: answer with the guarantee expected."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "A symptom, not a solution"
+        }
+      ],
+      "notion": "n-fill-the-grid-method"
+    },
+    {
+      "id": "term-symptom",
+      "fr": "symptôme",
+      "en": "symptom",
+      "definition": {
+        "fr": "Ce que l’utilisateur ressent et dit à l’interview ; première étape de la chaîne de conception, avant le besoin.",
+        "en": "What the user feels and says in the interview; the first step of the design chain, before the need."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "A symptom, not a solution"
+        }
+      ],
+      "notion": "n-fill-the-grid-method"
+    },
+    {
+      "id": "term-need",
+      "fr": "besoin",
+      "en": "need",
+      "definition": {
+        "fr": "Ce qui manque vraiment à l’utilisateur ; il se déduit du symptôme et précède la caractéristique.",
+        "en": "What the user is really missing; it is derived from the symptom and precedes the characteristic."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "What the user is really missing"
+        }
+      ],
+      "notion": "n-fill-the-grid-method"
+    },
+    {
+      "id": "term-bi-component",
+      "fr": "composant BI",
+      "en": "BI component",
+      "definition": {
+        "fr": "Ce qui rend concrète une caractéristique : définitions partagées, dictionnaire de données, entrepôt, alertes…",
+        "en": "What makes a characteristic concrete: shared definitions, data dictionary, warehouse, alerts…"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "What makes it concrete"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Documented, comparable indicators Shared definitions, data dictionary, traceability of each figure to its source"
+        }
+      ],
+      "notion": "n-fill-the-grid-method"
+    },
+    {
+      "id": "term-maturity-level-column",
+      "fr": "niveau de maturité (colonne de la grille)",
+      "en": "maturity level (grid column)",
+      "definition": {
+        "fr": "Dernière colonne de la grille : le type de question réellement posé (descriptif, diagnostique, prédictif, prescriptif), pas l’outil.",
+        "en": "Last column of the grid: the type of question actually asked (descriptive, diagnostic, predictive, prescriptive), not the tool."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "The levels describe the type of question, not the tool."
+        }
+      ],
+      "notion": "n-fill-the-grid-method"
+    }
+  ],
+  "notions": [
+    "n-workshop-grid",
+    "n-extract-a",
+    "n-extract-b",
+    "n-extract-c",
+    "n-extract-d-missing",
+    "n-fill-the-grid-method",
+    "n-one-quote-several-pain-points"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "La grille d’atelier a une ligne par frustration et cinq colonnes : verbatim, pain point ou exigence cachée, caractéristique, principe / exigence (Kimball et Ross), niveau de maturité.",
+        "en": "The workshop grid has one row per frustration and five columns: quote, pain point or hidden requirement, characteristic, principle / requirement (Kimball and Ross), maturity level."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "Analysis grid: one row per frustration"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        }
+      ],
+      "notions": [
+        "n-workshop-grid"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le prof annonce à l’examen un exercice de ce type : une petite interview à relier aux définitions.",
+        "en": "The teacher announces an exercise of this type in the exam: one small interview to link to the definitions."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can expect to have one exercise of that type during the"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "during the examination, okay? One small interview"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "what are the pain points, the characteristics that correspond to the pain points. and the principle and requirement maturity level for these examples"
+        }
+      ],
+      "notions": [
+        "n-workshop-grid"
+      ]
+    },
+    {
+      "text": {
+        "fr": "On remplit la grille en repérant chaque plainte, son symptôme, la caractéristique, le principe puis le niveau de maturité de la question réellement posée.",
+        "en": "You fill the grid by finding each complaint, its symptom, the characteristic, the principle then the maturity level of the question actually asked."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "A symptom, not a solution"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        }
+      ],
+      "notions": [
+        "n-fill-the-grid-method"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Extrait A : pain points 2 et 5 (fiable, prévisible) ; descriptif. Extrait B : pain point 4 (fiable et disponible) ; prédictif. Extrait C : pain points 3 (et 1, 2) (disponible, fiable) ; diagnostique. Corrigés proposés.",
+        "en": "Extract A: pain points 2 and 5 (reliable, predictable); descriptive. Extract B: pain point 4 (reliable and available); predictive. Extract C: pain points 3 (and 1, 2) (available, reliable); diagnostic. Proposed answers."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Drowning in data: be alerted, not just look"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Weeks to answer vs. days to decide"
+        }
+      ],
+      "notions": [
+        "n-extract-a",
+        "n-extract-b",
+        "n-extract-c"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un même verbatim peut évoquer plusieurs pain points (A et C en ont deux).",
+        "en": "The same quote can evoke several pain points (A and C have two)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Simple question, but IT told me it would take three weeks to build the report."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "And I'm not sure the delivery data in the warehouse system matches the carriers' data anyway."
+        }
+      ],
+      "notions": [
+        "n-one-quote-several-pain-points"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Quand aucun pain point ne colle (par exemple « chaque directeur ne voit que son usine »), on nomme une exigence cachée : sécurité, adaptabilité…",
+        "en": "When no pain point fits (e.g. “each manager only sees their plant”), name a hidden requirement: security, adaptability…"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        }
+      ],
+      "notions": [
+        "n-extract-d-missing"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "front": {
+        "fr": "Colonnes de la grille d’atelier ?",
+        "en": "Columns of the workshop grid?"
+      },
+      "back": {
+        "fr": "Verbatim ; pain point ou exigence cachée ; caractéristique attendue ; principe / exigence (Kimball / Ross) ; niveau de maturité.",
+        "en": "Quote; pain point or hidden requirement; expected characteristic; principle / requirement (Kimball / Ross); maturity level."
+      },
+      "termId": "term-analysis-grid",
+      "id": "isi7-06-fc-01"
+    },
+    {
+      "front": {
+        "fr": "Que dit le prof de l’examen sur ce format ?",
+        "en": "What does the teacher say about this format in the exam?"
+      },
+      "back": {
+        "fr": "On peut s’attendre à un exercice de ce type : une petite interview à analyser.",
+        "en": "Expect one exercise of this type: one small interview to analyse."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "you can expect to have one exercise of that type during the"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "during the examination, okay? One small interview"
+        }
+      ],
+      "notions": [
+        "n-workshop-grid"
+      ],
+      "id": "isi7-06-fc-02"
+    },
+    {
+      "front": {
+        "fr": "Extrait A : pain points, principes, niveau ?",
+        "en": "Extract A: pain points, principles, level?"
+      },
+      "back": {
+        "fr": "Pain points 2 et 5 ; fiable et prévisible ; descriptif (corrigé proposé).",
+        "en": "Pain points 2 and 5; reliable and predictable; descriptive (proposed answer)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        }
+      ],
+      "notions": [
+        "n-extract-a"
+      ],
+      "id": "isi7-06-fc-03"
+    },
+    {
+      "front": {
+        "fr": "Extrait B : pain point, principes, niveau ?",
+        "en": "Extract B: pain point, principles, level?"
+      },
+      "back": {
+        "fr": "Pain point 4 ; fiable et disponible ; prédictif (corrigé proposé).",
+        "en": "Pain point 4; reliable and available; predictive (proposed answer)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract B: Hospital",
+          "quote": "I have dozens of reports on bed occupancy, staff hours, absences. I don't have time to read them."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract B: Hospital",
+          "quote": "What I need is to know, before 8 a.m., which units will be short-staffed tonight. Today I find out when a nurse calls me."
+        }
+      ],
+      "notions": [
+        "n-extract-b"
+      ],
+      "id": "isi7-06-fc-04"
+    },
+    {
+      "front": {
+        "fr": "Extrait C : pain points, principes, niveau ?",
+        "en": "Extract C: pain points, principles, level?"
+      },
+      "back": {
+        "fr": "Pain point 3 (et 1, 2) ; disponible et fiable ; diagnostique (corrigé proposé).",
+        "en": "Pain point 3 (and 1, 2); available and reliable; diagnostic (proposed answer)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Simple question, but IT told me it would take three weeks to build the report."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "And I'm not sure the delivery data in the warehouse system matches the carriers' data anyway."
+        }
+      ],
+      "notions": [
+        "n-extract-c"
+      ],
+      "id": "isi7-06-fc-05"
+    },
+    {
+      "front": {
+        "fr": "Un verbatim, combien de pain points ?",
+        "en": "One quote, how many pain points?"
+      },
+      "back": {
+        "fr": "Un ou plusieurs : l’extrait A évoque les pain points 2 et 5.",
+        "en": "One or several: extract A evokes pain points 2 and 5."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        }
+      ],
+      "notions": [
+        "n-one-quote-several-pain-points"
+      ],
+      "id": "isi7-06-fc-06"
+    },
+    {
+      "front": {
+        "fr": "Que mettre quand aucun pain point ne convient ?",
+        "en": "What to put when no pain point fits?"
+      },
+      "back": {
+        "fr": "Une exigence cachée : sécurité, adaptabilité…",
+        "en": "A hidden requirement: security, adaptability…"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        }
+      ],
+      "notions": [
+        "n-extract-d-missing"
+      ],
+      "id": "isi7-06-fc-07"
+    },
+    {
+      "front": {
+        "fr": "Verbatim : que doit-on y voir ?",
+        "en": "Quote: what should you see in it?"
+      },
+      "back": {
+        "fr": "Un symptôme, pas une solution.",
+        "en": "A symptom, not a solution."
+      },
+      "termId": "term-verbatim",
+      "id": "isi7-06-fc-08"
+    },
+    {
+      "front": {
+        "fr": "Colonne « niveau de maturité » : piège ?",
+        "en": "“Maturity level” column: trap?"
+      },
+      "back": {
+        "fr": "On classe la question posée, pas l’outil cité.",
+        "en": "You classify the question asked, not the tool cited."
+      },
+      "termId": "term-maturity-level-column",
+      "id": "isi7-06-fc-09"
+    }
+  ],
+  "quiz": [
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l’extrait A, « le chiffre présenté au conseil a été modifié après coup sans qu’on me prévienne » relève du pain point 5 : les chiffres publiés ne doivent pas bouger.",
+        "en": "In extract A, “the figure presented to the board was changed afterwards without anyone telling me” belongs to pain point 5: published figures must not shift."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : résultats stables dans le temps, principe prévisible.",
+        "en": "TRUE: results stable over time, predictable principle."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Published figures must not shift"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-extract-a"
+      ],
+      "id": "isi7-06-qz-01"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l’extrait A, les trois nombres différents pour les ventes du week-end relèvent du pain point 4 (être guidé vers l’essentiel).",
+        "en": "In extract A, the three different numbers for the weekend’s sales belong to pain point 4 (being guided to what matters)."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : trois chiffres pour un même indicateur = pain point 2 (chiffres divergents, perte de confiance), contre-exemple du principe fiable.",
+        "en": "FALSE: three figures for one indicator = pain point 2 (divergent figures, loss of trust), counter-example of the reliable principle."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-extract-a"
+      ],
+      "trap": {
+        "fr": "Confondre divergence (2) et noyade (4).",
+        "en": "Mixing up divergence (2) and drowning (4)."
+      },
+      "id": "isi7-06-qz-02"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Extrait B : « J’ai des dizaines de rapports […] Je dois savoir avant 8 h quelles unités manqueront de personnel ce soir ». Quel pain point ?",
+        "en": "Extract B: “I have dozens of reports […] I need to know before 8 am which units will be short-staffed tonight”. Which pain point?"
+      },
+      "options": [
+        {
+          "fr": "1 : données éparpillées dans plusieurs systèmes sources",
+          "en": "1: data scattered across several source systems"
+        },
+        {
+          "fr": "2 : chiffres divergents entre plusieurs départements",
+          "en": "2: figures diverging between several departments"
+        },
+        {
+          "fr": "4 : noyé dans les données, être alerté",
+          "en": "4: drowning in data, be alerted"
+        },
+        {
+          "fr": "5 : résultats publiés qui bougent après coup",
+          "en": "5: published results that shift afterwards"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Pain point 4 : « be alerted, not just look » ; elle a déjà des rapports, il lui faut l’alerte.",
+        "en": "Pain point 4: “be alerted, not just look”; she already has reports, she needs the alert."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract B: Hospital",
+          "quote": "I have dozens of reports on bed occupancy, staff hours, absences. I don't have time to read them."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Drowning in data: be alerted, not just look"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-extract-b"
+      ],
+      "id": "isi7-06-qz-03"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Extrait B : quel niveau de maturité correspond à « quelles unités manqueront de personnel ce soir ? » ?",
+        "en": "Extract B: which maturity level matches “which units will be short-staffed tonight?”?"
+      },
+      "options": [
+        {
+          "fr": "Prédictif",
+          "en": "Predictive"
+        },
+        {
+          "fr": "Descriptif",
+          "en": "Descriptive"
+        },
+        {
+          "fr": "Diagnostique",
+          "en": "Diagnostic"
+        },
+        {
+          "fr": "Prescriptif",
+          "en": "Prescriptive"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Prédictif (anticiper ce qui demande attention). Une alerte sur seuil serait une première marche descriptive ; décider de la réaffectation serait prescriptif.",
+        "en": "Predictive (anticipating what needs attention). A threshold alert would be a first descriptive step; deciding on reassignment would be prescriptive."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The maturity ladder as a bridge",
+          "quote": "Predictive What will happen? 4: anticipating what needs attention Operations, customer-facing"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract B: Hospital",
+          "quote": "What I need is to know, before 8 a.m., which units will be short-staffed tonight. Today I find out when a nurse calls me."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-extract-b",
+        "n-fill-the-grid-method"
+      ],
+      "id": "isi7-06-qz-04"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l’extrait C, « trois semaines pour construire le rapport » illustre le pain point 3 : des semaines pour répondre contre des jours pour décider.",
+        "en": "In extract C, “three weeks to build the report” illustrates pain point 3: weeks to answer vs days to decide."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : nouvelle question, réponse trop lente.",
+        "en": "TRUE: a new question, answered too slowly."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Simple question, but IT told me it would take three weeks to build the report."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Weeks to answer vs. days to decide"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-extract-c"
+      ],
+      "id": "isi7-06-qz-05"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l’extrait C, le doute sur la concordance des données de l’entrepôt et des transporteurs évoque la confiance et la dispersion des sources (pain points 2 et 1).",
+        "en": "In extract C, the doubt about whether warehouse and carrier data match evokes trust and scattered sources (pain points 2 and 1)."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : deux sources qui peuvent diverger.",
+        "en": "TRUE: two sources that may diverge."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "And I'm not sure the delivery data in the warehouse system matches the carriers' data anyway."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-extract-c",
+        "n-one-quote-several-pain-points"
+      ],
+      "id": "isi7-06-qz-06"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Extrait C : « pourquoi les livraisons vers le sud étaient-elles en retard en mars ? » correspond à quel niveau ?",
+        "en": "Extract C: “why were deliveries to the south late in March?” matches which level?"
+      },
+      "options": [
+        {
+          "fr": "Prédictif",
+          "en": "Predictive"
+        },
+        {
+          "fr": "Prescriptif",
+          "en": "Prescriptive"
+        },
+        {
+          "fr": "Descriptif",
+          "en": "Descriptive"
+        },
+        {
+          "fr": "Diagnostique",
+          "en": "Diagnostic"
+        }
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": {
+        "fr": "Diagnostique : « pourquoi est-ce arrivé ? ».",
+        "en": "Diagnostic: “why did it happen?”."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Our customer asked yesterday why deliveries to the south were late in March."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The maturity ladder as a bridge",
+          "quote": "Diagnostic Why did it happen? 3: exploring causes freely Management control, operations"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-extract-c",
+        "n-fill-the-grid-method"
+      ],
+      "id": "isi7-06-qz-07"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Un verbatim d’interview évoque un seul pain point ; en trouver deux est donc une erreur.",
+        "en": "An interview quote evokes a single pain point; finding two is therefore a mistake."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l’extrait A évoque les pain points 2 (trois chiffres) et 5 (chiffre modifié) ; l’extrait C en évoque deux ou trois.",
+        "en": "FALSE: extract A evokes pain points 2 (three figures) and 5 (amended figure); extract C evokes two or three."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "Simple question, but IT told me it would take three weeks to build the report."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract C: Logistics",
+          "quote": "And I'm not sure the delivery data in the warehouse system matches the carriers' data anyway."
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-one-quote-several-pain-points"
+      ],
+      "trap": {
+        "fr": "S’arrêter au premier pain point repéré.",
+        "en": "Stopping at the first pain point found."
+      },
+      "id": "isi7-06-qz-08"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "« Mes directeurs de site ne doivent voir que les coûts de leur site. » Que nomme-t-on dans la grille ?",
+        "en": "“My site managers must only see their own site’s costs.” What goes in the grid?"
+      },
+      "options": [
+        {
+          "fr": "Une exigence cachée : la sécurité (par ligne)",
+          "en": "A hidden requirement: security (row-level)"
+        },
+        {
+          "fr": "Le niveau prescriptif de l’échelle de maturité",
+          "en": "The prescriptive level of the maturity ladder"
+        },
+        {
+          "fr": "Le pain point 3 : des semaines pour répondre",
+          "en": "Pain point 3: weeks to answer"
+        },
+        {
+          "fr": "Le pain point 5 : les chiffres publiés qui bougent",
+          "en": "Pain point 5: published figures that shift"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Aucun des cinq pain points ne colle : c’est une exigence cachée (sécurité), avec sécurité par ligne comme composant.",
+        "en": "None of the five pain points fits: it is a hidden requirement (security), with row-level security as the component."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-extract-d-missing"
+      ],
+      "id": "isi7-06-qz-09"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans la colonne « caractéristique attendue », on inscrit le composant technique à acheter, par exemple un entrepôt de données.",
+        "en": "In the “expected characteristic” column, you write the technical component to buy, for example a data warehouse."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la caractéristique est la garantie que la BI doit fournir (ex. données centralisées et unifiées) ; l’entrepôt est un composant.",
+        "en": "FALSE: the characteristic is the guarantee BI must provide (e.g. centralised, unified data); the warehouse is a component."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "From symptom to characteristic",
+          "quote": "A symptom, not a solution"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-fill-the-grid-method"
+      ],
+      "trap": {
+        "fr": "Sauter à la solution.",
+        "en": "Jumping to the solution."
+      },
+      "id": "isi7-06-qz-10"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour l’extrait B, la demande relève du niveau descriptif puisque la responsable dispose déjà de dizaines de rapports.",
+        "en": "For extract B, the request is descriptive since the head of nursing already has dozens of reports."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : elle veut savoir ce qui va arriver ce soir ; l’existence de rapports descriptifs ne change pas le type de question (prédictif).",
+        "en": "FALSE: she wants to know what will happen tonight; the existence of descriptive reports does not change the type of question (predictive)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "The levels describe the type of question, not the tool."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The maturity ladder as a bridge",
+          "quote": "Predictive What will happen? 4: anticipating what needs attention Operations, customer-facing"
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-extract-b",
+        "n-fill-the-grid-method"
+      ],
+      "trap": {
+        "fr": "Classer d’après les outils présents plutôt que d’après la question.",
+        "en": "Classifying by the tools present rather than the question."
+      },
+      "id": "isi7-06-qz-11"
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Cas D (inventé) : « Quelles pièces dois-je commander avant qu’une ligne ne s’arrête ? » Quel niveau ?",
+        "en": "Case D (invented): “Which spare parts should I order before a line stops?” Which level?"
+      },
+      "options": [
+        {
+          "fr": "Descriptif, car on parle de commandes déjà passées dans le passé",
+          "en": "Descriptive, because orders already placed in the past are mentioned"
+        },
+        {
+          "fr": "Prédictif, car on parle d’un arrêt futur de la ligne de production",
+          "en": "Predictive, because a future stoppage of the production line is mentioned"
+        },
+        {
+          "fr": "Prescriptif, car la question est « que dois-je faire ? »",
+          "en": "Prescriptive, because the question is “what should I do?”"
+        },
+        {
+          "fr": "Diagnostique, car il s’agit de comprendre les causes des arrêts",
+          "en": "Diagnostic, because it is about understanding the causes of stoppages"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Prescriptif : « what should we do? ». Le futur est mentionné, mais la question posée est l’action à mener ; prédire l’arrêt serait la marche d’en dessous.",
+        "en": "Prescriptive: “what should we do?”. The future is mentioned, but the question is the action to take; predicting the stoppage would be the step below."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "Optimization, simulation: replenishment, next best offer"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The analytics maturity ladder",
+          "quote": "The levels describe the type of question, not the tool."
+        }
+      ],
+      "objective": "o3",
+      "notions": [
+        "n-extract-d-missing",
+        "n-fill-the-grid-method"
+      ],
+      "id": "isi7-06-qz-12"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Le cours fournit un corrigé officiel de la grille pour les extraits A, B et C.",
+        "en": "The course provides an official answer key of the grid for extracts A, B and C."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : les sources ne contiennent que les extraits et la grille vide ; les corrigés de ce chapitre sont proposés et à confirmer avec tes notes.",
+        "en": "FALSE: the sources only contain the extracts and the empty grid; this chapter’s answers are proposed and to be confirmed with your notes."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "User quote Pain point (1 to 5) or hidden requirement (security, adaptability...) Expected characteristic Principle / requirement (Kimball / Ross) Maturity level"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-workshop-grid"
+      ],
+      "id": "isi7-06-qz-13"
+    }
+  ],
+  "exercises": [
+    {
+      "title": {
+        "fr": "Extrait E (inventé) : un assureur",
+        "en": "Extract E (invented): an insurer"
+      },
+      "difficulty": 2,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Responsable des sinistres d’une assurance : « Les dossiers sont répartis dans quatre applications. Chaque service a sa propre définition d’un « sinistre ouvert », et en réunion on se dispute sur le bon nombre. Ce que je voudrais, c’est que le système me signale les dossiers qui dérivent avant qu’ils ne soient hors délai. »\nRemplissez la ligne de grille : pain points, caractéristique, principes / exigence (Kimball et Ross), niveau de maturité.",
+        "en": "*(Invented case for practice.)* Claims manager at an insurer: “Files are spread across four applications. Each department has its own definition of an ‘open claim’, and in meetings we argue about the right number. What I would like is for the system to flag files that are drifting before they are out of time.”\nFill the grid row: pain points, characteristic, principles / requirement (Kimball and Ross), maturity level."
+      },
+      "hints": [
+        {
+          "fr": "Deux plaintes : le nombre de sinistres, puis la dérive.",
+          "en": "Two complaints: the number of claims, then the drift."
+        },
+        {
+          "fr": "« Avant qu’ils ne soient hors délai » : prédictif ou descriptif ?",
+          "en": "“Before they are out of time”: predictive or descriptive?"
+        }
+      ],
+      "solution": {
+        "fr": "**Pain points** : **1** (quatre applications), **2** (définitions divergentes, disputes sur le nombre), **4** (signaler ce qui dérive : être alerté).\n**Caractéristiques** : données centralisées ; indicateurs documentés et comparables (définition partagée du sinistre ouvert) ; mise en évidence des situations à surveiller (alertes).\n**Principes / exigence** : fiable (un seul nombre) et disponible ; Kimball et Ross : cohérence (n° 2).\n**Maturité** : **prédictif** pour « dériver avant d’être hors délai » (une alerte sur seuil de délai serait la marche descriptive).\n*Ce que l’exercice vérifie* : cumuler plusieurs pain points et classer la question réelle. *Corrigé proposé.*",
+        "en": "**Pain points**: **1** (four applications), **2** (divergent definitions, arguments about the number), **4** (flag what drifts: be alerted).\n**Characteristics**: centralised data; documented, comparable indicators (shared definition of an open claim); highlighting situations to watch (alerts).\n**Principles / requirement**: reliable (one number) and available; Kimball and Ross: consistency (no. 2).\n**Maturity**: **predictive** for “drift before being out of time” (a deadline threshold alert would be the descriptive step).\n*What the exercise checks*: combining several pain points and classifying the real question. *Proposed answer.*"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "How can I trust them?"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Drowning in data: be alerted, not just look"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Centralized, unified data Source integration, staging area, data warehouse, master data"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Highlighting the situations that need attention KPIs with targets, exception dashboards, alerts, then predictive scores"
+        },
+        {
+          "file": "ressources/S3__ISI7/cours_14092026.md",
+          "loc": "Transcript",
+          "quote": "The second requirement, I want to be able to share definitions between everyone"
+        }
+      ],
+      "objective": "o2",
+      "examStyle": true,
+      "trap": {
+        "fr": "Ne retenir qu’un pain point sur trois.",
+        "en": "Retaining only one pain point out of three."
+      },
+      "notions": [
+        "n-fill-the-grid-method",
+        "n-one-quote-several-pain-points",
+        "n-workshop-grid"
+      ],
+      "id": "isi7-06-ex-01"
+    },
+    {
+      "title": {
+        "fr": "Extrait F (inventé) : une direction financière et le RGPD",
+        "en": "Extract F (invented): a finance department and the GDPR"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "*(Cas inventé pour s’entraîner.)* Directrice financière : « Je veux comparer chaque mois les coûts par usine et par produit avec ceux de l’an dernier, mais le directeur de chaque usine ne doit voir que sa propre usine. Et si la définition de la marge change l’an prochain, je veux que les rapports de cette année gardent leur sens. »\nRemplissez la ligne de grille (en nommant les exigences cachées éventuelles) et dites quel niveau de maturité est demandé.",
+        "en": "*(Invented case for practice.)* Finance director: “I want to compare costs by plant and by product with last year’s every month, but each plant manager must only see their own plant. And if the definition of margin changes next year, I want this year’s reports to keep their meaning.”\nFill the grid row (naming any hidden requirements) and say which maturity level is requested."
+      },
+      "hints": [
+        {
+          "fr": "Trois exigences : comparer, restreindre l’accès, survivre au changement.",
+          "en": "Three requirements: compare, restrict access, survive change."
+        },
+        {
+          "fr": "Les rapports de l’an passé doivent garder leur sens : de quel principe s’agit-il ?",
+          "en": "Last year’s reports must keep their meaning: which principle is this?"
+        }
+      ],
+      "solution": {
+        "fr": "**Pain points / exigences** : comparer à l’an dernier = historique (pain point 5 : résultats stables dans le temps) ; **exigence cachée : sécurité** (chaque directeur ne voit que son usine : sécurité par ligne) ; **exigence cachée : adaptabilité** (si la définition de la marge change, l’existant garde son sens).\n**Caractéristiques** : résultats stables (historisation, règles de calcul versionnées) ; accès restreint par rôle et par ligne ; capacité de changer une définition sans casser les rapports passés.\n**Principes / exigences** : **prévisible** (règles versionnées), **disponible** et sécurisé ; Kimball et Ross : « adapt to change » (n° 3) et « secure bastion » (n° 5).\n**Maturité** : **descriptif** (comparer des coûts passés).\n*Ce que l’exercice vérifie* : repérer les exigences cachées (sécurité, adaptabilité). *L’adaptabilité renvoie au dernier objectif du cours, « Évoluer » (chapitre 17).*",
+        "en": "**Pain points / requirements**: comparing with last year = history (pain point 5: results stable over time); **hidden requirement: security** (each manager only sees their plant: row-level security); **hidden requirement: adaptability** (if the definition of margin changes, what exists keeps its meaning).\n**Characteristics**: stable results (historisation, versioned calculation rules); access restricted by role and by row; ability to change a definition without breaking past reports.\n**Principles / requirements**: **predictable** (versioned rules), **available** and secured; Kimball and Ross: “adapt to change” (no. 3) and “secure bastion” (no. 5).\n**Maturity**: **descriptive** (comparing past costs).\n*What the exercise checks*: spotting hidden requirements (security, adaptability). *Adaptability refers to the course’s last objective, “Evolve” (chapter 17).*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Workshop",
+          "quote": "hidden requirement (security, adaptability...)"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Where the data lives",
+          "quote": "Row-level security: each regional manager only sees their region"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Five pain points, five characteristics",
+          "quote": "Results that are stable over time Historization, versioned calculation rules, controlled refresh"
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Learning Objectives",
+          "quote": "Evolve: when faced with a change (new data source, modified interface contract, new dimension, new indicator definition)"
+        }
+      ],
+      "objective": "o4",
+      "examStyle": true,
+      "trap": {
+        "fr": "Chercher un pain point numéroté pour une exigence de sécurité.",
+        "en": "Looking for a numbered pain point for a security requirement."
+      },
+      "notions": [
+        "n-fill-the-grid-method",
+        "n-extract-d-missing"
+      ],
+      "id": "isi7-06-ex-02"
+    },
+    {
+      "title": {
+        "fr": "Défendre deux lectures de l’extrait A",
+        "en": "Defending two readings of extract A"
+      },
+      "difficulty": 3,
+      "statement": {
+        "fr": "Un camarade lit l’extrait A comme « pain point 3 » (trop lent), un autre comme « pain points 2 et 5 ». Rédigez 6 lignes : qui a raison, quelles plaintes de l’extrait justifient chaque lecture, et comment vous classeriez le niveau de maturité.",
+        "en": "One classmate reads extract A as “pain point 3” (too slow), another as “pain points 2 and 5”. Write 6 lines: who is right, which complaints of the extract justify each reading, and how you would classify the maturity level."
+      },
+      "hints": [
+        {
+          "fr": "Le retard est-il la plainte principale, ou la conséquence de la divergence ?",
+          "en": "Is the delay the main complaint, or a consequence of the divergence?"
+        },
+        {
+          "fr": "Relisez les trois phrases de l’extrait.",
+          "en": "Reread the three sentences of the extract."
+        }
+      ],
+      "solution": {
+        "fr": "Les deux lectures ont une part de vérité. **2 et 5** sont explicites : « I get three numbers » (divergence → 2) et « the figure … was changed afterwards » (instabilité → 5). **3** (des jours pour décider) est plausible : « By the time we agree, it’s Wednesday and the promotion is over » est un délai, mais il est causé par le désaccord entre trois sources, donc consécutif au 2. On retiendra donc **2 et 5 comme plaintes principales**, et le délai comme conséquence à relier à l’exigence « à temps ». Niveau : **descriptif** (ce qui s’est vendu ce week-end).\n*Barème indicatif* : 2 points pour 2 et 5 justifiés, 1 point pour la discussion du délai, 1 point pour le niveau. *Corrigé proposé, le prof ne publie pas de corrigé.*",
+        "en": "Both readings contain some truth. **2 and 5** are explicit: “I get three numbers” (divergence → 2) and “the figure … was changed afterwards” (instability → 5). **3** (days to decide) is plausible: “By the time we agree, it’s Wednesday and the promotion is over” is a delay, but it is caused by the disagreement between three sources, hence a consequence of 2. So keep **2 and 5 as the main complaints**, and the delay as a consequence linked to the “timely” requirement. Level: **descriptive** (what sold this weekend).\n*Indicative marking*: 2 points for 2 and 5 justified, 1 point for the delay discussion, 1 point for the level. *Proposed answer, the teacher publishes no answer key.*"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "Every Monday I ask three people for the weekend's sales: the store system, the e-commerce team and finance. I get three numbers."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "By the time we agree, it's Wednesday and the promotion is over."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "Extract A: Retail",
+          "quote": "And last month, the figure I presented to the board was changed afterwards without anyone telling me."
+        },
+        {
+          "file": "ressources/S3__ISI7/markdown/isi7.md",
+          "loc": "The five pain points",
+          "quote": "Weeks to answer vs. days to decide"
+        }
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Retenir le retard comme cause au lieu de conséquence.",
+        "en": "Taking the delay as the cause instead of the consequence."
+      },
+      "notions": [
+        "n-extract-a",
+        "n-one-quote-several-pain-points"
+      ],
+      "id": "isi7-06-ex-03"
+    }
+  ],
+  "writing": [
+    {
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "One quote can evoke several pain points.",
+      "id": "isi7-06-wr-01"
+    },
+    {
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Complete."
+      },
+      "text": "An interview gives a {{symptom}}, not a {{solution}}.",
+      "translation": "Une interview donne un symptôme, pas une solution.",
+      "id": "isi7-06-wr-02"
+    },
+    {
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "In the grid, the expected characteristic column contains the tool to buy.",
+      "error": "contains the tool to buy",
+      "corrected": "contains the guarantee BI must provide",
+      "explanation": {
+        "fr": "La caractéristique est la garantie ; l’outil est un composant.",
+        "en": "The characteristic is the guarantee; the tool is a component."
+      },
+      "id": "isi7-06-wr-03"
+    },
+    {
+      "kind": "free",
+      "prompt": {
+        "fr": "En trois phrases : comment remplis-tu une ligne de la grille d’analyse pour un verbatim d’utilisateur ?",
+        "en": "In three sentences: how do you fill a row of the analysis grid for a user quote?"
+      },
+      "modelAnswer": "First I underline each complaint and name its symptom, then I match it to a pain point or a hidden requirement. Next I state the expected characteristic and the principle, and finally I classify the type of question on the maturity ladder, not the tool.",
+      "keywords": [
+        "complaint",
+        "symptom",
+        "pain point",
+        "characteristic",
+        "maturity"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai cité les cinq colonnes.",
+          "en": "I mentioned the five columns."
+        },
+        {
+          "fr": "J’ai précisé « type de question, pas outil ».",
+          "en": "I stated “type of question, not tool”."
+        }
+      ],
+      "usefulPhrases": [
+        "First…, then…, finally…",
+        "not the tool"
+      ],
+      "id": "isi7-06-wr-04"
+    }
+  ]
+}
