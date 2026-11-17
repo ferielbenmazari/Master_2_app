@@ -4,6 +4,7 @@ import { Link, Navigate, useParams, useSearchParams } from 'react-router'
 import Bilingual from '@/components/content/Bilingual'
 import ChapterGuide from '@/components/content/ChapterGuide'
 import ChapterSynthesis from '@/components/content/ChapterSynthesis'
+import ChapterToc from '@/components/content/ChapterToc'
 import { ReaderContext } from '@/components/content/ReaderContext'
 import RichText from '@/components/content/RichText'
 import SourceChip from '@/components/content/SourceChip'
@@ -20,6 +21,7 @@ import type { Chapter, StoryBlock } from '@/content/schema'
 import { UI } from '@/i18n/ui'
 import { celebrate } from '@/lib/celebrate-read'
 import { layoutFor, scrollRatio, splitEpisodes } from '@/lib/reader'
+import { anchorFromParam, buildToc, tocAnchor } from '@/lib/toc'
 import { useMediaQuery } from '@/lib/use-media-query'
 import { usePrefs } from '@/store/PrefsProvider'
 import { getReading, setReading } from '@/store/progress'
@@ -32,6 +34,7 @@ export default function Reader() {
   const { prefs, setPrefs } = usePrefs()
   const [search] = useSearchParams()
   const target = search.get('q')
+  const part = anchorFromParam(search.get('partie'))
   const wide = useMediaQuery('(min-width: 1024px)')
   const [state, setState] = useState<{ id: string; chapter: Chapter } | null>(null)
   const [ratio, setRatio] = useState(0)
@@ -87,6 +90,12 @@ export default function Reader() {
     if (!chapter || !target) return
     document.getElementById(`cp-${target}`)?.scrollIntoView({ block: 'center' })
   }, [chapter, target])
+
+  // lien depuis le sommaire général : `?partie=3` ou `?partie=3.2` amène à la (sous-)partie
+  useEffect(() => {
+    if (!chapter || !part) return
+    document.getElementById(part)?.scrollIntoView({ block: 'start' })
+  }, [chapter, part])
   const glossary = useMemo(
     () => new Map((chapter?.glossary ?? []).map((t) => [t.id, t])),
     [chapter],
@@ -98,6 +107,7 @@ export default function Reader() {
     return m
   }, [chapter])
   const { episodes, total } = useMemo(() => splitEpisodes(chapter?.story ?? []), [chapter])
+  const toc = useMemo(() => buildToc(chapter?.story ?? []), [chapter])
 
   if (!course || !known) return <Navigate to={`/matiere/${courseId}`} replace />
   if (!chapter) {
@@ -111,6 +121,12 @@ export default function Reader() {
   const layout = layoutFor(prefs.langMode, wide)
   const base = `/matiere/${courseId}/chapitre/${chapterId}`
   const code = course.code.replace(/^S\d+-/, '')
+
+  function jump(anchor: string) {
+    const reduce =
+      typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
+    document.getElementById(anchor)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+  }
 
   async function finish() {
     done.current = true
@@ -162,11 +178,21 @@ export default function Reader() {
 
           <ChapterGuide chapter={chapter} layout={layout} />
 
+          {toc.length > 1 && (
+            <nav aria-label={UI.reader.toc} className="toc-panel">
+              <details open>
+                <summary className="mono">{UI.reader.tocTitle(toc.length)}</summary>
+                <ChapterToc toc={toc} lang={layout === 'en' ? 'en' : 'fr'} onJump={jump} />
+              </details>
+            </nav>
+          )}
+
           {episodes.map((ep, i) => (
             <section
               key={i}
+              id={ep.n > 0 ? tocAnchor(ep.n) : undefined}
               aria-label={ep.heading ? ep.heading.text[layout === 'en' ? 'en' : 'fr'] : undefined}
-              className="reader-flow"
+              className="reader-flow toc-target"
             >
               {ep.heading && (
                 <StoryBlockView
@@ -176,15 +202,27 @@ export default function Reader() {
                   quizHref={`${base}/quiz`}
                 />
               )}
-              {ep.blocks.map((b, j) => (
-                <StoryBlockView
-                  key={j}
-                  block={b}
-                  layout={layout}
-                  quizHref={`${base}/quiz`}
-                  tableNo={tableNos.get(b) ?? 1}
-                />
-              ))}
+              {(() => {
+                let sub = 0
+                return ep.blocks.map((b, j) => {
+                  const view = (
+                    <StoryBlockView
+                      key={j}
+                      block={b}
+                      layout={layout}
+                      quizHref={`${base}/quiz`}
+                      tableNo={tableNos.get(b) ?? 1}
+                    />
+                  )
+                  if (b.type !== 'subheading' || ep.n === 0) return view
+                  sub++
+                  return (
+                    <div key={j} id={tocAnchor(ep.n, sub)} className="toc-target">
+                      {view}
+                    </div>
+                  )
+                })
+              })()}
             </section>
           ))}
 

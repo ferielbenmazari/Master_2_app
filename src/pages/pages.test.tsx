@@ -108,6 +108,19 @@ describe('matière', () => {
     expect(link).toHaveTextContent('min')
     expect(screen.getByRole('link', { name: 'Chapitres' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Glossaire' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Sommaire' })).toHaveAttribute('href', '/matiere/rec1/sommaire')
+  })
+
+  it('sommaire général (T27) : chapitres, parties et sous-parties, liens vers le lecteur à cet endroit', async () => {
+    renderAt('/matiere/isi1/sommaire')
+    expect(await screen.findByRole('heading', { name: 'Sommaire général' })).toBeInTheDocument()
+    const part = await screen.findByRole('link', { name: /^4\. La classification de Glinz/ })
+    expect(part).toHaveAttribute(
+      'href',
+      '/matiere/isi1/chapitre/isi1-03-exigences-non-fonctionnelles/lire?partie=4',
+    )
+    const sub = screen.getByRole('link', { name: /^4\.1 Méthode : classer une exigence/ })
+    expect(sub.getAttribute('href')).toMatch(/\?partie=4\.1$/)
   })
 })
 

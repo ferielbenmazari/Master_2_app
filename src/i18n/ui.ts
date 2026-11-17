@@ -64,6 +64,7 @@ export const UI = {
   course: {
     tabs: 'Sections de la matière',
     chapters: 'Chapitres',
+    toc: 'Sommaire',
     glossary: 'Glossaire',
     exams: 'Partiels',
     back: 'Retour à la base',
@@ -101,6 +102,10 @@ export const UI = {
     notes: 'Citations',
     backToChapter: 'Retour au chapitre',
   },
+  toc: {
+    title: 'Sommaire général',
+    chapter: 'Ouvrir le chapitre',
+  },
   glossary: {
     title: 'Glossaire',
     search: 'Rechercher un terme (FR ou EN)',
@@ -113,6 +118,8 @@ export const UI = {
     back: (code: string) => `${code} / CH.`,
     progress: 'Progression de la lecture',
     episode: (n: number, total: number) => `Partie ${n}/${total}`,
+    toc: 'Sommaire du chapitre',
+    tocTitle: (n: number) => `Sommaire · ${n} parties`,
     loading: 'Chargement du chapitre…',
     source: 'Source',
     sourceLabel: 'Voir la source dans le cours',

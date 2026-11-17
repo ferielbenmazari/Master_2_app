@@ -190,7 +190,10 @@ Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), ja
 | E (support sans signal d'examen) | supprimé, ou gardé en référence complémentaire courte ; pas de fiche systématique |
 
 ### 10.2 Structurer
+- **Fidélité = alignement sur les notions, pas sur la forme** (décision du 2026-11-17) : définitions, propriétés, classifications et listes du cours sont exactes et sourcées ; la structure, l'ordre, la formulation, les explications et les exemples sont libres (ne pas paraphraser les slides).
 - Les slides sont une **source**, pas un plan : on extrait, on regroupe, on réordonne.
+- Le cours complet d'une matière couvre **toutes** ses notions (contrôle par `notions.json`), chacune au niveau de détail que justifie le partiel.
+- **Sommaire** : chaque partie est un `heading` numéroté (« 1. … ») et chaque sous-partie un `subheading` (« 1.2 … ») ; ils alimentent le sommaire du chapitre (lecteur) et le sommaire général (onglet « Sommaire »).
 - **Définition d'abord** : chaque notion fondamentale s'ouvre sur un `callout` `definition` (src obligatoire).
 - `heading` = partie numérotée (« 1. … ») ; `subheading` = sous-partie (« 1.2 … »).
 - Un **ensemble à mémoriser** (qualités, catégories, étapes, facteurs) est présenté **complet et au même endroit**, en `list` numérotée ou en `table` ; le nombre d'éléments est annoncé.

@@ -10,6 +10,7 @@ import TitledSoon from '@/pages/TitledSoon'
 
 // Routes lourdes chargées à la demande (précachées par le service worker : hors-ligne OK).
 const Glossary = lazy(() => import('@/pages/Glossary'))
+const CourseToc = lazy(() => import('@/pages/CourseToc'))
 const ChapterSheet = lazy(() => import('@/pages/ChapterSheet'))
 const ChapterFlashcards = lazy(() => import('@/features/flashcards/ChapterFlashcards'))
 const ReviewPage = lazy(() => import('@/features/flashcards/ReviewPage'))
@@ -49,6 +50,7 @@ export default function AppRoutes() {
           <Route path="profil" element={<Profile />} />
           <Route path="matiere/:courseId" element={<CourseScope />}>
             <Route index element={<Course />} />
+            <Route path="sommaire" element={<CourseToc />} />
             <Route path="glossaire" element={<Glossary />} />
             <Route path="partiels" element={<ExamList />} />
             <Route path="partiel/:examId" element={<ExamRunner />} />

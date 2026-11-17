@@ -1104,6 +1104,67 @@
   .callout-retenir {
     --cc: var(--marker);
   }
+  /* sommaire : du chapitre (lecteur) et général (matière) */
+  .toc-target {
+    scroll-margin-top: 96px;
+  }
+  .toc-panel {
+    padding: 12px 14px;
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .toc-panel summary {
+    cursor: pointer;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: var(--course, var(--acid));
+  }
+  [data-theme='light'] .toc-panel summary {
+    color: var(--ink);
+  }
+  .toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .toc-subs {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+  }
+  .toc-link {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 4px;
+    text-align: left;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .toc-part > .toc-link {
+    font-weight: 700;
+  }
+  .toc-subs .toc-link {
+    min-height: 40px;
+    padding: 8px 4px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .toc-link:hover {
+    color: var(--course, var(--acid));
+  }
+  [data-theme='light'] .toc-link:hover {
+    text-decoration: underline;
+    color: var(--ink);
+  }
+  .toc-chapter-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+  }
   /* sous-titre à l'intérieur d'une partie */
   .story-subheading {
     margin-top: 10px;

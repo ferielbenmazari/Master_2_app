@@ -75,6 +75,12 @@ export default function Course({ now }: { now?: Date }) {
           {UI.course.chapters}
         </NavLink>
         <NavLink
+          to={`/matiere/${courseId}/sommaire`}
+          className={({ isActive }) => (isActive ? 'on' : '')}
+        >
+          {UI.course.toc}
+        </NavLink>
+        <NavLink
           to={`/matiere/${courseId}/glossaire`}
           className={({ isActive }) => (isActive ? 'on' : '')}
         >

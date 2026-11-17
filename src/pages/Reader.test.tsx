@@ -109,3 +109,40 @@ describe('lecteur REC1-05', () => {
     expect(await screen.findByText('Chapitre terminé')).toBeInTheDocument()
   })
 })
+
+describe('lecteur : sommaire du chapitre (T27)', () => {
+  const ISI = 'isi1-03-exigences-non-fonctionnelles'
+  async function openAt(path: string) {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ ...DEFAULT_PREFS, pseudo: 'Test', langMode: 'fr' }))
+    localStorage.setItem('m2.effects', 'off')
+    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
+    const scroll = vi.fn()
+    Element.prototype.scrollIntoView = scroll
+    const view = render(
+      <PrefsProvider>
+        <MemoryRouter initialEntries={[path]}>
+          <AppRoutes />
+        </MemoryRouter>
+      </PrefsProvider>,
+    )
+    await screen.findByRole('heading', { level: 1 }, { timeout: 5000 })
+    return { ...view, scroll }
+  }
+
+  it('liste parties et sous-parties ; un clic amène à la partie', async () => {
+    const ch = await loadChapter(ISI)
+    const parts = ch.story.filter((b) => b.type === 'heading').length
+    const { container, scroll } = await openAt(`/matiere/isi1/chapitre/${ISI}/lire`)
+    const nav = screen.getByRole('navigation', { name: 'Sommaire du chapitre' })
+    expect(within(nav).getByText(`Sommaire · ${parts} parties`)).toBeInTheDocument()
+    fireEvent.click(within(nav).getByRole('button', { name: /^4\.1 Méthode/ }))
+    expect(scroll).toHaveBeenCalled()
+    expect(scroll.mock.contexts.at(-1)).toBe(container.querySelector('#partie-4-1'))
+    expect(container.querySelector('section#partie-4')).not.toBeNull()
+  })
+
+  it('?partie=3 (depuis le sommaire général) amène à la partie 3', async () => {
+    const { container, scroll } = await openAt(`/matiere/isi1/chapitre/${ISI}/lire?partie=3`)
+    await waitFor(() => expect(scroll.mock.contexts).toContain(container.querySelector('#partie-3')))
+  })
+})
