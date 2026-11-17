@@ -658,6 +658,25 @@ describe('modèle pédagogique (T25)', () => {
     )
     expect(errors(r)).toEqual([])
   })
+  it('sous-titre et encadré « À retenir » sans src : acceptés (T26)', () => {
+    const r = run((ch) =>
+      ch.story.splice(
+        1,
+        0,
+        { type: 'subheading', text: L('1.1 Définir') },
+        { type: 'callout', variant: 'retenir', text: L('Récapitulatif.') },
+      ),
+    )
+    expect(errors(r)).toEqual([])
+  })
+  it('encadré « Définition à connaître » sans src : erreur R10 (T26)', () => {
+    expect(
+      has(
+        run((ch) => ch.story.splice(1, 0, { type: 'callout', variant: 'definition', text: L('Définition.') })),
+        'R10',
+      ),
+    ).toBe(true)
+  })
   it('bloc méthode et encadré repère : acceptés', () => {
     const r = run((ch) =>
       ch.story.splice(

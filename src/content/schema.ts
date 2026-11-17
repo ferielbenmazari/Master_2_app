@@ -38,6 +38,8 @@ export type Course = z.infer<typeof CourseSchema>
 // ---------------------------------------------------------------- Story
 export const StoryBlockSchema = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('heading'), text: LSchema }),
+  /** Sous-titre à l'intérieur d'une section (n'ouvre pas de nouvelle partie). */
+  z.strictObject({ type: z.literal('subheading'), text: LSchema }),
   z.strictObject({
     type: z.literal('paragraph'),
     text: LSchema,
@@ -56,7 +58,8 @@ export const StoryBlockSchema = z.discriminatedUnion('type', [
   }),
   z.strictObject({
     type: z.literal('callout'),
-    variant: z.enum(['tip', 'warning', 'exam', 'analogy', 'repere']),
+    /** definition = « Définition à connaître » (src obligatoire) ; retenir = « À retenir » (récapitule des faits sourcés dans la section, src facultatif). */
+    variant: z.enum(['tip', 'warning', 'exam', 'analogy', 'repere', 'definition', 'retenir']),
     text: LSchema,
     src: srcList.optional(),
   }),

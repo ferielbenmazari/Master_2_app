@@ -32,7 +32,7 @@ describe('lecteur REC1-05', () => {
     const { container } = await open('fr')
     const episodes = count('heading')
     expect(container.querySelectorAll('section h2').length).toBe(episodes + 1) // + « Ce que tu sais maintenant »
-    expect(screen.getByText(`Épisode 1/${episodes}`)).toBeInTheDocument()
+    expect(screen.getByText(`Partie 1/${episodes}`)).toBeInTheDocument()
     expect(container.querySelectorAll('.reader-flow p').length).toBeGreaterThan(
       count('paragraph') - 1,
     )

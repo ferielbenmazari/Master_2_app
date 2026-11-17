@@ -69,17 +69,20 @@ interface Chapter {
 interface Objective { id: string /* "o1" */; text: L; level: Level }
 
 type StoryBlock =
-  | { type: "heading"; text: L }                         // un heading = début d'épisode (3-4 min)
+  | { type: "heading"; text: L }                         // un heading = début d'une partie (section numérotée « Partie n/N » dans le lecteur)
+  | { type: "subheading"; text: L }                      // sous-titre à l'intérieur d'une partie (n'en ouvre pas de nouvelle)
   | { type: "paragraph"; text: L; src?: SourceRef[]; narrative?: boolean; explain?: boolean; notions?: string[] }
       // explain: true = explication pédagogique : relie des faits sourcés AILLEURS dans le chapitre, n'en ajoute aucun
   | { type: "method"; title: L; steps: { do: L; why: L }[]; src?: SourceRef[]; notions?: string[] } // méthode pas à pas (2-8 étapes)
   | { type: "list"; ordered?: boolean; items: L[]; src: SourceRef[]; notions?: string[] }
-  | { type: "callout"; variant: "tip" | "warning" | "exam" | "analogy" | "repere"; text: L; src?: SourceRef[] } // repere = contexte secondaire, jamais quizzé
+  | { type: "callout"; variant: "tip" | "warning" | "exam" | "analogy" | "repere" | "definition" | "retenir"; text: L; src?: SourceRef[] }
+      // repere = contexte secondaire, jamais quizzé · definition = « Définition à connaître » (src obligatoire)
+      // retenir = « À retenir » : récapitule des faits sourcés dans la section, n'en ajoute aucun (src facultatif)
   | { type: "table"; headers: L[]; rows: L[][]; src: SourceRef[]; notions?: string[] }
   | { type: "diagram"; mermaid: string; caption: L; src?: SourceRef[] }   // Mermaid valide, libellés en anglais
   | { type: "quote"; text: L; source: string }
   | { type: "checkpoint"; quizId: string };               // renvoie à un item de `quiz`
-// paragraph : src obligatoire sauf narrative: true ou explain: true · callout : src obligatoire sauf variant "analogy"
+// paragraph : src obligatoire sauf narrative: true ou explain: true · callout : src obligatoire sauf variants "analogy" et "retenir"
 
 interface KeyPoint { text: L; src: SourceRef[]; notions?: string[] }
 

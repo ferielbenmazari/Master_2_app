@@ -1,4 +1,6 @@
 import {
+  BookOpen,
+  Bookmark,
   Compass,
   Info,
   Lightbulb,
@@ -26,6 +28,8 @@ const CALLOUTS: Record<Extract<StoryBlock, { type: 'callout' }>['variant'], Luci
   warning: Info,
   analogy: Sparkles,
   repere: Compass,
+  definition: BookOpen,
+  retenir: Bookmark,
 }
 
 interface Props {
@@ -80,6 +84,18 @@ export default function StoryBlockView({ block, layout, episode, quizHref, table
           layout={layout}
           render={(lang, alt) => (
             <Heading text={block.text[lang]} episode={episode} alt={alt} lang={lang} />
+          )}
+        />
+      )
+
+    case 'subheading':
+      return (
+        <Bilingual
+          layout={layout}
+          render={(lang, alt) => (
+            <h3 className={alt ? 'story-subheading text-ink-soft' : 'story-subheading'}>
+              <RichText lang={lang} text={block.text[lang]} />
+            </h3>
           )}
         />
       )

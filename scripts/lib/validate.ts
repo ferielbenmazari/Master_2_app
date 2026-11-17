@@ -348,7 +348,7 @@ function checkChapter(ctx: Ctx, cc: CourseCtx, file: string, ch: Chapter): void 
     if (b.type === 'paragraph' && !b.narrative && !b.explain) need(`${p}.src`, b.src, 'paragraphe non narratif')
     if (b.type === 'list') need(`${p}.src`, b.src, 'liste')
     if (b.type === 'table') need(`${p}.src`, b.src, 'tableau')
-    if (b.type === 'callout' && b.variant !== 'analogy') need(`${p}.src`, b.src, `callout ${b.variant}`)
+    if (b.type === 'callout' && b.variant !== 'analogy' && b.variant !== 'retenir') need(`${p}.src`, b.src, `callout ${b.variant}`)
   })
   ch.keyPoints.forEach((k, i) => need(`keyPoints[${i}].src`, k.src, 'point clé'))
   ch.quiz.forEach((q, i) => need(`quiz[${i}].src`, q.src, 'question de quiz'))

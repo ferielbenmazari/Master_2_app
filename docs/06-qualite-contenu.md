@@ -39,7 +39,7 @@ Ce n'est pas une preuve que la reformulation est juste — c'est la garantie que
 | `quiz[]`, questions d'examen, `exercises[]` (corrigé) | **obligatoire** |
 | `flashcards[]` | obligatoire, sauf si `termId` (hérite du terme) |
 | blocs `paragraph`, `list`, `table`, `callout` (exam/tip/warning) | **obligatoire**, sauf `narrative: true` (pure mise en scène, sans fait nouveau) |
-| `callout` `analogy`, `heading`, `checkpoint`, `diagram` | facultatif |
+| `callout` `analogy`, `callout` `retenir` (récapitulatif sans fait nouveau), `heading`, `subheading`, `checkpoint`, `diagram` | facultatif |
 | `writing[]` | facultatif (exercice de langue) — mais la phrase modèle ne doit énoncer que des faits sourcés ailleurs dans le chapitre |
 
 ### Hiérarchie des sources (voir `content/<id>/sources.json`)
@@ -174,3 +174,35 @@ Chaque item a un `objective` ; `trap` nomme la confusion visée quand il y en a 
 
 ### 9.6 Sources hors supports
 Autorisées (décision de l'utilisatrice, 2026-11-12) quand une notion d'examen manque dans les supports ou reste trop obscure : d'abord les lectures du prof (`lecture`), sinon une source **fiable** (article évalué par les pairs, ouvrage de référence, norme, syllabus officiel). L'extrait utilisé est enregistré dans `sources-texte/<id>/ext-<slug>.md` (en-tête : référence complète, URL, date de consultation), déclaré `complement` dans `sources.json`, cité comme le reste, et annoncé dans le texte (« d'après X, hors supports du cours »). Un terme de glossaire doit avoir une source `cours` **ou** une `annale` qui l'emploie.
+
+## 10. Présentation structurée (refonte du 2026-11-17) — prime sur §6 et §9.2 pour la forme
+
+> Décision de l'utilisatrice (2026-11-17), d'abord appliquée à ISI1 (`content/isi1/REFONTE-ARCHITECTURE.md`). Elle révise par cœur : le cours doit faciliter la **mémorisation**, la **restitution** et l'**application** en étude de cas. Objectif : **pas un cours plus long, un cours mieux conçu.**
+
+### 10.1 Sélectionner : un budget par notion
+Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), jamais de la place dans les slides ni d'un temps de lecture à remplir.
+| Niveau | Traitement |
+|---|---|
+| A (annale, projet) | définition encadrée + distinctions utiles + méthode + **un exemple entièrement corrigé** (les autres exemples plus synthétiques) + piège d'examen |
+| B (insistance du prof) | définition + liste ou tableau + un exemple |
+| C (fondement nécessaire) | 2 à 4 lignes |
+| D (culture : chiffres, organismes, historique, études de cas, auteurs) | 1 à 3 lignes en `repere`, ou supprimé |
+| E (support sans signal d'examen) | supprimé, ou gardé en référence complémentaire courte ; pas de fiche systématique |
+
+### 10.2 Structurer
+- Les slides sont une **source**, pas un plan : on extrait, on regroupe, on réordonne.
+- **Définition d'abord** : chaque notion fondamentale s'ouvre sur un `callout` `definition` (src obligatoire).
+- `heading` = partie numérotée (« 1. … ») ; `subheading` = sous-partie (« 1.2 … »).
+- Un **ensemble à mémoriser** (qualités, catégories, étapes, facteurs) est présenté **complet et au même endroit**, en `list` numérotée ou en `table` ; le nombre d'éléments est annoncé.
+- **Distinctions** : seulement celles qui évitent une confusion réelle ou servent un exercice, en tableau « comment trancher ».
+- **Méthode** : `method` (étapes et pourquoi), suivie **immédiatement** d'un exemple corrigé dans le cours (pas renvoyé aux exercices).
+- Chaque partie se termine par un `callout` `retenir` (3 à 6 lignes, aucun fait nouveau).
+- Des notions différentes restent séparées et nommées comme telles (ex. ISI1 : erreurs de classement de Glinz ≠ défauts de rédaction bruit / silence…).
+- Corrigés d'annales : pièges en fin de partie, corrigés détaillés dans `exercises`.
+
+### 10.3 Style
+- **Abandon du style narratif** : pas d'accroche (« Imagine… »), pas de fil rouge romancé, pas de `narrative: true` ; tutoiement possible mais phrases directes.
+- Tableaux et listes dès qu'ils facilitent la mémorisation ; paragraphes courts mais complets.
+- Les limites de §6 deviennent indicatives : `W-paragraph-long`, `W-episode-long` et `W-chapter-long` se traitent au cas par cas (une notion A peut justifier une partie plus longue ; un chapitre court est préférable).
+- Les débats de chercheurs ne restent que s'ils expliquent une notion, en quelques lignes.
+
