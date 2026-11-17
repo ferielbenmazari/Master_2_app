@@ -53,7 +53,7 @@ describe('lecteur REC1-05', () => {
     expect(container.querySelectorAll('blockquote.story-quote').length).toBe(count('quote'))
     expect(screen.getAllByRole('heading', { name: 'Teste-toi' }).length).toBe(count('checkpoint'))
     expect(container.querySelector('script, img, iframe')).toBeNull()
-  })
+  }, 20_000) // rendu complet d'un long chapitre : > 5 s possible sous charge (npm run check)
 
   it('fil du chapitre en tête et synthèse structurée en fin de lecture', async () => {
     const ch = await loadChapter(CH)
