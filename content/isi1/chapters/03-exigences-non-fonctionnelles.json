@@ -160,7 +160,7 @@
       }
     ]
   },
-  "estimatedMinutes": 17,
+  "estimatedMinutes": 13,
   "sources": [
     "sources-texte/isi1/5-on-nfrs.md",
     "sources-texte/isi1/1-ie-introduction.md",
@@ -206,15 +206,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "1. La typologie du cours : six catégories d’exigences",
-        "en": "1. The course typology: six categories of requirements"
+        "fr": "1. Les six catégories d’exigences du cours",
+        "en": "1. The course’s six categories of requirements"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le cours classe les exigences **selon leur nature**, en six catégories. Ce tableau est à connaître par cœur.",
-        "en": "The course classifies requirements **by their nature**, into six categories. Learn this table by heart."
+        "fr": "Le cours classe les exigences **selon leur nature**, en six catégories, à connaître avec leur définition et un exemple.",
+        "en": "The course classifies requirements **by their nature**, into six categories, to know with their definition and an example."
       },
       "explain": true
     },
@@ -409,18 +409,115 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "1.1 L’attribut qualité : une NFR rattachée à une FR",
-        "en": "1.1 The quality attribute: an NFR attached to an FR"
+        "fr": "1.1 Distinguer les catégories",
+        "en": "1.1 Telling the categories apart"
       }
     },
     {
-      "type": "callout",
-      "variant": "definition",
-      "text": {
-        "fr": "**[[term-attribut-qualite|Attribut qualité]]** : exigence non fonctionnelle **associée à une exigence fonctionnelle**, de **portée limitée**, et **spécifiée sous forme d’attribut** de cette exigence. Le cours ajoute que **les autres NFR se décomposent en FR**.",
-        "en": "**[[term-attribut-qualite|Quality attribute]]**: a non-functional requirement **associated with a functional requirement**, with a **limited scope**, and **specified as an attribute** of that requirement. The course adds that **the other NFRs break down into FRs**."
-      },
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Confusion",
+          "en": "Confusion"
+        },
+        {
+          "fr": "Comment trancher",
+          "en": "How to decide"
+        },
+        {
+          "fr": "Exemple",
+          "en": "Example"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**FR ou NFR ?**",
+            "en": "**FR or NFR?**"
+          },
+          {
+            "fr": "FR : ce que le système **fait**. NFR : une **qualité** qu’il doit avoir en le faisant.",
+            "en": "FR: what the system **does**. NFR: a **quality** it must have while doing it."
+          },
+          {
+            "fr": "« Identifier les anciens clients » : FR. « Capacité d’enregistrement 120 % supérieure aux données » : NFR.",
+            "en": "“Identify former customers”: FR. “Storage capacity 120% greater than the data”: NFR."
+          }
+        ],
+        [
+          {
+            "fr": "**NFR ou contrainte ?**",
+            "en": "**NFR or constraint?**"
+          },
+          {
+            "fr": "La NFR est une qualité **du système** ; la contrainte **restreint les solutions** (technologie, coût, délai, fournisseur) sans rien dire du système. Chez Glinz, la contrainte devient une sorte de NFR (partie 3).",
+            "en": "The NFR is a quality **of the system**; the constraint **restricts the solutions** (technology, cost, deadline, supplier) without saying anything about the system. For Glinz, a constraint becomes a kind of NFR (part 3)."
+          },
+          {
+            "fr": "« Fonctionner avec la technologie O » : contrainte.",
+            "en": "“Work with technology O”: constraint."
+          }
+        ],
+        [
+          {
+            "fr": "**Attribut qualité ou NFR plus large ?**",
+            "en": "**Quality attribute or wider NFR?**"
+          },
+          {
+            "fr": "Attribut qualité si la NFR qualifie **une FR précise** ; sinon, elle se décompose en FR.",
+            "en": "Quality attribute if the NFR qualifies **one precise FR**; otherwise, it breaks down into FRs."
+          },
+          {
+            "fr": "—",
+            "en": "—"
+          }
+        ],
+        [
+          {
+            "fr": "**Exigence ou hypothèse ?**",
+            "en": "**Requirement or assumption?**"
+          },
+          {
+            "fr": "Une exigence est **demandée au système** ; une hypothèse **décrit son environnement** sans rien lui demander.",
+            "en": "A requirement is **asked of the system**; an assumption **describes its environment** without asking anything of it."
+          },
+          {
+            "fr": "—",
+            "en": "—"
+          }
+        ]
+      ],
       "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie",
+          "quote": "services acendus de la part du système"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie",
+          "quote": "Qualités non directement implémentables Performance, Sécurité, Fiabilité, Flexibilité, Ergonomie"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "le système doit identifier les anciens clients"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "la capacité d'enregistrement du système doit être 120% supérieure à la quantité de données à enregistrer"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Contraintes",
+          "quote": "Ne définissent pas le système, mais réduisent l’espace des solutions possible"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exemples",
+          "quote": "le système doit fonctionner avec la technologie O"
+        },
         {
           "file": "sources-texte/isi1/1-ie-introduction.md",
           "loc": "Exigences « non fonctionnelles »",
@@ -430,22 +527,28 @@
           "file": "sources-texte/isi1/1-ie-introduction.md",
           "loc": "Exigences « non fonctionnelles »",
           "quote": "Les autres NFR se décomposent en FR"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Hypothèses",
+          "quote": "Relatives à « l’environnement » du système construit Domaine Environnement physique Acteurs, utilisateurs Organisation"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A non-functional requirement is an attrib-"
         }
+      ],
+      "notions": [
+        "n-typologie-exigences",
+        "n-nfr-attribut-qualite"
       ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Une NFR qualifie donc soit **une FR précise** (attribut qualité), soit un ensemble plus large, et elle se décompose alors en FR (partie 5).",
-        "en": "So an NFR qualifies either **one precise FR** (quality attribute), or something wider, and then it breaks down into FRs (part 5)."
-      },
-      "explain": true
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "1.2 La classification de l’ISO 29148 : six types",
-        "en": "1.2 The ISO 29148 classification: six types"
+        "fr": "1.2 Les types de l’ISO 29148",
+        "en": "1.2 The ISO 29148 types"
       }
     },
     {
@@ -624,8 +727,8 @@
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "**Six catégories** : FR (service attendu) · NFR (qualité ; **attribut qualité** si elle qualifie une FR) · contrainte (réduit les solutions : projet, technique, organisationnelle) · hypothèse (environnement) · processus (développement, livraison) · légale (imposée par un texte). L’ISO isole aussi **performance** et **interface**.",
-        "en": "**Six categories**: FR (expected service) · NFR (quality; **quality attribute** if it qualifies an FR) · constraint (reduces solutions: project, technical, organisational) · assumption (environment) · process (development, delivery) · legal (imposed by a text). ISO also separates **performance** and **interface**."
+        "fr": "**Six catégories** : FR (ce que le système fait) · NFR (une qualité qu’il doit avoir) · contrainte (une limite sur les solutions : projet, technique, organisationnelle) · hypothèse (un fait sur l’environnement) · processus (développement, livraison) · légale (imposée par un texte). L’ISO isole aussi **performance** et **interface**.",
+        "en": "**Six categories**: FR (what the system does) · NFR (a quality it must have) · constraint (a limit on solutions: project, technical, organisational) · assumption (a fact about the environment) · process (development, delivery) · legal (imposed by a text). ISO also separates **performance** and **interface**."
       }
     },
     {
@@ -635,115 +738,37 @@
     {
       "type": "heading",
       "text": {
-        "fr": "2. Distinguer les catégories : les confusions à éviter",
-        "en": "2. Telling the categories apart: confusions to avoid"
+        "fr": "2. Relier une NFR aux exigences fonctionnelles (annales, Q7)",
+        "en": "2. Linking an NFR to functional requirements (exams, Q7)"
       }
     },
     {
-      "type": "table",
-      "headers": [
-        {
-          "fr": "Confusion",
-          "en": "Confusion"
-        },
-        {
-          "fr": "Comment trancher",
-          "en": "How to decide"
-        },
-        {
-          "fr": "Exemple",
-          "en": "Example"
-        }
-      ],
-      "rows": [
-        [
-          {
-            "fr": "**FR ou NFR ?**",
-            "en": "**FR or NFR?**"
-          },
-          {
-            "fr": "FR : ce que le système **fait**. NFR : une **qualité** qu’il doit avoir en le faisant.",
-            "en": "FR: what the system **does**. NFR: a **quality** it must have while doing it."
-          },
-          {
-            "fr": "« Identifier les anciens clients » : FR. « Capacité d’enregistrement 120 % supérieure aux données » : NFR.",
-            "en": "“Identify former customers”: FR. “Storage capacity 120% greater than the data”: NFR."
-          }
-        ],
-        [
-          {
-            "fr": "**NFR ou contrainte ?**",
-            "en": "**NFR or constraint?**"
-          },
-          {
-            "fr": "La NFR est une qualité **du système** ; la contrainte **restreint les solutions** (technologie, coût, délai, fournisseur) sans rien dire du système. Chez Glinz, la contrainte devient une sorte de NFR (partie 3).",
-            "en": "The NFR is a quality **of the system**; the constraint **restricts the solutions** (technology, cost, deadline, supplier) without saying anything about the system. For Glinz, a constraint becomes a kind of NFR (part 3)."
-          },
-          {
-            "fr": "« Fonctionner avec la technologie O » : contrainte.",
-            "en": "“Work with technology O”: constraint."
-          }
-        ],
-        [
-          {
-            "fr": "**Attribut qualité ou NFR plus large ?**",
-            "en": "**Quality attribute or wider NFR?**"
-          },
-          {
-            "fr": "Attribut qualité si la NFR qualifie **une FR précise** ; sinon, elle se décompose en FR.",
-            "en": "Quality attribute if the NFR qualifies **one precise FR**; otherwise, it breaks down into FRs."
-          },
-          {
-            "fr": "—",
-            "en": "—"
-          }
-        ],
-        [
-          {
-            "fr": "**Exigence ou hypothèse ?**",
-            "en": "**Requirement or assumption?**"
-          },
-          {
-            "fr": "Une exigence est **demandée au système** ; une hypothèse **décrit son environnement** sans rien lui demander.",
-            "en": "A requirement is **asked of the system**; an assumption **describes its environment** without asking anything of it."
-          },
-          {
-            "fr": "—",
-            "en": "—"
-          }
-        ]
-      ],
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**[[term-attribut-qualite|Attribut qualité]]** : exigence non fonctionnelle **associée à une exigence fonctionnelle**, de **portée limitée**, et **spécifiée sous forme d’attribut** de cette exigence. Le cours ajoute que **les autres NFR se décomposent en FR**.",
+        "en": "**[[term-attribut-qualite|Quality attribute]]**: a non-functional requirement **associated with a functional requirement**, with a **limited scope**, and **specified as an attribute** of that requirement. The course adds that **the other NFRs break down into FRs**."
+      },
       "src": [
         {
           "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Typologie",
-          "quote": "services acendus de la part du système"
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle • Portée limitée • Spécifiée sous forme d’acribut"
         },
         {
           "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Typologie",
-          "quote": "Qualités non directement implémentables Performance, Sécurité, Fiabilité, Flexibilité, Ergonomie"
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exemples",
-          "quote": "le système doit identifier les anciens clients"
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exemples",
-          "quote": "la capacité d'enregistrement du système doit être 120% supérieure à la quantité de données à enregistrer"
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Contraintes",
-          "quote": "Ne définissent pas le système, mais réduisent l’espace des solutions possible"
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exemples",
-          "quote": "le système doit fonctionner avec la technologie O"
-        },
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Les autres NFR se décomposent en FR"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux relations dans le cours : la NFR est un **attribut qualité** d’une FR, ou elle se **décompose en FR**. Exemple de Glinz : « empêcher tout accès non autorisé » s’affine en « la base n’accorde l’accès qu’aux utilisateurs autorisés par nom et mot de passe ». Vision classique : l’exigence devient fonctionnelle. Taxonomie de Glinz : elle reste une exigence de **sécurité**, seule sa représentation devient opérationnelle (revue ou test).",
+        "en": "Two relations in the course: the NFR is a **quality attribute** of an FR, or it **breaks down into FRs**. Glinz’s example: “prevent any unauthorized access” is refined into “the database grants access only to users authorized by user name and password”. Classic view: the requirement becomes functional. Glinz’s taxonomy: it remains a **security** requirement; only its representation becomes operational (review or test)."
+      },
+      "src": [
         {
           "file": "sources-texte/isi1/1-ie-introduction.md",
           "loc": "Exigences « non fonctionnelles »",
@@ -755,38 +780,91 @@
           "quote": "Les autres NFR se décomposent en FR"
         },
         {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Hypothèses",
-          "quote": "Relatives à « l’environnement » du système construit Domaine Environnement physique Acteurs, utilisateurs Organisation"
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "“The system shall prevent any unauthorized access to"
         },
         {
           "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "4.2. A definition based on concerns",
-          "quote": "DEFINITION. A non-functional requirement is an attrib-"
+          "loc": "3.3. Representation problems",
+          "quote": "requirement to “The database shall grant access to the cus-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "In a nutshell, the kind of a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "requirement is always the same, regardless of its rep-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "5. Discussion",
+          "quote": "remains invariant under refinement and change as"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 2",
+          "quote": "Operational    Review, test or formal verification"
         }
       ],
       "notions": [
-        "n-typologie-exigences",
+        "n-nfr-raffinement-fr",
         "n-nfr-attribut-qualite"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Annales, Q7.** 2013 : les NFR peuvent « (a) servir de critère de décision…, (b) s’affiner en exigences fonctionnelles, (c) servir d’attribut qualité » → **VRAI** proposé : (b) et (c) sont dans le cours, (a) n’est pas dans les supports (voir les *soft goals* des modèles de buts). 2014 : « les exigences fonctionnelles peuvent s’affiner en exigences non fonctionnelles » → **FAUX** proposé. **Relis toujours le sens de la flèche** : seul NFR → FR est étayé.",
+        "en": "**Past exams, Q7.** 2013: NFRs can “(a) serve as a decision criterion…, (b) be refined into functional requirements, (c) serve as a quality attribute” → proposed **TRUE**: (b) and (c) are in the course, (a) is not in the course materials (see the *soft goals* of goal models). 2014: “functional requirements can be refined into non-functional requirements” → proposed **FALSE**. **Always re-read the direction of the arrow**: only NFR → FR is supported."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "Partie A, Q7",
+          "quote": "Les exigences non fonctionnelles peuvent : (a) servir de critère de décision pour choisir les exigences fonctionnelles, (b) s'affiner en exigences fonctionnelles"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "Partie A, Q7",
+          "quote": "Les exigences fonctionnelles peuvent s'affiner en exigences non fonctionnelles."
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle • Portée limitée • Spécifiée sous forme d’acribut"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Les autres NFR se décomposent en FR"
+        }
+      ],
+      "notions": [
+        "n-nfr-raffinement-fr",
+        "n-nfr-critere-decision"
       ]
     },
     {
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "FR = ce que le système fait · NFR = une qualité qu’il doit avoir · contrainte = une limite sur les solutions · hypothèse = un fait sur l’environnement. Une NFR qui qualifie une seule FR est un **attribut qualité**.",
-        "en": "FR = what the system does · NFR = a quality it must have · constraint = a limit on the solutions · assumption = a fact about the environment. An NFR that qualifies a single FR is a **quality attribute**."
+        "fr": "Une NFR est soit un **attribut qualité** d’une FR précise, soit **décomposée en FR**. Sens de la flèche : seul **NFR → FR** est étayé ; « les FR s’affinent en NFR » est faux. Chez Glinz, une NFR affinée reste une NFR : seule sa représentation change.",
+        "en": "An NFR is either a **quality attribute** of a specific FR, or **broken down into FRs**. Direction of the arrow: only **NFR → FR** is supported; “FRs are refined into NFRs” is false. For Glinz, a refined NFR stays an NFR: only its representation changes."
       }
     },
     {
       "type": "checkpoint",
-      "quizId": "isi1-03-qz-18"
+      "quizId": "isi1-03-qz-05"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "3. Qu’est-ce qu’une NFR ? La définition de Glinz et les trois problèmes",
-        "en": "3. What is an NFR? Glinz’s definition and the three problems"
+        "fr": "3. La classification de Glinz et sa méthode",
+        "en": "3. Glinz’s classification and method"
       }
     },
     {
@@ -818,222 +896,10 @@
       "explain": true
     },
     {
-      "type": "subheading",
-      "text": {
-        "fr": "3.1 Pourquoi la notion fait débat : les trois problèmes",
-        "en": "3.1 Why the notion is debated: the three problems"
-      }
-    },
-    {
       "type": "paragraph",
       "text": {
-        "fr": "Le terme est utilisé depuis plus de vingt ans **sans consensus** sur ce qu’il désigne, alors que tous s’accordent sur l’**importance** des NFR, qui peuvent être critiques pour le succès d’un projet. Glinz ramène les difficultés à **trois problèmes**.",
-        "en": "The term has been used for more than twenty years **without consensus** on what it means, although everybody agrees on the **importance** of NFRs, which can be critical for the success of a project. Glinz sums up the difficulties as **three problems**."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "1. Introduction",
-          "quote": "has been in use for more than two decades, there is still"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "1. Introduction",
-          "quote": "no consensus about the nature of non-functional"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "Abstract",
-          "quote": "unanimous consensus that non-"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3. Where is the problem?",
-          "quote": "definition problems, classification problems and repre-"
-        }
-      ],
-      "notions": [
-        "n-nfr-pas-de-consensus",
-        "n-nfr-trois-familles-problemes"
-      ]
-    },
-    {
-      "type": "table",
-      "headers": [
-        {
-          "fr": "Problème",
-          "en": "Problem"
-        },
-        {
-          "fr": "En quoi il consiste",
-          "en": "What it is"
-        },
-        {
-          "fr": "Exemple",
-          "en": "Example"
-        }
-      ],
-      "rows": [
-        [
-          {
-            "fr": "**1. Définition**",
-            "en": "**1. Definition**"
-          },
-          {
-            "fr": "Mêmes mots (propriété, attribut, qualité, contrainte, performance), **sens différents**. Désaccord aussi sur la **portée** (toujours globale, ou parfois locale ?) et le **périmètre** (système seul, ou aussi projet et processus ?).",
-            "en": "Same words (property, attribute, quality, constraint, performance), **different meanings**. Disagreement also on **scope** (always global, or sometimes local?) and **perimeter** (system only, or project and process too?)."
-          },
-          {
-            "fr": "Toute exigence, même fonctionnelle, peut être vue comme une **qualité** (ISO 9000) et comme une **contrainte** (elle réduit les solutions) : ces mots ne suffisent pas à définir une NFR.",
-            "en": "Any requirement, even a functional one, can be seen as a **quality** (ISO 9000) and as a **constraint** (it reduces solutions): these words are not enough to define an NFR."
-          }
-        ],
-        [
-          {
-            "fr": "**2. Classification**",
-            "en": "**2. Classification**"
-          },
-          {
-            "fr": "Chacun découpe les NFR à sa façon, en mélangeant **trois notions** à séparer : le **genre** (fonction, qualité, contrainte…), la **représentation** (la formulation), la **satisfaction** (dure ou souple).",
-            "en": "Everyone splits NFRs their own way, mixing **three notions** that should be separated: **kind** (function, quality, constraint…), **representation** (the wording), **satisfaction** (hard or soft)."
-          },
-          {
-            "fr": "IEEE 830 : interfaces externes, performance, attributs, contraintes de conception. Sommerville : exigences de produit, d’organisation, externes.",
-            "en": "IEEE 830: external interfaces, performance, attributes, design constraints. Sommerville: product, organisational and external requirements."
-          }
-        ],
-        [
-          {
-            "fr": "**3. Représentation**",
-            "en": "**3. Representation**"
-          },
-          {
-            "fr": "Avec les définitions classiques, le genre d’une exigence **dépend de sa formulation**. Et l’on ne sait pas **où documenter** les NFR : section à part, rattachées aux cas d’utilisation, ou liens de traçabilité quand elles ne touchent qu’une partie du système.",
-            "en": "With the classic definitions, the kind of a requirement **depends on its wording**. And nobody knows **where to document** NFRs: a separate section, attached to use cases, or traceability links when they affect only part of the system."
-          },
-          {
-            "fr": "« Empêcher tout accès non autorisé aux données client » (NFR) devient fonctionnelle une fois affinée en « la base n’accorde l’accès qu’aux utilisateurs autorisés par nom et mot de passe ».",
-            "en": "“Prevent any unauthorized access to the customer data” (NFR) becomes functional once refined into “the database grants access only to users authorized by user name and password”."
-          }
-        ]
-      ],
-      "src": [
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "property or characteristic, attribute,"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "can be regarded as a quality, because, according to ISO"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "straint, because it constrains the space of potential"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "non-functional requirements have, by definition, a"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "there are both local non-functional"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "Most definitions refer to system requirements (also"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.1. Definition problems",
-          "quote": "Sommerville [11], project requirements are considered"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.2. Classification problems",
-          "quote": "external interface requirements, per-"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.2. Classification problems",
-          "quote": "requirements, organizational requirements and external"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.2. Classification problems",
-          "quote": "three concepts that should better be separated"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.2. Classification problems",
-          "quote": "representation (see below), and satisfaction (hard vs."
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "“The system shall prevent any unauthorized access to"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "requirement to “The database shall grant access to the cus-"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "In a nutshell, the kind of a requirement"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "In IEEE 830-1998 [7], seven of the eight proposed SRS"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "use case as far as possible. Only the remaining (global)"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "must be handled by setting explicit traceability links."
-        }
-      ],
-      "notions": [
-        "n-nfr-trois-familles-problemes",
-        "n-ieee830-categories-nfr",
-        "n-satisfaction-hard-soft"
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "retenir",
-      "text": {
-        "fr": "**NFR (Glinz) = attribut (performance ou qualité spécifique) ou contrainte.** Pas de consensus sur la définition, consensus sur l’importance. **Trois problèmes** : définition (mêmes mots, sens différents ; portée ; périmètre), classification (découpages divergents ; genre, représentation et satisfaction mélangés), représentation (le genre dépend de la formulation ; où documenter).",
-        "en": "**NFR (Glinz) = attribute (performance or specific quality) or constraint.** No consensus on the definition, consensus on the importance. **Three problems**: definition (same words, different meanings; scope; perimeter), classification (diverging splits; kind, representation and satisfaction mixed up), representation (the kind depends on the wording; where to document)."
-      }
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-03-qz-02"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "4. La classification de Glinz et sa méthode",
-        "en": "4. Glinz’s classification and its method"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Pour lever ces problèmes, Glinz classe une exigence d’après la **[[term-concern|préoccupation]]** à laquelle elle répond, et non d’après sa formulation.",
-        "en": "To solve these problems, Glinz classifies a requirement by the **[[term-concern|concern]]** it addresses, not by its wording."
+        "fr": "Glinz classe une exigence d’après la **[[term-concern|préoccupation]]** à laquelle elle répond, et non d’après sa formulation : c’est ce qui lève les problèmes de la notion de NFR (partie 5).",
+        "en": "Glinz classifies a requirement by the **[[term-concern|concern]]** it addresses, not by its wording: this is what solves the problems of the NFR notion (part 5)."
       },
       "src": [
         {
@@ -1290,8 +1156,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.1 Méthode : classer une exigence",
-        "en": "4.1 Method: classifying a requirement"
+        "fr": "3.1 Méthode : classer une exigence",
+        "en": "3.1 Method: classifying a requirement"
       }
     },
     {
@@ -1420,6 +1286,36 @@
       ]
     },
     {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  W[Why was the requirement stated? Look at the concern, not the wording] --> Q1{Q1: behaviour, data, inputs, reaction to stimuli?}\n  Q1 -- yes --> F[Functional]\n  Q1 -- no --> Q2{Q2: timing, speed, volume, throughput?}\n  Q2 -- yes --> P[Performance]\n  Q2 -- no --> Q3{Q3: a specific quality, an -ility?}\n  Q3 -- yes --> S[Specific quality]\n  Q3 -- no --> Q4{Q4: any other restriction or imposed solution?}\n  Q4 -- yes --> C[Constraint]",
+      "caption": {
+        "fr": "La méthode de Glinz en arbre de décision : les quatre questions, dans cet ordre ; on s’arrête au premier « oui ».",
+        "en": "Glinz’s method as a decision tree: the four questions, in this order; stop at the first “yes”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "Was this requirement stated because we"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... some of the system’s behavior, data, Functional"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... restrictions about timing, processing Performance"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Table 3",
+          "quote": "... a specific quality that the system or a Specific"
+        }
+      ]
+    },
+    {
       "type": "table",
       "headers": [
         {
@@ -1543,8 +1439,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.2 Exemple entièrement corrigé : « Le système doit être facile à utiliser » (annale 2014, R5)",
-        "en": "4.2 Fully worked example: “The system must be easy to use” (2014 exam, R5)"
+        "fr": "3.2 Exemple entièrement corrigé : « Le système doit être facile à utiliser » (annale 2014, R5)",
+        "en": "3.2 Fully worked example: “The system must be easy to use” (2014 exam, R5)"
       }
     },
     {
@@ -1631,8 +1527,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.3 Autres exemples, en bref",
-        "en": "4.3 More examples, in brief"
+        "fr": "3.3 Autres exemples, en bref",
+        "en": "3.3 Other examples, in brief"
       }
     },
     {
@@ -1787,8 +1683,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.4 Erreurs de classification à éviter",
-        "en": "4.4 Classification errors to avoid"
+        "fr": "3.4 Erreurs de classification à éviter",
+        "en": "3.4 Classification errors to avoid"
       }
     },
     {
@@ -1894,108 +1790,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "5. Utiliser la typologie au partiel et en projet",
-        "en": "5. Using the typology in exams and projects"
-      }
-    },
-    {
-      "type": "subheading",
-      "text": {
-        "fr": "5.1 Relier une NFR aux exigences fonctionnelles",
-        "en": "5.1 Linking an NFR to functional requirements"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Deux relations dans le cours : la NFR est un **attribut qualité** d’une FR, ou elle se **décompose en FR**. Exemple de Glinz : « empêcher tout accès non autorisé » s’affine en « la base n’accorde l’accès qu’aux utilisateurs autorisés par nom et mot de passe ». Vision classique : l’exigence devient fonctionnelle. Taxonomie de Glinz : elle reste une exigence de **sécurité**, seule sa représentation devient opérationnelle (revue ou test).",
-        "en": "Two relations in the course: the NFR is a **quality attribute** of an FR, or it **breaks down into FRs**. Glinz’s example: “prevent any unauthorized access” is refined into “the database grants access only to users authorized by user name and password”. Classic view: the requirement becomes functional. Glinz’s taxonomy: it remains a **security** requirement; only its representation becomes operational (review or test)."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exigences « non fonctionnelles »",
-          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle • Portée limitée • Spécifiée sous forme d’acribut"
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exigences « non fonctionnelles »",
-          "quote": "Les autres NFR se décomposent en FR"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "“The system shall prevent any unauthorized access to"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "requirement to “The database shall grant access to the cus-"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "3.3. Representation problems",
-          "quote": "In a nutshell, the kind of a requirement"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "5. Discussion",
-          "quote": "requirement is always the same, regardless of its rep-"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "5. Discussion",
-          "quote": "remains invariant under refinement and change as"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "loc": "Table 2",
-          "quote": "Operational    Review, test or formal verification"
-        }
-      ],
-      "notions": [
-        "n-nfr-raffinement-fr",
-        "n-nfr-attribut-qualite"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Annales, Q7.** 2013 : les NFR peuvent « (a) servir de critère de décision…, (b) s’affiner en exigences fonctionnelles, (c) servir d’attribut qualité » → **VRAI** proposé : (b) et (c) sont dans le cours, (a) n’est pas dans les supports (voir les *soft goals* des modèles de buts). 2014 : « les exigences fonctionnelles peuvent s’affiner en exigences non fonctionnelles » → **FAUX** proposé. **Relis toujours le sens de la flèche** : seul NFR → FR est étayé.",
-        "en": "**Past exams, Q7.** 2013: NFRs can “(a) serve as a decision criterion…, (b) be refined into functional requirements, (c) serve as a quality attribute” → proposed **TRUE**: (b) and (c) are in the course, (a) is not in the course materials (see the *soft goals* of goal models). 2014: “functional requirements can be refined into non-functional requirements” → proposed **FALSE**. **Always re-read the direction of the arrow**: only NFR → FR is supported."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
-          "loc": "Partie A, Q7",
-          "quote": "Les exigences non fonctionnelles peuvent : (a) servir de critère de décision pour choisir les exigences fonctionnelles, (b) s'affiner en exigences fonctionnelles"
-        },
-        {
-          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
-          "loc": "Partie A, Q7",
-          "quote": "Les exigences fonctionnelles peuvent s'affiner en exigences non fonctionnelles."
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exigences « non fonctionnelles »",
-          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle • Portée limitée • Spécifiée sous forme d’acribut"
-        },
-        {
-          "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Exigences « non fonctionnelles »",
-          "quote": "Les autres NFR se décomposent en FR"
-        }
-      ],
-      "notions": [
-        "n-nfr-raffinement-fr",
-        "n-nfr-critere-decision"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": {
-        "fr": "5.2 Rendre une NFR vérifiable",
-        "en": "5.2 Making an NFR verifiable"
+        "fr": "4. Rendre une NFR vérifiable et contrôler un cahier des charges",
+        "en": "4. Making an NFR verifiable and checking a requirements document"
       }
     },
     {
@@ -2034,13 +1830,6 @@
       "notions": [
         "n-verification-selon-representation"
       ]
-    },
-    {
-      "type": "subheading",
-      "text": {
-        "fr": "5.3 Structurer et contrôler un cahier des charges",
-        "en": "5.3 Structuring and checking a requirements document"
-      }
     },
     {
       "type": "paragraph",
@@ -2091,13 +1880,202 @@
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "NFR → FR : attribut qualité, ou décomposition en FR (chez Glinz, seule la représentation change). NFR qualitative → la reformuler de façon quantitative ou opérationnelle. Cahier des charges : FR, NFR, interfaces, contraintes, exigences légales.",
-        "en": "NFR → FR: quality attribute, or breakdown into FRs (for Glinz, only the representation changes). Qualitative NFR → rephrase it in a quantitative or operational way. Requirements document: FRs, NFRs, interfaces, constraints, legal requirements."
+        "fr": "NFR qualitative → la reformuler de façon **quantitative** (mesure) ou **opérationnelle** (revue, test), après accord sur la mesure. Cahier des charges : après les FR, vérifier NFR, interfaces, contraintes et exigences légales.",
+        "en": "Qualitative NFR → rephrase it in a **quantitative** (measurement) or **operational** (review, test) way, after agreeing on the measure. Requirements document: after the FRs, check NFRs, interfaces, constraints and legal requirements."
       }
     },
     {
       "type": "checkpoint",
-      "quizId": "isi1-03-qz-05"
+      "quizId": "isi1-03-qz-08"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "5. Pourquoi la notion de NFR fait débat (pour comprendre)",
+        "en": "5. Why the NFR notion is debated (background)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le terme est utilisé depuis plus de vingt ans **sans consensus** sur ce qu’il désigne, alors que tous s’accordent sur l’**importance** des NFR, qui peuvent être critiques pour le succès d’un projet. Glinz ramène les difficultés à **trois problèmes**.",
+        "en": "The term has been used for more than twenty years **without consensus** on what it means, although everybody agrees on the **importance** of NFRs, which can be critical for the success of a project. Glinz sums up the difficulties as **three problems**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "1. Introduction",
+          "quote": "has been in use for more than two decades, there is still"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "1. Introduction",
+          "quote": "no consensus about the nature of non-functional"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "Abstract",
+          "quote": "unanimous consensus that non-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3. Where is the problem?",
+          "quote": "definition problems, classification problems and repre-"
+        }
+      ],
+      "notions": [
+        "n-nfr-pas-de-consensus",
+        "n-nfr-trois-familles-problemes"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Problème",
+          "en": "Problem"
+        },
+        {
+          "fr": "En bref",
+          "en": "In short"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**1. Définition**",
+            "en": "**1. Definition**"
+          },
+          {
+            "fr": "Mêmes mots (qualité, attribut, contrainte, performance…), **sens différents** ; désaccord sur la portée (globale ou locale) et le périmètre (système seul, ou aussi projet et processus). Toute exigence peut être vue comme une qualité ou une contrainte : ces mots ne suffisent pas.",
+            "en": "Same words (quality, attribute, constraint, performance…), **different meanings**; disagreement on scope (global or local) and perimeter (system only, or project and process too). Any requirement can be seen as a quality or a constraint: these words are not enough."
+          }
+        ],
+        [
+          {
+            "fr": "**2. Classification**",
+            "en": "**2. Classification**"
+          },
+          {
+            "fr": "Chacun découpe à sa façon (IEEE 830, Sommerville…) en mélangeant **genre**, **représentation** et **satisfaction** (dure ou souple).",
+            "en": "Everyone splits NFRs their own way (IEEE 830, Sommerville…), mixing **kind**, **representation** and **satisfaction** (hard or soft)."
+          }
+        ],
+        [
+          {
+            "fr": "**3. Représentation**",
+            "en": "**3. Representation**"
+          },
+          {
+            "fr": "Avec les définitions classiques, le genre **dépend de la formulation** : « empêcher tout accès non autorisé » (NFR) devient fonctionnelle une fois affinée. Et on ne sait pas où documenter les NFR.",
+            "en": "With the classic definitions, the kind **depends on the wording**: “prevent any unauthorised access” (NFR) becomes functional once refined. And nobody knows where to document NFRs."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "property or characteristic, attribute,"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "can be regarded as a quality, because, according to ISO"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "straint, because it constrains the space of potential"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "non-functional requirements have, by definition, a"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "there are both local non-functional"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "Most definitions refer to system requirements (also"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.1. Definition problems",
+          "quote": "Sommerville [11], project requirements are considered"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "external interface requirements, per-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "requirements, organizational requirements and external"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "three concepts that should better be separated"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.2. Classification problems",
+          "quote": "representation (see below), and satisfaction (hard vs."
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "“The system shall prevent any unauthorized access to"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "requirement to “The database shall grant access to the cus-"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "In a nutshell, the kind of a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "In IEEE 830-1998 [7], seven of the eight proposed SRS"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "use case as far as possible. Only the remaining (global)"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "3.3. Representation problems",
+          "quote": "must be handled by setting explicit traceability links."
+        }
+      ],
+      "notions": [
+        "n-nfr-trois-familles-problemes",
+        "n-ieee830-categories-nfr",
+        "n-satisfaction-hard-soft"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Pas de consensus sur la définition des NFR, consensus sur leur importance. Trois problèmes : définition, classification, représentation. La réponse de Glinz : classer par préoccupation (partie 3).",
+        "en": "No consensus on the definition of NFRs, consensus on their importance. Three problems: definition, classification, representation. Glinz’s answer: classify by concern (part 3)."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-03-qz-02"
     }
   ],
   "glossary": [
@@ -3049,38 +3027,6 @@
       }
     },
     {
-      "id": "isi1-03-qz-03",
-      "type": "true_false",
-      "statement": {
-        "fr": "La plupart des définitions ne visent que les exigences système (ou produit) et excluent les exigences de projet et de processus ; Kotonya et Sommerville, eux, rangent les exigences de projet parmi les exigences non fonctionnelles.",
-        "en": "Most definitions only cover system (or product) requirements and exclude project and process requirements; Kotonya and Sommerville, however, count project requirements among non-functional requirements."
-      },
-      "answer": true,
-      "justification": {
-        "fr": "VRAI : c'est le désaccord sur le **périmètre** relevé par Glinz. Dans sa propre taxonomie, les exigences de projet et de processus sont distinguées dès la racine et ne sont pas des NFR.",
-        "en": "TRUE: this is the disagreement on **scope** noted by Glinz. In his own taxonomy, project and process requirements are distinguished at the root level and are not NFRs."
-      },
-      "level": "remember",
-      "src": [
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "quote": "Most definitions refer to system requirements (also",
-          "loc": "3.1. Definition problems"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "quote": "Sommerville [11], project requirements are considered",
-          "loc": "3.1. Definition problems"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "quote": "should be distinguished at the root level and not in a",
-          "loc": "4.2. A definition based on concerns"
-        }
-      ],
-      "objective": "o3"
-    },
-    {
       "id": "isi1-03-qz-04",
       "type": "mcq",
       "question": {
@@ -3180,37 +3126,6 @@
         "n-nfr-raffinement-fr"
       ],
       "objective": "o5"
-    },
-    {
-      "id": "isi1-03-qz-06",
-      "type": "true_false",
-      "statement": {
-        "fr": "Le gabarit Volere et sept des huit modèles de SRS de l'IEEE 830 rattachent chaque exigence non fonctionnelle au cas d'utilisation concerné, au lieu de les documenter séparément.",
-        "en": "The Volere template and seven of the eight SRS templates of IEEE 830 attach each non-functional requirement to the relevant use case instead of documenting them separately."
-      },
-      "answer": false,
-      "justification": {
-        "fr": "FAUX : Volere et sept des huit modèles de l'IEEE 830 **séparent complètement** fonctionnel et non fonctionnel. C'est avec les cas d'utilisation du RUP que les NFR sont **rattachées** au cas, seules les NFR globales restant à part.",
-        "en": "FALSE: Volere and seven of the eight IEEE 830 templates **separate completely** functional and non-functional requirements. It is with RUP use cases that NFRs are **attached** to the use case, only global NFRs being kept apart."
-      },
-      "level": "understand",
-      "src": [
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "quote": "In IEEE 830-1998 [7], seven of the eight proposed SRS",
-          "loc": "3.3. Representation problems"
-        },
-        {
-          "file": "sources-texte/isi1/5-on-nfrs.md",
-          "quote": "use case as far as possible. Only the remaining (global)",
-          "loc": "3.3. Representation problems"
-        }
-      ],
-      "objective": "o3",
-      "trap": {
-        "fr": "Attribuer à Volere et à l’IEEE 830 le rattachement aux cas d’utilisation (c’est le RUP).",
-        "en": "Attributing use-case attachment to Volere and IEEE 830 (it is RUP)."
-      }
     },
     {
       "id": "isi1-03-qz-07",

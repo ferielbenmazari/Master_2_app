@@ -208,8 +208,8 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "L’annale cite une démarche en trois temps pour l’assertion « un débit minimum de 25 images par seconde sera proposé 7 jours sur 7 » : (1) l’**identifier de manière unique** et lui donner un **titre**, de préférence lui aussi identifiant unique ; (2) si ce titre est difficile à trouver, c’est le signe d’un **flou sémantique** : reformuler ; (3) se demander si le responsable de la vérification pourra **vérifier** cela sur le système.",
-        "en": "The exam quotes a three-step approach for the statement “a minimum rate of 25 frames per second will be offered 7 days a week”: (1) **uniquely identify** it and give it a **title**, preferably also a unique identifier; (2) if the title is hard to find, it signals **semantic vagueness**: rephrase; (3) ask whether the person in charge of verification will be able to **verify** it on the system."
+        "fr": "L’annale cite une démarche en trois temps pour l’assertion « un débit minimum de 25 images par seconde sera proposé 7 jours sur 7 » : (1) l’**identifier de manière unique** et lui donner un **titre** ; (2) titre difficile à trouver = **flou sémantique** : reformuler ; (3) le responsable de la vérification pourra-t-il la **vérifier** ? Le titre teste l’ambiguïté, la question 3 la vérifiabilité ; et « sera » (*will*) n’oblige pas : il faut « doit » (*shall*).",
+        "en": "The exam quotes a three-step approach for the statement “a minimum rate of 25 frames per second will be offered 7 days a week”: (1) **uniquely identify** it and give it a **title**; (2) a title hard to find = **semantic vagueness**: rephrase; (3) will the person in charge of verification be able to **verify** it? The title tests ambiguity, question 3 verifiability; and “will” is not mandatory: “shall” is needed."
       },
       "src": [
         {
@@ -226,28 +226,11 @@
           "file": "ressources/S3__ISI1/Markdown/examen_3.md",
           "loc": "D. Réflexion",
           "quote": "sera en mesure de vérifier cela sur le système"
-        }
-      ],
-      "notions": [
-        "n-identifiant-unique"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Lu avec le cours : l’identifiant sert la traçabilité, le titre teste l’**ambiguïté**, la dernière question teste la **vérifiabilité**. Et le verbe « sera » (*will*) exprime un fait ou une intention, non obligatoire : une exigence s’écrit avec « doit » (*shall*).",
-        "en": "Read with the course: the identifier serves traceability, the title tests **ambiguity**, the last question tests **verifiability**. And “will be” expresses a fact or an intention, which is not mandatory: a requirement is written with “shall”."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
           "loc": "5.2.3",
           "quote": "Statements of fact, futurity, or a declaration of purpose are non-mandatory, no-binding provisions and use"
-        },
-        {
-          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
-          "loc": "5.2.7 Requirements attributes",
-          "quote": "Unique identifiers aid in requirements tracing."
         }
       ],
       "notions": [
@@ -1426,22 +1409,32 @@
       ]
     },
     {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "Annale 2014, Q12 : « Un modèle global d’échange des exigences décrira non seulement les exigences et leurs attributs, mais aussi les dépendances qui les lient entre elles et avec d’autres artefacts. » Corrigé proposé : **VRAI** : c’est le schéma AFIS du support.",
-        "en": "2014 exam, Q12: “A global requirements exchange model will describe not only requirements and their attributes, but also the dependencies between them and with other artefacts.” Proposed answer: **TRUE**: this is the AFIS schema of the slides."
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  R[Requirement]\n  R -->|emitted by| S[Source: name, domain]\n  R -->|supported by| J[Justification]\n  R -->|valid under| C[Condition]\n  R -->|verified by| V[Verification: description, means]\n  R -->|allocated to| P[Product: nature, type]\n  R -->|presents| K[Compromise]\n  R --- Ri[Risk: description, severity]",
+      "caption": {
+        "fr": "Le modèle d’échange du support (structure de référentiel AFIS, redessinée et simplifiée) : chaque exigence est reliée à sa source, sa justification, ses conditions, sa vérification, le produit auquel elle est allouée, ses compromis et ses risques.",
+        "en": "The exchange model of the slides (AFIS repository structure, redrawn and simplified): each requirement is linked to its source, justification, conditions, verification, the product it is allocated to, compromises and risks."
       },
       "src": [
-        {
-          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
-          "loc": "A. Q12",
-          "quote": "Un modèle global d'échange des exigences s'attachera à décrire non seulement les exigences et leurs attributs, mais aussi les dépendances qui les lient entre elles et avec d'autres artefacts"
-        },
         {
           "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
           "loc": "Requirements repository structure",
           "quote": "Requirements repository structure (Source : AFIS) Source"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Requirements repository structure",
+          "quote": "Emitted by Justification Valable under"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Requirements repository structure",
+          "quote": "Verified by Presents 0.1 Compromise Allocated to"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Requirements repository structure",
+          "quote": "Verification Product n Risk"
         }
       ]
     },
@@ -1488,10 +1481,20 @@
       "type": "callout",
       "variant": "exam",
       "text": {
-        "fr": "Annale 2014, Q20 : les wikis, Google Drive et certains outils d’IE sont une bonne manière de « rendre les documents de spécification d’exigences faciles à modifier ». Corrigé proposé : **VRAI**, à nuancer : l’outil aide, mais la modifiabilité tient d’abord à la structure du document et à sa gestion de versions.",
-        "en": "2014 exam, Q20: wikis, Google Drive and some RE tools are a good way to “make requirements specification documents easy to modify”. Proposed answer: **TRUE**, with a nuance: the tool helps, but modifiability depends first on the document structure and its version management."
+        "fr": "Annale 2014. **Q12** : un modèle global d’échange décrit les exigences, leurs attributs **et** leurs dépendances entre elles et avec d’autres artefacts → **VRAI** (schéma AFIS). **Q20** : les wikis, Google Drive et certains outils d’IE rendent les documents « faciles à modifier » → **VRAI**, à nuancer : la modifiabilité tient d’abord à la structure du document et à sa gestion de versions.",
+        "en": "2014 exam. **Q12**: a global exchange model describes requirements, their attributes **and** their dependencies with each other and with other artefacts → **TRUE** (AFIS schema). **Q20**: wikis, Google Drive and some RE tools make documents “easy to modify” → **TRUE**, with a nuance: modifiability depends first on the document structure and its version management."
       },
       "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q12",
+          "quote": "Un modèle global d'échange des exigences s'attachera à décrire non seulement les exigences et leurs attributs, mais aussi les dépendances qui les lient entre elles et avec d'autres artefacts"
+        },
+        {
+          "file": "sources-texte/isi1/14-ireb-cpre-4-documents-des-exigences.md",
+          "loc": "Requirements repository structure",
+          "quote": "Requirements repository structure (Source : AFIS) Source"
+        },
         {
           "file": "ressources/S3__ISI1/Markdown/examen_3.md",
           "loc": "A. Q20",
