@@ -15,7 +15,7 @@ App web (PWA) de révision **bilingue FR/EN** pour le Master 2 MIAGE SBI. 3 util
 - **Une tâche du backlog à la fois.** Commande : `/next-task` (app) ou `/ajouter-cours <id>` (contenu). État global : `/etat-projet`.
 - Rester **dans le périmètre** de la tâche. Une idée hors périmètre → l'ajouter en fin de `backlog/IDEES.md`, ne pas la coder.
 - **Ne jamais modifier `ressources/`** (sources des profs, lecture seule).
-- **Contenu : la classe d'abord.** Périmètre = `content/<id>/PROGRAMME.md` (+ notes de cours). Ordre : le cours de tous les chapitres → les quiz → le reste. Mode économe : `/cours-essentiel` puis `/quiz-essentiel` ; mode complet : `/ajouter-cours`.
+- **Contenu : la classe d'abord.** Périmètre = `content/<id>/PROGRAMME.md` (+ notes de cours). Ordre : le cours de tous les chapitres → les quiz → le reste. Format : **structuré, orienté sommaire et partiel** (`docs/06` §11 : sommaire priorisé validé d'abord, notions du plus important au moins important, rien qui peut tomber n'est supprimé, schémas du cours redessinés). Nouveau cours : `/rediger-cours` puis `/quiz-essentiel` ; cours existant à corriger : `/refondre-cours` ; pipeline complet avec agents : `/ajouter-cours`.
 - **Contenu : zéro invention.** Aucune information de cours sans citation vérifiable (`src`). Les sources s'interrogent via le serveur MCP `m2-sources` (ou `npm run sources -- …`), qui ne renvoie par défaut que les supports de cours et les annales.
 - **Pas de nouvelle dépendance** hors de la liste de `docs/01-architecture.md` sans ADR (`docs/adr/NNN-titre.md`).
 - Avant chaque commit : **`npm run check` doit être vert**. Sinon on corrige, on ne contourne pas (pas de `// @ts-ignore`, pas de test désactivé).

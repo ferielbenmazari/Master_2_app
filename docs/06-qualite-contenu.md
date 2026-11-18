@@ -83,7 +83,7 @@ Produit par `course-analyst` à partir des annales, des consignes et des support
 2. **Tournures typiques** des énoncés, copiées telles quelles.
 3. **Pièges récurrents** (ex. Kano « must have » ≠ satisfaction ; OR ≠ XOR ; « parfaitement », « jamais », « garantir »…).
 4. **Notions sur lesquelles le prof insiste** (répétées, encadrées, « important »).
-5. **Exemples et cas fétiches** du prof (deadbot MemoriaTech, gardes britanniques, VOD…) → **à réutiliser en priorité** comme fil rouge et dans les exercices.
+5. **Exemples et cas fétiches** du prof (deadbot MemoriaTech, gardes britanniques, VOD…) → **à réutiliser en priorité** dans les exemples corrigés et les exercices.
 6. **Vocabulaire exact** FR/EN employé par le prof (et termes à ne pas utiliser).
 7. **Ce qui rapporte des points** (barèmes, attendus des livrables).
 
@@ -109,6 +109,8 @@ Chaque `quiz[]`, question d'examen et `exercises[]` porte `level` :
 **Test de l'étudiant pressé** (`content-reviewer`) : pour chaque question, « un étudiant qui n'a pas ouvert le cours mais qui est malin trouverait-il la réponse ? » Si oui → réécrire.
 
 ## 6. G5 — Apprendre beaucoup, vite, avec envie
+
+> **Forme remplacée par §10 et §11** (format structuré, orienté sommaire et partiel, depuis le 2026-11-17) : plus d’épisodes narratifs ni d’accroches. Restent valables : rappel actif (un `checkpoint` par partie), double codage (schémas du cours redessinés), exemples du prof, pièges d’examen visibles ; les limites de longueur sont indicatives.
 
 Principes (sciences cognitives) appliqués à chaque chapitre :
 1. **Épisodes courts** : l'histoire est découpée en épisodes de 3-4 min (≈ 350-450 mots FR), chacun commençant par un `heading` et finissant par un `checkpoint` (rappel actif immédiat).
@@ -209,3 +211,38 @@ Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), ja
 - Les limites de §6 deviennent indicatives : `W-paragraph-long`, `W-episode-long` et `W-chapter-long` se traitent au cas par cas (une notion A peut justifier une partie plus longue ; un chapitre court est préférable).
 - Les débats de chercheurs ne restent que s'ils expliquent une notion, en quelques lignes.
 
+
+## 11. Méthode orientée sommaire et réussite au partiel (2026-11-18) — standard pour toutes les matières
+
+> Décision de l'utilisatrice après la refonte d'ISI1 : « la version structurée et synthétique est infiniment mieux que la version narrative… Prioriser les notions, ne pas insister sur les notions secondaires, mettre en valeur et développer les notions importantes, trier les informations et zapper les notions inutiles : je gagne du temps, sachant que je n'ai pas le temps de tout apprendre. » Mais : « je n'aime pas l'idée de retirer une notion qui pourrait tomber au partiel ; on peut la synthétiser, mais si elle peut tomber, on la garde. »
+> Outils : `/refondre-cours` (cours existant) et `/rediger-cours` (nouveau cours). Modèle : ISI1 (`content/isi1/REFONTE-ARCHITECTURE.md` et ses chapitres). Ce paragraphe prime sur §6 et §9.2.
+
+### 11.1 Quatre principes
+1. **Sommaire d'abord.** Avant d'écrire, on refait le sommaire de la matière (chapitres → parties → sous-parties) à partir des notions classées par preuve d'examen (§9.1), et on le fait **valider par l'utilisatrice**. Les slides sont une source, pas un plan.
+2. **Orienté partiel.** La place d'une notion dépend de ses chances de tomber : A et B **développés** (définition, tableau complet, méthode, exemple corrigé, piège d'annale), C **condensé** (2 à 4 lignes), D en `repere` (1 à 3 lignes) ou supprimé, E en fiche courte.
+3. **Ne jamais supprimer une notion qui peut tomber** : la synthétiser (une ligne, une case de tableau, une flashcard) est permis, la retirer non. Ce qu'on supprime, c'est le **parasite** : récits, accroches, anecdotes, débats d'auteurs qui n'expliquent rien, historiques, chiffres sans enjeu, répétitions, paraphrase des slides. En cas de doute sur une notion : on la garde, condensée.
+4. **Du plus important au moins important**, tant que ça reste compréhensible. Ordre des chapitres = progression logique (souvent le plan du prof). Ordre des parties dans un chapitre = priorité au partiel (A d'abord), sauf si une notion en suppose une autre : on place alors 2 lignes de fondement avant, pas une partie entière.
+
+### 11.2 Ce que contient un chapitre
+- **Court** : 5 à 12 min (≤ 2 000 mots de récit) ; fiches complémentaires (E) ≤ 5 min. Un chapitre trop long se resserre (parasites, cellules de tableau, doublons) avant de se découper.
+- **Chaque partie** : `heading` numéroté → `definition` → tableau ou liste **complète** (nombre d'éléments annoncé) → si c'est une compétence : `method` puis **exemple corrigé** juste après → piège d'annale (`exam` : énoncé + corrigé proposé en 1 ou 2 lignes) → `retenir` → `checkpoint`.
+- **Liens entre notions** visibles : une phrase ou un `callout tip` « Le lien avec… » quand une notion en éclaire une autre (ex. Kano ↔ familles de techniques ; cas complémentaires ↔ raffinement ET) ; `synthesis.links` ; `prerequisites` / `next` à jour. Renvoyer à un chapitre par son **titre**, jamais par son numéro.
+- **Schémas et illustrations** : tout schéma des supports qui porte une notion A ou B est **redessiné** en bloc `diagram` (Mermaid, libellés en anglais, légende FR/EN « … (redessiné) », `src` vers la slide). Une méthode en étapes peut devenir un arbre de décision ; un exemple corrigé gagne à montrer l'avant (modèle fautif) et l'après ; une famille de techniques, une carte mentale ; une courbe du cours, un `xychart-beta` (valeurs dites « illustratives »). Au moins un schéma par chapitre dès que le cours en contient.
+- Corrigés détaillés d'annales dans `exercises` ; quiz au format du prof (`/quiz-essentiel`).
+
+### 11.3 Contrôles avant commit (en plus de §7)
+- `npm run validate:content` : 0 erreur et **0 avertissement** sur les chapitres touchés ; couverture ★★★ / ★★ intacte.
+- `npm run check` (inclut `src/content/diagrams.test.ts`, qui refuse tout schéma Mermaid invalide).
+- **Rendu à l'écran** des schémas : `npm run build`, puis `npx vite preview --port 4179 --strictPort` en arrière-plan, puis `node tools/cours/capture-schemas.mjs <id> <chapitre…>` et regarder les captures (lisibles en largeur téléphone ?). **Ne jamais lancer un second `npm run dev`** : celui de l'utilisatrice tourne souvent sur 5173 et Vite efface alors son cache (les schémas ne s'affichent plus chez elle).
+- `node tools/cours/outline.mjs <id> <chapitre>` : le sommaire se lit comme un plan de révision, parties dans l'ordre de priorité, mots ≤ cible.
+
+### 11.4 Pièges techniques déjà rencontrés
+- En-tête de tableau vide → erreur « champ vide » : toujours nommer la première colonne.
+- Terme de glossaire : au moins une source `cours` ou une annale qui l'emploie ; une source externe seule est refusée.
+- Citations : 4 à 40 mots, recopiées du fichier (le texte extrait peut différer du PDF : « no-binding »). Réutiliser les citations déjà vérifiées : `node tools/cours/citations.mjs <id> "<extrait>"`.
+- V/F : 40 à 65 % de FAUX, et les mots absolus (toujours, jamais, garantir, uniquement…) aussi dans des énoncés VRAIS.
+- Déplacer une notion : mettre à jour son `chapter` dans `notions.json` (la couverture se calcule par préfixe d'id de chapitre), renommer les ids des items déplacés (`<chapitre>-qz-…`), remapper leur `objective`, vérifier que chaque `checkpoint` vise un quiz du chapitre.
+- `story` ≤ 60 blocs ; paragraphe > 90 mots → le passer en liste ; liste ≤ 7 items, sinon tableau.
+- `explain: true` seulement pour relier des faits déjà sourcés dans le chapitre ; sinon un `src`.
+- Mermaid : `xychart-beta` avec `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "…"}}}}%%` (sinon la première courbe est presque invisible) et couleurs nommées dans la légende ; chaîne en `TB`, arbre large en `LR` (lisible sur téléphone) ; libellés entre guillemets s'ils contiennent des parenthèses.
+- Changer l'ordre des chapitres : `course.json.chapterOrder` **et** le champ `order` de chaque chapitre.

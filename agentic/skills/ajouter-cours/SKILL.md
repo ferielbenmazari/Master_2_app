@@ -21,13 +21,16 @@ Agent **content-extractor** (extraction) pour les sources sans texte. `npm run s
 ## 3. Analyse (si `notions.json` absent ou partiel)
 Agent **course-analyst**. Montrer : notions par importance et par chapitre, les ★★★, formats d'examen, incertitudes. **Attendre la validation.** Commit `content(<id>): carte des notions et profil du prof`.
 
+## 3 bis. Sommaire priorisé (docs/06 §11)
+Avant tout chapitre : sommaire de la matière (notions classées A-E avec leur preuve, chapitres dans un ordre logique, parties du plus important au moins important, schémas du cours à redessiner, rien qui peut tomber n'est écarté) dans `content/<id>/SOMMAIRE.md` (étape 1 de `/rediger-cours`). **Attendre la validation.**
+
 ## 4. Chapitres — **le cours de tous les chapitres d'abord, les quiz ensuite**
 Périmètre : `content/<id>/PROGRAMME.md` (lignes `[x]`/`[ ]` + ajouts, jamais `[-]`) et `ressources/S3__<ID>/NOTES/` si présent.
 
 **4a. Cours** — pour chaque chapitre, dans l'ordre de priorité :
-1. **content-author** : « Rédige le COURS du chapitre <nn> de <id> (story, glossary, keyPoints ; quiz vide), aligné sur PROGRAMME.md, compléments selon docs/06 §2 bis. »
+1. **content-author** : « Rédige le COURS du chapitre <nn> de <id> au format structuré de docs/06 §11 (story, glossary, keyPoints ; quiz vide), en suivant la partie du SOMMAIRE.md validé pour ce chapitre, schémas du cours redessinés, compléments selon docs/06 §2 bis. »
 2. **fact-checker** : « Vérifie content/<id>/chapters/<fichier>. »
-3. **content-reviewer** : « Relis le cours de content/<id>/chapters/<fichier> : alignement avec PROGRAMME.md (chaque ligne retenue traitée), exemples du prof, clarté, rythme. »
+3. **content-reviewer** : « Relis le cours de content/<id>/chapters/<fichier> : alignement avec le SOMMAIRE et PROGRAMME.md (chaque ligne retenue traitée), priorités respectées, schémas présents, aucun parasite, aucune notion d'examen supprimée. »
 4. `npm run validate:content`, PROGRAMME → ` → ch.<nn>` sur les lignes couvertes, commit `content(<id>): cours du chapitre <nn>` + push.
 
 **4b. Quiz** — seulement quand **tous** les chapitres ont leur cours :

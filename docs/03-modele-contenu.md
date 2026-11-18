@@ -169,10 +169,10 @@ type ExamQuestion =
 
 > Résumé — la version complète et prioritaire est `06-qualite-contenu.md`.
 
-**Cours narratif (`story`)**
-- Tutoiement, ton chaleureux, phrases courtes. Un **fil rouge** par chapitre, **de préférence un cas ou exemple du prof** (MemoriaTech, gardes britanniques…) ; sinon un personnage simple (paragraphes `narrative: true`).
-- Découpage en **épisodes** de 3-4 min : `heading` → question d'accroche → notion → exemple → piège → `checkpoint`.
-- Ordre type : accroche → problème concret → notion (avec `[[terme]]`) → exemple → analogie → piège d'examen → mini-checkpoint → récap.
+**Cours structuré, orienté sommaire et partiel (`story`)** — détail et règles : `06-qualite-contenu.md` §10 et §11 (le style narratif en épisodes est abandonné depuis le 2026-11-17)
+- Sommaire d'abord : chapitres → parties → sous-parties, **du plus important au moins important** pour le partiel ; une notion qui peut tomber est condensée, jamais supprimée ; le parasite est supprimé.
+- Chaque partie : `heading` numéroté → `definition` → tableau ou liste complète → `method` + exemple corrigé → `exam` (annale) → `retenir` → `checkpoint`.
+- Schémas du cours redessinés en `diagram` ; liens entre notions explicites ; phrases directes, sans accroche.
 - **Chaque terme technique** est introduit avec `[[termId]]` à sa première apparition et défini dans `glossary`.
 - **Fidélité** : n'invente aucune définition, aucun chiffre, aucun auteur. Tout doit venir des `sources`. Si une notion d'examen manque dans les sources, ne l'invente pas : signale-la dans le rapport de tâche.
 - Version **EN** : anglais simple et correct (niveau B2), phrases courtes, **réutilise exactement les termes anglais du cours**. C'est un modèle de ce que l'étudiant doit savoir écrire.

@@ -28,7 +28,7 @@ Tout contenu existe **en FR et en EN simultanément** (voir « Règle bilingue �
 
 | # | Mode | Description | Lot |
 |---|---|---|---|
-| F1 | **Cours narratif** | Le chapitre raconté comme une histoire : simple, agréable, avec un fil rouge. Chaque terme technique est surligné, cliquable, défini dans les deux langues. | 1 |
+| F1 | **Cours structuré** | Le chapitre présenté comme un plan de révision orienté partiel : sommaire priorisé, définitions, tableaux, méthodes et exemples corrigés, schémas du cours redessinés (décisions des 17 et 18 novembre 2026, `docs/06` §10-11 ; remplace le « cours narratif » initial). Chaque terme technique est surligné, cliquable, défini dans les deux langues. | 1 |
 | F2 | **Fiche synthèse** | 5 à 10 points clés par chapitre + glossaire du chapitre. | 1 |
 | F3 | **Glossaire** | Tous les termes d'une matière, recherche FR/EN. | 1 |
 | F4 | **Flashcards** | Répétition espacée (algorithme FSRS) : l'app re-propose ce qu'on oublie. | 1 |
