@@ -345,3 +345,26 @@ Les identifiants techniques des chapitres dont le sujet reste le même sont cons
 3. **Le format dans l'app** : recommandé, une petite tâche de code avant le pilote (sous-titres + encadrés « Définition à connaître » et « À retenir »). Sinon, titres numérotés et définitions en gras dans le format actuel.
 4. **Les règles de forme du §1** inscrites dans `docs/06`, à la place des règles narratives actuelles (épisodes courts, accroches, fil rouge).
 5. **Ordre des phases** : 3 (pilote), puis 1, 2 et 4 (le contenu de l'ancien chapitre 2 sur la qualité passe au chapitre 4, le plus rentable au partiel).
+
+---
+
+## 11. Analyse des annales 2013 et 2014 : notions citées mais absentes ou non définies (2026-11-18)
+
+Demande de l'utilisatrice : repérer les notions, définitions et modèles cités dans les partiels mais absents ou non définis dans les chapitres, et ajouter une préparation au partiel. Bilan :
+
+| Notion de l'annale | État avant | Traitement |
+|---|---|---|
+| « must have », « exciter » (2013 Q2, 2014 Q2, Q19) | Kano développé (Éliciter), lien avec implicite absent du ch. « Les types d'exigences » | Ch. 3, 1.4-1.5 (définitions, axes, correspondances) ; ch. 11 |
+| Exigences implicites, associées, induites (slide de typologie) | « Retiens leur nom seulement » | Ch. 3, 1.4 (Pohl et Rupp, ISO 29148, rapprochements signalés) |
+| NFR « critère de décision » (2013 Q7) | « pas dans les supports » | Ch. 3, 2.2 : relié aux soft goals (van Lamsweerde, Yu) ; ch. 11 |
+| Identifiant : partage, gestion de configuration, classification (Q1) | Seulement nommés | Ch. 5 « Documenter », 1.1 : gestion de configuration et baseline (ISO 29148) ; ch. 11 |
+| i\* et soft goals (2013 Q3) | Une sous-partie | Chapitre i\* (ch. 10) |
+| Cohérence de l'AHP, « indice de cohérence » (2013 Q9, 2014 C) | Mention du ratio | Ch. 8, 2.3 retitré ; ch. 11 : deux sens de « cohérence » |
+| Top 10, 100 $, matrice d'Eisenhower (2014 Q14, Q18) | Encadré « absent des supports » | Ch. 8, 3.3 retitré ; ch. 11 (Eisenhower : rapprochement, à confirmer) |
+| Maturité des pratiques, CMM / CMMI (2013 D) | Absent | Ch. 11 (repère, Boehm et slide 1) |
+| « Développeurs utilisateurs » (2014 Q13) | Omise des annales jouables | Ch. 11, 3.3 : éléments CHAOS 2013, VRAI probable, à confirmer |
+| Complétude / accord / formalisation (2013 Q6) | Corrigé au ch. 1 | Sous-titre 2.1 du ch. 1 et ch. 11 |
+| Dérive des exigences (2014 Q4) | Dans un tableau du ch. 2 | Sous-titre 2.2 du ch. 2 et ch. 11 |
+
+**Nouveau chapitre 11 « Préparer le partiel ISI1 »** (`15-preparer-partiel.json`, 11 min) : format des deux sujets, méthode du vrai / faux (mot qui décide), vocabulaire du prof en 4 tableaux (caractériser, modéliser, documenter et vérifier, prioriser), les 29 vrai / faux des annales regroupés par notion, la question sans source (2014 Q13), les cinq formats d'exercice avec leur méthode et leur corrigé, cinq nouveaux exercices corrigés de type partiel (vrai / faux croisés, médiathèque, facturation, AHP 3 × 3, tableur partagé). Les fiches complémentaires deviennent les chapitres 12 à 14. Sommaires relus : sous-titres complétés pour faire apparaître le vocabulaire d'examen (ch. 1, 2, 3, 4, 5, 7, 8).
+

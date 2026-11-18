@@ -27,7 +27,7 @@ Savoir pourquoi les exigences font échouer les projets, les éliciter, les écr
 | I9 | Classer une exigence (Glinz) et raffiner une NFR | A | 3 |
 
 ## Architecture (refonte structurée terminée le 2026-11-18, voir `REFONTE-ARCHITECTURE.md`)
-Ordre : comprendre (1-2) → caractériser une exigence (3-4) → documenter et gérer (5) → la découvrir (6-7) → décider et modéliser (8-10, dont i*) → lectures complémentaires (11-13). C'est le plan du prof (Introduction, Documentation, Élucidation, Négociation, Modèles, Gestion). À l'intérieur de chaque chapitre, les parties vont du plus important au moins important pour le partiel.
+Ordre : comprendre (1-2) → caractériser une exigence (3-4) → documenter et gérer (5) → la découvrir (6-7) → décider et modéliser (8-10, dont i*) → préparer le partiel (11) → lectures complémentaires (12-14). C'est le plan du prof (Introduction, Documentation, Élucidation, Négociation, Modèles, Gestion). À l'intérieur de chaque chapitre, les parties vont du plus important au moins important pour le partiel.
 
 | Ordre | Fichier | Question directrice | Niveau |
 |---|---|---|---|
@@ -41,9 +41,10 @@ Ordre : comprendre (1-2) → caractériser une exigence (3-4) → documenter et 
 | 8 | `10-priorisation` | Comment décider quelles exigences garder, et dans quel ordre ? | A (I5) |
 | 9 | `13-modeliser` | Comment représenter fonctions et buts, et corriger un modèle fautif ? | A (I3, I4) |
 | 10 | `14-istar` | Comment modéliser ce que chaque acteur attend des autres (i*) ? | A (demande du prof, A13 Q3) |
-| 11 | `07-agilite` | Agile ou plan-driven ? | E (fiche courte) |
-| 12 | `08-grands-referentiels` | Comment outiller des milliers d'exigences en langage naturel ? | E (fiche courte) |
-| 13 | `09-fondements-theoriques` | Que décrit vraiment une exigence ? | E (fiche courte) |
+| 11 | `15-preparer-partiel` | Comment ne rater aucune bonne réponse, même quand le prof emploie un mot non vu ? | A (annales 2013, 2014) |
+| 12 | `07-agilite` | Agile ou plan-driven ? | E (fiche courte) |
+| 13 | `08-grands-referentiels` | Comment outiller des milliers d'exigences en langage naturel ? | E (fiche courte) |
+| 14 | `09-fondements-theoriques` | Que décrit vraiment une exigence ? | E (fiche courte) |
 
 Partiels : `exams/annale-2013.json`, `exams/annale-2014.json` (corrigés proposés, 2014 Q13 omise faute de source).
 
