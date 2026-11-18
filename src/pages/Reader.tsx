@@ -204,6 +204,7 @@ export default function Reader() {
               )}
               {(() => {
                 let sub = 0
+                let subsub = 0
                 return ep.blocks.map((b, j) => {
                   const view = (
                     <StoryBlockView
@@ -215,9 +216,18 @@ export default function Reader() {
                     />
                   )
                   if (b.type !== 'subheading' || ep.n === 0) return view
-                  sub++
+                  // même règle que buildToc : un niveau 3 sans sous-partie ouverte compte comme une sous-partie
+                  if (b.level === 3 && sub > 0) subsub++
+                  else {
+                    sub++
+                    subsub = 0
+                  }
                   return (
-                    <div key={j} id={tocAnchor(ep.n, sub)} className="toc-target">
+                    <div
+                      key={j}
+                      id={subsub > 0 ? tocAnchor(ep.n, sub, subsub) : tocAnchor(ep.n, sub)}
+                      className="toc-target"
+                    >
                       {view}
                     </div>
                   )

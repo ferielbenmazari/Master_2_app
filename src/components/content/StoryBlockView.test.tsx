@@ -20,6 +20,20 @@ describe('StoryBlockView : structure du cours (T26)', () => {
     expect(screen.queryByText(/Partie/)).toBeNull()
   })
 
+  it('sous-titre de 3ᵉ niveau (T28) : rendu en h4', () => {
+    const { container } = render(
+      wrap(
+        <StoryBlockView
+          block={{ type: 'subheading', text: L('1.1.1 Dissatisfier'), level: 3 }}
+          layout="fr"
+          quizHref="#"
+        />,
+      ),
+    )
+    expect(container.querySelector('h4')?.textContent).toBe('1.1.1 Dissatisfier')
+    expect(container.querySelector('h3')).toBeNull()
+  })
+
   it('encadré « Définition à connaître » avec sa source', () => {
     render(
       wrap(

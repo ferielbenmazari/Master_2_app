@@ -93,7 +93,7 @@ for (const [i, b] of c.story.entries()) {
   if (showBlocks) {
     const t = b.text?.[lang] ?? b.caption?.[lang] ?? b.title?.[lang] ?? b.headers?.[0]?.[lang] ?? b.items?.[0]?.[lang] ?? b.quizId ?? ''
     part.lines.push(`  [${i}] ${b.type}${b.variant ? ':' + b.variant : ''} ${String(t).slice(0, 90).replace(/\n/g, ' ')}${b.notions ? '  {' + b.notions.join(', ') + '}' : ''}`)
-  } else if (b.type === 'subheading') part.lines.push(`   ### ${b.text[lang]}`)
+  } else if (b.type === 'subheading') part.lines.push(b.level === 3 ? `      #### ${b.text[lang]}` : `   ### ${b.text[lang]}`)
   else if (b.type === 'diagram') part.lines.push(`   [schéma] ${b.caption[lang].slice(0, 90)}`)
 }
 for (const p of parts) {

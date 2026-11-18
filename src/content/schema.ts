@@ -38,8 +38,8 @@ export type Course = z.infer<typeof CourseSchema>
 // ---------------------------------------------------------------- Story
 export const StoryBlockSchema = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('heading'), text: LSchema }),
-  /** Sous-titre à l'intérieur d'une section (n'ouvre pas de nouvelle partie). */
-  z.strictObject({ type: z.literal('subheading'), text: LSchema }),
+  /** Sous-titre à l'intérieur d'une section (n'ouvre pas de nouvelle partie) ; `level: 3` = sous-partie d'une sous-partie (« 1.2.1 »). */
+  z.strictObject({ type: z.literal('subheading'), text: LSchema, level: z.literal(3).optional() }),
   z.strictObject({
     type: z.literal('paragraph'),
     text: LSchema,

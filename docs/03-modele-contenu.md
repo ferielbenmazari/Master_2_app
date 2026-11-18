@@ -70,7 +70,7 @@ interface Objective { id: string /* "o1" */; text: L; level: Level }
 
 type StoryBlock =
   | { type: "heading"; text: L }                         // un heading = début d'une partie (section numérotée « Partie n/N » dans le lecteur)
-  | { type: "subheading"; text: L }                      // sous-titre à l'intérieur d'une partie (n'en ouvre pas de nouvelle)
+  | { type: "subheading"; text: L; level?: 3 }           // sous-titre à l'intérieur d'une partie (« 1.2 ») ; level 3 = sous-partie d'une sous-partie (« 1.2.1 »)
   | { type: "paragraph"; text: L; src?: SourceRef[]; narrative?: boolean; explain?: boolean; notions?: string[] }
       // explain: true = explication pédagogique : relie des faits sourcés AILLEURS dans le chapitre, n'en ajoute aucun
   | { type: "method"; title: L; steps: { do: L; why: L }[]; src?: SourceRef[]; notions?: string[] } // méthode pas à pas (2-8 étapes)

@@ -92,11 +92,15 @@ export default function StoryBlockView({ block, layout, episode, quizHref, table
       return (
         <Bilingual
           layout={layout}
-          render={(lang, alt) => (
-            <h3 className={alt ? 'story-subheading text-ink-soft' : 'story-subheading'}>
-              <RichText lang={lang} text={block.text[lang]} />
-            </h3>
-          )}
+          render={(lang, alt) => {
+            const Tag = block.level === 3 ? 'h4' : 'h3'
+            const cls = block.level === 3 ? 'story-subsubheading' : 'story-subheading'
+            return (
+              <Tag className={alt ? `${cls} text-ink-soft` : cls}>
+                <RichText lang={lang} text={block.text[lang]} />
+              </Tag>
+            )
+          }}
         />
       )
 
