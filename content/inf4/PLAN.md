@@ -13,7 +13,7 @@
 |---|---|---|---|---|
 | 01 | `01-variabilite.json` | Du sur-mesure à la ligne de produits : la variabilité | 1__introduction.md | à faire |
 | 02 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | cours rédigé (draft) |
-| 03 | `03-cadre-ple.json` | Le cadre PLE : domaine vs application, problème vs solution | 5__soft_ple_detailed.md + 6__ple.md | cours rédigé (draft) |
+| 03 | `03-cadre-ple.json` | Les feature models : lire, donner la sémantique, compter | 5__soft_ple_detailed.md + 6__ple.md | refonte structurée (pilote, 2026-11-18, draft) |
 | 04 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | cours rédigé (draft) |
 | 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/3) : exigences et variantes | 3__application_engineering.md (1re moitié) | cours rédigé (draft) |
 | 06 | `06-ingenierie-application-2.json` | Ingénierie d'application (2/3) : architecture, coût et réalisation | 3__application_engineering.md (ch. 16-17) | refonte pédagogique (draft) |

@@ -1,6 +1,6 @@
 # Refonte INF4 : diagnostic et sommaire priorisé
 
-> **Statut : proposition du 2026-11-18, à valider par l'utilisatrice** avant toute réécriture (`docs/06` §11.1). Méthode : celle d'ISI1 (`content/isi1/REFONTE-ARCHITECTURE.md`), validée le 2026-11-17 : sommaire d'abord, du plus important au moins important, rien qui peut tomber n'est supprimé, schémas du cours redessinés, aucun narratif.
+> **Statut : accepté sans objection le 2026-11-18** (l'utilisatrice a répondu « continue » ; RED-PL placé par défaut après les exigences d'application, à revoir si elle préfère le garder en dernier). Chaque partie a des sous-parties « n.m » (sommaire détaillé, T28). Méthode : celle d'ISI1 (`content/isi1/REFONTE-ARCHITECTURE.md`), validée le 2026-11-17 : sommaire d'abord, du plus important au moins important, rien qui peut tomber n'est supprimé, schémas du cours redessinés, aucun narratif.
 
 **Codes des sources** : S1 cours 1 « Variability and SPLE » (slides) · S2 Böckle, ch. 1 (lecture) · S3 Pohl et al., partie IV, ch. 15-18 (lecture) · S4 article RED-PL (CAiSE 2007) · S6 slides « (Software) PLE » (domain engineering, partie 1) · S7 slides « Domain engineering for reuse, part 2 » (transformation, vérification) · S8 Pohl et al., ch. 10 (lecture) · XLS tableur « configuration ILP » (non citable).
 
@@ -215,4 +215,5 @@ Les identifiants des chapitres sont conservés (l'ordre passe par `course.json.c
 ---
 
 ## 7. Réalisation
-(à compléter au fil de la refonte)
+- **2026-11-18, pilote : chapitre 3 « Les feature models : lire, donner la sémantique, compter »** (`03-cadre-ple.json`, 12 min, 2 180 mots, 5 parties et 15 sous-parties, dont un 3ᵉ niveau). Tableau unique de la notation FODA (9 éléments) ; méthode de comptage + échauffement sur le modèle fil rouge (4 → 8 → 24, puis 16 → 12 → 11, décomptes proposés) ; **corrigé complet de l'exercice du prof par cas : 9 (F13) + 25 (F14) + 12 (F15) = 46**, vérifié par énumération des 8192 combinaisons ; extensive / intensive et PLM / PM ; les 4 langages sur le même PLM (slide 10) ; DOPLER et contraintes en bref ; dialectes, limites, question de discussion (réponse proposée). 4 schémas redessinés (notation sur le modèle fil rouge, voiture, modèle de l'exercice, PLM → PM), contrôlés à l'écran. 18 quiz (3 nouveaux), 18 flashcards (3 nouvelles), exercices et anglais repris.
+- **Écart de source** : une transcription (`5__soft_ple_detailed.md`) dit F2 optionnelle dans l'exercice, l'autre (`6__ple.md`) obligatoire ; seule « obligatoire » redonne les 46 produits du prof (optionnelle : 56). Signalé dans le corrigé.
