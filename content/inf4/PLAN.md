@@ -18,6 +18,7 @@
 | 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/3) : exigences et variantes | 3__application_engineering.md (1re moitié) | cours rédigé (draft) |
 | 06 | `06-ingenierie-application-2.json` | Ingénierie d'application (2/3) : architecture, coût et réalisation | 3__application_engineering.md (ch. 16-17) | refonte pédagogique (draft) |
 | 10 | `10-test-application.json` | Ingénierie d'application (3/3) : tester sans tout retester | 3__application_engineering.md (ch. 18) | refonte pédagogique (draft) — issu de la coupure du 06 (20 min) |
+| 09 | `09-strategies-exigences-pl.json` | Éliciter et spécifier les exigences d’une ligne : trois stratégies | 5__soft_ple_detailed.md + 6__ple.md | refonte structurée (2026-11-18, draft) |
 | 07 | `07-transformation-verification.json` | Traduire un modèle en contraintes : générer et compter les produits | 7__ple.md | refonte structurée (2026-11-18, draft) |
 | 11 | `11-verification-diagnostic.json` | Vérifier, diagnostiquer et corriger un modèle de ligne de produits | 7__ple.md | nouveau, refonte structurée (2026-11-18, draft) |
 | 08 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | refonte pédagogique (draft) |
