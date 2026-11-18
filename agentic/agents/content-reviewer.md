@@ -22,3 +22,6 @@ Tu relis un fichier de `content/<id>/chapters/` ou `exams/` **déjà passé au f
 - Corrections appliquées.
 - Si tout est OK → `"status": "reviewed"` ; sinon liste précise de ce qui bloque.
 - 3-6 lignes au « Rapport de relecture » du `PLAN.md`.
+
+## Vocabulaire du prof et liens (docs/06 §11.2)
+Vérifier que chaque terme employé par le prof dans les annales, titres de slides et consignes est défini dans le cours (définition rapide sourcée, rapprochement signalé) et relié aux autres classifications (axes, correspondances, pièges de V/F croisés). Un terme « seulement nommé » est un défaut à corriger.

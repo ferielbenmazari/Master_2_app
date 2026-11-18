@@ -73,6 +73,10 @@
       {
         "fr": "Cas Deadbot : « exigences non fonctionnelles et contraintes principales ».",
         "en": "Deadbot case: “main non-functional requirements and constraints”."
+      },
+      {
+        "fr": "Annale 2013 Q2 (« must have » = implicites) et 2014 Q2 / Q19 (Kano) : relier les classifications entre elles.",
+        "en": "2013 exam Q2 (“must have” = implicit) and 2014 Q2 / Q19 (Kano): connect the classifications."
       }
     ],
     "probable": [
@@ -143,6 +147,10 @@
       {
         "fr": "Erreurs de classification (Glinz) ≠ défauts de rédaction (bruit, silence, surspécification, ambiguïté, terminologie incohérente).",
         "en": "Classification errors (Glinz) ≠ writing defects (noise, silence, overspecification, ambiguity, inconsistent terminology)."
+      },
+      {
+        "fr": "Explicite / implicite (comment l’exigence est connue) ≠ nature (FR / NFR) ≠ Kano (satisfaction) ≠ origine (induite, associée) : des axes indépendants, reliés par must have ↔ implicite, satisfier ↔ explicite.",
+        "en": "Explicit / implicit (how the requirement is known) ≠ nature (FR / NFR) ≠ Kano (satisfaction) ≠ origin (induced, associated): independent axes, linked by must have ↔ implicit, satisfier ↔ explicit."
       }
     ],
     "links": [
@@ -157,10 +165,14 @@
       {
         "fr": "Modèles de buts : soft goals, rapprochés de la NFR « critère de décision ».",
         "en": "Goal models: soft goals, linked to the NFR as a “decision criterion”."
+      },
+      {
+        "fr": "Kano et le type de connaissance (chapitre « Éliciter les exigences ») : dissatisfier = implicite, satisfier = explicite, delighter = non dit.",
+        "en": "Kano and the type of knowledge (chapter “Eliciting requirements”): dissatisfier = implicit, satisfier = explicit, delighter = unspoken."
       }
     ]
   },
-  "estimatedMinutes": 13,
+  "estimatedMinutes": 15,
   "sources": [
     "sources-texte/isi1/5-on-nfrs.md",
     "sources-texte/isi1/1-ie-introduction.md",
@@ -169,7 +181,8 @@
     "ressources/S3__ISI1/Markdown/examen_2.md",
     "ressources/S3__ISI1/Markdown/examen_3.md",
     "ressources/S3__ISI1/Markdown/exam_1.md",
-    "ressources/S3__ISI1/Markdown/examen_4.md"
+    "ressources/S3__ISI1/Markdown/examen_4.md",
+    "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md"
   ],
   "status": "draft",
   "notions": [
@@ -200,7 +213,9 @@
     "n-taxonomie-concerns",
     "n-types-exigences-iso",
     "n-typologie-exigences",
-    "n-verification-selon-representation"
+    "n-verification-selon-representation",
+    "n-exigences-implicites-associees-induites",
+    "n-axes-classification"
   ],
   "story": [
     {
@@ -706,17 +721,416 @@
       ]
     },
     {
-      "type": "callout",
-      "variant": "warning",
+      "type": "subheading",
       "text": {
-        "fr": "**Ne pas confondre avec d’autres classifications** : Kano classe selon la **satisfaction** (voir l’élicitation) ; shall / should / will / may expriment l’**obligation** (voir la rédaction des exigences). Les exigences « **implicites** », « **associées** » et « **induites** » sont nommées par le cours sans être définies (slides en images) : retiens leur nom seulement.",
-        "en": "**Do not confuse with other classifications**: Kano classifies by **satisfaction** (see elicitation); shall / should / will / may express **obligation** (see writing requirements). “**Implicit**”, “**associated**” and “**induced**” requirements are named by the course but not defined (picture slides): only remember their names."
-      },
+        "fr": "1.4 Explicite, implicite, induite, associée : les définitions rapides",
+        "en": "1.4 Explicit, implicit, induced, associated: quick definitions"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Terme",
+          "en": "Term"
+        },
+        {
+          "fr": "Définition rapide",
+          "en": "Quick definition"
+        },
+        {
+          "fr": "Ce qui la fonde dans le cours",
+          "en": "What grounds it in the course"
+        },
+        {
+          "fr": "Exemple",
+          "en": "Example"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**[[term-explicit-req|Explicite]]**",
+            "en": "**[[term-explicit-req|Explicit]]**"
+          },
+          {
+            "fr": "Demandée expressément : la partie prenante la connaît et la formule",
+            "en": "Expressly demanded: the stakeholder knows and states it"
+          },
+          {
+            "fr": "Pohl et Rupp : « *explicitly demanded* », connaissance **consciente** (satisfiers)",
+            "en": "Pohl and Rupp: “*explicitly demanded*”, **conscious** knowledge (satisfiers)"
+          },
+          {
+            "fr": "« Interface intuitive », écrite dans le cas Deadbot",
+            "en": "“Intuitive interface”, written in the Deadbot case"
+          }
+        ],
+        [
+          {
+            "fr": "**[[term-implicit-req|Implicite]]**",
+            "en": "**[[term-implicit-req|Implicit]]**"
+          },
+          {
+            "fr": "Va de soi : attendue sans être dite (connaissance tacite)",
+            "en": "Goes without saying: expected without being said (tacit knowledge)"
+          },
+          {
+            "fr": "Pohl et Rupp : « *taken for granted* », connaissance **subconsciente** (dissatisfiers, « must have ») ; IREB : « *implicit requirements* » à ne pas oublier",
+            "en": "Pohl and Rupp: “*taken for granted*”, **subconscious** knowledge (dissatisfiers, “must have”); IREB: “*implicit requirements*” not to forget"
+          },
+          {
+            "fr": "Une paie calcule juste : personne ne le demande",
+            "en": "A payroll computes correctly: nobody asks"
+          }
+        ],
+        [
+          {
+            "fr": "**[[term-induced-req|Induite]]** (dérivée)",
+            "en": "**[[term-induced-req|Induced]]** (derived)"
+          },
+          {
+            "fr": "De plus bas niveau, nécessaire pour qu’une exigence de niveau supérieur soit satisfaite ; personne ne la demande",
+            "en": "Lower-level, necessary for a higher-level requirement to be met; nobody asks for it"
+          },
+          {
+            "fr": "ISO 29148 : *derived requirement* (rapprochement) ; une NFR qui « se décompose en FR » induit ces FR",
+            "en": "ISO 29148: *derived requirement* (match); an NFR that “decomposes into FRs” induces those FRs"
+          },
+          {
+            "fr": "« Confidentialité des données » induit « authentification »",
+            "en": "“Data confidentiality” induces “authentication”"
+          }
+        ],
+        [
+          {
+            "fr": "**[[term-associated-req|Associée]]**",
+            "en": "**[[term-associated-req|Associated]]**"
+          },
+          {
+            "fr": "Rattachée à une autre exigence, sans existence propre",
+            "en": "Attached to another requirement, with no existence of its own"
+          },
+          {
+            "fr": "Slide de typologie : l’attribut qualité, « NFR *associée* à une FR » (rapprochement)",
+            "en": "Typology slide: the quality attribute, “NFR *associated* with an FR” (match)"
+          },
+          {
+            "fr": "« Identifier les anciens clients » + « en moins de 2 secondes »",
+            "en": "“Identify former customers” + “in less than 2 seconds”"
+          }
+        ]
+      ],
       "src": [
         {
           "file": "sources-texte/isi1/20-eliciting-requirements.md",
-          "loc": "3.2 Kano",
-          "quote": "the satisfaction is classified into the following three categories"
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Tacit knowledge and implicit"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Les autres NFR se décomposent en FR"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie des exigences",
+          "quote": "Exigences « implicites » Exigences « associées » Exigences « induites »"
+        }
+      ],
+      "notions": [
+        "n-exigences-implicites-associees-induites",
+        "n-nfr-attribut-qualite"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Explicite / implicite dit **comment** l’exigence est connue ; induite / associée dit **d’où** elle vient. Une exigence induite reste traçable vers celle dont elle découle (ISO) ; elle n’est pas explicite, puisque personne ne la demande.",
+        "en": "Explicit / implicit says **how** the requirement is known; induced / associated says **where** it comes from. An induced requirement stays traceable to the one it follows from (ISO); it is not explicit, since nobody asks for it."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "6.4 (requirements analysis)",
+          "quote": "those derived requirements should be traceable back to"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Les autres NFR se décomposent en FR"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence factors",
+          "quote": "whether the elicited knowledge is explicit (consciously known) by each individual stakeholder or if it is implicit or unconscious (i.e., covert)"
+        }
+      ],
+      "notions": [
+        "n-exigences-implicites-associees-induites"
+      ],
+      "explain": true
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annales. **2013 Q2** : les « must have » sont **implicites** → **VRAI** (dissatisfier = va de soi = subconscient). **2014 Q2** : les « exciter » sont **non dites**, liées à l’innovation → **VRAI** proposé (delighter = ni demandé ni attendu). **2014 Q19** : les « must have » génèrent de la satisfaction quand ils sont présents → **FAUX** : remplis, ils évitent seulement le mécontentement. Pièges du même type : « implicite = non fonctionnelle » (FAUX), « une exigence induite est demandée par le client » (FAUX).",
+        "en": "Exams, to connect. **2013 Q2**: Kano’s “must have” are **implicit** requirements → **TRUE**: must have = dissatisfier = goes without saying (subconscious knowledge) = implicit. **2014 Q2**: “exciters” are **unspoken** requirements, linked to innovation → **TRUE** (proposed): delighter = neither requested nor expected (unconscious knowledge). **2014 Q19**: “must have” generate satisfaction when present → **FALSE**: fulfilled, they only avoid discontent. Traps of the same kind: “implicit = non-functional” (FALSE), “an induced requirement is requested by the customer” (FALSE)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q2",
+          "quote": "Les exigences définies dans le modèle de Kano comme étant de type « must have » sont des exigences implicites"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q2",
+          "quote": "sont des exigences non dites qui correspondent aux innovations et créent de la différentiation"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q19",
+          "quote": "les exigences de type « must have » sont celles qui génèrent de l'insatisfaction lorsqu'elles ne sont pas mises en œuvre"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Delighters are system properties that the stakeholder does not know or expect"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Dissatisfiers",
+          "quote": "Completely fulfilled dissatisfiers do not generate a positive disposition but merely help to avoid massive discontent"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.5 Une exigence se classe sur plusieurs axes : les liens",
+        "en": "1.5 A requirement is classified on several axes: the links"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Axe de classement",
+          "en": "Classification axis"
+        },
+        {
+          "fr": "Question posée",
+          "en": "Question asked"
+        },
+        {
+          "fr": "Catégories",
+          "en": "Categories"
+        },
+        {
+          "fr": "Où l’étudier",
+          "en": "Where to study it"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**Nature** (typologie du cours)",
+            "en": "**Nature** (course typology)"
+          },
+          {
+            "fr": "Qu’est-ce que c’est ?",
+            "en": "What is it?"
+          },
+          {
+            "fr": "FR, NFR, contrainte, hypothèse, processus, légale",
+            "en": "FR, NFR, constraint, assumption, process, legal"
+          },
+          {
+            "fr": "Ce chapitre, partie 1",
+            "en": "This chapter, part 1"
+          }
+        ],
+        [
+          {
+            "fr": "**Préoccupation** (Glinz)",
+            "en": "**Concern** (Glinz)"
+          },
+          {
+            "fr": "Pourquoi existe-t-elle ?",
+            "en": "Why does it exist?"
+          },
+          {
+            "fr": "Fonctionnelle, performance, qualité spécifique, contrainte",
+            "en": "Functional, performance, specific quality, constraint"
+          },
+          {
+            "fr": "Ce chapitre, partie 3",
+            "en": "This chapter, part 3"
+          }
+        ],
+        [
+          {
+            "fr": "**Connaissance** (Pohl et Rupp)",
+            "en": "**Knowledge** (Pohl and Rupp)"
+          },
+          {
+            "fr": "La partie prenante la connaît-elle, la dit-elle ?",
+            "en": "Does the stakeholder know it, say it?"
+          },
+          {
+            "fr": "Explicite (consciente), implicite (subconsciente), inconnue (inconsciente)",
+            "en": "Explicit (conscious), implicit (subconscious), unknown (unconscious)"
+          },
+          {
+            "fr": "Ce chapitre, 1.4",
+            "en": "This chapter, 1.4"
+          }
+        ],
+        [
+          {
+            "fr": "**Satisfaction** (Kano)",
+            "en": "**Satisfaction** (Kano)"
+          },
+          {
+            "fr": "Quel effet sur la satisfaction ?",
+            "en": "What effect on satisfaction?"
+          },
+          {
+            "fr": "Dissatisfier (« must have »), satisfier, delighter (« exciter »)",
+            "en": "Dissatisfier (“must have”), satisfier, delighter (“exciter”)"
+          },
+          {
+            "fr": "Chapitre « Éliciter les exigences »",
+            "en": "Chapter “Eliciting requirements”"
+          }
+        ],
+        [
+          {
+            "fr": "**Origine**",
+            "en": "**Origin**"
+          },
+          {
+            "fr": "D’où vient-elle ?",
+            "en": "Where does it come from?"
+          },
+          {
+            "fr": "De départ, induite (dérivée), associée (attribut qualité)",
+            "en": "Initial, induced (derived), associated (quality attribute)"
+          },
+          {
+            "fr": "Ce chapitre, 1.4 ; traçabilité : « Documenter et gérer »",
+            "en": "This chapter, 1.4; traceability: “Documenting and managing”"
+          }
+        ],
+        [
+          {
+            "fr": "**Obligation**",
+            "en": "**Obligation**"
+          },
+          {
+            "fr": "Est-elle obligatoire ?",
+            "en": "Is it mandatory?"
+          },
+          {
+            "fr": "Shall, should, will, may",
+            "en": "Shall, should, will, may"
+          },
+          {
+            "fr": "Chapitre « Une bonne exigence »",
+            "en": "Chapter “A good requirement”"
+          }
+        ],
+        [
+          {
+            "fr": "**Priorité**",
+            "en": "**Priority**"
+          },
+          {
+            "fr": "Faut-il la faire, et quand ?",
+            "en": "Should it be done, and when?"
+          },
+          {
+            "fr": "Triage : trois paquets ; puis AHP, 100 $…",
+            "en": "Triage: three groups; then AHP, $100…"
+          },
+          {
+            "fr": "Chapitre « Prioriser les exigences »",
+            "en": "Chapter “Prioritising requirements”"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « fonctionnelles »",
+          "quote": "services acendus de la part du système"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A concern is a matter of interest in a sys-"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence factors",
+          "quote": "whether the elicited knowledge is explicit (consciously known) by each individual stakeholder or if it is implicit or unconscious (i.e., covert)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Delighters are system properties that the stakeholder does not know or expect"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle"
         },
         {
           "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
@@ -724,9 +1138,78 @@
           "quote": "Requirements are mandatory binding provisions and use 'shall'."
         },
         {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        }
+      ],
+      "notions": [
+        "n-axes-classification",
+        "n-typologie-exigences"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  D[\"Dissatisfier<br/>(« must have »)\"] --- DK[\"subconscious<br/>knowledge\"] --- DI[\"IMPLICIT<br/>(goes without saying)\"] --- DT[\"observation,<br/>documents\"]\n  S[\"Satisfier\"] --- SK[\"conscious<br/>knowledge\"] --- SI[\"EXPLICIT<br/>(demanded)\"] --- ST[\"survey:<br/>interview, questionnaire\"]\n  L[\"Delighter<br/>(« exciter »)\"] --- LK[\"unconscious<br/>knowledge\"] --- LI[\"UNSPOKEN<br/>(neither asked nor expected)\"] --- LT[\"creativity\"]",
+      "caption": {
+        "fr": "Les correspondances à connaître (d’après Pohl et Rupp) : catégorie de Kano → type de connaissance → explicite / implicite → technique d’élicitation adaptée.",
+        "en": "The correspondences to know (after Pohl and Rupp): Kano category → type of knowledge → explicit / implicit → suitable elicitation technique."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Delighters are system properties that the stakeholder does not know or expect"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Elicitation techniques",
+          "quote": "Elicitation techniques serve the purpose of identifying the conscious, unconscious, and subconscious stakeholder requirements"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Les axes sont indépendants** : « Le système doit identifier les anciens clients » est une FR, explicite si le client l’a demandée, satisfier, de départ, en *shall*. Face à une question qui mélange deux classifications : situer l’exigence sur chaque axe, puis appliquer les correspondances (must have ↔ implicite, satisfier ↔ explicite, exciter ↔ non dite).",
+        "en": "**The axes are independent**: “The system shall identify former customers” is an FR, explicit if the customer asked for it, a satisfier, initial, with *shall*. Facing a question mixing two classifications: place the requirement on each axis, then apply the correspondences (must have ↔ implicit, satisfier ↔ explicit, exciter ↔ unspoken)."
+      },
+      "src": [
+        {
           "file": "sources-texte/isi1/1-ie-introduction.md",
-          "loc": "Typologie (slides illustrées)",
-          "quote": "Exigences « implicites » Exigences « associées » Exigences « induites »"
+          "loc": "Exigences « fonctionnelles »",
+          "quote": "services acendus de la part du système"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Delighters are system properties that the stakeholder does not know or expect"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.3",
+          "quote": "Requirements are mandatory binding provisions and use 'shall'."
         }
       ]
     },
@@ -734,8 +1217,8 @@
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "**Six catégories** : FR (ce que le système fait) · NFR (une qualité qu’il doit avoir) · contrainte (une limite sur les solutions : projet, technique, organisationnelle) · hypothèse (un fait sur l’environnement) · processus (développement, livraison) · légale (imposée par un texte). L’ISO isole aussi **performance** et **interface**.",
-        "en": "**Six categories**: FR (what the system does) · NFR (a quality it must have) · constraint (a limit on solutions: project, technical, organisational) · assumption (a fact about the environment) · process (development, delivery) · legal (imposed by a text). ISO also separates **performance** and **interface**."
+        "fr": "**Six catégories** : FR (ce que le système fait) · NFR (une qualité qu’il doit avoir) · contrainte (une limite sur les solutions : projet, technique, organisationnelle) · hypothèse (un fait sur l’environnement) · processus (développement, livraison) · légale (imposée par un texte). L’ISO isole aussi **performance** et **interface**. Autres axes, indépendants : explicite / implicite (va de soi) ; induite (dérivée) / associée (attribut qualité) ; must have ↔ implicite, satisfier ↔ explicite, exciter ↔ non dite.",
+        "en": "**Six categories**: FR (what the system does) · NFR (a quality it must have) · constraint (a limit on solutions: project, technical, organisational) · assumption (a fact about the environment) · process (development, delivery) · legal (imposed by a text). ISO also separates **performance** and **interface**. Other, independent axes: explicit / implicit (goes without saying); induced (derived) / associated (quality attribute); must have ↔ implicit, satisfier ↔ explicit, exciter ↔ unspoken."
       }
     },
     {
@@ -2427,6 +2910,115 @@
         }
       ],
       "notion": "n-classification-a-facettes"
+    },
+    {
+      "id": "term-explicit-req",
+      "fr": "exigence explicite",
+      "en": "explicit requirement",
+      "definition": {
+        "fr": "Exigence demandée expressément par une partie prenante, qui la connaît consciemment (les satisfiers de Kano).",
+        "en": "Requirement expressly demanded by a stakeholder, who knows it consciously (Kano’s satisfiers)."
+      },
+      "pitfall": {
+        "fr": "Ce n’est pas une classification par nature : une exigence explicite peut être FR ou NFR.",
+        "en": "It is not a classification by nature: an explicit requirement can be an FR or an NFR."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence factors",
+          "quote": "whether the elicited knowledge is explicit (consciously known) by each individual stakeholder or if it is implicit or unconscious (i.e., covert)"
+        }
+      ],
+      "notion": "n-exigences-implicites-associees-induites"
+    },
+    {
+      "id": "term-implicit-req",
+      "fr": "exigence implicite",
+      "en": "implicit requirement",
+      "definition": {
+        "fr": "Exigence qui va de soi pour la partie prenante, attendue sans être dite (connaissance subconsciente, tacite) : les « must have » / dissatisfiers de Kano.",
+        "en": "Requirement that goes without saying for the stakeholder, expected without being said (subconscious, tacit knowledge): Kano’s “must have” / dissatisfiers."
+      },
+      "pitfall": {
+        "fr": "Annale 2013 Q2 : must have = implicite (VRAI). Ne pas confondre avec non fonctionnelle.",
+        "en": "2013 exam Q2: must have = implicit (TRUE). Do not confuse with non-functional."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q2",
+          "quote": "Les exigences définies dans le modèle de Kano comme étant de type « must have » sont des exigences implicites"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Don’t forget",
+          "quote": "Tacit knowledge and implicit"
+        }
+      ],
+      "notion": "n-exigences-implicites-associees-induites"
+    },
+    {
+      "id": "term-induced-req",
+      "fr": "exigence induite (dérivée)",
+      "en": "induced (derived) requirement",
+      "definition": {
+        "fr": "Exigence de plus bas niveau, nécessaire pour qu’une exigence de niveau supérieur soit satisfaite (ISO 29148 : derived requirement) ; elle découle d’une autre exigence.",
+        "en": "Lower-level requirement necessary for a higher-level requirement to be met (ISO 29148: derived requirement); it follows from another requirement."
+      },
+      "pitfall": {
+        "fr": "Personne ne la demande directement ; elle reste traçable vers l’exigence dont elle découle.",
+        "en": "Nobody asks for it directly; it stays traceable to the requirement it follows from."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie des exigences",
+          "quote": "Exigences « implicites » Exigences « associées » Exigences « induites »"
+        }
+      ],
+      "notion": "n-exigences-implicites-associees-induites"
+    },
+    {
+      "id": "term-associated-req",
+      "fr": "exigence associée",
+      "en": "associated requirement",
+      "definition": {
+        "fr": "Exigence rattachée à une autre, sans existence propre ; sur la slide de typologie, l’attribut qualité est une NFR « associée à une exigence fonctionnelle ».",
+        "en": "Requirement attached to another one, with no existence of its own; on the typology slide, the quality attribute is an NFR “associated with a functional requirement”."
+      },
+      "pitfall": {
+        "fr": "Rapprochement avec l’attribut qualité : le prof nomme les « exigences associées » sans les définir.",
+        "en": "Match with the quality attribute: the teacher names “associated requirements” without defining them."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Typologie des exigences",
+          "quote": "Exigences « implicites » Exigences « associées » Exigences « induites »"
+        }
+      ],
+      "notion": "n-exigences-implicites-associees-induites"
     }
   ],
   "keyPoints": [
@@ -2646,6 +3238,37 @@
       ],
       "notions": [
         "n-nfr-raffinement-fr"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Explicite = demandée (consciente) ; implicite = va de soi (subconsciente), comme les « must have » de Kano ; induite = dérivée d’une exigence de niveau supérieur ; associée = rattachée à une autre (attribut qualité).",
+        "en": "Explicit = demanded (conscious); implicit = goes without saying (subconscious), like Kano’s “must have”; induced = derived from a higher-level requirement; associated = attached to another (quality attribute)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle"
+        }
+      ],
+      "notions": [
+        "n-exigences-implicites-associees-induites"
       ]
     }
   ],
@@ -3017,6 +3640,115 @@
       ],
       "notions": [
         "n-types-exigences-iso"
+      ]
+    },
+    {
+      "id": "isi1-03-fc-19",
+      "front": {
+        "fr": "Kano ↔ explicite / implicite : les correspondances ?",
+        "en": "Kano ↔ explicit / implicit: the correspondences?"
+      },
+      "back": {
+        "fr": "Dissatisfier (« must have ») = subconscient = implicite (va de soi). Satisfier = conscient = explicite (demandé). Delighter (« exciter ») = inconscient = non dit, ni demandé ni attendu.",
+        "en": "Dissatisfier (“must have”) = subconscious = implicit (goes without saying). Satisfier = conscious = explicit (demanded). Delighter (“exciter”) = unconscious = unspoken, neither asked nor expected."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Delighters are system properties that the stakeholder does not know or expect"
+        }
+      ],
+      "notions": [
+        "n-exigences-implicites-associees-induites",
+        "n-axes-classification"
+      ]
+    },
+    {
+      "id": "isi1-03-fc-20",
+      "front": {
+        "fr": "Exigence induite et exigence associée ?",
+        "en": "Induced and associated requirement?"
+      },
+      "back": {
+        "fr": "Induite = dérivée : de plus bas niveau, nécessaire à une exigence de niveau supérieur (ISO 29148), traçable vers elle. Associée = rattachée à une autre exigence, comme l’attribut qualité (NFR associée à une FR).",
+        "en": "Induced = derived: lower-level, necessary for a higher-level requirement (ISO 29148), traceable to it. Associated = attached to another requirement, like the quality attribute (NFR associated with an FR)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « non fonctionnelles »",
+          "quote": "Exigences non fonctionnelle associée à une exigence fonctionnelle"
+        }
+      ],
+      "notions": [
+        "n-exigences-implicites-associees-induites"
+      ]
+    },
+    {
+      "id": "isi1-03-fc-21",
+      "front": {
+        "fr": "Les axes pour classer une exigence ?",
+        "en": "The axes to classify a requirement?"
+      },
+      "back": {
+        "fr": "Nature (FR, NFR…), préoccupation (Glinz), connaissance (explicite / implicite), satisfaction (Kano), origine (induite, associée), obligation (shall…), priorité (triage). Ils sont indépendants.",
+        "en": "Nature (FR, NFR…), concern (Glinz), knowledge (explicit / implicit), satisfaction (Kano), origin (induced, associated), obligation (shall…), priority (triage). They are independent."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "Exigences « fonctionnelles »",
+          "quote": "services acendus de la part du système"
+        },
+        {
+          "file": "sources-texte/isi1/5-on-nfrs.md",
+          "loc": "4.2. A definition based on concerns",
+          "quote": "DEFINITION. A concern is a matter of interest in a sys-"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence factors",
+          "quote": "whether the elicited knowledge is explicit (consciously known) by each individual stakeholder or if it is implicit or unconscious (i.e., covert)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.3",
+          "quote": "Requirements are mandatory binding provisions and use 'shall'."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        }
+      ],
+      "notions": [
+        "n-axes-classification"
       ]
     }
   ],
@@ -3677,6 +4409,140 @@
         "n-types-exigences-iso"
       ],
       "objective": "o1"
+    },
+    {
+      "id": "isi1-03-qz-21",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une exigence implicite est forcément une exigence non fonctionnelle.",
+        "en": "An implicit requirement is necessarily a non-functional requirement."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : implicite / explicite dit comment l’exigence est connue (dite ou allant de soi), pas sa nature. Une FR peut aller de soi (un système de paie calcule juste), une NFR peut être demandée explicitement.",
+        "en": "FALSE: implicit / explicit says how the requirement is known (said or taken for granted), not its nature. An FR can go without saying (a payroll system computes correctly), an NFR can be explicitly demanded."
+      },
+      "trap": {
+        "fr": "Confondre deux axes de classement indépendants.",
+        "en": "Confusing two independent classification axes."
+      },
+      "level": "analyze",
+      "objective": "o1",
+      "notions": [
+        "n-exigences-implicites-associees-induites",
+        "n-axes-classification"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence factors",
+          "quote": "whether the elicited knowledge is explicit (consciously known) by each individual stakeholder or if it is implicit or unconscious (i.e., covert)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        }
+      ]
+    },
+    {
+      "id": "isi1-03-qz-22",
+      "type": "mcq",
+      "level": "understand",
+      "objective": "o1",
+      "question": {
+        "fr": "D’après Pohl et Rupp, quelle catégorie de Kano correspond à des propriétés « *self-evident and taken for granted* » (connaissance subconsciente), donc à des exigences implicites ?",
+        "en": "According to Pohl and Rupp, which Kano category corresponds to properties “*self-evident and taken for granted*” (subconscious knowledge), hence to implicit requirements?"
+      },
+      "options": [
+        {
+          "fr": "Les dissatisfiers (« must have »)",
+          "en": "Dissatisfiers (“must have”)"
+        },
+        {
+          "fr": "Les satisfiers, demandés explicitement par les parties prenantes",
+          "en": "Satisfiers, explicitly demanded by stakeholders"
+        },
+        {
+          "fr": "Les delighters (« exciter »), inconnus et inattendus",
+          "en": "Delighters (“exciter”), unknown and unexpected"
+        },
+        {
+          "fr": "Aucune : Kano ne parle pas du type de connaissance",
+          "en": "None: Kano does not deal with the type of knowledge"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Dissatisfier = ce qui va de soi (subconscient) = implicite, d’où l’annale 2013 Q2 (« must have » = implicites, VRAI). Satisfier = conscient et demandé = explicite ; delighter = inconscient.",
+        "en": "Dissatisfier = what goes without saying (subconscious) = implicit, hence the 2013 exam Q2 (“must have” = implicit, TRUE). Satisfier = conscious and demanded = explicit; delighter = unconscious."
+      },
+      "trap": {
+        "fr": "Associer « implicite » aux delighters parce qu’ils ne sont pas dits.",
+        "en": "Associating “implicit” with delighters because they are not said."
+      },
+      "notions": [
+        "n-exigences-implicites-associees-induites",
+        "n-axes-classification"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Dissatisfiers are properties of the system that are self-evident and taken for granted (subconscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Satisfiers are explicitly demanded system properties (conscious knowledge)"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Influence of the requirements on satisfaction",
+          "quote": "Delighters are system properties that the stakeholder does not know or expect"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q2",
+          "quote": "Les exigences définies dans le modèle de Kano comme étant de type « must have » sont des exigences implicites"
+        }
+      ]
+    },
+    {
+      "id": "isi1-03-qz-23",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une exigence induite (dérivée) est une exigence de plus bas niveau, nécessaire pour qu’une exigence de niveau supérieur soit satisfaite.",
+        "en": "An induced (derived) requirement is a lower-level requirement necessary for a higher-level requirement to be met."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est la définition de la « derived requirement » de l’ISO 29148, le terme qui correspond à « induite » ; elle reste traçable vers l’exigence dont elle découle.",
+        "en": "TRUE: this is ISO 29148’s definition of a “derived requirement”, the term matching “induced”; it stays traceable to the requirement it follows from."
+      },
+      "trap": {
+        "fr": "Croire qu’une exigence induite est demandée directement par une partie prenante.",
+        "en": "Believing an induced requirement is directly requested by a stakeholder."
+      },
+      "level": "understand",
+      "objective": "o1",
+      "notions": [
+        "n-exigences-implicites-associees-induites"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "4.1.9 derived requirement",
+          "quote": "A lower-level requirement that is determined to be necessary for a top-level requirement to be met"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "6.4 (requirements analysis)",
+          "quote": "those derived requirements should be traceable back to"
+        }
+      ]
     }
   ],
   "exercises": [
