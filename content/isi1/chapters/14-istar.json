@@ -1,0 +1,2293 @@
+{
+  "id": "isi1-14-istar",
+  "courseId": "isi1",
+  "order": 10,
+  "title": {
+    "fr": "Modéliser les acteurs et leurs dépendances : i*",
+    "en": "Modelling actors and their dependencies: i*"
+  },
+  "hook": {
+    "fr": "Le prof a demandé d’étudier i* et l’annale 2013 l’interroge (soft goals) : acteurs, quatre types de dépendance, modèles SD et SR, méthode appliquée au Deadbot.",
+    "en": "The teacher asked to study i* and the 2013 exam tests it (softgoals): actors, four dependency types, SD and SR models, method applied to the Deadbot."
+  },
+  "question": {
+    "fr": "Comment représenter ce que chaque acteur attend des autres, et pourquoi, puis typer chaque dépendance pour raisonner sur les alternatives ?",
+    "en": "How do you represent what each actor expects from the others, and why, then type each dependency to reason about alternatives?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir i* (acteur intentionnel, phase amont) et distinguer les modèles SD et SR.",
+        "en": "Define i* (intentional actor, early phase) and distinguish the SD and SR models."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Typer une dépendance (but, tâche, ressource, soft goal) ; repérer dépendance critique, opportunité et vulnérabilité.",
+        "en": "Type a dependency (goal, task, resource, softgoal); identify critical dependencies, opportunities and vulnerabilities."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Expliquer le soft goal et le satisficing (annale 2013, Q3).",
+        "en": "Explain the softgoal and satisficing (2013 exam, Q3)."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Construire un modèle SD à partir des buts des parties prenantes (Deadbot).",
+        "en": "Build an SD model from stakeholder goals (Deadbot)."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Lire un modèle SR : liens moyens-fins, décomposition de tâche, contributions aux soft goals.",
+        "en": "Read an SR model: means-ends links, task decomposition, contributions to softgoals."
+      },
+      "level": "understand"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Demande du prof (témoignage de l’utilisatrice, 2026-11-18) : étudier la méthode i*.",
+        "en": "Teacher’s request (student’s account, 2026-11-18): study the i* method."
+      },
+      {
+        "fr": "Annale 2013, Q3 (vrai / faux) : les soft goals de i* « ne peuvent jamais être satisfaits » ; corrigé proposé : FAUX.",
+        "en": "2013 exam, Q3 (true / false): i* softgoals “can never be satisfied”; proposed answer: FALSE."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Étude de cas Deadbot : la rubrique « Buts et dépendance entre les buts des parties prenantes » se modélise en i* (modèle SD).",
+        "en": "Deadbot case study: the section “Goals and dependencies between stakeholder goals” can be modelled in i* (SD model)."
+      },
+      {
+        "fr": "Construire un modèle SD et typer ses dépendances : format d’exercice non attesté par une annale.",
+        "en": "Building an SD model and typing its dependencies: exercise format not attested by an exam."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Les modèles de buts (KAOS : raffinement ET / OU, agents) et les parties prenantes.",
+    "en": "Goal models (KAOS: AND / OR refinement, agents) and stakeholders."
+  },
+  "next": {
+    "fr": "Lectures complémentaires : agilité, grands référentiels, fondements théoriques.",
+    "en": "Further reading: agility, large repositories, theoretical foundations."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "i* (Yu) : acteurs intentionnels, phase amont ; SD = dépendances entre acteurs, SR = intérieur des acteurs.",
+        "en": "i* (Yu): intentional actors, early phase; SD = dependencies among actors, SR = inside the actors."
+      },
+      {
+        "fr": "4 types de dépendance : but, tâche, ressource, soft goal ; X = critique ; opportunité et vulnérabilité.",
+        "en": "4 dependency types: goal, task, resource, softgoal; X = critical; opportunity and vulnerability."
+      },
+      {
+        "fr": "Soft goal : pas de critère tranché mais satisficing (« good enough »), pas « jamais satisfait ».",
+        "en": "Softgoal: no clear-cut criterion but satisficing (“good enough”), not “never satisfied”."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Typer une dépendance par la liberté laissée au dependee.",
+        "en": "Type a dependency by the freedom given to the dependee."
+      },
+      {
+        "fr": "Construire un modèle SD à partir des buts des parties prenantes : acteurs, dépendances typées, dépendances critiques.",
+        "en": "Build an SD model from stakeholder goals: actors, typed dependencies, critical dependencies."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "But (le dependee choisit comment) ≠ tâche (manière imposée) ≠ ressource (fournir) ≠ soft goal (le depender juge).",
+        "en": "Goal (the dependee chooses how) ≠ task (imposed way) ≠ resource (furnish) ≠ softgoal (the depender judges)."
+      },
+      {
+        "fr": "SD (entre acteurs) ≠ SR (à l’intérieur) ; moyens-fins (pourquoi, alternatives) ≠ décomposition (éléments d’une routine).",
+        "en": "SD (among actors) ≠ SR (inside); means-ends (why, alternatives) ≠ decomposition (elements of a routine)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "KAOS raffine les buts du système en ET / OU (chapitre « Modéliser : cas d’utilisation et modèles de buts ») ; i* part des acteurs et de leurs dépendances.",
+        "en": "KAOS refines system goals with AND / OR (chapter “Modelling: use cases and goal models”); i* starts from actors and their dependencies."
+      },
+      {
+        "fr": "Les parties prenantes (chapitre « Éliciter les exigences ») deviennent les acteurs d’un modèle i*.",
+        "en": "Stakeholders (chapter “Eliciting requirements”) become the actors of an i* model."
+      },
+      {
+        "fr": "Les exigences « soft », vagues et imprécises, sont citées par Zave et Jackson (chapitre « Fondements théoriques : coins sombres et Problem Frames »).",
+        "en": "“Soft”, vague and imprecise requirements are cited by Zave and Jackson (chapter “Theoretical foundations: dark corners and Problem Frames”)."
+      }
+    ]
+  },
+  "estimatedMinutes": 8,
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "1. i* : des acteurs intentionnels, deux modèles",
+        "en": "1. i*: intentional actors, two models"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**[[term-istar|i*]]** (Yu, 1997) : un cadre de modélisation pour la **phase amont** de l’ingénierie des exigences. Son concept central est l’**acteur intentionnel** : il a des buts, des croyances, des capacités et des engagements, et il **dépend** d’autres acteurs pour atteindre des buts, faire exécuter des tâches, obtenir des ressources. Deux modèles : le **modèle SD** (*Strategic Dependency*) décrit les dépendances **entre** les acteurs ; le **modèle SR** (*Strategic Rationale*) décrit les intérêts de chaque acteur et la façon de les satisfaire.",
+        "en": "**[[term-istar|i*]]** (Yu, 1997): a modelling framework for the **early phase** of requirements engineering. Its central concept is the **intentional actor**: it has goals, beliefs, abilities and commitments, and it **depends** on other actors for goals to be achieved, tasks to be performed and resources to be furnished. Two models: the **SD model** (*Strategic Dependency*) describes the dependencies **among** actors; the **SR model** (*Strategic Rationale*) describes each actor’s interests and how they might be addressed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "Organizational actors are viewed as having intentional properties such as goals, beliefs, abilities, and commitments"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "Actors depend on each other for goals to be achieved, tasks to be performed, and resources to be furnished"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Dependency (SD) model is used to describe the dependency relationships among various actors in an organizational context"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Rationale (SR) model is used to describe stakeholder interests and concerns, and how they might be addressed by various configurations of systems and environments"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi i* ? Les modèles d’exigences habituels décrivent le **quoi** ; i* sert à comprendre le **pourquoi** avant de rédiger les exigences. La phase amont modélise les intérêts des parties prenantes et la façon dont chaque configuration du système et de son environnement les sert ou les compromet ; la phase aval vise la complétude, la cohérence et la vérification des exigences.",
+        "en": "Why i*? Usual requirements models describe the **what**; i* helps understand the **why** before writing requirements. The early phase models stakeholder interests and how each system-and-environment configuration addresses or compromises them; the late phase focuses on completeness, consistency and verification of requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Strategic Dependency model",
+          "quote": "They tend to focus on the “what” rather than the “why”"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Abstract",
+          "quote": "the early phase aims to model and analyze stakeholder interests and how they might be addressed, or compromised, by various system-and-environment alternatives"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Abstract",
+          "quote": "which focuses on completeness, consistency, and automated verification of requirements"
+        }
+      ],
+      "notions": [
+        "n-istar-framework"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Modèle",
+          "en": "Model"
+        },
+        {
+          "fr": "Ce qu’il montre",
+          "en": "What it shows"
+        },
+        {
+          "fr": "Quand s’en servir",
+          "en": "When to use it"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**SD** (*Strategic Dependency*)",
+            "en": "**SD** (*Strategic Dependency*)"
+          },
+          {
+            "fr": "Les dépendances **entre** acteurs (qui dépend de qui, pour quoi) ; il cache ce qui se passe à l’intérieur de chaque acteur",
+            "en": "The dependencies **among** actors (who depends on whom, for what); it hides what happens inside each actor"
+          },
+          {
+            "fr": "Comprendre une organisation, existante ou proposée",
+            "en": "Understanding an organisation, existing or proposed"
+          }
+        ],
+        [
+          {
+            "fr": "**SR** (*Strategic Rationale*)",
+            "en": "**SR** (*Strategic Rationale*)"
+          },
+          {
+            "fr": "L’**intérieur** de chaque acteur : buts, tâches, ressources, soft goals et leurs liens",
+            "en": "The **inside** of each actor: goals, tasks, resources, soft goals and their links"
+          },
+          {
+            "fr": "Comparer des configurations alternatives",
+            "en": "Comparing alternative configurations"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "It shows external (but nevertheless intentional) relationships among actors, while hiding the intentional constructs within each actor"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "the Strategic Rationale model provides a more detailed level of modelling by looking “inside” actors to model internal intentional relationships"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "3. Early-phase needs",
+          "quote": "Only when one needs to reason about alternative configurations would one need to make explicit the goals and criteria for such deliberations"
+        }
+      ],
+      "notions": [
+        "n-istar-framework",
+        "n-istar-sr-model"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "i* (Yu) = des acteurs **intentionnels** et leurs dépendances, pour la **phase amont** (le pourquoi), pas pour la vérification. **SD** = les dépendances entre acteurs ; **SR** = l’intérieur de chaque acteur, quand il faut comparer des alternatives.",
+        "en": "i* (Yu) = **intentional** actors and their dependencies, for the **early phase** (the why), not for verification. **SD** = dependencies among actors; **SR** = the inside of each actor, when alternatives must be compared."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-14-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "2. Le modèle SD : quatre types de dépendance",
+        "en": "2. The SD model: four types of dependency"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une dépendance relie un **depender** (celui qui dépend) à un **dependee** (celui dont il dépend). En dépendant d’un autre, un acteur peut atteindre ce qu’il n’atteindrait pas seul (une **opportunité**) ; il devient **vulnérable** si l’autre ne fournit pas. Une dépendance **critique** est marquée d’un **X**. Le **type** de la dépendance dit quelle liberté on laisse au dependee.",
+        "en": "A dependency links a **depender** (the one who depends) to a **dependee** (the one depended on). By depending on another, an actor may achieve what it could not achieve alone (an **opportunity**); it becomes **vulnerable** if the other does not deliver. A **critical** dependency is marked with an **X**. The dependency **type** says how much freedom the dependee is given."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "By depending on others, an actor may be able to achieve goals that are difficult or impossible to achieve on its own"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "an actor becomes vulnerable if the depended-on actors do not deliver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Strategic Dependency model",
+          "quote": "the meeting initiator depends critically (marked with an “X” in the graphical notation) on their attendance"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "Dependency types are used to differentiate among the kinds of relationships between depender and dependee, involving different types of freedom and constraint"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Type (4)",
+          "en": "Type (4)"
+        },
+        {
+          "fr": "Le depender attend…",
+          "en": "The depender expects…"
+        },
+        {
+          "fr": "Qui décide comment ?",
+          "en": "Who decides how?"
+        },
+        {
+          "fr": "Exemple de Yu (réunions)",
+          "en": "Yu’s example (meetings)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**But** (*goal*)",
+            "en": "**Goal**"
+          },
+          {
+            "fr": "que le but soit atteint",
+            "en": "the goal to be achieved"
+          },
+          {
+            "fr": "Le **dependee**",
+            "en": "The **dependee**"
+          },
+          {
+            "fr": "L’initiateur dépend du participant pour qu’il assiste à la réunion ; à lui de voir comment.",
+            "en": "The initiator depends on the participant to attend the meeting; how is up to the participant."
+          }
+        ],
+        [
+          {
+            "fr": "**Tâche** (*task*)",
+            "en": "**Task**"
+          },
+          {
+            "fr": "que le dependee suive une procédure précise",
+            "en": "the dependee to follow a specific procedure"
+          },
+          {
+            "fr": "La manière est **imposée**",
+            "en": "The way is **imposed**"
+          },
+          {
+            "fr": "L’ordonnanceur attend que l’initiateur saisisse la plage de dates selon une procédure précise.",
+            "en": "The scheduler expects the initiator to enter the date range following a specific procedure."
+          }
+        ],
+        [
+          {
+            "fr": "**Ressource** (*resource*)",
+            "en": "**Resource**"
+          },
+          {
+            "fr": "seulement une entité fournie (une information, un accord)",
+            "en": "only an entity to be furnished (information, an agreement)"
+          },
+          {
+            "fr": "Le **depender** garde la résolution du problème",
+            "en": "The **depender** keeps the problem solving"
+          },
+          {
+            "fr": "Le participant donne seulement son accord sur une date ; sans accord, c’est l’initiateur qui cherche d’autres dates.",
+            "en": "The participant only gives an agreement on a date; without agreement, the initiator looks for other dates."
+          }
+        ],
+        [
+          {
+            "fr": "**Soft goal** (*softgoal*)",
+            "en": "**Softgoal**"
+          },
+          {
+            "fr": "un but sans critère tranché",
+            "en": "a goal without a clear-cut criterion"
+          },
+          {
+            "fr": "Le **depender** juge ce qui suffit",
+            "en": "The **depender** judges what is enough"
+          },
+          {
+            "fr": "L’initiateur veut que la présence d’un participant important soit « assurée » ; une confirmation par téléphone peut suffire.",
+            "en": "The initiator wants an important participant’s attendance to be “assured”; a telephone confirmation may be enough."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the participant how to attain that goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "This means that the participant is expected only to give an agreement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "If there is no agreement, it is the initiator who has to find other dates (do problem solving)"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the depender to decide what measures are enough for him to be assured, e.g., a telephone confirmation"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  MI([\"Meeting Initiator\"])\n  MS([\"Meeting Scheduler\"])\n  MP([\"Meeting Participant\"])\n  IP([\"Important Participant\"])\n  MI -- \"goal: MeetingBeScheduled(m)\" --> MS\n  MS -- \"task: Enter DateRange(m)\" --> MI\n  MS -- \"task: Enter AvailDates(m)\" --> MP\n  MP -- \"resource: Proposed Date(m)\" --> MS\n  MS -- \"resource: Agreement(m,p)\" --> MP\n  MI -- \"goal: Attends Meeting(p,m)\" --> MP\n  MI -- \"softgoal X: Assured(Attends Meeting(ip,m))\" --> IP\n  IP -. \"ISA\" .-> MP",
+      "caption": {
+        "fr": "Modèle SD de la planification de réunions avec un ordonnanceur (d’après Yu 1997, figure 2, redessiné). Une flèche va de celui qui dépend vers celui dont il dépend ; le type est écrit sur la flèche ; X = critique.",
+        "en": "SD model of meeting scheduling with a scheduler (after Yu 1997, figure 2, redrawn). An arrow goes from the depender to the dependee; the type is written on the arrow; X = critical."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "The meeting initiator delegates much of the work of meeting scheduling to the meeting scheduler"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.4 New configurations",
+          "quote": "to enter availability information in a particular format. This is modelled as a task dependency on participants"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce que le modèle fait voir : l’initiateur **délègue** la planification à l’ordonnanceur (une opportunité : il n’a plus à atteindre ce but lui-même, mais il devient vulnérable si l’ordonnanceur échoue). En revanche, la présence des participants importants **n’est pas déléguée** : c’est l’initiateur, pas l’ordonnanceur, qui a un **enjeu** à ce qu’ils viennent.",
+        "en": "What the model reveals: the initiator **delegates** scheduling to the scheduler (an opportunity: it no longer has to achieve this goal itself, but becomes vulnerable if the scheduler fails). However, the attendance of important participants is **not delegated**: the initiator, not the scheduler, has a **stake** in their attendance."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "The meeting initiator delegates much of the work of meeting scheduling to the meeting scheduler"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "represents an opportunity for the meeting initiator not to have to achieve this goal himself"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "the meeting initiator would become vulnerable to the failure of the meeting scheduler in achieving this goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "It is the meeting initiator (not the meeting scheduler) who has a stake in having participants attend the meeting"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types",
+        "n-istar-framework"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "4 types, selon la liberté laissée : **but** (le dependee choisit comment), **tâche** (manière imposée), **ressource** (fournir une entité ; le depender garde la résolution), **soft goal** (le depender juge ce qui suffit). X = critique. Dépendre = opportunité + vulnérabilité.",
+        "en": "4 types, by the freedom given: **goal** (the dependee chooses how), **task** (imposed way), **resource** (furnish an entity; the depender keeps the problem solving), **softgoal** (the depender judges what is enough). X = critical. Depending = opportunity + vulnerability."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-14-qz-04"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "3. Les soft goals et le satisficing",
+        "en": "3. Softgoals and satisficing"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un **[[term-soft-goal|soft goal]]** (i*, KAOS) est un but dont la satisfaction ne peut pas être établie de façon tranchée. On parle de *satisficing* : les sous-buts doivent atteindre le but parent dans des limites acceptables ; chez Yu, il s’agit de trouver des solutions « suffisamment bonnes ».",
+        "en": "A **[[term-soft-goal|soft goal]]** (i*, KAOS) is a goal whose satisfaction cannot be established in a clear-cut way. This is called *satisficing*: subgoals must achieve the parent goal within acceptable limits; for Yu, it means finding “good enough” solutions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les soft goals disent pourquoi on choisit une alternative plutôt qu’une autre, et une routine dont les soft goals ne sont pas satisfaits de façon suffisante **n’est pas viable**. Le cours y fait écho : Zave et Jackson (« Four dark corners ») citent les exigences « soft » de Yu, vagues et imprécises, comme un système « sûr », « fiable » ou « facile à utiliser ».",
+        "en": "Softgoals tell why one alternative is chosen over another, and a routine whose softgoals are not satisficed **is not viable**. The course echoes this: Zave and Jackson (“Four dark corners”) cite Yu’s “soft” requirements, vague and imprecise, such as a system being “secure”, “reliable” or “easy to use”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Means-ends links and softgoals",
+          "quote": "From the softgoals, one can tell why one alternative may be chosen over others"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.3 Workability and viability",
+          "quote": "When softgoals are not satisficed, the routine is not viable"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "“Soft” requirements as discussed by Yu et al. [1995] are “soft” for two reasons"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "They may be vague and imprecise, such as requirements that a"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "system be “secure,” “reliable,” or “easy to use.” Until they are precise enough to be formalized"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013, Q3 : les soft goals « ne peuvent **jamais** être satisfaits puisqu’on n’a pas de critère mesurable ». Corrigé proposé : **FAUX** : un soft goal est satisfait de façon **suffisante** (*satisficed*), selon un jugement, même sans critère tranché. « Jamais » doit t’alerter.",
+        "en": "2013 exam, Q3: soft goals “can **never** be satisfied since there is no measurable criterion”. Proposed answer: **FALSE**: a soft goal is satisfied **sufficiently** (*satisficed*), by judgement, even without a clear-cut criterion. “Never” should alert you."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Soft goal = pas de critère tranché, mais satisfait de façon suffisante (*satisficing*) : « jamais satisfait » est faux. Il sert à choisir entre alternatives ; des soft goals non satisfaits rendent la routine non viable.",
+        "en": "Softgoal = no clear-cut criterion, but satisficed (“good enough”): “never satisfied” is false. It helps choose between alternatives; unsatisficed softgoals make the routine not viable."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-14-qz-07"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. Méthode : construire un modèle i*",
+        "en": "4. Method: building an i* model"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Construire un modèle i* (SD, puis SR)",
+        "en": "Building an i* model (SD, then SR)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lister les acteurs : les parties prenantes **et** le système à construire.",
+            "en": "List the actors: the stakeholders **and** the system to be built."
+          },
+          "why": {
+            "fr": "i* décrit comment le système s’insère dans son environnement organisationnel : chez Yu, l’ordonnanceur est un acteur du modèle.",
+            "en": "i* describes how the system is embedded in its organisational environment: in Yu’s model, the scheduler is an actor."
+          }
+        },
+        {
+          "do": {
+            "fr": "Pour chaque acteur, se demander : de qui dépend-il, et pour quoi ?",
+            "en": "For each actor, ask: whom does it depend on, and for what?"
+          },
+          "why": {
+            "fr": "Noter les dépendances entre acteurs donne les « pourquoi ».",
+            "en": "Noting the dependencies among actors gives the “whys”."
+          }
+        },
+        {
+          "do": {
+            "fr": "Typer chaque dépendance par la liberté laissée : le dependee choisit comment → **but** ; la manière est imposée → **tâche** ; il fournit seulement une entité → **ressource** ; pas de critère tranché, le depender juge → **soft goal**.",
+            "en": "Type each dependency by the freedom given: the dependee chooses how → **goal**; the way is imposed → **task**; it only furnishes an entity → **resource**; no clear-cut criterion, the depender judges → **softgoal**."
+          },
+          "why": {
+            "fr": "Les types de dépendance distinguent des degrés de liberté et de contrainte différents.",
+            "en": "Dependency types distinguish different degrees of freedom and constraint."
+          }
+        },
+        {
+          "do": {
+            "fr": "Marquer les dépendances critiques (X) et relever, pour chaque acteur, opportunités et vulnérabilités.",
+            "en": "Mark critical dependencies (X) and note, for each actor, opportunities and vulnerabilities."
+          },
+          "why": {
+            "fr": "C’est l’analyse que permet le modèle SD.",
+            "en": "This is the analysis the SD model enables."
+          }
+        },
+        {
+          "do": {
+            "fr": "S’il faut comparer des solutions, passer au SR (partie 5) : buts internes, moyens (moyens-fins), décompositions, puis contributions + / − de chaque alternative aux soft goals.",
+            "en": "If solutions must be compared, move to the SR (part 5): internal goals, means (means-ends), decompositions, then each alternative’s + / − contributions to softgoals."
+          },
+          "why": {
+            "fr": "Les soft goals disent pourquoi on choisit une alternative plutôt qu’une autre.",
+            "en": "Softgoals tell why one alternative is chosen over another."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Strategic Dependency model",
+          "quote": "To provide a deeper level of understanding about how the proposed meeting scheduler might be embedded in the organizational environment"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Strategic Dependency model",
+          "quote": "By noting the dependencies that actors have on one another, one can obtain a better understanding of the “whys”"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "Dependency types are used to differentiate among the kinds of relationships between depender and dependee, involving different types of freedom and constraint"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "This allows analysis of opportunity and vulnerability"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Means-ends links and softgoals",
+          "quote": "From the softgoals, one can tell why one alternative may be chosen over others"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types",
+        "n-istar-sr-model"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Exemple corrigé : les buts et dépendances du Deadbot",
+        "en": "4.1 Worked example: the goals and dependencies of the Deadbot"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’étude de cas Deadbot a une rubrique « Buts et dépendance entre les buts des parties prenantes » : les [[term-stakeholder|parties prenantes]] deviennent les acteurs, c’est l’entrée d’un modèle SD. Acteurs : MemoriaTech, les familles et amis, l’équipe de développement, les associations et institutions de protection des données, les psychologues, et le Deadbot lui-même. Corrigé **proposé** (le cours n’en donne pas) :",
+        "en": "The Deadbot case study has a section “Goals and dependencies between stakeholder goals”: the [[term-stakeholder|stakeholders]] become the actors; it is the input of an SD model. Actors: MemoriaTech, families and friends, the development team, data protection associations and institutions, psychologists, and the Deadbot itself. **Proposed** answer (the course gives none):"
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Présentation du sujet",
+          "quote": "Buts et dépendance entre les buts des parties prenantes"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Avoir une représentation fidèle et respectueuse de l'être cher"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Assurer que le produit ne nuise pas au processus de deuil"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Dépendance (depender → dependee : objet)",
+          "en": "Dependency (depender → dependee: object)"
+        },
+        {
+          "fr": "Type",
+          "en": "Type"
+        },
+        {
+          "fr": "Pourquoi ce type",
+          "en": "Why this type"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Familles → Deadbot : conversation réaliste simulée",
+            "en": "Families → Deadbot: realistic simulated conversation"
+          },
+          {
+            "fr": "But",
+            "en": "Goal"
+          },
+          {
+            "fr": "Les familles attendent un résultat, pas une manière de faire.",
+            "en": "Families expect a result, not a way of doing it."
+          }
+        ],
+        [
+          {
+            "fr": "Familles → MemoriaTech : représentation fidèle et respectueuse",
+            "en": "Families → MemoriaTech: faithful and respectful representation"
+          },
+          {
+            "fr": "Soft goal",
+            "en": "Softgoal"
+          },
+          {
+            "fr": "« Fidèle », « respectueuse » : pas de critère tranché ; ce sont les familles qui jugent.",
+            "en": "“Faithful”, “respectful”: no clear-cut criterion; the families judge."
+          }
+        ],
+        [
+          {
+            "fr": "Familles → Deadbot : interface intuitive",
+            "en": "Families → Deadbot: intuitive interface"
+          },
+          {
+            "fr": "Soft goal",
+            "en": "Softgoal"
+          },
+          {
+            "fr": "Qualité jugée par celui qui l’utilise.",
+            "en": "Quality judged by the user."
+          }
+        ],
+        [
+          {
+            "fr": "Associations → MemoriaTech : protection des données et confidentialité",
+            "en": "Associations → MemoriaTech: data protection and confidentiality"
+          },
+          {
+            "fr": "Soft goal",
+            "en": "Softgoal"
+          },
+          {
+            "fr": "L’énoncé ne fixe aucun critère ; il range le respect de la vie privée parmi les exigences non fonctionnelles.",
+            "en": "The case sets no criterion; it lists privacy among the non-functional requirements."
+          }
+        ],
+        [
+          {
+            "fr": "Psychologues → MemoriaTech : ne pas nuire au processus de deuil (X)",
+            "en": "Psychologists → MemoriaTech: do not harm the grieving process (X)"
+          },
+          {
+            "fr": "Soft goal, critique",
+            "en": "Softgoal, critical"
+          },
+          {
+            "fr": "Jugement d’expert, sans seuil ; un échec rend le produit inacceptable.",
+            "en": "Expert judgement, no threshold; a failure makes the product unacceptable."
+          }
+        ],
+        [
+          {
+            "fr": "MemoriaTech → Équipe de développement : système techniquement viable",
+            "en": "MemoriaTech → Development team: technically viable system"
+          },
+          {
+            "fr": "But",
+            "en": "Goal"
+          },
+          {
+            "fr": "L’entreprise attend le résultat ; les développeurs choisissent comment.",
+            "en": "The company expects the result; developers choose how."
+          }
+        ],
+        [
+          {
+            "fr": "Deadbot → Familles : données sur la personne décédée (hypothèse de modélisation)",
+            "en": "Deadbot → Families: data about the deceased (modelling assumption)"
+          },
+          {
+            "fr": "Ressource",
+            "en": "Resource"
+          },
+          {
+            "fr": "Le système a seulement besoin qu’on les lui fournisse.",
+            "en": "The system only needs them to be furnished."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts assignés au système",
+          "quote": "Simuler de manière réaliste une conversation avec une personne décédée"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Avoir une représentation fidèle et respectueuse de l'être cher"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts assignés au système",
+          "quote": "Proposer une interface utilisateur intuitive"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Garantir la protection des données et la confidentialité"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Assurer que le produit ne nuise pas au processus de deuil"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Créer un système techniquement viable et innovant"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts assignés au système",
+          "quote": "Protéger la confidentialité des données utilisées"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the participant how to attain that goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the depender to decide what measures are enough for him to be assured, e.g., a telephone confirmation"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "This means that the participant is expected only to give an agreement"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  F([\"Families\"])\n  B([\"Deadbot\"])\n  M([\"MemoriaTech\"])\n  D([\"Dev team\"])\n  A([\"Data protection bodies\"])\n  P([\"Psychologists\"])\n  F -- \"goal: realistic conversation\" --> B\n  F -- \"softgoal: intuitive UI\" --> B\n  F -- \"softgoal: faithful, respectful\" --> M\n  A -- \"softgoal: data protected\" --> M\n  P -- \"softgoal X: no harm to grief\" --> M\n  M -- \"goal: viable system\" --> D\n  B -- \"resource: data on the deceased\" --> F",
+      "caption": {
+        "fr": "Corrigé proposé : modèle SD du Deadbot (à partir des buts des parties prenantes de l’étude de cas). Aucune tâche dans l’énoncé : on en ajouterait une si le système imposait une procédure, comme le format de saisie de l’ordonnanceur de Yu.",
+        "en": "Proposed answer: SD model of the Deadbot (from the stakeholder goals of the case study). No task in the case: one would be added if the system imposed a procedure, like the input format of Yu’s scheduler."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Présentation du sujet",
+          "quote": "Buts et dépendance entre les buts des parties prenantes"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.4 New configurations",
+          "quote": "to enter availability information in a particular format. This is modelled as a task dependency on participants"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : tout typer en « but ». Le type se décide par deux questions : **qui choisit comment ?** (dependee → but ; manière imposée → tâche) et **qui juge que c’est suffisant ?** (le depender, sans critère tranché → soft goal). Un mot vague de l’énoncé (fidèle, intuitive, respectueux) signale un soft goal.",
+        "en": "Trap: typing everything as a “goal”. The type is decided by two questions: **who chooses how?** (dependee → goal; imposed way → task) and **who judges it is enough?** (the depender, without a clear-cut criterion → softgoal). A vague word in the case (faithful, intuitive, respectful) signals a softgoal."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the participant how to attain that goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the depender to decide what measures are enough for him to be assured, e.g., a telephone confirmation"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "They may be vague and imprecise, such as requirements that a"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "system be “secure,” “reliable,” or “easy to use.” Until they are precise enough to be formalized"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Construire = lister les acteurs (dont le système) → de qui dépend chacun, pour quoi → typer par la liberté laissée → critiques, opportunités, vulnérabilités → SR si l’on compare des solutions. Un mot vague (fidèle, intuitive) signale un soft goal.",
+        "en": "Building = list the actors (including the system) → whom each depends on, for what → type by the freedom given → critical ones, opportunities, vulnerabilities → SR if solutions are compared. A vague word (faithful, intuitive) signals a softgoal."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-14-qz-09"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "5. Le modèle SR : à l’intérieur des acteurs",
+        "en": "5. The SR model: inside the actors"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Élément ou lien (SR)",
+          "en": "Element or link (SR)"
+        },
+        {
+          "fr": "Ce qu’il exprime",
+          "en": "What it expresses"
+        },
+        {
+          "fr": "Exemple de Yu",
+          "en": "Yu’s example"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**But**",
+            "en": "**Goal**"
+          },
+          {
+            "fr": "Peut être atteint de **plusieurs façons**",
+            "en": "Can be achieved in **several ways**"
+          },
+          {
+            "fr": "« MeetingBeScheduled » : l’initiateur pense qu’il y a plus d’une façon d’y arriver",
+            "en": "“MeetingBeScheduled”: the initiator believes there is more than one way to achieve it"
+          }
+        ],
+        [
+          {
+            "fr": "**Tâche**",
+            "en": "**Task**"
+          },
+          {
+            "fr": "Une **façon précise** de faire",
+            "en": "A **specific way** of doing something"
+          },
+          {
+            "fr": "« Schedule Meeting », « Obtain AvailDates »",
+            "en": "“Schedule Meeting”, “Obtain AvailDates”"
+          }
+        ],
+        [
+          {
+            "fr": "**Soft goal**",
+            "en": "**Softgoal**"
+          },
+          {
+            "fr": "Un critère **qualitatif**, qui sert à évaluer (et à trouver) des alternatives",
+            "en": "A **qualitative** criterion, used to evaluate (and identify) alternatives"
+          },
+          {
+            "fr": "Organiser une réunion vite et sans effort démesuré",
+            "en": "Organising a meeting quickly, without inordinate effort"
+          }
+        ],
+        [
+          {
+            "fr": "**Lien moyens-fins** (*means-ends*)",
+            "en": "**Means-ends link**"
+          },
+          {
+            "fr": "**Pourquoi** un acteur fait une tâche : un moyen d’atteindre une fin",
+            "en": "**Why** an actor performs a task: a means to an end"
+          },
+          {
+            "fr": "« Schedule Meeting » est un moyen d’atteindre « MeetingBeScheduled »",
+            "en": "“Schedule Meeting” is a means to “MeetingBeScheduled”"
+          }
+        ],
+        [
+          {
+            "fr": "**Décomposition de tâche**",
+            "en": "**Task decomposition**"
+          },
+          {
+            "fr": "Les éléments qui **composent** une routine",
+            "en": "The elements that **make up** a routine"
+          },
+          {
+            "fr": "Planifier = obtenir les disponibilités + trouver un créneau + proposer une date + obtenir l’accord",
+            "en": "Scheduling = obtain availability + find a slot + propose a date + obtain agreement"
+          }
+        ],
+        [
+          {
+            "fr": "**Contribution** (+ / −)",
+            "en": "**Contribution** (+ / −)"
+          },
+          {
+            "fr": "L’effet d’un élément sur un soft goal",
+            "en": "An element’s effect on a softgoal"
+          },
+          {
+            "fr": "La façon actuelle de planifier contribue négativement à « vite » et « peu d’effort »",
+            "en": "The existing way of scheduling contributes negatively to “quick” and “low effort”"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "indicates that the meeting initiator believes that there can be more than one way to achieve it"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "being a subgoal, indicates that it can be achieved in different ways"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "refer to specific ways of accomplishing these tasks"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "the organizing of meetings should be done quickly and not involve inordinate amounts of effort. These qualitative criteria are modelled as softgoals"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "These would be used to evaluate (and also to help identify) alternative means for achieving ends"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "This goal can be met (represented via a means-ends link) by scheduling meetings in a certain way"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "The means-ends links in the SR provides understanding about why an actor would engage in some tasks"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "Task-decomposition links provide a hierarchical description of intentional elements that make up a routine"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "obtaining availability dates from participants, finding a suitable date (and time) slot, proposing a meeting date, and obtaining agreement from the participants"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "is viewed as contributing negatively towards the"
+        }
+      ],
+      "notions": [
+        "n-istar-sr-model"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  T[\"Task: Schedule Meeting\"]\n  T -- \"means-ends\" --> G[/\"Goal: MeetingBeScheduled\"/]\n  T -- \"decomposition\" --- A[\"Task: Obtain AvailDates\"]\n  T -- \"decomposition\" --- B[/\"Goal: Find Suitable Slot\"/]\n  T -- \"decomposition\" --- C[\"Task: Propose Date\"]\n  T -- \"decomposition\" --- D[\"Task: Obtain Agreement\"]\n  T -. \"contribution −\" .-> Q{{\"Softgoal: Quick\"}}\n  T -. \"contribution −\" .-> L{{\"Softgoal: Low Effort\"}}",
+      "caption": {
+        "fr": "Extrait du modèle SR de l’initiateur avant l’ordonnanceur (d’après Yu 1997, figure 3, redessiné) : un lien moyens-fins vers le but, une décomposition de la tâche en 4 éléments, deux contributions négatives à des soft goals.",
+        "en": "Excerpt of the initiator’s SR model before the scheduler (after Yu 1997, figure 3, redrawn): a means-ends link to the goal, a decomposition of the task into 4 elements, two negative contributions to softgoals."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "This goal can be met (represented via a means-ends link) by scheduling meetings in a certain way"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "obtaining availability dates from participants, finding a suitable date (and time) slot, proposing a meeting date, and obtaining agreement from the participants"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "is viewed as contributing negatively towards the"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Le lien avec KAOS** : KAOS part des **buts du système** et les raffine en ET / OU jusqu’à des exigences confiées à des agents ; i* part des **acteurs** et de leurs dépendances, pour comprendre le pourquoi en amont. Dans un modèle SR, la décomposition de tâche réunit les éléments qui composent une routine (proche du ET) et le lien moyens-fins propose un moyen parmi d’autres pour une fin (proche du OU). Le soft goal existe dans les deux.",
+        "en": "**The link with KAOS**: KAOS starts from the **system’s goals** and refines them with AND / OR down to requirements assigned to agents; i* starts from the **actors** and their dependencies, to understand the why early on. In an SR model, task decomposition gathers the elements that make up a routine (close to AND) and the means-ends link offers one means among others for an end (close to OR). The softgoal exists in both."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "A goal under responsibility of a single agent in the software-to-be becomes a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "Task-decomposition links provide a hierarchical description of intentional elements that make up a routine"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "indicates that the meeting initiator believes that there can be more than one way to achieve it"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "SR : but (plusieurs façons), tâche (une façon précise), soft goal (critère qualitatif). Moyens-fins = pourquoi, un moyen parmi d’autres (proche du OU de KAOS) ; décomposition = les éléments d’une routine (proche du ET) ; contributions + / − aux soft goals.",
+        "en": "SR: goal (several ways), task (one specific way), softgoal (qualitative criterion). Means-ends = why, one means among others (close to the KAOS OR); decomposition = the elements of a routine (close to AND); + / − contributions to softgoals."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-14-qz-10"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-soft-goal",
+      "fr": "soft goal (but souple)",
+      "en": "soft goal",
+      "definition": {
+        "fr": "But dont la satisfaction ne peut pas être établie de façon tranchée ; il est satisfait de façon suffisante (satisficing).",
+        "en": "A goal whose satisfaction cannot be established in a clear-cut sense; it is satisficed (“good enough”)."
+      },
+      "pitfall": {
+        "fr": "Il n’est pas « jamais satisfait » : il est atteint de façon jugée suffisante.",
+        "en": "It is not “never satisfied”: it is achieved to a level judged sufficient."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "They may be vague and imprecise, such as requirements that a"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "§ 5 (soft requirements)",
+          "quote": "system be “secure,” “reliable,” or “easy to use.” Until they are precise enough to be formalized"
+        }
+      ],
+      "notion": "n-istar-soft-goals"
+    },
+    {
+      "id": "term-istar",
+      "fr": "i* (i-star)",
+      "en": "i* (i-star)",
+      "definition": {
+        "fr": "Cadre de modélisation de la phase amont de l’ingénierie des exigences (Yu) : des acteurs intentionnels et leurs dépendances (modèle SD), les intérêts de chacun et la façon de les satisfaire (modèle SR).",
+        "en": "Early-phase requirements modelling framework (Yu): intentional actors and their dependencies (SD model), each one’s interests and how they might be addressed (SR model)."
+      },
+      "pitfall": {
+        "fr": "Ce n’est pas KAOS : i* part des acteurs et de leurs dépendances (le pourquoi), KAOS des buts du système raffinés en ET / OU.",
+        "en": "It is not KAOS: i* starts from actors and their dependencies (the why), KAOS from system goals refined with AND / OR."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Dependency (SD) model is used to describe the dependency relationships among various actors in an organizational context"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Rationale (SR) model is used to describe stakeholder interests and concerns, and how they might be addressed by various configurations of systems and environments"
+        }
+      ],
+      "notion": "n-istar-framework"
+    },
+    {
+      "id": "term-istar-dependency",
+      "fr": "dépendance (i*)",
+      "en": "dependency (i*)",
+      "definition": {
+        "fr": "Relation par laquelle un acteur (depender) compte sur un autre (dependee) pour un but, une tâche, une ressource ou un soft goal ; le type dit la liberté laissée au dependee.",
+        "en": "Relationship in which an actor (depender) relies on another (dependee) for a goal, a task, a resource or a softgoal; the type says how much freedom the dependee has."
+      },
+      "pitfall": {
+        "fr": "Le sens compte : la flèche va de celui qui dépend vers celui dont il dépend.",
+        "en": "Direction matters: the arrow goes from the depender to the dependee."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Présentation du sujet",
+          "quote": "Buts et dépendance entre les buts des parties prenantes"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "Actors depend on each other for goals to be achieved, tasks to be performed, and resources to be furnished"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "Dependency types are used to differentiate among the kinds of relationships between depender and dependee, involving different types of freedom and constraint"
+        }
+      ],
+      "notion": "n-istar-dependency-types"
+    },
+    {
+      "id": "term-intentional-actor",
+      "fr": "acteur intentionnel (i*)",
+      "en": "intentional actor (i*)",
+      "definition": {
+        "fr": "Acteur (personne, organisation ou système) doté de buts, de croyances, de capacités et d’engagements, qui dépend d’autres acteurs ; dans un cas d’étude, chaque partie prenante avec ses buts.",
+        "en": "Actor (person, organisation or system) with goals, beliefs, abilities and commitments, who depends on other actors; in a case study, each stakeholder with its goals."
+      },
+      "pitfall": {
+        "fr": "Le système à construire est aussi un acteur du modèle.",
+        "en": "The system to be built is also an actor of the model."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Présentation du sujet",
+          "quote": "Buts et dépendance entre les buts des parties prenantes"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "Organizational actors are viewed as having intentional properties such as goals, beliefs, abilities, and commitments"
+        }
+      ],
+      "notion": "n-istar-framework"
+    },
+    {
+      "id": "term-satisficing",
+      "fr": "satisficing (satisfaction suffisante)",
+      "en": "satisficing",
+      "definition": {
+        "fr": "Atteindre un but de façon jugée suffisante (« good enough »), dans des limites acceptables plutôt qu’absolument : c’est ainsi qu’on satisfait un soft goal.",
+        "en": "Achieving a goal to a level judged sufficient (“good enough”), within acceptable limits rather than absolutely: this is how a softgoal is satisfied."
+      },
+      "pitfall": {
+        "fr": "Ce n’est pas « jamais satisfait » (annale 2013, Q3).",
+        "en": "It is not “never satisfied” (2013 exam, Q3)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        }
+      ],
+      "notion": "n-istar-soft-goals"
+    },
+    {
+      "id": "term-stakeholder",
+      "fr": "partie prenante",
+      "en": "stakeholder",
+      "definition": {
+        "fr": "Personne ou organisation qui influence (directement ou indirectement) les exigences d'un système : utilisateurs, exploitants, développeurs, architectes, clients, testeurs.",
+        "en": "A person or organization that (directly or indirectly) influences the requirements of a system: users, operators, developers, architects, customers, testers."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "3.1 Requirements Sources",
+          "quote": "people or organizations that (directly or indirectly) influence the requirements of a system"
+        }
+      ],
+      "notion": "n-partie-prenante"
+    }
+  ],
+  "notions": [
+    "n-istar-framework",
+    "n-istar-dependency-types",
+    "n-istar-sr-model",
+    "n-istar-soft-goals"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "i* modélise des acteurs intentionnels et leurs dépendances : le modèle SD décrit les dépendances entre acteurs, le modèle SR les intérêts de chacun et la façon de les satisfaire.",
+        "en": "i* models intentional actors and their dependencies: the SD model describes dependencies among actors, the SR model each one’s interests and how they might be addressed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Dependency (SD) model is used to describe the dependency relationships among various actors in an organizational context"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Rationale (SR) model is used to describe stakeholder interests and concerns, and how they might be addressed by various configurations of systems and environments"
+        }
+      ],
+      "notions": [
+        "n-istar-framework"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le type d’une dépendance i* dit la liberté laissée au dependee : but (il choisit comment), tâche (procédure imposée), ressource (fournir une entité), soft goal (le depender juge ce qui suffit).",
+        "en": "The type of an i* dependency says how much freedom the dependee has: goal (it chooses how), task (imposed procedure), resource (furnish an entity), softgoal (the depender judges what is enough)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "Dependency types are used to differentiate among the kinds of relationships between depender and dependee, involving different types of freedom and constraint"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the depender to decide what measures are enough for him to be assured, e.g., a telephone confirmation"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un soft goal n’est pas satisfait de façon tranchée mais de façon suffisante (satisficing).",
+        "en": "A soft goal is not satisfied in a clear-cut way but sufficiently (satisficing)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Dans le modèle SR, un lien moyens-fins dit pourquoi un acteur fait une tâche ; une décomposition de tâche énumère les éléments qui composent une routine.",
+        "en": "In the SR model, a means-ends link says why an actor performs a task; a task decomposition lists the elements that make up a routine."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "The means-ends links in the SR provides understanding about why an actor would engage in some tasks"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "Task-decomposition links provide a hierarchical description of intentional elements that make up a routine"
+        }
+      ],
+      "notions": [
+        "n-istar-sr-model"
+      ]
+    },
+    {
+      "text": {
+        "fr": "i* sert la phase amont : comprendre le pourquoi (intérêts des parties prenantes, alternatives) avant de spécifier et de vérifier les exigences.",
+        "en": "i* serves the early phase: understanding the why (stakeholder interests, alternatives) before specifying and verifying requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Abstract",
+          "quote": "the early phase aims to model and analyze stakeholder interests and how they might be addressed, or compromised, by various system-and-environment alternatives"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Strategic Dependency model",
+          "quote": "They tend to focus on the “what” rather than the “why”"
+        }
+      ],
+      "notions": [
+        "n-istar-framework"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "isi1-14-fc-01",
+      "termId": "term-soft-goal",
+      "front": {
+        "fr": "Soft goal : peut-il être satisfait ?",
+        "en": "Soft goal: can it be satisfied?"
+      },
+      "back": {
+        "fr": "Oui, de façon suffisante (satisficing), sans critère tranché fixé d’avance.",
+        "en": "Yes, to a sufficient level (satisficing), without a clear-cut criterion set in advance."
+      }
+    },
+    {
+      "id": "isi1-14-fc-02",
+      "front": {
+        "fr": "i* : les deux modèles ?",
+        "en": "i*: the two models?"
+      },
+      "back": {
+        "fr": "SD (Strategic Dependency) : les dépendances entre acteurs. SR (Strategic Rationale) : l’intérieur de chaque acteur (buts, tâches, ressources, soft goals et leurs liens).",
+        "en": "SD (Strategic Dependency): dependencies among actors. SR (Strategic Rationale): the inside of each actor (goals, tasks, resources, softgoals and their links)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "The Strategic Dependency (SD) model is used to describe the dependency relationships among various actors in an organizational context"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "the Strategic Rationale model provides a more detailed level of modelling by looking “inside” actors to model internal intentional relationships"
+        }
+      ],
+      "notions": [
+        "n-istar-framework"
+      ]
+    },
+    {
+      "id": "isi1-14-fc-03",
+      "front": {
+        "fr": "i* : les 4 types de dépendance, et qui décide comment ?",
+        "en": "i*: the 4 dependency types, and who decides how?"
+      },
+      "back": {
+        "fr": "But : le dependee choisit comment. Tâche : la manière est imposée. Ressource : il fournit seulement une entité (le depender garde la résolution). Soft goal : le depender juge ce qui suffit.",
+        "en": "Goal: the dependee chooses how. Task: the way is imposed. Resource: it only furnishes an entity (the depender keeps the problem solving). Softgoal: the depender judges what is enough."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the participant how to attain that goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "This means that the participant is expected only to give an agreement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the depender to decide what measures are enough for him to be assured, e.g., a telephone confirmation"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "id": "isi1-14-fc-04",
+      "front": {
+        "fr": "i* : ce que signifie dépendre d’un autre acteur ?",
+        "en": "i*: what does depending on another actor mean?"
+      },
+      "back": {
+        "fr": "Une opportunité (atteindre ce qu’on n’atteindrait pas seul) et une vulnérabilité (si l’autre ne fournit pas). Une dépendance critique est marquée d’un X.",
+        "en": "An opportunity (achieving what one could not achieve alone) and a vulnerability (if the other does not deliver). A critical dependency is marked with an X."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "By depending on others, an actor may be able to achieve goals that are difficult or impossible to achieve on its own"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "an actor becomes vulnerable if the depended-on actors do not deliver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Strategic Dependency model",
+          "quote": "the meeting initiator depends critically (marked with an “X” in the graphical notation) on their attendance"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types"
+      ]
+    },
+    {
+      "id": "isi1-14-fc-05",
+      "front": {
+        "fr": "SR : lien moyens-fins ou décomposition de tâche ?",
+        "en": "SR: means-ends link or task decomposition?"
+      },
+      "back": {
+        "fr": "Moyens-fins : pourquoi on fait une tâche, un moyen parmi d’autres pour une fin. Décomposition : les éléments qui composent une routine.",
+        "en": "Means-ends: why a task is performed, one means among others for an end. Decomposition: the elements that make up a routine."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "The means-ends links in the SR provides understanding about why an actor would engage in some tasks"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "Task-decomposition links provide a hierarchical description of intentional elements that make up a routine"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "indicates that the meeting initiator believes that there can be more than one way to achieve it"
+        }
+      ],
+      "notions": [
+        "n-istar-sr-model"
+      ]
+    },
+    {
+      "id": "isi1-14-fc-06",
+      "front": {
+        "fr": "i* : soft goal non satisfait de façon suffisante ?",
+        "en": "i*: softgoal not satisficed?"
+      },
+      "back": {
+        "fr": "La routine n’est pas viable. Les soft goals servent aussi à dire pourquoi on choisit une alternative plutôt qu’une autre.",
+        "en": "The routine is not viable. Softgoals also tell why one alternative is chosen over another."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.3 Workability and viability",
+          "quote": "When softgoals are not satisficed, the routine is not viable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Means-ends links and softgoals",
+          "quote": "From the softgoals, one can tell why one alternative may be chosen over others"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals",
+        "n-istar-sr-model"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "level": "remember",
+      "objective": "o1",
+      "id": "isi1-14-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "i* vise d’abord la phase aval de l’ingénierie des exigences : la complétude, la cohérence et la vérification automatique des exigences.",
+        "en": "i* mainly targets the late phase of requirements engineering: completeness, consistency and automated verification of requirements."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : i* est conçu pour la phase amont, qui modélise les intérêts des parties prenantes et la façon dont les alternatives les servent ou les compromettent ; complétude, cohérence et vérification relèvent de la phase aval.",
+        "en": "FALSE: i* is designed for the early phase, which models stakeholder interests and how alternatives address or compromise them; completeness, consistency and verification belong to the late phase."
+      },
+      "trap": {
+        "fr": "Confondre phase amont (le pourquoi) et phase aval (spécifier et vérifier).",
+        "en": "Confusing early phase (the why) and late phase (specifying and verifying)."
+      },
+      "notions": [
+        "n-istar-framework"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Abstract",
+          "quote": "the early phase aims to model and analyze stakeholder interests and how they might be addressed, or compromised, by various system-and-environment alternatives"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Abstract",
+          "quote": "which focuses on completeness, consistency, and automated verification of requirements"
+        }
+      ]
+    },
+    {
+      "level": "understand",
+      "objective": "o1",
+      "id": "isi1-14-qz-02",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le modèle SD de i* décrit les buts et les tâches internes de chaque acteur, reliés par des liens moyens-fins.",
+        "en": "The i* SD model describes each actor’s internal goals and tasks, linked by means-ends links."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le modèle SD montre les dépendances entre acteurs et cache leur contenu intentionnel ; c’est le modèle SR qui regarde « à l’intérieur » des acteurs, avec les liens moyens-fins et les décompositions de tâches.",
+        "en": "FALSE: the SD model shows dependencies among actors and hides their intentional content; the SR model looks “inside” actors, with means-ends links and task decompositions."
+      },
+      "trap": {
+        "fr": "Confondre SD (entre acteurs) et SR (à l’intérieur).",
+        "en": "Confusing SD (among actors) and SR (inside)."
+      },
+      "notions": [
+        "n-istar-framework",
+        "n-istar-sr-model"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "It shows external (but nevertheless intentional) relationships among actors, while hiding the intentional constructs within each actor"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "the Strategic Rationale model provides a more detailed level of modelling by looking “inside” actors to model internal intentional relationships"
+        }
+      ]
+    },
+    {
+      "level": "understand",
+      "objective": "o2",
+      "id": "isi1-14-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans le modèle SD de i*, une dépendance de but laisse toujours au dependee le choix de la manière d’atteindre le but.",
+        "en": "In the i* SD model, a goal dependency always leaves the dependee free to choose how to achieve the goal."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : pour une dépendance de but, c’est au dependee de voir comment l’atteindre (Yu : « It is up to the participant how to attain that goal »). Si la manière était imposée, ce serait une dépendance de tâche.",
+        "en": "TRUE: for a goal dependency, how to attain it is up to the dependee (Yu: “It is up to the participant how to attain that goal”). If the way were imposed, it would be a task dependency."
+      },
+      "trap": {
+        "fr": "Confondre dépendance de but et dépendance de tâche.",
+        "en": "Confusing goal and task dependencies."
+      },
+      "notions": [
+        "n-istar-dependency-types"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the participant how to attain that goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "Dependency types are used to differentiate among the kinds of relationships between depender and dependee, involving different types of freedom and constraint"
+        }
+      ]
+    },
+    {
+      "level": "apply",
+      "objective": "o2",
+      "id": "isi1-14-qz-04",
+      "type": "mcq",
+      "question": {
+        "fr": "L’ordonnanceur de réunions attend que l’initiateur saisisse la plage de dates en suivant une procédure précise. Quel type de dépendance i* est-ce ?",
+        "en": "The meeting scheduler expects the initiator to enter the date range following a specific procedure. Which i* dependency type is it?"
+      },
+      "options": [
+        {
+          "fr": "Une dépendance de but",
+          "en": "A goal dependency"
+        },
+        {
+          "fr": "Une dépendance de tâche",
+          "en": "A task dependency"
+        },
+        {
+          "fr": "Une dépendance de ressource",
+          "en": "A resource dependency"
+        },
+        {
+          "fr": "Une dépendance de soft goal",
+          "en": "A softgoal dependency"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "La manière de faire est imposée (« following a specific procedure ») : c’est une dépendance de tâche. En dépendance de but, le dependee choisirait comment ; en ressource, il fournirait seulement une entité.",
+        "en": "The way is imposed (“following a specific procedure”): it is a task dependency. With a goal dependency, the dependee would choose how; with a resource, it would only furnish an entity."
+      },
+      "trap": {
+        "fr": "Voir un but dès qu’il y a un résultat attendu, sans regarder qui choisit la manière.",
+        "en": "Seeing a goal whenever a result is expected, without checking who chooses the way."
+      },
+      "notions": [
+        "n-istar-dependency-types"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the participant how to attain that goal"
+        }
+      ]
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "En dépendant d’un autre acteur, un acteur peut atteindre des buts qu’il n’atteindrait pas seul, mais il devient vulnérable si cet acteur ne fournit pas.",
+        "en": "By depending on another actor, an actor may achieve goals it could not achieve alone, but it becomes vulnerable if that actor does not deliver."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est le double effet d’une dépendance chez Yu, une opportunité et une vulnérabilité ; le modèle SD sert justement à les analyser.",
+        "en": "TRUE: this is the double effect of a dependency for Yu, an opportunity and a vulnerability; the SD model is used precisely to analyse them."
+      },
+      "trap": {
+        "fr": "Ne voir dans une dépendance que l’avantage (ou que le risque).",
+        "en": "Seeing only the benefit (or only the risk) of a dependency."
+      },
+      "level": "understand",
+      "notions": [
+        "n-istar-dependency-types"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "By depending on others, an actor may be able to achieve goals that are difficult or impossible to achieve on its own"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2. The i* framework",
+          "quote": "an actor becomes vulnerable if the depended-on actors do not deliver"
+        }
+      ],
+      "id": "isi1-14-qz-05",
+      "objective": "o2"
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans une dépendance de ressource, si l’accord attendu n’est pas donné, c’est au dependee de trouver une autre solution.",
+        "en": "In a resource dependency, if the expected agreement is not given, it is up to the dependee to find another solution."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le dependee doit seulement fournir l’entité (ici un accord) ; s’il n’y a pas d’accord, c’est le depender (l’initiateur) qui cherche d’autres dates : il garde la résolution du problème.",
+        "en": "FALSE: the dependee only has to furnish the entity (here an agreement); if there is no agreement, the depender (the initiator) looks for other dates: it keeps the problem solving."
+      },
+      "trap": {
+        "fr": "Confondre ressource (fournir) et but (atteindre, à sa façon).",
+        "en": "Confusing resource (furnish) and goal (achieve, one’s own way)."
+      },
+      "level": "apply",
+      "notions": [
+        "n-istar-dependency-types"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "This means that the participant is expected only to give an agreement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "If there is no agreement, it is the initiator who has to find other dates (do problem solving)"
+        }
+      ],
+      "id": "isi1-14-qz-06",
+      "objective": "o2"
+    },
+    {
+      "id": "isi1-14-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les soft goals du formalisme i* ne peuvent jamais être satisfaits, puisqu’on n’a pas de critère mesurable.",
+        "en": "Soft goals in the i* framework can never be satisfied, since there is no measurable criterion."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : leur satisfaction ne s’établit pas de façon tranchée, mais ils sont satisfaits de façon suffisante (satisficing, solutions « good enough »), selon le jugement de celui qui dépend du but.",
+        "en": "FALSE: their satisfaction is not established in a clear-cut way, but they are satisficed (“good enough” solutions), according to the depender’s judgement."
+      },
+      "trap": {
+        "fr": "Confondre « pas de critère tranché » et « jamais satisfait ».",
+        "en": "Confusing “no clear-cut criterion” and “never satisfied”."
+      },
+      "level": "analyze",
+      "objective": "o3",
+      "notions": [
+        "n-istar-soft-goals"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        }
+      ]
+    },
+    {
+      "type": "true_false",
+      "statement": {
+        "fr": "Une routine réalisable (workable) n’est pas forcément viable : si ses soft goals ne sont pas satisfaits de façon suffisante, elle n’est pas viable.",
+        "en": "A workable routine is not necessarily viable: if its softgoals are not satisficed, it is not viable."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : chez Yu, une routine réalisable n’est pas forcément viable ; quand ses soft goals ne sont pas satisfaits de façon suffisante, elle ne l’est pas (exemple : calculer les créneaux à la main est possible, mais lent et source d’erreurs).",
+        "en": "TRUE: for Yu, a workable routine is not necessarily viable; when its softgoals are not satisficed, it is not (example: computing slots by hand is possible, but slow and error-prone)."
+      },
+      "trap": {
+        "fr": "Croire qu’une solution qui marche est forcément acceptable.",
+        "en": "Believing that a solution that works is necessarily acceptable."
+      },
+      "level": "understand",
+      "notions": [
+        "n-istar-soft-goals",
+        "n-istar-sr-model"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.3 Workability and viability",
+          "quote": "A routine that is workable is not necessarily viable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.3 Workability and viability",
+          "quote": "When softgoals are not satisficed, the routine is not viable"
+        }
+      ],
+      "id": "isi1-14-qz-08",
+      "objective": "o3"
+    },
+    {
+      "level": "apply",
+      "objective": "o4",
+      "id": "isi1-14-qz-09",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans le Deadbot, les familles veulent une représentation « fidèle et respectueuse » de l’être cher. Comment modéliser cette dépendance en i* ?",
+        "en": "In the Deadbot case, families want a “faithful and respectful” representation of their loved one. How do you model this dependency in i*?"
+      },
+      "options": [
+        {
+          "fr": "Un soft goal : pas de critère tranché, ce sont les familles (le depender) qui jugent ce qui suffit",
+          "en": "A softgoal: no clear-cut criterion, the families (the depender) judge what is enough"
+        },
+        {
+          "fr": "Un but : les familles attendent un résultat",
+          "en": "A goal: the families expect a result"
+        },
+        {
+          "fr": "Une ressource : le système fournit une représentation",
+          "en": "A resource: the system furnishes a representation"
+        },
+        {
+          "fr": "Une tâche : le système suit une procédure de création du profil",
+          "en": "A task: the system follows a profile-creation procedure"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "« Fidèle » et « respectueuse » n’ont pas de critère tranché : il revient au depender de décider ce qui suffit, ce qui définit une dépendance de soft goal.",
+        "en": "“Faithful” and “respectful” have no clear-cut criterion: it is up to the depender to decide what is enough, which defines a softgoal dependency."
+      },
+      "trap": {
+        "fr": "Tout typer en « but ».",
+        "en": "Typing everything as a “goal”."
+      },
+      "notions": [
+        "n-istar-dependency-types",
+        "n-istar-soft-goals"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "2. Buts des parties prenantes",
+          "quote": "Avoir une représentation fidèle et respectueuse de l'être cher"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "It is up to the depender to decide what measures are enough for him to be assured, e.g., a telephone confirmation"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "question": {
+        "fr": "Dans un modèle SR de i*, que dit un lien moyens-fins (means-ends) ?",
+        "en": "In an i* SR model, what does a means-ends link say?"
+      },
+      "options": [
+        {
+          "fr": "Pourquoi un acteur fait une tâche : c’est un moyen, parmi d’autres possibles, d’atteindre une fin",
+          "en": "Why an actor performs a task: it is one means, among other possible ones, to achieve an end"
+        },
+        {
+          "fr": "La liste des éléments qui composent une routine",
+          "en": "The list of elements that make up a routine"
+        },
+        {
+          "fr": "Qu’un acteur dépend d’un autre acteur",
+          "en": "That an actor depends on another actor"
+        },
+        {
+          "fr": "L’effet + ou − d’un élément sur un soft goal",
+          "en": "The + or − effect of an element on a softgoal"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Le lien moyens-fins explique pourquoi un acteur s’engage dans une tâche ; un but peut avoir plus d’un moyen. La liste des éléments d’une routine est une décomposition de tâche ; la dépendance entre acteurs relève du SD ; l’effet + / − est une contribution.",
+        "en": "The means-ends link explains why an actor engages in a task; a goal may have more than one means. The list of a routine’s elements is a task decomposition; dependencies among actors belong to the SD; the + / − effect is a contribution."
+      },
+      "trap": {
+        "fr": "Confondre moyens-fins et décomposition de tâche.",
+        "en": "Confusing means-ends and task decomposition."
+      },
+      "level": "understand",
+      "notions": [
+        "n-istar-sr-model"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "The means-ends links in the SR provides understanding about why an actor would engage in some tasks"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "Task-decomposition links provide a hierarchical description of intentional elements that make up a routine"
+        }
+      ],
+      "id": "isi1-14-qz-10",
+      "objective": "o5"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "isi1-14-ex-01",
+      "title": {
+        "fr": "i* : que change l’ordonnanceur de réunions ?",
+        "en": "i*: what does the meeting scheduler change?"
+      },
+      "difficulty": 2,
+      "examStyle": false,
+      "level": "analyze",
+      "objective": "o2",
+      "statement": {
+        "fr": "Chez Yu, on compare deux modèles SD de la planification de réunions : sans puis avec un ordonnanceur informatique.\n1. Quelle dépendance l’initiateur crée-t-il vers l’ordonnanceur, et de quel type ?\n2. Quelle dépendance l’ordonnanceur crée-t-il vers l’initiateur, et de quel type ?\n3. La dépendance « présence assurée » des participants importants est-elle déléguée à l’ordonnanceur ? Pourquoi ?\n4. Quelle opportunité et quelle vulnérabilité l’ordonnanceur apporte-t-il à l’initiateur ?",
+        "en": "Yu compares two SD models of meeting scheduling: without and then with a computer-based scheduler.\n1. Which dependency does the initiator create towards the scheduler, and of which type?\n2. Which dependency does the scheduler create towards the initiator, and of which type?\n3. Is the “assured attendance” dependency on important participants delegated to the scheduler? Why?\n4. Which opportunity and which vulnerability does the scheduler bring to the initiator?"
+      },
+      "hints": [
+        {
+          "fr": "Relis le tableau des 4 types : qui choisit comment ? qui a l’enjeu ?",
+          "en": "Reread the table of the 4 types: who chooses how? who has the stake?"
+        }
+      ],
+      "solution": {
+        "fr": "1. Une dépendance de **but** (MeetingBeScheduled) : l’initiateur délègue la planification et ne se soucie pas de la manière.\n2. Une dépendance de **tâche** : l’ordonnanceur attend que l’initiateur saisisse la plage de dates en suivant une procédure précise (il en crée une aussi vers les participants, pour le format de leurs disponibilités).\n3. **Non** : c’est l’initiateur, pas l’ordonnanceur, qui a un enjeu à la présence des participants ; la dépendance reste de l’initiateur vers le participant important.\n4. Opportunité : l’initiateur n’a plus à atteindre ce but lui-même. Vulnérabilité : il dépend désormais de la réussite de l’ordonnanceur.",
+        "en": "1. A **goal** dependency (MeetingBeScheduled): the initiator delegates scheduling and does not care how it is done.\n2. A **task** dependency: the scheduler expects the initiator to enter the date range following a specific procedure (it also creates one towards participants, for the format of their availability).\n3. **No**: the initiator, not the scheduler, has a stake in the participants’ attendance; the dependency remains from the initiator to the important participant.\n4. Opportunity: the initiator no longer has to achieve this goal itself. Vulnerability: it now depends on the scheduler’s success."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 Dependency types",
+          "quote": "The meeting initiator delegates much of the work of meeting scheduling to the meeting scheduler"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.4 New configurations",
+          "quote": "to enter availability information in a particular format. This is modelled as a task dependency on participants"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "It is the meeting initiator (not the meeting scheduler) who has a stake in having participants attend the meeting"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "represents an opportunity for the meeting initiator not to have to achieve this goal himself"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "the meeting initiator would become vulnerable to the failure of the meeting scheduler in achieving this goal"
+        }
+      ],
+      "notions": [
+        "n-istar-dependency-types",
+        "n-istar-framework"
+      ]
+    },
+    {
+      "id": "isi1-14-ex-02",
+      "title": {
+        "fr": "Vrai ou faux, format des annales : i*",
+        "en": "True or false, exam format: i*"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "« Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX. » (la question 1 est celle de l’annale 2013 ; les suivantes sont dans son format)\n1. (2013 Q3) Les « soft goals » du formalisme i* sont des buts qui ne peuvent jamais être satisfaits puisqu’on n’a pas de critère mesurable.\n2. Dans i*, une dépendance de tâche laisse le dependee libre de choisir la manière de faire.\n3. Le modèle SD de i* cache le contenu intentionnel de chaque acteur.\n4. Dans un modèle SR, une décomposition de tâche donne une alternative parmi d’autres pour atteindre un but.",
+        "en": "“Answer TRUE or FALSE, justify if (and only if) you answer FALSE.” (question 1 is from the 2013 exam; the others follow its format)\n1. (2013 Q3) Soft goals in the i* framework are goals that can never be satisfied since there is no measurable criterion.\n2. In i*, a task dependency leaves the dependee free to choose how to do it.\n3. The i* SD model hides the intentional content of each actor.\n4. In an SR model, a task decomposition gives one alternative among others to achieve a goal."
+      },
+      "hints": [
+        {
+          "fr": "Pour chaque énoncé : quelle notion, et quel mot (jamais, libre, cache, alternative) décide ?",
+          "en": "For each statement: which notion, and which word (never, free, hides, alternative) decides?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n1. **FAUX** : un soft goal n’a pas de critère tranché, mais il est satisfait de façon suffisante (*satisficing*, solutions « good enough ») ; « jamais » est faux.\n2. **FAUX** : en dépendance de tâche, la manière est imposée (suivre une procédure précise) ; c’est la dépendance de but qui laisse le choix.\n3. **VRAI** : le SD montre les relations entre acteurs et cache leurs constructions intentionnelles internes ; le SR regarde à l’intérieur.\n4. **FAUX** : la décomposition énumère les éléments qui composent une routine ; c’est le lien moyens-fins qui relie une fin à un moyen parmi d’autres.",
+        "en": "**Proposed** answers.\n1. **FALSE**: a softgoal has no clear-cut criterion, but it is satisficed (“good enough” solutions); “never” is false.\n2. **FALSE**: in a task dependency, the way is imposed (following a specific procedure); the goal dependency is the one that leaves the choice.\n3. **TRUE**: the SD shows relationships among actors and hides their internal intentional constructs; the SR looks inside.\n4. **FALSE**: decomposition lists the elements that make up a routine; the means-ends link relates an end to one means among others."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.1 SD model with the scheduler",
+          "quote": "The scheduler expects the meeting initiator to enter the date range by following a specific procedure"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "It shows external (but nevertheless intentional) relationships among actors, while hiding the intentional constructs within each actor"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "2.2 Strategic Rationale model",
+          "quote": "Task-decomposition links provide a hierarchical description of intentional elements that make up a routine"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals",
+        "n-istar-dependency-types",
+        "n-istar-sr-model"
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "isi1-14-wr-01",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A soft goal can never be satisfied, so we must ignore it.",
+      "error": "can never be satisfied",
+      "corrected": "can be satisficed",
+      "explanation": {
+        "fr": "Un soft goal n’est pas satisfait de façon tranchée, mais il peut être *satisficed* (atteint de façon suffisante).",
+        "en": "A soft goal is not satisfied in a clear-cut way, but it can be *satisficed* (achieved to a sufficient level)."
+      }
+    },
+    {
+      "id": "isi1-14-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "A goal dependency leaves the {{dependee}} free to decide how to attain the {{goal}}.",
+      "translation": "Une dépendance de but laisse le dependee libre de décider comment atteindre le but."
+    },
+    {
+      "id": "isi1-14-wr-03",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "The SD model describes the dependencies among actors.",
+      "accepted": [
+        "The Strategic Dependency model describes the dependencies among actors."
+      ]
+    },
+    {
+      "id": "isi1-14-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique la différence entre une dépendance de but et une dépendance de tâche dans i*.",
+        "en": "In 2-3 English sentences, explain the difference between a goal dependency and a task dependency in i*."
+      },
+      "modelAnswer": "In a goal dependency, the depender only expects the goal to be achieved: it is up to the dependee how to attain it. In a task dependency, the dependee is expected to follow a specific procedure. For example, the meeting scheduler expects the initiator to enter the date range in a specific way.",
+      "keywords": [
+        "goal dependency",
+        "task dependency",
+        "up to the dependee",
+        "specific procedure"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai dit qui choisit la manière pour un but (le dependee).",
+          "en": "I said who chooses the way for a goal (the dependee)."
+        },
+        {
+          "fr": "J’ai dit que la tâche impose une procédure.",
+          "en": "I said a task imposes a procedure."
+        },
+        {
+          "fr": "J’ai donné un exemple.",
+          "en": "I gave an example."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "sources-texte/isi1/ext-yu-1997-istar.md",
+    "ressources/S3__ISI1/Markdown/examen_2.md",
+    "ressources/S3__ISI1/Markdown/exam_1.md",
+    "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+    "sources-texte/isi1/17-four-dark-corners-or-re.md"
+  ]
+}

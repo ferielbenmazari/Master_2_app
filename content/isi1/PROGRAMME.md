@@ -41,7 +41,8 @@ _Source : 14_IREB 4 · Pohl-Rupp_
 ## Modèles de buts et cas d'utilisation
 _Source : (annales)_
 
-- [ ] KAOS (AND/OR) · i* (soft goals) · cas d'utilisation (erreurs typiques)
+- [ ] KAOS (AND/OR) · i* (soft goals) · cas d'utilisation (erreurs typiques) → ch.13
+- [x] ★ i* : acteurs, dépendances, modèles SD / SR, soft goals (le prof a demandé d'étudier la méthode i*, témoignage du 2026-11-18) → ch.14
 - [ ] Cadre tridimensionnel de Pohl
 
 ## Priorisation et triage
