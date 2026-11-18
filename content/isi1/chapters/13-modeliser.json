@@ -135,6 +135,13 @@
       }
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "1.1 Ce qu’est un cas d’utilisation",
+        "en": "1.1 What a use case is"
+      }
+    },
+    {
       "type": "callout",
       "variant": "definition",
       "text": {
@@ -168,6 +175,13 @@
           "quote": "actors (such as people or other systems) in the system environment"
         }
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.2 Le Do / Don’t du prof",
+        "en": "1.2 The teacher’s Do / Don’t"
+      }
     },
     {
       "type": "table",
@@ -257,6 +271,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "1.3 Cas complémentaires, pas alternatifs (annales, Q5)",
+        "en": "1.3 Complementary, not alternative cases (exams, Q5)"
+      }
+    },
+    {
       "type": "callout",
       "variant": "exam",
       "text": {
@@ -298,6 +319,13 @@
       "text": {
         "fr": "2. Méthode : corriger un diagramme de cas d’utilisation",
         "en": "2. Method: correcting a use case diagram"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Les étapes de la correction",
+        "en": "2.1 The correction steps"
       }
     },
     {
@@ -383,8 +411,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "2.1 Exemple corrigé : la banque en ligne (annale 2013, partie B)",
-        "en": "2.1 Worked example: online banking (2013 exam, part B)"
+        "fr": "2.2 Exemple corrigé : la banque en ligne (annale 2013, partie B)",
+        "en": "2.2 Worked example: online banking (2013 exam, part B)"
       }
     },
     {
@@ -405,6 +433,14 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2.1 Le modèle fautif",
+        "en": "2.2.1 The faulty model"
+      },
+      "level": 3
+    },
+    {
       "type": "diagram",
       "mermaid": "flowchart LR\n  C((Customer))\n  O((Online banking operator))\n  subgraph B[Online Account]\n    U1([Access the account balance])\n    U2([Change the account balance])\n    U3([Account opening])\n    U4([Closure])\n  end\n  C --- U1\n  C --- U2\n  O --- U3\n  O --- U4",
       "caption": {
@@ -418,6 +454,14 @@
           "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
         }
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2.2 Les erreurs et la version corrigée",
+        "en": "2.2.2 The errors and the corrected version"
+      },
+      "level": 3
     },
     {
       "type": "table",
@@ -527,8 +571,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "2.2 Spécifier un cas d’utilisation",
-        "en": "2.2 Specifying a use case"
+        "fr": "2.3 Spécifier un cas d’utilisation",
+        "en": "2.3 Specifying a use case"
       }
     },
     {
@@ -570,6 +614,13 @@
       "text": {
         "fr": "3. Les modèles de buts : KAOS",
         "en": "3. Goal models: KAOS"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 But, raffinement ET et OU",
+        "en": "3.1 Goal, AND and OR refinement"
       }
     },
     {
@@ -621,6 +672,13 @@
           "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
         }
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 OU n’est pas XOR (annale 2013, Q4)",
+        "en": "3.2 OR is not XOR (2013 exam, Q4)"
+      }
     },
     {
       "type": "table",
@@ -705,6 +763,33 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013, Q4 : « Dans KAOS, le lien de décomposition OR est formellement équivalent au XOR. » Corrigé proposé : **FAUX**. En OU, satisfaire **une** alternative **suffit** ; rien n’interdit d’en satisfaire plusieurs. Le XOR en imposerait exactement une.",
+        "en": "2013 exam, Q4: “In KAOS, the OR decomposition link is formally equivalent to XOR.” Proposed answer: **FALSE**. With OR, satisfying **one** alternative **is sufficient**; nothing forbids satisfying several. XOR would require exactly one."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 Les agents : exigence ou hypothèse",
+        "en": "3.3 Agents: requirement or assumption"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Les feuilles du modèle sont confiées à des **agents**. Un but sous la responsabilité d’un seul agent du **logiciel** à construire devient une **exigence** ; sous la responsabilité d’un agent de l’**environnement**, il devient une **hypothèse** (*assumption*), que le logiciel ne peut pas imposer.",
@@ -728,26 +813,6 @@
     },
     {
       "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "Annale 2013, Q4 : « Dans KAOS, le lien de décomposition OR est formellement équivalent au XOR. » Corrigé proposé : **FAUX**. En OU, satisfaire **une** alternative **suffit** ; rien n’interdit d’en satisfaire plusieurs. Le XOR en imposerait exactement une.",
-        "en": "2013 exam, Q4: “In KAOS, the OR decomposition link is formally equivalent to XOR.” Proposed answer: **FALSE**. With OR, satisfying **one** alternative **is sufficient**; nothing forbids satisfying several. XOR would require exactly one."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
-          "loc": "A. Q4",
-          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
-        },
-        {
-          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
-          "loc": "4. Goal refinement links",
-          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
-        }
-      ]
-    },
-    {
-      "type": "callout",
       "variant": "retenir",
       "text": {
         "fr": "But = objectif à atteindre. ET = tous les sous-buts ; OU = une alternative suffit (≠ XOR). Agent du logiciel → exigence ; agent de l’environnement → hypothèse. Les soft goals sont traités avec i* (chapitre suivant).",
@@ -763,6 +828,13 @@
       "text": {
         "fr": "4. Méthode : corriger un modèle KAOS",
         "en": "4. Method: correcting a KAOS model"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Les étapes de la correction",
+        "en": "4.1 The correction steps"
       }
     },
     {
@@ -848,9 +920,17 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.1 Exemple corrigé : la location de vidéos (annale 2013, partie C)",
-        "en": "4.1 Worked example: video rental (2013 exam, part C)"
+        "fr": "4.2 Exemple corrigé : la location de vidéos (annale 2013, partie C)",
+        "en": "4.2 Worked example: video rental (2013 exam, part C)"
       }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.2.1 Les erreurs du modèle",
+        "en": "4.2.1 The model’s errors"
+      },
+      "level": 3
     },
     {
       "type": "table",
@@ -941,6 +1021,14 @@
       "notions": [
         "n-kaos-or-xor"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.2.2 Le modèle corrigé",
+        "en": "4.2.2 The corrected model"
+      },
+      "level": 3
     },
     {
       "type": "diagram",
