@@ -3,31 +3,31 @@
   "courseId": "inf4",
   "order": 5,
   "title": {
-    "fr": "Éliciter les exigences d’une ligne de produits : trois stratégies",
-    "en": "Eliciting product line requirements: three strategies"
+    "fr": "Éliciter et spécifier les exigences d’une ligne : trois stratégies",
+    "en": "Eliciting and specifying a product line’s requirements: three strategies"
   },
   "hook": {
-    "fr": "Pas de client unique, des produits qui n’existent pas encore : par où commencer pour écrire les exigences d’une famille, et comment en tirer un feature model ?",
-    "en": "No single customer, products that do not exist yet: where do you start writing a family’s requirements, and how do you derive a feature model from them?"
+    "fr": "Une famille de produits n’a pas de client unique : trois façons d’en trouver les exigences, un gabarit qui écrit la variabilité, et l’exercice du prof des magasins d’électroménager corrigé.",
+    "en": "A product family has no single customer: three ways to find its requirements, a template that writes variability, and the teacher’s appliance store exercise worked out."
   },
   "question": {
-    "fr": "Comment obtenir les exigences d’une ligne de produits, les écrire avec la variabilité, et les transformer en modèle de variabilité ?",
-    "en": "How do you obtain a product line’s requirements, write them with variability, and turn them into a variability model?"
+    "fr": "Comment obtenir les exigences d’une ligne de produits, les écrire avec leur variabilité, et en tirer un modèle de variabilité ?",
+    "en": "How do you obtain a product line’s requirements, write them with their variability, and derive a variability model from them?"
   },
   "objectives": [
     {
       "id": "o1",
       "text": {
-        "fr": "Décrire les trois stratégies d’élicitation d’une ligne de produits et choisir la plus adaptée à une situation.",
-        "en": "Describe the three product line elicitation strategies and choose the most suitable one for a situation."
+        "fr": "Décrire les trois stratégies d’élicitation d’une ligne et choisir la plus adaptée à une situation.",
+        "en": "Describe the three elicitation strategies of a line and choose the most suitable one for a situation."
       },
       "level": "understand"
     },
     {
       "id": "o2",
       "text": {
-        "fr": "Rédiger une exigence de ligne de produits avec le gabarit (ALL / SOME SYSTEMS…, SHALL / SHOULD / COULD).",
-        "en": "Write a product line requirement with the template (ALL / SOME SYSTEMS…, SHALL / SHOULD / COULD)."
+        "fr": "Rédiger une exigence de ligne avec le gabarit et distinguer variabilité (ALL / SOME) et priorité (SHALL / SHOULD / COULD).",
+        "en": "Write a product line requirement with the template and distinguish variability (ALL / SOME) from priority (SHALL / SHOULD / COULD)."
       },
       "level": "apply"
     },
@@ -42,68 +42,82 @@
     {
       "id": "o4",
       "text": {
-        "fr": "Discuter les limites de chaque stratégie : vocabulaire des documents, choix du premier produit, granularité des vues.",
-        "en": "Discuss each strategy’s limits: document vocabulary, choice of the first product, granularity of views."
+        "fr": "Discuter les limites de chaque stratégie : mots-clés, choix du premier produit, granularité et langage des vues.",
+        "en": "Discuss each strategy’s limits: keywords, choice of the first product, granularity and language of views."
       },
       "level": "analyze"
     }
   ],
   "examFocus": {
+    "documented": [],
     "probable": [
       {
-        "fr": "Exercice corrigé du prof (slides 68-69) : construire le modèle de variabilité à partir de R1 à R5 et de la contrainte C1.",
-        "en": "The teacher’s solved exercise (slides 68-69): build the variability model from R1 to R5 and constraint C1."
+        "fr": "Exercice du prof (S6, p. 68-69) : construire le modèle de variabilité des magasins d’électroménager à partir de R1 à R5 et C1. Aucune annale INF4 : format probable.",
+        "en": "Teacher’s exercise (S6, p. 68-69): build the appliance store variability model from R1 to R5 and C1. No INF4 past exam: probable format."
       },
       {
-        "fr": "Questions de discussion des slides : « What is the influence of the choice of the first product? », « What if the document doesn’t use the right keywords? ».",
-        "en": "Discussion questions from the slides: “What is the influence of the choice of the first product?”, “What if the document doesn’t use the right keywords?”."
+        "fr": "Questions de discussion du prof : « What is the influence of the choice of the first product? », « What if the document doesn’t use the right keywords? », limites du langage pivot.",
+        "en": "Teacher’s discussion questions: “What is the influence of the choice of the first product?”, “What if the document doesn’t use the right keywords?”, limits of the pivot language."
       }
     ]
   },
   "prerequisites": {
-    "fr": "Chapitre 3 (feature models : obligatoire, optionnel, XOR, requires) et chapitre 4 (OVM, points de variation).",
-    "en": "Chapter 3 (feature models: mandatory, optional, XOR, requires) and chapter 4 (OVM, variation points)."
+    "fr": "Communalité, variabilité, dépendances ; lire et compter un feature model ; les notions d’OVM.",
+    "en": "Commonality, variability, dependencies; reading and counting a feature model; OVM notions."
   },
   "next": {
-    "fr": "Le chapitre suivant transforme ces modèles en programmes par contraintes pour les vérifier.",
-    "en": "The next chapter turns these models into constraint programs to verify them."
+    "fr": "Traduire un modèle en contraintes, pour générer et compter ses produits avec un solveur.",
+    "en": "Translating a model into constraints, to generate and count its products with a solver."
   },
   "synthesis": {
     "mustKnow": [
       {
-        "fr": "Trois stratégies : dirigée par les exigences (partir de la documentation), produit bas / haut de gamme (produit de référence), multi-points de vue (intégrer des vues).",
-        "en": "Three strategies: requirements-driven (start from documentation), low-end / high-end product (reference product), multi-viewpoint (integrate views)."
+        "fr": "3 stratégies : dirigée par les exigences (documents), produit de référence (bas / haut de gamme), multi-points de vue (pivot OVM).",
+        "en": "3 strategies: requirements-driven (documents), reference product (low-end / high-end), multiviewpoint (OVM pivot)."
       },
       {
-        "fr": "Dirigée par les exigences : communalité sans condition → obligatoire ; mots de variabilité → optionnel ; mots de dépendance → contraintes ; puis écrire au gabarit.",
-        "en": "Requirements-driven: unconditional commonality → mandatory; variability keywords → optional; dependency keywords → constraints; then write with the template."
-      },
-      {
-        "fr": "Gabarit : « ALL / SOME / THOSE SYSTEMS OF THE <ligne> SHALL / SHOULD / COULD PROVIDE <qui> WITH THE ABILITY TO… ».",
-        "en": "Template: “ALL / SOME / THOSE SYSTEMS OF THE <line> SHALL / SHOULD / COULD PROVIDE <who> WITH THE ABILITY TO…”."
+        "fr": "Gabarit : [condition] ALL / SOME / THOSE SYSTEMS OF THE <ligne> SHALL / SHOULD / COULD PROVIDE <qui> WITH THE ABILITY TO <verbe> ; fiche IEEE 830 adaptée (type, variabilité, stabilité…).",
+        "en": "Template: [condition] ALL / SOME / THOSE SYSTEMS OF THE <line> SHALL / SHOULD / COULD PROVIDE <who> WITH THE ABILITY TO <verb>; adapted IEEE 830 sheet (type, variability, stability…)."
       }
     ],
     "mustDo": [
       {
-        "fr": "Traduire des exigences au gabarit en feature model : ALL + SHALL → obligatoire, SOME + SHOULD / COULD → optionnel, contrainte → requires / excludes.",
-        "en": "Translate template requirements into a feature model: ALL + SHALL → mandatory, SOME + SHOULD / COULD → optional, constraint → requires / excludes."
+        "fr": "Construire un feature model à partir d’exigences au gabarit : ALL → obligatoire, SOME → optionnelle, « X avant Y » → Y requires X.",
+        "en": "Build a feature model from template requirements: ALL → mandatory, SOME → optional, “X before Y” → Y requires X."
+      },
+      {
+        "fr": "Répondre aux questions de discussion : influence du premier produit, mots-clés absents, limites du pivot.",
+        "en": "Answer the discussion questions: influence of the first product, missing keywords, pivot limits."
       }
     ],
     "distinctions": [
       {
-        "fr": "Produit de référence (on part de produits existants) ≠ dirigée par les exigences (on part de la documentation du domaine).",
-        "en": "Reference product (start from existing products) ≠ requirements-driven (start from domain documentation)."
+        "fr": "ALL / SOME (variabilité) ≠ SHALL / SHOULD / COULD (priorité).",
+        "en": "ALL / SOME (variability) ≠ SHALL / SHOULD / COULD (priority)."
+      },
+      {
+        "fr": "Partir des documents ≠ partir de produits ≠ partir de vues.",
+        "en": "Starting from documents ≠ from products ≠ from views."
       }
     ],
     "links": [
       {
-        "fr": "Le gabarit prolonge celui de Pohl et Rupp (ISI1) avec la variabilité ; la stratégie multi-points de vue produit un OVM (chapitre 4).",
-        "en": "The template extends Pohl and Rupp’s (ISI1) with variability; the multi-viewpoint strategy produces an OVM (chapter 4)."
+        "fr": "Les étapes 2 à 4 de la stratégie dirigée par les exigences cherchent communalité, variabilité, dépendances (chapitre « Variabilité et ligne de produits »).",
+        "en": "Steps 2 to 4 of the requirements-driven strategy look for commonality, variability, dependencies (chapter “Variability and product lines”)."
+      },
+      {
+        "fr": "Le modèle obtenu se lit, se compte (chapitre « Les feature models ») et se traduit en contraintes (chapitre « Traduire un modèle en contraintes »).",
+        "en": "The resulting model is read, counted (chapter “Feature models”) and translated into constraints (chapter “Translating a model into constraints”)."
+      },
+      {
+        "fr": "Le pivot de la stratégie multi-points de vue est l’OVM (chapitre « Exigences de domaine et modèle OVM »).",
+        "en": "The pivot of the multiviewpoint strategy is the OVM (chapter “Domain requirements and the OVM”)."
       }
     ]
   },
-  "estimatedMinutes": 12,
+  "estimatedMinutes": 9,
   "sources": [
+    "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
     "ressources/S3__INF4/mardown/6__ple.md"
   ],
   "status": "draft",
@@ -111,52 +125,125 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Une famille sans client unique",
-        "en": "A family without a single customer"
+        "fr": "1. Les trois stratégies en un coup d’œil",
+        "en": "1. The three strategies at a glance"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.1 Pourquoi des stratégies propres aux lignes de produits",
+        "en": "1.1 Why strategies specific to product lines"
       }
     },
     {
       "type": "paragraph",
-      "narrative": true,
       "text": {
-        "fr": "Un fabricant veut lancer toute une gamme de logiciels pour des magasins d’électroménager : certains magasins voudront gérer leur stock, d’autres seulement encaisser. Personne ne peut décrire « le » produit, puisqu’il y en aura plusieurs. Le cours propose trois façons d’attaquer ce problème, trois stratégies pour éliciter les exigences d’une ligne de produits.",
-        "en": "A vendor wants to launch a whole range of software for appliance stores: some stores will want to manage their stock, others only to take payments. Nobody can describe “the” product, since there will be several. The course offers three ways to tackle this, three strategies to elicit a product line’s requirements."
+        "fr": "Une ligne de produits n’a pas un client unique qui décrit « le » produit : il y en aura plusieurs. Le cours range donc, dans l’analyse de domaine, trois stratégies pour éliciter les exigences de toute la famille.",
+        "en": "A product line has no single customer describing “the” product: there will be several. The course therefore places, within domain analysis, three strategies to elicit the requirements of the whole family."
       },
       "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 59",
+          "quote": "B. Strategies to elicit the requirements of a PL"
+        },
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 59",
           "quote": "Low-end vs. high-end product strategy (reference-product strategy)"
         }
-      ]
-    },
-    {
-      "type": "list",
+      ],
       "notions": [
         "n-requirements-driven-strategy",
         "n-low-end-high-end-strategy",
         "n-multiviewpoint-strategy"
-      ],
-      "items": [
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.2 Le tableau des trois stratégies",
+        "en": "1.2 The table of the three strategies"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
         {
-          "fr": "**Dirigée par les exigences** (*requirements-driven*) : on part de la documentation disponible du domaine.",
-          "en": "**Requirements-driven**: start from the domain’s available documentation."
+          "fr": "Stratégie",
+          "en": "Strategy"
         },
         {
-          "fr": "**Produit bas de gamme / haut de gamme** (*reference-product strategy*) : on part de produits existants qu’on compare.",
-          "en": "**Low-end / high-end product** (*reference-product strategy*): start from existing products and compare them."
+          "fr": "Point de départ",
+          "en": "Starting point"
         },
         {
-          "fr": "**Multi-points de vue** (*multiviewpoint*) : on spécifie plusieurs vues, puis on les intègre.",
-          "en": "**Multi-viewpoint**: specify several views, then integrate them."
+          "fr": "Ce qu’on fait",
+          "en": "What is done"
+        },
+        {
+          "fr": "Limite soulevée par le prof",
+          "en": "Limit raised by the teacher"
         }
       ],
+      "rows": [
+        [
+          {
+            "fr": "**Dirigée par les exigences** (*requirements-driven*)",
+            "en": "**Requirements-driven**"
+          },
+          {
+            "fr": "La documentation du domaine",
+            "en": "The domain documentation"
+          },
+          {
+            "fr": "Repérer le commun, la variabilité et les dépendances par mots-clés ; écrire au gabarit",
+            "en": "Spot commonality, variability and dependencies through keywords; write with the template"
+          },
+          {
+            "fr": "Et si les documents n’emploient pas les « bons » mots-clés ?",
+            "en": "What if the documents do not use the “right” keywords?"
+          }
+        ],
+        [
+          {
+            "fr": "**Produit de référence** (bas / haut de gamme)",
+            "en": "**Reference product** (low-end / high-end)"
+          },
+          {
+            "fr": "Des produits existants",
+            "en": "Existing products"
+          },
+          {
+            "fr": "Comparer, en déduire points de variation et variants, intégrer produit par produit",
+            "en": "Compare, derive variation points and variants, integrate product by product"
+          },
+          {
+            "fr": "Quelle influence du choix du premier produit ? Quelles opportunités ratées ?",
+            "en": "What influence of the choice of the first product? What missed opportunities?"
+          }
+        ],
+        [
+          {
+            "fr": "**Multi-points de vue** (*multiviewpoint*)",
+            "en": "**Multiviewpoint**"
+          },
+          {
+            "fr": "Plusieurs vues (fonctions, cas d’utilisation…)",
+            "en": "Several views (functions, use cases…)"
+          },
+          {
+            "fr": "Spécifier chaque vue, relier, intégrer dans un langage pivot (OVM)",
+            "en": "Specify each view, link, integrate into a pivot language (OVM)"
+          },
+          {
+            "fr": "Granularité et langage : le pivot est-il assez riche ? quelle sémantique ?",
+            "en": "Granularity and language: is the pivot rich enough? what semantics?"
+          }
+        ]
+      ],
       "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/6__ple.md",
-          "loc": "Slide 59",
-          "quote": "Low-end vs. high-end product strategy (reference-product strategy)"
-        },
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 60",
@@ -164,16 +251,80 @@
         },
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 60",
+          "quote": "Identify variability (optionality) keywords"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 65",
+          "quote": "What if the document (stakeholder descriptions) doesn't use the << right >> keywords ?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 71",
+          "quote": "Select a low-end and a high-end product"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 71",
+          "quote": "Specify the resulting variation points and the corresponding variants"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 77",
+          "quote": "What is the influence of the choice of the first (/2nd / 3rd / etc) product?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 77",
+          "quote": "Domain missed opportunities? * What is the"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 79",
           "quote": "Identify viewpoints Specify viewpoints (with/without variability) Identify dependencies Integrate"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 81",
+          "quote": "Granularity & language problems! OVM (or your"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 84",
+          "quote": "What is the semantic of the resulting model?"
         }
+      ],
+      "notions": [
+        "n-requirements-driven-strategy",
+        "n-low-end-high-end-strategy",
+        "n-multiviewpoint-strategy"
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "3 stratégies : partir des **documents** (mots-clés, gabarit), partir de **produits de référence** (comparer, intégrer), partir de **plusieurs vues** (intégrer dans un pivot). Chacune a sa limite : les mots-clés, le choix du premier produit, la granularité et le langage.",
+        "en": "3 strategies: start from **documents** (keywords, template), from **reference products** (compare, integrate), from **several views** (integrate into a pivot). Each has its limit: keywords, the choice of the first product, granularity and language."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-09-qz-08"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Stratégie 1 : partir de la documentation",
-        "en": "Strategy 1: start from the documentation"
+        "fr": "2. La stratégie dirigée par les exigences et le gabarit",
+        "en": "2. The requirements-driven strategy and the template"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Les cinq étapes",
+        "en": "2.1 The five steps"
       }
     },
     {
@@ -266,24 +417,214 @@
       ]
     },
     {
-      "type": "paragraph",
-      "notions": [
-        "n-requirement-template"
-      ],
+      "type": "callout",
+      "variant": "tip",
       "text": {
-        "fr": "Le gabarit de phrase du cours (Mazo et al., 2020) ajoute la variabilité à la phrase d’exigence : « [condition] ALL / SOME / THOSE SYSTEMS OF THE <nom de la ligne> SHALL / SHOULD / COULD PROVIDE <qui> WITH THE ABILITY TO <verbe> <objet> ». Chaque exigence est aussi décrite dans une fiche adaptée de l’IEEE 830, avec notamment un champ **Variability** (obligatoire, optionnelle, alternatives) et un champ **Stability** (risque d’évolution).",
-        "en": "The course’s sentence template (Mazo et al., 2020) adds variability to the requirement sentence: “[condition] ALL / SOME / THOSE SYSTEMS OF THE <line name> SHALL / SHOULD / COULD PROVIDE <who> WITH THE ABILITY TO <verb> <object>”. Each requirement is also described in a form adapted from IEEE 830, notably with a **Variability** field (mandatory, optional, alternatives) and a **Stability** field (risk of evolution)."
+        "fr": "**Le lien avec la variabilité** : les étapes 2 à 4 cherchent exactement le triptyque du cours d’introduction, ce qui est **commun** (obligatoire), ce qui **varie** (optionnel) et les **dépendances** (contraintes), mais dans le texte des documents.",
+        "en": "**The link with variability**: steps 2 to 4 look for exactly the triad of the introductory course, what is **common** (mandatory), what **varies** (optional) and the **dependencies** (constraints), but in the text of the documents."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
-          "loc": "Slide 63",
-          "quote": "ALL / SOME / THOSE SYSTEMS OF THE <Product line name>"
+          "loc": "Slide 60",
+          "quote": "Identify commonality (mandatory) (no conditions)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 60",
+          "quote": "Identify variability (optionality) keywords"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 60",
+          "quote": "Identify keywords representing dependencies"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Le gabarit de phrase (Mazo et al., 2020)",
+        "en": "2.2 The sentence template (Mazo et al., 2020)"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Élément du gabarit",
+          "en": "Template element"
+        },
+        {
+          "fr": "Choix possibles",
+          "en": "Possible choices"
+        },
+        {
+          "fr": "Ce qu’il exprime",
+          "en": "What it expresses"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Condition (facultative)",
+            "en": "Condition (optional)"
+          },
+          {
+            "fr": "IF… THEN, WHILE…, IN CASE <feature> IS INCLUDED, AFTER / BEFORE…",
+            "en": "IF… THEN, WHILE…, IN CASE <feature> IS INCLUDED, AFTER / BEFORE…"
+          },
+          {
+            "fr": "Quand l’exigence s’applique ; une dépendance à une feature",
+            "en": "When the requirement applies; a dependency on a feature"
+          }
+        ],
+        [
+          {
+            "fr": "**Cible**",
+            "en": "**Target**"
+          },
+          {
+            "fr": "ALL SYSTEMS / SOME SYSTEMS / THOSE SYSTEMS OF THE <ligne> <restriction> / THE <système>",
+            "en": "ALL SYSTEMS / SOME SYSTEMS / THOSE SYSTEMS OF THE <line> <restriction> / THE <system>"
+          },
+          {
+            "fr": "La **variabilité** : commun à tous, variable, ou réservé à certains",
+            "en": "**Variability**: common to all, variable, or restricted to some"
+          }
+        ],
+        [
+          {
+            "fr": "**Modal**",
+            "en": "**Modal**"
+          },
+          {
+            "fr": "SHALL / SHOULD / COULD",
+            "en": "SHALL / SHOULD / COULD"
+          },
+          {
+            "fr": "La **priorité** : obligatoire, recommandé, optionnel",
+            "en": "**Priority**: mandatory, recommended, optional"
+          }
+        ],
+        [
+          {
+            "fr": "Action",
+            "en": "Action"
+          },
+          {
+            "fr": "PROVIDE <qui> WITH THE ABILITY TO <verbe> / BE ABLE TO <verbe> / <verbe>",
+            "en": "PROVIDE <who> WITH THE ABILITY TO <verb> / BE ABLE TO <verb> / <verb>"
+          },
+          {
+            "fr": "La capacité demandée, et pour qui",
+            "en": "The requested capability, and for whom"
+          }
+        ],
+        [
+          {
+            "fr": "Bornes",
+            "en": "Bounds"
+          },
+          {
+            "fr": "WITHIN <durée>, AT LEAST <quantité>, AS MANY AS POSSIBLE…",
+            "en": "WITHIN <duration>, AT LEAST <quantity>, AS MANY AS POSSIBLE…"
+          },
+          {
+            "fr": "Une contrainte mesurable de temps, de quantité ou de fréquence",
+            "en": "A measurable time, quantity or frequency constraint"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "[ IN CASE <Included feature> IS INCLUDED ]"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "ALL SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SOME SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "THOSE SYSTEMS OF THE <Product line name> <Restriction>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SHALL (Obligatoire) / SHOULD (Recommandé) / COULD (Optionnel)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "PROVIDE <Who?> WITH THE ABILITY TO <Process verb>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "Temps : WITHIN <Time interval> <Time unit>"
         },
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 63",
-          "quote": "`[SHALL / SHOULD / COULD]` $\\rightarrow$ `PROVIDE <Who?>"
+          "quote": "ALL / SOME / THOSE SYSTEMS OF THE <Product line name>"
+        }
+      ],
+      "notions": [
+        "n-requirement-template"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : **ALL / SOME** (la variabilité) et **SHALL / SHOULD / COULD** (la priorité) sont deux choses différentes. « SOME SYSTEMS… SHALL » est une capacité **variable** mais obligatoire dans les produits qui l’ont. Pour construire le modèle, c’est la cible (ALL / SOME) qui décide si la feature est obligatoire ou optionnelle.",
+        "en": "Trap: **ALL / SOME** (variability) and **SHALL / SHOULD / COULD** (priority) are two different things. “SOME SYSTEMS… SHALL” is a **variable** capability, yet mandatory in the products that have it. To build the model, the target (ALL / SOME) decides whether the feature is mandatory or optional."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "ALL SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SOME SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SHALL (Obligatoire) / SHOULD (Recommandé) / COULD (Optionnel)"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.3 La fiche d’exigence adaptée de l’IEEE 830",
+        "en": "2.3 The requirement sheet adapted from IEEE 830"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Chaque exigence de domaine a une fiche : identifiant, version, description (au gabarit), fonction ou module, **type** (FR, NFR, exigence légale, de changement, technique…), **variabilité** (optionnelle, obligatoire, alternatives à supporter), priorité, date de livraison, **stabilité** (risque d’évolution) et source. Exemple du cours : « *In case the action of comparing text is included, those systems of the automation framework product line… shall provide the tester…* », variabilité « *conditionally mandatory* ».",
+        "en": "Each domain requirement has a sheet: identifier, version, description (with the template), function or module, **type** (FR, NFR, legal, change, technical requirement…), **variability** (optional, mandatory, alternatives to support), priority, delivery date, **stability** (risk of change) and source. Course example: “*In case the action of comparing text is included, those systems of the automation framework product line… shall provide the tester…*”, variability “*conditionally mandatory*”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 62",
+          "quote": "indicate here: FR, NFR, legal requirement, change requirement, technical requirement, etc."
         },
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
@@ -294,36 +635,80 @@
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 62",
           "quote": "Stability** | <risk of requirement evolution>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 64",
+          "quote": "In case the action of comparing text is included, those systems of the automation framework product line that only include the option to enter text shall provide the tester"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 64",
+          "quote": "FR (Functional Requirement) | | Variability | Conditionally mandatory."
         }
+      ],
+      "notions": [
+        "n-requirement-template"
       ]
     },
     {
-      "type": "paragraph",
-      "explain": true,
-      "notions": [
-        "n-requirement-template"
-      ],
+      "type": "subheading",
       "text": {
-        "fr": "Pourquoi ce gabarit est-il si pratique ? Parce qu’il prépare directement le modèle : « ALL… SHALL » signale une feature obligatoire, « SOME… SHOULD / COULD » une feature optionnelle, et une contrainte du type « avant de… il faut… » un requires. Le piège, soulevé par le prof lui-même : et si les documents n’emploient pas les « bons » mots-clés ? Il faut alors interpréter le sens, pas seulement les mots.",
-        "en": "Why is this template so handy? Because it prepares the model directly: “ALL… SHALL” signals a mandatory feature, “SOME… SHOULD / COULD” an optional feature, and a constraint such as “before…, one must…” a requires. The trap, raised by the teacher himself: what if the documents do not use the “right” keywords? Then you must interpret the meaning, not just the words."
+        "fr": "2.4 Le piège du vocabulaire des documents",
+        "en": "2.4 The documents’ vocabulary trap"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof pose lui-même la question : « *What if the document doesn’t use the right keywords?* » Les documents réels ne disent pas toujours ALL ou SOME : il faut interpréter le sens (« UNIX has one KERNEL » : commun ; « several PROCESSES (or none) » : variable) plutôt que chercher des mots.",
+        "en": "The teacher asks the question himself: “*What if the document doesn’t use the right keywords?*” Real documents do not always say ALL or SOME: the meaning must be interpreted (“UNIX has one KERNEL”: common; “several PROCESSES (or none)”: variable) rather than looking for words."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 65",
           "quote": "What if the document (stakeholder descriptions) doesn't use the << right >> keywords ?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 61",
+          "quote": "Some of the mandatory functions of the KERNEL are"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 61",
+          "quote": "UNIX can have several PROCESSES (or none) for each user."
         }
+      ],
+      "notions": [
+        "n-requirements-driven-strategy"
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Dirigée par les exigences : documents → commun (obligatoire) → variabilité (optionnel) → dépendances (contraintes) → gabarit. Gabarit : [condition] ALL / SOME / THOSE SYSTEMS OF THE <ligne> SHALL / SHOULD / COULD PROVIDE <qui> WITH THE ABILITY TO <verbe>. ALL / SOME = variabilité ; SHALL / SHOULD / COULD = priorité.",
+        "en": "Requirements-driven: documents → common (mandatory) → variability (optional) → dependencies (constraints) → template. Template: [condition] ALL / SOME / THOSE SYSTEMS OF THE <line> SHALL / SHOULD / COULD PROVIDE <who> WITH THE ABILITY TO <verb>. ALL / SOME = variability; SHALL / SHOULD / COULD = priority."
+      }
+    },
+    {
       "type": "checkpoint",
-      "quizId": "inf4-09-qz-01"
+      "quizId": "inf4-09-qz-11"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "De l’exigence au feature model",
-        "en": "From requirement to feature model"
+        "fr": "3. Méthode : construire le modèle de variabilité à partir d’exigences",
+        "en": "3. Method: building the variability model from requirements"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 Les étapes",
+        "en": "3.1 The steps"
       }
     },
     {
@@ -407,6 +792,224 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Exemple entièrement corrigé : les magasins d’électroménager (S6, p. 68-69)",
+        "en": "3.2 Fully worked example: the appliance stores (S6, p. 68-69)"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2.1 Des exigences aux features",
+        "en": "3.2.1 From requirements to features"
+      },
+      "level": 3
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Exigence",
+          "en": "Requirement"
+        },
+        {
+          "fr": "Mot-clé qui décide",
+          "en": "Deciding keyword"
+        },
+        {
+          "fr": "Ce qu’elle donne",
+          "en": "What it gives"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "R1 : … SOME SYSTEMS… SHOULD… manage the products",
+            "en": "R1: … SOME SYSTEMS… SHOULD… manage the products"
+          },
+          {
+            "fr": "SOME",
+            "en": "SOME"
+          },
+          {
+            "fr": "**ProductManagement**, optionnelle",
+            "en": "**ProductManagement**, optional"
+          }
+        ],
+        [
+          {
+            "fr": "R2 : … SOME SYSTEMS… COULD… validate themselves",
+            "en": "R2: … SOME SYSTEMS… COULD… validate themselves"
+          },
+          {
+            "fr": "SOME",
+            "en": "SOME"
+          },
+          {
+            "fr": "**Validation**, optionnelle",
+            "en": "**Validation**, optional"
+          }
+        ],
+        [
+          {
+            "fr": "R3 : ALL the SYSTEMS… SHALL… manage the payments",
+            "en": "R3: ALL the SYSTEMS… SHALL… manage the payments"
+          },
+          {
+            "fr": "ALL",
+            "en": "ALL"
+          },
+          {
+            "fr": "**Payment**, obligatoire",
+            "en": "**Payment**, mandatory"
+          }
+        ],
+        [
+          {
+            "fr": "R4, R5 : … SOME SYSTEMS… COULD… pay by card / pay cash",
+            "en": "R4, R5: … SOME SYSTEMS… COULD… pay by card / pay cash"
+          },
+          {
+            "fr": "SOME",
+            "en": "SOME"
+          },
+          {
+            "fr": "**CardPayment**, **CashPayment**, optionnelles sous Payment",
+            "en": "**CardPayment**, **CashPayment**, optional under Payment"
+          }
+        ],
+        [
+          {
+            "fr": "C1 : validé avant de gérer les produits",
+            "en": "C1: validated before managing the products"
+          },
+          {
+            "fr": "avant (dépendance)",
+            "en": "before (dependency)"
+          },
+          {
+            "fr": "**ProductManagement requires Validation**",
+            "en": "**ProductManagement requires Validation**"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 68",
+          "quote": "SOME SYSTEMS OF THE appliance store PRODUCT LINE SHOULD PROVIDE the clients WITH THE ABILITY TO manage the products sold in the stores."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 68",
+          "quote": "ALL the SYSTEMS OF THE appliance store PRODUCT LINE SHALL PROVIDE the clients WITH THE ABILITY TO manage the payments of the products sold in the stores."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 68",
+          "quote": "SOME SYSTEMS OF THE appliance store PRODUCT LINE COULD PROVIDE the clients WITH THE ABILITY TO pay by card."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 68",
+          "quote": "The client should be validated into each store system before managing the products of the corresponding store."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 69",
+          "quote": "Payment` (relié par flèche `mandatory` vers `ApplianceStore`)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Sous-features de Payment : CardPayment (Optionnelle)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Validation (Traduite directement à partir de la contrainte C1)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 69",
+          "quote": "Dépendance transversale : `ProductManagement` $\\xrightarrow{\\text{require}}$ `Validation` (traduction de la contrainte C1)."
+        }
+      ],
+      "notions": [
+        "n-appliance-store-exercise"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2.2 La solution du prof",
+        "en": "3.2.2 The teacher’s solution"
+      },
+      "level": 3
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  A[\"ApplianceStore (root)\"]\n  A --- PM[\"ProductManagement ○\"]\n  A --- V[\"Validation ○\"]\n  A --- PAY[\"Payment ●\"]\n  PAY --- CA[\"CardPayment ○\"]\n  PAY --- CS[\"CashPayment ○\"]\n  PM -.->|requires| V",
+      "caption": {
+        "fr": "La solution de l’exercice des magasins d’électroménager (S6, p. 69, redessinée) : ● = obligatoire, ○ = optionnelle ; C1 devient ProductManagement requires Validation.",
+        "en": "The solution of the appliance store exercise (S6, p. 69, redrawn): ● = mandatory, ○ = optional; C1 becomes ProductManagement requires Validation."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 69",
+          "quote": "Payment` (relié par flèche `mandatory` vers `ApplianceStore`)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Sous-features de Payment : CardPayment (Optionnelle)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Validation (Traduite directement à partir de la contrainte C1)."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2.3 Pour aller plus loin : compter et discuter",
+        "en": "3.2.3 Going further: counting and discussing"
+      },
+      "level": 3
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Avec la méthode du chapitre « Les feature models » : (ProductManagement, Validation) offre 3 choix (aucune, Validation seule, les deux, car le requires interdit ProductManagement seule), CardPayment 2, CashPayment 2, soit **12 produits** (décompte proposé). Remarque proposée : le modèle autorise Payment sans carte ni espèces ; un groupe `<1..2>` sous Payment l’interdirait, mais ce n’est pas la solution du prof.",
+        "en": "With the method of the chapter “Feature models”: (ProductManagement, Validation) gives 3 choices (none, Validation only, both, since the requires forbids ProductManagement alone), CardPayment 2, CashPayment 2, hence **12 products** (proposed count). Proposed remark: the model allows Payment with neither card nor cash; a `<1..2>` group under Payment would forbid it, but that is not the teacher’s solution."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 69",
+          "quote": "Payment` (relié par flèche `mandatory` vers `ApplianceStore`)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Sous-features de Payment : CardPayment (Optionnelle)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Validation (Traduite directement à partir de la contrainte C1)."
+        }
+      ],
+      "notions": [
+        "n-appliance-store-exercise"
+      ],
+      "explain": true
+    },
+    {
       "type": "callout",
       "variant": "exam",
       "text": {
@@ -432,25 +1035,82 @@
       ]
     },
     {
-      "type": "checkpoint",
-      "quizId": "inf4-09-qz-04"
-    },
-    {
-      "type": "heading",
+      "type": "subheading",
       "text": {
-        "fr": "Stratégie 2 : partir de produits de référence",
-        "en": "Strategy 2: start from reference products"
+        "fr": "3.3 Autre exemple du cours : UNIX, de la documentation au modèle",
+        "en": "3.3 Another course example: UNIX, from documentation to model"
       }
     },
     {
       "type": "paragraph",
-      "notions": [
-        "n-low-end-high-end-strategy"
-      ],
       "text": {
-        "fr": "Deuxième stratégie : **choisir un produit bas de gamme et un produit haut de gamme**, comparer leurs propriétés (matériaux, dimensions…), leurs capacités (fonctions) et leurs qualités (performance, sécurité…), puis compléter avec toutes les possibilités intermédiaires. On spécifie ensuite les points de variation et leurs variants, en vérifiant qu’ils entrent dans le périmètre de la ligne : tout ce qui est dans le périmètre devient exigence de la ligne. Enfin, on complète selon les objectifs et la stratégie marketing.",
-        "en": "Second strategy: **choose a low-end and a high-end product**, compare their properties (materials, dimensions…), capabilities (functions) and qualities (performance, security…), then fill in all intermediate possibilities. Next, specify the variation points and their variants, checking they are within the line’s scope: everything in scope becomes a line requirement. Finally, complete according to the objectives and marketing strategy."
+        "fr": "Le même raisonnement transforme la documentation d’UNIX (slides 61 et 66) en feature model : les fonctions « *mandatory* » du Kernel deviennent des features obligatoires, les processus « *several (or none)* » une feature à cardinalité, et les supports USB, CD-ROM, PCMCIA un groupe `<0..3>` de features optionnelles.",
+        "en": "The same reasoning turns the UNIX documentation (slides 61 and 66) into a feature model: the Kernel’s “*mandatory*” functions become mandatory features, the “*several (or none)*” processes a feature with a cardinality, and the USB, CD-ROM, PCMCIA supports a `<0..3>` group of optional features."
       },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 61",
+          "quote": "Some of the mandatory functions of the KERNEL are"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 61",
+          "quote": "UNIX can have several PROCESSES (or none) for each user."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 66",
+          "quote": "Groupe de cardinalité `<0..3>` pour : `Support_usb` (Optionnel), `Cdrom_atech` (Optionnel), `Pcmacia_support` (Optionnel)."
+        }
+      ],
+      "notions": [
+        "n-requirements-driven-strategy"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Construire = racine au nom de la ligne → une feature par capacité → ALL : obligatoire, SOME : optionnelle → rattacher les features fines à leur parent → « X avant Y » : Y requires X. Électroménager : Payment obligatoire, le reste optionnel, ProductManagement requires Validation ; 12 produits.",
+        "en": "Build = root named after the line → one feature per capability → ALL: mandatory, SOME: optional → attach finer features to their parent → “X before Y”: Y requires X. Appliance stores: Payment mandatory, the rest optional, ProductManagement requires Validation; 12 products."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-09-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. La stratégie du produit de référence (bas / haut de gamme)",
+        "en": "4. The reference-product strategy (low-end / high-end)"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Les trois étapes",
+        "en": "4.1 The three steps"
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        {
+          "fr": "**Choisir un produit bas de gamme et un produit haut de gamme**, comparer leurs propriétés (matériaux, dimensions…), capacités (fonctions) et qualités (performance, sécurité…), et compléter avec toutes les possibilités intermédiaires.",
+          "en": "**Select a low-end and a high-end product**, compare their properties (materials, dimensions…), capacities (functions) and qualities (performance, security…), and complete with all the possibilities in between."
+        },
+        {
+          "fr": "**Spécifier les points de variation et leurs variants**, et vérifier qu’ils entrent dans le périmètre : tout ce qui est dans le périmètre devient exigence de la ligne.",
+          "en": "**Specify the variation points and their variants**, and check they are within the scope: everything in the scope becomes a requirement of the line."
+        },
+        {
+          "fr": "**Compléter** avec les caractéristiques « pratiques » selon les objectifs et la stratégie marketing de la ligne.",
+          "en": "**Complete** with the “convenient” characteristics according to the line’s objectives and marketing strategy."
+        }
+      ],
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
@@ -477,16 +1137,24 @@
           "loc": "Slide 71",
           "quote": "According to the objectives and marketing strategy of the product line."
         }
+      ],
+      "notions": [
+        "n-low-end-high-end-strategy"
       ]
     },
     {
-      "type": "paragraph",
-      "notions": [
-        "n-low-end-high-end-strategy"
-      ],
+      "type": "subheading",
       "text": {
-        "fr": "L’exemple UNIX du cours la déroule produit par produit : un premier produit de référence (RedHat) donne un arbre de décomposition ; un deuxième (SUSE) fait apparaître des variations et des contraintes qu’on intègre ; on répète avec un troisième (Ubuntu…), jusqu’au feature model complet.",
-        "en": "The course’s UNIX example runs it product by product: a first reference product (RedHat) gives a breakdown tree; a second (SUSE) reveals variations and constraints that are integrated; this is repeated with a third (Ubuntu…), up to the complete feature model."
+        "fr": "4.2 Le déroulé produit par produit : UNIX",
+        "en": "4.2 Product by product: UNIX"
+      }
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  R[\"1. Reference product (RedHat):<br/>breakdown structure tree\"] --> S[\"2. Second product (SUSE):<br/>integrate variations and constraints\"]\n  S --> U[\"3. Third product (Ubuntu, Kubuntu…):<br/>repeat step 2\"]\n  U --> M[\"Feature model of the line\"]",
+      "caption": {
+        "fr": "La stratégie du produit de référence sur UNIX (S6, p. 72 à 76, redessinée) : on part de l’arbre d’un produit, puis chaque produit suivant ajoute ses variations et ses contraintes.",
+        "en": "The reference-product strategy on UNIX (S6, p. 72 to 76, redrawn): start from one product’s tree, then each next product adds its variations and constraints."
       },
       "src": [
         {
@@ -502,14 +1170,33 @@
       ]
     },
     {
-      "type": "paragraph",
-      "explain": true,
-      "notions": [
-        "n-low-end-high-end-strategy"
-      ],
+      "type": "callout",
+      "variant": "tip",
       "text": {
-        "fr": "Le prof pose deux questions de discussion : quelles opportunités du domaine rate-t-on, et quelle est l’influence du choix du premier produit ? Réfléchis-y : le premier produit fixe la structure de l’arbre, et les produits suivants ne font qu’ajouter des variations. Ce qu’aucun produit choisi ne possède n’apparaîtra jamais dans le modèle.",
-        "en": "The teacher asks two discussion questions: which domain opportunities are missed, and what is the influence of choosing the first product? Think about it: the first product sets the tree’s structure, and later products only add variations. What none of the chosen products has will never appear in the model."
+        "fr": "**Le lien avec la représentation extensive** : l’arbre de décomposition (*breakdown structure*) du premier produit est une représentation extensive, produit par produit ; la stratégie le transforme peu à peu en modèle intensif de la famille (chapitre « Les feature models »).",
+        "en": "**The link with extensive representation**: the first product’s breakdown structure tree is an extensive, product-by-product representation; the strategy gradually turns it into an intensive model of the family (chapter “Feature models”)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slides 72-76",
+          "quote": "Select reference product $\\rightarrow$ Create breakdown structure tree."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.3 La question du prof : l’influence du premier produit",
+        "en": "4.3 The teacher’s question: the influence of the first product"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "S6, p. 77 : « *What is the influence of the choice of the first (/2nd / 3rd / etc) product?* » et « *Domain missed opportunities?* ». Réponse **proposée** : le premier produit fixe la structure de l’arbre, les suivants ne font qu’ajouter des variations ; ce qu’aucun produit choisi ne possède n’apparaîtra jamais dans le modèle (opportunités ratées). D’où l’importance de choisir des produits extrêmes, bas et haut de gamme.",
+        "en": "S6, p. 77: “*What is the influence of the choice of the first (/2nd / 3rd / etc) product?*” and “*Domain missed opportunities?*”. **Proposed** answer: the first product fixes the tree structure, the next ones only add variations; what no chosen product has will never appear in the model (missed opportunities). Hence the importance of choosing extreme products, low-end and high-end."
       },
       "src": [
         {
@@ -521,47 +1208,86 @@
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 77",
           "quote": "Domain missed opportunities? * What is the"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 71",
+          "quote": "Select a low-end and a high-end product"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slides 72-76",
+          "quote": "Select reference product $\\rightarrow$ Create breakdown structure tree."
         }
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Produit de référence : bas et haut de gamme → comparer propriétés, capacités, qualités → points de variation et variants dans le périmètre → compléter selon le marketing. Itératif : RedHat → SUSE → Ubuntu. Le premier produit fixe la structure ; ce qu’aucun produit n’a est raté.",
+        "en": "Reference product: low-end and high-end → compare properties, capacities, qualities → variation points and variants within scope → complete according to marketing. Iterative: RedHat → SUSE → Ubuntu. The first product fixes the structure; what no product has is missed."
+      }
+    },
+    {
       "type": "checkpoint",
-      "quizId": "inf4-09-qz-07"
+      "quizId": "inf4-09-qz-12"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Stratégie 3 : intégrer plusieurs points de vue",
-        "en": "Strategy 3: integrate several viewpoints"
+        "fr": "5. La stratégie multi-points de vue",
+        "en": "5. The multiviewpoint strategy"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.1 Les quatre étapes",
+        "en": "5.1 The four steps"
       }
     },
     {
       "type": "paragraph",
-      "notions": [
-        "n-multiviewpoint-strategy"
-      ],
       "text": {
-        "fr": "Troisième stratégie, en quatre étapes : identifier les points de vue, les spécifier (avec ou sans variabilité), identifier leurs dépendances, puis les intégrer. Le cours montre par exemple un feature model et un diagramme de cas d’utilisation fusionnés en un seul **OVM**, utilisé comme langage pivot.",
-        "en": "Third strategy, in four steps: identify the viewpoints, specify them (with or without variability), identify their dependencies, then integrate them. The course shows, for example, a feature model and a use case diagram merged into a single **OVM**, used as a pivot language."
+        "fr": "Quatre étapes : **identifier** les points de vue, les **spécifier** (avec ou sans variabilité), **identifier leurs dépendances**, puis les **intégrer**. Les vues croisent des perspectives (planificateur, propriétaire, concepteur, constructeur) et des angles (fonctionnel, information, organisation, infrastructure).",
+        "en": "Four steps: **identify** the viewpoints, **specify** them (with or without variability), **identify their dependencies**, then **integrate** them. The views cross perspectives (planner, owner, designer, builder) and angles (functional, information, organisational, infrastructure)."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 79",
           "quote": "Identify viewpoints Specify viewpoints (with/without variability) Identify dependencies Integrate"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 79",
+          "quote": "Perspectives / Views | Functional View | Information View | Organizational View | Infrastructure View"
         }
+      ],
+      "notions": [
+        "n-multiviewpoint-strategy"
       ]
     },
     {
-      "type": "paragraph",
-      "notions": [
-        "n-multiviewpoint-strategy"
-      ],
+      "type": "subheading",
       "text": {
-        "fr": "La limite tient en trois mots du prof : « granularity & language problems ». L’OVM, ou tout autre langage pivot, n’est peut-être pas assez riche pour représenter cardinalités individuelles, attributs et autres contraintes ; et quand le modèle intégré mélange toutes sortes de concepts, quelle est sa sémantique ?",
-        "en": "The limit fits in the teacher’s words: “granularity & language problems”. The OVM, or any pivot language, may not be rich enough to represent individual cardinalities, attributes and other constraints; and when the integrated model mixes all kinds of concepts, what is its semantics?"
+        "fr": "5.2 L’OVM comme langage pivot, et ses limites",
+        "en": "5.2 The OVM as a pivot language, and its limits"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le cours fusionne par exemple un feature model et un diagramme de cas d’utilisation en un seul **OVM**, qui sert de langage pivot entre les vues. Limites, dans les mots du prof : « *granularity & language problems* » ; l’OVM n’est peut-être pas assez riche pour les cardinalités individuelles, les attributs et d’autres contraintes ; et quelle est la sémantique d’un modèle qui mélange toutes sortes de concepts ?",
+        "en": "The course merges, for instance, a feature model and a use case diagram into a single **OVM**, used as a pivot language between views. Limits, in the teacher’s words: “*granularity & language problems*”; the OVM may not be rich enough for individual cardinalities, attributes and other constraints; and what is the semantics of a model mixing all kinds of concepts?"
       },
       "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 80",
+          "quote": "Vue Cas d'Utilisation UML"
+        },
         {
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 81",
@@ -577,7 +1303,33 @@
           "loc": "Slide 84",
           "quote": "What is the semantic of the resulting model?"
         }
+      ],
+      "notions": [
+        "n-multiviewpoint-strategy"
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "**Le lien avec l’OVM et les feature models** : l’OVM ne modélise que la variabilité (points de variation, variants), d’où sa limite face aux cardinalités individuelles et aux attributs, que le dialecte FODA étendu sait représenter (chapitres « Exigences de domaine et modèle OVM » et « Les feature models »).",
+        "en": "**The link with the OVM and feature models**: the OVM only models variability (variation points, variants), hence its limit regarding individual cardinalities and attributes, which the extended FODA dialect can represent (chapters “Domain requirements and the OVM” and “Feature models”)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 81",
+          "quote": "OVM (or your pivot language) is maybe not rich enough to allow representing individual cardinalities, attributes and other constraints!"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Multi-points de vue : identifier → spécifier (avec ou sans variabilité) → dépendances → intégrer, dans un pivot comme l’OVM. Limites : granularité, langage pas assez riche (cardinalités, attributs), sémantique du modèle intégré.",
+        "en": "Multiviewpoint: identify → specify (with or without variability) → dependencies → integrate, into a pivot such as the OVM. Limits: granularity, language not rich enough (cardinalities, attributes), semantics of the integrated model."
+      }
     },
     {
       "type": "checkpoint",
@@ -806,29 +1558,28 @@
     },
     {
       "text": {
-        "fr": "Limites : mots-clés absents des documents, influence du premier produit, granularité et langage des vues.",
-        "en": "Limits: keywords missing from documents, influence of the first product, granularity and language of views."
+        "fr": "Dans le gabarit, ALL / SOME porte la variabilité et SHALL / SHOULD / COULD la priorité ; pour construire le modèle, ALL donne une feature obligatoire et SOME une optionnelle.",
+        "en": "In the template, ALL / SOME carries variability and SHALL / SHOULD / COULD priority; to build the model, ALL gives a mandatory feature and SOME an optional one."
       },
       "src": [
         {
-          "file": "ressources/S3__INF4/mardown/6__ple.md",
-          "loc": "Slide 65",
-          "quote": "What if the document (stakeholder descriptions) doesn't use the << right >> keywords ?"
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "ALL SYSTEMS OF THE <Product line name>"
         },
         {
-          "file": "ressources/S3__INF4/mardown/6__ple.md",
-          "loc": "Slide 77",
-          "quote": "What is the influence of the choice of the first (/2nd / 3rd / etc) product?"
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SOME SYSTEMS OF THE <Product line name>"
         },
         {
-          "file": "ressources/S3__INF4/mardown/6__ple.md",
-          "loc": "Slide 81",
-          "quote": "Granularity & language problems! OVM (or your"
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SHALL (Obligatoire) / SHOULD (Recommandé) / COULD (Optionnel)"
         }
       ],
       "notions": [
-        "n-low-end-high-end-strategy",
-        "n-multiviewpoint-strategy"
+        "n-requirement-template"
       ]
     }
   ],
@@ -973,6 +1724,63 @@
       ],
       "notions": [
         "n-multiviewpoint-strategy"
+      ]
+    },
+    {
+      "id": "inf4-09-fc-09",
+      "front": {
+        "fr": "Gabarit : ALL / SOME ou SHALL / SHOULD / COULD ?",
+        "en": "Template: ALL / SOME or SHALL / SHOULD / COULD?"
+      },
+      "back": {
+        "fr": "ALL / SOME / THOSE SYSTEMS = la variabilité (commun ou variable) ; SHALL / SHOULD / COULD = la priorité (obligatoire, recommandé, optionnel). Pour le modèle, c’est ALL / SOME qui décide.",
+        "en": "ALL / SOME / THOSE SYSTEMS = variability (common or variable); SHALL / SHOULD / COULD = priority (mandatory, recommended, optional). For the model, ALL / SOME decides."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "ALL SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SOME SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SHALL (Obligatoire) / SHOULD (Recommandé) / COULD (Optionnel)"
+        }
+      ],
+      "notions": [
+        "n-requirement-template"
+      ]
+    },
+    {
+      "id": "inf4-09-fc-10",
+      "front": {
+        "fr": "Électroménager : combien de produits, et pourquoi ?",
+        "en": "Appliance stores: how many products, and why?"
+      },
+      "back": {
+        "fr": "12 : (ProductManagement, Validation) 3 choix à cause du requires × CardPayment 2 × CashPayment 2 (décompte proposé).",
+        "en": "12: (ProductManagement, Validation) 3 choices because of the requires × CardPayment 2 × CashPayment 2 (proposed count)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 69",
+          "quote": "Payment` (relié par flèche `mandatory` vers `ApplianceStore`)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Validation (Traduite directement à partir de la contrainte C1)."
+        }
+      ],
+      "notions": [
+        "n-appliance-store-exercise"
       ]
     }
   ],
@@ -1353,6 +2161,158 @@
           "file": "ressources/S3__INF4/mardown/6__ple.md",
           "loc": "Slide 58",
           "quote": "However, the constraint-based representation can be difficult to build (for certain people), understand (for certain people) and to use with stakeholders !"
+        }
+      ]
+    },
+    {
+      "id": "inf4-09-qz-11",
+      "type": "mcq",
+      "level": "understand",
+      "objective": "o2",
+      "question": {
+        "fr": "Dans le gabarit « SOME SYSTEMS OF THE <ligne> SHALL PROVIDE… », que disent respectivement SOME et SHALL ?",
+        "en": "In the template “SOME SYSTEMS OF THE <line> SHALL PROVIDE…”, what do SOME and SHALL respectively say?"
+      },
+      "options": [
+        {
+          "fr": "Les deux disent que la capacité est obligatoire dans toute la ligne",
+          "en": "Both say the capability is mandatory across the line"
+        },
+        {
+          "fr": "SOME : la capacité est variable (certains produits) ; SHALL : elle est obligatoire là où elle est présente",
+          "en": "SOME: the capability is variable (some products); SHALL: it is mandatory where present"
+        },
+        {
+          "fr": "SOME : la priorité ; SHALL : la variabilité",
+          "en": "SOME: the priority; SHALL: the variability"
+        },
+        {
+          "fr": "SOME : une contrainte de temps ; SHALL : une condition",
+          "en": "SOME: a time constraint; SHALL: a condition"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "La cible (ALL / SOME / THOSE SYSTEMS) porte la variabilité ; le modal (SHALL / SHOULD / COULD) porte la priorité. Pour le modèle, SOME donne une feature optionnelle.",
+        "en": "The target (ALL / SOME / THOSE SYSTEMS) carries variability; the modal (SHALL / SHOULD / COULD) carries priority. For the model, SOME gives an optional feature."
+      },
+      "trap": {
+        "fr": "Croire que SHALL rend la feature obligatoire dans le modèle.",
+        "en": "Believing SHALL makes the feature mandatory in the model."
+      },
+      "notions": [
+        "n-requirement-template"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SOME SYSTEMS OF THE <Product line name>"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 63",
+          "quote": "SHALL (Obligatoire) / SHOULD (Recommandé) / COULD (Optionnel)"
+        }
+      ]
+    },
+    {
+      "id": "inf4-09-qz-12",
+      "type": "true_false",
+      "level": "analyze",
+      "objective": "o4",
+      "statement": {
+        "fr": "Dans la stratégie du produit de référence, le choix du premier produit n’a aucune influence sur le modèle obtenu, puisque tous les produits finissent intégrés.",
+        "en": "In the reference-product strategy, the choice of the first product has no influence on the resulting model, since all products end up integrated."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX (réponse proposée à la question du prof) : le premier produit fixe la structure de l’arbre, les suivants ajoutent des variations ; ce qu’aucun produit choisi ne possède est raté.",
+        "en": "FALSE (proposed answer to the teacher’s question): the first product fixes the tree structure, the next ones add variations; what no chosen product has is missed."
+      },
+      "trap": {
+        "fr": "Croire que l’ordre d’intégration est neutre.",
+        "en": "Believing the integration order is neutral."
+      },
+      "notions": [
+        "n-low-end-high-end-strategy"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 77",
+          "quote": "What is the influence of the choice of the first (/2nd / 3rd / etc) product?"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 77",
+          "quote": "Domain missed opportunities? * What is the"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slides 72-76",
+          "quote": "Select reference product $\\rightarrow$ Create breakdown structure tree."
+        }
+      ]
+    },
+    {
+      "id": "inf4-09-qz-13",
+      "type": "mcq",
+      "level": "apply",
+      "objective": "o3",
+      "question": {
+        "fr": "Combien de produits autorise la solution du prof pour les magasins d’électroménager (Payment obligatoire ; ProductManagement, Validation, CardPayment, CashPayment optionnelles ; ProductManagement requires Validation) ?",
+        "en": "How many products does the teacher’s appliance store solution allow (Payment mandatory; ProductManagement, Validation, CardPayment, CashPayment optional; ProductManagement requires Validation)?"
+      },
+      "options": [
+        {
+          "fr": "16",
+          "en": "16"
+        },
+        {
+          "fr": "8",
+          "en": "8"
+        },
+        {
+          "fr": "12",
+          "en": "12"
+        },
+        {
+          "fr": "32",
+          "en": "32"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "(ProductManagement, Validation) : 3 choix (le requires interdit ProductManagement seule) × CardPayment 2 × CashPayment 2 = 12 (décompte proposé). 16 oublie le requires.",
+        "en": "(ProductManagement, Validation): 3 choices (the requires forbids ProductManagement alone) × CardPayment 2 × CashPayment 2 = 12 (proposed count). 16 forgets the requires."
+      },
+      "trap": {
+        "fr": "Oublier qu’un requires retire des combinaisons.",
+        "en": "Forgetting that a requires removes combinations."
+      },
+      "notions": [
+        "n-appliance-store-exercise"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/6__ple.md",
+          "loc": "Slide 69",
+          "quote": "Payment` (relié par flèche `mandatory` vers `ApplianceStore`)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Sous-features de Payment : CardPayment (Optionnelle)"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+          "loc": "Page 69",
+          "quote": "Validation (Traduite directement à partir de la contrainte C1)."
         }
       ]
     }
