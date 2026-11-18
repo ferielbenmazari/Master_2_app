@@ -71,8 +71,8 @@
     "en": "Types of requirements (FR, NFR, constraints) and verifying an NFR."
   },
   "next": {
-    "fr": "Le contexte du système : où s’arrête le système, qu’est-ce qui l’influence.",
-    "en": "The system context: where the system ends, what influences it."
+    "fr": "Documenter et gérer les exigences : identifiant unique, traçabilité, glossaire, plan du document.",
+    "en": "Documenting and managing requirements: unique identifier, traceability, glossary, document outline."
   },
   "synthesis": {
     "mustKnow": [
@@ -220,6 +220,21 @@
       "notions": [
         "n-exigence-bien-formee",
         "n-syntaxe-exigence"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  C[\"Condition: When signal x is received\"] --> S[\"Subject: the system\"]\n  S --> A[\"Action: shall set\"]\n  A --> O[\"Object: the signal x received bit\"]\n  O --> K[\"Constraint: within 2 seconds\"]",
+      "caption": {
+        "fr": "La structure d’une exigence bien formée (figure 1 de l’ISO 29148, redessinée) : condition, sujet, action, objet, contrainte.",
+        "en": "The structure of a well-formed requirement (ISO 29148 figure 1, redrawn): condition, subject, action, object, constraint."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.3 Figure 1",
+          "quote": "When signal x is received [Conditions], the system [Subject] shall set [Action] the signal x received bit [Object] within 2 seconds [Constraint]."
+        }
       ]
     },
     {

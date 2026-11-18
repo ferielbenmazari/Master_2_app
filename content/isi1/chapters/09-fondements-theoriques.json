@@ -1,14 +1,14 @@
 {
   "id": "isi1-09-fondements-theoriques",
   "courseId": "isi1",
-  "order": 11,
+  "order": 12,
   "title": {
-    "fr": "Les « 4 coins sombres » et les Problem Frames",
-    "en": "The \"four dark corners\" and Problem Frames"
+    "fr": "Fondements théoriques : coins sombres et Problem Frames",
+    "en": "Theoretical foundations: dark corners and Problem Frames"
   },
   "hook": {
-    "fr": "Une exigence ne dit rien de la machine : elle décrit le monde. Comment passer d'un désir du client à une spécification qu'un développeur peut implémenter ?",
-    "en": "A requirement says nothing about the machine: it describes the world. How do you get from a customer's wish to a specification a developer can implement?"
+    "fr": "Fiche complémentaire : une exigence décrit le monde, pas la machine.",
+    "en": "Further reading: a requirement describes the world, not the machine."
   },
   "question": {
     "fr": "Que décrit vraiment une exigence : la machine ou le monde ? Et comment passer d’un désir du client à une spécification implémentable ?",
@@ -49,12 +49,12 @@
     ]
   },
   "prerequisites": {
-    "fr": "Chapitres 2 et 3 : exigence « quoi, pas comment », spécification, savoir du domaine.",
-    "en": "Chapters 2 and 3: requirement “what, not how”, specification, domain knowledge."
+    "fr": "Une bonne exigence (« quoi, pas comment ») et les modèles de buts (hypothèses).",
+    "en": "A good requirement (“what, not how”) and goal models (assumptions)."
   },
   "next": {
-    "fr": "Fin du parcours ISI1 : reviens aux annales (chapitres 1 à 6 et 10) pour t’entraîner.",
-    "en": "End of the ISI1 path: go back to past exams (chapters 1 to 6 and 10) to practise."
+    "fr": "Fin du cours : entraîne-toi sur les annales.",
+    "en": "End of the course: practise with past exams."
   },
   "synthesis": {
     "mustKnow": [
@@ -93,62 +93,24 @@
     ],
     "links": [
       {
-        "fr": "« Quoi, pas comment » (ISO, chapitre 2) prend ici un sens précis ; les hypothèses KAOS (chapitre 10) sont les buts confiés à l’environnement.",
-        "en": "“What, not how” (ISO, chapter 2) gets a precise meaning here; KAOS assumptions (chapter 10) are goals assigned to the environment."
+        "fr": "« Quoi, pas comment » (chapitre « Une bonne exigence ») prend ici un sens précis ; les hypothèses de KAOS (chapitre « Modéliser ») sont les buts confiés à l’environnement.",
+        "en": "“What, not how” (chapter “A good requirement”) gets a precise meaning here; KAOS assumptions (chapter “Modelling”) are goals assigned to the environment."
       }
     ]
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 5,
   "sources": [
     "sources-texte/isi1/17-four-dark-corners-or-re.md",
     "sources-texte/isi1/18-problem-frames.md"
   ],
   "status": "draft",
-  "notions": [
-    "n-surspecification-solution",
-    "n-quatre-coins-sombres",
-    "n-coin1-termes-ancres-environnement",
-    "n-coin2-decrire-environnement",
-    "n-coin3-controle-actions",
-    "n-coin4-savoir-du-domaine",
-    "n-machine-vs-systeme",
-    "n-designation",
-    "n-definition-formelle",
-    "n-indicatif-optatif",
-    "n-biais-implementation",
-    "n-actions-partagees",
-    "n-trois-categories-actions",
-    "n-surete-vivacite",
-    "n-exigence-specification-optatives",
-    "n-relation-s-k-r",
-    "n-savoir-du-domaine",
-    "n-raffinement-exigences-zj",
-    "n-exigences-non-implementables",
-    "n-achevement-ie",
-    "n-regles-notation-zj",
-    "n-exemple-tourniquet",
-    "n-problem-frames-approche",
-    "n-monde-du-probleme",
-    "n-diagramme-de-probleme",
-    "n-descriptions-machine-vs-monde",
-    "n-cadres-elementaires",
-    "n-domaines-causal-lexical-biddable",
-    "n-preoccupations-de-cadre"
-  ],
   "story": [
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Les quatre coins sombres de l'IE",
-        "en": "The four dark corners of RE"
-      }
-    },
     {
       "type": "callout",
       "variant": "repere",
       "text": {
-        "fr": "Repère : ce chapitre résume deux lectures théoriques (supports 17 et 18). Elles n’ont jamais été interrogées : lis-les en dernier. Elles donnent des arguments solides pour justifier « quoi, pas comment » dans une réflexion.",
-        "en": "Landmark: this chapter summarises two theoretical readings (supports 17 and 18). They have never been asked: read them last. They give solid arguments to justify “what, not how” in a reflection."
+        "fr": "Lecture complémentaire (supports 17 et 18 : Zave et Jackson, Jackson). Jamais interrogée en annale : utile surtout pour argumenter « quoi, pas comment ».",
+        "en": "Further reading (slides 17 and 18: Zave and Jackson, Jackson). Never asked in past exams: mainly useful to argue “what, not how”."
       },
       "src": [
         {
@@ -159,11 +121,260 @@
       ]
     },
     {
+      "type": "heading",
+      "text": {
+        "fr": "1. Machine, environnement, indicatif et optatif",
+        "en": "1. Machine, environment, indicative and optative"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
-        "fr": "Imagine un étudiant qui croit qu'une exigence, c'est « ce que le système fera, et non comment ». Pour Zave et Jackson (1997), cette époque est révolue : **quatre zones** du fondement de l'IE restent obscures. Leurs conclusions : (1) ancrer tout le vocabulaire dans la **réalité de l'environnement** ; (2) décrire l'**environnement**, pas la machine ; (3) identifier **qui contrôle quelles actions** ; (4) le **savoir du domaine** sert surtout à **raffiner** les exigences en spécifications implémentables.",
-        "en": "Imagine a student who believes a requirement is \"what the system will do, not how\". For Zave and Jackson (1997), that era is over: **four areas** of RE's foundation remain obscure. Their conclusions: (1) ground all vocabulary in the **reality of the environment**; (2) describe the **environment**, not the machine; (3) identify **who controls which actions**; (4) **domain knowledge** mainly serves to **refine** requirements into implementable specifications."
+        "fr": "La **[[term-machine|machine]]** est l’artefact informatique à construire ; l’**[[term-environment|environnement]]** est la portion du monde réel pertinente pour le projet (« système » désigne un artefact plus large, avec des parties manuelles). Toute affirmation de l’IE porte sur l’**environnement**.",
+        "en": "The **[[term-machine|machine]]** is the computer artefact to be built; the **[[term-environment|environment]]** is the portion of the real world relevant to the project (“system” means a broader artefact, with manual parts). Every RE statement is about the **environment**."
       },
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "1. Introduction, note 1",
+          "quote": "Throughout this article we use “system” only to refer to a general artifact that might have"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "1. Introduction, note 1",
+          "quote": "we use the more precise term “machine.”"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "6.1",
+          "quote": "—The environment is the portion of the real world relevant to the software"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "From this perspective, all statements made in the course of requirements"
+        }
+      ],
+      "notions": [
+        "n-machine-vs-systeme"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Mode",
+          "en": "Mood"
+        },
+        {
+          "fr": "Ce qu’il décrit",
+          "en": "What it describes"
+        },
+        {
+          "fr": "Contenu",
+          "en": "Content"
+        },
+        {
+          "fr": "Exemple (banque à un client)",
+          "en": "Example (one-customer bank)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**[[term-indicative|Indicatif]]**",
+            "en": "**[[term-indicative|Indicative]]**"
+          },
+          {
+            "fr": "L’environnement tel qu’il est, sans la machine",
+            "en": "The environment as it is, without the machine"
+          },
+          {
+            "fr": "Hypothèses, savoir du domaine (K)",
+            "en": "Assumptions, domain knowledge (K)"
+          },
+          {
+            "fr": "Le solde est égal aux dépôts moins les retraits payés.",
+            "en": "The balance equals deposits minus withdrawals paid."
+          }
+        ],
+        [
+          {
+            "fr": "**[[term-optative|Optatif]]**",
+            "en": "**[[term-optative|Optative]]**"
+          },
+          {
+            "fr": "L’environnement tel qu’on le veut, grâce à la machine",
+            "en": "The environment as we want it, thanks to the machine"
+          },
+          {
+            "fr": "Exigences (R), spécifications (S)",
+            "en": "Requirements (R), specifications (S)"
+          },
+          {
+            "fr": "Une demande de retrait entraîne un paiement si le montant ne dépasse pas le solde.",
+            "en": "A withdrawal request leads to a payment if the amount does not exceed the balance."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "as it is in the absence of the machine or regardless of the actions of the"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "machine; these statements are often called"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "as we would like it to be and as we hope it will be when the machine is"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "connected to the environment. Optative statements are commonly called"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "This perspective avoids the problem of implementation bias because no"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "The current account balance is part of the state of the environment—it is"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3.2",
+          "quote": "of this environment is that, at any time, the balance is equal to the sum of"
+        }
+      ],
+      "notions": [
+        "n-indicatif-optatif",
+        "n-exigence-specification-optatives"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Conséquence : une exigence ne dit rien de la machine au-delà de ce qui est observable à son interface ; sinon, c’est un **[[term-implementation-bias|biais d’implémentation]]**. C’est la version précise du « quoi, pas comment ».",
+        "en": "Consequence: a requirement says nothing about the machine beyond what is observable at its interface; otherwise, it is an **[[term-implementation-bias|implementation bias]]**. This is the precise version of “what, not how”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3",
+          "quote": "Requirements are supposed to describe what the desired machine does, not"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "3",
+          "quote": "how it does it. More precisely, requirements are supposed to describe what"
+        }
+      ],
+      "notions": [
+        "n-biais-implementation",
+        "n-indicatif-optatif"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Machine = artefact à construire ; environnement = monde pertinent. Indicatif = tel qu’il est (hypothèses, savoir du domaine) ; optatif = tel qu’on le veut (exigences). Une exigence décrit l’environnement, pas la machine.",
+        "en": "Machine = artefact to build; environment = relevant world. Indicative = as it is (assumptions, domain knowledge); optative = as we want it (requirements). A requirement describes the environment, not the machine."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-09-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "2. Les quatre coins sombres (Zave et Jackson)",
+        "en": "2. The four dark corners (Zave and Jackson)"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Coin sombre",
+          "en": "Dark corner"
+        },
+        {
+          "fr": "Conclusion",
+          "en": "Conclusion"
+        },
+        {
+          "fr": "Notion clé",
+          "en": "Key notion"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1. Les termes",
+            "en": "1. Terms"
+          },
+          {
+            "fr": "Ancrer le vocabulaire dans la réalité de l’environnement",
+            "en": "Ground the vocabulary in the reality of the environment"
+          },
+          {
+            "fr": "**[[term-designation|Désignation]]** ; une assertion peut être fausse, une définition non",
+            "en": "**[[term-designation|Designation]]**; an assertion can be false, a definition cannot"
+          }
+        ],
+        [
+          {
+            "fr": "2. L’environnement",
+            "en": "2. The environment"
+          },
+          {
+            "fr": "Décrire l’environnement, pas la machine",
+            "en": "Describe the environment, not the machine"
+          },
+          {
+            "fr": "Indicatif / optatif, biais d’implémentation",
+            "en": "Indicative / optative, implementation bias"
+          }
+        ],
+        [
+          {
+            "fr": "3. Les actions",
+            "en": "3. Actions"
+          },
+          {
+            "fr": "Identifier qui contrôle quelles actions",
+            "en": "Identify who controls which actions"
+          },
+          {
+            "fr": "Contrôlée par l’environnement ou la machine ; partagée ou non",
+            "en": "Controlled by the environment or the machine; shared or not"
+          }
+        ],
+        [
+          {
+            "fr": "4. Le savoir du domaine",
+            "en": "4. Domain knowledge"
+          },
+          {
+            "fr": "Il sert à raffiner les exigences en spécifications implémentables",
+            "en": "It is used to refine requirements into implementable specifications"
+          },
+          {
+            "fr": "**S, K ⊢ R**",
+            "en": "**S, K ⊢ R**"
+          }
+        ]
+      ],
       "src": [
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
@@ -189,75 +400,6 @@
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "1. Introduction",
           "quote": "The primary role of domain knowledge in requirements engineering is"
-        }
-      ],
-      "notions": [
-        "n-quatre-coins-sombres",
-        "n-machine-vs-systeme"
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "analogy",
-      "text": {
-        "fr": "**Vocabulaire à fixer.** Les auteurs réservent « système » à un artefact général pouvant avoir des composants manuels et automatiques (un « système de réservation de vols »). Pour l'artefact informatique visé par le développement, ils disent **machine**. L'**environnement** est la portion du monde réel pertinente pour le projet.",
-        "en": "**Vocabulary to fix.** The authors use \"system\" for a general artifact that may have manual and automatic components (an \"airline reservation system\"). For the computer-based artifact being developed they say **machine**. The **environment** is the portion of the real world relevant to the project."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "1. Introduction, note 1",
-          "quote": "Throughout this article we use “system” only to refer to a general artifact that might have"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "1. Introduction, note 1",
-          "quote": "we use the more precise term “machine.”"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.1",
-          "quote": "—The environment is the portion of the real world relevant to the software"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-09-qz-01"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Coin n°1 — Ancrer les termes : la désignation",
-        "en": "Corner 1 — Grounding terms: the designation"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Deux ingénieurs conçoivent le système d'une université. Able : « Deux types de base, étudiant et cours, et une relation *inscrit*. » Baker : « Seuls les étudiants s'inscrivent ? Je ne crois pas. » Able : « Mais c'est ce que j'appelle un étudiant ! » Selon le sens d'« étudiant », l'assertion est presque vide ou très contraignante. Le sens d'un terme primitif ne s'établit que par une explication informelle, précise, **écrite et maintenue** : une **désignation**.",
-        "en": "Two engineers design a university system. Able: \"Two basic types, student and course, and a relation *enrolled*.\" Baker: \"Only students enrol? I don't think so.\" Able: \"But that's what I call a student!\" Depending on what \"student\" means, the assertion is nearly empty or very constraining. The meaning of a primitive term can only be established by an informal, precise explanation, **written and maintained**: a **designation**."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "Able: Two important basic types are student and course."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "Baker: Do only students enroll in courses?"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "The only way to establish the meaning of a primitive term is to provide"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "an informal explanation of it. This explanation must be clear and precise; it"
         },
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
@@ -268,20 +410,7 @@
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "2",
           "quote": "Yet very few requirements methods address this"
-        }
-      ],
-      "notions": [
-        "n-coin1-termes-ancres-environnement",
-        "n-designation"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Conséquence sur l'**assertion** et la **définition** : une assertion (« tout étudiant est inscrit à un cours ») présuppose des désignations, contraint le monde réel, peut être vraie ou fausse et doit être **validée**. Une définition étend seulement le vocabulaire formel, sans contraindre le monde réel : elle peut être inutile ou trompeuse, mais **jamais fausse**.",
-        "en": "Consequence for **assertion** versus **definition**: an assertion (\"every student is enrolled\") presupposes designations, constrains the real world, may be true or false and must be **validated**. A definition only extends the formal vocabulary without constraining the real world: it may be useless or misleading, but it **cannot be false**."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "2",
@@ -299,239 +428,57 @@
         }
       ],
       "notions": [
-        "n-definition-formelle",
-        "n-designation"
+        "n-quatre-coins-sombres",
+        "n-designation",
+        "n-definition-formelle"
       ]
     },
     {
-      "type": "paragraph",
-      "text": {
-        "fr": "Autre apport : le **« goal regress »**. Le but « refuser l'entrée à ceux qui n'ont pas payé » d'un tourniquet de zoo peut remonter sans fin : la rentabilité du zoo ? le bonheur du propriétaire ? **Presque tout but est le sous-but d'un autre.** Ce qui arrête la régression, c'est le **sujet traité** : l'entrée du zoo, délimitée par des désignations de phénomènes observables (visiteurs, pièces, action d'entrer), où l'on explore ensuite des stratégies alternatives.",
-        "en": "Another contribution: **goal regress**. A zoo turnstile's goal \"refuse entry to those who have not paid\" can climb endlessly: the zoo's profitability? the owner's happiness? **Almost every goal is a subgoal of another.** What stops the regress is the **subject matter**: the zoo entrance, delimited by designations of observable phenomena (visitors, coins, entering), where alternative strategies are then explored."
-      },
-      "src": [
+      "type": "table",
+      "headers": [
         {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "Almost every goal is a subgoal with some higher purpose."
+          "fr": "Action",
+          "en": "Action"
         },
         {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "The engineers should be told, in addition to the goal, that the subject"
+          "fr": "Contrôlée par l’environnement",
+          "en": "Controlled by the environment"
         },
         {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "These designations circumscribe the area in which alternative goal satisfaction strategies can be considered"
-        }
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen.** « Une définition peut être fausse » : **faux** — c'est l'**assertion** qui peut être vraie ou fausse ; la définition ne contraint pas le monde réel. Et « les buts suffisent comme point de départ de l'IE » : faux selon ce texte, car un but isolé régresse sans fin si l'on ne désigne pas le sujet.",
-        "en": "**Exam trap.** \"A definition can be false\": **false** — it is the **assertion** that can be true or false; a definition does not constrain the real world. And \"goals are enough as a starting point\": false according to this text, since an isolated goal regresses endlessly unless the subject matter is designated."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "ing, but it cannot be false."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "2",
-          "quote": "But goals by themselves do not make a good"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-09-qz-02"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Coin n°2 — Biais d'implémentation : tout parle de l'environnement",
-        "en": "Corner 2 — Implementation bias: everything is about the environment"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les exigences doivent décrire ce qui est **observable à l'interface** entre environnement et machine, et rien d'autre sur la machine ; sinon, c'est un **biais d'implémentation**. Problème : presque toute machine a un **état** interne, inobservable à l'interface. Exemple de Jones : des numéros bloqués représentés par un *ensemble* sont sans biais, par une *liste* biaisés (ordre inobservable) ; mais si l'on veut plus tard rejouer les numéros dans l'ordre, l'ensemble ne suffit plus : absence de biais et **maintenabilité** s'opposent.",
-        "en": "Requirements should describe what is **observable at the interface** between environment and machine, and nothing else about the machine; otherwise, it is **implementation bias**. Problem: almost every machine has internal **state**, unobservable at the interface. Jones's example: blocked numbers represented as a *set* are unbiased, as a *list* biased (unobservable order); but if numbers must later be replayed in order, the set no longer suffices: lack of bias and **maintainability** conflict."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3",
-          "quote": "Requirements are supposed to describe what the desired machine does, not"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3",
-          "quote": "how it does it. More precisely, requirements are supposed to describe what"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3",
-          "quote": "is observable at the interface between the environment and the machine,"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3",
-          "quote": "states appears to introduce serious implementation bias, because its states"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3",
-          "quote": "Thus Jones’ recommendation brings freedom from implementation bias into conflict with maintainabil-"
+          "fr": "Contrôlée par la machine",
+          "en": "Controlled by the machine"
         }
       ],
-      "notions": [
-        "n-biais-implementation",
-        "n-coin2-decrire-environnement"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "La nouvelle vue : une portion du monde devient « environnement » parce que son comportement est insatisfaisant ; on y connecte une machine pour l'améliorer. **Toute affirmation de l'IE porte donc sur l'environnement**, selon deux modes : l'**indicatif** le décrit tel qu'il est sans la machine (**hypothèses**, **connaissances du domaine**) ; l'**optatif** le décrit tel qu'on le voudrait avec la machine : ce sont les **exigences**. Inutile alors de décrire la machine, et la spécification ne sur-contraint pas l'implémentation.",
-        "en": "The new view: a portion of the world becomes \"environment\" because its behaviour is unsatisfactory; a machine is connected to improve it. **Every RE statement is therefore about the environment**, in two moods: the **indicative** describes it as it is without the machine (**assumptions**, **domain knowledge**); the **optative** describes it as we would like it with the machine: these are the **requirements**. No need then to describe the machine, and the specification does not over-constrain implementation."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "From this perspective, all statements made in the course of requirements"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "as it is in the absence of the machine or regardless of the actions of the"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "machine; these statements are often called"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "as we would like it to be and as we hope it will be when the machine is"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "connected to the environment. Optative statements are commonly called"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "This perspective avoids the problem of implementation bias because no"
-        }
+      "rows": [
+        [
+          {
+            "fr": "**[[term-shared-action|Partagée]]**",
+            "en": "**[[term-shared-action|Shared]]**"
+          },
+          {
+            "fr": "Possible (*pay*, *push* du tourniquet)",
+            "en": "Possible (turnstile *pay*, *push*)"
+          },
+          {
+            "fr": "Possible (*lock*, *unlock*)",
+            "en": "Possible (*lock*, *unlock*)"
+          }
+        ],
+        [
+          {
+            "fr": "**Non partagée**",
+            "en": "**Not shared**"
+          },
+          {
+            "fr": "Possible (*enter*)",
+            "en": "Possible (*enter*)"
+          },
+          {
+            "fr": "**Impossible**",
+            "en": "**Impossible**"
+          }
+        ]
       ],
-      "notions": [
-        "n-indicatif-optatif",
-        "n-coin2-decrire-environnement"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Exemple du texte, une banque à un seul client. Propriété **indicative** : à tout moment, le solde est égal à la somme des dépôts moins la somme des retraits payés. Propriété **optative** : une demande de retrait entraîne un paiement, pourvu que le montant demandé ne dépasse pas le solde courant. Le solde est une dette légale de la banque envers le client : il fait partie de l'**état de l'environnement**, pas de la machine.",
-        "en": "The text's example, a single-customer bank. **Indicative** property: at any time, the balance equals the sum of all previous deposits minus the sum of all previous withdrawal payouts. **Optative** property: a withdrawal request leads to a withdrawal payout, provided the requested amount does not exceed the current balance. The balance is a legal debt owed by the bank to the customer: it is part of the **environment state**, not machine state."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "The current account balance is part of the state of the environment—it is"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "of this environment is that, at any time, the balance is equal to the sum of"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "An important optative property of this environment is that a withdrawal"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.2",
-          "quote": "request leads to a withdrawal payout, provided that the requested amount"
-        }
-      ],
-      "notions": [
-        "n-indicatif-optatif"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Deux conséquences. (a) L'état décrit est celui de l'environnement : on peut donc **collecter des connaissances du domaine avant d'être sûr qu'elles servent**. (b) La machine garde souvent un état qui imite l'environnement, imparfaitement : dans un entrepôt, vol, casse ou erreurs de saisie écartent la quantité réelle de celle du modèle. **L'état interne de la machine ne peut pas être désigné.**",
-        "en": "Two consequences. (a) The state described is the environment's: one can therefore **collect domain knowledge before being sure it is useful**. (b) The machine often keeps a state imitating the environment, imperfectly: in a warehouse, theft, breakage or input errors make the real quantity differ from the model's. **The machine's internal state cannot be designated.**"
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.3",
-          "quote": "forces the specification to be minimal—there must be nothing that is not"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.3",
-          "quote": "we are free to collect and record interesting information about the environ-"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.3",
-          "quote": "However, due to theft, breakage, mishandling, update"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.3",
-          "quote": "we can point out that components of the machine state cannot be designated."
-        }
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen.** Indicatif = *ce qui est vrai de l'environnement* (hypothèse, connaissance du domaine) ; optatif = *ce qu'on veut qu'il devienne* (exigence). Ne pas confondre avec « fonctionnel/non fonctionnel ». Autre piège : « les exigences décrivent aussi la machine » — pour ces auteurs, **non** : elles ne contiennent que de l'information sur l'environnement.",
-        "en": "**Exam trap.** Indicative = *what is true of the environment* (assumption, domain knowledge); optative = *what we want it to become* (requirement). Do not confuse with \"functional/non-functional\". Another trap: \"requirements also describe the machine\" — for these authors, **no**: requirements contain nothing but information about the environment."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "3.3",
-          "quote": "To the best of our knowledge, we are the first to propose that requirements should contain"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-09-qz-04"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Coin n°3 — Le contrôle des actions",
-        "en": "Corner 3 — Control of actions"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "En IE, il y a toujours deux agents, l'**environnement** et la **machine** : il faut savoir **qui contrôle quoi**. Chaque type d'action est **contrôlé par l'environnement** ou **par la machine**, et **partagé** (observable des deux côtés) ou **non partagé** (privé à l'environnement). Une action ne peut pas être contrôlée par la machine et non partagée : restent **trois catégories**. La machine exécute les actions qu'elle contrôle, peut observer les actions partagées, mais pas les autres.",
-        "en": "In RE there are always two agents, the **environment** and the **machine**: you must know **who controls what**. Each action type is **controlled by the environment** or **by the machine**, and **shared** (observable on both sides) or **unshared** (private to the environment). An action cannot be machine-controlled and unshared: **three categories** remain. The machine performs the actions it controls, can observe shared actions, but not the others."
-      },
       "src": [
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
@@ -567,61 +514,7 @@
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "4.1",
           "quote": "while the unshared actions are beyond its reach."
-        }
-      ],
-      "notions": [
-        "n-coin3-controle-actions",
-        "n-actions-partagees",
-        "n-trois-categories-actions"
-      ]
-    },
-    {
-      "type": "table",
-      "headers": [
-        {
-          "fr": "Action",
-          "en": "Action"
         },
-        {
-          "fr": "Contrôlée par l'environnement",
-          "en": "Environment-controlled"
-        },
-        {
-          "fr": "Contrôlée par la machine",
-          "en": "Machine-controlled"
-        }
-      ],
-      "rows": [
-        [
-          {
-            "fr": "**Partagée**",
-            "en": "**Shared**"
-          },
-          {
-            "fr": "Possible (ex. *pay*, *push* du tourniquet)",
-            "en": "Possible (e.g. turnstile *pay*, *push*)"
-          },
-          {
-            "fr": "Possible (ex. *lock*, *unlock*)",
-            "en": "Possible (e.g. *lock*, *unlock*)"
-          }
-        ],
-        [
-          {
-            "fr": "**Non partagée**",
-            "en": "**Unshared**"
-          },
-          {
-            "fr": "Possible (ex. *enter*)",
-            "en": "Possible (e.g. *enter*)"
-          },
-          {
-            "fr": "Impossible",
-            "en": "Impossible"
-          }
-        ]
-      ],
-      "src": [
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "6.2 Table II / 4.2",
@@ -639,118 +532,15 @@
         }
       ],
       "notions": [
-        "n-trois-categories-actions"
+        "n-trois-categories-actions",
+        "n-actions-partagees"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le **tourniquet** du zoo l'illustre avec cinq actions : *pay* (mettre l'argent), *push* (pousser), *enter* (entrer), *lock* et *unlock*. Les trois premières sont contrôlées par l'environnement ; *pay* et *push* sont partagées, *enter* non ; *lock* et *unlock* sont contrôlées par la machine. Les propriétés sont de **sûreté** (« quelque chose de mauvais ne doit pas arriver ») ou de **vivacité** (« quelque chose de bon doit arriver »).",
-        "en": "The zoo **turnstile** illustrates it with five actions: *pay* (insert money), *push*, *enter*, *lock* and *unlock*. The first three are environment-controlled; *pay* and *push* are shared, *enter* is not; *lock* and *unlock* are machine-controlled. Properties are **safety** (\"something bad must not happen\") or **liveness** (\"something good must happen\")."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "occurs whenever a customer puts enough money in the coin slot to be"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "There are five important action types in the gate complex."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "trolled; pays and pushes are shared with the machine, while enters are not."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "Safety properties can be paraphrased as “something bad must not happen,”"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "and liveness properties can be paraphrased as “something good must"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Propriétés du tourniquet. **G1** (indicative, sûreté) : *push* et *enter* alternent. **G2** (indicative, vivacité) : un *push* mène toujours à un *enter* (mécanisme hydraulique). **G3** (**optative**, sûreté) : *lock* et *unlock* alternent, car rien dans l'environnement n'impose cet ordre aux signaux. **G4** (indicative) : verrouillé, aucun *push* ne se produit. **G5** (optative) : le nombre d'*enter* ne dépasse jamais celui de *pay* ; imposer l'alternance serait trop strict (un enseignant paie pour toute sa classe).",
-        "en": "Turnstile properties. **G1** (indicative, safety): *push* and *enter* alternate. **G2** (indicative, liveness): a *push* always leads to an *enter* (hydraulic mechanism). **G3** (**optative**, safety): *lock* and *unlock* alternate, since nothing in the environment imposes this order on the signals. **G4** (indicative): when locked, no *push* occurs. **G5** (optative): the number of *enter* never exceeds the number of *pay*; requiring alternation would be too strict (a teacher pays for a whole class)."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "ensure that (G3) lock and unlock actions alternate strictly, as the hardware"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "are just electronic signals emitted by the machine,"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "The turnstile is designed so that whenever it is locked, push actions"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "of enters never exceeds the accumulated number of pays. This is a safety"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "able to pay at once for a whole classful of students and then lead them in"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "hydraulic mechanism so that a push always leads to an enter."
-        }
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen.** Une même forme de phrase peut être indicative ou optative. Dans l'ascenseur du texte, **G2** (un *push* mène à un *enter*) et **L2** (tout groupe qui attend est servi) se ressemblent syntaxiquement, mais G2 est **indicatif** (garanti par le matériel du tourniquet) alors que L2 est **optatif** (seul un bon contrôleur d'ascenseur peut l'assurer). Pour classer une propriété, demande-toi : *qui la garantit ?*",
-        "en": "**Exam trap.** The same sentence shape can be indicative or optative. In the text's lift example, **G2** (a *push* leads to an *enter*) and **L2** (every waiting group is served) look syntactically alike, but G2 is **indicative** (enforced by the turnstile hardware) while L2 is **optative** (only an effective lift controller can enforce it). To classify a property, ask: *who guarantees it?*"
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "optative. G2 is enforced by the turnstile hardware, while L2 can only be"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "4.2",
-          "quote": "The primary lift requirement is that (L2) each begin-group-waiting action"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-09-qz-06"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Coin n°4 — Le savoir du domaine et le raffinement",
-        "en": "Corner 4 — Domain knowledge and refinement"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Une **exigence** est une propriété optative ; soit R l'ensemble des exigences dont la satisfaction comble pleinement le client. Une **spécification** est aussi une propriété optative, mais **implémentable** : une équipe peut l'implémenter sans autre information. Soit S l'ensemble des spécifications. L'écart entre exigences et spécifications se comble par le **raffinement des exigences** : identifier les aspects d'une exigence qu'un ordinateur seul ne peut garantir ni réaliser, puis les augmenter ou les remplacer jusqu'à ce qu'elles soient pleinement implémentables.",
-        "en": "A **requirement** is an optative property; let R be the set of requirements whose satisfaction fully satisfies the customer. A **specification** is also an optative property, but one that is **implementable**: a team can implement it without any additional information. Let S be the set of specifications. The gap between requirements and specifications is bridged by **requirements refinement**: identifying the aspects of a requirement that a computer alone cannot guarantee or effect, then augmenting or replacing them until they are fully implementable."
+        "fr": "Une **[[term-specification-zj|spécification]]** S est optative et **implémentable** : elle ne contraint que la machine. Le **[[term-domain-knowledge|savoir du domaine]]** K comble l’écart avec les exigences R : **S, K ⊢ R** (des spécifications correctes, jointes au savoir du domaine, impliquent les exigences). Une exigence n’est pas directement implémentable si elle contraint une action de l’environnement, utilise une information non partagée ou se réfère au futur.",
+        "en": "A **[[term-specification-zj|specification]]** S is optative and **implementable**: it only constrains the machine. **[[term-domain-knowledge|Domain knowledge]]** K bridges the gap with requirements R: **S, K ⊢ R** (correct specifications, together with domain knowledge, entail the requirements). A requirement is not directly implementable if it constrains an environment action, uses unshared information or refers to the future."
       },
       "src": [
         {
@@ -768,29 +558,6 @@
           "loc": "5",
           "quote": "A specification is also an optative property, but one that must be"
         },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5",
-          "quote": "Requirements refinement is concerned with (1) identifying the aspects of a"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5",
-          "quote": "(2) augmenting or replacing them until they are fully implementable."
-        }
-      ],
-      "notions": [
-        "n-exigence-specification-optatives",
-        "n-coin4-savoir-du-domaine"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Le rôle principal du **savoir du domaine** (K, l'ensemble des propriétés indicatives pertinentes) est de combler cet écart. S et K ensemble doivent suffire à garantir les exigences : **S, K ⊢ R**. Autrement dit, des spécifications correctes, jointes au savoir du domaine approprié, **impliquent** la satisfaction des exigences. Cette relation dépend de la localisation précise de l'**interface machine/environnement**, c'est-à-dire de la connaissance des actions partagées. Certaines exigences sont déjà implémentables : on les copie de R vers S.",
-        "en": "The primary role of **domain knowledge** (K, the set of relevant indicative properties) is to bridge this gap. S and K together must be sufficient to guarantee the requirements: **S, K ⊢ R**. In other words, correct specifications together with appropriate domain knowledge **imply** the satisfaction of the requirements. This relation depends on the precise location of the **machine/environment interface**, i.e. on knowing the shared actions. Some requirements are already implementable, so they are copied directly from R to S."
-      },
-      "src": [
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "5",
@@ -820,223 +587,64 @@
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "5",
           "quote": "Some requirements are already implementable, so they can be copied"
-        }
-      ],
-      "notions": [
-        "n-savoir-du-domaine",
-        "n-relation-s-k-r"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Pourquoi une exigence n'est-elle pas directement implémentable ? **(1) Elle contraint une action de l'environnement** : G5 ne se réalise qu'avec le savoir G1, G4 et l'effet de *lock*/*unlock*, d'où une spécification sur *lock* et *unlock*. **(2) Elle utilise une information non partagée** : la banque remplace le solde par les dépôts et retraits payés, partagés. **(3) Elle se réfère au futur** : « après le dernier chiffre composé, un signal » devient « après un chiffre suivi de quatre secondes de silence ».",
-        "en": "Why is a requirement not directly implementable? **(1) It constrains an environment action**: G5 is only achieved with knowledge G1, G4 and the effect of *lock*/*unlock*, hence a specification on *lock* and *unlock*. **(2) It uses unshared information**: the bank replaces the balance with paid deposits and withdrawals, which are shared. **(3) It refers to the future**: \"after the last digit dialled, a signal\" becomes \"after a digit followed by four seconds of silence\"."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
           "loc": "5.1–5.3",
           "quote": "Some requirements are not directly implementable because the only way to"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "satisfy them is to constrain an action that is controlled by the environment."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "It is important that (G1) pushes and enters alternate, so that enters can be"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "prevented by preventing pushes. It is important that (G4) whenever the"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "Some requirements are not directly implementable because they are stated"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "in terms of unshared phenomena."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "Requirements with unshared information are refined using domain"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "Some requirements are not directly implementable because they are stated"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "in terms of the future."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1–5.3",
-          "quote": "The resulting specification says that the system must respond after a"
         }
       ],
       "notions": [
-        "n-exigences-non-implementables",
-        "n-raffinement-exigences-zj"
+        "n-relation-s-k-r",
+        "n-exigence-specification-optatives",
+        "n-savoir-du-domaine",
+        "n-exigences-non-implementables"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  S[S: specification, machine behaviour at the interface] --> E{entail}\n  K[K: domain knowledge, indicative] --> E\n  E --> R[R: requirements, optative]",
+      "caption": {
+        "fr": "La relation S, K ⊢ R : la spécification et le savoir du domaine, ensemble, garantissent les exigences.",
+        "en": "The S, K ⊢ R relation: the specification and domain knowledge together guarantee the requirements."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "5",
+          "quote": "Correct specifications, in conjunction with appropriate domain"
+        },
+        {
+          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
+          "loc": "5",
+          "quote": "Some requirements are already implementable, so they can be copied"
+        }
       ]
     },
     {
       "type": "callout",
-      "variant": "exam",
+      "variant": "retenir",
       "text": {
-        "fr": "**Piège d'examen.** Une spécification est une propriété optative **qui ne contraint que la machine** : elle ne contraint pas l'environnement, n'est exprimée en termes d'aucune action ou composante d'état non partagée, et ne fait pas référence au futur. Une exigence qui contraint une action de l'environnement n'est **jamais** satisfaite par la machine seule : toujours en coordination avec le savoir du domaine, et il faut en démontrer l'implication.",
-        "en": "**Exam trap.** A specification is an optative property that **constrains only the machine**: it does not constrain the environment, is not stated in terms of any unshared action or state component, and does not refer to the future. A requirement that constrains an environment action is **never** satisfied by the machine alone: always together with domain knowledge, and the implication must be demonstrated."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1 / 6.3",
-          "quote": "To summarize, requirements that constrain the environment cannot be"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1 / 6.3",
-          "quote": "satisfied by a machine acting alone."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1 / 6.3",
-          "quote": "(3) There is a set S of specifications. The members of S do not constrain"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1 / 6.3",
-          "quote": "the environment; they are not stated in terms of any unshared actions or"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "5.1 / 6.3",
-          "quote": "state components; and they do not refer to the future."
-        }
-      ]
+        "fr": "4 coins : termes désignés, environnement décrit, actions contrôlées (3 catégories, « machine et non partagée » impossible), savoir du domaine pour raffiner. S, K ⊢ R.",
+        "en": "4 corners: designated terms, environment described, controlled actions (3 categories, “machine and not shared” impossible), domain knowledge to refine. S, K ⊢ R."
+      }
     },
     {
       "type": "checkpoint",
-      "quizId": "isi1-09-qz-08"
+      "quizId": "isi1-09-qz-09"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Quand l'IE est-elle terminée ? Règles et critères",
-        "en": "When is RE complete? Rules and criteria"
+        "fr": "3. Les Problem Frames (Jackson)",
+        "en": "3. Problem Frames (Jackson)"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les auteurs résument leur apport en **quatre règles de notation** pour tout langage d'exigences : (1) chaque terme atomique est **désigné ou défini** (donc tout ce qui est dit porte sur l'environnement) ; (2) chaque type d'action appartient à **exactement une** des catégories du tableau (environnement/partagée, environnement/non partagée, machine/partagée) ; (3) chaque fois que nécessaire, les actions des **trois** catégories doivent pouvoir être contraintes ; (4) chaque propriété ou assertion est identifiée comme **exigence, savoir du domaine ou spécification**.",
-        "en": "The authors summarize their contribution as **four notation rules** for any requirements language: (1) each atomic term is **designated or defined** (so everything said is about the environment); (2) each action type belongs to **exactly one** of the categories of the table (environment/shared, environment/unshared, machine/shared); (3) whenever necessary, actions in **all three** categories must be constrainable; (4) each property or assertion is identified as a **requirement, a statement of domain knowledge, or a specification**."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.2",
-          "quote": "(1) Each atomic term must be designated or defined. This means that"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.2",
-          "quote": "(2) Table II characterizes all relevant actions of the environment. Each"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.2",
-          "quote": "action type must be identified as belonging to exactly one of the"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.2",
-          "quote": "(3) Whenever necessary to express relevant properties of the environment,"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.2",
-          "quote": "actions in all three categories must be constrained."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.2",
-          "quote": "(4) Each property or assertion must be identified as a requirement, state-"
-        }
-      ],
-      "notions": [
-        "n-achevement-ie"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "L'IE est **achevée, au sens fort**, si : (1) les exigences **R** sont validées comme acceptables et complètes pour le client ; (2) le savoir du domaine **K** est validé comme **vrai** de l'environnement ; (3) les spécifications **S** ne contraignent pas l'environnement, n'utilisent aucune action non partagée et ne se réfèrent pas au futur ; (4) on a **prouvé S, K ⊢ R** ; (5) on a **prouvé que S et K sont cohérents**. La vérification a donc un rôle dès l'IE.",
-        "en": "RE is **complete, in the strong sense**, if: (1) requirements **R** are validated as acceptable and complete for the customer; (2) domain knowledge **K** is validated as **true** of the environment; (3) specifications **S** do not constrain the environment, use no unshared action and do not refer to the future; (4) **S, K ⊢ R** has been proved; (5) **S and K have been proved consistent**. Verification therefore has a role from RE onwards."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.3",
-          "quote": "(1) There is a set R of requirements. Each member of R has been validated"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.3",
-          "quote": "(2) There is a set K of statements of domain knowledge. Each member of K"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.3",
-          "quote": "(3) There is a set S of specifications. The members of S do not constrain"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.3",
-          "quote": "(5) There is a proof that S and K are consistent."
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.3",
-          "quote": "The completion rules show that"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "loc": "6.3",
-          "quote": "verification also has a role to play in requirements engineering."
-        }
-      ],
-      "notions": [
-        "n-achevement-ie",
-        "n-relation-s-k-r"
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-09-qz-11"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Problem Frames : le même regard, posé par Jackson",
-        "en": "Problem Frames: the same view, by Jackson"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Huit ans plus tard, Michael Jackson reprend l'idée dans les **Problem Frames (PF)**. Ce n'est **pas une méthode de développement** mais une **perspective**, utilisable pour guider, analyser ou comparer des développements. Le problème a trois parties : la **machine** (le logiciel), le **monde du problème** (la partie du monde à transformer) et l'**exigence** (le besoin, prédicat sur ce monde). Machine et monde interagissent par des **phénomènes partagés** (événements, états).",
-        "en": "Eight years later, Michael Jackson takes the idea up in **Problem Frames (PF)**. It is **not a development method** but a **perspective**, usable to guide, analyse or compare developments. The problem has three parts: the **machine** (the software), the **problem world** (the part of the world to transform) and the **requirement** (the need, a predicate on that world). Machine and world interact through **shared phenomena** (events, states)."
+        "fr": "Les **Problem Frames** ne sont **pas une méthode de développement** mais une perspective pour analyser un problème en trois parties : la **machine**, le **[[term-problem-world|monde du problème]]** et l’**exigence**, reliés par des **phénomènes partagés**. Il faut montrer **S, W ⊢ R**, où W (propriétés du monde) joue le rôle de K.",
+        "en": "**Problem Frames** are **not a development method** but a perspective to analyse a problem in three parts: the **machine**, the **[[term-problem-world|problem world]]** and the **requirement**, linked by **shared phenomena**. You must show **S, W ⊢ R**, where W (world properties) plays the role of K."
       },
       "src": [
         {
@@ -1068,20 +676,7 @@
           "file": "sources-texte/isi1/18-problem-frames.md",
           "loc": "2",
           "quote": "the problem: it is a predicate or condition on the problem"
-        }
-      ],
-      "notions": [
-        "n-problem-frames-approche",
-        "n-monde-du-probleme"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "PF distingue **trois descriptions** : l'**exigence R** (comment le monde doit être), la **spécification S** (le comportement de la machine à l'interface) et les **propriétés du monde W** (vraies indépendamment de la machine). Il faut montrer que **S, W ⊢ R** : une machine conforme à S, installée dans un monde conforme à W, satisfait R. C'est la relation S, K ⊢ R de Zave et Jackson, W jouant le rôle de K. Passer de R à S s'appelle la **réduction de problème**.",
-        "en": "PF distinguishes **three descriptions**: the **requirement R** (how the world must be), the **specification S** (the machine's behaviour at the interface) and the **world properties W** (true independently of the machine). One must show that **S, W ⊢ R**: a machine meeting S, installed in a world meeting W, satisfies R. This is Zave and Jackson's S, K ⊢ R, with W playing the role of K. Going from R to S is called **problem reduction**."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/18-problem-frames.md",
           "loc": "3",
@@ -1119,44 +714,41 @@
         }
       ],
       "notions": [
-        "n-descriptions-machine-vs-monde",
+        "n-problem-frames-approche",
+        "n-monde-du-probleme",
         "n-relation-s-k-r"
       ]
     },
     {
-      "type": "paragraph",
-      "text": {
-        "fr": "Jackson fait aussi une critique : malgré les discours, **la plupart des descriptions (surtout formelles) produites dans les projets décrivent la machine plutôt que le monde** ; ce qui devait décrire le monde glisse vite vers une structure d'objets ou de base de données censée le représenter. PF veut exercer une influence inverse en insistant sur l'investigation explicite et l'usage des propriétés données du monde du problème.",
-        "en": "Jackson also makes a criticism: despite lip service, **most descriptions (especially formal ones) built in software projects describe the machine rather than the world**; what began as an effort to describe the world slips quickly into an object or database structure meant to represent it. PF's emphasis on explicit investigation and use of the given problem-world properties is meant as a countervailing influence."
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  M[Machine] ---|shared phenomena| W[Problem world]\n  Q([Requirement]) -.- W",
+      "caption": {
+        "fr": "Le diagramme de problème : la machine agit sur le monde du problème par des phénomènes partagés ; l’exigence (ovale en pointillé) porte sur le monde.",
+        "en": "The problem diagram: the machine acts on the problem world through shared phenomena; the requirement (dashed oval) is about the world."
       },
       "src": [
         {
           "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "3",
-          "quote": "problem world, the reality is that most descriptions—"
+          "loc": "2",
+          "quote": "approach is not a development method. It is, rather, a"
         },
         {
           "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "3",
-          "quote": "certainly most formal descriptions—constructed in software"
+          "loc": "2",
+          "quote": "perspective and a conceptual framework, embodying a"
         },
         {
           "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "3",
-          "quote": "projects are descriptions of the machine rather than of the"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "3",
-          "quote": "The PF emphasis on the explicit investigation, description and"
+          "loc": "2",
+          "quote": "located, is called the problem world."
         }
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les **cadres élémentaires** sont des **patrons** de sous-problèmes simples : **WorkPieces** (un utilisateur édite un texte ou un graphique), **Required Behaviour** (la machine impose un comportement à un domaine contrôlé), **Information Display** (la machine surveille le monde réel et affiche des informations). Chaque domaine a une nature : **causal** (domaine contrôlé), **lexical** (la *WorkPiece*), **biddable** (l'utilisateur, à qui l'on peut demander d'agir, sans garantie).",
-        "en": "**Elementary frames** are **patterns** for simple subproblems: **WorkPieces** (a user edits a text or graphic), **Required Behaviour** (the machine imposes behaviour on a controlled domain), **Information Display** (the machine monitors the real world and displays information). Each domain has a nature: **causal** (controlled domain), **lexical** (the *WorkPiece*), **biddable** (the user, who can be asked to act, without guarantee)."
+        "fr": "Les **[[term-problem-frame|cadres élémentaires]]** sont des patrons de sous-problèmes : **WorkPieces** (éditer un texte ou un graphique), **Required Behaviour** (imposer un comportement à un domaine contrôlé), **Information Display** (surveiller le monde et afficher des informations).",
+        "en": "**[[term-problem-frame|Elementary frames]]** are patterns of subproblems: **WorkPieces** (editing a text or a graphic), **Required Behaviour** (imposing a behaviour on a controlled domain), **Information Display** (monitoring the world and displaying information)."
       },
       "src": [
         {
@@ -1173,86 +765,19 @@
           "file": "sources-texte/isi1/18-problem-frames.md",
           "loc": "6",
           "quote": "† In an Information Display problem the Information"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "its physical properties—causal, lexical or biddable—as"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "causal, the WorkPiece is lexical, and the User is"
         }
       ],
       "notions": [
-        "n-cadres-elementaires",
-        "n-domaines-causal-lexical-biddable"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Chaque cadre soulève des **préoccupations** : **initialisation** (la machine démarre dans son état initial, pas forcément le monde), **casse** (un domaine causal peut être endommagé), **fiabilité** (jamais parfaite), **déficit d'information** (l'information disponible à l'affichage peut manquer). Elles ne se posent pas partout : pas de déficit d'information pour *WorkPieces*. Pour ce déficit, on introduit souvent un domaine *Model* inventé (une base de données) et l'on découpe le problème en deux.",
-        "en": "Each frame raises **concerns**: **initialisation** (the machine starts in its initial state, the world not necessarily), **breakage** (a causal domain can be damaged), **reliability** (never perfect), **information deficit** (information available at display time may be lacking). They do not arise everywhere: no information deficit for *WorkPieces*. For this deficit, an invented *Model* domain (a database) is often introduced and the problem split in two."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "† Initialisation. The machine necessarily begins operation"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "† Breakage. A causal domain may be damaged if certain"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "† Reliability. A causal problem domain typically satisfies"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "† Information deficit. In an Information Display problem"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "specific concerns. Information deficit does not arise in"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "6",
-          "quote": "The Model domain is an invented lexical domain, often a"
-        }
+        "n-cadres-elementaires"
       ]
     },
     {
       "type": "callout",
-      "variant": "exam",
+      "variant": "retenir",
       "text": {
-        "fr": "**Piège d'examen.** PF et « Four dark corners » disent la même chose avec d'autres mots : exigence R (optatif) ↔ R ; propriétés du monde W ↔ savoir du domaine K (indicatif) ; spécification S ↔ S ; relation **S, W ⊢ R** ↔ **S, K ⊢ R**. Ne pas confondre non plus les **phénomènes de l'exigence** (ce que le client observe pour juger R satisfaite) et les **phénomènes de spécification** (ceux de l'interface machine/monde) : ils sont distincts, parfois disjoints.",
-        "en": "**Exam trap.** PF and \"Four dark corners\" say the same thing in different words: requirement R (optative) ↔ R; world properties W ↔ domain knowledge K (indicative); specification S ↔ S; relation **S, W ⊢ R** ↔ **S, K ⊢ R**. Also do not confuse **requirement phenomena** (what the customer observes to judge R satisfied) with **specification phenomena** (those at the machine/world interface): they are distinct, sometimes disjoint."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "2–3",
-          "quote": "† the requirement R, describing the customer’s require-"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "2–3",
-          "quote": "† the world properties W, describing the given properties"
-        },
-        {
-          "file": "sources-texte/isi1/18-problem-frames.md",
-          "loc": "2–3",
-          "quote": "In general, the phenomena b, which we may call"
-        }
-      ]
+        "fr": "Problem Frames = perspective (pas une méthode) : machine, monde du problème, exigence ; S, W ⊢ R ≈ S, K ⊢ R. Cadres : WorkPieces, Required Behaviour, Information Display.",
+        "en": "Problem Frames = perspective (not a method): machine, problem world, requirement; S, W ⊢ R ≈ S, K ⊢ R. Frames: WorkPieces, Required Behaviour, Information Display."
+      }
     },
     {
       "type": "checkpoint",
@@ -1526,6 +1051,37 @@
       ],
       "notion": "n-monde-du-probleme"
     }
+  ],
+  "notions": [
+    "n-surspecification-solution",
+    "n-quatre-coins-sombres",
+    "n-coin1-termes-ancres-environnement",
+    "n-coin2-decrire-environnement",
+    "n-coin3-controle-actions",
+    "n-coin4-savoir-du-domaine",
+    "n-machine-vs-systeme",
+    "n-designation",
+    "n-definition-formelle",
+    "n-indicatif-optatif",
+    "n-biais-implementation",
+    "n-actions-partagees",
+    "n-trois-categories-actions",
+    "n-surete-vivacite",
+    "n-exigence-specification-optatives",
+    "n-relation-s-k-r",
+    "n-savoir-du-domaine",
+    "n-raffinement-exigences-zj",
+    "n-exigences-non-implementables",
+    "n-achevement-ie",
+    "n-regles-notation-zj",
+    "n-exemple-tourniquet",
+    "n-problem-frames-approche",
+    "n-monde-du-probleme",
+    "n-diagramme-de-probleme",
+    "n-descriptions-machine-vs-monde",
+    "n-cadres-elementaires",
+    "n-domaines-causal-lexical-biddable",
+    "n-preoccupations-de-cadre"
   ],
   "keyPoints": [
     {
@@ -1943,70 +1499,6 @@
       }
     },
     {
-      "id": "isi1-09-qz-03",
-      "type": "mcq",
-      "question": {
-        "fr": "Le but « refuser l'entrée à ceux qui n'ont pas payé » d'un tourniquet de zoo peut se reformuler en « rentabilité du zoo », puis en « bonheur du propriétaire »… À quoi Zave et Jackson ancrent-ils l'ingénierie pour éviter cette régression sans fin ?",
-        "en": "The goal \"refuse entry to those who have not paid\" for a zoo turnstile can be restated as \"profitability of the zoo\", then \"the owner's happiness\"… What do Zave and Jackson anchor engineering on to avoid this endless regress?"
-      },
-      "options": [
-        {
-          "fr": "à toujours viser le but de plus haut niveau, car c'est lui qui justifie les autres",
-          "en": "always aiming at the highest-level goal, since it justifies the others"
-        },
-        {
-          "fr": "à ajouter à chaque but un but concurrent pour comparer les stratégies",
-          "en": "adding a competing goal to each goal to compare strategies"
-        },
-        {
-          "fr": "au sujet traité, délimité par des désignations de phénomènes observables (visiteurs, pièces, action d'entrer)",
-          "en": "the subject matter, delimited by designations of observable phenomena (visitors, coins, the act of entering)"
-        },
-        {
-          "fr": "à une formalisation logique du but, qui fixe son niveau d'abstraction",
-          "en": "a logical formalisation of the goal, which fixes its level of abstraction"
-        }
-      ],
-      "correct": [
-        2
-      ],
-      "explanation": {
-        "fr": "Presque tout but est un sous-but d'un but supérieur : ce qui distingue l'ingénierie de la religion, c'est le **sujet traité**. On le fixe par des **désignations** de phénomènes observables qui délimitent le terrain où explorer des stratégies.",
-        "en": "Almost every goal is a subgoal of a higher purpose: what distinguishes engineering from religion is the **subject matter**. It is fixed by **designations** of observable phenomena that circumscribe the area where strategies can be explored."
-      },
-      "level": "analyze",
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "Almost every goal is a subgoal with some higher purpose.",
-          "loc": "2"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "The engineers should be told, in addition to the goal, that the subject",
-          "loc": "2"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "These designations circumscribe the area in which alternative goal satisfaction strategies can be considered",
-          "loc": "2"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "But goals by themselves do not make a good",
-          "loc": "2"
-        }
-      ],
-      "objective": "o1",
-      "notions": [
-        "n-designation"
-      ],
-      "trap": {
-        "fr": "Remonter sans fin les buts : c’est le sujet traité qui arrête la régression.",
-        "en": "Climbing goals endlessly: the subject matter stops the regress."
-      }
-    },
-    {
       "id": "isi1-09-qz-04",
       "type": "mcq",
       "question": {
@@ -2175,99 +1667,6 @@
       }
     },
     {
-      "id": "isi1-09-qz-07",
-      "type": "true_false",
-      "statement": {
-        "fr": "Dans l'exemple du tourniquet, les propriétés G2 (« un push mène à un enter ») et L2 de l'ascenseur (« tout groupe qui attend est servi ») sont de même nature : toutes deux sont des exigences que la machine doit satisfaire.",
-        "en": "In the turnstile example, the properties G2 (\"a push leads to an enter\") and the lift's L2 (\"each waiting group is served\") are of the same nature: both are requirements the machine must satisfy."
-      },
-      "answer": false,
-      "justification": {
-        "fr": "FAUX : malgré leur ressemblance syntaxique, **G2 est indicative** (garantie par le mécanisme hydraulique du tourniquet) alors que **L2 est optative** (seul un bon contrôleur d'ascenseur peut l'assurer). Pour classer : *qui garantit la propriété ?*",
-        "en": "FALSE: despite their syntactic similarity, **G2 is indicative** (enforced by the turnstile's hydraulic mechanism) whereas **L2 is optative** (only a good lift controller can ensure it). To classify: *who guarantees the property?*"
-      },
-      "level": "analyze",
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "hydraulic mechanism so that a push always leads to an enter.",
-          "loc": "4.2"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "optative. G2 is enforced by the turnstile hardware, while L2 can only be",
-          "loc": "4.2"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "The primary lift requirement is that (L2) each begin-group-waiting action",
-          "loc": "4.2"
-        }
-      ],
-      "objective": "o2",
-      "notions": [
-        "n-indicatif-optatif"
-      ],
-      "trap": {
-        "fr": "Croire qu’une même forme de phrase a toujours le même mode.",
-        "en": "Believing the same sentence form always has the same mood."
-      }
-    },
-    {
-      "id": "isi1-09-qz-08",
-      "type": "mcq",
-      "question": {
-        "fr": "L'exigence « après le dernier chiffre composé, un signal doit se produire » n'est pas directement implémentable. Pour quelle raison parmi les trois du cours ?",
-        "en": "The requirement \"after the last digit dialled, a signal must occur\" is not directly implementable. For which of the course's three reasons?"
-      },
-      "options": [
-        {
-          "fr": "elle contraint une action contrôlée par l'environnement",
-          "en": "it constrains an action controlled by the environment"
-        },
-        {
-          "fr": "elle est exprimée avec une information non partagée",
-          "en": "it is stated with unshared information"
-        },
-        {
-          "fr": "elle fait référence au futur",
-          "en": "it refers to the future"
-        },
-        {
-          "fr": "elle décrit l'état interne de la machine",
-          "en": "it describes the machine's internal state"
-        }
-      ],
-      "correct": [
-        2
-      ],
-      "explanation": {
-        "fr": "La machine ne peut pas savoir qu'**aucun autre chiffre ne sera composé** : c'est une **référence au futur**. Avec le savoir « un autre chiffre arrive presque toujours dans les 4 s », la spécification devient : répondre après un chiffre suivi de 4 s de silence.",
-        "en": "The machine cannot know that **no other digit will be dialled**: this is a **reference to the future**. With the knowledge \"another digit almost always comes within 4 s\", the specification becomes: respond after a digit followed by 4 s of silence."
-      },
-      "level": "apply",
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "in terms of the future.",
-          "loc": "5.1–5.3"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "The resulting specification says that the system must respond after a",
-          "loc": "5.1–5.3"
-        }
-      ],
-      "objective": "o2",
-      "notions": [
-        "n-exigences-non-implementables"
-      ],
-      "trap": {
-        "fr": "Ne pas voir la référence au futur (« le dernier chiffre »).",
-        "en": "Missing the reference to the future (“the last digit”)."
-      }
-    },
-    {
       "id": "isi1-09-qz-09",
       "type": "true_false",
       "statement": {
@@ -2345,41 +1744,6 @@
         "n-exigence-specification-optatives"
       ],
       "objective": "o1"
-    },
-    {
-      "id": "isi1-09-qz-11",
-      "type": "true_false",
-      "statement": {
-        "fr": "Pour Zave et Jackson, la vérification a un rôle dès l'ingénierie des exigences : il faut prouver que S, K ⊢ R et que S et K sont cohérents, et pas seulement que l'implémentation satisfait la spécification.",
-        "en": "For Zave and Jackson, verification has a role from requirements engineering onwards: one must prove that S, K ⊢ R and that S and K are consistent, not just that the implementation satisfies the specification."
-      },
-      "answer": true,
-      "justification": {
-        "fr": "VRAI : l'IE est achevée au sens fort quand R et K sont validés, S ne contraint pas l'environnement, **S, K ⊢ R est prouvé** et **S et K sont prouvés cohérents**.",
-        "en": "TRUE: RE is complete in the strong sense when R and K are validated, S does not constrain the environment, **S, K ⊢ R is proved** and **S and K are proved consistent**."
-      },
-      "level": "analyze",
-      "src": [
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "verification also has a role to play in requirements engineering.",
-          "loc": "6.3"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "(5) There is a proof that S and K are consistent.",
-          "loc": "6.3"
-        },
-        {
-          "file": "sources-texte/isi1/17-four-dark-corners-or-re.md",
-          "quote": "(1) There is a set R of requirements. Each member of R has been validated",
-          "loc": "6.3"
-        }
-      ],
-      "notions": [
-        "n-relation-s-k-r"
-      ],
-      "objective": "o3"
     },
     {
       "id": "isi1-09-qz-12",

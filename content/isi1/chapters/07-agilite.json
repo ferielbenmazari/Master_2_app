@@ -1,14 +1,14 @@
 {
   "id": "isi1-07-agilite",
   "courseId": "isi1",
-  "order": 9,
+  "order": 10,
   "title": {
-    "fr": "Exigences et méthodes agiles : agile, plan-driven et approches hybrides",
-    "en": "Requirements and agile methods: agile, plan-driven and hybrid approaches"
+    "fr": "Exigences et méthodes agiles",
+    "en": "Requirements and agile methods"
   },
   "hook": {
-    "fr": "Agile ou plan-driven : lequel est le bon ? Boehm répond que tout dépend du terrain — et du risque.",
-    "en": "Agile or plan-driven: which one is right? Boehm answers that it all depends on the home ground — and on risk."
+    "fr": "Fiche complémentaire : agile ou plan-driven, selon le terrain et le risque.",
+    "en": "Further reading: agile or plan-driven, depending on the home ground and the risk."
   },
   "question": {
     "fr": "Agile ou plan-driven : comment choisir l’approche, et quelle place pour les exigences dans chacune ?",
@@ -49,12 +49,12 @@
     ]
   },
   "prerequisites": {
-    "fr": "Chapitres 1 et 6 : dérive des exigences, documentation et traçabilité.",
-    "en": "Chapters 1 and 6: requirements drift, documentation and traceability."
+    "fr": "Documenter et gérer les exigences (traçabilité, changement).",
+    "en": "Documenting and managing requirements (traceability, change)."
   },
   "next": {
-    "fr": "Le chapitre 8 traite les très grands volumes d’exigences en langage naturel, terrain typique des approches planifiées.",
-    "en": "Chapter 8 deals with very large volumes of natural-language requirements, typical ground for planned approaches."
+    "fr": "Grands référentiels d’exigences en langage naturel.",
+    "en": "Large repositories of natural language requirements."
   },
   "synthesis": {
     "mustKnow": [
@@ -97,50 +97,23 @@
     ],
     "links": [
       {
-        "fr": "La dérive des exigences (chapitre 1) est ce que l’agilité cherche à absorber ; la documentation (chapitre 6) est ce que le plan-driven privilégie.",
-        "en": "Requirements drift (chapter 1) is what agility tries to absorb; documentation (chapter 6) is what plan-driven favours."
+        "fr": "La traçabilité et la gestion du changement (chapitre « Documenter et gérer ») sont ce que le plan-driven privilégie ; l’agile mise sur le savoir tacite.",
+        "en": "Traceability and change management (chapter “Documenting and managing”) are what plan-driven favours; agile relies on tacit knowledge."
       }
     ]
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 5,
   "sources": [
     "sources-texte/isi1/13-agile-methods.md"
   ],
   "status": "draft",
-  "notions": [
-    "n-spectre-planification",
-    "n-agile-plan-driven-centre-responsable",
-    "n-manifeste-agile",
-    "n-critique-rakitin",
-    "n-home-ground",
-    "n-exigences-agile-vs-plan",
-    "n-savoir-tacite",
-    "n-yagni",
-    "n-refactoring",
-    "n-taille-equipes-projets",
-    "n-architecture-agile-vs-plan",
-    "n-clients-agile-vs-plan",
-    "n-objectif-principal-valeur-vs-assurance",
-    "n-exposition-au-risque",
-    "n-sweet-spot",
-    "n-specification-pilotee-par-le-risque",
-    "n-approches-hybrides",
-    "n-exemples-reponse-au-changement"
-  ],
   "story": [
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Agile contre plan-driven : qui a raison ?",
-        "en": "Agile versus plan-driven: who is right?"
-      }
-    },
     {
       "type": "callout",
       "variant": "repere",
       "text": {
-        "fr": "Repère : ce chapitre s’appuie sur un article de Boehm fourni en lecture (support 13). Aucune annale ne l’a interrogé : lis-le pour la culture et les arguments de réflexion, après les chapitres 1 à 6 et 10.",
-        "en": "Landmark: this chapter relies on a Boehm paper provided as reading (support 13). No past exam has asked about it: read it for background and reflection arguments, after chapters 1 to 6 and 10."
+        "fr": "Lecture complémentaire (support 13, article de Boehm). Aucune annale ne l’a interrogée : priorité basse, à lire après les chapitres 1 à 9.",
+        "en": "Further reading (slides 13, Boehm’s article). No past exam has asked about it: low priority, read it after chapters 1 to 9."
       },
       "src": [
         {
@@ -151,10 +124,17 @@
       ]
     },
     {
+      "type": "heading",
+      "text": {
+        "fr": "1. Agile et plan-driven",
+        "en": "1. Agile and plan-driven"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
-        "fr": "Deux camps s'affrontent. Les **traditionalistes** défendent une planification poussée, des processus codifiés et une réutilisation rigoureuse pour rendre le développement prévisible. Les **agilistes** dénoncent le poids de la bureaucratie et les effets « déshumanisants » du développement détaillé. Barry Boehm, l'auteur du support, prend un parti inattendu : les deux approches ont un « centre responsable » et des « franges radicales », et une approche **combinée** est possible et préférable hors du terrain de chacune.",
-        "en": "Two camps clash. **Traditionalists** advocate extensive planning, codified processes and rigorous reuse to make development predictable. **Agile** developers cite the weight of bureaucracy and the dehumanizing effects of detailed development. Barry Boehm, the author of the paper, takes an unexpected side: both approaches have a responsible center and radical fringes, and a **combined** approach is feasible and preferable outside each one's home ground."
+        "fr": "Les **[[term-plan-driven|méthodes plan-driven]]** misent sur une planification poussée, des processus codifiés et une réutilisation rigoureuse ; les agilistes dénoncent leur bureaucratie. Pour Boehm, les deux approches ont un **centre responsable** et des **franges radicales**, et une approche **combinée** est possible et préférable hors du terrain de chacune.",
+        "en": "**[[term-plan-driven|Plan-driven methods]]** rely on extensive planning, codified processes and rigorous reuse; agilists denounce their bureaucracy. For Boehm, both approaches have a **responsible centre** and **radical fringes**, and a **combined** approach is feasible and preferable outside each one’s home ground."
       },
       "src": [
         {
@@ -182,64 +162,31 @@
           "loc": "Introduction",
           "quote": "combined approach is feasible and preferable"
         }
+      ],
+      "notions": [
+        "n-agile-plan-driven-centre-responsable"
       ]
     },
     {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les deux camps ont des exemples à brandir. **Répondre au changement** est cité comme facteur technique critique de la bataille des navigateurs entre Microsoft et Netscape. Mais **trop répondre au changement** est cité comme source de désastres, comme le dépassement de 3 milliards de dollars du système de contrôle aérien de la FAA américaine.",
-        "en": "Both camps have examples to wave. **Responding to change** is cited as the critical technical success factor in the browser battle between Microsoft and Netscape. But **overresponding to change** is cited as the source of many software disasters, such as the $3 billion overrun of the US Federal Aviation Administration's air traffic control system."
-      },
-      "src": [
+      "type": "list",
+      "items": [
         {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "Responding to change has been cited as"
+          "fr": "les **individus et leurs interactions** plus que les processus et les outils ;",
+          "en": "**individuals and interactions** over processes and tools;"
         },
         {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "the critical technical success factor in the Internet"
+          "fr": "un **logiciel qui fonctionne** plus qu’une documentation exhaustive ;",
+          "en": "**working software** over comprehensive documentation;"
         },
         {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "browser battle between Microsoft and Netscape."
+          "fr": "la **collaboration avec le client** plus que la négociation de contrat ;",
+          "en": "**customer collaboration** over contract negotiation;"
         },
         {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "But overresponding to change has been cited as"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "the source of many software disasters, such as the $3"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "billion overrun of the US Federal Aviation"
+          "fr": "**répondre au changement** plus que suivre un plan.",
+          "en": "**responding to change** over following a plan."
         }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-07-qz-01"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Le manifeste agile : quatre valeurs",
-        "en": "The agile manifesto: four values"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les méthodes agiles (XP, Scrum, Crystal, DSDM, Lean Development, Agile Modeling…) partagent les valeurs du **Manifeste pour le développement logiciel agile**. On y préfère :",
-        "en": "Agile methods (XP, Scrum, Crystal, DSDM, Lean Development, Agile Modeling…) share the values of the **Manifesto for Agile Software Development**. They favour:"
-      },
+      ],
       "src": [
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
@@ -260,33 +207,7 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Ongoing Debate",
           "quote": "Lean Development, and Scrum emphasize"
-        }
-      ],
-      "notions": [
-        "n-manifeste-agile"
-      ]
-    },
-    {
-      "type": "list",
-      "items": [
-        {
-          "fr": "les **individus et leurs interactions** aux processus et aux outils ;",
-          "en": "**individuals and interactions** over processes and tools;"
         },
-        {
-          "fr": "un **logiciel qui fonctionne** à une documentation exhaustive ;",
-          "en": "**working software** over comprehensive documentation;"
-        },
-        {
-          "fr": "la **collaboration avec le client** à la négociation de contrat ;",
-          "en": "**customer collaboration** over contract negotiation;"
-        },
-        {
-          "fr": "**répondre au changement** à suivre un plan.",
-          "en": "**responding to change** over following a plan."
-        }
-      ],
-      "src": [
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Ongoing Debate",
@@ -306,8 +227,14 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Ongoing Debate",
           "quote": "responding to change over following a plan."
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Ongoing Debate",
+          "quote": "while there is value in the items on the right"
         }
       ],
+      "ordered": true,
       "notions": [
         "n-manifeste-agile"
       ]
@@ -315,28 +242,15 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "Attention à la nuance : la valeur de ce qui est à droite n'est pas niée. Les agilistes valorisent **davantage** ce qui est à gauche.",
-        "en": "Mind the nuance: the items on the right are not denied any value. Agile proponents value the items on the left **more**."
+        "fr": "Le [[term-agile-manifesto|manifeste agile]] ne nie pas la valeur de la colonne de droite : il valorise **davantage** celle de gauche. Et agile ne veut pas dire « sans plan » : sur le **[[term-planning-spectrum|spectre de planification]]** de Boehm, le hacking (ni plan ni discipline) est à l’extrême gauche ; les méthodes agiles planifient, mais valorisent le *processus* de planification plus que la documentation produite.",
+        "en": "The [[term-agile-manifesto|agile manifesto]] does not deny the value of the right-hand column: it values the left-hand one **more**. And agile does not mean “no plan”: on Boehm’s **[[term-planning-spectrum|planning spectrum]]**, hacking (no plan, no discipline) is at the far left; agile methods do plan, but value the planning *process* more than the resulting documentation."
       },
       "src": [
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Ongoing Debate",
           "quote": "while there is value in the items on the right"
-        }
-      ],
-      "notions": [
-        "n-manifeste-agile"
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen — « agile = pas de plan ».** C'est faux. Comparées au hacking sans plan ni discipline, les méthodes agiles insistent sur une bonne dose de planification : elles valorisent davantage le *processus* de planification que la documentation qui en résulte, donc elles paraissent moins planifiées qu'elles ne le sont. Un critère existe d'ailleurs : XP a 12 pratiques qui permettent de dire si une organisation l'utilise vraiment.",
-        "en": "**Exam trap — \"agile = no plan\".** This is false. Compared with unplanned and undisciplined hacking, agile methods emphasize a fair amount of planning: they value the planning *process* more than the resulting documentation, so they appear less plan-oriented than they really are. A criterion exists too: XP has 12 practices that help determine whether an organization really uses it."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "The planning spectrum",
@@ -351,49 +265,34 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "The planning spectrum",
           "quote": "such as Extreme Programming’s 12"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les critiques existent : pour Rakitin, ce sont les éléments de droite qui sont essentiels, et ceux de gauche servent d'excuses aux hackers. Sa « lecture de hacker » de *répondre au changement plutôt que suivre un plan* : « Super ! J'ai une raison d'éviter de planifier et de coder ce qui vient ensuite. »",
-        "en": "Critics exist: for Rakitin, the items on the right are essential, and those on the left only serve as excuses for hackers. His \"hacker interpretation\" of *responding to change over following a plan*: \"Great! Now I have a reason to avoid planning and to just code up whatever comes next.\""
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Ongoing Debate",
-          "quote": "critics who prefer process-based methods remain"
         },
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Ongoing Debate",
-          "quote": "the items on the right are essential"
+          "loc": "The planning spectrum",
+          "quote": "approaches along a spectrum of increasing"
         },
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Ongoing Debate",
-          "quote": "Now I have a reason to avoid planning and to"
+          "loc": "The planning spectrum",
+          "quote": "procedures that involve tasks and milestone plans"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "The planning spectrum",
+          "quote": "requirements, designs, and architectural plans."
         }
+      ],
+      "notions": [
+        "n-manifeste-agile",
+        "n-spectre-planification"
       ]
     },
     {
-      "type": "checkpoint",
-      "quizId": "isi1-07-qz-02"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Un spectre de planification",
-        "en": "A planning spectrum"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Boehm propose de placer les approches sur un **spectre** d'emphase croissante sur les plans. Ici, un « plan » inclut les procédures documentées (tâches, jalons) **et** les stratégies produit (exigences, conception, architecture). À gauche : le hacking sans plan ni discipline. À l'extrême droite : la planification micro-gérée par jalons (*inch-pebble*) dans un contrat « de fer ».",
-        "en": "Boehm places the approaches on a **spectrum** of increasing emphasis on plans. Here, a \"plan\" includes documented process procedures (tasks, milestones) **and** product strategies (requirements, design, architecture). On the far left: unplanned and undisciplined hacking. On the far right: micromanaged milestone planning (*inch-pebble*) under an ironbound contract."
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  A[Hackers] --> B[XP] --> C[Adaptive software development] --> D[Milestone risk-driven models] --> E[Milestone plan-driven models] --> F[Inch-pebble ironbound contract]",
+      "caption": {
+        "fr": "Le spectre de planification (figure 1 de Boehm), de moins de plans (à gauche) à plus de plans (à droite).",
+        "en": "The planning spectrum (Boehm’s figure 1), from fewer plans (left) to more plans (right)."
       },
       "src": [
         {
@@ -410,90 +309,33 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "The planning spectrum",
           "quote": "requirements, designs, and architectural plans."
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "Unplanned and undisciplined hacking occupies"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "micromanaged milestone planning, also known as"
-        }
-      ],
-      "notions": [
-        "n-spectre-planification"
-      ]
-    },
-    {
-      "type": "diagram",
-      "mermaid": "flowchart LR\n A[Hackers] --> B[XP] --> C[Développement logiciel adaptatif] --> D[Modèles à jalons pilotés par le risque] --> E[Modèles à jalons pilotés par le plan] --> F[Inch-pebble : contrat de fer]",
-      "caption": {
-        "fr": "Le spectre de planification (figure 1 de Boehm) : de moins de plans à plus de plans.",
-        "en": "The planning spectrum (Boehm's figure 1): from fewer plans to more plans."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "Unplanned and undisciplined hacking occupies"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "micromanaged milestone planning, also known as"
         }
       ]
     },
     {
-      "type": "paragraph",
+      "type": "callout",
+      "variant": "retenir",
       "text": {
-        "fr": "Chaque camp a aussi son centre responsable. Côté plan-driven, il se concentre sur les grands jalons plutôt que sur des micro-jalons verrouillés par contrat : des plans trop prescrits contraignent l'équipe dès qu'il y a un changement mineur de personnel ou de technologie, et sont une source de conflits, de reprises et de retards quand le changement est fort.",
-        "en": "Each camp also has its responsible center. On the plan-driven side, it focuses on major milestones rather than micromilestones locked into a contract: excessively prespecified plans overconstrain the team at minor levels of change in personnel or technology, and are a source of contention, rework and delay at high change levels."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "Plan-driven methods also have a responsible cen-"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "ter focused on major milestones and their overall"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "pebbles) locked into an ironbound contract."
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "The planning spectrum",
-          "quote": "cessively prespecified plans overconstrain the devel-"
-        }
-      ],
-      "notions": [
-        "n-agile-plan-driven-centre-responsable"
-      ]
+        "fr": "Manifeste : individus, logiciel qui fonctionne, collaboration client, réponse au changement, valorisés **plus** que leur contrepartie (pas à la place). Agile ≠ hacking. Chaque approche a un centre responsable ; on peut les combiner.",
+        "en": "Manifesto: individuals, working software, customer collaboration, responding to change, valued **more** than their counterpart (not instead of it). Agile ≠ hacking. Each approach has a responsible centre; they can be combined."
+      }
     },
     {
       "type": "checkpoint",
-      "quizId": "isi1-07-qz-04"
+      "quizId": "isi1-07-qz-02"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Le « home ground » : où chaque méthode excelle",
-        "en": "The \"home ground\": where each method excels"
+        "fr": "2. Le terrain de prédilection (home ground)",
+        "en": "2. The home ground"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Boehm compare les approches sur sept axes. Chaque approche a un **terrain de prédilection** (*home ground*) de caractéristiques de projet où elle réussit très bien, bien mieux que l'autre ; hors de ce terrain, l'autre est en difficulté.",
-        "en": "Boehm compares the approaches on seven areas. Each approach has a **home ground** of project characteristics within which it performs very well, and much better than the other; outside it, the other has difficulties."
+        "fr": "Chaque approche a un **[[term-home-ground|terrain de prédilection]]** : des caractéristiques de projet où elle réussit bien mieux que l’autre.",
+        "en": "Each approach has a **[[term-home-ground|home ground]]**: project characteristics where it performs much better than the other."
       },
       "src": [
         {
@@ -516,18 +358,32 @@
       "headers": [
         {
           "fr": "Axe",
-          "en": "Area"
+          "en": "Axis"
         },
         {
-          "fr": "Méthodes agiles",
-          "en": "Agile methods"
+          "fr": "Agile",
+          "en": "Agile"
         },
         {
-          "fr": "Méthodes plan-driven",
-          "en": "Plan-driven methods"
+          "fr": "Plan-driven",
+          "en": "Plan-driven"
         }
       ],
       "rows": [
+        [
+          {
+            "fr": "**Exigences**",
+            "en": "**Requirements**"
+          },
+          {
+            "fr": "Largement **émergentes** ; changement rapide",
+            "en": "Largely **emergent**; rapid change"
+          },
+          {
+            "fr": "**Connaissables tôt** ; largement stables",
+            "en": "**Knowable early**; largely stable"
+          }
+        ],
         [
           {
             "fr": "Développeurs",
@@ -538,8 +394,8 @@
             "en": "Agile, knowledgeable, collocated, collaborative"
           },
           {
-            "fr": "Orientés plan ; compétences adéquates ; accès à un savoir externe",
-            "en": "Plan-oriented; adequate skills; access to external knowledge"
+            "fr": "Orientés plan, compétences adéquates",
+            "en": "Plan-oriented, adequate skills"
           }
         ],
         [
@@ -548,26 +404,12 @@
             "en": "Customers"
           },
           {
-            "fr": "Dédiés, compétents, colocalisés, collaboratifs, représentatifs, habilités à décider",
-            "en": "Dedicated, knowledgeable, collocated, collaborative, representative, empowered"
+            "fr": "Dédiés, colocalisés, habilités à décider",
+            "en": "Dedicated, collocated, empowered"
           },
           {
-            "fr": "Accès à des clients compétents, collaboratifs, représentatifs, habilités",
-            "en": "Access to knowledgeable, collaborative, representative, empowered customers"
-          }
-        ],
-        [
-          {
-            "fr": "Exigences",
-            "en": "Requirements"
-          },
-          {
-            "fr": "Largement émergentes ; changement rapide",
-            "en": "Largely emergent; rapid change"
-          },
-          {
-            "fr": "Connaissables tôt ; largement stables",
-            "en": "Knowable early; largely stable"
+            "fr": "Accès à des clients compétents et représentatifs",
+            "en": "Access to knowledgeable, representative customers"
           }
         ],
         [
@@ -576,12 +418,12 @@
             "en": "Architecture"
           },
           {
-            "fr": "Conçue pour les exigences actuelles",
-            "en": "Designed for current requirements"
+            "fr": "Pour les exigences actuelles",
+            "en": "For current requirements"
           },
           {
-            "fr": "Conçue pour les exigences actuelles et prévisibles",
-            "en": "Designed for current and foreseeable requirements"
+            "fr": "Pour les exigences actuelles et prévisibles",
+            "en": "For current and foreseeable requirements"
           }
         ],
         [
@@ -604,11 +446,11 @@
             "en": "Size"
           },
           {
-            "fr": "Équipes et produits plus petits",
+            "fr": "Petites équipes et produits",
             "en": "Smaller teams and products"
           },
           {
-            "fr": "Équipes et produits plus grands",
+            "fr": "Grandes équipes et produits",
             "en": "Larger teams and products"
           }
         ],
@@ -622,7 +464,7 @@
             "en": "Rapid value"
           },
           {
-            "fr": "Haute garantie (*high assurance*)",
+            "fr": "Haute garantie",
             "en": "High assurance"
           }
         ]
@@ -665,50 +507,15 @@
         }
       ],
       "notions": [
-        "n-home-ground"
+        "n-home-ground",
+        "n-exigences-agile-vs-plan"
       ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen.** Un V/F du type « les méthodes agiles conviennent à tous les projets » ou « les méthodes plan-driven sont obsolètes » est FAUX : chacune a son terrain, et hors terrain une approche combinée est préférable. Retiens aussi les opposés du tableau : exigences *émergentes* (agile) contre *connaissables tôt* (plan-driven), refactoring *peu coûteux* contre *coûteux*.",
-        "en": "**Exam trap.** A True/False statement like \"agile methods suit every project\" or \"plan-driven methods are obsolete\" is FALSE: each has its home ground, and outside it a combined approach is preferable. Also remember the table's opposites: *emergent* requirements (agile) versus *knowable early* (plan-driven), *inexpensive* versus *expensive* refactoring."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "combined approach is feasible and preferable"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "Requirements Largely emergent; rapid change Knowable early; largely stable"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Introduction",
-          "quote": "Refactoring Inexpensive Expensive Size Smaller teams"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-07-qz-05"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Les exigences : émergentes ou connues d'avance ?",
-        "en": "Requirements: emergent or known in advance?"
-      }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "C'est le point le plus important pour l'ingénierie des exigences. Pour Highsmith et Cockburn, les approches agiles sont les plus adaptées aux environnements turbulents à fort changement : les organisations sont des systèmes adaptatifs complexes où les exigences sont **émergentes** plutôt que prédéfinissables. Mais appliquer à la lettre le deuxième principe du manifeste — *accueillir le changement, même tard* — peut avoir des effets désastreux.",
-        "en": "This is the most important point for requirements engineering. For Highsmith and Cockburn, agile approaches are most applicable to turbulent, high-change environments: organizations are complex adaptive systems in which requirements are **emergent** rather than prespecifiable. But misapplying the manifesto's second principle — *welcome changing requirements, even late in development* — can be disastrous."
+        "fr": "Pour les exigences : l’agile convient aux environnements turbulents, où les exigences sont émergentes ; le plan-driven, quand on peut les déterminer à l’avance et qu’elles changent peu (de l’ordre de **1 % par mois**). L’idéal d’exigences complètes, cohérentes, précises, testables et traçables devient ingérable si tout change vite, mais reste **vital** pour le logiciel embarqué stable et critique.",
+        "en": "For requirements: agile suits turbulent environments, where requirements are emergent; plan-driven, when they can be determined in advance and change little (on the order of **1% per month**). The ideal of complete, consistent, precise, testable and traceable requirements becomes unmanageable when everything changes fast, but remains **vital** for stable, safety-critical embedded software."
       },
       "src": [
         {
@@ -725,19 +532,7 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Requirements",
           "quote": "changing requirements, even late in development"
-        }
-      ],
-      "notions": [
-        "n-exigences-agile-vs-plan"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les méthodes plan-driven marchent mieux quand on peut déterminer les exigences à l'avance (y compris par prototypage) et qu'elles restent assez stables : de l'ordre de **1 % de changement par mois**. Quand les exigences changent bien plus vite, l'insistance traditionnelle sur des exigences complètes, cohérentes, précises, testables et traçables mène à des problèmes de mise à jour difficiles à insurmontables. Cette insistance reste pourtant vitale pour les logiciels embarqués stables et critiques pour la sécurité.",
-        "en": "Plan-driven methods work best when requirements can be determined in advance (including via prototyping) and remain relatively stable: change rates on the order of **one percent per month**. When requirements change at a much higher rate, the traditional emphasis on complete, consistent, precise, testable and traceable requirements meets difficult to insurmountable update problems. Yet this emphasis is vital for stable, safety-critical embedded software."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Requirements",
@@ -765,298 +560,28 @@
     },
     {
       "type": "callout",
-      "variant": "exam",
+      "variant": "retenir",
       "text": {
-        "fr": "**Piège d'examen.** Lie les deux ensembles : « complètes, cohérentes, précises, testables, traçables » est l'idéal **plan-driven** pour les exigences ; il devient intenable quand le changement est très rapide, mais reste vital en logiciel embarqué critique. Ce n'est pas « faux », c'est une question de terrain.",
-        "en": "**Exam trap.** Link the two ideas: \"complete, consistent, precise, testable, traceable\" is the **plan-driven** ideal for requirements; it becomes untenable when change is very fast, yet remains vital in safety-critical embedded software. It is not \"wrong\", it is a matter of home ground."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Requirements",
-          "quote": "consistent, precise, testable, and traceable"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Requirements",
-          "quote": "vital for stable, safety-critical embedded"
-        }
-      ]
+        "fr": "Home ground : agile = exigences émergentes, petites équipes, refactoring peu coûteux, valeur rapide ; plan-driven = exigences connaissables tôt et stables, grands projets, refactoring coûteux, haute garantie. Aucune n’est meilleure partout.",
+        "en": "Home ground: agile = emergent requirements, small teams, cheap refactoring, rapid value; plan-driven = requirements knowable early and stable, large projects, expensive refactoring, high assurance. Neither is better everywhere."
+      }
     },
     {
       "type": "checkpoint",
-      "quizId": "isi1-07-qz-07"
+      "quizId": "isi1-07-qz-05"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Savoir tacite, clients, architecture, refactoring, taille",
-        "en": "Tacit knowledge, customers, architecture, refactoring, size"
+        "fr": "3. Doser par le risque",
+        "en": "3. Balancing by risk"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "**Développeurs et savoir tacite.** Les méthodes agiles tirent une bonne part de leur agilité du **savoir tacite** de l'équipe plutôt que de plans écrits. Cela marche tant que ce savoir suffit ; sinon, risque d'erreurs d'architecture irrécupérables. Les méthodes plan-driven réduisent ce risque en investissant dans architectures et plans, au risque que le changement rapide les rende obsolètes ou coûteux à tenir à jour. Les agiles misent aussi sur des personnes de grande valeur : « Il n'y a qu'un nombre limité de Kent Beck dans le monde ».",
-        "en": "**Developers and tacit knowledge.** Agile methods derive much of their agility from the team's **tacit knowledge** rather than from written plans. This works while that knowledge is sufficient; otherwise the team risks irrecoverable architectural mistakes. Plan-driven methods reduce this risk by investing in architectures and plans, but accept the risk that rapid change makes plans obsolete or very expensive to keep up to date. Agile also bets on premium people: \"There are only so many Kent Becks in the world\"."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "much of their agility by relying on the"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "writing the knowledge down in plans"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "But there is also the risk that"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "methods reduce this risk by investing in life"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "so many Kent Becks in the world to lead the team"
-        }
-      ],
-      "notions": [
-        "n-savoir-tacite"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Clients.** Si les clients ne sont pas engagés, compétents, collaboratifs, représentatifs et habilités à décider, les produits développés passent rarement avec succès en usage. Les méthodes agiles fonctionnent mieux quand ces clients travaillent en mode dédié avec l'équipe ; les méthodes plan-driven compensent un client absent par la documentation et des revues d'experts indépendants.",
-        "en": "**Customers.** Unless customer participants are committed, knowledgeable, collaborative, representative and empowered, the developed products generally do not transition into use successfully. Agile methods work best when such customers operate in dedicated mode with the team; plan-driven methods compensate for onsite customer shortfalls with documentation and independent expert reviews."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "Agile methods work best when such"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "tomers operate in dedicated mode with the"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "rative, representative, and empowered, the"
-        }
-      ],
-      "notions": [
-        "n-clients-agile-vs-plan"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Architecture et YAGNI.** Le manifeste valorise le logiciel qui fonctionne plus que la documentation et prône la simplicité. Selon *YAGNI* (« You Aren't Going to Need It »), XP retire les éléments d'architecture qui ne servent pas la version actuelle. Cela marche quand les exigences futures sont largement imprévisibles ; quand elles sont prévisibles, on jette un support architectural précieux. Crystal et DSDM font davantage de préplanification d'architecture.",
-        "en": "**Architecture and YAGNI.** The manifesto values working software over comprehensive documentation and stresses simplicity. Based on *YAGNI* (\"You Aren't Going to Need It\"), XP removes architectural features that do not support the current version. This works when future requirements are largely unpredictable; when they are predictable, it throws away valuable architectural support. Crystal and DSDM do more architectural preplanning."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "maximizing the amount of work"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "the YAGNI precept: “You Aren’t"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "architectural features that do not support"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "when future requirements are largely unpredictable"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "are predictable, this practice not only throws away"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "Crystal and DSDM do more"
-        }
-      ],
-      "notions": [
-        "n-yagni",
-        "n-architecture-agile-vs-plan"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Refactoring.** Avec d'excellents développeurs et de petits systèmes, on peut supposer que le refactoring est quasi gratuit, donc que YAGNI est peu risqué. Avec des développeurs moyens, l'effort de refactoring augmente avec le nombre d'exigences ou de récits. Sur les très grands systèmes, 20 % des problèmes causent 80 % de la reprise, venant surtout d'« architecture-breakers » qu'aucun refactoring ne répare.",
-        "en": "**Refactoring.** With great developers and small systems, refactoring can be assumed essentially free, so YAGNI is low-risk. With less-than-great developers, refactoring effort increases with the number of requirements or stories. On very large systems, 20 percent of the problems cause 80 percent of the rework, coming largely from \"architecture-breakers\" that no refactoring can fix."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "assumption that refactoring is essentially free"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "less-than-great developers, refactoring effort"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "increases with the number of requirements or"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "of the problems causing 80 percent of the rework"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "came largely from “architecture-breakers,” such as"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "no amount of refactoring could put Humpty"
-        }
-      ],
-      "notions": [
-        "n-refactoring"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Taille.** Selon Cockburn et Highsmith, le développement agile est plus difficile pour de grandes équipes (avec des cas réussis jusqu'à 250 personnes). Constantine juge la coordination serrée de plus en plus difficile au-delà de 15 ou 20 développeurs. Les méthodes plan-driven passent mieux à l'échelle (projet CCPDS-R d'un million de lignes), mais une organisation bureaucratique qui met un mois-personne à autoriser un projet est peu efficace sur de petits projets.",
-        "en": "**Size.** According to Cockburn and Highsmith, agile development is more difficult for larger teams (with successful cases up to 250 people). Constantine finds the tightly coordinated teamwork increasingly difficult beyond 15 or 20 developers. Plan-driven methods scale better (the million-line CCPDS-R project), but a bureaucratic organization that needs a person-month to get a project authorized is inefficient on small projects."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "development is more difficult for larger teams"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "with up to 250 people"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "becomes increasingly difficult beyond 15 or 20"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "Plan-driven methods scale better to large projects"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "an average of a person-month just to get a project"
-        }
-      ],
-      "notions": [
-        "n-taille-equipes-projets"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Objectif principal.** Le premier principe du manifeste : satisfaire le client par une livraison précoce et continue de logiciel de valeur. Sur de gros systèmes, trop miser sur les résultats précoces peut causer de grosses reprises quand l'architecture ne passe pas à l'échelle. Les méthodes plan-driven sont les plus nécessaires pour le logiciel à haute garantie : Ambler se méfie d'appliquer l'agile modeling aux systèmes critiques pour la vie.",
-        "en": "**Primary objective.** The manifesto's first principle: satisfy the customer through early and continuous delivery of valuable software. On large systems, overfocus on early results can lead to major rework when the architecture does not scale up. Plan-driven methods are most needed in high-assurance software: Ambler is leery of applying agile modeling to life-critical systems."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "Our highest priority is to satisfy the customer"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "through early and continuous delivery of valuable"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "systems can lead to major rework when the"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "Plan-driven methods are most needed in high"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Comparing the methods",
-          "quote": "I would be leery of applying"
-        }
-      ],
-      "notions": [
-        "n-objectif-principal-valeur-vs-assurance"
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-07-qz-09"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Combien de planification est assez ?",
-        "en": "How much planning is enough?"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Certaines entreprises (surtout dans l'e-services) ne veulent pas seulement la valeur rapide **ou** la haute garantie : elles veulent **les deux**. L'agilité pure ou la discipline pure ne suffisent pas ; il faut un mélange. Pour doser, Boehm utilise la gestion des risques afin de répondre à : « Combien de planification est assez ? »",
-        "en": "Some companies (especially in e-services) do not need just rapid value or high assurance: they need both. Pure agility or pure plan-driven discipline alone cannot meet these needs; a mix is needed. To dose it, Boehm applies risk management to answer: \"How much planning is enough?\""
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Balancing agility and discipline",
-          "quote": "value or high assurance—they need both"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Balancing agility and discipline",
-          "quote": "meet these needs. A mix of each is needed"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Balancing agility and discipline",
-          "quote": "the question “How much planning is enough?”"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Le concept central est l'**exposition au risque** : on estime la probabilité de perte P(L) et la taille de la perte S(L), puis RE = P(L) × S(L), la perte attendue. La perte peut porter sur les profits, la réputation, la qualité de vie ou d'autres attributs de valeur.",
-        "en": "The central concept is **risk exposure**: assess the probability of loss P(L) and the size of loss S(L), then RE = P(L) × S(L), the expected loss. Loss can include profits, reputation, quality of life or other value-related attributes."
+        "fr": "« Combien de planification est assez ? » Boehm répond par l’**[[term-risk-exposure|exposition au risque]]** : RE = P(L) × S(L), probabilité de perte × taille de la perte. Trop peu de plans : risque d’oublis et de reprises. Trop de plans : retard de mise sur le marché. La somme est minimale au **[[term-sweet-spot|sweet spot]]**, qui glisse vers l’agile (marché changeant, équipe très capable) ou vers plus de plans (grands systèmes critiques).",
+        "en": "“How much planning is enough?” Boehm answers with **[[term-risk-exposure|risk exposure]]**: RE = P(L) × S(L), probability of loss × size of loss. Too few plans: risk of omissions and rework. Too many plans: delayed time to market. The sum is minimal at the **[[term-sweet-spot|sweet spot]]**, which moves towards agile (changing market, very capable team) or towards more plans (large critical systems)."
       },
       "src": [
         {
@@ -1073,17 +598,59 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Balancing agility and discipline",
           "quote": "Loss can include profits, reputation, quality of"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "minimal investment corresponds to a high P(L) that"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "the more thorough the plans, the less"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "Spending too much time in planning carries a high"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "shows the sum of the"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "minimized occurs in the middle"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "sweet spot moves to the left, toward agile methods"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "a more stable product line of larger"
+        },
+        {
+          "file": "sources-texte/isi1/13-agile-methods.md",
+          "loc": "Balancing agility and discipline",
+          "quote": "spot toward higher investments in plans"
         }
       ],
       "notions": [
-        "n-exposition-au-risque"
+        "n-exposition-au-risque",
+        "n-sweet-spot"
       ]
     },
     {
-      "type": "paragraph",
-      "text": {
-        "fr": "Sur la figure 2 (une entreprise d'e-services type), deux courbes s'opposent. Courbe noire : trop peu investir dans les plans donne une forte probabilité d'oublis, de retards et de reprises ; plus les plans sont solides, plus le risque baisse. Courbe rouge : planifier trop longtemps retarde la mise sur le marché, et des concurrents plus forts captent la part de marché. La **somme** (courbe bleue) est élevée aux deux extrêmes ; son minimum, au milieu, est le **sweet spot**.",
-        "en": "In figure 2 (a sample e-services company), two curves oppose each other. Black curve: investing too little in plans gives a high probability of oversights, delays and rework; the more thorough the plans, the lower the risk. Red curve: planning too long delays product introduction, and stronger competitors capture the market share. The **sum** (blue curve) is high at both extremes; its minimum, in the middle, is the **sweet spot**."
+      "type": "diagram",
+      "mermaid": "%%{init: {\"themeVariables\": {\"xyChart\": {\"plotColorPalette\": \"#3d7be0, #e0483e, #8e44ad\"}}}}%%\nxychart-beta\n  title \"How much planning is enough?\"\n  x-axis \"Time and effort invested in plans\" [Very low, Low, Medium, High, Very high]\n  y-axis \"Risk exposure\" 0 --> 10\n  line [8, 4.5, 2.5, 1.5, 1]\n  line [0.5, 1, 1.5, 3.5, 7.5]\n  line [8.5, 5.5, 4, 5, 8.5]",
+      "caption": {
+        "fr": "Allure de la figure 2 de Boehm (valeurs illustratives). En bleu (descend) : risque de plans insuffisants. En rouge (monte) : risque lié au retard de mise sur le marché. En violet (en U) : leur somme, minimale au sweet spot.",
+        "en": "Shape of Boehm’s figure 2 (illustrative values). Blue (falling): risk of insufficient plans. Red (rising): risk from delayed time to market. Purple (U-shaped): their sum, minimal at the sweet spot."
       },
       "src": [
         {
@@ -1111,66 +678,15 @@
           "loc": "Balancing agility and discipline",
           "quote": "minimized occurs in the middle"
         }
-      ],
-      "notions": [
-        "n-sweet-spot"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le sweet spot **se déplace** selon le profil. Entreprise agile (petite base installée, marché changeant, équipe colocalisée très capable, peu de besoin de haute garantie) : il glisse vers la gauche, vers les méthodes agiles. Entreprise plan-driven (gamme stable de grands systèmes critiques) : il glisse vers de plus gros investissements en plans.",
-        "en": "The sweet spot **moves** with the profile. Agile company (small installed base, changing market, collocated, highly capable team, little need for high assurance): it moves left, toward agile methods. Plan-driven company (stable line of large, safety-critical systems): it shifts toward higher investments in plans."
+        "fr": "Les approches **hybrides** sont réalisables et nécessaires pour les projets aux caractéristiques mixtes. Exemple : la **[[term-risk-driven-spec|spécification pilotée par le risque]]** documente ce qui est risqué si on le laisse non spécifié (formats de messages critiques), pas ce qui est trop volatil (interface utilisateur).",
+        "en": "**Hybrid** approaches are feasible and necessary for projects with mixed characteristics. Example: **[[term-risk-driven-spec|risk-driven specification]]** documents what is risky to leave unspecified (critical message formats), not what is too volatile (user interface)."
       },
       "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Balancing agility and discipline",
-          "quote": "sweet spot moves to the left, toward agile methods"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Balancing agility and discipline",
-          "quote": "a more stable product line of larger"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Balancing agility and discipline",
-          "quote": "spot toward higher investments in plans"
-        }
-      ],
-      "notions": [
-        "n-sweet-spot"
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-07-qz-11"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Hybrides : combiner selon le risque",
-        "en": "Hybrids: combining according to risk"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Quantifier P(L) et S(L) est difficile en pratique. Mais en combinant les deux familles, on utilise les attributs du *home ground* pour estimer les risques relatifs. Exemple agile : des clients importants mais mal représentés ? On négocie les exigences entre développeurs et clients, puis on **documente** les résultats. Exemple plan-driven : une interface très volatile ? On utilise une **spécification pilotée par le risque** : documenter ce qui est risqué si on le laisse non spécifié (formats de messages critiques), pas l'interface, trop volatile.",
-        "en": "Quantifying P(L) and S(L) is difficult in practice. But when combining both families, you can use each method's home-ground attributes to determine relative risks. Agile example: if your equally important customers are poorly represented, reduce risk by running requirements negotiations among developers and customers, then **document** the results. Plan-driven example: if the user interface is highly volatile, use **risk-driven specifications**, which document the requirements that pose a high risk if left unspecified (critical message formats) and avoid documenting volatile user interface requirements."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Assessing risk exposure",
-          "quote": "In practice, quantifying estimates of P(L) and S(L)"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Assessing risk exposure",
-          "quote": "ground attributes to determine relative risks"
-        },
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Assessing risk exposure",
@@ -1190,24 +706,6 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Assessing risk exposure",
           "quote": "volatile user interface requirements whose"
-        }
-      ],
-      "notions": [
-        "n-specification-pilotee-par-le-risque",
-        "n-approches-hybrides"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Conclusion de Boehm : agile et plan-driven appartiennent tous deux au spectre, au « centre responsable » plutôt qu'à la « frange radicale ». Les approches hybrides sont réalisables et **nécessaires** pour les projets mêlant les caractéristiques des deux terrains. Les tendances des TI rapprochent des exigences émergentes et du changement rapide, mais les préoccupations de fiabilité appellent des mesures mieux mises en œuvre par des solutions fondées sur des plans.",
-        "en": "Boehm's conclusion: agile and plan-driven both belong to the spectrum, in the responsible center rather than the radical fringe. Hybrid approaches are feasible and **necessary** for projects mixing characteristics of both home grounds. IT trends move toward emergent requirements and rapid change, but increasing dependability concerns call for measures best implemented with plan-based solutions."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Conclusion",
-          "quote": "responsible center rather than the radical fringe"
         },
         {
           "file": "sources-texte/isi1/13-agile-methods.md",
@@ -1218,47 +716,24 @@
           "file": "sources-texte/isi1/13-agile-methods.md",
           "loc": "Conclusion",
           "quote": "feasible and necessary for projects that"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Conclusion",
-          "quote": "increasing dependability concerns call"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Conclusion",
-          "quote": "best implemented with plan-based"
         }
+      ],
+      "notions": [
+        "n-approches-hybrides",
+        "n-specification-pilotee-par-le-risque"
       ]
     },
     {
       "type": "callout",
-      "variant": "exam",
+      "variant": "retenir",
       "text": {
-        "fr": "**Piège d'examen.** Si on te demande « agile ou plan-driven ? » pour un cas, ne choisis pas par réflexe : compare les caractéristiques du projet au tableau du *home ground* (stabilité des exigences, taille, criticité, clients disponibles, compétence de l'équipe), puis justifie. Pour un projet mixte, propose une **approche hybride** et le risque que chaque choix réduit.",
-        "en": "**Exam trap.** If asked \"agile or plan-driven?\" for a case, do not pick by reflex: compare the project's characteristics with the home-ground table (requirements stability, size, criticality, customers available, team skills), then justify. For a mixed project, propose a **hybrid approach** and the risk each choice reduces."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Conclusion",
-          "quote": "Hybrid approaches that combine both"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Conclusion",
-          "quote": "feasible and necessary for projects that"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "loc": "Conclusion",
-          "quote": "ground characteristics. Risk analysis of your pro"
-        }
-      ]
+        "fr": "RE = P(L) × S(L). Sweet spot = minimum de la somme des risques (trop peu / trop de plans) ; il se déplace selon le projet. Hybride = combiner, par exemple spécifier seulement ce qui est risqué.",
+        "en": "RE = P(L) × S(L). Sweet spot = minimum of the sum of risks (too few / too many plans); it moves with the project. Hybrid = combining, e.g. specifying only what is risky."
+      }
     },
     {
       "type": "checkpoint",
-      "quizId": "isi1-07-qz-13"
+      "quizId": "isi1-07-qz-11"
     }
   ],
   "glossary": [
@@ -1481,6 +956,26 @@
       "notion": "n-specification-pilotee-par-le-risque"
     }
   ],
+  "notions": [
+    "n-spectre-planification",
+    "n-agile-plan-driven-centre-responsable",
+    "n-manifeste-agile",
+    "n-critique-rakitin",
+    "n-home-ground",
+    "n-exigences-agile-vs-plan",
+    "n-savoir-tacite",
+    "n-yagni",
+    "n-refactoring",
+    "n-taille-equipes-projets",
+    "n-architecture-agile-vs-plan",
+    "n-clients-agile-vs-plan",
+    "n-objectif-principal-valeur-vs-assurance",
+    "n-exposition-au-risque",
+    "n-sweet-spot",
+    "n-specification-pilotee-par-le-risque",
+    "n-approches-hybrides",
+    "n-exemples-reponse-au-changement"
+  ],
   "keyPoints": [
     {
       "text": {
@@ -1626,8 +1121,8 @@
       "id": "isi1-07-fc-01",
       "termId": "term-agile-manifesto",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Manifeste agile ?",
+        "en": "Agile manifesto?"
       },
       "back": {
         "fr": "Ensemble de valeurs partagées par les méthodes agiles : individus et interactions, logiciel qui fonctionne, collaboration avec le client, réponse au changement — valorisés plus que processus et outils, documentation exhaustive, négociation de contrat, suivi d'un plan.",
@@ -1638,8 +1133,8 @@
       "id": "isi1-07-fc-02",
       "termId": "term-plan-driven",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Méthode plan-driven ?",
+        "en": "Plan-driven method?"
       },
       "back": {
         "fr": "Approche de développement qui s'appuie sur une planification poussée, des processus codifiés et une réutilisation rigoureuse pour un développement efficace et prévisible.",
@@ -1650,8 +1145,8 @@
       "id": "isi1-07-fc-03",
       "termId": "term-planning-spectrum",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Spectre de planification ?",
+        "en": "Planning spectrum?"
       },
       "back": {
         "fr": "Échelle sur laquelle on place les approches selon l'emphase croissante sur les plans, du hacking sans plan à la planification micro-gérée par jalons (inch-pebble).",
@@ -1662,8 +1157,8 @@
       "id": "isi1-07-fc-04",
       "termId": "term-home-ground",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Home ground (terrain de prédilection) ?",
+        "en": "Home ground?"
       },
       "back": {
         "fr": "Ensemble de caractéristiques de projet où une approche (agile ou plan-driven) réussit très bien, bien mieux que l'autre.",
@@ -1674,8 +1169,8 @@
       "id": "isi1-07-fc-05",
       "termId": "term-tacit-knowledge",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Savoir tacite ?",
+        "en": "Tacit knowledge?"
       },
       "back": {
         "fr": "Savoir détenu par l'équipe plutôt qu'écrit dans des plans, dont les méthodes agiles tirent une grande part de leur agilité.",
@@ -1686,8 +1181,8 @@
       "id": "isi1-07-fc-06",
       "termId": "term-yagni",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "YAGNI ?",
+        "en": "YAGNI?"
       },
       "back": {
         "fr": "« You Aren't Going to Need It » : précepte d'XP qui consiste à retirer les éléments d'architecture ne soutenant pas la version actuelle du système.",
@@ -1698,8 +1193,8 @@
       "id": "isi1-07-fc-07",
       "termId": "term-risk-exposure",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Exposition au risque (RE) ?",
+        "en": "Risk exposure (RE)?"
       },
       "back": {
         "fr": "Perte attendue d'une ligne de conduite : probabilité de perte P(L) × taille de la perte S(L).",
@@ -1710,8 +1205,8 @@
       "id": "isi1-07-fc-08",
       "termId": "term-sweet-spot",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Sweet spot ?",
+        "en": "Sweet spot?"
       },
       "back": {
         "fr": "Niveau d'investissement dans les plans où l'exposition totale au risque est minimale ; il répond à « combien de planification est assez ? ».",
@@ -1722,8 +1217,8 @@
       "id": "isi1-07-fc-09",
       "termId": "term-risk-driven-spec",
       "front": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque. ?",
-        "en": "Choosing a pure approach instead of a risk-driven mix.?"
+        "fr": "Spécification pilotée par le risque ?",
+        "en": "Risk-driven specification?"
       },
       "back": {
         "fr": "Ne documenter que les exigences qui posent un risque élevé si elles restent non spécifiées (ex. formats de messages critiques), et éviter celles dont la spécification serait risquée car volatiles (ex. interface utilisateur).",
@@ -1839,65 +1334,6 @@
       "trap": {
         "fr": "Croire que le manifeste nie la valeur de ce qui est à droite.",
         "en": "Believing the manifesto denies the value of the items on the right."
-      }
-    },
-    {
-      "id": "isi1-07-qz-03",
-      "type": "mcq",
-      "question": {
-        "fr": "Un développeur lit « répondre au changement plutôt que suivre un plan » et conclut : « Super, j'ai une raison d'éviter de planifier ». Que répond le cours ?",
-        "en": "A developer reads \"responding to change over following a plan\" and concludes: \"Great, now I have a reason to avoid planning\". What does the course answer?"
-      },
-      "options": [
-        {
-          "fr": "Il a raison : les méthodes agiles dispensent de planifier, la planification étant un héritage des approches plan-driven.",
-          "en": "He is right: agile methods dispense with planning, which is a legacy of plan-driven approaches."
-        },
-        {
-          "fr": "Il a raison, mais seulement avec XP, les autres méthodes agiles imposant un plan détaillé.",
-          "en": "He is right, but only with XP, the other agile methods imposing a detailed plan."
-        },
-        {
-          "fr": "Lecture de « hacker » : l'agile valorise le processus de planification, pas sa documentation.",
-          "en": "A \"hacker's reading\": agile values the planning process, not its documentation."
-        },
-        {
-          "fr": "Il a tort : le manifeste interdit d'ajuster le plan en cours de route.",
-          "en": "He is wrong: the manifesto forbids adjusting the plan along the way."
-        }
-      ],
-      "correct": [
-        2
-      ],
-      "explanation": {
-        "fr": "C'est la « lecture de hacker » citée de Rakitin. Comparées au hacking, les méthodes agiles insistent sur une **bonne dose de planification** : elles valorisent le *processus* de planification plus que la documentation qui en résulte.",
-        "en": "This is Rakitin's \"hacker's reading\". Compared with hacking, agile methods emphasize a **fair amount of planning**: they value the planning *process* more than the resulting documentation."
-      },
-      "level": "apply",
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "Now I have a reason to avoid planning and to",
-          "loc": "Ongoing Debate"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "agile methods emphasize a fair amount of",
-          "loc": "The planning spectrum"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "on the planning process than the resulting",
-          "loc": "The planning spectrum"
-        }
-      ],
-      "objective": "o1",
-      "notions": [
-        "n-manifeste-agile"
-      ],
-      "trap": {
-        "fr": "Confondre agile et hacking : l’agile valorise la planification, pas sa documentation.",
-        "en": "Confusing agile and hacking: agile values planning, not its documentation."
       }
     },
     {
@@ -2060,50 +1496,6 @@
       ]
     },
     {
-      "id": "isi1-07-qz-08",
-      "type": "true_false",
-      "statement": {
-        "fr": "Le deuxième principe du manifeste, accueillir le changement même tard dans le développement, est bénéfique, y compris quand on l'applique à la lettre.",
-        "en": "The manifesto's second principle, welcoming changing requirements even late in development, is beneficial, even when applied to the letter."
-      },
-      "answer": false,
-      "justification": {
-        "fr": "FAUX : appliqué à la lettre, ce principe peut avoir des effets **désastreux**. Le cours cite le dépassement de 3 milliards de dollars du système de contrôle aérien de la FAA comme exemple de « trop répondre au changement ».",
-        "en": "FALSE: applied to the letter, this principle can have **disastrous** effects. The course cites the $3 billion overrun of the US FAA air traffic system as an example of \"overresponding to change\"."
-      },
-      "level": "analyze",
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "changing requirements, even late in development",
-          "loc": "Requirements"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "But overresponding to change has been cited as",
-          "loc": "Introduction"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "the source of many software disasters, such as the $3",
-          "loc": "Introduction"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "billion overrun of the US Federal Aviation",
-          "loc": "Introduction"
-        }
-      ],
-      "objective": "o2",
-      "notions": [
-        "n-exigences-agile-vs-plan"
-      ],
-      "trap": {
-        "fr": "Croire qu’accueillir le changement tard est bénéfique partout.",
-        "en": "Believing welcoming late change is beneficial everywhere."
-      }
-    },
-    {
       "id": "isi1-07-qz-09",
       "type": "true_false",
       "statement": {
@@ -2142,65 +1534,6 @@
       "notions": [
         "n-yagni"
       ]
-    },
-    {
-      "id": "isi1-07-qz-10",
-      "type": "mcq",
-      "question": {
-        "fr": "Pour les très grands systèmes, l'analyse de Pareto citée par Boehm montre que 20 % des problèmes causent 80 % de la reprise. D'où viennent surtout ces problèmes ?",
-        "en": "For very large systems, the Pareto analysis cited by Boehm shows that 20% of the problems cause 80% of the rework. Where do these problems mostly come from?"
-      },
-      "options": [
-        {
-          "fr": "d'une documentation insuffisante des exigences du projet",
-          "en": "from insufficient documentation of the project requirements"
-        },
-        {
-          "fr": "de clients absents ou non représentatifs des utilisateurs",
-          "en": "from absent customers or customers unrepresentative of the users"
-        },
-        {
-          "fr": "d'équipes trop grandes pour se coordonner",
-          "en": "from teams too large to coordinate"
-        },
-        {
-          "fr": "d'« architecture-breakers » irréparables par refactoring",
-          "en": "from \"architecture-breakers\" that refactoring cannot repair"
-        }
-      ],
-      "correct": [
-        3
-      ],
-      "explanation": {
-        "fr": "Ce sont surtout des **« architecture-breakers »** (ruptures d'architecture pour la performance, la tolérance aux pannes ou la sécurité) : **aucun refactoring** ne peut les réparer. D'où les limites de YAGNI sur de très gros systèmes.",
-        "en": "They mostly come from **\"architecture-breakers\"** (architecture discontinuities for performance, fault-tolerance or security): **no amount of refactoring** can repair them. Hence YAGNI's limits on very large systems."
-      },
-      "level": "understand",
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "of the problems causing 80 percent of the rework",
-          "loc": "Comparing the methods"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "came largely from “architecture-breakers,” such as",
-          "loc": "Comparing the methods"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "no amount of refactoring could put Humpty",
-          "loc": "Comparing the methods"
-        }
-      ],
-      "objective": "o2",
-      "notions": [
-        "n-refactoring"
-      ],
-      "trap": {
-        "fr": "Chercher la cause dans la documentation au lieu des « architecture-breakers ».",
-        "en": "Looking for the cause in documentation instead of “architecture-breakers”."
-      }
     },
     {
       "id": "isi1-07-qz-11",
@@ -2298,65 +1631,6 @@
       "trap": {
         "fr": "Croire que l’exposition totale baisse toujours avec plus de plans.",
         "en": "Believing total exposure always falls with more planning."
-      }
-    },
-    {
-      "id": "isi1-07-qz-13",
-      "type": "mcq",
-      "question": {
-        "fr": "Une entreprise d'e-services veut à la fois la valeur rapide et la haute garantie. Que recommande Boehm ?",
-        "en": "An e-services company wants both rapid value and high assurance. What does Boehm recommend?"
-      },
-      "options": [
-        {
-          "fr": "l'agilité pure, puisque son marché change très vite et que la valeur rapide prime",
-          "en": "pure agility, since its market changes very quickly and rapid value prevails"
-        },
-        {
-          "fr": "la discipline pure, puisque la haute garantie est indispensable à ses clients",
-          "en": "pure discipline, since high assurance is indispensable to its customers"
-        },
-        {
-          "fr": "un mélange dosé par la gestion des risques",
-          "en": "a mix dosed through risk management"
-        },
-        {
-          "fr": "d'enchaîner une phase agile puis une phase plan-driven",
-          "en": "chaining an agile phase then a plan-driven phase"
-        }
-      ],
-      "correct": [
-        2
-      ],
-      "explanation": {
-        "fr": "Ni l'agilité pure ni la discipline pure ne suffisent : « a mix of each is needed ». Pour doser, Boehm utilise la **gestion des risques** et la question « combien de planification est assez ? ».",
-        "en": "Neither pure agility nor pure discipline is enough: \"a mix of each is needed\". To dose it, Boehm uses **risk management** and the question \"how much planning is enough?\"."
-      },
-      "level": "apply",
-      "src": [
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "value or high assurance—they need both",
-          "loc": "Balancing agility and discipline"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "meet these needs. A mix of each is needed",
-          "loc": "Balancing agility and discipline"
-        },
-        {
-          "file": "sources-texte/isi1/13-agile-methods.md",
-          "quote": "the question “How much planning is enough?”",
-          "loc": "Balancing agility and discipline"
-        }
-      ],
-      "objective": "o3",
-      "notions": [
-        "n-approches-hybrides"
-      ],
-      "trap": {
-        "fr": "Choisir une approche pure au lieu d’un mélange dosé par le risque.",
-        "en": "Choosing a pure approach instead of a risk-driven mix."
       }
     },
     {

@@ -1,0 +1,2285 @@
+{
+  "id": "isi1-13-modeliser",
+  "courseId": "isi1",
+  "order": 9,
+  "title": {
+    "fr": "Modéliser : cas d’utilisation et modèles de buts",
+    "en": "Modelling: use cases and goal models"
+  },
+  "hook": {
+    "fr": "Les deux exercices de correction de modèle de l’annale 2013 : un diagramme de cas d’utilisation et un modèle KAOS.",
+    "en": "The two model-correction exercises of the 2013 exam: a use case diagram and a KAOS model."
+  },
+  "question": {
+    "fr": "Comment représenter les fonctions d’un système et les buts qu’il sert, et comment corriger un modèle fautif comme à l’annale ?",
+    "en": "How do you represent a system’s functions and the goals it serves, and how do you correct a faulty model as in the exam?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Définir un cas d’utilisation et appliquer le « Do / Don’t » du cours.",
+        "en": "Define a use case and apply the course’s “Do / Don’t”."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Corriger un diagramme de cas d’utilisation et spécifier un cas (annale 2013, partie B).",
+        "en": "Correct a use case diagram and specify a use case (2013 exam, part B)."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Expliquer le raffinement ET / OU (≠ XOR), le rôle des agents et les soft goals.",
+        "en": "Explain AND / OR refinement (≠ XOR), the role of agents and soft goals."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Corriger un modèle KAOS (annale 2013, partie C).",
+        "en": "Correct a KAOS model (2013 exam, part C)."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Annale 2013, partie B (5 points) : erreurs d’un modèle de cas d’utilisation (banque en ligne), version correcte, spécification d’un cas.",
+        "en": "2013 exam, part B (5 points): errors in a use case model (online banking), correct version, use case specification."
+      },
+      {
+        "fr": "Annale 2013, partie C (5 points) : erreurs d’un modèle KAOS (location de vidéos) et modèle correct.",
+        "en": "2013 exam, part C (5 points): errors in a KAOS model (video rental) and correct model."
+      },
+      {
+        "fr": "Vrai/faux : cas complémentaires (2013 Q5) ou alternatifs (2014 Q5), OR / XOR (2013 Q4), soft goals (2013 Q3).",
+        "en": "True/false: complementary (2013 Q5) or alternative (2014 Q5) use cases, OR / XOR (2013 Q4), soft goals (2013 Q3)."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Étude de cas Deadbot : élaborer ses idées en diagrammes de cas d’utilisation.",
+        "en": "Deadbot case study: present ideas as use case diagrams."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Le contexte du système (acteurs, frontière) et la notion d’exigence ; prioriser, pour les buts qui s’opposent.",
+    "en": "The system context (actors, boundary) and the notion of requirement; prioritising, for conflicting goals."
+  },
+  "next": {
+    "fr": "Lectures complémentaires : agilité, grands référentiels, fondements théoriques.",
+    "en": "Further reading: agility, large repositories, theoretical foundations."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Cas d’utilisation : vue externe, déclencheur, résultat attendu ; Do / Don’t du prof.",
+        "en": "Use case: external view, trigger, expected result; the teacher’s Do / Don’t."
+      },
+      {
+        "fr": "KAOS : ET (tous), OU (une alternative suffit, ≠ XOR) ; agent du logiciel → exigence, de l’environnement → hypothèse ; soft goal → satisficing.",
+        "en": "KAOS: AND (all), OR (one alternative suffices, ≠ XOR); software agent → requirement, environment agent → assumption; soft goal → satisficing."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Corriger un diagramme de cas d’utilisation, redessiner, spécifier un cas.",
+        "en": "Correct a use case diagram, redraw it, specify a use case."
+      },
+      {
+        "fr": "Corriger un modèle KAOS : buts, opérateurs ET / OU, niveaux homogènes.",
+        "en": "Correct a KAOS model: goals, AND / OR operators, consistent levels."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Cas complémentaires (nominaux) ≠ cas alternatifs (exceptions).",
+        "en": "Complementary (nominal) cases ≠ alternative cases (exceptions)."
+      },
+      {
+        "fr": "OU (au moins une alternative) ≠ XOR (exactement une).",
+        "en": "OR (at least one alternative) ≠ XOR (exactly one)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Le diagramme de cas d’utilisation documente la frontière du système (chapitre « Le contexte du système »).",
+        "en": "The use case diagram documents the system boundary (chapter “The system context”)."
+      },
+      {
+        "fr": "« Une exigence dit quoi, pas comment » (chapitre « Une bonne exigence ») vaut aussi pour les buts : pas de format imposé.",
+        "en": "“A requirement says what, not how” (chapter “A good requirement”) also applies to goals: no imposed format."
+      }
+    ]
+  },
+  "estimatedMinutes": 9,
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "1. Le diagramme de cas d’utilisation",
+        "en": "1. The use case diagram"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**[[term-use-case|Cas d’utilisation]]** : il documente la **vue externe** du système ; il a un **événement déclencheur** et un **résultat attendu**, et correspond à une fonctionnalité que le système doit supporter. Le **diagramme** donne une vue d’ensemble des fonctions offertes et de leurs liens avec les **[[term-actor|acteurs]]** (personnes ou autres systèmes), sans détailler leurs responsabilités. Il sert aussi à documenter la frontière du système.",
+        "en": "**[[term-use-case|Use case]]**: it documents the **external view** of the system; it has a **trigger event** and an **expected result**, and corresponds to a functionality the system must support. The **diagram** gives an overview of the functions offered and how they relate to **[[term-actor|actors]]** (people or other systems), without detailing their responsibilities. It is also used to document the system boundary."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Use cases document the external view of the system"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Every use case is a functionality that must be supported by the system to be developed"
+        },
+        {
+          "file": "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+          "loc": "Overview of system functions",
+          "quote": "A use case describes which functions are offered to the user by the system and how these functions relate to other external interacting entities."
+        },
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "actors (such as people or other systems) in the system environment"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "À faire (Do)",
+          "en": "Do"
+        },
+        {
+          "fr": "À éviter (Don’t)",
+          "en": "Don’t"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Identifier les **acteurs**",
+            "en": "Identify the **actors**"
+          },
+          {
+            "fr": "Le **CRUD** (créer, lire, modifier, supprimer une donnée)",
+            "en": "**CRUD** (create, read, update, delete a piece of data)"
+          }
+        ],
+        [
+          {
+            "fr": "Identifier leurs **buts**",
+            "en": "Identify their **goals**"
+          },
+          {
+            "fr": "Les cas « **Gérer**… » (*Manage*)",
+            "en": "“**Manage**…” use cases"
+          }
+        ],
+        [
+          {
+            "fr": "**Réifier** : des services fournis par le système",
+            "en": "**Reify**: services provided by the system"
+          },
+          {
+            "fr": "**Mélanger** les niveaux de détail",
+            "en": "**Mixing** levels of detail"
+          }
+        ],
+        [
+          {
+            "fr": "Des cas **complémentaires** (nominaux)",
+            "en": "**Complementary** (nominal) cases"
+          },
+          {
+            "fr": "Des cas **alternatifs** (non nominaux, exceptions…)",
+            "en": "**Alternative** cases (non-nominal, exceptions…)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pourquoi ces règles ? Un cas d’utilisation exprime le **but d’un acteur** : « effectuer un virement » a un sens pour le client, « modifier le solde » non. Le CRUD décrit des opérations sur une donnée, pas des buts ; « Gérer » cache plusieurs buts sous un seul mot ; mélanger les niveaux rend le diagramme illisible ; les exceptions se décrivent dans la spécification d’un cas, pas comme des cas à part.",
+        "en": "Why these rules? A use case expresses an **actor’s goal**: “make a transfer” makes sense to the customer, “update the balance” does not. CRUD describes operations on data, not goals; “Manage” hides several goals behind one word; mixing levels makes the diagram unreadable; exceptions are described in the specification of a use case, not as separate use cases."
+      },
+      "explain": true,
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annales, Q5. 2013 : les cas d’utilisation sont des buts **complémentaires**, qui affinent un même but par un ET (KAOS) → **VRAI** proposé, cohérent avec « *complementary cases (nominal)* ». 2014 : ce sont des buts **alternatifs** → **FAUX** : le support range les cas alternatifs dans le « Don’t ».",
+        "en": "Exams, Q5. 2013: use cases are **complementary** goals that refine one goal through an AND (KAOS) → **TRUE** (proposed), consistent with “*complementary cases (nominal)*”. 2014: they are **alternative** goals → **FALSE**: the slides put alternative cases in the “Don’t”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts complémentaires, c'est-à-dire qui affinent un même but par une décomposition AND dans les termes du formalisme KAOS."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Cas d’utilisation = vue externe, déclencheur, résultat attendu, fonctionnalité à supporter. **Do** : acteurs, buts, services réifiés, cas complémentaires. **Don’t** : CRUD, « Gérer », niveaux mélangés, cas alternatifs.",
+        "en": "Use case = external view, trigger, expected result, functionality to support. **Do**: actors, goals, reified services, complementary cases. **Don’t**: CRUD, “Manage”, mixed levels, alternative cases."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-13-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "2. Méthode : corriger un diagramme de cas d’utilisation",
+        "en": "2. Method: correcting a use case diagram"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Corriger un diagramme de cas d’utilisation (format de l’annale 2013, partie B)",
+        "en": "Correcting a use case diagram (2013 exam format, part B)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Vérifier le système (la boîte) et les acteurs : personnes ou systèmes externes ; en manque-t-il ?",
+            "en": "Check the system (the box) and the actors: people or external systems; is any missing?"
+          },
+          "why": {
+            "fr": "Première consigne du Do : identifier les acteurs.",
+            "en": "First Do rule: identify the actors."
+          }
+        },
+        {
+          "do": {
+            "fr": "Pour chaque cas : est-ce un but de l’acteur, formulé comme un service (verbe + complément) ?",
+            "en": "For each use case: is it an actor’s goal, phrased as a service (verb + object)?"
+          },
+          "why": {
+            "fr": "Identifier les buts, réifier les services.",
+            "en": "Identify goals, reify services."
+          }
+        },
+        {
+          "do": {
+            "fr": "Repérer le CRUD (créer / consulter / modifier / supprimer une même donnée) et les « Gérer ».",
+            "en": "Spot CRUD (create / view / update / delete the same data) and “Manage”."
+          },
+          "why": {
+            "fr": "Deux interdits explicites du Don’t.",
+            "en": "Two explicit Don’t rules."
+          }
+        },
+        {
+          "do": {
+            "fr": "Vérifier l’homogénéité des niveaux et retirer les cas d’exception.",
+            "en": "Check that levels are consistent and remove exception cases."
+          },
+          "why": {
+            "fr": "Pas de niveaux mélangés, pas de cas alternatifs.",
+            "en": "No mixed levels, no alternative cases."
+          }
+        },
+        {
+          "do": {
+            "fr": "Expliquer chaque erreur, puis redessiner le diagramme corrigé.",
+            "en": "Explain each error, then redraw the corrected diagram."
+          },
+          "why": {
+            "fr": "C’est la consigne de l’annale.",
+            "en": "This is the exam instruction."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Identifier explicitement les erreurs faites dans ce modèle (en les entourant lorsque c'est possible), et expliquez-les à droite."
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Exemple corrigé : la banque en ligne (annale 2013, partie B)",
+        "en": "2.1 Worked example: online banking (2013 exam, part B)"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le modèle de l’annale : un système « Compte en Ligne » ; le **Client** est relié à « Accéder au Solde du compte » et « Modifier le Solde du compte » ; l’**Opérateur Banque en ligne** à « Ouverture du compte » et « Clôture ».",
+        "en": "The exam model: a system called “Online Account”; the **Customer** is linked to “Access the account balance” and “Change the account balance”; the **Online banking operator** to “Account opening” and “Closure”."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Erreur (corrigé proposé)",
+          "en": "Error (proposed answer)"
+        },
+        {
+          "fr": "Règle violée",
+          "en": "Rule broken"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Les quatre cas forment un **CRUD** du compte : ouverture (créer), accéder au solde (lire), modifier le solde (modifier), clôture (supprimer).",
+            "en": "The four cases form a **CRUD** of the account: opening (create), access balance (read), change balance (update), closure (delete)."
+          },
+          {
+            "fr": "Don’t : CRUD",
+            "en": "Don’t: CRUD"
+          }
+        ],
+        [
+          {
+            "fr": "« Modifier le solde » n’est pas un but du client : il fait un virement, le solde change en conséquence.",
+            "en": "“Change the balance” is not a customer goal: they make a transfer, and the balance changes as a result."
+          },
+          {
+            "fr": "Do : identifier les buts, réifier",
+            "en": "Do: identify goals, reify"
+          }
+        ],
+        [
+          {
+            "fr": "« Accéder au solde » (une donnée) côtoie « Ouverture du compte » (un processus) ; « Clôture » est un nom seul.",
+            "en": "“Access the balance” (data) sits next to “Account opening” (a process); “Closure” is a bare noun."
+          },
+          {
+            "fr": "Don’t : mélanger les niveaux",
+            "en": "Don’t: mix levels"
+          }
+        ],
+        [
+          {
+            "fr": "C’est le client qui veut ouvrir ou clôturer un compte ; et « Compte en Ligne » désigne la donnée, pas le système.",
+            "en": "It is the customer who wants to open or close an account; and “Online Account” names the data, not the system."
+          },
+          {
+            "fr": "Do : identifier les acteurs et leurs buts",
+            "en": "Do: identify actors and their goals"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  C((Customer))\n  O((Online banking operator))\n  subgraph B[Online banking]\n    U1([View accounts and transactions])\n    U2([Make a transfer])\n    U3([Request account opening])\n    U4([Request account closure])\n    U5([Process an opening request])\n    U6([Process a closure request])\n  end\n  C --- U1\n  C --- U2\n  C --- U3\n  C --- U4\n  O --- U5\n  O --- U6",
+      "caption": {
+        "fr": "Version corrigée proposée : système « Banque en ligne », cas nominaux, complémentaires, de même niveau, formulés comme des buts.",
+        "en": "Proposed corrected version: “Online banking” system, nominal, complementary use cases at the same level, phrased as goals."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Spécifier un cas d’utilisation",
+        "en": "2.2 Specifying a use case"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’annale demande aussi de spécifier un cas. Le cours fixe l’essentiel (un **déclencheur**, un **résultat attendu**) mais ne donne pas de gabarit complet. Rubriques proposées, sur « Effectuer un virement » : **acteur** (client) ; **déclencheur** (le client choisit de faire un virement) ; **scénario nominal** (choisir le compte, saisir bénéficiaire et montant, le système vérifie le solde, le client confirme, le système exécute) ; **résultat attendu** (virement enregistré, solde à jour) ; **exceptions** (solde insuffisant…), décrites ici et non comme des cas du diagramme.",
+        "en": "The exam also asks you to specify a use case. The course sets the essentials (a **trigger**, an **expected result**) but gives no full template. Proposed headings, for “Make a transfer”: **actor** (customer); **trigger** (the customer chooses to make a transfer); **main scenario** (choose the account, enter beneficiary and amount, the system checks the balance, the customer confirms, the system executes); **expected result** (transfer recorded, balance updated); **exceptions** (insufficient balance…), described here and not as use cases in the diagram."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Identifier explicitement les erreurs faites dans ce modèle (en les entourant lorsque c'est possible), et expliquez-les à droite."
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Corriger = boîte et acteurs → chaque cas est-il un but ? → traquer CRUD et « Gérer » → homogénéiser les niveaux, retirer les exceptions → expliquer et redessiner. Spécifier = acteur, déclencheur, scénario nominal, résultat attendu, exceptions.",
+        "en": "Correcting = box and actors → is each case a goal? → hunt CRUD and “Manage” → make levels consistent, remove exceptions → explain and redraw. Specifying = actor, trigger, main scenario, expected result, exceptions."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-13-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "3. Les modèles de buts : KAOS",
+        "en": "3. Goal models: KAOS"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**[[term-goal|But]]** (van Lamsweerde, KAOS) : un objectif que le système doit atteindre. On définit les buts, puis on les **raffine** (le cours cite « *AND/OR goal refinement, ex KAOS* »). **[[term-and-refinement|Raffinement ET]]** : satisfaire **tous** les sous-buts suffit à satisfaire le but parent. **[[term-or-refinement|Raffinement OU]]** : le but est relié à des raffinements **alternatifs** ; en satisfaire **un** suffit.",
+        "en": "**[[term-goal|Goal]]** (van Lamsweerde, KAOS): an objective the system should achieve. Goals are defined, then **refined** (the course mentions “*AND/OR goal refinement, ex KAOS*”). **[[term-and-refinement|AND-refinement]]**: satisfying **all** subgoals is sufficient to satisfy the parent goal. **[[term-or-refinement|OR-refinement]]**: the goal is linked to **alternative** refinements; satisfying **one** of them is sufficient."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. What are goals?",
+          "quote": "A goal is an objective the system under consideration should achieve"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  P[/Parent goal/] --- A((AND))\n  A --- S1[/Subgoal 1/]\n  A --- S2[/Subgoal 2/]\n  Q[/Parent goal/] --- R((OR))\n  R --- T1[/Alternative 1/]\n  R --- T2[/Alternative 2/]",
+      "caption": {
+        "fr": "Raffinement ET (à gauche) : tous les sous-buts ensemble. Raffinement OU (à droite) : une alternative suffit.",
+        "en": "AND-refinement (left): all subgoals together. OR-refinement (right): one alternative is enough."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Lien",
+          "en": "Link"
+        },
+        {
+          "fr": "Ce qu’il exige",
+          "en": "What it requires"
+        },
+        {
+          "fr": "Piège",
+          "en": "Trap"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**ET**",
+            "en": "**AND**"
+          },
+          {
+            "fr": "Tous les sous-buts",
+            "en": "All subgoals"
+          },
+          {
+            "fr": "Des cas d’utilisation complémentaires correspondent à un ET.",
+            "en": "Complementary use cases correspond to an AND."
+          }
+        ],
+        [
+          {
+            "fr": "**OU**",
+            "en": "**OR**"
+          },
+          {
+            "fr": "Au moins une alternative ; plusieurs peuvent être satisfaites",
+            "en": "At least one alternative; several can be satisfied"
+          },
+          {
+            "fr": "Ce n’est **pas** un XOR.",
+            "en": "It is **not** an XOR."
+          }
+        ],
+        [
+          {
+            "fr": "**XOR**",
+            "en": "**XOR**"
+          },
+          {
+            "fr": "Exactement une alternative",
+            "en": "Exactly one alternative"
+          },
+          {
+            "fr": "N’est pas le lien OU de KAOS.",
+            "en": "Is not the KAOS OR link."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        }
+      ],
+      "notions": [
+        "n-raffinement-buts-and-or",
+        "n-kaos-or-xor"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les feuilles du modèle sont confiées à des **agents**. Un but sous la responsabilité d’un seul agent du **logiciel** à construire devient une **exigence** ; sous la responsabilité d’un agent de l’**environnement**, il devient une **hypothèse** (*assumption*), que le logiciel ne peut pas imposer.",
+        "en": "The leaves of the model are assigned to **agents**. A goal under the responsibility of a single agent of the **software** to be built becomes a **requirement**; under the responsibility of an agent of the **environment**, it becomes an **assumption**, which the software cannot enforce."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "A goal under responsibility of a single agent in the software-to-be becomes a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ],
+      "notions": [
+        "n-raffinement-buts-and-or"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013, Q4 : « Dans KAOS, le lien de décomposition OR est formellement équivalent au XOR. » Corrigé proposé : **FAUX**. En OU, satisfaire **une** alternative **suffit** ; rien n’interdit d’en satisfaire plusieurs. Le XOR en imposerait exactement une.",
+        "en": "2013 exam, Q4: “In KAOS, the OR decomposition link is formally equivalent to XOR.” Proposed answer: **FALSE**. With OR, satisfying **one** alternative **is sufficient**; nothing forbids satisfying several. XOR would require exactly one."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 Les soft goals",
+        "en": "3.1 Soft goals"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Un **[[term-soft-goal|soft goal]]** (i\\*, KAOS) est un but dont la satisfaction ne peut pas être établie de façon tranchée. On parle de *satisficing* : les sous-buts doivent atteindre le but parent dans des limites acceptables ; chez Yu, il s’agit de trouver des solutions « suffisamment bonnes ».",
+        "en": "A **[[term-soft-goal|soft goal]]** (i\\*, KAOS) is a goal whose satisfaction cannot be established in a clear-cut way. This is called *satisficing*: subgoals must achieve the parent goal within acceptable limits; for Yu, it means finding “good enough” solutions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013, Q3 : les soft goals « ne peuvent **jamais** être satisfaits puisqu’on n’a pas de critère mesurable ». Corrigé proposé : **FAUX** : un soft goal est satisfait de façon **suffisante** (*satisficed*), selon un jugement, même sans critère tranché. « Jamais » doit t’alerter.",
+        "en": "2013 exam, Q3: soft goals “can **never** be satisfied since there is no measurable criterion”. Proposed answer: **FALSE**: a soft goal is satisfied **sufficiently** (*satisficed*), by judgement, even without a clear-cut criterion. “Never” should alert you."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "But = objectif à atteindre. ET = tous les sous-buts ; OU = une alternative suffit (≠ XOR). Agent du logiciel → exigence ; agent de l’environnement → hypothèse. Soft goal = satisfait de façon suffisante (*satisficing*), pas « jamais ».",
+        "en": "Goal = objective to achieve. AND = all subgoals; OR = one alternative suffices (≠ XOR). Software agent → requirement; environment agent → assumption. Soft goal = satisfied sufficiently (*satisficing*), not “never”."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-13-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. Méthode : corriger un modèle KAOS",
+        "en": "4. Method: correcting a KAOS model"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Corriger un modèle de buts (format de l’annale 2013, partie C)",
+        "en": "Correcting a goal model (2013 exam format, part C)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Chaque nœud est-il un but (un état à atteindre), et non un système, une donnée ou une action isolée ?",
+            "en": "Is each node a goal (a state to reach), not a system, a piece of data or an isolated action?"
+          },
+          "why": {
+            "fr": "Un but est un objectif que le système doit atteindre.",
+            "en": "A goal is an objective the system should achieve."
+          }
+        },
+        {
+          "do": {
+            "fr": "Chaque décomposition porte-t-elle un opérateur explicite, ET ou OU ?",
+            "en": "Does each decomposition carry an explicit operator, AND or OR?"
+          },
+          "why": {
+            "fr": "Les liens de raffinement sont ET ou OU.",
+            "en": "Refinement links are AND or OR."
+          }
+        },
+        {
+          "do": {
+            "fr": "Les sous-buts d’un ET sont-ils tous nécessaires ensemble ? Ceux d’un OU, de vraies alternatives ?",
+            "en": "Are the subgoals of an AND all needed together? Those of an OR, real alternatives?"
+          },
+          "why": {
+            "fr": "ET : tous ; OU : un seul suffit.",
+            "en": "AND: all; OR: one suffices."
+          }
+        },
+        {
+          "do": {
+            "fr": "Les niveaux sont-ils homogènes (pas un but stratégique à côté d’une saisie de champ) ?",
+            "en": "Are the levels consistent (no strategic goal next to a field entry)?"
+          },
+          "why": {
+            "fr": "Les buts se formulent à différents niveaux d’abstraction, à ne pas mélanger dans un raffinement.",
+            "en": "Goals are stated at different levels of abstraction, not to be mixed in one refinement."
+          }
+        },
+        {
+          "do": {
+            "fr": "Redessiner le modèle corrigé et expliquer chaque correction.",
+            "en": "Redraw the corrected model and explain each correction."
+          },
+          "why": {
+            "fr": "L’annale demande d’identifier, d’expliquer, puis de proposer un modèle correct.",
+            "en": "The exam asks to identify, explain, then propose a correct model."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. What are goals?",
+          "quote": "Goals may be formulated at different levels of abstraction"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. What are goals?",
+          "quote": "A goal is an objective the system under consideration should achieve"
+        }
+      ],
+      "notions": [
+        "n-kaos-or-xor",
+        "n-raffinement-buts-and-or"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Exemple corrigé : la location de vidéos (annale 2013, partie C)",
+        "en": "4.1 Worked example: video rental (2013 exam, part C)"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Erreur du modèle (corrigé proposé)",
+          "en": "Model error (proposed answer)"
+        },
+        {
+          "fr": "Pourquoi",
+          "en": "Why"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "La racine « Système location VOD » n’est pas un but.",
+            "en": "The root “VOD rental system” is not a goal."
+          },
+          {
+            "fr": "Un but est un état à atteindre, ex. « les abonnés louent et regardent des films ».",
+            "en": "A goal is a state to reach, e.g. “subscribers rent and watch films”."
+          }
+        ],
+        [
+          {
+            "fr": "« téléchargement » est relié à ses sous-buts par de simples traits, sans ET ni OU.",
+            "en": "“download” is linked to its subgoals by plain lines, with neither AND nor OR."
+          },
+          {
+            "fr": "Visionner en temps réel ou enregistrer le fichier sont deux façons de regarder : c’est un **OU**.",
+            "en": "Streaming or saving the file are two ways to watch: this is an **OR**."
+          }
+        ],
+        [
+          {
+            "fr": "« nouveau film » : un triangle inversé et un seul raffinement pour deux sources alternatives.",
+            "en": "“new film”: an inverted triangle and a single refinement for two alternative sources."
+          },
+          {
+            "fr": "Notation incohérente ; des alternatives demandent un **OU**.",
+            "en": "Inconsistent notation; alternatives need an **OR**."
+          }
+        ],
+        [
+          {
+            "fr": "« authentifier » en ET avec « Créer un compte ».",
+            "en": "“authenticate” in an AND with “Create an account”."
+          },
+          {
+            "fr": "On ne crée pas un compte à chaque authentification : but distinct ; et niveaux mélangés avec la saisie de champs.",
+            "en": "You do not create an account at each authentication: a separate goal; and levels mixed with field entry."
+          }
+        ],
+        [
+          {
+            "fr": "Des noms et des actions (« téléchargement », « Saisir le login ») ; « enregistrer le .avi » impose un format.",
+            "en": "Nouns and actions (“download”, “Enter login”); “save the .avi” imposes a format."
+          },
+          {
+            "fr": "Des buts, pas des actions ; une exigence dit **quoi**, pas comment.",
+            "en": "Goals, not actions; a requirement says **what**, not how."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.5",
+          "quote": "The requirement states what is required, not how the requirement should be met."
+        }
+      ],
+      "notions": [
+        "n-kaos-or-xor"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  G[/Subscribers rent and watch films/] --- A1((AND))\n  A1 --- G1[/Subscriber account created/]\n  A1 --- G2[/Subscriber authenticated/]\n  A1 --- G3[/Film made available to the subscriber/]\n  A1 --- G4[/Catalogue enriched with new films/]\n  G2 --- A2((AND))\n  A2 --- G21[/Login entered/]\n  A2 --- G22[/Password checked/]\n  G3 --- O1((OR))\n  O1 --- G31[/Watched by streaming/]\n  O1 --- G32[/Downloaded and kept/]\n  G4 --- O2((OR))\n  O2 --- G41[/Proposed by subscribers for benefits/]\n  O2 --- G42[/Acquired from third-party sites/]",
+      "caption": {
+        "fr": "Modèle corrigé proposé : un ET à la racine, un ET pour l’authentification, deux OU pour les alternatives (regarder, enrichir le catalogue).",
+        "en": "Proposed corrected model: an AND at the root, an AND for authentication, two ORs for the alternatives (watching, enriching the catalogue)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Corriger un KAOS = des buts (pas des systèmes ni des actions) → un opérateur ET / OU explicite à chaque décomposition → ET si tous sont nécessaires, OU si ce sont des alternatives → niveaux homogènes → redessiner et expliquer.",
+        "en": "Correcting a KAOS model = goals (not systems or actions) → an explicit AND / OR operator at each decomposition → AND if all are needed, OR if they are alternatives → consistent levels → redraw and explain."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-13-qz-12"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-use-case",
+      "fr": "cas d’utilisation",
+      "en": "use case",
+      "definition": {
+        "fr": "Description de la vue externe du système : un événement déclencheur, un résultat attendu ; chaque cas est une fonctionnalité que le système doit supporter.",
+        "en": "Description of the external view of the system: a trigger event, an expected result; each use case is a functionality the system must support."
+      },
+      "pitfall": {
+        "fr": "Des cas complémentaires (nominaux), pas alternatifs ; ni CRUD ni « Gérer ».",
+        "en": "Complementary (nominal) cases, not alternative ones; neither CRUD nor “Manage”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Use cases document the external view of the system"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Every use case is a functionality that must be supported by the system to be developed"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "notion": "n-diagramme-cas-utilisation"
+    },
+    {
+      "id": "term-actor",
+      "fr": "acteur",
+      "en": "actor",
+      "definition": {
+        "fr": "Personne ou autre système de l’environnement qui interagit avec le système dans un diagramme de cas d’utilisation.",
+        "en": "Person or other system of the environment that interacts with the system in a use case diagram."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "loc": "2.3 Documenting the System Context",
+          "quote": "actors (such as people or other systems) in the system environment"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        }
+      ],
+      "notion": "n-diagramme-cas-utilisation"
+    },
+    {
+      "id": "term-goal",
+      "fr": "but (KAOS)",
+      "en": "goal (KAOS)",
+      "definition": {
+        "fr": "Objectif que le système doit atteindre ; il se raffine en sous-buts par des liens ET ou OU.",
+        "en": "Objective the system should achieve; it is refined into subgoals through AND or OR links."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. What are goals?",
+          "quote": "A goal is an objective the system under consideration should achieve"
+        }
+      ],
+      "notion": "n-raffinement-buts-and-or"
+    },
+    {
+      "id": "term-and-refinement",
+      "fr": "raffinement ET",
+      "en": "AND-refinement",
+      "definition": {
+        "fr": "Lien qui relie un but à un ensemble de sous-buts : les satisfaire tous suffit à satisfaire le but parent.",
+        "en": "A link relating a goal to a set of subgoals: satisfying all of them suffices to satisfy the parent goal."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notion": "n-kaos-or-xor"
+    },
+    {
+      "id": "term-or-refinement",
+      "fr": "raffinement OU",
+      "en": "OR-refinement",
+      "definition": {
+        "fr": "Lien qui relie un but à des raffinements alternatifs : en satisfaire un suffit (ce n’est pas un XOR).",
+        "en": "A link relating a goal to alternative refinements: satisfying one suffices (it is not an XOR)."
+      },
+      "pitfall": {
+        "fr": "OU ≠ XOR : plusieurs alternatives peuvent être satisfaites.",
+        "en": "OR ≠ XOR: several alternatives may be satisfied."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notion": "n-kaos-or-xor"
+    },
+    {
+      "id": "term-soft-goal",
+      "fr": "soft goal (but souple)",
+      "en": "soft goal",
+      "definition": {
+        "fr": "But dont la satisfaction ne peut pas être établie de façon tranchée ; il est satisfait de façon suffisante (satisficing).",
+        "en": "A goal whose satisfaction cannot be established in a clear-cut sense; it is satisficed (“good enough”)."
+      },
+      "pitfall": {
+        "fr": "Il n’est pas « jamais satisfait » : il est atteint de façon jugée suffisante.",
+        "en": "It is not “never satisfied”: it is achieved to a level judged sufficient."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        }
+      ],
+      "notion": "n-istar-soft-goals"
+    }
+  ],
+  "notions": [
+    "n-diagramme-cas-utilisation",
+    "n-cas-utilisation-do-dont",
+    "n-raffinement-buts-and-or",
+    "n-kaos-or-xor",
+    "n-istar-soft-goals",
+    "n-elicitation-buts-scenarios"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Un cas d’utilisation documente la vue externe du système : un déclencheur, un résultat attendu, une fonctionnalité à supporter.",
+        "en": "A use case documents the external view of the system: a trigger, an expected result, a functionality to support."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Use cases document the external view of the system"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Every use case is a functionality that must be supported by the system to be developed"
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Do : acteurs, buts, services réifiés, cas complémentaires (nominaux). Don’t : CRUD, « Gérer », niveaux mélangés, cas alternatifs.",
+        "en": "Do: actors, goals, reified services, complementary (nominal) cases. Don’t: CRUD, “Manage”, mixed levels, alternative cases."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "text": {
+        "fr": "KAOS : raffinement ET = tous les sous-buts suffisent ensemble ; OU = une alternative suffit, et plusieurs peuvent l’être (≠ XOR).",
+        "en": "KAOS: AND-refinement = all subgoals together are sufficient; OR = one alternative suffices, and several can be satisfied (≠ XOR)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notions": [
+        "n-kaos-or-xor",
+        "n-raffinement-buts-and-or"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un but confié à un agent du logiciel devient une exigence ; confié à un agent de l’environnement, une hypothèse.",
+        "en": "A goal assigned to a software agent becomes a requirement; assigned to an environment agent, an assumption."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "A goal under responsibility of a single agent in the software-to-be becomes a requirement"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ],
+      "notions": [
+        "n-raffinement-buts-and-or"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un soft goal n’est pas satisfait de façon tranchée mais de façon suffisante (satisficing).",
+        "en": "A soft goal is not satisfied in a clear-cut way but sufficiently (satisficing)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "goal satisficing is introduced to express that subgoals are expected to achieve the parent goal within acceptable limits, rather than absolutely"
+        }
+      ],
+      "notions": [
+        "n-istar-soft-goals"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des cas d’utilisation complémentaires correspondent à un raffinement ET d’un même but.",
+        "en": "Complementary use cases correspond to an AND-refinement of one goal."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-raffinement-buts-and-or"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "isi1-13-fc-01",
+      "front": {
+        "fr": "Cas d’utilisation : les quatre « Do » ?",
+        "en": "Use cases: the four “Do”s?"
+      },
+      "back": {
+        "fr": "Identifier les acteurs, identifier leurs buts, réifier (services fournis par le système), cas complémentaires (nominaux).",
+        "en": "Identify actors, identify their goals, reify (services provided by the system), complementary (nominal) cases."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-13-fc-02",
+      "front": {
+        "fr": "Cas d’utilisation : les quatre « Don’t » ?",
+        "en": "Use cases: the four “Don’t”s?"
+      },
+      "back": {
+        "fr": "CRUD, « Manage », mélanger les niveaux de détail, cas alternatifs (exceptions).",
+        "en": "CRUD, “Manage”, mixing levels of detail, alternative cases (exceptions)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-13-fc-03",
+      "front": {
+        "fr": "Un cas d’utilisation a… ?",
+        "en": "A use case has…?"
+      },
+      "back": {
+        "fr": "Un événement déclencheur et un résultat attendu ; c’est une fonctionnalité que le système doit supporter.",
+        "en": "A trigger event and an expected result; it is a functionality the system must support."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ],
+      "termId": "term-use-case"
+    },
+    {
+      "id": "isi1-13-fc-04",
+      "front": {
+        "fr": "Spécifier un cas d’utilisation : quelles rubriques ?",
+        "en": "Specifying a use case: which headings?"
+      },
+      "back": {
+        "fr": "Acteur, déclencheur, scénario nominal, résultat attendu, exceptions (décrites ici, pas dans le diagramme). Le cours fixe déclencheur et résultat ; le reste est proposé.",
+        "en": "Actor, trigger, main scenario, expected result, exceptions (described here, not in the diagram). The course sets trigger and result; the rest is proposed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Identifier explicitement les erreurs faites dans ce modèle (en les entourant lorsque c'est possible), et expliquez-les à droite."
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "id": "isi1-13-fc-05",
+      "front": {
+        "fr": "Cas d’utilisation complémentaires ou alternatifs ?",
+        "en": "Complementary or alternative use cases?"
+      },
+      "back": {
+        "fr": "Complémentaires (nominaux), comme un raffinement ET ; les cas alternatifs (exceptions) sont dans le « Don’t ».",
+        "en": "Complementary (nominal), like an AND-refinement; alternative cases (exceptions) are in the “Don’t”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "AND-refinement links relate a goal to a set of subgoals (called refinement); this means that satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-13-fc-06",
+      "termId": "term-and-refinement",
+      "front": {
+        "fr": "KAOS : que signifie un raffinement ET ?",
+        "en": "KAOS: what does an AND refinement mean?"
+      },
+      "back": {
+        "fr": "Satisfaire tous les sous-buts suffit à satisfaire le but parent.",
+        "en": "Satisfying all subgoals suffices to satisfy the parent goal."
+      }
+    },
+    {
+      "id": "isi1-13-fc-07",
+      "termId": "term-or-refinement",
+      "front": {
+        "fr": "KAOS : OU ou XOR ?",
+        "en": "KAOS: OR or XOR?"
+      },
+      "back": {
+        "fr": "OU : satisfaire une alternative suffit ; plusieurs peuvent l’être. Ce n’est pas un XOR.",
+        "en": "OR: satisfying one alternative suffices; several may be. It is not an XOR."
+      }
+    },
+    {
+      "id": "isi1-13-fc-08",
+      "front": {
+        "fr": "KAOS : but confié à un agent de l’environnement ?",
+        "en": "KAOS: goal assigned to an agent in the environment?"
+      },
+      "back": {
+        "fr": "C’est une hypothèse (assumption) ; confié à un agent du logiciel, c’est une exigence.",
+        "en": "It is an assumption; assigned to a software agent, it is a requirement."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ],
+      "notions": [
+        "n-raffinement-buts-and-or"
+      ]
+    },
+    {
+      "id": "isi1-13-fc-09",
+      "termId": "term-soft-goal",
+      "front": {
+        "fr": "Soft goal : peut-il être satisfait ?",
+        "en": "Soft goal: can it be satisfied?"
+      },
+      "back": {
+        "fr": "Oui, de façon suffisante (satisficing), sans critère tranché fixé d’avance.",
+        "en": "Yes, to a sufficient level (satisficing), without a clear-cut criterion set in advance."
+      }
+    },
+    {
+      "id": "isi1-13-fc-10",
+      "front": {
+        "fr": "Où le cours (support 12) mentionne-t-il KAOS ?",
+        "en": "Where does the course (support 12) mention KAOS?"
+      },
+      "back": {
+        "fr": "Comme exemple de raffinement ET / OU des buts (« AND/OR goal refinement ex KAOS, Objectiver »).",
+        "en": "As an example of AND / OR goal refinement (“AND/OR goal refinement ex KAOS, Objectiver”)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "slide 30",
+          "quote": "AND/OR goal refinement ex KAOS, Objectiver"
+        }
+      ],
+      "notions": [
+        "n-raffinement-buts-and-or"
+      ]
+    },
+    {
+      "id": "isi1-13-fc-11",
+      "front": {
+        "fr": "But (KAOS) ?",
+        "en": "Goal (KAOS)?"
+      },
+      "back": {
+        "fr": "Un objectif que le système doit atteindre, raffiné par des liens ET ou OU.",
+        "en": "An objective the system should achieve, refined through AND or OR links."
+      },
+      "termId": "term-goal"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "isi1-13-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un cas d’utilisation a toujours un événement déclencheur et un résultat attendu ; chaque cas est une fonctionnalité que le système à développer doit supporter.",
+        "en": "A use case always has a trigger event and an expected result; each use case is a functionality that the system to be developed must support."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est la définition du support de lecture. Le diagramme, lui, donne une vue d’ensemble des fonctions et de leurs liens avec les acteurs.",
+        "en": "TRUE: this is the definition in the reading. The diagram gives an overview of functions and their links to actors."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Use cases document the external view of the system"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "Every use case is a functionality that must be supported by the system to be developed"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ]
+    },
+    {
+      "id": "isi1-13-qz-02",
+      "type": "mcq",
+      "question": {
+        "fr": "Un étudiant dessine le diagramme de cas d'utilisation du contexte d'un système de réservation. Laquelle de ses pratiques contredit le « Do / Don't » du cours ?",
+        "en": "A student draws the use case diagram of a booking system's context. Which of their practices contradicts the course's \"Do / Don't\"?"
+      },
+      "options": [
+        {
+          "fr": "Il mêle des niveaux de détail et ajoute des cas d'exception.",
+          "en": "He mixes levels of detail and adds exception cases."
+        },
+        {
+          "fr": "Il commence par identifier les acteurs, puis il identifie leurs buts.",
+          "en": "He starts by identifying the actors, then identifies their goals."
+        },
+        {
+          "fr": "Il ne représente que les cas nominaux, complémentaires les uns des autres.",
+          "en": "He only shows the nominal cases, complementary to one another."
+        },
+        {
+          "fr": "Il formule chaque cas comme un service fourni par le système (réifier).",
+          "en": "He words each case as a service provided by the system (reify)."
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "À éviter (**Don't**) : mélanger les niveaux de détail et y mettre les cas alternatifs (non nominaux, exceptions). À faire (**Do**) : identifier acteurs et buts, réifier, traiter les cas complémentaires (nominaux).",
+        "en": "To avoid (**Don't**): mixing levels of detail and including alternative cases (non-nominal, exceptions). To do (**Do**): identify actors and goals, reify, handle complementary (nominal) cases."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "quote": "Mix up levels of details",
+          "loc": "Use Case Diagrams"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Croire que les cas d’exception enrichissent le diagramme : ils sont dans le Don’t.",
+        "en": "Believing exception cases enrich the diagram: they are in the Don’t."
+      }
+    },
+    {
+      "id": "isi1-13-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un cas « Gérer les clients » est conforme aux recommandations du cours, car il regroupe en un seul cas tous les services liés aux clients.",
+        "en": "A “Manage customers” use case follows the course recommendations, because it groups all customer-related services in one use case."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : « Manage » figure dans le « Don’t » : il cache plusieurs buts (consulter, créer, modifier…) sous un seul mot.",
+        "en": "FALSE: “Manage” is in the “Don’t”: it hides several goals (view, create, update…) behind one word."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ],
+      "trap": {
+        "fr": "Croire qu’un cas plus large est plus complet.",
+        "en": "Believing that a broader use case is more complete."
+      }
+    },
+    {
+      "id": "isi1-13-qz-04",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les cas d’utilisation d’un modèle de cas d’utilisation correspondent à des buts alternatifs.",
+        "en": "The use cases of a use case model correspond to alternative goals."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX (annale 2014, Q5) : le support demande des cas **complémentaires** (nominaux) et range les cas alternatifs (non nominaux, exceptions) dans le « Don’t ».",
+        "en": "FALSE (2014 exam, Q5): the slides ask for **complementary** (nominal) cases and put alternative cases (non-nominal, exceptions) in the “Don’t”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-13-qz-06",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans le modèle de l’annale 2013 (banque en ligne), « Ouverture du compte », « Accéder au solde », « Modifier le solde » et « Clôture » forment surtout quelle erreur ?",
+        "en": "In the 2013 exam model (online banking), “Account opening”, “Access balance”, “Change balance” and “Closure” mainly form which error?"
+      },
+      "options": [
+        {
+          "fr": "Un CRUD du compte : des opérations sur une donnée, pas des buts d’acteurs",
+          "en": "A CRUD of the account: operations on data, not actors’ goals"
+        },
+        {
+          "fr": "Des cas complémentaires, ce que le cours recommande",
+          "en": "Complementary cases, which the course recommends"
+        },
+        {
+          "fr": "Des cas trop abstraits, qu’il faudrait détailler en sous-cas",
+          "en": "Cases that are too abstract, which should be detailed into sub-cases"
+        },
+        {
+          "fr": "Un excès d’acteurs : un seul acteur suffit",
+          "en": "Too many actors: one actor is enough"
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "Créer (ouverture), lire (accéder au solde), modifier (modifier le solde), supprimer (clôture) : c’est un **CRUD**, explicitement à éviter. Il faut des buts : effectuer un virement, demander l’ouverture d’un compte…",
+        "en": "Create (opening), read (access balance), update (change balance), delete (closure): this is **CRUD**, explicitly to avoid. Goals are needed: make a transfer, request an account opening…"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        }
+      ],
+      "objective": "o2",
+      "notions": [
+        "n-cas-utilisation-do-dont"
+      ]
+    },
+    {
+      "id": "isi1-13-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour documenter le contexte et ses frontières, on utilise souvent des diagrammes de cas d'utilisation, dont les acteurs sont des personnes ou d'autres systèmes de l'environnement, ou des diagrammes de flux de données ; en pratique, on combine généralement plusieurs formes.",
+        "en": "To document the context and its boundaries, use case diagrams are often used, whose actors are people or other systems in the environment, or data flow diagrams; in practice, several forms are typically combined."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : cas d'utilisation (acteurs), flux de données (sources et puits) et diagrammes de classes UML sont possibles ; le support précise qu'on en utilise typiquement plusieurs.",
+        "en": "TRUE: use case diagrams (actors), data flow diagrams (sources and sinks) and UML class diagrams are possible; the material states that typically several are used."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+          "quote": "actors (such as people or other systems) in the system environment",
+          "loc": "2.3 Documenting the System Context"
+        }
+      ],
+      "notions": [
+        "n-diagramme-cas-utilisation"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "isi1-13-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans KAOS, le lien de décomposition OR est formellement équivalent au XOR : le but affiné est satisfait si et seulement si un seul des sous-buts est satisfait.",
+        "en": "In KAOS, the OR decomposition link is formally equivalent to XOR: the refined goal is satisfied if and only if exactly one subgoal is satisfied."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : un raffinement OU relie un but à des alternatives, et satisfaire **une** d’elles **suffit** ; plusieurs peuvent être satisfaites. Un XOR imposerait exactement une.",
+        "en": "FALSE: an OR refinement relates a goal to alternatives, and satisfying **one** of them **suffices**; several may be satisfied. An XOR would require exactly one."
+      },
+      "trap": {
+        "fr": "Lire « une suffit » comme « une seule ».",
+        "en": "Reading “one suffices” as “only one”."
+      },
+      "level": "understand",
+      "objective": "o3",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-qz-08",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans un raffinement ET, satisfaire l’ensemble des sous-buts suffit à satisfaire le but parent.",
+        "en": "In an AND refinement, satisfying all subgoals suffices to satisfy the parent goal."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « satisfying all subgoals in the refinement is sufficient for satisfying the parent goal ».",
+        "en": "TRUE: “satisfying all subgoals in the refinement is sufficient for satisfying the parent goal”."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-raffinement-buts-and-or"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "satisfying all subgoals in the refinement is sufficient for satisfying the parent goal"
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-qz-09",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les soft goals du formalisme i* ne peuvent jamais être satisfaits, puisqu’on n’a pas de critère mesurable.",
+        "en": "Soft goals in the i* framework can never be satisfied, since there is no measurable criterion."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : leur satisfaction ne s’établit pas de façon tranchée, mais ils sont satisfaits de façon suffisante (satisficing, solutions « good enough »), selon le jugement de celui qui dépend du but.",
+        "en": "FALSE: their satisfaction is not established in a clear-cut way, but they are satisficed (“good enough” solutions), according to the depender’s judgement."
+      },
+      "trap": {
+        "fr": "Confondre « pas de critère tranché » et « jamais satisfait ».",
+        "en": "Confusing “no clear-cut criterion” and “never satisfied”."
+      },
+      "level": "analyze",
+      "objective": "o3",
+      "notions": [
+        "n-istar-soft-goals"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-yu-1997-istar.md",
+          "loc": "Softgoals and satisficing",
+          "quote": "The notion of softgoal draws on the concept of satisficing [33], which refers to finding solutions that are “good enough”"
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-qz-10",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans KAOS, le but « Le client présente une carte valide » est confié au client, un agent de l’environnement. Que devient-il ?",
+        "en": "In KAOS, the goal “The customer presents a valid card” is assigned to the customer, an environment agent. What does it become?"
+      },
+      "options": [
+        {
+          "fr": "Une exigence, puisque le système en dépend directement pour fonctionner",
+          "en": "A requirement, since the system directly depends on it to work"
+        },
+        {
+          "fr": "Une hypothèse (assumption), que le logiciel ne peut pas imposer",
+          "en": "An assumption, which the software cannot enforce"
+        },
+        {
+          "fr": "Un soft goal",
+          "en": "A soft goal"
+        },
+        {
+          "fr": "Un raffinement OU",
+          "en": "An OR refinement"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Un but sous la responsabilité d’un agent de l’environnement devient une hypothèse ; sous la responsabilité d’un agent du logiciel, une exigence.",
+        "en": "A goal under the responsibility of an environment agent becomes an assumption; under a software agent, a requirement."
+      },
+      "trap": {
+        "fr": "Appeler « exigence » tout ce dont le système a besoin.",
+        "en": "Calling “requirement” anything the system needs."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-raffinement-buts-and-or"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "2. Goals and agents",
+          "quote": "whereas a goal under responsibility of a single agent in the environment of the software-to-be becomes an assumption"
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-qz-11",
+      "type": "true_false",
+      "statement": {
+        "fr": "Selon le support du cours sur les diagrammes de cas d’utilisation, il faut représenter des cas complémentaires (nominaux) et éviter les cas alternatifs.",
+        "en": "According to the course slide on use case diagrams, you should show complementary (nominal) cases and avoid alternative cases."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « Do : Complementary cases (nominal) » ; « Don’t : Alternative cases (non nominal cases, exceptions) ». D’où le FAUX de l’annale 2014 qui parle de « buts alternatifs ».",
+        "en": "TRUE: “Do: Complementary cases (nominal)”; “Don’t: Alternative cases (non nominal cases, exceptions)”. Hence the FALSE of the 2014 exam, which speaks of “alternative goals”."
+      },
+      "level": "analyze",
+      "objective": "o4",
+      "notions": [
+        "n-kaos-or-xor"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "by the system) Alternative cases (non Complementary cases"
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-qz-12",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans un modèle KAOS, le but « Film mis à disposition » se décompose en « visionné en streaming » et « téléchargé et conservé », deux façons de regarder. Quel raffinement convient ?",
+        "en": "In a KAOS model, the goal “Film made available” breaks down into “watched by streaming” and “downloaded and kept”, two ways of watching. Which refinement fits?"
+      },
+      "options": [
+        {
+          "fr": "Un ET, car les deux sous-buts concernent le même film",
+          "en": "An AND, because both subgoals concern the same film"
+        },
+        {
+          "fr": "Un OU, car ce sont des alternatives et une seule suffit",
+          "en": "An OR, because they are alternatives and one is enough"
+        },
+        {
+          "fr": "Un XOR, car l’abonné ne peut faire que l’un des deux",
+          "en": "An XOR, because the subscriber can only do one of the two"
+        },
+        {
+          "fr": "Aucun : de simples traits suffisent",
+          "en": "None: plain lines are enough"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Deux façons d’atteindre le même but sont des **alternatives** : raffinement **OU**, où satisfaire une alternative suffit. Rien n’impose qu’une seule soit possible (ce n’est pas un XOR), et une décomposition sans opérateur est une erreur de l’annale.",
+        "en": "Two ways of reaching the same goal are **alternatives**: **OR**-refinement, where satisfying one alternative is enough. Nothing requires only one to be possible (it is not XOR), and a decomposition without an operator is one of the exam’s errors."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-kaos-or-xor"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "isi1-13-ex-01",
+      "title": {
+        "fr": "Annale 2013, partie B : le modèle de cas d’utilisation de la banque en ligne",
+        "en": "2013 exam, part B: the online bank use case model"
+      },
+      "difficulty": 3,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o2",
+      "statement": {
+        "fr": "« Le modèle de cas d’utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne. » (5 points)\nDiagramme (relu sur le PDF) : système « **Compte en Ligne** » ; l’acteur **Client** est relié à « Accéder au Solde du compte » et « Modifier le Solde du compte » ; l’acteur **Opérateur Banque en ligne** est relié à « Ouverture du compte » et « Clôture ».\n**(a)** Identifiez explicitement les erreurs et expliquez-les. **(b)** Proposez une version correcte. **(c)** Spécifiez un cas d’utilisation de votre choix.",
+        "en": "“The use case model below presents the needs for an account-keeping system in an online-bank type company.” (5 points)\nDiagram (read from the PDF): system “**Online Account**”; the **Customer** actor is linked to “Access the account Balance” and “Modify the account Balance”; the **Online bank operator** actor is linked to “Account opening” and “Closure”.\n**(a)** Explicitly identify the errors and explain them. **(b)** Propose a correct version. **(c)** Specify a use case of your choice."
+      },
+      "hints": [
+        {
+          "fr": "Mets les quatre cas côte à côte : créer, lire, modifier, supprimer… quoi ?",
+          "en": "Put the four cases side by side: create, read, update, delete… what?"
+        },
+        {
+          "fr": "Le client peut-il vraiment « modifier son solde » ? Quel est son but ?",
+          "en": "Can the customer really “modify their balance”? What is their goal?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (aucun corrigé officiel), fondé sur le « Do / Don’t » du support 7.\n\n**(a) Erreurs**\n1. **Le modèle est un CRUD du compte** : ouverture (créer), accéder au solde (lire), modifier le solde (modifier), clôture (supprimer). Le CRUD est explicitement à éviter : ce sont des opérations sur une donnée, pas des buts d’acteurs.\n2. **« Modifier le Solde du compte » n’est pas un but du client** : le client fait un virement ou un paiement ; le solde change en conséquence. Il faut réifier le service fourni.\n3. **Niveaux de détail mélangés et nommage hétérogène** : « Accéder au Solde du compte » (accès à une donnée) côtoie « Ouverture du compte » (processus métier) ; « Clôture » est un nom seul, sans complément.\n4. **Acteurs et buts incomplets** : dans une banque en ligne, c’est le client qui veut ouvrir ou clôturer un compte ; l’opérateur intervient pour traiter ou valider. Le système s’appelle « Compte en Ligne » : c’est la donnée, pas le système (« Banque en ligne »).\n\n**(b) Version correcte** — système **Banque en ligne** :\n- **Client** : Consulter ses comptes et opérations ; Effectuer un virement ; Demander l’ouverture d’un compte ; Demander la clôture de son compte.\n- **Opérateur banque en ligne** : Traiter une demande d’ouverture ; Traiter une demande de clôture.\n(Cas nominaux, complémentaires, de même niveau, formulés comme des buts.)\n\n**(c) Spécification de « Effectuer un virement »**\n- **Acteur** : Client. **Déclencheur** : le client choisit de faire un virement.\n- **Scénario nominal** : 1. le client choisit le compte à débiter ; 2. il saisit le bénéficiaire et le montant ; 3. le système vérifie que le solde disponible suffit ; 4. le client confirme ; 5. le système exécute le virement et met à jour le solde.\n- **Résultat attendu** : le virement est enregistré, le solde est à jour, une confirmation est affichée.\n- Les exceptions (solde insuffisant, bénéficiaire inconnu) se décrivent ici, pas comme des cas du diagramme.\n\n**Barème indicatif** : (a) 2 pts, (b) 2 pts, (c) 1 pt.",
+        "en": "**Proposed** solution (no official one), based on support 7’s “Do / Don’t”.\n\n**(a) Errors**\n1. **The model is a CRUD of the account**: opening (create), access the balance (read), modify the balance (update), closure (delete). CRUD is explicitly to be avoided: these are operations on data, not actors’ goals.\n2. **“Modify the account Balance” is not a customer goal**: the customer makes a transfer or a payment; the balance changes as a result. The service provided must be reified.\n3. **Mixed levels of detail and inconsistent naming**: “Access the account Balance” (data access) sits next to “Account opening” (business process); “Closure” is a bare noun with no complement.\n4. **Incomplete actors and goals**: in an online bank, the customer is the one who wants to open or close an account; the operator processes or validates. The system is called “Online Account”: that is the data, not the system (“Online bank”).\n\n**(b) Correct version** — system **Online bank**:\n- **Customer**: View accounts and transactions; Make a transfer; Request an account opening; Request closure of their account.\n- **Online bank operator**: Process an opening request; Process a closure request.\n(Nominal, complementary cases, at the same level, phrased as goals.)\n\n**(c) Specification of “Make a transfer”**\n- **Actor**: Customer. **Trigger**: the customer chooses to make a transfer.\n- **Nominal scenario**: 1. the customer chooses the account to debit; 2. enters the beneficiary and amount; 3. the system checks the available balance is sufficient; 4. the customer confirms; 5. the system executes the transfer and updates the balance.\n- **Expected result**: the transfer is recorded, the balance is up to date, a confirmation is displayed.\n- Exceptions (insufficient balance, unknown beneficiary) are described here, not as diagram cases.\n\n**Indicative marking**: (a) 2 pts, (b) 2 pts, (c) 1 pt."
+      },
+      "notions": [
+        "n-diagramme-cas-utilisation",
+        "n-cas-utilisation-do-dont"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "B. Modélisation de Cas d'Utilisation",
+          "quote": "Le modèle de cas d'utilisation ci-dessous présente les besoins pour un système de tenue de compte dans une société de type banque en ligne."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Reify (services provided Mix up levels of details by the system) Alternative cases (non"
+        },
+        {
+          "file": "sources-texte/isi1/20-eliciting-requirements.md",
+          "loc": "Modeling action sequences",
+          "quote": "A use case has a trigger event, which triggers the use case and an expected result, or outcome of the use case."
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-ex-02",
+      "title": {
+        "fr": "Annale 2013, partie C : corriger le modèle KAOS de la location de vidéos",
+        "en": "2013 exam, part C: correcting the video rental KAOS model"
+      },
+      "difficulty": 3,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o4",
+      "statement": {
+        "fr": "Le modèle KAOS de l’annale (relu sur le PDF) : « Système location VOD » est relié par **un seul** triangle pointant vers le haut à « téléchargement », « nouveau film » et « authentifier ». « téléchargement » est relié à « en visionnage temps réel » et « enregistrer le .avi » par de simples traits, **sans symbole de raffinement**. « nouveau film » est relié à « Par les abonnés en leur offrant des avantages » et « À partir de sites tiers » par un triangle **pointant vers le bas**. « authentifier » est relié par un triangle pointant vers le haut à « Créer un compte », « Saisir le login », « Saisir le mot de passe ».\n**(a)** Identifie et explique les erreurs. **(b)** Propose un modèle correct. (5 points)\n\n*La transcription Markdown de l’annale note « AND » sous « nouveau film » : le PDF montre un triangle inversé.*",
+        "en": "The exam’s KAOS model (read from the PDF): “VOD rental system” is linked by **a single** upward-pointing triangle to “download”, “new film” and “authenticate”. “download” is linked to “real-time viewing” and “save the .avi” by plain lines, **with no refinement symbol**. “new film” is linked to “By subscribers by offering them benefits” and “From third-party sites” by a **downward-pointing** triangle. “authenticate” is linked by an upward-pointing triangle to “Create an account”, “Enter the login”, “Enter the password”.\n**(a)** Identify and explain the errors. **(b)** Propose a correct model. (5 points)\n\n*The Markdown transcription of the exam marks “AND” under “new film”: the PDF shows an inverted triangle.*"
+      },
+      "hints": [
+        {
+          "fr": "Un seul triangle reliant plusieurs sous-buts = un raffinement ET. Un OU = plusieurs raffinements alternatifs, chacun dessiné séparément.",
+          "en": "A single triangle linking several subgoals = an AND refinement. An OR = several alternative refinements, each drawn separately."
+        },
+        {
+          "fr": "Visionner en temps réel et enregistrer le fichier : faut-il les deux, ou l’un suffit-il ?",
+          "en": "Real-time viewing and saving the file: are both needed, or does one suffice?"
+        },
+        {
+          "fr": "Faut-il créer un compte à chaque authentification ? Un format de fichier est-il un but ?",
+          "en": "Must you create an account at every authentication? Is a file format a goal?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (aucun corrigé officiel), fondé sur les définitions de KAOS (van Lamsweerde) ; les points marqués *lecture* interprètent le dessin.\n\n**(a) Erreurs**\n1. **La racine n’est pas un but** : « Système location VOD » désigne un système ; il faut un objectif à atteindre, ex. « Les abonnés louent et regardent des films ». (L’énoncé parle de cassettes vidéo, le modèle de VOD : incohérence de périmètre.)\n2. **« téléchargement » n’a pas de raffinement** : de simples traits, ni ET ni OU. Or visionner en temps réel et enregistrer le fichier sont deux façons de regarder le film : c’est un **OU**, donc deux raffinements alternatifs.\n3. **« nouveau film » : triangle inversé** (*lecture*) : il pointe vers les sous-buts alors que les autres pointent vers le but parent ; la notation est incohérente. Et comme ses deux sources sont des alternatives, un seul raffinement (un ET) ne convient pas : il faut un **OU**.\n4. **« authentifier » en ET avec « Créer un compte »** : un ET exige tous les sous-buts à chaque fois ; or on ne crée pas un compte à chaque authentification. « Compte créé » est un but distinct (préalable), et il mélange les niveaux avec la saisie de champs.\n5. **Nœuds formulés comme des noms ou des actions** (« téléchargement », « authentifier », « Saisir le login ») au lieu de buts (états à atteindre) ; « enregistrer le **.avi** » impose une solution technique (un format), alors qu’une exigence dit **quoi**, pas **comment** (ISO 29148).\n\n**(b) Modèle correct**\n- **Les abonnés louent et regardent des films** (ET, un seul raffinement) :\n  - **Compte d’abonné créé**\n  - **Abonné authentifié** (ET) : identifiant saisi ; mot de passe vérifié\n  - **Film mis à disposition de l’abonné** (OU, deux raffinements) : visionné en streaming | téléchargé et conservé\n  - **Catalogue enrichi de nouveaux films** (OU, deux raffinements) : proposés par les abonnés en échange d’avantages | acquis auprès de sites tiers\n\n**Barème indicatif** : chaque erreur identifiée et expliquée (0,5 pt, max 2,5) ; modèle corrigé avec des opérateurs ET / OU justes (2,5 pts).",
+        "en": "**Proposed** solution (no official one), based on KAOS definitions (van Lamsweerde); points marked *reading* interpret the drawing.\n\n**(a) Errors**\n1. **The root is not a goal**: “VOD rental system” names a system; an objective is needed, e.g., “Subscribers rent and watch films”. (The statement speaks of video cassettes, the model of VOD: scope inconsistency.)\n2. **“download” has no refinement**: plain lines, neither AND nor OR. Yet real-time viewing and saving the file are two ways of watching the film: it is an **OR**, hence two alternative refinements.\n3. **“new film”: inverted triangle** (*reading*): it points to the subgoals while the others point to the parent goal; the notation is inconsistent. And since its two sources are alternatives, a single refinement (an AND) does not fit: an **OR** is needed.\n4. **“authenticate” as an AND with “Create an account”**: an AND requires all subgoals every time; yet you do not create an account at each authentication. “Account created” is a separate (prior) goal, and it mixes levels with field entry.\n5. **Nodes phrased as nouns or actions** (“download”, “authenticate”, “Enter the login”) instead of goals (states to reach); “save the **.avi**” imposes a technical solution (a format), whereas a requirement says **what**, not **how** (ISO 29148).\n\n**(b) Correct model**\n- **Subscribers rent and watch films** (AND, a single refinement):\n  - **Subscriber account created**\n  - **Subscriber authenticated** (AND): login entered; password checked\n  - **Film made available to the subscriber** (OR, two refinements): watched by streaming | downloaded and kept\n  - **Catalogue enriched with new films** (OR, two refinements): offered by subscribers in exchange for benefits | acquired from third-party sites\n\n**Indicative marking**: each error identified and explained (0.5 pt, max 2.5); corrected model with correct AND / OR operators (2.5 pts)."
+      },
+      "notions": [
+        "n-kaos-or-xor",
+        "n-raffinement-buts-and-or"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "C. Modélisation de buts",
+          "quote": "Le modèle KAOS ci-dessous présente la décomposition des buts pour un système de location de cassettes vidéo"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.5",
+          "quote": "The requirement states what is required, not how the requirement should be met."
+        }
+      ]
+    },
+    {
+      "id": "isi1-13-ex-03",
+      "title": {
+        "fr": "Vrai ou faux, format des annales : cas d’utilisation et KAOS",
+        "en": "True or false, exam format: use cases and KAOS"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "« Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX. »\n1. (2014 Q5) Les cas d’utilisation d’un modèle de cas d’utilisation correspondent à des buts alternatifs.\n2. (2013 Q5) Les cas d’utilisation correspondent à des buts complémentaires, qui affinent un même but par une décomposition AND dans les termes de KAOS.\n3. (2013 Q4) Dans KAOS, le lien de décomposition OR est formellement équivalent au XOR.\n4. (2013 Q3) Les soft goals de i* ne peuvent jamais être satisfaits puisqu’on n’a pas de critère mesurable.\n5. Un cas « Gérer les clients » est conforme aux recommandations du cours.",
+        "en": "“Answer TRUE or FALSE, justify if (and only if) you answer FALSE.”\n1. (2014 Q5) The use cases of a use case model correspond to alternative goals.\n2. (2013 Q5) Use cases correspond to complementary goals that refine one goal through an AND decomposition in KAOS terms.\n3. (2013 Q4) In KAOS, the OR decomposition link is formally equivalent to XOR.\n4. (2013 Q3) i* soft goals can never be satisfied since there is no measurable criterion.\n5. A “Manage customers” use case follows the course recommendations."
+      },
+      "hints": [
+        {
+          "fr": "Relis le tableau Do / Don’t et le tableau ET / OU / XOR.",
+          "en": "Reread the Do / Don’t table and the AND / OR / XOR table."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n1. **FAUX** : le support demande des cas complémentaires (nominaux) et range les cas alternatifs dans le « Don’t ».\n2. **VRAI** : cohérent avec « *complementary cases (nominal)* » ; le lien avec le ET de KAOS est une lecture des annales.\n3. **FAUX** : en OU, satisfaire une alternative suffit, plusieurs peuvent l’être ; le XOR en impose exactement une.\n4. **FAUX** : un soft goal est satisfait de façon suffisante (*satisficing*) ; « jamais » est faux.\n5. **FAUX** : « Manage » est explicitement à éviter ; il cache plusieurs buts.",
+        "en": "**Proposed** answers.\n1. **FALSE**: the slides ask for complementary (nominal) cases and put alternative cases in the “Don’t”.\n2. **TRUE**: consistent with “*complementary cases (nominal)*”; the link with the KAOS AND is a reading of the exams.\n3. **FALSE**: with OR, satisfying one alternative is enough, several can be satisfied; XOR requires exactly one.\n4. **FALSE**: a soft goal is satisfied sufficiently (*satisficing*); “never” is wrong.\n5. **FALSE**: “Manage” is explicitly to be avoided; it hides several goals."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts complémentaires, c'est-à-dire qui affinent un même but par une décomposition AND dans les termes du formalisme KAOS."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q5",
+          "quote": "Les cas d'utilisation d'un modèle de cas d'utilisation correspondent à des buts alternatifs."
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Complementary cases nominal cases, (nominal) exceptions, etc)"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q4",
+          "quote": "le lien de décomposition OR est formellement équivalent au XOR"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "4. Goal refinement links",
+          "quote": "OR-refinement links relate a goal to an alternative set of refinements; this means that satisfying one of the refinements is sufficient for satisfying the parent goal"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q3",
+          "quote": "sont des buts qui ne peuvent jamais être satisfaits puisqu'on n'a pas de critère mesurable"
+        },
+        {
+          "file": "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+          "loc": "Soft goals",
+          "quote": "soft goals, whose satisfaction cannot be established in a clear-cut sense"
+        },
+        {
+          "file": "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+          "loc": "Use Case Diagrams",
+          "quote": "Identify actors CRUD Identify their goals « Manage »"
+        }
+      ],
+      "notions": [
+        "n-cas-utilisation-do-dont",
+        "n-kaos-or-xor",
+        "n-istar-soft-goals"
+      ],
+      "trap": {
+        "fr": "Les mots absolus (« jamais », « formellement équivalent ») et l’inversion complémentaire / alternatif.",
+        "en": "Absolute words (“never”, “formally equivalent”) and swapping complementary / alternative."
+      }
+    }
+  ],
+  "writing": [
+    {
+      "id": "isi1-13-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Satisfying one of the alternatives is sufficient for satisfying the parent goal.",
+      "accepted": [
+        "Satisfying one alternative is sufficient for satisfying the parent goal."
+      ]
+    },
+    {
+      "id": "isi1-13-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "A use case has a {{trigger}} event and an expected {{result}}.",
+      "translation": "Un cas d’utilisation a un événement déclencheur et un résultat attendu."
+    },
+    {
+      "id": "isi1-13-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A good use case diagram shows all the alternative cases and exceptions.",
+      "error": "all the alternative cases and exceptions",
+      "corrected": "the complementary nominal cases",
+      "explanation": {
+        "fr": "Le cours demande des cas complémentaires (nominaux) ; les cas alternatifs sont dans le « Don’t ».",
+        "en": "The course asks for complementary (nominal) cases; alternative cases are in the “Don’t”."
+      }
+    },
+    {
+      "id": "isi1-13-wr-04",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "A soft goal can never be satisfied, so we must ignore it.",
+      "error": "can never be satisfied",
+      "corrected": "can be satisficed",
+      "explanation": {
+        "fr": "Un soft goal n’est pas satisfait de façon tranchée, mais il peut être *satisficed* (atteint de façon suffisante).",
+        "en": "A soft goal is not satisfied in a clear-cut way, but it can be *satisficed* (achieved to a sufficient level)."
+      }
+    },
+    {
+      "id": "isi1-13-wr-05",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique la différence entre un raffinement OR et un XOR dans KAOS.",
+        "en": "In 2-3 English sentences, explain the difference between an OR refinement and an XOR in KAOS."
+      },
+      "modelAnswer": "In KAOS, an OR refinement relates a goal to alternative refinements. Satisfying one of them is sufficient, but several can be satisfied at the same time. An XOR would require exactly one alternative to be satisfied.",
+      "keywords": [
+        "OR",
+        "alternative",
+        "sufficient",
+        "several",
+        "exactly one"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai défini le OU (une alternative suffit).",
+          "en": "I defined OR (one alternative suffices)."
+        },
+        {
+          "fr": "J’ai dit que plusieurs peuvent être satisfaites.",
+          "en": "I said several can be satisfied."
+        },
+        {
+          "fr": "J’ai défini le XOR (exactement une).",
+          "en": "I defined XOR (exactly one)."
+        }
+      ],
+      "usefulPhrases": [
+        "relates a goal to…",
+        "is sufficient",
+        "would require exactly one"
+      ]
+    }
+  ],
+  "sources": [
+    "sources-texte/isi1/20-eliciting-requirements.md",
+    "sources-texte/isi1/15-requirements-engineering-pohl-rupp-chap-4-5.md",
+    "sources-texte/isi1/8-re-fundamentals-context-analysis.md",
+    "sources-texte/isi1/7-ireb-cpre-2-analyse-du-contexte.md",
+    "ressources/S3__ISI1/Markdown/examen_2.md",
+    "ressources/S3__ISI1/Markdown/examen_3.md",
+    "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+    "sources-texte/isi1/ext-van-lamsweerde-2001-kaos.md",
+    "sources-texte/isi1/ext-yu-1997-istar.md",
+    "sources-texte/isi1/3-isoiec-cd-29148.md"
+  ]
+}

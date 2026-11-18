@@ -1,14 +1,14 @@
 {
   "id": "isi1-08-grands-referentiels",
   "courseId": "isi1",
-  "order": 10,
+  "order": 11,
   "title": {
-    "fr": "Gérer de grands référentiels d'exigences en langage naturel",
-    "en": "Managing large repositories of natural language requirements"
+    "fr": "Grands référentiels d’exigences en langage naturel",
+    "en": "Large repositories of natural language requirements"
   },
   "hook": {
-    "fr": "Trois exigences par jour, des milliers d'un coup, et des doublons partout : comment retrouver la bonne exigence dans un référentiel qui déborde ?",
-    "en": "Three requirements a day, thousands in one burst, duplicates everywhere: how do you find the right requirement in an overflowing repository?"
+    "fr": "Fiche complémentaire : retrouver doublons et liens parmi des milliers d’exigences.",
+    "en": "Further reading: finding duplicates and links among thousands of requirements."
   },
   "question": {
     "fr": "Quand des milliers d’exigences arrivent en langage naturel, comment un outil peut-il aider à retrouver les doublons et les liens ?",
@@ -49,12 +49,12 @@
     ]
   },
   "prerequisites": {
-    "fr": "Chapitre 6 : référentiel d’exigences, langage naturel, traçabilité.",
-    "en": "Chapter 6: requirements repository, natural language, traceability."
+    "fr": "Documenter et gérer : référentiel, identifiant unique, traçabilité.",
+    "en": "Documenting and managing: repository, unique identifier, traceability."
   },
   "next": {
-    "fr": "Le chapitre 9 revient aux fondements : que doit vraiment décrire une exigence ?",
-    "en": "Chapter 9 goes back to foundations: what should a requirement really describe?"
+    "fr": "Fondements théoriques : coins sombres et Problem Frames.",
+    "en": "Theoretical foundations: dark corners and Problem Frames."
   },
   "synthesis": {
     "mustKnow": [
@@ -89,55 +89,23 @@
     ],
     "links": [
       {
-        "fr": "Les doublons et les liens rappellent l’identifiant unique et la traçabilité du chapitre 6.",
-        "en": "Duplicates and links recall chapter 6’s unique identifier and traceability."
+        "fr": "Doublons et liens prolongent l’identifiant unique et la traçabilité (chapitre « Documenter et gérer ») ; vérification ≠ validation (chapitre « Les fondamentaux »).",
+        "en": "Duplicates and links extend the unique identifier and traceability (chapter “Documenting and managing”); verification ≠ validation (chapter “Fundamentals”)."
       }
     ]
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 5,
   "sources": [
     "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md"
   ],
   "status": "draft",
-  "notions": [
-    "n-defi-flux-exigences-nl",
-    "n-pourquoi-langage-naturel",
-    "n-defauts-langage-naturel",
-    "n-verification-vs-validation-nl",
-    "n-surcharge-information",
-    "n-limites-outils-gestion",
-    "n-taches-gestion-ouvertes",
-    "n-nlp-role-support",
-    "n-similarite-exigences",
-    "n-types-similarite",
-    "n-tokenisation",
-    "n-racinisation",
-    "n-mots-vides",
-    "n-representation-vectorielle",
-    "n-mesures-dice-jaccard-cosinus",
-    "n-rappel-precision-exactitude",
-    "n-cas-telelogic-doublons",
-    "n-n-clusters",
-    "n-cas-baan-mr-br",
-    "n-cas-sony-ericsson-rfi",
-    "n-taille-liste-candidats",
-    "n-outil-complete-analystes",
-    "n-reqsimile"
-  ],
   "story": [
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Quand les exigences débordent",
-        "en": "When requirements overflow"
-      }
-    },
     {
       "type": "callout",
       "variant": "repere",
       "text": {
-        "fr": "Repère : ce chapitre résume un chapitre de livre fourni en lecture (support 16). Il n’a jamais été interrogé : lis-le en dernier, pour la culture. L’essentiel tient dans la synthèse et les flashcards.",
-        "en": "Landmark: this chapter summarises a book chapter provided as reading (support 16). It has never been asked: read it last, for background. The essentials fit in the summary and flashcards."
+        "fr": "Lecture complémentaire (support 16, Natt och Dag et Gervasi). Jamais interrogée en annale : priorité basse.",
+        "en": "Further reading (slides 16, Natt och Dag and Gervasi). Never asked in past exams: low priority."
       },
       "src": [
         {
@@ -148,17 +116,19 @@
       ]
     },
     {
+      "type": "heading",
+      "text": {
+        "fr": "1. Le problème, et pourquoi le langage naturel reste",
+        "en": "1. The problem, and why natural language stays"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
-        "fr": "Imagine une entreprise de logiciel qui reçoit des exigences de partout — marketing, support, développeurs, clients — **trois par jour en moyenne**, parfois **des milliers d'un coup**. Le chapitre 10 de Natt och Dag et Gervasi part de ce constat : les entreprises dirigées par le marché et la technologie font face à d'énormes flux d'information qui peuvent dépasser leurs capacités de gestion et d'analyse. Deux symptômes apparaissent : la **détérioration du référentiel** d'exigences et la difficulté croissante à **identifier et maintenir les relations** entre exigences.",
-        "en": "Picture a software company receiving requirements from everywhere — marketing, support, developers, customers — **three a day on average**, sometimes **thousands in one burst**. Chapter 10 by Natt och Dag and Gervasi starts from this observation: market and technology driven companies face huge information flows that may overwhelm their management and analysis capabilities. Two symptoms appear: **deterioration of the requirements repository** and an increasing difficulty to **identify and maintain inter-relationships** between requirements."
+        "fr": "Les grandes entreprises reçoivent des flux d’exigences qui dépassent leurs capacités d’analyse : le référentiel se **détériore** et les **relations** entre exigences se perdent. Le langage naturel induit imprécision, ambiguïté, incomplétude et incohérence ; et les outils de gestion ne posent que des **liens manuels**, sans aider à rapprocher les exigences entrantes de celles déjà analysées.",
+        "en": "Large companies receive requirement flows that exceed their analysis capacity: the repository **deteriorates** and **relations** between requirements get lost. Natural language brings imprecision, ambiguity, incompleteness and inconsistency; and management tools only set **manual links**, without helping to match incoming requirements with those already analysed."
       },
       "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.1 Introduction",
-          "quote": "Market and technology driven companies developing increasingly complex"
-        },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.1 Introduction",
@@ -168,41 +138,12 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.1 Introduction",
           "quote": "each month, either in bursts of thousands or continuously 3-5 requirements each"
-        }
-      ],
-      "notions": [
-        "n-defi-flux-exigences-nl"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Pourquoi est-ce si dur ? Parce que les exigences sont communiquées en **langage naturel**, qui induit « imprécision, ambiguïté, incomplétude, conflit et incohérence », autant de problèmes qui prennent du temps à résoudre. De plus, la gestion traditionnelle des exigences se concentre implicitement sur des **spécifications monolithiques isolées** ; le défi nouveau — analyser, ré-analyser et consolider en continu d'énormes quantités d'exigences — est laissé de côté.",
-        "en": "Why is it so hard? Because requirements are communicated in **natural language**, which induces imprecision, ambiguity, incompleteness, conflict and inconsistency, all of which take time to resolve. Moreover, traditional requirements management implicitly focuses on **isolated monolithic specifications**; the new challenge — continuously analyzing, re-analyzing and consolidating enormous amounts of requirements — is left untouched."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.1 Introduction",
           "quote": "natural language, which induces several problems like imprecision, ambiguity, in-"
         },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.1 Introduction",
-          "quote": "monolithic requirements specifications. The new challenge of managing"
-        }
-      ],
-      "notions": [
-        "n-defauts-langage-naturel"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les outils du marché ne sauvent pas la situation : ils permettent de poser des liens entre exigences, mais **n'aident pas à rapprocher** des milliers d'exigences entrantes de celles déjà analysées. Et l'entreprise est à un carrefour sans bonne issue : **réduire le flux** d'exigences entrantes (on risque de manquer des opportunités) ou **ajouter du monde** (trop coûteux et parfois contre-productif).",
-        "en": "Market tools do not save the day: they let you assign links between requirements, but give **no assistance in matching** thousands of incoming requirements with those already analyzed. And the company faces a cross-road with no good exit: **reduce the flow** of incoming requirements (risking missed opportunities) or **assign more people** (too costly and at times counter-productive)."
-      },
-      "src": [
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.1 Introduction",
@@ -212,38 +153,18 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.1 Introduction",
           "quote": "Companies facing these challenges may arrive at a cross-road where the choice"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.1 Introduction",
-          "quote": "Choking the elicitation and invention of new requirements will increase the risk of missing"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.1 Introduction",
-          "quote": "been shown to be too costly and at times counter-productive"
         }
       ],
       "notions": [
+        "n-defi-flux-exigences-nl",
         "n-limites-outils-gestion"
       ]
     },
     {
-      "type": "checkpoint",
-      "quizId": "isi1-08-qz-01"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Pourquoi garder le langage naturel ?",
-        "en": "Why keep natural language?"
-      }
-    },
-    {
       "type": "paragraph",
       "text": {
-        "fr": "Réflexe d'ingénieur : « formalisons tout ! ». Les auteurs répondent par cinq raisons pour lesquelles les exigences sont spécifiées en langage naturel (NL) et souvent **le restent** pendant tout le développement. D'abord, le NL est **la langue de communication commune** à toutes les parties prenantes : les langages formels demandent une formation qu'on ne peut pas attendre de chaque client ou utilisateur. Ensuite, le NL est **universel** : il parle de n'importe quel domaine, à n'importe quel niveau d'abstraction.",
-        "en": "An engineer's reflex: \"let's formalize everything!\". The authors answer with five reasons why requirements are specified in natural language (NL) and often **kept in that form** throughout development. First, NL is the **primary communication language**, shared by all stakeholders: formal languages require training that cannot be expected from every customer or end-user. Second, NL is **universal**: it can talk about arbitrary domains at arbitrary levels of abstraction."
+        "fr": "Pourquoi ne pas tout formaliser ? Le langage naturel est la **langue commune** de toutes les parties prenantes et il est **universel** ; peu d’exigences proposées sont réellement implémentées ; il s’adapte aux exigences **imparfaites** ; et si le formel aide la **vérification** (cohérence interne, complétude), le langage naturel convient mieux à la **validation** (correspondance avec les intentions des utilisateurs).",
+        "en": "Why not formalise everything? Natural language is the **common language** of all stakeholders and it is **universal**; few proposed requirements are actually implemented; it copes with **imperfect** requirements; and while formal languages help **verification** (internal consistency, completeness), natural language is better suited to **validation** (match with users’ intentions)."
       },
       "src": [
         {
@@ -255,29 +176,7 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.2 The Role of Natural Language Requirements",
           "quote": "NL is universal, meaning that it can be"
-        }
-      ],
-      "notions": [
-        "n-pourquoi-langage-naturel"
-      ]
-    },
-    {
-      "type": "list",
-      "items": [
-        {
-          "fr": "**Peu d'exigences sont retenues** : en grand développement, peu d'exigences proposées sont réellement implémentées ; il y a donc peu de motivation à les formaliser (surtout si l'on valorise l'interaction avec les clients et la réaction rapide au marché).",
-          "en": "**Few requirements get selected**: in large-scale development few proposed requirements are actually implemented, so there is little motivation to formalize them (especially for companies valuing close customer interaction and rapid reaction to the market)."
         },
-        {
-          "fr": "**Exigences imparfaites** : beaucoup de méthodes formelles n'aident pas à gérer des exigences erronées, incomplètes ou partiellement spécifiées ; les techniques NL s'y adaptent naturellement.",
-          "en": "**Imperfect requirements**: many formal methods offer no support for erroneous, incomplete or partially-specified requirements; NL techniques adapt naturally to them."
-        },
-        {
-          "fr": "**Vérification vs validation** : les langages formels aident à vérifier la cohérence interne et la complétude (la *vérification*), mais ne capturent pas la correspondance avec les intentions réelles des utilisateurs (la *validation*), pour laquelle le NL est mieux adapté.",
-          "en": "**Verification vs validation**: formal languages help check internal consistency and completeness (*verification*) but cannot capture correspondence with actual user intentions (*validation*), for which NL is better suited."
-        }
-      ],
-      "src": [
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.2 The Role of Natural Language Requirements",
@@ -297,44 +196,7 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.2 The Role of Natural Language Requirements",
           "quote": "and to this end, NL is a more suited language"
-        }
-      ],
-      "notions": [
-        "n-pourquoi-langage-naturel"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Le contexte s'aggrave quand l'entreprise passe du **développement sur contrat** (*bespoke*) au développement pour un **marché plus large** (COTS) : les exigences arrivent de sources multiples (clients, commerciaux, développeurs, support), et la décision sur la prochaine version se prend surtout à partir des exigences NL du référentiel. Résultat : un problème de **surcharge d'information** (*information overload*). La piste étudiée : le **traitement automatique du langage naturel** (NLP).",
-        "en": "The context worsens when a company moves from **bespoke development** to development for a **broader market** (COTS): requirements arrive from many sources (customers, sales, developers, support), and the decision about the next release is mostly made from the NL requirements in the repository. The result is an **information overload** problem. The avenue explored: **natural language processing** (NLP)."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.2 The Role of Natural Language Requirements",
-          "quote": "towards development for a broader market"
         },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.2 The Role of Natural Language Requirements",
-          "quote": "dynamic environment where requirements arrive from many different sources and"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.2 The Role of Natural Language Requirements",
-          "quote": "In essence, these companies face an information overload problem. But, as we"
-        }
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen — NL = formel en moins bien ?** Non. Le texte distingue **vérification** (cohérence interne et complétude, où les langages formels aident) et **validation** (correspondance avec les intentions des utilisateurs, qui demande communication avec les parties prenantes — donc le NL). Et le NLP ne remplace pas le processus social : selon Ryan, les techniques linguistiques ne réussissent que dans un **rôle de soutien**.",
-        "en": "**Exam trap — NL is just worse than formal?** No. The text distinguishes **verification** (internal consistency and completeness, where formal languages help) from **validation** (correspondence with user intentions, which needs communication with stakeholders — hence NL). And NLP does not replace the social process: according to Ryan, linguistic techniques can succeed only in a **supporting role**."
-      },
-      "src": [
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.2 The Role of Natural Language Requirements",
@@ -344,18 +206,20 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.2 The Role of Natural Language Requirements",
           "quote": "and to this end, NL is a more suited language"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3 State of the Research",
-          "quote": "Ryan concludes that RE is a social process and that linguistic techniques"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3 State of the Research",
-          "quote": "only in a supporting role to this process"
         }
+      ],
+      "notions": [
+        "n-pourquoi-langage-naturel",
+        "n-verification-vs-validation-nl"
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Problème : flux massif, référentiel qui se détériore, liens manuels. Le langage naturel reste : langue commune, universel, adapté aux exigences imparfaites et à la validation.",
+        "en": "Problem: massive flow, deteriorating repository, manual links. Natural language stays: common language, universal, suited to imperfect requirements and to validation."
+      }
     },
     {
       "type": "checkpoint",
@@ -364,303 +228,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Ce que font (et ne font pas) les outils de gestion",
-        "en": "What requirements management tools do (and do not do)"
+        "fr": "2. Mesurer la similarité entre exigences",
+        "en": "2. Measuring similarity between requirements"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Les outils actuels savent **stocker et retrouver** les exigences, les **annoter de métadonnées** (paires attribut/valeur, avec des jeux standards d'attributs) et gérer des **relations** entre exigences ; ils offrent indexation, recherche par mots-clés et recherche sur les métadonnées. Mais la gestion des relations se limite le plus souvent à des **liens établis à la main** entre paires d'exigences (typiquement pour la traçabilité). Certains types de liens sont dits **fragiles** : toute modification d'une exigence liée marque le lien comme rompu jusqu'à ce qu'il soit vérifié et rétabli manuellement.",
-        "en": "Current tools can **store and recall** requirements, **annotate them with metadata** (attribute/value pairs, with standard attribute sets) and manage **relationships** between requirements; they provide indexing, keyword search and metadata search. But relationship management is most often limited to **manually established links** between pairs of requirements (typically for traceability). Some link types are declared **fragile**: any change in one of the linked requirements marks the link as broken until manually verified and re-established."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "Current requirements management tools provide facilities for storing and recall-"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "attribute/value pairs, where standard sets of attributes are offered as libraries), and"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "of relationships is most often limited to manually establishing links"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "declared as fragile, in that any change in one of the linked requirements marks the"
-        }
-      ],
-      "notions": [
-        "n-limites-outils-gestion"
-      ]
-    },
-    {
-      "type": "list",
-      "items": [
-        {
-          "fr": "**rapprocher** les exigences entrantes (potentiellement nouvelles) de celles déjà élicitées, planifiées ou implémentées ;",
-          "en": "**matching** incoming (potentially new) requirements to previously elicited, planned and implemented ones;"
-        },
-        {
-          "fr": "**séparer** les demandes des clients des exigences inventées en interne, et trouver les relations entre elles ;",
-          "en": "**separating** customer requests from requirements invented within the organization, and finding relationships between them;"
-        },
-        {
-          "fr": "identifier les **dépendances** et autres interrelations entre exigences ;",
-          "en": "identifying **dependencies** and other interrelationships between requirements;"
-        },
-        {
-          "fr": "extraire du référentiel les exigences qui correspondent à des **domaines stratégiques** (ex. facturation, aide à la décision).",
-          "en": "extracting from the repository the requirements that fit **strategic areas** (e.g. invoicing capabilities, decision-making features)."
-        }
-      ],
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "Matching incoming (potentially new) requirements to previously elicited,"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "Maintaining a separation and finding relationships between customer requests"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "Identifying dependencies and other interrelationships between requirements"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.3.3 Requirements Management",
-          "quote": "Supporting the extraction of requirements from the repository that fit strategic"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-08-qz-04"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Mesurer la ressemblance entre exigences",
-        "en": "Measuring how alike two requirements are"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Idée centrale du chapitre : beaucoup de problèmes de gestion à grande échelle se résolvent, au moins en partie, avec une mesure de **similarité** entre exigences. Ce dont on a besoin le plus souvent, c'est de la **similarité sémantique** : deux exigences ont-elles le même sens, et dans quelle mesure ? Mais il existe d'autres notions de similarité (tableau 10.1).",
-        "en": "The central idea of the chapter: many problems of managing large volumes of requirements can be solved, at least partly, with a measure of **similarity** between requirements. What is mostly needed is **semantic similarity**: do two requirements convey the same meaning, and to what extent? But other notions of similarity exist (Table 10.1)."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "semantic similarity: a measure of whether two requirements convey the same meaning"
-        }
-      ],
-      "notions": [
-        "n-similarite-exigences"
-      ]
-    },
-    {
-      "type": "table",
-      "headers": [
-        {
-          "fr": "Mesure de similarité",
-          "en": "Similarity measure"
-        },
-        {
-          "fr": "Description",
-          "en": "Description"
-        }
-      ],
-      "rows": [
-        [
-          {
-            "fr": "Sémantique",
-            "en": "Semantic"
-          },
-          {
-            "fr": "ressemblance de sens",
-            "en": "Similarity in meaning"
-          }
-        ],
-        [
-          {
-            "fr": "Syntaxique",
-            "en": "Syntactic"
-          },
-          {
-            "fr": "ressemblance de structure grammaticale",
-            "en": "Similarity in grammatical structure"
-          }
-        ],
-        [
-          {
-            "fr": "Lexicale",
-            "en": "Lexical"
-          },
-          {
-            "fr": "ressemblance des mots employés",
-            "en": "Similarity in words used"
-          }
-        ],
-        [
-          {
-            "fr": "Structurelle",
-            "en": "Structural"
-          },
-          {
-            "fr": "ressemblance de structure en sections",
-            "en": "Similarity in sectional structure"
-          }
-        ],
-        [
-          {
-            "fr": "Extensionnelle",
-            "en": "Extensional"
-          },
-          {
-            "fr": "ressemblance de taille",
-            "en": "Similarity in size"
-          }
-        ],
-        [
-          {
-            "fr": "Argumentative",
-            "en": "Argumentative"
-          },
-          {
-            "fr": "ressemblance de justification",
-            "en": "Similarity in rationale"
-          }
-        ],
-        [
-          {
-            "fr": "But",
-            "en": "Goal"
-          },
-          {
-            "fr": "ressemblance d'objectif",
-            "en": "Similarity in objective"
-          }
-        ],
-        [
-          {
-            "fr": "Source",
-            "en": "Source"
-          },
-          {
-            "fr": "ressemblance de l'auteur de la demande",
-            "en": "Similarity in the proponent"
-          }
-        ],
-        [
-          {
-            "fr": "Fonction",
-            "en": "Function"
-          },
-          {
-            "fr": "ressemblance de fonction visée",
-            "en": "Similarity in function addressed"
-          }
-        ],
-        [
-          {
-            "fr": "Objet",
-            "en": "Object"
-          },
-          {
-            "fr": "ressemblance des parties du système touchées",
-            "en": "Similarity in system parts affected"
-          }
-        ],
-        [
-          {
-            "fr": "Temporelle",
-            "en": "Temporal"
-          },
-          {
-            "fr": "ressemblance d'époque d'origine",
-            "en": "Similarity in time of origin"
-          }
-        ]
-      ],
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Semantic Similarity in meaning"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Syntactic Similarity in grammatical structure"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Lexical Similarity in words used"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Structural Similarity in sectional structure"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Extensional Similarity in size"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Argumentative Similarity in rationale"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Goal Similarity in objective"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Source Similarity in the proponent"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Function Similarity in function addressed"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Object Similarity in system parts affected"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "Table 10.1",
-          "quote": "Temporal Similarity in time of origin"
-        }
-      ],
-      "notions": [
-        "n-similarite-exigences"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Une contrainte décide du choix : la mesure doit être **calculable à peu de frais**. Toute mesure demandant une intervention humaine importante est trop coûteuse pour un grand référentiel ; il faut donc une mesure **totalement automatique**. Or, vu l'état de l'art, on ne sait pas extraire de façon fiable le sens d'un texte non contraint. Les auteurs se rabattent sur la **similarité lexicale**, qui **approxime** la similarité sémantique.",
-        "en": "One constraint drives the choice: the measure must be **computable inexpensively**. Any measure requiring significant human intervention is too costly for a large repository, so it must be **fully automatic**. Yet, given the state of the art, meaning cannot be reliably extracted from unrestricted text. The authors therefore settle on **lexical similarity** as an **approximation** of semantic similarity."
+        "fr": "Beaucoup de problèmes se résolvent avec une mesure de **[[term-requirements-similarity|similarité]]** entre exigences. Il faudrait la similarité **sémantique** (même sens), mais on ne sait pas extraire le sens d’un texte libre de façon fiable et automatique : on se rabat sur la **[[term-lexical-similarity|similarité lexicale]]** (mêmes mots), calculable à bas coût, qui l’**approxime**.",
+        "en": "Many problems are solved with a **[[term-requirements-similarity|similarity]]** measure between requirements. Semantic similarity (same meaning) would be needed, but the meaning of free text cannot be extracted reliably and automatically: **[[term-lexical-similarity|lexical similarity]]** (same words) is used instead, cheap to compute, as an **approximation**."
       },
       "src": [
         {
@@ -682,39 +258,48 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.4 Requirements Similarity",
           "quote": "We therefore focus on lexical similarity as a way of approximating semantic similarity"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.4 Requirements Similarity",
+          "quote": "semantic similarity: a measure of whether two requirements convey the same meaning"
+        }
+      ],
+      "notions": [
+        "n-similarite-exigences"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  R[Requirement text] --> T[Tokenisation] --> S[Stemming] --> W[Stop word removal] --> V[Weight vector] --> M[Similarity: cosine, Dice, Jaccard]",
+      "caption": {
+        "fr": "La chaîne de calcul : du texte de l’exigence à une mesure de similarité.",
+        "en": "The computation chain: from requirement text to a similarity measure."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.4 Requirements Similarity",
+          "quote": "the lexical constituents of a requirement as tokenization"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.4 Requirements Similarity",
+          "quote": "is called a token. In the upcoming case studies, a token is"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.4 Requirements Similarity",
+          "quote": "to their base form, removing morphological inflections"
         }
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Sur le plan lexical, une exigence est une **suite de mots**. Trois prétraitements :",
-        "en": "At the lexical level, a requirement is a **sequence of words**. Three preprocessing steps:"
+        "fr": "**[[term-tokenization|Tokenisation]]** (découper en mots), **[[term-stemming|racinisation]]** (ramener à la forme de base), retrait des **[[term-stop-words|mots vides]]** (articles, prépositions) ; puis chaque exigence devient un **vecteur** de poids (fréquence, ou 1 + log₂(fréquence)) ; enfin on calcule **Dice**, **Jaccard** ou le **[[term-cosine-measure|cosinus]]**.",
+        "en": "**[[term-tokenization|Tokenisation]]** (splitting into words), **[[term-stemming|stemming]]** (reducing to the base form), removing **[[term-stop-words|stop words]]** (articles, prepositions); then each requirement becomes a **vector** of weights (frequency, or 1 + log₂(frequency)); finally **Dice**, **Jaccard** or the **[[term-cosine-measure|cosine]]** is computed."
       },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "On a lexical level, we consider a requirement as a sequence of words"
-        }
-      ]
-    },
-    {
-      "type": "list",
-      "items": [
-        {
-          "fr": "**Tokenisation** : séparer les constituants lexicaux d'une exigence ; chaque mot est un *token*. Dans les études de cas, un token est une suite de lettres et/ou de chiffres ; tout autre caractère est un délimiteur et est écarté.",
-          "en": "**Tokenization**: separating the lexical constituents of a requirement; each word is a *token*. In the case studies, a token is a sequence of letters and/or digits; any other character is a delimiter and is discarded."
-        },
-        {
-          "fr": "**Racinisation** (*stemming*) : ramener les tokens à leur forme de base en supprimant les flexions morphologiques (pluriels, personne, mode…), à l'aide de règles générales et d'un dictionnaire d'exceptions.",
-          "en": "**Stemming**: reducing tokens to their base form by removing morphological inflections (plurals, person, mood…), using general morphological rules and a dictionary of exceptions."
-        },
-        {
-          "fr": "**Suppression des mots vides** (*stop word removal*) : retirer les mots à rôle purement grammatical (le plus souvent les mots de classe fermée : articles, prépositions).",
-          "en": "**Stop word removal**: dropping the words with a purely grammatical role (mostly closed class words, e.g. articles and prepositions)."
-        }
-      ],
       "src": [
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
@@ -745,21 +330,7 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.4 Requirements Similarity",
           "quote": "the sequence of tokens all those words that have a purely grammatical role."
-        }
-      ],
-      "notions": [
-        "n-tokenisation",
-        "n-racinisation",
-        "n-mots-vides"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Ensuite, l'ordre des mots n'étant plus jugé important, une exigence *r* devient un **vecteur** de poids : à chaque token correspond un poids, son importance relative dans l'exigence. Schéma simple (cas 1) : le poids est la **fréquence** du token. Schéma raffiné (cas 2 et 3) : comme l'importance d'un token n'est pas proportionnelle au nombre de ses occurrences, on utilise **1 + log₂(fréquence)**.",
-        "en": "Next, with word order no longer considered important, a requirement *r* becomes a **vector** of weights: each token has a weight, its relative importance in the requirement. Simple scheme (Case 1): weight is the token's **frequency**. Refined scheme (Cases 2 and 3): since a token's importance is not linearly proportional to the number of its occurrences, the formula **1 + log₂(term frequency)** is used."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.4 Requirements Similarity",
@@ -773,204 +344,36 @@
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.4 Requirements Similarity",
-          "quote": "importance of a token is not linearly proportional to the number of times it occurs"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "also use the well-known weighting formula 1+log2(term frequency)"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Une fois les exigences en vecteurs, on applique des mesures standard : **Dice**, **Jaccard** et **Cosinus** (comparées au cas 1 ; elles diffèrent surtout face aux exigences de longueurs différentes). Le **cosinus**, nommé d'après l'angle entre les vecteurs, est retenu aux cas 2 et 3, jugé généralement meilleur. Simplification assumée : tous les termes pèsent pareil, alors que certains en disent bien plus que d'autres.",
-        "en": "Once requirements are vectors, standard measures are applied: **Dice**, **Jaccard** and **Cosine** (compared in case 1; they differ mainly with requirements of different lengths). **Cosine**, named after the angle between vectors, is chosen in cases 2 and 3, judged generally better. An accepted simplification: all terms weigh the same, although some say much more than others."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
           "quote": "the Dice, Jaccard, and Cosine measures"
         },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.4 Requirements Similarity",
           "quote": "angle between the vectors that represent the requirements in a vector-space model."
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "the Cosine measure was selected as it was considered to generally perform better"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "in practice, the presence or absence of certain terms may be much"
         }
       ],
       "notions": [
+        "n-tokenisation",
+        "n-racinisation",
+        "n-mots-vides",
+        "n-representation-vectorielle",
         "n-mesures-dice-jaccard-cosinus"
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "**Piège d'examen — lexical ≠ sémantique.** La mesure retenue compare des **mots**, pas des **sens** : la similarité lexicale n'est qu'une **approximation** de la similarité sémantique, choisie parce qu'elle est calculable automatiquement et à bas coût. Ne pas écrire que l'outil « comprend » les exigences.",
-        "en": "**Exam trap — lexical ≠ semantic.** The chosen measure compares **words**, not **meanings**: lexical similarity is only an **approximation** of semantic similarity, chosen because it is computable automatically and inexpensively. Do not write that the tool \"understands\" requirements."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "We therefore focus on lexical similarity as a way of approximating semantic similarity"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.4 Requirements Similarity",
-          "quote": "it has to be computable in a relatively inexpensive way"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-08-qz-05"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Cas 1 — Telelogic : garder le référentiel en forme",
-        "en": "Case 1 — Telelogic: keeping the repository in shape"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Telelogic développe l'environnement **Telelogic Tau**. Les exigences arrivent en continu de sources variées (marketing, support, développement, tests, évaluations d'utilisabilité, veille technologique), sont rangées dans un référentiel avec le statut **« New »**, puis évaluées et raffinées (niveau de détail, coût, impact, priorité). Chaque exigence suit un **cycle de vie** : une fois implémentée et vérifiée, elle passe au statut **« Applied »**. Tout reste dans le référentiel, qui ne cesse de grandir.",
-        "en": "Telelogic develops the **Telelogic Tau** environment. Requirements arrive continuously from varied sources (marketing, support, development, testing, usability evaluations, technology forecasting), are collected in a repository with the status **\"New\"**, then evaluated and refined (detail level, cost, impact, priority). Each requirement has a **life cycle**: once implemented and verified, it is assigned the status **\"Applied\"**. Everything stays in the repository, which keeps growing."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "continuously from several different sources (e.g. marketing, support, development,"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "collected into a repository and assigned the status of New"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "Each requirement has a lifecycle progressing through specific states in the development proc-"
-        }
-      ],
-      "notions": [
-        "n-cas-telelogic-doublons"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "À l'état initial, une exigence est contrôlée sur **trois propriétés** : est-elle un **doublon** d'une exigence existante ? peut-elle être **fusionnée** avec une autre ? doit-elle être **scindée** en deux exigences ou plus avant analyse ? Si l'une s'applique, elle reçoit le statut « Duplicate ». **Fusion** : toute l'information est ajoutée à l'exigence avec laquelle on fusionne. **Scission** : l'information est répartie sur plusieurs nouvelles exigences. **Doublon pur** : aucune autre action.",
-        "en": "In its initial state a requirement is checked for **three properties**: is it a **duplicate** of an existing requirement? can it be **merged** with another? should it be **split** into two or more requirements before analysis? If one applies, it gets the status \"Duplicate\". **Merge**: all the information is added to the requirement it is merged with. **Split**: the information is distributed over two or more new requirements. **Pure duplicate**: no further action."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "whether or not the requirement is regarded as a duplicate of another requirement"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "already in the repository, (2) if it is possible to merge the requirement with another"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "or (3) if the requirement should be split into two or more"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "When a requirement is split, the information is distributed over two or more new"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "When a requirement is a pure duplicate, no further action is taken."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Avec **trois nouvelles exigences par jour** en moyenne, ces contrôles manuels créent de la **congestion**. D'où l'idée : utiliser des mesures de similarité pour **repérer les doublons** et vérifier plus vite les exigences entrantes. Sur les 1 920 exigences du référentiel (état en 2000), 130 avaient été marquées doublons, fusions ou sources de scission ; les auteurs n'évaluent que les **101 vrais doublons**, car fusions et scissions ne correspondent que partiellement.",
-        "en": "With **three new requirements a day** on average, these manual checks cause **congestion**. Hence the idea: use similarity measures to **identify duplicates** and check incoming requirements faster. Of the 1,920 requirements in the repository (snapshot of 2000), 130 had been flagged as duplicates, merges or split sources; the authors evaluate only the **101 real duplicates**, since merges and splits would match only partially."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "As requirements arrive at an average rate of three per day, and as the"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "Automated support in this situation, using"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "Of the 1,920 requirements in the repository, 130 had been"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5 Case 1",
-          "quote": "Of the 130 requirements marked as duplicates, we only consider the 101 that were"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "On fixe un **seuil** *t* : si sim(rᵢ, rⱼ) ≥ *t*, la paire est un **doublon suspecté**. Trois mesures d'évaluation :",
-        "en": "A **threshold** *t* is set: if sim(rᵢ, rⱼ) ≥ *t*, the pair is a **suspected duplicate**. Three evaluation measures:"
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5.2 Evaluation",
-          "quote": "quirements and gives a similarity measure between 0 and 1, and t be a threshold"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5.2 Evaluation",
-          "quote": "value, which acts as a selection criteria."
-        }
-      ],
-      "notions": [
-        "n-cas-telelogic-doublons"
       ]
     },
     {
       "type": "list",
       "items": [
         {
-          "fr": "**Rappel** (*recall*) : pourcentage des vraies paires de doublons qui se trouvent au-dessus du seuil.",
-          "en": "**Recall**: the percentage of the actual duplicate pairs that fall above the similarity threshold."
+          "fr": "**[[term-recall|Rappel]]** : part des vraies paires de doublons retrouvées au-dessus du seuil.",
+          "en": "**[[term-recall|Recall]]**: share of true duplicate pairs found above the threshold."
         },
         {
-          "fr": "**Précision** (*precision*) : pourcentage de vrais doublons parmi **toutes** les paires au-dessus du seuil.",
-          "en": "**Precision**: the percentage of actual duplicates above the threshold in relation to **all** pairs above the threshold."
+          "fr": "**[[term-precision|Précision]]** : part de vrais doublons parmi **toutes** les paires retenues.",
+          "en": "**[[term-precision|Precision]]**: share of true duplicates among **all** pairs retained."
         },
         {
-          "fr": "**Exactitude** (*accuracy*) : pourcentage de paires (doublons et non-doublons) qui tombent du **bon côté** du seuil.",
-          "en": "**Accuracy**: the percentage of pairs (duplicate and non-duplicate) that fall on the **correct side** of the threshold."
+          "fr": "**[[term-accuracy|Exactitude]]** : part des paires (doublons ou non) du bon côté du seuil.",
+          "en": "**[[term-accuracy|Accuracy]]**: share of pairs (duplicates or not) on the right side of the threshold."
         }
       ],
       "src": [
@@ -993,43 +396,16 @@
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.5.2 Evaluation",
           "quote": "pairs that fall on the correct side of the threshold"
-        }
-      ],
-      "notions": [
-        "n-rappel-precision-exactitude"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Résultats : le rappel passe d'environ **80 %** au seuil 0+ à un peu moins de **20 %** au seuil 1. **Dice** fait un peu moins bien que le cosinus ; entre **Jaccard** et **Cosinus**, le cosinus a un meilleur rappel mais une moins bonne précision : le choix **dépend de l'application**. Les paires suspectes sont regroupées en **n-clusters** par fermeture transitive : si (A,F) et (C,F) sont suspectes, A, C et F forment un 3-cluster à examiner ensemble.",
-        "en": "Results: recall drops from about **80%** at threshold 0+ to just under **20%** at threshold 1. **Dice** does slightly worse than cosine; between **Jaccard** and **Cosine**, cosine has better recall but lower precision: the choice **depends on the application**. Suspect pairs are grouped into **n-clusters** by transitive closure: if (A,F) and (C,F) are suspect, A, C and F form a 3-cluster to examine together."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5.2 Evaluation",
-          "quote": "recall decreases from around 80% at threshold level 0+ to just"
         },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.5.2 Evaluation",
-          "quote": "compared to the Cosine measure and may thus be discarded."
+          "quote": "quirements and gives a similarity measure between 0 and 1, and t be a threshold"
         },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.5.2 Evaluation",
-          "quote": "recall but lower precision than Jaccard. The choice would thus depend on the"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5.2 Evaluation",
-          "quote": "of requirements as n-clusters, where n is the number of requirements in the"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.5.2 Evaluation",
-          "quote": "The cluster distribution can be derived by calculating the transitive closure of a"
+          "quote": "value, which acts as a selection criteria."
         }
       ],
       "notions": [
@@ -1040,8 +416,8 @@
       "type": "callout",
       "variant": "exam",
       "text": {
-        "fr": "**Piège d'examen — rappel vs précision.** Le **rappel** a pour dénominateur les **vraies** paires de doublons ; la **précision** a pour dénominateur **toutes les paires retenues** (au-dessus du seuil). Quand on baisse le seuil, on retrouve plus de vrais doublons (rappel ↑) mais on ramasse aussi plus de fausses paires (précision ↓). Ne pas dire « le cosinus est meilleur » sans nuance : plus de rappel, moins de précision que Jaccard.",
-        "en": "**Exam trap — recall vs precision.** **Recall** has the **actual** duplicate pairs as denominator; **precision** has **all pairs above the threshold** as denominator. Lowering the threshold finds more real duplicates (recall ↑) but also picks up more false pairs (precision ↓). Do not say \"cosine is better\" without nuance: more recall, less precision than Jaccard."
+        "fr": "Lexical ≠ sémantique : l’outil compare des mots, il ne « comprend » pas. Baisser le seuil augmente le rappel mais fait baisser la précision ; le cosinus a plus de rappel et moins de précision que Jaccard : le choix dépend de l’application.",
+        "en": "Lexical ≠ semantic: the tool compares words, it does not “understand”. Lowering the threshold raises recall but lowers precision; the cosine has more recall and less precision than Jaccard: the choice depends on the application."
       },
       "src": [
         {
@@ -1062,55 +438,100 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Similarité lexicale = approximation bon marché de la sémantique : tokenisation → racinisation → mots vides → vecteur → cosinus / Dice / Jaccard. Évaluer par rappel (dénominateur : vraies paires) et précision (dénominateur : paires retenues).",
+        "en": "Lexical similarity = cheap approximation of semantics: tokenisation → stemming → stop words → vector → cosine / Dice / Jaccard. Evaluate with recall (denominator: true pairs) and precision (denominator: retained pairs)."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "isi1-08-qz-08"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Cas 2 — Baan : relier les souhaits clients aux exigences produit",
-        "en": "Case 2 — Baan: linking customer wishes to product requirements"
+        "fr": "3. Trois cas industriels",
+        "en": "3. Three industrial cases"
       }
     },
     {
-      "type": "paragraph",
-      "text": {
-        "fr": "Chez Baan (progiciels ERP, CRM…), deux types d'exigences coexistent dans la base **BRD** : les **Market Requirements (MR)**, souhaits des clients, et les **Business Requirements (BR)**, exigences produit. Périodiquement, la direction lance un projet de version et sélectionne des BR à implémenter, si possible de façon à **maximiser le nombre de MR satisfaits**. Les clients sont informés quand un MR est accepté puis quand il est satisfait : des liens MR–BR **complets et corrects** sont donc essentiels à la relation client.",
-        "en": "At Baan (ERP, CRM… applications) two kinds of requirements coexist in the **BRD** database: **Market Requirements (MR)**, customer wishes, and **Business Requirements (BR)**, product requirements. Periodically management starts a release project and selects BRs to implement, preferably so as to **maximize the number of MRs satisfied**. Customers are informed when an MR is accepted and when it is satisfied: **complete and correct** MR–BR links are therefore paramount to customer relationships."
-      },
-      "src": [
+      "type": "table",
+      "headers": [
         {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "new customer wishes, called Market Requirements (MR), and product require-"
+          "fr": "Cas",
+          "en": "Case"
         },
         {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "called Business Requirements (BR), are inserted into the Baan"
+          "fr": "Problème",
+          "en": "Problem"
         },
         {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "accepted in the BRD and when it is satisfied in an upcoming release"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "complete and correct MRs-BRs links is paramount to maintaining good"
+          "fr": "Apport de la similarité",
+          "en": "What similarity brings"
         }
       ],
-      "notions": [
-        "n-cas-baan-mr-br"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Les liens sont **plusieurs-à-plusieurs** : un MR peut couvrir plusieurs BR (pour découper un gros lot de travail) et un BR peut satisfaire plusieurs MR (plusieurs clients demandent la même fonction). Les MR sont copiés **tels quels**, sans modifier le texte du client. Établir ces liens est une routine quotidienne des product managers, mais l'outil ne permet que la **recherche textuelle** dans la description : processus très long.",
-        "en": "Links are **many-to-many**: one MR can span several BRs (to split a huge work package) and one BR can satisfy several MRs (several customers request the same functionality). MRs are copied **as-is**, without altering the customer's text. Linking is a daily routine for product managers, but the tool only allows **text search** in the description: a very time-consuming process."
-      },
+      "rows": [
+        [
+          {
+            "fr": "**Telelogic**",
+            "en": "**Telelogic**"
+          },
+          {
+            "fr": "Environ trois exigences nouvelles par jour, à contrôler : doublon, fusion ou scission ?",
+            "en": "About three new requirements a day, to check: duplicate, merge or split?"
+          },
+          {
+            "fr": "Repérer les doublons suspectés au-dessus d’un seuil, regroupés en *n-clusters*.",
+            "en": "Spot suspected duplicates above a threshold, grouped into *n-clusters*."
+          }
+        ],
+        [
+          {
+            "fr": "**Baan**",
+            "en": "**Baan**"
+          },
+          {
+            "fr": "Relier les souhaits clients (MR) aux exigences produit (BR), en plusieurs-à-plusieurs.",
+            "en": "Link customer wishes (MR) to product requirements (BR), many-to-many."
+          },
+          {
+            "fr": "Proposer à l’expert une liste de candidats (7 ± 2) à accepter ou refuser.",
+            "en": "Offer the expert a list of candidates (7 ± 2) to accept or reject."
+          }
+        ],
+        [
+          {
+            "fr": "**Sony Ericsson**",
+            "en": "**Sony Ericsson**"
+          },
+          {
+            "fr": "Les opérateurs renvoient des RFI qui reprennent les précédentes : on re-déclare la conformité des mêmes exigences.",
+            "en": "Operators send RFIs that repeat earlier ones: compliance is declared again for the same requirements."
+          },
+          {
+            "fr": "Marquer doublons et exigences similaires ; gain estimé à 20 % du temps de vérification.",
+            "en": "Mark duplicates and similar requirements; estimated gain of 20% of verification time."
+          }
+        ]
+      ],
       "src": [
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.5 Case 1",
+          "quote": "whether or not the requirement is regarded as a duplicate of another requirement"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.5 Case 1",
+          "quote": "already in the repository, (2) if it is possible to merge the requirement with another"
+        },
+        {
+          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
+          "loc": "10.5 Case 1",
+          "quote": "As requirements arrive at an average rate of three per day, and as the"
+        },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.6 Case 2",
@@ -1123,95 +544,9 @@
         },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "several MRs (e.g., when several customers are requesting the same functionality)."
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "MRs are copied into the BRD as-is, i.e. without altering the original text"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "only allows text search in the requirement description."
-        }
-      ],
-      "notions": [
-        "n-cas-baan-mr-br"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Exemple chiffré : pour un BR donné, chercher le terme *container* parmi les MR renvoie **37 résultats** dans le libellé et **318** dans la description ; or l'historique montre que seuls **cinq MR** avaient été liés par les experts — et l'un des cinq n'était même pas retourné par la recherche, imposant une nouvelle requête. La proposition : un outil qui **suggère**, d'après la similarité, les exigences déjà dans la BRD qui pourraient être liées ; l'expert humain accepte ou refuse, ou retombe sur la recherche par mots-clés.",
-        "en": "Worked figures: for a given BR, searching the term *container* among MRs returns **37 hits** in the label and **318** in the description; yet history shows only **five MRs** were actually linked by the experts — and one of the five was not even returned by the search, requiring a new query. The proposal: a tool that **suggests**, based on similarity, which requirements already in the BRD could be linked; the human expert accepts or rejects, or falls back on keyword search."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "Such a search returns 37 hits if searching only"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "in the label field and 318 hits if searching the description field."
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "data shows that only five MRs were actually linked by the experts"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6 Case 2",
-          "quote": "BRD could be linked to an incoming MR or BR. The human expert can then"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Le scénario d'évaluation : un nouvel MR ou BR est soumis ; l'outil calcule sa similarité avec les exigences de l'**autre type** et les classe ; les **n premières** sont présentées à l'utilisateur pour vérification manuelle. La taille de la liste *n* joue le rôle de **seuil** — les auteurs retiennent une liste de **7 ± 2** comme compromis.",
-        "en": "The evaluation scenario: a new MR or BR is submitted; the tool computes its similarity with the requirements of the **opposite type** and ranks them; the **top n** are presented to the user for manual verification. The list size *n* acts as the **threshold** — the authors suggest a list of **7 ± 2** as a compromise."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6.2 Evaluation",
-          "quote": "The top-ranking n requirements are presented to the user for manual"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.6.2 Evaluation",
-          "quote": "The size of the top list n will thereby represent our similarity threshold"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.6.2 Evaluation",
           "quote": "list size of 7±2 could be a good compromise"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "isi1-08-qz-11"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Cas 3 — Sony Ericsson : arrêter de répondre dix fois à la même question",
-        "en": "Case 3 — Sony Ericsson: stop answering the same question ten times"
-      }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Sony Ericsson (SEMC) fabrique des téléphones pour un marché mondial. Ses clients principaux, les **opérateurs**, envoient des **Requests for Information (RFI)** pour connaître les capacités techniques des téléphones ; les plus courants sont les demandes de **déclaration de conformité (SoC)** : pour chaque exigence énoncée, SEMC répond par une phrase standard indiquant si le produit la **satisfait ou non**. Les RFI jouent un rôle important dans la planification stratégique des opérateurs et donnent à SEMC de l'intelligence économique : les opérateurs influencent fortement les exigences finales d'un produit.",
-        "en": "Sony Ericsson (SEMC) makes mobile phones for a global market. Its main customers, the **operators**, send **Requests for Information (RFI)** to learn the phones' technical capabilities; the most common are requests for a **statement of compliance (SoC)**: for each stated requirement, SEMC replies with a standardized statement on whether the product **complies or not**. RFIs play an important role in the operators' strategic planning and give SEMC business intelligence: operators have a great deal of influence on the final requirements of a product."
-      },
-      "src": [
+        },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.7 Case 3",
@@ -1224,114 +559,21 @@
         },
         {
           "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "The RFIs play a important role in the operator"
-        }
-      ],
-      "notions": [
-        "n-cas-sony-ericsson-rfi"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Le circuit est long : opérateur → **Key Account Manager (KAM)** → **Bid Support Specialist (BSS)** → coordinateur → **Areas of Expertise (AoE)**, puis relecture et envoi par le KAM. Le goulot : les AoE doivent **re-déclarer la conformité d'exigences identiques ou très proches**, car les nouvelles versions d'un RFI reprennent largement les précédentes, et l'historique de révision des opérateurs n'est **pas fiable** (identifiants réutilisés, modifications non signalées).",
-        "en": "The process is long: operator → **Key Account Manager (KAM)** → **Bid Support Specialist (BSS)** → coordinator → **Areas of Expertise (AoE)**, then review and sending by the KAM. The bottleneck: AoE must **re-declare compliance for identical or very similar requirements**, because new RFI versions largely repeat earlier ones, and operators' revision history is **not reliable** (reused identifiers, unflagged changes)."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "frustrated as they have to state the compliance to the same or very similar"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "the same operator are typically the same as previous versions"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "cases where requirement IDs have been reused and where requirements have been"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "La solution testée : convertir les RFI en **format standardisé** (exigences atomiques, identifiants uniques), les comparer par similarité à une base d'environ **11 000 exigences** déjà analysées, puis laisser le KAM ou le BSS marquer chaque exigence **doublon**, **similaire** ou **non marquée** ; les AoE ne traitent que les deux dernières. **Hypothèse** : juger la ressemblance de deux exigences est plus rapide que réanalyser la conformité. Bonus : les contradictions entre opérateurs se repèrent mieux.",
-        "en": "The tested solution: convert RFIs into a **standardised format** (atomic requirements, unique identifiers), compare them by similarity with a base of about **11,000 requirements** already analysed, then let the KAM or BSS mark each requirement **duplicate**, **similar** or **unmarked**; AoE only handle the last two. **Hypothesis**: judging how similar two requirements are is faster than re-analysing compliance. Bonus: contradictions between operators are easier to spot."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "this time the AoEs only have to check those that are marked as similar or not marked"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "The hypothesis is that it is quicker to judge how similar two requirements"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "are, than to reanalyze each for compliance."
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "11,000 previously collected requirements"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "All business intelligence is gathered in one place."
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7 Case 3",
-          "quote": "Contradictions between different operators requirements may be identified more easily."
-        }
-      ],
-      "notions": [
-        "n-cas-sony-ericsson-rfi"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Évaluation (pré-étude seulement, le référentiel n'étant pas encore en place) : pour deux révisions d'un même opérateur, un non-expert utilisant l'approche semi-automatique a identifié en **8 heures** que 209 exigences étaient nouvelles, 50 modifiées et **175 identiques**, d'où une économie estimée à environ **5 heures** pour l'AoE (20 h en manuel). Estimation globale : **20 %** du temps de vérification de conformité pourrait être économisé. Les auteurs relèvent qu'un outil convivial manque : c'est le « tueur de performance » de l'approche semi-automatique.",
-        "en": "Evaluation (pre-study only, the repository not yet being in place): for two revisions from the same operator, a non-expert using the semi-automatic approach identified within **8 hours** that 209 requirements were new, 50 changed and **175 identical**, hence an estimated saving of about **5 hours** for the AoE (20 h manually). Overall estimate: **20%** of the time spent on compliance checking could be saved. The authors note that a user-friendly tool is missing: it is the \"performance killer\" of the semi-automatic approach."
-      },
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7.1 Evaluation",
-          "quote": "The decision to go further was based on an initial pre-study"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7.1 Evaluation",
-          "quote": "hours able to identify that, compared to revision 1, 209 requirements were new, 50"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "loc": "10.7.1 Evaluation",
-          "quote": "were changed, and 175 were identical."
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
           "loc": "10.7.1 Evaluation",
           "quote": "It has been estimated that 20% of the time spent on checking the"
         }
+      ],
+      "notions": [
+        "n-cas-telelogic-doublons",
+        "n-cas-baan-mr-br",
+        "n-cas-sony-ericsson-rfi"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Bilan des auteurs : la similarité **lexicale** donne une exactitude « raisonnablement élevée vu sa simplicité ». L'approche **complète** le travail actuel pour gagner du temps, sans le remplacer ; sa simplicité est un **choix délibéré** (robuste, peu de maintenance, mieux acceptée en industrie). L'obstacle principal est l'**implémentation** : pas de solution toute prête, donc un projet interne (leur prototype ReqSimile est librement disponible).",
-        "en": "The authors' conclusion: **lexical** similarity gives an accuracy \"reasonably high given its simplicity\". The approach **complements** current work to save time, without replacing it; its simplicity is a **deliberate choice** (robust, low maintenance, better accepted in industry). The main obstacle is **implementation**: no ready-made solution, hence an in-house project (their ReqSimile prototype is freely available)."
+        "fr": "Bilan des auteurs : malgré sa simplicité, la similarité lexicale donne une exactitude raisonnable. L’outil **complète** le travail des analystes sans le remplacer ; sa simplicité est un choix délibéré, et l’obstacle principal reste l’implémentation.",
+        "en": "The authors’ conclusion: despite its simplicity, lexical similarity gives reasonable accuracy. The tool **complements** the analysts’ work without replacing it; its simplicity is deliberate, and the main obstacle remains implementation."
       },
       "src": [
         {
@@ -1368,6 +610,14 @@
       "notions": [
         "n-outil-complete-analystes"
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Telelogic : doublons ; Baan : liens MR–BR ; Sony Ericsson : conformité déjà déclarée. Dans les trois cas, l’outil propose, l’humain décide.",
+        "en": "Telelogic: duplicates; Baan: MR–BR links; Sony Ericsson: compliance already declared. In all three cases, the tool proposes, the human decides."
+      }
     },
     {
       "type": "checkpoint",
@@ -1701,6 +951,31 @@
       "notion": "n-cas-sony-ericsson-rfi"
     }
   ],
+  "notions": [
+    "n-defi-flux-exigences-nl",
+    "n-pourquoi-langage-naturel",
+    "n-defauts-langage-naturel",
+    "n-verification-vs-validation-nl",
+    "n-surcharge-information",
+    "n-limites-outils-gestion",
+    "n-taches-gestion-ouvertes",
+    "n-nlp-role-support",
+    "n-similarite-exigences",
+    "n-types-similarite",
+    "n-tokenisation",
+    "n-racinisation",
+    "n-mots-vides",
+    "n-representation-vectorielle",
+    "n-mesures-dice-jaccard-cosinus",
+    "n-rappel-precision-exactitude",
+    "n-cas-telelogic-doublons",
+    "n-n-clusters",
+    "n-cas-baan-mr-br",
+    "n-cas-sony-ericsson-rfi",
+    "n-taille-liste-candidats",
+    "n-outil-complete-analystes",
+    "n-reqsimile"
+  ],
   "keyPoints": [
     {
       "text": {
@@ -1973,50 +1248,6 @@
   ],
   "quiz": [
     {
-      "id": "isi1-08-qz-01",
-      "type": "true_false",
-      "statement": {
-        "fr": "Les outils de gestion d'exigences du marché permettent de poser des liens entre exigences et aident aussi à rapprocher les milliers d'exigences entrantes de celles déjà analysées, ce qui règle le problème des grandes entreprises.",
-        "en": "Commercial requirements management tools make it possible to set links between requirements and also help match the thousands of incoming requirements to those already analysed, which solves large companies' problem."
-      },
-      "answer": false,
-      "justification": {
-        "fr": "FAUX : ces outils permettent de poser des liens mais **ne donnent aucune aide** pour rapprocher les exigences entrantes de celles déjà analysées. L'entreprise doit alors réduire le flux (risque de manquer des opportunités) ou ajouter du monde (trop coûteux).",
-        "en": "FALSE: these tools allow setting links but **give no assistance** in matching incoming requirements to those already analysed. The company must then reduce the flow (risk of missing opportunities) or add staff (too costly)."
-      },
-      "level": "analyze",
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "sign links between requirements, but give no assistance in the actual matching of",
-          "loc": "10.1 Introduction"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "Companies facing these challenges may arrive at a cross-road where the choice",
-          "loc": "10.1 Introduction"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "Choking the elicitation and invention of new requirements will increase the risk of missing",
-          "loc": "10.1 Introduction"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "been shown to be too costly and at times counter-productive",
-          "loc": "10.1 Introduction"
-        }
-      ],
-      "objective": "o1",
-      "notions": [
-        "n-limites-outils-gestion"
-      ],
-      "trap": {
-        "fr": "Croire que les outils du marché détectent les liens : ils les stockent seulement.",
-        "en": "Believing market tools detect links: they only store them."
-      }
-    },
-    {
       "id": "isi1-08-qz-02",
       "type": "mcq",
       "question": {
@@ -2250,36 +1481,6 @@
       }
     },
     {
-      "id": "isi1-08-qz-07",
-      "type": "true_false",
-      "statement": {
-        "fr": "Pour pondérer un token dans le vecteur d'une exigence, les cas 2 et 3 utilisent 1 + log₂(fréquence), car l'importance d'un token est proportionnelle au nombre de ses occurrences.",
-        "en": "To weight a token in a requirement's vector, cases 2 and 3 use 1 + log₂(frequency), because the importance of a token is proportional to the number of its occurrences."
-      },
-      "answer": false,
-      "justification": {
-        "fr": "FAUX : l'importance d'un token **n'est pas proportionnelle** au nombre de ses occurrences ; c'est précisément pourquoi le schéma raffiné utilise 1 + log₂(fréquence) plutôt que la simple fréquence du cas 1.",
-        "en": "FALSE: the importance of a token is **not linearly proportional** to the number of its occurrences; this is precisely why the refined scheme uses 1 + log₂(frequency) rather than the plain frequency of case 1."
-      },
-      "level": "analyze",
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "importance of a token is not linearly proportional to the number of times it occurs",
-          "loc": "10.4 Requirements Similarity"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "also use the well-known weighting formula 1+log2(term frequency)",
-          "loc": "10.4 Requirements Similarity"
-        }
-      ],
-      "objective": "o2",
-      "notions": [
-        "n-mesures-dice-jaccard-cosinus"
-      ]
-    },
-    {
       "id": "isi1-08-qz-08",
       "type": "mcq",
       "question": {
@@ -2438,65 +1639,6 @@
       }
     },
     {
-      "id": "isi1-08-qz-12",
-      "type": "mcq",
-      "question": {
-        "fr": "Dans l'évaluation du cas Baan, les n premières exigences classées sont présentées à l'utilisateur. Quel rôle joue la taille n de cette liste ?",
-        "en": "In the Baan case evaluation, the top n ranked requirements are presented to the user. What role does the size n of this list play?"
-      },
-      "options": [
-        {
-          "fr": "celui de nombre d'experts qui valident chaque lien",
-          "en": "the number of experts validating each link"
-        },
-        {
-          "fr": "celui de nombre maximal de Business Requirements par Market Requirement",
-          "en": "the maximum number of Business Requirements per Market Requirement"
-        },
-        {
-          "fr": "celui de longueur du vecteur qui représente chaque exigence",
-          "en": "the length of the vector representing each requirement"
-        },
-        {
-          "fr": "celui de seuil de similarité, avec 7 ± 2 comme compromis",
-          "en": "the similarity threshold, with 7 ± 2 as a compromise"
-        }
-      ],
-      "correct": [
-        3
-      ],
-      "explanation": {
-        "fr": "La taille de la liste *n* **représente le seuil de similarité** ; les auteurs retiennent une liste de **7 ± 2** comme bon compromis. L'expert humain accepte ou refuse les suggestions.",
-        "en": "The size of the top list *n* **represents the similarity threshold**; the authors retain a list of **7 ± 2** as a good compromise. The human expert accepts or rejects the suggestions."
-      },
-      "level": "understand",
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "The top-ranking n requirements are presented to the user for manual",
-          "loc": "10.6.2 Evaluation"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "The size of the top list n will thereby represent our similarity threshold",
-          "loc": "10.6.2 Evaluation"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "list size of 7±2 could be a good compromise",
-          "loc": "10.6.2 Evaluation"
-        }
-      ],
-      "objective": "o3",
-      "notions": [
-        "n-cas-baan-mr-br"
-      ],
-      "trap": {
-        "fr": "Confondre le paramètre n de la liste présentée et d’autres réglages.",
-        "en": "Confusing the n parameter of the presented list with other settings."
-      }
-    },
-    {
       "id": "isi1-08-qz-13",
       "type": "true_false",
       "statement": {
@@ -2535,41 +1677,6 @@
         "fr": "Croire que l’outil remplace les analystes : il les complète.",
         "en": "Believing the tool replaces analysts: it complements them."
       }
-    },
-    {
-      "id": "isi1-08-qz-14",
-      "type": "true_false",
-      "statement": {
-        "fr": "L'hypothèse de l'étude chez Sony Ericsson est qu'il est plus rapide de juger à quel point deux exigences se ressemblent que de réanalyser chacune pour la conformité.",
-        "en": "The hypothesis of the Sony Ericsson study is that it is quicker to judge how similar two requirements are than to reanalyse each for compliance."
-      },
-      "answer": true,
-      "justification": {
-        "fr": "VRAI : c'est la base du dispositif doublon / similaire / non marquée, avec une économie estimée à environ 20 % du temps de vérification de conformité.",
-        "en": "TRUE: it is the basis of the duplicate / similar / not marked scheme, with savings estimated at about 20% of the compliance checking time."
-      },
-      "level": "understand",
-      "src": [
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "The hypothesis is that it is quicker to judge how similar two requirements",
-          "loc": "10.7 Case 3"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "are, than to reanalyze each for compliance.",
-          "loc": "10.7 Case 3"
-        },
-        {
-          "file": "sources-texte/isi1/16-managing-large-repositories-of-nl-requirements.md",
-          "quote": "It has been estimated that 20% of the time spent on checking the",
-          "loc": "10.7.1 Evaluation"
-        }
-      ],
-      "objective": "o3",
-      "notions": [
-        "n-cas-sony-ericsson-rfi"
-      ]
     }
   ],
   "exercises": [

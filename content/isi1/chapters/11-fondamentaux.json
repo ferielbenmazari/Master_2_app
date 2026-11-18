@@ -509,6 +509,31 @@
       ]
     },
     {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  I((Initial input)) --> S1\n  I --> R1\n  I --> A1\n  subgraph SP[Specification]\n    S1[opaque] --> S2[complete]\n  end\n  subgraph RP[Representation]\n    R1[informal] --> R2[semi-formal] --> R3[formal]\n  end\n  subgraph AG[Agreement]\n    A1[personal views] --> A2[common view]\n  end\n  S2 --> D((Desired result))\n  R3 --> D\n  A2 --> D",
+      "caption": {
+        "fr": "Le cadre tridimensionnel de Pohl (slide « The 3 dimensions of RE », redessinée) : de l’entrée initiale au résultat désiré, on progresse sur trois axes indépendants.",
+        "en": "Pohl’s three-dimensional framework (slide “The 3 dimensions of RE”, redrawn): from the initial input to the desired result, progress happens on three independent axes."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "The 3 dimensions of RE",
+          "quote": "The 3 dimensions of RE desired Specification result complete"
+        },
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "The 3 dimensions of RE",
+          "quote": "Agreement initial input common view opaque"
+        },
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "The 3 dimensions of RE",
+          "quote": "personal views Representation informal semi- formal"
+        }
+      ]
+    },
+    {
       "type": "method",
       "title": {
         "fr": "Rattacher un énoncé au bon axe",
@@ -894,6 +919,26 @@
       ],
       "notions": [
         "n-as-is-to-be"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  A[As-Is: current situation and its model] --> C{Change}\n  C --> T[To-Be: target model]\n  T --> M[Implement the change]",
+      "caption": {
+        "fr": "Le cadre As-Is / To-Be : le modèle cible part de l’existant plus le changement, jamais d’une page blanche.",
+        "en": "The As-Is / To-Be frame: the target model starts from the existing situation plus the change, never from a blank page."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "As-Is / To-Be",
+          "quote": "Élaborer une vision du changement dans son contexte organisationnel"
+        },
+        {
+          "file": "sources-texte/isi1/12-ireb-cpre-3-eliciting-requirements.md",
+          "loc": "Requirements are not given",
+          "quote": "The starting point for designing the To-Be is As-Is + change"
+        }
       ]
     },
     {

@@ -1,0 +1,1960 @@
+{
+  "id": "isi1-10-priorisation",
+  "courseId": "isi1",
+  "order": 8,
+  "title": {
+    "fr": "Prioriser les exigences",
+    "en": "Prioritising requirements"
+  },
+  "hook": {
+    "fr": "Trier avec le triage, calculer une AHP comme à l’annale, et savoir ce que mesure chaque technique.",
+    "en": "Sorting with triage, computing an AHP as in the exam, and knowing what each technique measures."
+  },
+  "question": {
+    "fr": "Quand il y a plus d’exigences qu’on ne peut en réaliser, comment décider lesquelles garder, et dans quel ordre ?",
+    "en": "When there are more requirements than can be implemented, how do you decide which ones to keep, and in what order?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Expliquer ce qu’est la priorisation (triage) et ses trois groupes.",
+        "en": "Explain what prioritisation (triage) is and its three groups."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Appliquer l’AHP à une matrice de comparaisons par paires : réciprocité, normalisation, moyenne, classement.",
+        "en": "Apply AHP to a pairwise comparison matrix: reciprocity, normalisation, averaging, ranking."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Distinguer les techniques (groupes, échelles, classement, top 10, 100 $, AHP) et choisir la plus adaptée.",
+        "en": "Distinguish the techniques (groups, scales, ranking, top ten, 100 dollars, AHP) and choose the most suitable."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Juger les vrai/faux des annales sur le triage, l’AHP, le top 10 et les 100 $, la matrice d’Eisenhower.",
+        "en": "Judge the exam true/false items on triage, AHP, top ten and 100 dollars, the Eisenhower matrix."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Annale 2014, partie C (3 points) : « Appliquez la méthode AHP à la matrice de priorité paires à paires », sans calculer l’indice de cohérence.",
+        "en": "2014 exam, part C (3 points): “Apply the AHP method to the pairwise priority matrix”, without computing the consistency index."
+      },
+      {
+        "fr": "Vrai/faux : triage (2013 et 2014 Q10), AHP et cohérence (2013 Q9), top 10 et 100 $ (2014 Q14), matrice d’Eisenhower (2014 Q18).",
+        "en": "True/false: triage (2013 and 2014 Q10), AHP and consistency (2013 Q9), top ten and 100 dollars (2014 Q14), Eisenhower matrix (2014 Q18)."
+      },
+      {
+        "fr": "Étude de cas Deadbot : triage avec Kano, puis priorisation selon l’importance donnée par les utilisateurs.",
+        "en": "Deadbot case study: triage with Kano, then prioritisation according to the importance given by users."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Éliciter les exigences (Kano) et l’attribut « priorité » (Documenter et gérer).",
+    "en": "Eliciting requirements (Kano) and the “priority” attribute (Documenting and managing)."
+  },
+  "next": {
+    "fr": "Modéliser : cas d’utilisation et modèles de buts (KAOS).",
+    "en": "Modelling: use cases and goal models (KAOS)."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Triage = priorisation ; trois groupes de Davis.",
+        "en": "Triage = prioritisation; Davis’s three groups."
+      },
+      {
+        "fr": "AHP : échelle 1 à 9, matrice réciproque, normalisation, moyennes des lignes ; cohérence des jugements (< 0,10).",
+        "en": "AHP: 1 to 9 scale, reciprocal matrix, normalisation, row averages; consistency of judgements (< 0.10)."
+      },
+      {
+        "fr": "Techniques : groupes, échelles, classement, top 10, 100 $, AHP (n(n-1)/2 comparaisons).",
+        "en": "Techniques: groups, scales, ranking, top ten, 100 dollars, AHP (n(n-1)/2 comparisons)."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Calculer une AHP à la main et classer les exigences.",
+        "en": "Compute an AHP by hand and rank the requirements."
+      },
+      {
+        "fr": "Choisir une technique selon le nombre d’exigences et l’information voulue.",
+        "en": "Choose a technique according to the number of requirements and the information needed."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Cohérence d’une AHP (jugements) ≠ cohérence des exigences (revues).",
+        "en": "AHP consistency (judgements) ≠ requirements consistency (reviews)."
+      },
+      {
+        "fr": "Top 10 (choisir dix exigences) ≠ 100 $ (répartir des points).",
+        "en": "Top ten (pick ten requirements) ≠ 100 dollars (distribute points)."
+      },
+      {
+        "fr": "Priorité (négociable) ≠ criticité (essentielle au succès).",
+        "en": "Priority (can be traded off) ≠ criticality (essential for success)."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Kano (chapitre « Éliciter ») sert au triage ; le résultat devient l’attribut priorité (chapitre « Documenter et gérer »).",
+        "en": "Kano (chapter “Eliciting”) is used for triage; the result becomes the priority attribute (chapter “Documenting and managing”)."
+      }
+    ]
+  },
+  "estimatedMinutes": 7,
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "1. Prioriser, c’est trier : le triage",
+        "en": "1. Prioritising means sorting: triage"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**[[term-triage|Priorisation des exigences]]**, aussi appelée **triage** : décider quelles exigences comptent vraiment, ou lesquelles entrent dans la version en cours, en faisant des compromis entre valeur, coût et délai. Elle est inévitable : il y a plus d’exigences qu’on ne peut en réaliser.",
+        "en": "**[[term-triage|Requirements prioritisation]]**, also called **triage**: deciding which requirements really matter, or which go into the current release, by trading off value, cost and time to market. It is unavoidable: there are more requirements than can be implemented."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Requirements prioritization is also referred to as triage"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Need to decide which requirements really matter or on those that need to be implemented in the current release"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Prioritizing Requirements",
+          "quote": "There are more requirements than can be implemented"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le mot vient de la médecine de catastrophe, où l’on répartit les blessés en **trois groupes**. Transposé aux exigences (Davis) : certaines sont des **évidences**, à faire sans discussion ; d’autres sont **irréalistes** et s’écartent aussitôt ; **le reste** doit être classé pour planifier le projet.",
+        "en": "The word comes from disaster medicine, where casualties are divided into **three groups**. Applied to requirements (Davis): some are **no-brainers**, done without discussion; others are **unrealistic** and dropped at once; **the rest** must be ranked to plan the project."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Triage means dividing casualties into three groups: those that'll certainly die; those that'll certainly get better; and those that need treatment more or less urgently to survive."
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        }
+      ],
+      "notions": [
+        "n-triage"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  R[All elicited requirements] --> A[No-brainers: done without discussion]\n  R --> B[Unrealistic: dropped at once]\n  R --> C[The rest: ranked to plan the project]",
+      "caption": {
+        "fr": "Le triage de Davis : trois paquets, et seul le dernier demande une vraie priorisation.",
+        "en": "Davis’s triage: three packages, and only the last one needs real prioritisation."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Triage means dividing casualties into three groups: those that'll certainly die; those that'll certainly get better; and those that need treatment more or less urgently to survive."
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Liens avec le reste du cours : le résultat devient l’attribut **priorité** de chaque exigence (à ne pas confondre avec la criticité) ; dans l’étude de cas Deadbot, le triage se fait avec **Kano**, puis la priorisation selon l’importance donnée par les utilisateurs.",
+        "en": "Links with the rest of the course: the result becomes the **priority** attribute of each requirement (not to be confused with criticality); in the Deadbot case study, triage is done with **Kano**, then prioritisation according to the importance given by users."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "3. Activités",
+          "quote": "appliquer la technique de Kano afin de réaliser le triage à l'ensemble des exigences"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/exam_1.md",
+          "loc": "3. Activités",
+          "quote": "les étudiants devront prioriser les fonctionnalités selon l'importance accordée par les utilisateurs potentiels"
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7",
+          "quote": "Priority. The priority of each requirement should be identified."
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences",
+        "n-triage"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annales 2013 et 2014, Q10 : « Le but du triage est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres. » Corrigé proposé : **VRAI** : ce sont les trois groupes de Davis.",
+        "en": "2013 and 2014 exams, Q10: “The goal of triage is to group requirements into three packages: the most important, the less important, and the others.” Proposed answer: **TRUE**: these are Davis’s three groups."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "repere",
+      "text": {
+        "fr": "Le plan du cours annonce une partie « Négociation », mais ses supports ne figurent pas dans tes fichiers. Ce chapitre s’appuie sur des sources externes fiables (cours d’Ottawa et de Waterloo, Davis, Karlsson et al.), citées à chaque fois, et sur les annales.",
+        "en": "The course outline announces a “Negotiation” part, but its slides are not in your files. This chapter relies on reliable external sources (Ottawa and Waterloo courses, Davis, Karlsson et al.), cited each time, and on past exams."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/1-ie-introduction.md",
+          "loc": "p. 1",
+          "quote": "Elucidation Négociation Modèles Gestion"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Prioriser = triage = décider ce qui compte ou entre dans la version, par compromis valeur / coût / délai. Trois groupes (Davis) : évidences, irréalistes, reste à classer. Le résultat alimente l’attribut priorité.",
+        "en": "Prioritising = triage = deciding what matters or goes into the release, trading off value / cost / time. Three groups (Davis): no-brainers, unrealistic, the rest to rank. The result feeds the priority attribute."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-15"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "2. La méthode AHP",
+        "en": "2. The AHP method"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’**[[term-ahp|AHP]]** (*Analytic Hierarchy Process*) compare les exigences **deux à deux**. Pour chaque paire, on note la préférence : 1 = égale, 3 = modérée, 5 = forte, 7 = très forte, 9 = extrême ; 2, 4, 6 et 8 sont intermédiaires. On construit la matrice de comparaisons, on la normalise, puis on fait la moyenne de chaque ligne.",
+        "en": "**[[term-ahp|AHP]]** (*Analytic Hierarchy Process*) compares requirements **in pairs**. For each pair, the preference is rated: 1 = equal, 3 = moderate, 5 = strong, 7 = very strong, 9 = extreme; 2, 4, 6 and 8 are in between. You build the comparison matrix, normalise it, then average each row."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 24 (transcription)",
+          "quote": "RATING 9 = Extremely strongly preferred"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 24 (transcription)",
+          "quote": "Values 2, 4, 6, or 8 represent preferences halfway between the integers on either side"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 23",
+          "quote": "Develop pairwise comparison matrix of each criterion"
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Calculer une AHP à la main",
+        "en": "Computing an AHP by hand"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Compléter la matrice : 1 sur la diagonale ; si A vaut 3 face à B, B vaut 1/3 face à A.",
+            "en": "Complete the matrix: 1 on the diagonal; if A scores 3 against B, B scores 1/3 against A."
+          },
+          "why": {
+            "fr": "Réciprocité de l’exemple d’Ottawa (3 et 1/3, 2 et 1/2, 1/5 et 5).",
+            "en": "Reciprocity in the Ottawa example (3 and 1/3, 2 and 1/2, 1/5 and 5)."
+          }
+        },
+        {
+          "do": {
+            "fr": "Additionner chaque colonne.",
+            "en": "Add up each column."
+          },
+          "why": {
+            "fr": "Première étape de la normalisation.",
+            "en": "First step of normalisation."
+          }
+        },
+        {
+          "do": {
+            "fr": "Diviser chaque valeur par la somme de sa colonne : chaque colonne fait alors 1.",
+            "en": "Divide each value by its column sum: each column then adds up to 1."
+          },
+          "why": {
+            "fr": "Rend les colonnes comparables.",
+            "en": "Makes columns comparable."
+          }
+        },
+        {
+          "do": {
+            "fr": "Faire la moyenne de chaque ligne : c’est la priorité de l’exigence (total = 1).",
+            "en": "Average each row: this is the requirement’s priority (total = 1)."
+          },
+          "why": {
+            "fr": "« Average the value of each row to get corresponding rating ».",
+            "en": "“Average the value of each row to get corresponding rating”."
+          }
+        },
+        {
+          "do": {
+            "fr": "Classer par priorité décroissante ; ne calculer la cohérence que si l’énoncé la demande.",
+            "en": "Rank by decreasing priority; compute consistency only if asked."
+          },
+          "why": {
+            "fr": "L’annale 2014 dit de ne pas calculer l’indice de cohérence.",
+            "en": "The 2014 exam says not to compute the consistency index."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Vous ne calculerez pas l'indice de cohérence."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart LR\n  M[Complete the matrix: 1 on the diagonal, reciprocals] --> S[Sum each column]\n  S --> N[Divide each value by its column sum]\n  N --> A[Average each row = priority]\n  A --> K[Rank the requirements]",
+      "caption": {
+        "fr": "Les étapes de l’AHP, de la matrice au classement.",
+        "en": "The AHP steps, from matrix to ranking."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Exemple corrigé (cours d’Ottawa)",
+        "en": "2.1 Worked example (Ottawa course)"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Exigence",
+          "en": "Requirement"
+        },
+        {
+          "fr": "A",
+          "en": "A"
+        },
+        {
+          "fr": "B",
+          "en": "B"
+        },
+        {
+          "fr": "C",
+          "en": "C"
+        },
+        {
+          "fr": "Priorité (moyenne de la ligne normalisée)",
+          "en": "Priority (average of the normalised row)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**A**",
+            "en": "**A**"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "3",
+            "en": "3"
+          },
+          {
+            "fr": "2",
+            "en": "2"
+          },
+          {
+            "fr": "**0,5012**",
+            "en": "**0.5012**"
+          }
+        ],
+        [
+          {
+            "fr": "**B**",
+            "en": "**B**"
+          },
+          {
+            "fr": "1/3",
+            "en": "1/3"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "1/5",
+            "en": "1/5"
+          },
+          {
+            "fr": "0,1185",
+            "en": "0.1185"
+          }
+        ],
+        [
+          {
+            "fr": "**C**",
+            "en": "**C**"
+          },
+          {
+            "fr": "1/2",
+            "en": "1/2"
+          },
+          {
+            "fr": "5",
+            "en": "5"
+          },
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "0,3803",
+            "en": "0.3803"
+          }
+        ],
+        [
+          {
+            "fr": "Somme des colonnes",
+            "en": "Column sums"
+          },
+          {
+            "fr": "11/6",
+            "en": "11/6"
+          },
+          {
+            "fr": "9",
+            "en": "9"
+          },
+          {
+            "fr": "16/5",
+            "en": "16/5"
+          },
+          {
+            "fr": "1,000 → A > C > B",
+            "en": "1.000 → A > C > B"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Average the value of each row to get corresponding rating: A = 0.5012, B = 0.1185, C = 0.3803. A has highest rank."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Par exemple, pour la ligne A : 1 ÷ 11/6 ≈ 0,545 ; 3 ÷ 9 ≈ 0,333 ; 2 ÷ 16/5 = 0,625 ; moyenne ≈ 0,501. L’AHP comporte aussi un **contrôle de cohérence** des jugements : il repère les erreurs de jugement et calcule un ratio de cohérence, que Saaty et Vargas recommandent inférieur à **0,10** pour juger la priorisation fiable.",
+        "en": "For example, for row A: 1 ÷ 11/6 ≈ 0.545; 3 ÷ 9 ≈ 0.333; 2 ÷ 16/5 = 0.625; average ≈ 0.501. AHP also includes a **consistency check** of the judgements: it detects judgement errors and computes a consistency ratio, which Saaty and Vargas recommend keeping below **0.10** for the prioritisation to be considered reliable."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Average the value of each row to get corresponding rating: A = 0.5012, B = 0.1185, C = 0.3803. A has highest rank."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "3.4.4 Consistency Ratio",
+          "quote": "Saaty and Vargas (2001) have recommended that CR should be lower than 0.10 in order for the prioritisation to be considered trustworthy."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Annale 2013, Q9 : « La technique AHP permet d’améliorer la cohérence des exigences. » Corrigé proposé : **FAUX**. L’AHP **priorise** ; sa cohérence porte sur les **jugements** des comparaisons, pas sur la cohérence des exigences entre elles (qui relève des revues).",
+        "en": "2013 exam, Q9: “The AHP technique improves the consistency of requirements.” Proposed answer: **FALSE**. AHP **prioritises**; its consistency concerns the **judgements** in the comparisons, not the consistency of requirements with each other (which is a matter for reviews)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q9",
+          "quote": "La technique AHP permet d'améliorer la cohérence des exigences."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "AHP : comparaisons par paires (1 à 9) → matrice réciproque → sommes des colonnes → normalisation → moyennes des lignes = priorités → classement. La cohérence concerne les jugements (ratio < 0,10), pas les exigences.",
+        "en": "AHP: pairwise comparisons (1 to 9) → reciprocal matrix → column sums → normalisation → row averages = priorities → ranking. Consistency concerns the judgements (ratio < 0.10), not the requirements."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "3. Les autres techniques et ce qui les distingue",
+        "en": "3. The other techniques and what sets them apart"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Technique",
+          "en": "Technique"
+        },
+        {
+          "fr": "Principe",
+          "en": "Principle"
+        },
+        {
+          "fr": "À retenir",
+          "en": "Remember"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Groupes de priorité",
+            "en": "Priority groups"
+          },
+          {
+            "fr": "Ranger les exigences en 3 ou 4 groupes (critique, standard, optionnelle…)",
+            "en": "Put requirements into 3 or 4 groups (critical, standard, optional…)"
+          },
+          {
+            "fr": "La technique la plus courante",
+            "en": "The most common technique"
+          }
+        ],
+        [
+          {
+            "fr": "Échelles",
+            "en": "Scales"
+          },
+          {
+            "fr": "Noter selon l’**urgence** (haute, moyenne, basse) et l’**importance** (essentielle, conditionnelle, optionnelle)",
+            "en": "Rate by **urgency** (high, medium, low) and **importance** (essential, conditional, optional)"
+          },
+          {
+            "fr": "Croiser les deux, c’est l’idée de la « matrice d’Eisenhower » de l’annale 2014",
+            "en": "Crossing both is the idea of the 2014 exam’s “Eisenhower matrix”"
+          }
+        ],
+        [
+          {
+            "fr": "Classement (*ranking*)",
+            "en": "Ranking"
+          },
+          {
+            "fr": "Un rang unique par exigence (1, 2, …)",
+            "en": "A unique rank per requirement (1, 2, …)"
+          },
+          {
+            "fr": "On ne voit pas l’écart entre deux rangs",
+            "en": "The gap between two ranks is not visible"
+          }
+        ],
+        [
+          {
+            "fr": "[[term-top-ten|Top 10]]",
+            "en": "[[term-top-ten|Top ten]]"
+          },
+          {
+            "fr": "Chaque partie prenante choisit ses dix exigences",
+            "en": "Each stakeholder picks their ten requirements"
+          },
+          {
+            "fr": "Pas de points à répartir : pas un vote cumulatif",
+            "en": "No points to distribute: not cumulative voting"
+          }
+        ],
+        [
+          {
+            "fr": "[[term-cumulative-voting|100 $]] (vote cumulatif)",
+            "en": "[[term-cumulative-voting|100 dollars]] (cumulative voting)"
+          },
+          {
+            "fr": "Répartir 100 points entre les exigences",
+            "en": "Distribute 100 points among the requirements"
+          },
+          {
+            "fr": "Les points montrent l’**intensité** de la préférence",
+            "en": "Points show the **intensity** of preference"
+          }
+        ],
+        [
+          {
+            "fr": "AHP (comparaisons par paires)",
+            "en": "AHP (pairwise comparisons)"
+          },
+          {
+            "fr": "Comparer chaque paire sur une échelle de 1 à 9",
+            "en": "Compare each pair on a 1 to 9 scale"
+          },
+          {
+            "fr": "Échelle de rapport, contrôle de cohérence, mais **n(n-1)/2** comparaisons",
+            "en": "Ratio scale, consistency check, but **n(n-1)/2** comparisons"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Grouping Requirements",
+          "quote": "The most common prioritization technique is numerical assignment or grouping of requirements into 3-4 priority groups."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Urgency High (mission critical requirement; required for next release)"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Importance Essential (product unacceptable unless these requirements are satisfied)"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        },
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "In the top-ten technique, the prioritisation is performed by a number of various stakeholders, who are responsible for selecting their own top ten requirements"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences",
+        "n-top10-vs-100-dollars",
+        "n-matrice-eisenhower",
+        "n-ahp"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ce qui distingue ces techniques, c’est l’information qu’elles donnent. Un groupe, un rang ou un top 10 disent seulement « avant » ou « après » ; les 100 $ et l’AHP disent aussi « de combien ». En échange, l’AHP coûte cher : 10 exigences demandent déjà 45 comparaisons. Choisir une technique, c’est arbitrer entre précision et effort.",
+        "en": "What sets these techniques apart is the information they give. A group, a rank or a top ten only say “before” or “after”; the 100 dollars and AHP also say “by how much”. In return, AHP is costly: 10 requirements already need 45 comparisons. Choosing a technique means trading precision against effort."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences",
+        "n-top10-vs-100-dollars"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "text": {
+        "fr": "Deux techniques des annales sont absentes de tes supports. **Top 10** (2014 Q14) : chaque partie prenante choisit ses dix exigences, sans répartir de points (Hujainah et al., 2021) : l’énoncé qui en fait, avec les 100 $, « deux techniques de vote cumulatif » est donc **faux**. **Matrice d’Eisenhower** (2014 Q18) : elle croise importance et urgence, les deux échelles du cours d’Ottawa, mais son nom n’apparaît dans aucune source disponible : vérifie dans tes notes.",
+        "en": "Two techniques from the exams are missing from your material. **Top ten** (2014 Q14): each stakeholder picks their ten requirements, without distributing points (Hujainah et al., 2021): the statement that makes it, with the 100 dollars, “two cumulative voting techniques” is therefore **false**. **Eisenhower matrix** (2014 Q18): it crosses importance and urgency, the two scales of the Ottawa course, but its name appears in no available source: check your notes."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q14",
+          "quote": "Les techniques de priorisation « top 10 » et « $100\\$ » sont deux techniques de vote cumulatif."
+        },
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "In the top-ten technique, the prioritisation is performed by a number of various stakeholders, who are responsible for selecting their own top ten requirements"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Importance Essential (product unacceptable unless these requirements are satisfied)"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Groupes, échelles (urgence, importance), classement, top 10 : ordinal (avant / après). 100 $ et AHP : intensité (de combien), l’AHP au prix de n(n-1)/2 comparaisons. Top 10 ≠ vote cumulatif.",
+        "en": "Groups, scales (urgency, importance), ranking, top ten: ordinal (before / after). 100 dollars and AHP: intensity (by how much), AHP at the cost of n(n-1)/2 comparisons. Top ten ≠ cumulative voting."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "isi1-10-qz-03"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-triage",
+      "fr": "triage (priorisation des exigences)",
+      "en": "triage (requirements prioritization)",
+      "definition": {
+        "fr": "Décider quelles exigences comptent vraiment, ou entrent dans la version en cours, par des compromis entre valeur, coût et délai.",
+        "en": "Deciding which requirements really matter, or go into the current release, by trading off value, cost and time."
+      },
+      "pitfall": {
+        "fr": "Trois groupes (Davis) : les évidences, les exigences irréalistes à écarter, et le reste à classer selon les ressources.",
+        "en": "Three groups (Davis): no-brainers, dreamy requirements to dismiss, and the rest to rank according to resources."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Requirements prioritization is also referred to as triage"
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Triage means dividing casualties into three groups: those that'll certainly die; those that'll certainly get better; and those that need treatment more or less urgently to survive."
+        }
+      ],
+      "notion": "n-triage"
+    },
+    {
+      "id": "term-ahp",
+      "fr": "AHP (Analytic Hierarchy Process)",
+      "en": "AHP (Analytic Hierarchy Process)",
+      "definition": {
+        "fr": "Priorisation par comparaisons par paires sur une échelle de 1 à 9 : matrice réciproque, normalisation, moyenne des lignes.",
+        "en": "Prioritization by pairwise comparisons on a 1-to-9 scale: reciprocal matrix, normalization, row averages."
+      },
+      "pitfall": {
+        "fr": "Sa cohérence porte sur les jugements, pas sur les exigences.",
+        "en": "Its consistency is about judgements, not requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 23",
+          "quote": "Develop pairwise comparison matrix of each criterion"
+        }
+      ],
+      "notion": "n-ahp"
+    },
+    {
+      "id": "term-cumulative-voting",
+      "fr": "100 $ (vote cumulatif)",
+      "en": "100-dollar test (cumulative voting)",
+      "definition": {
+        "fr": "Chaque partie prenante répartit 100 points de priorité entre les exigences.",
+        "en": "Each stakeholder distributes 100 priority points among the requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q14",
+          "quote": "Les techniques de priorisation « top 10 » et"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ],
+      "notion": "n-top10-vs-100-dollars"
+    },
+    {
+      "id": "term-top-ten",
+      "fr": "top 10",
+      "en": "top-ten technique",
+      "definition": {
+        "fr": "Chaque partie prenante choisit ses dix exigences préférées, sans répartir de points ni les ordonner (hors supports, Hujainah et al., 2021).",
+        "en": "Each stakeholder picks their ten favourite requirements, without distributing points or ordering them (outside the material, Hujainah et al., 2021)."
+      },
+      "pitfall": {
+        "fr": "Ce n’est pas un vote cumulatif, contrairement aux 100 $ (annale 2014, Q14).",
+        "en": "It is not cumulative voting, unlike the 100 dollars (2014 exam, Q14)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "In the top-ten technique, the prioritisation is performed by a number of various stakeholders, who are responsible for selecting their own top ten requirements"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q14",
+          "quote": "Les techniques de priorisation « top 10 » et « $100\\$ » sont deux techniques de vote cumulatif."
+        }
+      ],
+      "notion": "n-top10-vs-100-dollars"
+    },
+    {
+      "id": "term-pairwise-matrix",
+      "fr": "matrice de comparaisons par paires",
+      "en": "pairwise comparison matrix",
+      "definition": {
+        "fr": "Matrice où chaque case note la préférence d’une exigence sur une autre (1 à 9) ; elle est réciproque (3 d’un côté, 1/3 de l’autre) et sert de point de départ à l’AHP.",
+        "en": "Matrix where each cell rates the preference of one requirement over another (1 to 9); it is reciprocal (3 on one side, 1/3 on the other) and is the starting point of AHP."
+      },
+      "pitfall": {
+        "fr": "La cohérence calculée porte sur ces jugements, pas sur les exigences (annale 2013, Q9).",
+        "en": "The consistency computed concerns these judgements, not the requirements (2013 exam, Q9)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "3.4.4 Consistency Ratio",
+          "quote": "Saaty and Vargas (2001) have recommended that CR should be lower than 0.10 in order for the prioritisation to be considered trustworthy."
+        }
+      ],
+      "notion": "n-ahp"
+    },
+    {
+      "id": "term-priority",
+      "fr": "priorité (attribut)",
+      "en": "priority (attribute)",
+      "definition": {
+        "fr": "Attribut d’une exigence, fixé par consensus (échelle 1 à 5, ou haute / moyenne / basse) ; il indique quelles exigences sont négociables, pas que les autres sont inutiles.",
+        "en": "Requirement attribute set by consensus (1 to 5 scale, or high / medium / low); it shows which requirements can be traded off, not that the others are unnecessary."
+      },
+      "pitfall": {
+        "fr": "Priorité ≠ criticité : une exigence peu prioritaire peut être essentielle au succès.",
+        "en": "Priority ≠ criticality: a low-priority requirement can be essential for success."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7",
+          "quote": "Priority. The priority of each requirement should be identified."
+        },
+        {
+          "file": "sources-texte/isi1/3-isoiec-cd-29148.md",
+          "loc": "5.2.7",
+          "quote": "The priority is not intended to imply that some requirements are not necessary"
+        }
+      ],
+      "notion": "n-priorisation-exigences"
+    }
+  ],
+  "notions": [
+    "n-priorisation-exigences",
+    "n-triage",
+    "n-ahp",
+    "n-top10-vs-100-dollars",
+    "n-matrice-eisenhower",
+    "n-negociation-exigences"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Prioriser (triage) : décider quelles exigences comptent ou entrent dans la version en cours, parce qu’il y a plus d’exigences que de ressources.",
+        "en": "Prioritizing (triage): deciding which requirements matter or go into the current release, because there are more requirements than resources."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Need to decide which requirements really matter or on those that need to be implemented in the current release"
+        }
+      ],
+      "notions": [
+        "n-triage",
+        "n-priorisation-exigences"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Groupes, classement (sans écart), 100 $ (100 points à répartir), AHP (comparaisons par paires, échelle 1-9, n(n-1)/2 comparaisons).",
+        "en": "Groups, ranking (no distance), 100 dollars (100 points to distribute), AHP (pairwise comparisons, 1-9 scale, n(n-1)/2 comparisons)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ],
+      "notions": [
+        "n-top10-vs-100-dollars",
+        "n-priorisation-exigences"
+      ]
+    },
+    {
+      "text": {
+        "fr": "AHP : matrice réciproque, somme des colonnes, normalisation (chaque colonne fait 1), moyenne de chaque ligne = priorité.",
+        "en": "AHP: reciprocal matrix, column sums, normalization (each column adds up to 1), each row average = priority."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Triage (Davis) : trois groupes : les évidences, les exigences irréalistes écartées aussitôt, et le reste à classer.",
+        "en": "Triage (Davis): three groups: no-brainers, unrealistic requirements dropped at once, and the rest to rank."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Triage means dividing casualties into three groups: those that'll certainly die; those that'll certainly get better; and those that need treatment more or less urgently to survive."
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        }
+      ],
+      "notions": [
+        "n-triage"
+      ]
+    },
+    {
+      "text": {
+        "fr": "La cohérence d’une AHP porte sur les jugements de comparaison (ratio < 0,10), pas sur la cohérence des exigences.",
+        "en": "AHP consistency concerns comparison judgements (ratio < 0.10), not requirements consistency."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "3.4.4 Consistency Ratio",
+          "quote": "Saaty and Vargas (2001) have recommended that CR should be lower than 0.10 in order for the prioritisation to be considered trustworthy."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "isi1-10-fc-11",
+      "front": {
+        "fr": "Pourquoi faut-il prioriser les exigences ?",
+        "en": "Why must requirements be prioritized?"
+      },
+      "back": {
+        "fr": "Parce qu’il y a plus d’exigences qu’on ne peut en réaliser avec le budget, l’équipe et le calendrier.",
+        "en": "Because there are more requirements than can be implemented with the budget, staff and schedule."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Prioritizing Requirements",
+          "quote": "There are more requirements than can be implemented"
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-01",
+      "termId": "term-triage",
+      "front": {
+        "fr": "Triage des exigences : de quoi s’agit-il ?",
+        "en": "Requirements triage: what is it?"
+      },
+      "back": {
+        "fr": "La priorisation : décider quelles exigences comptent ou entrent dans la version en cours, par compromis valeur / coût / délai.",
+        "en": "Prioritization: deciding which requirements matter or go into the current release, trading off value / cost / time."
+      }
+    },
+    {
+      "id": "isi1-10-fc-14",
+      "front": {
+        "fr": "Triage : les trois groupes selon Davis ?",
+        "en": "Triage: Davis’s three groups?"
+      },
+      "back": {
+        "fr": "Les évidences (à faire sans discussion), les irréalistes (à écarter aussitôt), et le reste, à classer pour planifier.",
+        "en": "No-brainers (done without discussion), dreamy ones (dismissed at once), and the rest, to be ranked for planning."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        }
+      ],
+      "notions": [
+        "n-triage"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-02",
+      "termId": "term-ahp",
+      "front": {
+        "fr": "Les étapes d’une AHP à la main ?",
+        "en": "The steps of an AHP by hand?"
+      },
+      "back": {
+        "fr": "Compléter par réciprocité, sommer les colonnes, diviser par la somme de colonne, moyenner chaque ligne, classer.",
+        "en": "Complete by reciprocity, sum columns, divide by column sum, average each row, rank."
+      }
+    },
+    {
+      "id": "isi1-10-fc-03",
+      "front": {
+        "fr": "AHP : A vaut 5 face à B. Que vaut B face à A ?",
+        "en": "AHP: A is 5 against B. What is B against A?"
+      },
+      "back": {
+        "fr": "1/5 (réciprocité).",
+        "en": "1/5 (reciprocity)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-04",
+      "front": {
+        "fr": "Combien de comparaisons pour n exigences en comparaisons par paires ?",
+        "en": "How many comparisons for n requirements in pairwise comparison?"
+      },
+      "back": {
+        "fr": "n(n-1)/2 (45 pour 10 exigences).",
+        "en": "n(n-1)/2 (45 for 10 requirements)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-05",
+      "termId": "term-cumulative-voting",
+      "front": {
+        "fr": "Méthode des 100 $ ?",
+        "en": "100-dollar method?"
+      },
+      "back": {
+        "fr": "Vote cumulatif : chaque partie prenante répartit 100 points entre les exigences.",
+        "en": "Cumulative voting: each stakeholder distributes 100 points among the requirements."
+      }
+    },
+    {
+      "id": "isi1-10-fc-15",
+      "front": {
+        "fr": "Top 10 : est-ce un vote cumulatif comme les 100 $ ?",
+        "en": "Top ten: is it cumulative voting like the 100 dollars?"
+      },
+      "back": {
+        "fr": "Non : chaque partie prenante choisit ses dix exigences, sans répartir de points ni les ordonner.",
+        "en": "No: each stakeholder picks their own ten requirements, without distributing points or ordering them."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "In the top-ten technique, the prioritisation is performed by a number of various stakeholders, who are responsible for selecting their own top ten requirements"
+        },
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "These techniques (numerical assignment, top-ten and priority group and ranking) are suitable for a small dataset of requirements"
+        }
+      ],
+      "notions": [
+        "n-top10-vs-100-dollars"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-12",
+      "front": {
+        "fr": "Matrice d’Eisenhower (annale 2014) : quels critères croise-t-elle ?",
+        "en": "Eisenhower matrix (2014 exam): which criteria does it cross?"
+      },
+      "back": {
+        "fr": "Importance et urgence, deux échelles fréquentes de priorisation. Le nom de la matrice n’est dans aucune source disponible : à confirmer.",
+        "en": "Importance and urgency, two frequent prioritization scales. The matrix’s name is in no available source: to be confirmed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Urgency High (mission critical requirement; required for next release)"
+        }
+      ],
+      "notions": [
+        "n-matrice-eisenhower"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-16",
+      "front": {
+        "fr": "AHP : seuil recommandé du ratio de cohérence ?",
+        "en": "AHP: recommended consistency ratio threshold?"
+      },
+      "back": {
+        "fr": "Moins de 0,10 (Saaty et Vargas) : il mesure les erreurs de jugement, pas la cohérence des exigences.",
+        "en": "Below 0.10 (Saaty and Vargas): it measures judgement errors, not requirements consistency."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "3.4.4 Consistency Ratio",
+          "quote": "Saaty and Vargas (2001) have recommended that CR should be lower than 0.10 in order for the prioritisation to be considered trustworthy."
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-17",
+      "front": {
+        "fr": "AHP : que signifient 1, 3, 5, 7 et 9 ?",
+        "en": "AHP: what do 1, 3, 5, 7 and 9 mean?"
+      },
+      "back": {
+        "fr": "Préférence égale, modérée, forte, très forte, extrême (2, 4, 6, 8 : intermédiaires).",
+        "en": "Equal, moderate, strong, very strong, extreme preference (2, 4, 6, 8: in between)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 24 (transcription)",
+          "quote": "RATING 9 = Extremely strongly preferred"
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 24 (transcription)",
+          "quote": "Values 2, 4, 6, or 8 represent preferences halfway between the integers on either side"
+        }
+      ],
+      "notions": [
+        "n-ahp"
+      ]
+    },
+    {
+      "id": "isi1-10-fc-18",
+      "front": {
+        "fr": "Classement (ranking) : limite ?",
+        "en": "Ranking: limit?"
+      },
+      "back": {
+        "fr": "On ne voit pas l’écart d’importance entre deux rangs.",
+        "en": "The importance gap between two ranks is not visible."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "isi1-10-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "La priorisation des exigences, aussi appelée triage, consiste à décider quelles exigences comptent vraiment ou entrent dans la version en cours.",
+        "en": "Requirements prioritization, also called triage, means deciding which requirements really matter or go into the current release."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « Requirements prioritization is also referred to as triage » ; il faut décider quelles exigences comptent vraiment ou doivent être réalisées dans la version en cours.",
+        "en": "TRUE: “Requirements prioritization is also referred to as triage”; you must decide which requirements really matter or must be implemented in the current release."
+      },
+      "level": "understand",
+      "objective": "o1",
+      "notions": [
+        "n-triage"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 11",
+          "quote": "Need to decide which requirements really matter or on those that need to be implemented in the current release"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-15",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le but du triage est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres.",
+        "en": "The goal of triage is to group requirements into three packages: the most important, the less important, and the others."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI (corrigé proposé, annales 2013 et 2014 Q10) : ce sont les trois groupes de Davis : les évidences, les irréalistes écartées, et le reste, à classer.",
+        "en": "TRUE (proposed answer, 2013 and 2014 exams Q10): these are Davis’s three groups: no-brainers, unrealistic ones dropped, and the rest, to be ranked."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        }
+      ],
+      "objective": "o1",
+      "notions": [
+        "n-triage"
+      ]
+    },
+    {
+      "id": "isi1-10-qz-04",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans une matrice AHP, l’exigence A est notée 5 face à l’exigence B. Quelle valeur inscrire pour B face à A ?",
+        "en": "In an AHP matrix, requirement A is rated 5 against requirement B. Which value goes for B against A?"
+      },
+      "options": [
+        {
+          "fr": "5",
+          "en": "5"
+        },
+        {
+          "fr": "1/5",
+          "en": "1/5"
+        },
+        {
+          "fr": "-5",
+          "en": "-5"
+        },
+        {
+          "fr": "Rien : seule la moitié supérieure de la matrice est utilisée",
+          "en": "Nothing: only the upper half of the matrix is used"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "La matrice est réciproque : dans l’exemple du cours d’Ottawa, A face à B vaut 3 et B face à A vaut 1/3. Toutes les cases servent au calcul (sommes des colonnes).",
+        "en": "The matrix is reciprocal: in the Ottawa example, A against B is 3 and B against A is 1/3. All cells are used in the calculation (column sums)."
+      },
+      "trap": {
+        "fr": "Oublier les réciproques, ou laisser des cases vides avant de sommer.",
+        "en": "Forgetting reciprocals, or leaving cells empty before summing."
+      },
+      "level": "apply",
+      "objective": "o2",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Matrix: A row = 1, 3, 2 ; B row = 1/3, 1, 1/5 ; C row = 1/2, 5, 1"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans la procédure AHP, après avoir divisé chaque valeur par la somme de sa colonne, les valeurs de chaque colonne font toujours 1 au total.",
+        "en": "In the AHP procedure, after dividing each value by its column sum, the values of each column always add up to 1."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est le but de la normalisation (« the values in each column add up to 1 »). On fait ensuite la moyenne de chaque ligne.",
+        "en": "TRUE: that is the purpose of normalization (“the values in each column add up to 1”). You then average each row."
+      },
+      "level": "apply",
+      "objective": "o2",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-06",
+      "type": "mcq",
+      "question": {
+        "fr": "Combien de comparaisons demande une priorisation par paires de 10 exigences ?",
+        "en": "How many comparisons does a pairwise prioritization of 10 requirements require?"
+      },
+      "options": [
+        {
+          "fr": "10",
+          "en": "10"
+        },
+        {
+          "fr": "20",
+          "en": "20"
+        },
+        {
+          "fr": "45",
+          "en": "45"
+        },
+        {
+          "fr": "100, une par case de la matrice",
+          "en": "100, one per matrix cell"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "n(n-1)/2 = 10 × 9 / 2 = 45. La diagonale vaut 1 et la moitié inférieure se déduit par réciprocité : seules les paires distinctes demandent un jugement.",
+        "en": "n(n-1)/2 = 10 × 9 / 2 = 45. The diagonal is 1 and the lower half follows by reciprocity: only distinct pairs need a judgement."
+      },
+      "trap": {
+        "fr": "Compter toutes les cases de la matrice.",
+        "en": "Counting all matrix cells."
+      },
+      "level": "analyze",
+      "objective": "o2",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-02",
+      "type": "mcq",
+      "question": {
+        "fr": "Chaque partie prenante reçoit 100 points à répartir entre les exigences. De quelle technique s’agit-il ?",
+        "en": "Each stakeholder receives 100 points to distribute among the requirements. Which technique is it?"
+      },
+      "options": [
+        {
+          "fr": "Le classement (ranking), qui ordonne les exigences de la plus à la moins importante",
+          "en": "Ranking, which orders requirements from most to least important"
+        },
+        {
+          "fr": "Le vote cumulatif, ou méthode des 100 $",
+          "en": "Cumulative voting, or the 100-dollar test"
+        },
+        {
+          "fr": "L’AHP",
+          "en": "AHP"
+        },
+        {
+          "fr": "Le modèle de Kano",
+          "en": "The Kano model"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "« In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points ». Le classement donne un rang unique sans écart ; l’AHP compare des paires ; Kano classe selon la satisfaction.",
+        "en": "“In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points”. Ranking gives a unique rank with no distance; AHP compares pairs; Kano classifies by satisfaction."
+      },
+      "trap": {
+        "fr": "Confondre répartir des points (intensité) et ordonner (rang).",
+        "en": "Confusing distributing points (strength) and ordering (rank)."
+      },
+      "level": "apply",
+      "objective": "o3",
+      "notions": [
+        "n-top10-vs-100-dollars"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un classement (ranking) des exigences montre l’écart d’importance entre deux exigences de rangs successifs.",
+        "en": "A ranking of requirements shows the importance gap between two requirements of successive ranks."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : chaque exigence reçoit un rang unique, mais « it is not possible to see the relative difference between ranked requirements ». Les 100 $ ou l’AHP donnent, eux, une intensité.",
+        "en": "FALSE: each requirement gets a unique rank, but “it is not possible to see the relative difference between ranked requirements”. 100 dollars or AHP give a strength."
+      },
+      "trap": {
+        "fr": "Croire qu’un ordre dit aussi « de combien ».",
+        "en": "Believing an order also says “by how much”."
+      },
+      "level": "understand",
+      "objective": "o3",
+      "notions": [
+        "n-priorisation-exigences"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-16",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les techniques de priorisation « top 10 » et « 100 $ » sont deux techniques de vote cumulatif ; l’unique différence est relative aux critères employés.",
+        "en": "The “top ten” and “100 dollars” prioritisation techniques are two cumulative voting techniques; the only difference lies in the criteria used."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX (annale 2014 Q14) : seul le 100 $ est un vote cumulatif (100 points à répartir). Dans le top 10, chaque partie prenante choisit ses dix exigences, sans points. « L’unique différence » doit alerter.",
+        "en": "FALSE (2014 exam Q14): only the 100 dollars is cumulative voting (100 points to distribute). In the top ten, each stakeholder picks their ten requirements, without points. “The only difference” should alert you."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q14",
+          "quote": "Les techniques de priorisation « top 10 » et « $100\\$ » sont deux techniques de vote cumulatif."
+        },
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "In the top-ten technique, the prioritisation is performed by a number of various stakeholders, who are responsible for selecting their own top ten requirements"
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-top10-vs-100-dollars"
+      ],
+      "trap": {
+        "fr": "Confondre « choisir dix exigences » et « répartir des points ».",
+        "en": "Confusing “picking ten requirements” with “distributing points”."
+      }
+    },
+    {
+      "id": "isi1-10-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "La technique AHP permet d’améliorer la cohérence des exigences.",
+        "en": "The AHP technique improves the consistency of requirements."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : l’AHP **priorise** les exigences. Son contrôle de cohérence repère les erreurs de **jugement** dans les comparaisons ; la cohérence des exigences entre elles relève des revues.",
+        "en": "FALSE: AHP **prioritizes** requirements. Its consistency check spots **judgement** errors in comparisons; consistency between requirements belongs to reviews."
+      },
+      "trap": {
+        "fr": "Confondre cohérence des jugements et cohérence des exigences.",
+        "en": "Confusing consistency of judgements and consistency of requirements."
+      },
+      "level": "analyze",
+      "objective": "o4",
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q9",
+          "quote": "La technique AHP permet d'améliorer la cohérence des exigences."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-qz-17",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans l’AHP, le contrôle de cohérence repère les erreurs de jugement des comparaisons par paires ; un ratio de cohérence inférieur à 0,10 est recommandé pour juger la priorisation fiable.",
+        "en": "In AHP, the consistency check detects judgement errors in pairwise comparisons; a consistency ratio below 0.10 is recommended for the prioritisation to be considered reliable."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est ce que rapportent Karlsson et al. (Saaty et Vargas). Cette cohérence porte sur les jugements, pas sur les exigences.",
+        "en": "TRUE: this is what Karlsson et al. report (Saaty and Vargas). This consistency concerns judgements, not requirements."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "3.4.4 Consistency Ratio",
+          "quote": "Saaty and Vargas (2001) have recommended that CR should be lower than 0.10 in order for the prioritisation to be considered trustworthy."
+        }
+      ],
+      "objective": "o4",
+      "notions": [
+        "n-ahp"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "isi1-10-ex-01",
+      "title": {
+        "fr": "Annale 2014, partie C : appliquer l’AHP",
+        "en": "2014 exam, part C: applying AHP"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "apply",
+      "objective": "o2",
+      "statement": {
+        "fr": "« Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre. Vous ne calculerez pas l’indice de cohérence. » (3 points)\n\n| | Exi 1 | Exi 2 | Exi 3 | Exi 4 |\n|---|---|---|---|---|\n| **Exi 1** | | 1 | | |\n| **Exi 2** | | | 5 | 2 |\n| **Exi 3** | 1/3 | | | |\n| **Exi 4** | 1/5 | | 3 | |\n\n*Matrice relue sur le PDF de l’annale : la transcription Markdown décale les lignes.*",
+        "en": "“Apply the AHP method to the pairwise priority matrix. You will not compute the consistency index.” (3 points)\n\n| | Req 1 | Req 2 | Req 3 | Req 4 |\n|---|---|---|---|---|\n| **Req 1** | | 1 | | |\n| **Req 2** | | | 5 | 2 |\n| **Req 3** | 1/3 | | | |\n| **Req 4** | 1/5 | | 3 | |\n\n*Matrix read from the exam PDF: the Markdown transcription shifts the rows.*"
+      },
+      "hints": [
+        {
+          "fr": "Chaque paire n’est donnée qu’une fois : complète l’autre case par réciprocité, et mets 1 sur la diagonale.",
+          "en": "Each pair is given only once: fill the other cell by reciprocity, and put 1 on the diagonal."
+        },
+        {
+          "fr": "Somme de la colonne Exi 3 : 3 + 5 + 1 + 3 = 12.",
+          "en": "Sum of the Req 3 column: 3 + 5 + 1 + 3 = 12."
+        },
+        {
+          "fr": "Divise chaque valeur par la somme de sa colonne, puis fais la moyenne de chaque ligne.",
+          "en": "Divide each value by its column sum, then average each row."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (aucun corrigé officiel), selon la procédure du cours d’Ottawa.\n\n**1. Matrice complétée** (réciprocité, diagonale à 1) :\n\n| | Exi 1 | Exi 2 | Exi 3 | Exi 4 |\n|---|---|---|---|---|\n| Exi 1 | 1 | 1 | 3 | 5 |\n| Exi 2 | 1 | 1 | 5 | 2 |\n| Exi 3 | 1/3 | 1/5 | 1 | 1/3 |\n| Exi 4 | 1/5 | 1/2 | 3 | 1 |\n| **Somme** | 38/15 ≈ 2,533 | 27/10 = 2,7 | 12 | 25/3 ≈ 8,333 |\n\n**2. Normalisation** (valeur / somme de colonne) puis **moyenne des lignes** :\n- Exi 1 : (0,395 + 0,370 + 0,250 + 0,600) / 4 ≈ **0,404**\n- Exi 2 : (0,395 + 0,370 + 0,417 + 0,240) / 4 ≈ **0,355**\n- Exi 3 : (0,132 + 0,074 + 0,083 + 0,040) / 4 ≈ **0,082**\n- Exi 4 : (0,079 + 0,185 + 0,250 + 0,120) / 4 ≈ **0,159**\n\n(Total ≈ 1.)\n\n**3. Classement** : Exi 1 > Exi 2 > Exi 4 > Exi 3.\n\n**Barème indicatif** : matrice complétée (1 pt), normalisation et moyennes (1,5 pt), classement (0,5 pt).",
+        "en": "**Proposed** solution (no official one), following the Ottawa course procedure.\n\n**1. Completed matrix** (reciprocity, diagonal at 1):\n\n| | Req 1 | Req 2 | Req 3 | Req 4 |\n|---|---|---|---|---|\n| Req 1 | 1 | 1 | 3 | 5 |\n| Req 2 | 1 | 1 | 5 | 2 |\n| Req 3 | 1/3 | 1/5 | 1 | 1/3 |\n| Req 4 | 1/5 | 1/2 | 3 | 1 |\n| **Sum** | 38/15 ≈ 2.533 | 27/10 = 2.7 | 12 | 25/3 ≈ 8.333 |\n\n**2. Normalization** (value / column sum) then **row averages**:\n- Req 1: (0.395 + 0.370 + 0.250 + 0.600) / 4 ≈ **0.404**\n- Req 2: (0.395 + 0.370 + 0.417 + 0.240) / 4 ≈ **0.355**\n- Req 3: (0.132 + 0.074 + 0.083 + 0.040) / 4 ≈ **0.082**\n- Req 4: (0.079 + 0.185 + 0.250 + 0.120) / 4 ≈ **0.159**\n\n(Total ≈ 1.)\n\n**3. Ranking**: Req 1 > Req 2 > Req 4 > Req 3.\n\n**Indicative marking**: completed matrix (1 pt), normalization and averages (1.5 pt), ranking (0.5 pt)."
+      },
+      "notions": [
+        "n-ahp"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "C. Priorisation",
+          "quote": "Appliquez la méthode AHP à la matrice de priorité paires à paires ci-contre."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slides 26-28 (transcription)",
+          "quote": "Next the values in each column are divided by the corresponding column sums. Note: the values in each column add up to 1."
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-ex-04",
+      "title": {
+        "fr": "Vrai ou faux des annales : priorisation et buts",
+        "en": "Past-exam true or false: prioritization and goals"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o4",
+      "statement": {
+        "fr": "« Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX. »\n1. (2013) La technique AHP permet d’améliorer la cohérence des exigences.\n2. (2013, 2014) Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres.\n3. (2014) La matrice d’Eisenhower permet de trier les exigences en combinant importance et urgence.\n4. (2014) Les techniques de priorisation « top 10 » et « 100 $ » sont deux techniques de vote cumulatif. L’unique différence est relative aux critères employés : dans le 100 $, c’est la valeur, alors que dans le top 10, c’est la priorité.",
+        "en": "“Answer TRUE or FALSE, justify if (and only if) you answer FALSE.”\n1. (2013) The AHP technique improves the consistency of requirements.\n2. (2013, 2014) The goal of “triage” is to group requirements into three packages: the most important, the less important, and the others.\n3. (2014) The Eisenhower matrix sorts requirements by combining importance and urgency.\n4. (2014) The “top ten” and “100 dollars” prioritisation techniques are two cumulative voting techniques. The only difference lies in the criteria: value for the 100 dollars, priority for the top ten."
+      },
+      "hints": [
+        {
+          "fr": "Cherche le mot absolu ou la précision en trop dans chaque énoncé.",
+          "en": "Look for the absolute word or the extra detail in each statement."
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé**.\n1. **FAUX** : l’AHP priorise ; sa cohérence concerne les jugements de comparaison, pas les exigences.\n2. **VRAI** : ce sont les trois groupes du triage de Davis (évidences, irréalistes écartées, reste à classer).\n3. **Probablement VRAI** : importance et urgence sont deux échelles de priorisation fréquentes (cours d’Ottawa), mais la matrice d’Eisenhower n’est définie dans aucune source disponible : à confirmer avec tes notes.\n4. **FAUX** : seul le 100 $ est un vote cumulatif (100 points à répartir) ; dans le top 10, chaque partie prenante choisit ses dix exigences, sans points. « L’unique différence » doit alerter.",
+        "en": "**Proposed** answers.\n1. **FALSE**: AHP prioritises; its consistency concerns comparison judgements, not requirements.\n2. **TRUE**: these are the three groups of Davis’s triage (no-brainers, unrealistic ones dropped, the rest to rank).\n3. **Probably TRUE**: importance and urgency are two common prioritisation scales (Ottawa course), but the Eisenhower matrix is defined in no available source: check with your notes.\n4. **FALSE**: only the 100 dollars is cumulative voting (100 points to distribute); in the top ten, each stakeholder picks their ten requirements, without points. “The only difference” should alert you."
+      },
+      "notions": [
+        "n-kaos-or-xor",
+        "n-istar-soft-goals",
+        "n-ahp",
+        "n-kano-vocabulaire-annales",
+        "n-matrice-eisenhower",
+        "n-top10-vs-100-dollars"
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q9",
+          "quote": "La technique AHP permet d'améliorer la cohérence des exigences."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "PWC includes a consistency check where judgement errors can be identified and a consistency ratio can be calculated."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_2.md",
+          "loc": "A. Q10",
+          "quote": "Le but du « triage » est de regrouper les exigences en trois paquets : les plus importantes, les peu importantes, et les autres."
+        },
+        {
+          "file": "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+          "loc": "Triage",
+          "quote": "Some things are no-brainers; there's no need for discussion. Some are hopelessly dreamy: they should instantly be dismissed. And the rest need to be ranked in a practical way so you can plan your projects."
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q14",
+          "quote": "Les techniques de priorisation « top 10 » et « $100\\$ » sont deux techniques de vote cumulatif."
+        },
+        {
+          "file": "sources-texte/isi1/ext-hujainah-2021-top-ten.md",
+          "loc": "Section 2",
+          "quote": "In the top-ten technique, the prioritisation is performed by a number of various stakeholders, who are responsible for selecting their own top ten requirements"
+        },
+        {
+          "file": "ressources/S3__ISI1/Markdown/examen_3.md",
+          "loc": "A. Q18",
+          "quote": "La technique de la matrice d'Eisenhower permet de trier les exigences en combinant les critères d'importance et d'urgence."
+        },
+        {
+          "file": "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+          "loc": "Slide 15",
+          "quote": "Importance Essential (product unacceptable unless these requirements are satisfied)"
+        }
+      ]
+    },
+    {
+      "id": "isi1-10-ex-05",
+      "title": {
+        "fr": "Deadbot : choisir une technique de priorisation",
+        "en": "Deadbot: choosing a prioritisation technique"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o3",
+      "statement": {
+        "fr": "Après le triage avec Kano, il reste 15 exigences du Deadbot à prioriser avec 5 parties prenantes (MemoriaTech, familles, développeurs, associations de protection des données, psychologues). Quelle technique proposes-tu ? Justifie en comparant avec au moins une autre technique.",
+        "en": "After Kano triage, 15 Deadbot requirements remain to be prioritised with 5 stakeholders (MemoriaTech, families, developers, data protection associations, psychologists). Which technique do you propose? Justify by comparing with at least one other technique."
+      },
+      "hints": [
+        {
+          "fr": "Combien de comparaisons demanderait une AHP pour 15 exigences ?",
+          "en": "How many comparisons would an AHP need for 15 requirements?"
+        },
+        {
+          "fr": "Quelle technique montre l’intensité des préférences sans exploser en nombre de jugements ?",
+          "en": "Which technique shows the intensity of preferences without an explosion in the number of judgements?"
+        }
+      ],
+      "solution": {
+        "fr": "Corrigé **proposé** (plusieurs réponses possibles). Avec 15 exigences, l’AHP demanderait n(n-1)/2 = **105 comparaisons** par partie prenante : trop lourd. Le **100 $** est plus réaliste : chaque partie prenante répartit 100 points, ce qui montre l’**intensité** de ses préférences, à la différence d’un classement ou d’un top 10 qui disent seulement « avant / après ». On peut ensuite réserver l’AHP aux quelques exigences en conflit. Limite du 100 $ : une partie prenante peut concentrer ses points sur une seule exigence.",
+        "en": "**Proposed** answer (several answers possible). With 15 requirements, AHP would need n(n-1)/2 = **105 comparisons** per stakeholder: too heavy. The **100 dollars** is more realistic: each stakeholder distributes 100 points, which shows the **intensity** of their preferences, unlike a ranking or a top ten, which only say “before / after”. AHP can then be kept for the few conflicting requirements. Limit of the 100 dollars: a stakeholder may put all their points on a single requirement."
+      },
+      "src": [
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "Ranking Requirements",
+          "quote": "Each requirement is assigned a unique rank (1, 2, …), but it is not possible to see the relative difference between ranked requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+          "loc": "100-Dollar Test",
+          "quote": "In cumulative voting, or the 100-dollar test, stakeholders are given 100 prioritization points (votes) to distribute among the requirements."
+        },
+        {
+          "file": "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+          "loc": "2.2 Pair-Wise Comparisons",
+          "quote": "If there are n requirements to prioritise, the total number of comparisons to perform is n(n-1)/ 2."
+        }
+      ],
+      "notions": [
+        "n-priorisation-exigences",
+        "n-top10-vs-100-dollars",
+        "n-ahp"
+      ],
+      "trap": {
+        "fr": "Choisir l’AHP « parce qu’elle est la plus précise » sans compter les comparaisons.",
+        "en": "Choosing AHP “because it is the most precise” without counting the comparisons."
+      }
+    }
+  ],
+  "writing": [
+    {
+      "id": "isi1-10-wr-05",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "There are more requirements than can be implemented.",
+      "accepted": [
+        "There are more requirements than we can implement."
+      ]
+    },
+    {
+      "id": "isi1-10-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "In cumulative voting, each stakeholder {{distributes}} 100 points among the {{requirements}}.",
+      "translation": "Dans le vote cumulatif, chaque partie prenante répartit 100 points entre les exigences."
+    },
+    {
+      "id": "isi1-10-wr-06",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "AHP improves the consistency of the requirements.",
+      "error": "the consistency of the requirements",
+      "corrected": "the consistency of the pairwise judgements",
+      "explanation": {
+        "fr": "L’AHP priorise ; son contrôle de cohérence porte sur les jugements de comparaison.",
+        "en": "AHP prioritises; its consistency check concerns the comparison judgements."
+      }
+    },
+    {
+      "id": "isi1-10-wr-07",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique pourquoi tu choisirais les 100 $ plutôt que l’AHP pour prioriser 15 exigences.",
+        "en": "In 2-3 English sentences, explain why you would choose the 100 dollars rather than AHP to prioritise 15 requirements."
+      },
+      "modelAnswer": "With 15 requirements, AHP would require 105 pairwise comparisons per stakeholder, which is too costly. The 100-dollar test is faster: each stakeholder distributes 100 points, which still shows the intensity of their preferences.",
+      "keywords": [
+        "pairwise comparisons",
+        "costly",
+        "100 points",
+        "intensity"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai donné le nombre de comparaisons.",
+          "en": "I gave the number of comparisons."
+        },
+        {
+          "fr": "J’ai dit ce que montrent les 100 $.",
+          "en": "I said what the 100 dollars show."
+        }
+      ],
+      "usefulPhrases": [
+        "would require",
+        "which is too costly",
+        "still shows"
+      ]
+    }
+  ],
+  "sources": [
+    "sources-texte/isi1/ext-uottawa-seg3101-triage-ahp.md",
+    "sources-texte/isi1/ext-waterloo-cs445-prioritization.md",
+    "sources-texte/isi1/ext-alexander-2005-davis-triage.md",
+    "ressources/S3__ISI1/Markdown/exam_1.md",
+    "sources-texte/isi1/3-isoiec-cd-29148.md",
+    "ressources/S3__ISI1/Markdown/examen_2.md",
+    "sources-texte/isi1/1-ie-introduction.md",
+    "ressources/S3__ISI1/Markdown/examen_3.md",
+    "sources-texte/isi1/ext-karlsson-2007-pairwise.md",
+    "sources-texte/isi1/ext-hujainah-2021-top-ten.md"
+  ]
+}
