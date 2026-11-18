@@ -195,7 +195,7 @@ Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), ja
 - **Fidélité = alignement sur les notions, pas sur la forme** (décision du 2026-11-17) : définitions, propriétés, classifications et listes du cours sont exactes et sourcées ; la structure, l'ordre, la formulation, les explications et les exemples sont libres (ne pas paraphraser les slides).
 - Les slides sont une **source**, pas un plan : on extrait, on regroupe, on réordonne.
 - Le cours complet d'une matière couvre **toutes** ses notions (contrôle par `notions.json`), chacune au niveau de détail que justifie le partiel.
-- **Sommaire** : chaque partie est un `heading` numéroté (« 1. … ») et chaque sous-partie un `subheading` (« 1.2 … ») ; ils alimentent le sommaire du chapitre (lecteur) et le sommaire général (onglet « Sommaire »).
+- **Sommaire** : chaque partie est un `heading` numéroté (« 1. … ») et chaque sous-partie un `subheading` (« 1.2 … ») ; ils alimentent le sommaire du chapitre (lecteur) et le sommaire général (onglet « Sommaire »). **Sommaire détaillé** (demande de l'utilisatrice, 2026-11-18) : chaque partie est découpée en sous-parties `subheading` numérotées « n.m », nommées par la notion qu'elles traitent (pas « Définition » tout court) ; un 3ᵉ niveau « n.m.k » (`subheading` avec `level: 3`) quand il est naturel (exemple corrigé sous une méthode, éléments d'une boîte à outils).
 - **Définition d'abord** : chaque notion fondamentale s'ouvre sur un `callout` `definition` (src obligatoire).
 - `heading` = partie numérotée (« 1. … ») ; `subheading` = sous-partie (« 1.2 … »).
 - Un **ensemble à mémoriser** (qualités, catégories, étapes, facteurs) est présenté **complet et au même endroit**, en `list` numérotée ou en `table` ; le nombre d'éléments est annoncé.
@@ -225,7 +225,7 @@ Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), ja
 
 ### 11.2 Ce que contient un chapitre
 - **Court** : 5 à 12 min (≤ 2 000 mots de récit) ; fiches complémentaires (E) ≤ 5 min. Un chapitre trop long se resserre (parasites, cellules de tableau, doublons) avant de se découper.
-- **Chaque partie** : `heading` numéroté → `definition` → tableau ou liste **complète** (nombre d'éléments annoncé) → si c'est une compétence : `method` puis **exemple corrigé** juste après → piège d'annale (`exam` : énoncé + corrigé proposé en 1 ou 2 lignes) → `retenir` → `checkpoint`.
+- **Chaque partie** : `heading` numéroté, découpé en sous-parties `subheading` « n.m » (3ᵉ niveau « n.m.k » si naturel, §10.2) → `definition` → tableau ou liste **complète** (nombre d'éléments annoncé) → si c'est une compétence : `method` puis **exemple corrigé** juste après → piège d'annale (`exam` : énoncé + corrigé proposé en 1 ou 2 lignes) → `retenir` → `checkpoint`.
 - **Liens entre notions** visibles : une phrase ou un `callout tip` « Le lien avec… » quand une notion en éclaire une autre (ex. Kano ↔ familles de techniques ; cas complémentaires ↔ raffinement ET) ; `synthesis.links` ; `prerequisites` / `next` à jour. Renvoyer à un chapitre par son **titre**, jamais par son numéro.
 - **Schémas et illustrations** : tout schéma des supports qui porte une notion A ou B est **redessiné** en bloc `diagram` (Mermaid, libellés en anglais, légende FR/EN « … (redessiné) », `src` vers la slide). Une méthode en étapes peut devenir un arbre de décision ; un exemple corrigé gagne à montrer l'avant (modèle fautif) et l'après ; une famille de techniques, une carte mentale ; une courbe du cours, un `xychart-beta` (valeurs dites « illustratives »). Au moins un schéma par chapitre dès que le cours en contient.
 - Corrigés détaillés d'annales dans `exercises` ; quiz au format du prof (`/quiz-essentiel`).
@@ -242,7 +242,7 @@ Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), ja
 - Citations : 4 à 40 mots, recopiées du fichier (le texte extrait peut différer du PDF : « no-binding »). Réutiliser les citations déjà vérifiées : `node tools/cours/citations.mjs <id> "<extrait>"`.
 - V/F : 40 à 65 % de FAUX, et les mots absolus (toujours, jamais, garantir, uniquement…) aussi dans des énoncés VRAIS.
 - Déplacer une notion : mettre à jour son `chapter` dans `notions.json` (la couverture se calcule par préfixe d'id de chapitre), renommer les ids des items déplacés (`<chapitre>-qz-…`), remapper leur `objective`, vérifier que chaque `checkpoint` vise un quiz du chapitre.
-- `story` ≤ 60 blocs ; paragraphe > 90 mots → le passer en liste ; liste ≤ 7 items, sinon tableau.
+- `story` ≤ 80 blocs, titres et sous-titres compris (T28) ; paragraphe > 90 mots → le passer en liste ; liste ≤ 7 items, sinon tableau.
 - `explain: true` seulement pour relier des faits déjà sourcés dans le chapitre ; sinon un `src`.
 - Mermaid : `xychart-beta` avec `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "…"}}}}%%` (sinon la première courbe est presque invisible) et couleurs nommées dans la légende ; chaîne en `TB`, arbre large en `LR` (lisible sur téléphone) ; libellés entre guillemets s'ils contiennent des parenthèses.
 - Changer l'ordre des chapitres : `course.json.chapterOrder` **et** le champ `order` de chaque chapitre.

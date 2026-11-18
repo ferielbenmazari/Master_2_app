@@ -36,7 +36,7 @@ Pour chaque fait que tu vas écrire : trouve le passage (`search_sources`), copi
 - Source **traduite** (Markdown d'un PDF anglais, ex. INF4) : termes EN pris dans le PDF original (`sources-texte/`) ; ne jamais citer une « Description et explication du schéma » (texte généré).
 
 ## Écriture (par étapes, en éditant le même fichier)
-1. **Parties** (docs/06 §11.2), dans l'ordre du sommaire validé (du plus important au moins important) : `heading` numéroté → `definition` → tableau ou liste complète (notions avec `[[term-…]]`) → `method` + exemple corrigé (exemple **du prof** en priorité) → `exam` (annale) → `retenir` → `checkpoint`. Paragraphes ≤ 90 mots. **Schémas** du cours redessinés en `diagram`. Ne jamais supprimer une notion qui peut tomber : la condenser.
+1. **Parties** (docs/06 §11.2), dans l'ordre du sommaire validé (du plus important au moins important) : `heading` numéroté, découpé en **sous-parties** `subheading` « n.m » nommées par leur notion (3ᵉ niveau « n.m.k » : `level: 3`, si naturel) → `definition` → tableau ou liste complète (notions avec `[[term-…]]`) → `method` + exemple corrigé (exemple **du prof** en priorité) → `exam` (annale) → `retenir` → `checkpoint`. Paragraphes ≤ 90 mots. **Schémas** du cours redessinés en `diagram`. Ne jamais supprimer une notion qui peut tomber : la condenser.
 2. `glossary`, `keyPoints` (sourcés).
 3. `flashcards` (chaque notion ★★★ sous 2 angles), `quiz` au **format du prof** (V/F « justifiez si FAUX » pour ISI1…), énoncés longs et presque vrais, distracteurs = vraies confusions ; répartition `level` (≤ 30 % remember, ≥ 35 % apply+analyze).
 4. `exercises` (≥ 1 `analyze`, ≥ 1 `examStyle` si annales), `writing` (les 4 kinds, phrases d'examen réalistes).

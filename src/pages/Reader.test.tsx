@@ -135,10 +135,13 @@ describe('lecteur : sommaire du chapitre (T27)', () => {
     const { container, scroll } = await openAt(`/matiere/isi1/chapitre/${ISI}/lire`)
     const nav = screen.getByRole('navigation', { name: 'Sommaire du chapitre' })
     expect(within(nav).getByText(`Sommaire · ${parts} parties`)).toBeInTheDocument()
-    fireEvent.click(within(nav).getByRole('button', { name: /^3\.1 Méthode/ }))
+    fireEvent.click(within(nav).getByRole('button', { name: /^3\.3 Méthode/ }))
     expect(scroll).toHaveBeenCalled()
-    expect(scroll.mock.contexts.at(-1)).toBe(container.querySelector('#partie-3-1'))
+    expect(scroll.mock.contexts.at(-1)).toBe(container.querySelector('#partie-3-3'))
     expect(container.querySelector('section#partie-3')).not.toBeNull()
+    // 3e niveau (T28) : « 3.3.1 Exemple entièrement corrigé »
+    fireEvent.click(within(nav).getByRole('button', { name: /^3\.3\.1 Exemple entièrement corrigé/ }))
+    expect(scroll.mock.contexts.at(-1)).toBe(container.querySelector('#partie-3-3-1'))
   })
 
   it('?partie=3 (depuis le sommaire général) amène à la partie 3', async () => {

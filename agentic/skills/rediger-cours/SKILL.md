@@ -24,7 +24,7 @@ Montrer **le sommaire seul** à l'utilisatrice et **attendre sa validation**. Me
 ## 2. Écrire un chapitre (un par appel en mode économe)
 **Citation d'abord** : pour chaque fait, trouver le passage (MCP `m2-sources` : `search_sources`, `read_source`), copier la citation exacte (6 à 25 mots qui portent le fait), puis rédiger. Rien sans `src`. Notion d'examen absente des supports : source externe fiable selon docs/06 §9.6, annoncée comme telle.
 
-Structure de chaque partie (docs/06 §11.2) : `heading` numéroté → `definition` → tableau ou liste **complète** → (`method` + **exemple corrigé**) → `exam` (annale, corrigé proposé) → `retenir` → `checkpoint`.
+Structure de chaque partie (docs/06 §11.2) : `heading` numéroté, avec des **sous-parties** `subheading` « n.m » nommées par leur notion (3ᵉ niveau « n.m.k » : `level: 3`, si naturel) → `definition` → tableau ou liste **complète** → (`method` + **exemple corrigé**) → `exam` (annale, corrigé proposé) → `retenir` → `checkpoint`.
 - **Liens** entre notions (« Le lien avec… », `synthesis.links`), renvois par titre de chapitre.
 - **Schémas** : redessiner en `diagram` les schémas du cours qui portent une notion A/B (au moins un par chapitre dès que le cours en a) ; méthodes en arbre de décision, corrigés en « avant / après », familles en carte mentale, courbes en `xychart-beta`. Libellés en anglais, légende FR/EN.
 - **Méta-données** : `question`, 3 à 5 `objectives`, `examFocus`, `prerequisites`, `next`, `synthesis`, `estimatedMinutes` (≈ mots / 180).

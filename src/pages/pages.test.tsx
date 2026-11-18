@@ -119,8 +119,10 @@ describe('matière', () => {
       'href',
       '/matiere/isi1/chapitre/isi1-03-exigences-non-fonctionnelles/lire?partie=3',
     )
-    const sub = screen.getByRole('link', { name: /^3\.1 Méthode : classer une exigence/ })
-    expect(sub.getAttribute('href')).toMatch(/\?partie=3\.1$/)
+    const sub = screen.getByRole('link', { name: /^3\.3 Méthode : classer une exigence/ })
+    expect(sub.getAttribute('href')).toMatch(/\?partie=3\.3$/)
+    const subsub = screen.getByRole('link', { name: /^3\.3\.1 Exemple entièrement corrigé/ })
+    expect(subsub.getAttribute('href')).toMatch(/\?partie=3\.3\.1$/)
   })
 })
 

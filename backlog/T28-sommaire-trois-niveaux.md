@@ -21,3 +21,4 @@ Demande de l'utilisatrice (2026-11-18) : « dans toutes les matières (en commen
 
 ## Journal
 2026-11-18 : `level: 3` sur `subheading` (schéma strict, champ facultatif : aucun contenu existant à migrer). `buildToc` produit `TocSub.subs` ; `tocAnchor` / `tocParam` / `anchorFromParam` acceptent un 3ᵉ rang. `ChapterToc` imbrique une liste `toc-subsubs` ; le lecteur compte les sous-titres comme `buildToc` pour que les liens du sommaire tombent au bon endroit. 3 tests ajoutés (toc ×2, rendu h4).
+2026-11-18 (suite) : limite de `story` portée de 60 à 80 blocs, titres et sous-titres compris (un sous-titre n'ajoute pas de lecture ; « Documenter » ISI1 atteignait 67 blocs avec ses sous-parties). Règle du sommaire détaillé inscrite dans `docs/06` §10.2 et §11.2, dans `/refondre-cours`, `/rediger-cours` et l'agent `content-author`. Vérifié à l'écran (build de production) : sommaire général ISI1 à 3 niveaux, lien « 2.2.1 » qui ouvre le lecteur au bon endroit.
