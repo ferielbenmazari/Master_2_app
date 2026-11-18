@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import type { Course } from '@/content/schema'
-import { loadChapter } from '@/content/loader'
+import { getChapterIndex, getCourses, loadAllChapters, loadChapter } from '@/content/loader'
+import { buildToc } from '@/lib/toc'
 import { UI } from '@/i18n/ui'
 import AppRoutes from '@/routes'
 import { PrefsProvider } from '@/store/PrefsProvider'
@@ -123,6 +124,23 @@ describe('matière', () => {
     expect(sub.getAttribute('href')).toMatch(/\?partie=3\.3$/)
     const subsub = screen.getByRole('link', { name: /^3\.3\.1 Exemple entièrement corrigé/ })
     expect(subsub.getAttribute('href')).toMatch(/\?partie=3\.3\.1$/)
+  })
+
+  // Garde-fou (T28) : le sommaire général de CHAQUE matière s'affiche, avec un lien par partie,
+  // sous-partie et sous-partie de 3ᵉ niveau de tous ses chapitres.
+  const withChapters = getCourses()
+    .map((c) => c.id)
+    .filter((id) => getChapterIndex(id).length > 0)
+  it.each(withChapters)('sommaire général de %s : affiché, un lien par (sous-)partie', async (id) => {
+    const chapters = await loadAllChapters(id)
+    const expected = chapters.reduce(
+      (n, ch) =>
+        n + buildToc(ch.story).reduce((m, p) => m + 1 + p.subs.length + p.subs.reduce((k, s) => k + s.subs.length, 0), 0),
+      0,
+    )
+    const { container } = renderAt(`/matiere/${id}/sommaire`)
+    expect(await screen.findByRole('heading', { name: 'Sommaire général' })).toBeInTheDocument()
+    await waitFor(() => expect(container.querySelectorAll('a.toc-link')).toHaveLength(expected), { timeout: 8000 })
   })
 })
 
