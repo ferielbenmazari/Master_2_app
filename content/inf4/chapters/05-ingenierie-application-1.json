@@ -57,12 +57,12 @@
     ]
   },
   "prerequisites": {
-    "fr": "Chapitre 4 : OVM, points de variation, variants, dépendances.",
-    "en": "Chapter 4: OVM, variation points, variants, dependencies."
+    "fr": "Chapitre « Ingénierie des exigences de domaine et modèle OVM » : OVM, points de variation, variants, dépendances.",
+    "en": "Chapter “Domain requirements engineering and the OVM”: OVM, variation points, variants, dependencies."
   },
   "next": {
-    "fr": "Le chapitre 6 poursuit avec la conception, la réalisation et le test de l’application.",
-    "en": "Chapter 6 continues with the application’s design, realisation and testing."
+    "fr": "Le chapitre « Conception et réalisation d’une application » poursuit avec la conception, la réalisation et le test de l’application.",
+    "en": "Chapter “Designing and building an application” continues with the application’s design, realisation and testing."
   },
   "synthesis": {
     "mustKnow": [
@@ -101,8 +101,8 @@
     ],
     "links": [
       {
-        "fr": "RED-PL (chapitre 8) automatise la dérivation des exigences d’un produit et l’arbitrage entre exigences.",
-        "en": "RED-PL (chapter 8) automates deriving a product’s requirements and arbitrating between them."
+        "fr": "RED-PL (chapitre « RED-PL : dériver les exigences d’un produit ») automatise la dérivation des exigences d’un produit et l’arbitrage entre exigences.",
+        "en": "RED-PL (chapter “RED-PL: deriving a product’s requirements”) automates deriving a product’s requirements and arbitrating between them."
       }
     ]
   },
@@ -115,8 +115,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Dériver une application : que reste-t-il à écrire ?",
-        "en": "Deriving an application: what is left to write?"
+        "fr": "1. Dériver les exigences d’une application",
+        "en": "1. Deriving an application’s requirements"
       }
     },
     {
@@ -278,15 +278,43 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "L’ingénierie des exigences d’application dérive les exigences d’**une** application en réutilisant au maximum les artefacts de domaine. Une exigence de partie prenante est satisfaite complètement, partiellement ou pas du tout ; si aucun artefact de domaine ne la couvre, il y a un **delta**, qui coûte dans toutes les phases suivantes.",
+        "en": "Application requirements engineering derives the requirements of **one** application, reusing domain artefacts as much as possible. A stakeholder requirement is fulfilled completely, partially or not at all; if no domain artefact covers it, there is a **delta**, which costs effort in all following phases."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-05-qz-02"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Trois activités, deux types d'exigences",
-        "en": "Three activities, two kinds of requirements"
+        "fr": "2. Trois activités, deux types d’exigences",
+        "en": "2. Three activities, two types of requirements"
       }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**exigences des parties prenantes** : Exigences que les parties prenantes énoncent pour une application particulière et qu'elles s'attendent à voir satisfaites. — **exigences d'application** : Exigences qui spécifient complètement une application particulière de la ligne de produits.",
+        "en": "**stakeholder requirements**: Requirements that stakeholders state for a particular application and expect to be fulfilled by the application. — **application requirements**: Requirements that completely specify a particular product line application."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Stakeholder requirements are requirements that stakeholders state for a particular application, i.e. requirements that the stakeholders expect to be fulfilled by the application."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.2",
+          "quote": "Application requirements are requirements that completely specify a particular product line application."
+        }
+      ]
     },
     {
       "type": "paragraph",
@@ -427,193 +455,53 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Trois activités : communiquer la variabilité externe, évaluer les deltas, documenter. Exigence de partie prenante (demandée) ≠ exigence d’application (retenue).",
+        "en": "Three activities: communicate external variability, evaluate deltas, document. Stakeholder requirement (asked for) ≠ application requirement (kept)."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-05-qz-04"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Présenter la variabilité à un client",
-        "en": "Presenting variability to a customer"
+        "fr": "3. Évaluer un delta : ce que le client demande en plus",
+        "en": "3. Evaluating a delta: what the customer asks for on top"
       }
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Comment parle-t-on de variabilité à quelqu'un qui n'est pas ingénieur ? On part des **points de variation**, au plus haut niveau d'abstraction. Pour chacun, on communique : (1) ses variants, les dépendances de variabilité et les choix alternatifs ; (2) les points de variation ou variants dépendants, en suivant les dépendances de contrainte.",
-        "en": "How do you talk about variability to a non-engineer? Start from the **variation points**, at the topmost level of abstraction. For each, communicate: (1) its variants, the variability dependencies and the alternative choices; (2) dependent variation points or variants, by following the constraint dependencies."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.1",
-          "quote": "typically starts with the variation points that provide the topmost level of abstraction"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.1",
-          "quote": "Communicating the variants related to the variation point as well as the variability dependencies and the alternative choices defined for the variation point."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.1",
-          "quote": "Communicating dependent variation points and/or variants by following the existing constraint dependencies."
-        }
-      ],
-      "notions": [
-        "n-communicating-vp-variants"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**Exemple du livre (15-1)** : deux points de variation, « security standard » (basic / advanced) et « authentication » (password / fingerprint). Le client s'intéresse à l'authentification : la ligne offre deux mécanismes, **exactement un** doit être choisi. Si c'est « password », le point de variation « security standard » doit **aussi** être lié : basic ou advanced.",
-        "en": "**Book example (15-1)**: two variation points, 'security standard' (basic / advanced) and 'authentication' (password / fingerprint). The stakeholder is interested in authentication: the line offers two mechanisms, **exactly one** must be selected. If 'password', the variation point 'security standard' must **also** be bound: basic or advanced."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Ex. 15-1",
-          "quote": "Exactly one of these has to be selected: authentication via 'Password' or authentication via 'fingerprint'."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Ex. 15-1",
-          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Ex. 15-1",
-          "quote": "The stakeholder has to select either 'basic' or 'advanced' security."
-        }
-      ],
-      "notions": [
-        "n-communicating-vp-variants"
-      ]
-    },
-    {
-      "type": "diagram",
-      "mermaid": "graph TD\n  VP1[\"VP Authentication\"] --- V1[\"V Password\"]\n  VP1 --- V2[\"V Fingerprint\"]\n  VP2[\"VP Security Standard\"] --- V3[\"V Basic\"]\n  VP2 --- V4[\"V Advanced\"]\n  V1 -.->|\"requires_v_vp\"| VP2",
-      "caption": {
-        "fr": "Figure 15-4 : points de variation « authentication » et « security standard » (choix alternatif dans chacun).",
-        "en": "Figure 15-4: variation points 'authentication' and 'security standard' (alternative choice in each)."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Fig. 15-4",
-          "quote": "Une ligne pointillée étiquetée \"requires_v_vp\" relie la variante \"Password\""
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Si le client veut plus de détails, on suit les **liens de traçabilité** du variant vers les artefacts d'exigences : le cas d'utilisation « authentication by password », ou les exigences de sécurité des variants *basic* (mot de passe ≥ 5 caractères) et *advanced* (≥ 10 caractères avec caractères spéciaux, changement tous les 3 mois). La vue « fonctionnalités » sert la vue de gestion ; les exigences à base de modèles donnent une vue plus détaillée, orientée solution.",
-        "en": "If the stakeholder wants more detail, follow the **traceability links** from the variant to the requirements artefacts: the use case 'authentication by password', or the security requirements of the *basic* (password of at least 5 characters) and *advanced* (at least 10 characters with special characters, changed every 3 months) variants. The features give a management view; model-based requirements give a more detailed, solution-oriented view."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Ex. 15-2",
-          "quote": "the requirements engineer finds the use case 'authentication by password'"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Fig. 15-5",
-          "quote": "the length of the password shall be at least 5 characters."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Fig. 15-5",
-          "quote": "the password shall consist of at least 10 characters and has to include special characters"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.2",
-          "quote": "the features related to the variant under consideration are used to provide a management view"
-        }
-      ],
-      "notions": [
-        "n-domain-artefacts-traceability-views"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Pour enchaîner, deux stratégies : prendre le prochain point de variation **de plus haut niveau** non encore traité (on lie d'abord ce qui touche les propriétés grossières de l'application), ou, si un artefact est associé à plusieurs variants, présenter **tous ces variants** d'un coup.",
-        "en": "To move on, two strategies: take the next **topmost** variation point not yet considered (coarse-grained properties get bound first), or, if an artefact is associated with several variants, present **all those variants** at once."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.2",
-          "quote": "Thus the variation points that may affect coarse-grained properties of the resulting application are bound first."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.2",
-          "quote": "the requirements engineer can communicate all associated variants and thereby bind the variability related to the considered artefact"
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "Résultat de la communication : une **classification** des exigences de partie prenante. (a) Celles satisfaites en **liant la variabilité** déjà définie dans le domaine : les artefacts sont documentés tels quels comme exigences d'application. (b) Celles qui **ne correspondent à aucun artefact** de domaine : il y a un delta, à analyser.",
-        "en": "Result of the communication: a **classification** of stakeholder requirements. (a) Those satisfied by **binding the variability** already defined in the domain: the artefacts are documented as application requirements. (b) Those that **do not correspond to any** domain artefact: a delta exists, to be analysed."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.3",
-          "quote": "The result of the communication activity is a classification of stakeholder requirements:"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.3",
-          "quote": "Stakeholder requirements that can be satisfied by binding variability defined in domain requirements artefacts."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "15.3.3",
-          "quote": "Stakeholder requirements that do not correspond to domain requirements artefacts."
-        }
-      ],
-      "notions": [
-        "n-communication-result"
-      ]
     },
     {
       "type": "callout",
-      "variant": "exam",
+      "variant": "definition",
       "text": {
-        "fr": "**Piège d'examen** : dans le cas de l'exemple, le choix alternatif signifie **exactement un** des deux mécanismes, pas les deux, pas aucun ; et choisir *password* **impose** de lier le point de variation « security standard ». Savoir lire ces deux informations sur le schéma est typique d'une question.",
-        "en": "**Exam trap**: in the example, the alternative choice means **exactly one** of the two mechanisms, not both, not none; and choosing *password* **forces** binding the variation point 'security standard'. Reading both pieces of information off the diagram is a typical question."
+        "fr": "**delta d'exigences** : Différence entre les artefacts d'exigences de domaine et ceux d'application, quand une exigence de partie prenante ne peut être satisfaite par les artefacts de domaine ; elle entraîne un effort d'adaptation. — **delta du modèle de variabilité** : Différence entre le modèle de variabilité de domaine et celui d'application : modification de la variabilité externe existante, ou transformation d'une partie invariante en partie variable.",
+        "en": "**requirements delta**: Difference between domain and application requirements artefacts, arising when a stakeholder requirement cannot be satisfied by domain artefacts; it causes adaptation effort. — **variability model delta**: Difference between the domain and the application variability model: modification of existing external variability, or turning an invariant part into a variable one."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Ex. 15-1",
-          "quote": "The product line provides two authentication mechanisms."
+          "loc": "15.1",
+          "quote": "the differences or deltas between domain requirements artefacts and application requirements artefacts have to be detected and documented"
         },
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
-          "loc": "Ex. 15-1",
-          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
+          "loc": "15.2",
+          "quote": "Deltas between domain and application requirements occur when stakeholder requirements cannot be completely satisfied by domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.1",
+          "quote": "Variability model deltas are differences between the domain variability model"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.1",
+          "quote": "An invariant part must be turned into a variable part"
         }
       ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "inf4-05-qz-05"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Quand le client demande ce que la ligne ne propose pas",
-        "en": "When the customer asks for what the line does not offer"
-      }
     },
     {
       "type": "paragraph",
@@ -742,15 +630,43 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Deltas du modèle de variabilité : nouveau variant, dépendance modifiée, nouveau point de variation (commun devenu variable). Impact : modèle de variabilité → artefacts d’exigences → architecture.",
+        "en": "Variability model deltas: new variant, modified dependency, new variation point (common made variable). Impact: variability model → requirements artefacts → architecture."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-05-qz-08"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Combien ça coûte ? Les catégories A à D",
-        "en": "How much will it cost? Categories A to D"
+        "fr": "4. Le coût d’un delta : catégories A à D et décision",
+        "en": "4. A delta’s cost: categories A to D and decision"
       }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**catégories d'adaptation architecturale (A-D)** : Quatre catégories d'effort d'adaptation de l'architecture de référence : A aucun, B modéré, C élevé, D trop élevé.",
+        "en": "**architectural adaptation categories (A-D)**: Four categories of effort to adapt the reference architecture: A none, B moderate, C high, D too high."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "We distinguish between the following four categories of architectural adaptation:"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.4.4",
+          "quote": "Category D - Too high adaptation effort:"
+        }
+      ]
     },
     {
       "type": "paragraph",
@@ -1058,15 +974,234 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Plages de catégories (Table 15-1) : nouveau variant A-B ; dépendances de variabilité A-C ; dépendances de contrainte B-D ; nouveau point de variation B-D. A aucun effort, B local, C global, D pas de réalisation raisonnable. Options : réaliser, adapter l’exigence (« 80 % »), adapter les deux, renoncer.",
+        "en": "Category ranges (Table 15-1): new variant A-B; variability dependencies A-C; constraint dependencies B-D; new variation point B-D. A no effort, B local, C global, D no reasonable realisation. Options: realise, adapt the requirement (“80%”), adapt both, give up."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-05-qz-11"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Documenter, et en quoi c'est différent d'un système unique",
-        "en": "Documenting, and how it differs from single-system engineering"
+        "fr": "5. Communiquer la variabilité au client",
+        "en": "5. Communicating variability to the customer"
       }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Comment parle-t-on de variabilité à quelqu'un qui n'est pas ingénieur ? On part des **points de variation**, au plus haut niveau d'abstraction. Pour chacun, on communique : (1) ses variants, les dépendances de variabilité et les choix alternatifs ; (2) les points de variation ou variants dépendants, en suivant les dépendances de contrainte.",
+        "en": "How do you talk about variability to a non-engineer? Start from the **variation points**, at the topmost level of abstraction. For each, communicate: (1) its variants, the variability dependencies and the alternative choices; (2) dependent variation points or variants, by following the constraint dependencies."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "typically starts with the variation points that provide the topmost level of abstraction"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "Communicating the variants related to the variation point as well as the variability dependencies and the alternative choices defined for the variation point."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.1",
+          "quote": "Communicating dependent variation points and/or variants by following the existing constraint dependencies."
+        }
+      ],
+      "notions": [
+        "n-communicating-vp-variants"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Exemple du livre (15-1)** : deux points de variation, « security standard » (basic / advanced) et « authentication » (password / fingerprint). Le client s'intéresse à l'authentification : la ligne offre deux mécanismes, **exactement un** doit être choisi. Si c'est « password », le point de variation « security standard » doit **aussi** être lié : basic ou advanced.",
+        "en": "**Book example (15-1)**: two variation points, 'security standard' (basic / advanced) and 'authentication' (password / fingerprint). The stakeholder is interested in authentication: the line offers two mechanisms, **exactly one** must be selected. If 'password', the variation point 'security standard' must **also** be bound: basic or advanced."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "Exactly one of these has to be selected: authentication via 'Password' or authentication via 'fingerprint'."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "The stakeholder has to select either 'basic' or 'advanced' security."
+        }
+      ],
+      "notions": [
+        "n-communicating-vp-variants"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "graph TD\n  VP1[\"VP Authentication\"] --- V1[\"V Password\"]\n  VP1 --- V2[\"V Fingerprint\"]\n  VP2[\"VP Security Standard\"] --- V3[\"V Basic\"]\n  VP2 --- V4[\"V Advanced\"]\n  V1 -.->|\"requires_v_vp\"| VP2",
+      "caption": {
+        "fr": "Figure 15-4 : points de variation « authentication » et « security standard » (choix alternatif dans chacun).",
+        "en": "Figure 15-4: variation points 'authentication' and 'security standard' (alternative choice in each)."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-4",
+          "quote": "Une ligne pointillée étiquetée \"requires_v_vp\" relie la variante \"Password\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Si le client veut plus de détails, on suit les **liens de traçabilité** du variant vers les artefacts d'exigences : le cas d'utilisation « authentication by password », ou les exigences de sécurité des variants *basic* (mot de passe ≥ 5 caractères) et *advanced* (≥ 10 caractères avec caractères spéciaux, changement tous les 3 mois). La vue « fonctionnalités » sert la vue de gestion ; les exigences à base de modèles donnent une vue plus détaillée, orientée solution.",
+        "en": "If the stakeholder wants more detail, follow the **traceability links** from the variant to the requirements artefacts: the use case 'authentication by password', or the security requirements of the *basic* (password of at least 5 characters) and *advanced* (at least 10 characters with special characters, changed every 3 months) variants. The features give a management view; model-based requirements give a more detailed, solution-oriented view."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-2",
+          "quote": "the requirements engineer finds the use case 'authentication by password'"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-5",
+          "quote": "the length of the password shall be at least 5 characters."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Fig. 15-5",
+          "quote": "the password shall consist of at least 10 characters and has to include special characters"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.2",
+          "quote": "the features related to the variant under consideration are used to provide a management view"
+        }
+      ],
+      "notions": [
+        "n-domain-artefacts-traceability-views"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour enchaîner, deux stratégies : prendre le prochain point de variation **de plus haut niveau** non encore traité (on lie d'abord ce qui touche les propriétés grossières de l'application), ou, si un artefact est associé à plusieurs variants, présenter **tous ces variants** d'un coup.",
+        "en": "To move on, two strategies: take the next **topmost** variation point not yet considered (coarse-grained properties get bound first), or, if an artefact is associated with several variants, present **all those variants** at once."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.2",
+          "quote": "Thus the variation points that may affect coarse-grained properties of the resulting application are bound first."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.2",
+          "quote": "the requirements engineer can communicate all associated variants and thereby bind the variability related to the considered artefact"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Résultat de la communication : une **classification** des exigences de partie prenante. (a) Celles satisfaites en **liant la variabilité** déjà définie dans le domaine : les artefacts sont documentés tels quels comme exigences d'application. (b) Celles qui **ne correspondent à aucun artefact** de domaine : il y a un delta, à analyser.",
+        "en": "Result of the communication: a **classification** of stakeholder requirements. (a) Those satisfied by **binding the variability** already defined in the domain: the artefacts are documented as application requirements. (b) Those that **do not correspond to any** domain artefact: a delta exists, to be analysed."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "The result of the communication activity is a classification of stakeholder requirements:"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "Stakeholder requirements that can be satisfied by binding variability defined in domain requirements artefacts."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.3.3",
+          "quote": "Stakeholder requirements that do not correspond to domain requirements artefacts."
+        }
+      ],
+      "notions": [
+        "n-communication-result"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "**Piège d'examen** : dans le cas de l'exemple, le choix alternatif signifie **exactement un** des deux mécanismes, pas les deux, pas aucun ; et choisir *password* **impose** de lier le point de variation « security standard ». Savoir lire ces deux informations sur le schéma est typique d'une question.",
+        "en": "**Exam trap**: in the example, the alternative choice means **exactly one** of the two mechanisms, not both, not none; and choosing *password* **forces** binding the variation point 'security standard'. Reading both pieces of information off the diagram is a typical question."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "The product line provides two authentication mechanisms."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "Ex. 15-1",
+          "quote": "In case of the variant 'password', additionally, the variation point 'security standard' has to be bound."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "On communique à partir des points de variation de plus haut niveau, puis les variants, dépendances et artefacts liés par traçabilité (ex. password ⇒ security standard). Résultat : une classification des exigences de partie prenante.",
+        "en": "Communicate starting from the topmost variation points, then variants, dependencies and artefacts linked by traceability (e.g. password ⇒ security standard). Result: a classification of the stakeholder requirements."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-05-qz-05"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "6. Documenter, et ce qui change par rapport à un système unique",
+        "en": "6. Documenting, and what differs from single-system engineering"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**spécification des exigences d'application** : Spécification complète de l'application : exigences réutilisées du domaine, modèle de variabilité d'application et deltas d'exigences. Elle sert de base à la conception d'application. — **modèle de variabilité d'application** : Modèle décrivant la variabilité de l'application avec les variants sélectionnés, c'est-à-dire les liaisons de variabilité.",
+        "en": "**application requirements specification**: Complete specification of the application: requirements reused from the domain, application variability model and requirements deltas. It is the basis for application design. — **application variability model**: Model describing the application's variability with the selected variants, i.e. the variability bindings."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1.3",
+          "quote": "The main output of application requirements engineering is the application requirements specification"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.1.3",
+          "quote": "It includes the application variability model, which is derived from the domain variability model, the requirements artefacts that are reused from the domain artefacts, and the requirements deltas."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "15.5",
+          "quote": "This part of the documentation describes the application variability model with the selected variants, i.e. with the variability bindings."
+        }
+      ]
     },
     {
       "type": "paragraph",
@@ -1174,6 +1309,14 @@
           "quote": "The goal of this activity is to document the bindings of the variation points defined in the domain variability model."
         }
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "La spécification des exigences d’application contient artefacts réutilisés, modèle de variabilité d’application, deltas et traces vers le domaine ; quatre activités la distinguent d’un système unique. Modèle de variabilité de domaine (tous les variants) ≠ modèle d’application (les variants liés pour ce client).",
+        "en": "The application requirements specification contains reused artefacts, application variability model, deltas and traces to the domain; four activities distinguish it from single-system engineering. Domain variability model (all variants) ≠ application model (the variants bound for this customer)."
+      }
     },
     {
       "type": "checkpoint",
