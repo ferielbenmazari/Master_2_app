@@ -1,0 +1,693 @@
+{
+  "id": "inf4-blanc-02",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Partiel blanc 02 (format ISI1 : vrai/faux justifié et exercices)",
+    "en": "Mock exam 02 (ISI1 format: justified true/false and exercises)"
+  },
+  "kind": "mock",
+  "durationMinutes": 90,
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Blanc construit à partir des chapitres, **dans le format probable du prof** (déduit des annales ISI1, même professeur) : 1 h 30, sans document. Aucune annale INF4 : barème et format réels à confirmer. Corrigés proposés.",
+    "en": "Mock exam built from the chapters, **in the teacher’s probable format** (deduced from the ISI1 past exams, same teacher): 1 h 30, no documents. No INF4 past exam: real grading and format to be confirmed. Proposed solutions."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "A. Vrai / faux justifié",
+        "en": "A. Justified true / false"
+      },
+      "points": 10,
+      "instructions": {
+        "fr": "Répondez par VRAI ou FAUX, justifiez si (et seulement si) vous répondez FAUX.",
+        "en": "Answer TRUE or FALSE, justify if (and only if) you answer FALSE."
+      },
+      "questions": [
+        {
+          "id": "inf4-blanc-02-q01",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Un produit qui ne satisfait pas une exigence commune de la famille oblige à réviser le périmètre ou la variabilité, ou à le laisser hors de la famille.",
+            "en": "A product that does not satisfy a common requirement of the family forces a revision of the scope or the variability, or leaving it outside the family."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : rien n’est révisé automatiquement ; le périmètre décide de ce qui est commun.",
+            "en": "TRUE: nothing is revised automatically; the scope decides what is common."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 3",
+              "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
+            },
+            {
+              "file": "sources-texte/inf4/4-redpl-caise07.md",
+              "loc": "§1 Introduction",
+              "quote": "a software product line (SPL) is a set of software-intensive systems that share a common, managed set of features satisfying the specific needs of a particular market segment or mission"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q02",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Dans le schéma du framework PLE, la moitié haute (Domain Engineering) sert à sélectionner les exigences d'un client pour configurer son application spécifique.",
+            "en": "In the PLE framework diagram, the upper half (Domain Engineering) is used to select a customer's requirements in order to configure their specific application."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : c'est le bas (Product Engineering) qui configure un produit pour un client. Le haut analyse le marché, modélise toutes les variations et code les composants réutilisables.",
+            "en": "FALSE: the lower half (Product Engineering) configures a product for a customer. The upper half analyses the market, models all variations and codes the reusable components."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/1__introduction.md",
+              "loc": "5. Framework PLE",
+              "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/1__introduction.md",
+              "loc": "5. Framework PLE",
+              "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q03",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Dans le feature model FODA de la voiture, les features Transmission et Horsepower sont obligatoires, Air conditioning est optionnelle et Manual/Automatic sont alternatives : le modèle autorise donc 4 produits.",
+            "en": "In the FODA car feature model, Transmission and Horsepower are mandatory, Air conditioning is optional and Manual/Automatic are alternatives: the model therefore allows 4 products."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : 2 choix de transmission (XOR) × Air conditioning présente ou absente = 4 configurations (C1 à C4).",
+            "en": "TRUE: 2 transmission choices (XOR) × Air conditioning present or absent = 4 configurations (C1 to C4)."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 11",
+              "quote": "Mandatory features: `Transmission`, `Horsepower`"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 11",
+              "quote": "Optional feature: `Air conditioning`"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 11",
+              "quote": "Alternative features: `Manual`, `Automatic`"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q04",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Sur l'exemple à 8 produits, ajouter une cardinalité de groupe <1..1> sur F8, F9, F10 (sous F7) revient à ajouter trois produits, soit 11 produits au total.",
+            "en": "On the 8-product example, adding a group cardinality <1..1> on F8, F9, F10 (under F7) amounts to adding three products, i.e. 11 products in total."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : chaque produit existant se décline avec exactement une des trois features : 8 configurations avec F8, 8 avec F9, 8 avec F10, soit 24 produits (8 × 3).",
+            "en": "FALSE: each existing product comes with exactly one of the three features: 8 configurations with F8, 8 with F9, 8 with F10, i.e. 24 products (8 × 3)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+              "loc": "Page 19",
+              "quote": "Ensemble des 24 produits valides"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+              "loc": "Page 19",
+              "quote": "8 configurations avec F8"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q05",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "La contrainte « F6 requires F12 » élimine les configurations qui contiennent F6 avec F11.",
+            "en": "The constraint \"F6 requires F12\" eliminates configurations that contain F6 together with F11."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : toute configuration contenant F6 doit contenir F12 ; comme F11 et F12 sont alternatives (XOR), F6 avec F11 est donc éliminée.",
+            "en": "TRUE: any configuration containing F6 must contain F12; since F11 and F12 are alternatives (XOR), F6 with F11 is therefore eliminated."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+              "loc": "Page 22",
+              "quote": "doit impérativement contenir `F12`"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
+              "loc": "Page 22",
+              "quote": "Les configurations ayant `F6` avec `F11` sont éliminées."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q06",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "La relation Contribution signifie que A ne peut pas être implémentée avant B.",
+            "en": "The Contribution relationship means that A cannot be implemented before B."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : Contribution porte sur la reconnaissance de la valeur de A, pas sur la possibilité de l’implémenter (c’est le rôle d’une dépendance).",
+            "en": "FALSE: Contribution is about whether A’s value is recognised, not whether A can be implemented (that is a dependency’s role)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/13-appendix-1-secret.md",
+              "loc": "§1.5",
+              "quote": "Contribution: Sometimes, the benefit of a requirement can only be realized if another requirement is implemented first."
+            },
+            {
+              "file": "sources-texte/inf4/13-appendix-1-secret.md",
+              "loc": "§1.5",
+              "quote": "it's not a question of whether A can be implemented, but rather whether the value of A can be recognized."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q07",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Dans « those systems that include Export shall … », les mots « that include Export » délimitent le sous-ensemble de produits visés.",
+            "en": "In “those systems that include Export shall …”, the words “that include Export” delimit the subset of products concerned."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : c’est la partie 2 ; elle désigne les produits qui ont la feature Export.",
+            "en": "TRUE: it is part 2; it designates the products that have the Export feature."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+              "loc": "§1 FR23",
+              "quote": "those systems within the diverse text editors product line that include the export feature shall impose providing the user with the ability to specify the destination file as the object."
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§1 FR-15",
+              "quote": "Those systems of the text editor product line that include the List feature must provide the user with the ability to choose between 1 and 3 list types"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q08",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "La stratégie dirigée par les exigences commence par comparer un produit bas de gamme et un produit haut de gamme.",
+            "en": "The requirements-driven strategy starts by comparing a low-end and a high-end product."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : elle commence par collecter et analyser la documentation du domaine ; la comparaison bas / haut de gamme est la stratégie du produit de référence.",
+            "en": "FALSE: it starts by collecting and analysing domain documentation; the low-end / high-end comparison is the reference-product strategy."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 60",
+              "quote": "Start collecting and analysing the available documentation of the domain"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 71",
+              "quote": "Select a low-end and a high-end product"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q09",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "« F1 requires F2 » peut aussi s’écrire (1 − F1) + F2 > 0 en domaine {0, 1}.",
+            "en": "“F1 requires F2” can also be written (1 − F1) + F2 > 0 in the {0, 1} domain."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : c’est l’écriture arithmétique du cours (Mazo 2011) ; elle n’interdit que F1 = 1 avec F2 = 0, comme F1 ⇒ F2 ou F2 ≥ F1.",
+            "en": "TRUE: this is the course’s arithmetic notation (Mazo 2011); it only forbids F1 = 1 with F2 = 0, like F1 ⇒ F2 or F2 ≥ F1."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/7-domain-engineering-for-reuse-paris1-part2.md",
+              "loc": "p. 50",
+              "quote": "Requires Requiring ==> Required Alternatively (1 – Requiring) + Required > 0"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 8",
+              "quote": "$F2 \\ge F1$ * Si $\\{F1, F2\\}"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q10",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Dans l'exercice GNU Prolog du prof, la feature F8 appartient à un groupe <1..2> avec F9 et F10 : elle est donc sélectionnée dans au moins une configuration.",
+            "en": "In the lecturer's GNU Prolog exercise, feature F8 belongs to a <1..2> group with F9 and F10: it is therefore selected in at least one configuration."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : F8 est exclusive avec F2, qui est obligatoire. F8 n'est donc sélectionnée dans aucune configuration : c'est une dead feature, bien qu'elle figure dans le groupe.",
+            "en": "FALSE: F8 is exclusive with F2, which is mandatory. F8 is therefore selected in no configuration: it is a dead feature, even though it appears in the group."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 18",
+              "quote": "the feature `F8` is never selected, in any configuration"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 18",
+              "quote": "it cannot be used in any product"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q11",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Un modèle est vide lorsque le solveur ne trouve aucune solution, sans qu’on ait besoin d’ajouter une contrainte de vérification.",
+            "en": "A model is void when the solver finds no solution, without any verification constraint being needed."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : pour le modèle vide, le tableau du cours n’indique aucune contrainte de vérification : le programme est déjà insatisfiable.",
+            "en": "TRUE: for the void model, the course table gives no verification constraint: the program is already unsatisfiable."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 55",
+              "quote": "It is not required since the constraint program is already Unsatisfiable."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q12",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Avec nsolve et operation_n = 10, le solveur renvoie toujours exactement 10 solutions.",
+            "en": "With nsolve and operation_n = 10, the solver always returns exactly 10 solutions."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : operation_n est un maximum (« at most ») ; si le modèle a 9 solutions, il en renvoie 9.",
+            "en": "FALSE: operation_n is a maximum (“at most”); if the model has 9 solutions, it returns 9."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "The point about “at most” is worth highlighting, since there are no guarantees that the requested number of solutions exists."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q13",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Dans le modèle évolué du prof (F5 obligatoire), relâcher la cardinalité du groupe de [1..1] à [1..3] ne suffit pas, à lui seul, à rendre le modèle non vide : il faut aussi effacer les exclusions.",
+            "en": "In the teacher’s evolved model (F5 mandatory), relaxing the group cardinality from [1..1] to [1..3] is not enough on its own to make the model non-void: the exclusions must also be erased."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI (vérifié par énumération) : F5 force F3 et F8 ensemble, ce que l’exclusion F3 × F8 = 0 interdit ; c’est pourquoi les slides 64 à 67 effacent d’abord les exclusions, puis relâchent le groupe.",
+            "en": "TRUE (checked by enumeration): F5 forces F3 and F8 together, which the exclusion F3 × F8 = 0 forbids; that is why slides 64 to 67 first erase the exclusions, then relax the group."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 65",
+              "quote": "However, erasing these two constraints is not enough."
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 66",
+              "quote": "by relaxing the cardinality [1..1] to [1..3], and then diagnosing it again"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 67",
+              "quote": "Root #=< F2 + F3 + F4,"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q14",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "« Solution 0 » dans l’onglet des résultats signifie qu’aucune solution n’a été trouvée.",
+            "en": "“Solution 0” in the results tab means that no solution was found."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : c’est la réponse à la première requête (numérotation à partir de 0).",
+            "en": "FALSE: it is the answer to the first query (numbering from 0)."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "does not mean that 0 solutions were found"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q15",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Si l’on demande 10 solutions et que le solveur en renvoie 9, le modèle a exactement 9 solutions.",
+            "en": "If you ask for 10 solutions and the solver returns 9, the model has exactly 9 solutions."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : « while we requested 10 solutions, only 9 really exist ».",
+            "en": "TRUE: “while we requested 10 solutions, only 9 really exist”."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "while we requested 10 solutions, only 9 really exist"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q16",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Un delta d'exigences n'a pas de coût propre dans l'ingénierie d'application : seule la phase d'exigences est concernée, donc le prix de l'application reste inchangé.",
+            "en": "A requirements delta has no cost of its own in application engineering: only the requirements phase is affected, so the application's price stays the same."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : les deltas d'exigences entraînent un effort d'adaptation dans tous les sous-processus d'ingénierie d'application, et augmentent donc le prix de l'application.",
+            "en": "FALSE: requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+              "loc": "15.1",
+              "quote": "Requirements deltas lead to adaptation effort in all application engineering sub-processes and thus increase the price of the application."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q17",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Une exigence utilisateur qui ne se trouve pas dans le modèle de la PL est nécessairement une nouvelle exigence, à ajouter au modèle avec ses liens vers les anciennes.",
+            "en": "A user requirement that cannot be found in the PL model is necessarily a new requirement, to be added to the model with its links to the old ones."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : ce peut aussi être la même exigence formulée autrement ; un consensus doit alors être établi sur la formulation.",
+            "en": "FALSE: it may also be the same requirement phrased differently; an agreement on the wording must then be reached."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/4__overview.md",
+              "loc": "3.1 Le processus d'appariement",
+              "quote": "Ce sont de nouvelles exigences et elles doivent être ajoutées au modèle de la PL ainsi que les liens entre elles et par rapport aux anciennes exigences"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/4__overview.md",
+              "loc": "3.1 Le processus d'appariement",
+              "quote": "Ce sont les mêmes exigences exprimées différemment, et un consensus doit alors être établi sur la formulation de l'exigence"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q18",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Parmi les facteurs de coût d'un variant, tester un nouveau composant coûte plus d'effort que tester un composant réutilisé, car il faut créer de nouveaux cas de test.",
+            "en": "Among the cost factors of a variant, testing a new component takes more effort than testing a reused one, since new test cases have to be created."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : les tests des composants et configurations réutilisés sont moins coûteux ; pour les nouveaux composants, de nouveaux cas de test doivent être créés.",
+            "en": "TRUE: tests of reused components and configurations are cheaper; for new components, new test cases have to be created."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+              "loc": "16.4",
+              "quote": "Tests to be performed on new components - this takes more effort, since new test cases have to be created."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q19",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Ajouter une fonctionnalité au modèle ne doit jamais supprimer les anciens produits : ils restent représentables quand la nouvelle feature est exclue.",
+            "en": "Adding a feature to the model must never remove the old products: they stay representable when the new feature is excluded."
+          },
+          "answer": true,
+          "justification": {
+            "fr": "VRAI : condition d’une évolution sans régression.",
+            "en": "TRUE: the condition for an evolution without regression."
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 2 §3",
+              "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-q20",
+          "type": "true_false",
+          "points": 0.5,
+          "statement": {
+            "fr": "Le test d'absence de variant vérifie que les variants obligatoires du modèle de variabilité sont bien présents dans l'application.",
+            "en": "The variant absence test checks that the mandatory variants of the variability model are present in the application."
+          },
+          "answer": false,
+          "justification": {
+            "fr": "FAUX : le test d'absence vérifie que l'application n'inclut pas de variants qui n'étaient pas prévus. Vérifier qu'un variant « mandatory » n'est pas absent relève du test de dépendances d'application.",
+            "en": "FALSE: the absence test checks that the application does not include variants that were not meant to be included. Checking that a \"mandatory\" variant is not missing belongs to the application dependency test."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+              "loc": "18.3",
+              "quote": "The variant absence test ensures that an application does not include variants that were not defined to be included in the application."
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+              "loc": "18.3",
+              "quote": "Checking whether the absence of variants violates any restrictions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": {
+        "fr": "B. Exercices",
+        "en": "B. Exercises"
+      },
+      "points": 10,
+      "instructions": {
+        "fr": "Posez la méthode, donnez le résultat et justifiez.",
+        "en": "State the method, give the result and justify."
+      },
+      "questions": [
+        {
+          "id": "inf4-blanc-02-b1",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Modèle : F2, F3, F4 obligatoires sous F1 ; F5, F6 optionnelles et F7 obligatoire sous F3 ; groupe `<1..2>` sur F8, F9, F10 sous F7 ; XOR F11 / F12 sous F4 ; F8 mutex F2 ; F6 requires F12 ; F9 ⇒ ¬((F5 ∧ F6) ∨ F11). (1) Écris les contraintes. (2) Comment générer les configurations ? (3) Combien de produits ? (4) « Are there some problems in the model? Which ones? »",
+            "en": "Model: F2, F3, F4 mandatory under F1; F5, F6 optional and F7 mandatory under F3; `<1..2>` group on F8, F9, F10 under F7; XOR F11 / F12 under F4; F8 mutex F2; F6 requires F12; F9 ⇒ ¬((F5 ∧ F6) ∨ F11). (1) Write the constraints. (2) How do you generate configurations? (3) How many products? (4) “Are there some problems in the model? Which ones?”"
+          },
+          "correction": {
+            "fr": "Corrigé (code et résultats du prof, décomposition **proposée**).\n(1) `fd_domain(L, 0, 1)`, F1 #= 1 ; obligatoires `F1 #= F2`, `F1 #= F3`, `F1 #= F4`, `F3 #= F7` ; optionnelles `F3 #>= F5`, `F3 #>= F6` ; groupe `F7 #=< F8+F9+F10`, `F8+F9+F10 #=< F7*2` ; XOR `F11+F12 #= F4` ; `F2+F8 #=< 1` ; `F6 #==> F12` ; `F9 #==> #\\ ((F5 #/\\ F6) #\\/ F11)` ; puis `fd_labeling(L)`.\n(2) `consult('productline.pl').` puis `productline(L).` et `;` pour la solution suivante ; ou `findall(L, productline(L), Semantics)`.\n(3) **12 produits** (`length(Semantics, N)`). Décomposition : F8 n’est jamais possible, donc le groupe donne {F9}, {F10} ou {F9, F10}. **Avec F11** : F12 = 0 donc F6 = 0 ; F9 interdite (F9 ⇒ ¬F11) donc seul {F10} ; F5 libre → **2**. **Avec F12** : F5, F6 libres (4) ; {F10} toujours possible (4) ; {F9} et {F9, F10} exigent ¬(F5 ∧ F6) : 3 + 3 → **10**. Total **12**.\n(4) **F8 est une feature morte** : F2 est obligatoire et F8 mutex F2, donc F8 n’apparaît dans aucun produit. Correction possible : supprimer ou revoir le mutex, ou rendre F2 optionnelle (puis revérifier).",
+            "en": "Solution (the teacher’s code and results, **proposed** breakdown).\n(1) `fd_domain(L, 0, 1)`, F1 #= 1; mandatory `F1 #= F2`, `F1 #= F3`, `F1 #= F4`, `F3 #= F7`; optional `F3 #>= F5`, `F3 #>= F6`; group `F7 #=< F8+F9+F10`, `F8+F9+F10 #=< F7*2`; XOR `F11+F12 #= F4`; `F2+F8 #=< 1`; `F6 #==> F12`; `F9 #==> #\\ ((F5 #/\\ F6) #\\/ F11)`; then `fd_labeling(L)`.\n(2) `consult('productline.pl').` then `productline(L).` and `;` for the next solution; or `findall(L, productline(L), Semantics)`.\n(3) **12 products** (`length(Semantics, N)`). Breakdown: F8 is never possible, so the group gives {F9}, {F10} or {F9, F10}. **With F11**: F12 = 0 so F6 = 0; F9 forbidden (F9 ⇒ ¬F11) so only {F10}; F5 free → **2**. **With F12**: F5, F6 free (4); {F10} always possible (4); {F9} and {F9, F10} require ¬(F5 ∧ F6): 3 + 3 → **10**. Total **12**.\n(4) **F8 is a dead feature**: F2 is mandatory and F8 mutex F2, so F8 appears in no product. Possible fix: remove or revise the mutex, or make F2 optional (then re-verify)."
+          },
+          "gradingGuide": [
+            {
+              "fr": "Méthode posée avant le résultat (cas, relations, étapes).",
+              "en": "Method stated before the result (cases, relations, steps)."
+            },
+            {
+              "fr": "Résultat conforme au corrigé proposé.",
+              "en": "Result consistent with the proposed solution."
+            },
+            {
+              "fr": "Justification (« Why ? ») avec le vocabulaire exact du cours.",
+              "en": "Justification (“Why?”) using the course’s exact vocabulary."
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 13",
+              "quote": "1. What is the resulting code?"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "diapo 15",
+              "quote": "you can generate more and more solutions"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-b2",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Sur le modèle de la partie 1 du tutoriel 5 : (a) combien de solutions en sélectionnant F1 ? (b) en désélectionnant F1 ? (c) en sélectionnant F4 et en désélectionnant F3 et F1 ?",
+            "en": "On the model of tutorial 5, part 1: (a) how many solutions when selecting F1? (b) when deselecting F1? (c) when selecting F4 and deselecting F3 and F1?"
+          },
+          "correction": {
+            "fr": "**Corrigé proposé** (vérifié en énumérant les 9 produits). (a) **4** : F1 ⇒ F6, donc pas F3 (F10 excludes F6) ; avec F2 : 1 produit (F5 est impossible, il exige F9, donc F4) ; avec F4 : F5 absent (F9 libre : 2) ou F5 présent avec F9 (1), soit 3. (b) **5** : F2 : 1 ; F3 : 2 (F7 libre) ; F4 : 2 (F9 libre). (c) **2** : F8 est imposée, seule F9 reste libre.",
+            "en": "**Proposed solution** (checked by enumerating the 9 products). (a) **4**: F1 ⇒ F6, so not F3 (F10 excludes F6); with F2: 1 product (F5 is impossible, it requires F9, hence F4); with F4: F5 absent (F9 free: 2) or F5 present with F9 (1), i.e. 3. (b) **5**: F2: 1; F3: 2 (F7 free); F4: 2 (F9 free). (c) **2**: F8 is forced, only F9 is free."
+          },
+          "gradingGuide": [
+            {
+              "fr": "Méthode posée avant le résultat (cas, relations, étapes).",
+              "en": "Method stated before the result (cases, relations, steps)."
+            },
+            {
+              "fr": "Résultat conforme au corrigé proposé.",
+              "en": "Result consistent with the proposed solution."
+            },
+            {
+              "fr": "Justification (« Why ? ») avec le vocabulaire exact du cours.",
+              "en": "Justification (“Why?”) using the course’s exact vocabulary."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "while we requested 10 solutions, only 9 really exist"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "there is only one solution where F5 is selected"
+            }
+          ]
+        },
+        {
+          "id": "inf4-blanc-02-b3",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "« Create the variability model (e.g., feature model) based on the following requirements and constraint of an appliance store product line. »\n- **R1** SOME SYSTEMS… SHOULD PROVIDE the clients WITH THE ABILITY TO manage the products sold in the stores.\n- **R2** SOME SYSTEMS… COULD PROVIDE the clients WITH THE ABILITY TO validate themselves in the corresponding system.\n- **R3** ALL the SYSTEMS… SHALL PROVIDE the clients WITH THE ABILITY TO manage the payments of the products sold in the stores.\n- **R4** SOME SYSTEMS… COULD PROVIDE the clients WITH THE ABILITY TO pay by card.\n- **R5** SOME SYSTEMS… COULD PROVIDE the clients WITH THE ABILITY TO pay cash.\n- **C1** The client should be validated into each store system before managing the products of the corresponding store.",
+            "en": "“Create the variability model (e.g., feature model) based on the following requirements and constraint of an appliance store product line.”\n- **R1** SOME SYSTEMS… SHOULD PROVIDE the clients WITH THE ABILITY TO manage the products sold in the stores.\n- **R2** SOME SYSTEMS… COULD PROVIDE the clients WITH THE ABILITY TO validate themselves in the corresponding system.\n- **R3** ALL the SYSTEMS… SHALL PROVIDE the clients WITH THE ABILITY TO manage the payments of the products sold in the stores.\n- **R4** SOME SYSTEMS… COULD PROVIDE the clients WITH THE ABILITY TO pay by card.\n- **R5** SOME SYSTEMS… COULD PROVIDE the clients WITH THE ABILITY TO pay cash.\n- **C1** The client should be validated into each store system before managing the products of the corresponding store."
+          },
+          "correction": {
+            "fr": "Corrigé **du prof** (slide 69), commenté.\n- Racine **ApplianceStore**.\n- **ProductManagement** : optionnelle (R1 : SOME… SHOULD).\n- **Validation** : optionnelle (R2 : SOME… COULD).\n- **Payment** : obligatoire (R3 : ALL… SHALL).\n- Sous Payment : **CardPayment** et **CashPayment**, optionnelles (R4, R5 : SOME… COULD). Ce ne sont pas des alternatives : un magasin peut proposer les deux.\n- **ProductManagement requires Validation** : traduction de C1 (on ne gère les produits qu’après validation).\n\n**Pour aller plus loin** : ce modèle autorise 2 × 2 × 4 = 16 combinaisons de ProductManagement, Validation et des deux paiements, moins celles où ProductManagement est présent sans Validation (4), soit **12 produits**.",
+            "en": "**The teacher’s** solution (slide 69), annotated.\n- Root **ApplianceStore**.\n- **ProductManagement**: optional (R1: SOME… SHOULD).\n- **Validation**: optional (R2: SOME… COULD).\n- **Payment**: mandatory (R3: ALL… SHALL).\n- Under Payment: **CardPayment** and **CashPayment**, optional (R4, R5: SOME… COULD). They are not alternatives: a store can offer both.\n- **ProductManagement requires Validation**: translation of C1 (products are managed only after validation).\n\n**Going further**: this model allows 2 × 2 × 4 = 16 combinations of ProductManagement, Validation and both payments, minus those where ProductManagement is present without Validation (4), i.e. **12 products**."
+          },
+          "gradingGuide": [
+            {
+              "fr": "Méthode posée avant le résultat (cas, relations, étapes).",
+              "en": "Method stated before the result (cases, relations, steps)."
+            },
+            {
+              "fr": "Résultat conforme au corrigé proposé.",
+              "en": "Result consistent with the proposed solution."
+            },
+            {
+              "fr": "Justification (« Why ? ») avec le vocabulaire exact du cours.",
+              "en": "Justification (“Why?”) using the course’s exact vocabulary."
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 68",
+              "quote": "Create the variability model (e.g., feature model) based on the following requirements and constraint of an appliance store product line."
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 68",
+              "quote": "ALL the SYSTEMS OF THE appliance store PRODUCT LINE SHALL PROVIDE the clients WITH THE ABILITY TO manage the payments of the products sold in the stores."
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 68",
+              "quote": "The client should be validated into each store system before managing the products of the corresponding store."
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 69",
+              "quote": "Payment` (relié par flèche `mandatory` vers `ApplianceStore`)"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/6__ple.md",
+              "loc": "Slide 69",
+              "quote": "Dépendance transversale : `ProductManagement` $\\xrightarrow{\\text{require}}$ `Validation` (traduction de la contrainte C1)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

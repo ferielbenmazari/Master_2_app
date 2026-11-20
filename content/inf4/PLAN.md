@@ -28,7 +28,7 @@
 Ressource d'exercice : `EPI/5__configuration ILP(1).xlsx` (configuration par programmation linéaire en nombres entiers) → exercices du chapitre 07 ou 08.
 
 ## Partiels
-Quiz du prof (annales, corrigés **proposés**) : `exams/quiz-prof-0.json`, `quiz-prof-1.json`, `quiz-prof-2.json` (36 questions, 20 points chacun). quiz3 à quiz5 : fichiers vides au 2026-11-20. Analyse globale : `ANALYSE-EPI.md`.
+Partiels blancs au format probable du prof (déduit d’ISI1) : `exams/blanc-01.json` et `blanc-02.json` (20 vrai/faux justifiés + 3 exercices, 1 h 30). Quiz du prof (annales, corrigés **proposés**) : `exams/quiz-prof-0.json`, `quiz-prof-1.json`, `quiz-prof-2.json` (36 questions, 20 points chacun). quiz3 à quiz5 : fichiers vides au 2026-11-20. Analyse globale : `ANALYSE-EPI.md`.
 
 ## Écarts détectés (termes EN : texte / glossaire actuel → PDF original)
 > Établi le 2026-11-06 par `course-analyst` (notions.json) en cherchant chaque `glossary[].en` et chaque terme `**gras**` de la version EN dans `sources-texte/inf4/*.md`. Le PDF fait foi. À traiter par le `fact-checker` (C09). Les termes absents de la liste ont été retrouvés tels quels (ou ne sont que des tournures pédagogiques sans valeur de terme).
