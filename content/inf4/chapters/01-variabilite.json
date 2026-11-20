@@ -3,16 +3,16 @@
   "courseId": "inf4",
   "order": 1,
   "title": {
-    "fr": "Du sur-mesure à la ligne de produits : la variabilité",
-    "en": "From tailor-made to product lines: variability"
+    "fr": "Variabilité et ligne de produits : les notions de base",
+    "en": "Variability and product lines: the basics"
   },
   "hook": {
-    "fr": "Deux gardes britanniques, un magasin de sandwichs et une Ford T : pourquoi le logiciel a besoin de lignes de produits.",
-    "en": "Two British guards, a sandwich shop and a Ford Model T: why software needs product lines."
+    "fr": "Communalité, variabilité, dépendances ; domaine et application ; périmètre et retour vers le domaine ; la structure d’un projet VariaMos ; les six mécanismes de réutilisation ; le coût.",
+    "en": "Commonality, variability, dependencies; domain and application; scope and feedback to the domain; the structure of a VariaMos project; the six reuse mechanisms; the cost."
   },
   "question": {
-    "fr": "Pourquoi produire du logiciel « en famille » plutôt que produit par produit, et que faut-il savoir décrire pour le faire ?",
-    "en": "Why produce software “as a family” rather than product by product, and what must you be able to describe to do so?"
+    "fr": "Qu’est-ce qui est commun, variable et lié dans une famille de produits, et qui décide de quoi : le domaine ou l’application ?",
+    "en": "What is common, variable and linked in a product family, and who decides what: the domain or the application?"
   },
   "objectives": [
     {
@@ -46,27 +46,45 @@
         "en": "Explain a product line’s benefits and cost (investment curve, break-even point)."
       },
       "level": "understand"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Distinguer ce qui se décide dans le domaine (périmètre, variabilité) et dans l’application (sélection), et expliquer le retour vers le domaine.",
+        "en": "Distinguish what is decided in the domain (scope, variability) from the application (selection), and explain feedback to the domain."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o6",
+      "text": {
+        "fr": "Placer produits, modèles réutilisables et adaptations dans un projet VariaMos.",
+        "en": "Place products, reusable models and adaptations in a VariaMos project."
+      },
+      "level": "apply"
     }
   ],
   "examFocus": {
+    "documented": [
+      {
+        "fr": "Quiz 0 du prof (12 questions) : ingénierie d’application, périmètre, retour vers le domaine, copie ≠ ligne, structure VariaMos, requires / excludes. Consigne du prof : l’examen couvre tous les tutoriels.",
+        "en": "Teacher’s quiz 0 (12 questions): application engineering, scope, feedback to the domain, copy ≠ line, VariaMos structure, requires / excludes. Teacher’s instruction: the exam covers all tutorials."
+      }
+    ],
     "probable": [
       {
-        "fr": "Jeux d’ouverture du prof : décrire « AT THE SAME TIME » ce qui est commun, ce qui varie et les dépendances (gardes, sandwichs).",
-        "en": "The teacher’s opening games: describe “AT THE SAME TIME” what is common, what varies and the dependencies (guards, sandwiches)."
-      },
-      {
-        "fr": "Comparaisons « X VS PL » des mécanismes de réutilisation ; schéma du framework PLE.",
-        "en": "“X VS PL” comparisons of reuse mechanisms; the PLE framework diagram."
+        "fr": "Jeux d’ouverture du prof : décrire « AT THE SAME TIME » communalité, variabilité et dépendances (gardes, sandwichs).",
+        "en": "Teacher’s opening games: describe “AT THE SAME TIME” commonality, variability and dependencies (guards, sandwiches)."
       }
     ]
   },
   "prerequisites": {
-    "fr": "Aucun : point de départ du cours.",
-    "en": "None: starting point of the course."
+    "fr": "Aucun.",
+    "en": "None."
   },
   "next": {
-    "fr": "Le chapitre 2 approfondit la plate-forme et la personnalisation de masse ; le chapitre 3 apprend à écrire la variabilité avec un feature model.",
-    "en": "Chapter 2 develops platforms and mass customisation; chapter 3 teaches how to write variability with a feature model."
+    "fr": "Principes des lignes de produits logiciels (définitions de Böckle).",
+    "en": "Principles of software product lines (Böckle’s definitions)."
   },
   "synthesis": {
     "mustKnow": [
@@ -85,12 +103,20 @@
       {
         "fr": "Coût initial élevé, rentable après quelques produits (souvent 3 ou 4).",
         "en": "High initial cost, profitable after a few products (often 3 or 4)."
+      },
+      {
+        "fr": "Périmètre : ce qui est commun dépend de lui ; un choix de client est une sélection, pas un changement de périmètre.",
+        "en": "Scope: what is common depends on it; a customer’s choice is a selection, not a scope change."
       }
     ],
     "mustDo": [
       {
         "fr": "Décrire un petit domaine en trois listes : commun, variable, dépendances.",
         "en": "Describe a small domain in three lists: common, variable, dependencies."
+      },
+      {
+        "fr": "Dire où se décide un cas (domaine ou application) ; placer produits et adaptations dans VariaMos.",
+        "en": "Say where a case is decided (domain or application); place products and adaptations in VariaMos."
       }
     ],
     "distinctions": [
@@ -113,28 +139,185 @@
   "estimatedMinutes": 14,
   "sources": [
     "ressources/S3__INF4/mardown/1__introduction.md",
-    "sources-texte/inf4/1-introduction-to-ple.md"
+    "sources-texte/inf4/1-introduction-to-ple.md",
+    "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+    "sources-texte/inf4/11-quiz0.md"
   ],
   "status": "draft",
   "story": [
     {
       "type": "heading",
       "text": {
-        "fr": "Deux gardes, un même uniforme… ou presque",
-        "en": "Two guards, one uniform… or almost"
+        "fr": "1. Communalité, variabilité, dépendances",
+        "en": "1. Commonality, variability, dependencies"
       }
     },
     {
-      "type": "paragraph",
+      "type": "subheading",
       "text": {
-        "fr": "Imagine deux dessins côte à côte. Deux gardes britanniques. Joue au jeu des sept différences : lequel des deux est « le bon » ? Les deux gardes portent le même uniforme rouge, le même pantalon noir et font le même mouvement de marche. Pourtant, des options sous-jacentes les distinguent : taille du chapeau, nez, moustache, bouton, gants, rayures, ombre. Le prof utilise ce jeu comme métaphore des produits d'une même ligne.",
-        "en": "Picture two drawings side by side. Two British guards. Play spot-the-difference: which one is the “right” one? Both guards wear the same red uniform, the same black trousers and do the same marching movement. Yet underlying options set them apart: hat size, nose, moustache, button, gloves, stripes, shadow. The teacher uses this game as a metaphor for the products of one product line."
-      },
+        "fr": "1.1 Les trois notions",
+        "en": "1.1 The three notions"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Notion",
+          "en": "Notion"
+        },
+        {
+          "fr": "Définition",
+          "en": "Définition"
+        },
+        {
+          "fr": "Question pour la reconnaître",
+          "en": "Question pour la reconnaître"
+        },
+        {
+          "fr": "Exemple des gardes britanniques",
+          "en": "Exemple des gardes britanniques"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**Communalité**",
+            "en": "**Communalité**"
+          },
+          {
+            "fr": "caractéristiques communes à tous les produits",
+            "en": "caractéristiques communes à tous les produits"
+          },
+          {
+            "fr": "est-ce pareil pour tous ?",
+            "en": "est-ce pareil pour tous ?"
+          },
+          {
+            "fr": "une veste, un chapeau, un pantalon, des ceintures, des chaussures",
+            "en": "une veste, un chapeau, un pantalon, des ceintures, des chaussures"
+          }
+        ],
+        [
+          {
+            "fr": "**Variabilité**",
+            "en": "**Variabilité**"
+          },
+          {
+            "fr": "caractéristiques qui distinguent un produit d’un autre",
+            "en": "caractéristiques qui distinguent un produit d’un autre"
+          },
+          {
+            "fr": "qu’est-ce qui peut changer ?",
+            "en": "qu’est-ce qui peut changer ?"
+          },
+          {
+            "fr": "taille du chapeau, type de moustache",
+            "en": "taille du chapeau, type de moustache"
+          }
+        ],
+        [
+          {
+            "fr": "**Dépendances**",
+            "en": "**Dépendances**"
+          },
+          {
+            "fr": "liens entre caractéristiques : un choix en impose ou en interdit un autre",
+            "en": "liens entre caractéristiques : un choix en impose ou en interdit un autre"
+          },
+          {
+            "fr": "un choix en entraîne-t-il un autre ?",
+            "en": "un choix en entraîne-t-il un autre ?"
+          },
+          {
+            "fr": "un grand chapeau projette une grande ombre",
+            "en": "un grand chapeau projette une grande ombre"
+          }
+        ]
+      ],
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
           "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "Ils portent le même uniforme rouge, le même pantalon noir et font le même mouvement de marche."
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "Ils se distinguent par des caractéristiques variables"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
+        }
+      ],
+      "notions": [
+        "n-commonality",
+        "n-variability",
+        "n-dependencies"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.2 Méthode : décrire les trois en même temps",
+        "en": "1.2 Method: describing all three at the same time"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Décrire communalité, variabilité et dépendances",
+        "en": "Describing commonality, variability and dependencies"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lister ce qui est **identique** dans tous les cas observés.",
+            "en": "List what is **identical** in all observed cases."
+          },
+          "why": {
+            "fr": "C’est la communalité.",
+            "en": "This is the commonality."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lister ce qui **diffère** d’un cas à l’autre.",
+            "en": "List what **differs** from one case to another."
+          },
+          "why": {
+            "fr": "C’est la variabilité.",
+            "en": "This is the variability."
+          }
+        },
+        {
+          "do": {
+            "fr": "Chercher les **liens** : « si je choisis X, alors Y ».",
+            "en": "Look for the **links**: “if I choose X, then Y”."
+          },
+          "why": {
+            "fr": "Ce sont les dépendances ; elles limitent les combinaisons.",
+            "en": "These are the dependencies; they limit the combinations."
+          }
+        },
+        {
+          "do": {
+            "fr": "Écrire les trois **d’un seul tenant** (le prof : « AT THE SAME TIME »).",
+            "en": "Write the three **together** (the teacher: “AT THE SAME TIME”)."
+          },
+          "why": {
+            "fr": "Séparés, ils donnent des listes incohérentes.",
+            "en": "Separated, they give inconsistent lists."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/1-introduction-to-ple.md",
+          "loc": "p. 5",
+          "quote": "Find a way to describe both AT THE SAME TIME"
         }
       ],
       "notions": [
@@ -142,90 +325,47 @@
       ]
     },
     {
-      "type": "checkpoint",
-      "quizId": "inf4-01-qz-01"
-    },
-    {
-      "type": "heading",
+      "type": "subheading",
       "text": {
-        "fr": "Communalité, variabilité, dépendances",
-        "en": "Commonality, variability, dependencies"
-      }
+        "fr": "1.2.1 Exemple corrigé : les gardes britanniques",
+        "en": "1.2.1 Worked example: the British guards"
+      },
+      "level": 3
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Ce qui est partagé par tous les gardes — une veste, un chapeau, deux yeux, la jambe droite levée — c'est la [[term-commonality|communalité]]. Ce qui change d'un garde à l'autre — taille du chapeau, type de moustache, couleur des rayures — c'est la [[term-variability|variabilité]].",
-        "en": "What all guards share — a jacket, a hat, two eyes, the right leg raised — is the [[term-commonality|commonality]]. What changes from one guard to another — hat size, type of moustache, colour of the stripes — is the [[term-variability|variability]]."
+        "fr": "Deux gardes portent le même uniforme rouge, le même pantalon noir et marchent de la même façon : c’est la **communalité**. Ils se distinguent par la taille du chapeau ou le type de moustache : c’est la **variabilité**. Et un grand chapeau projette une grande ombre : c’est une **dépendance** (la taille du chapeau détermine l’ombre).",
+        "en": "Two guards wear the same red uniform, the same black trousers and walk the same way: this is the **commonality**. They differ by hat size or moustache type: this is the **variability**. And a big hat casts a big shadow: this is a **dependency** (hat size determines the shadow)."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
           "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "Les personnes et les choses ont des caractéristiques communes"
+          "quote": "Ils portent le même uniforme rouge, le même pantalon noir et font le même mouvement de marche."
         },
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
           "loc": "2. Qu'est-ce que la variabilité ?",
           "quote": "Ils se distinguent par des caractéristiques variables"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
         }
       ],
       "notions": [
+        "n-british-guards-game",
         "n-commonality",
         "n-variability"
       ]
     },
     {
-      "type": "paragraph",
+      "type": "subheading",
       "text": {
-        "fr": "Mais on ne peut pas choisir n'importe quoi n'importe comment : les caractéristiques peuvent être liées. Ce sont les [[term-dependency|dépendances]]. L'exemple du cours : un grand chapeau projette une grande ombre.",
-        "en": "But you cannot pick anything freely: features can be linked. These are [[term-dependency|dependencies]]. The course example: a big hat casts a big shadow."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "un grand chapeau projette une grande ombre"
-        }
-      ],
-      "notions": [
-        "n-dependencies"
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "Piège d'examen : ne confonds pas les trois mots. Communalité = ce qui est pareil pour tous ; variabilité = ce qui peut changer ; dépendance = un choix qui en impose (ou en interdit) un autre.",
-        "en": "Exam trap: do not mix up the three words. Commonality = what is the same for all; variability = what can change; dependency = one choice that forces (or forbids) another."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "Les personnes et les choses ont des caractéristiques communes"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "Ils se distinguent par des caractéristiques variables"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "un grand chapeau projette une grande ombre"
-        }
-      ]
-    },
-    {
-      "type": "checkpoint",
-      "quizId": "inf4-01-qz-02"
-    },
-    {
-      "type": "heading",
-      "text": {
-        "fr": "Le magasin de sandwichs",
-        "en": "The sandwich shop"
+        "fr": "1.3 Transfert : la sandwicherie",
+        "en": "1.3 Transfer: the sandwich shop"
       }
     },
     {
@@ -258,113 +398,671 @@
     },
     {
       "type": "callout",
-      "variant": "tip",
+      "variant": "exam",
       "text": {
-        "fr": "À retenir : la variabilité se décrit côté problème (ce que le client peut choisir) avant de se réaliser côté solution (recettes, code).",
-        "en": "Remember: variability is described on the problem side (what the customer can choose) before it is realised on the solution side (recipes, code)."
+        "fr": "Piège d'examen : ne confonds pas les trois mots. Communalité = ce qui est pareil pour tous ; variabilité = ce qui peut changer ; dépendance = un choix qui en impose (ou en interdit) un autre.",
+        "en": "Exam trap: do not mix up the three words. Commonality = what is the same for all; variability = what can change; dependency = one choice that forces (or forbids) another."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
           "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "analyser les types de sandwichs, identifier les points communs et les différences"
+          "quote": "Les personnes et les choses ont des caractéristiques communes"
         },
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
           "loc": "2. Qu'est-ce que la variabilité ?",
-          "quote": "les recettes et procédures pour chaque combinaison"
+          "quote": "Ils se distinguent par des caractéristiques variables"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "2. Qu'est-ce que la variabilité ?",
+          "quote": "un grand chapeau projette une grande ombre"
         }
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Communalité = pareil pour tous ; variabilité = peut changer ; dépendance = un choix en impose ou en interdit un autre. On les décrit ensemble, et côté problème (ce que le client choisit) avant le côté solution (recettes, code).",
+        "en": "Commonality = the same for all; variability = can change; dependency = one choice requires or forbids another. Describe them together, and on the problem side (what the customer chooses) before the solution side (recipes, code)."
+      }
+    },
+    {
       "type": "checkpoint",
-      "quizId": "inf4-01-qz-03"
+      "quizId": "inf4-01-qz-01"
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-01-qz-02"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "De l'artisan à la chaîne… puis au sur-mesure de masse",
-        "en": "From craftsman to assembly line… then to mass customisation"
+        "fr": "2. Domaine et application : le framework PLE",
+        "en": "2. Domain and application: the PLE framework"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Les deux ingénieries",
+        "en": "2.1 The two engineerings"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**Ingénierie de domaine** (*for reuse*) : on analyse le marché, on modélise **toutes** les variations possibles (modèle de variabilité) et on code les composants réutilisables. **Ingénierie d’application** (*with reuse*) : un client veut une application précise ; on **sélectionne** ses exigences dans le modèle de variabilité (configuration), ce qui dérive l’architecture et assemble les composants.",
+        "en": "**Domain engineering** (*for reuse*): analyse the market, model **all** possible variations (variability model) and code the reusable components. **Application engineering** (*with reuse*): a customer wants a specific application; their requirements are **selected** from the variability model (configuration), which derives the architecture and assembles the components."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Le schéma : domaine / application, problème / solution",
+        "en": "2.2 The diagram: domain / application, problem / solution"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Ingénierie",
+          "en": "Engineering"
+        },
+        {
+          "fr": "Problème (définition)",
+          "en": "Problem (definition)"
+        },
+        {
+          "fr": "Solution (réalisation)",
+          "en": "Solution (realisation)"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**Domaine** (pour **tous** les produits)",
+            "en": "**Domaine** (pour **tous** les produits)"
+          },
+          {
+            "fr": "marché analysé, **modèle de variabilité** : toutes les variations",
+            "en": "marché analysé, **modèle de variabilité** : toutes les variations"
+          },
+          {
+            "fr": "**composants** réutilisables, architecture",
+            "en": "**composants** réutilisables, architecture"
+          }
+        ],
+        [
+          {
+            "fr": "**Application** (pour **un** produit)",
+            "en": "**Application** (pour **un** produit)"
+          },
+          {
+            "fr": "exigences du client, **sélectionnées** dans le modèle",
+            "en": "exigences du client, **sélectionnées** dans le modèle"
+          },
+          {
+            "fr": "produit assemblé par **configuration**",
+            "en": "produit assemblé par **configuration**"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ],
+      "notions": [
+        "n-ple-framework-sei",
+        "n-domain-engineering",
+        "n-application-engineering",
+        "n-problem-solution-space"
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  subgraph DE[\"Domain engineering (for reuse)\"]\n    DP[\"Problem: variability model\"] --> DS[\"Solution: reusable components\"]\n  end\n  subgraph AE[\"Application engineering (with reuse)\"]\n    AP[\"Problem: customer requirements\"] --> AS[\"Solution: derived product\"]\n  end\n  DP -. configuration .-> AP\n  DS -. assembly .-> AS",
+      "caption": {
+        "fr": "Le framework PLE, redessiné : haut = domaine, bas = application ; gauche = problème, droite = solution ; la configuration relie le modèle de variabilité aux exigences du produit.",
+        "en": "The PLE framework, redrawn: top = domain, bottom = application; left = problem, right = solution; configuration links the variability model to the product’s requirements."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.3 Les trois activités essentielles du SEI",
+        "en": "2.3 The SEI’s three essential activities"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "L'[[term-craft|artisanat]], c'est le point de départ : des outils primitifs taillés à la main, une occupation spécialisée. Puis viennent les lignes de production : utilisées à Venise au 12e siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de la Ford T (1908-1927).",
-        "en": "[[term-craft|Craft]] is the starting point: primitive hand-made tools, a specialised occupation. Then come production lines: used in Venice in the 12th century (shipyards with specialised roles), then popularised by the Ford Model T line (1908-1927)."
+        "fr": "Le SEI résume cela en trois activités essentielles qui doivent interagir de manière itérative : le développement des actifs de base (Core Asset Development), le développement des produits (Product Development) et la gestion (Management).",
+        "en": "The SEI sums this up in three essential activities that must interact iteratively: Core Asset Development, Product Development and Management."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. De l'artisanat à l'ingénierie",
-          "quote": "Outils primitifs taillés à la main, occupation spécialisée."
+          "loc": "5. Framework PLE",
+          "quote": "Développement des actifs de base (Core Asset Development), Développement des produits (Product Development), et la Gestion (Management)."
         },
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. De l'artisanat à l'ingénierie",
-          "quote": "Utilisées à Venise au 12ème siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de production de la Ford T (1908-1927)."
+          "loc": "5. Framework PLE",
+          "quote": "qui doivent interagir de manière itérative"
         }
       ],
       "notions": [
-        "n-production-line",
-        "n-craft-engineering-art-design"
+        "n-ple-framework-sei",
+        "n-core-assets"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.4 Ligne de produits et périmètre",
+        "en": "2.4 Product line and scope"
+      }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Leur limite : elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure), alors que l'industrie du logiciel y est habituée. L'ingénierie logicielle, elle, est née à la conférence de Garmisch en 1968, pour « industrialiser la production de logiciels ». Dijkstra (1969) et Parnas (1976) ont introduit l'idée que les programmes devraient être conçus comme des « familles » partageant des propriétés communes étendues.",
-        "en": "Their limit: they cannot deliver individualised (tailor-made) products, whereas the software industry is used to them. Software engineering was born at the Garmisch conference in 1968, to “industrialise software production”. Dijkstra (1969) and Parnas (1976) introduced the idea that programs should be designed as “families” sharing extended common properties."
+        "fr": "Selon le SEI, une ligne de produits est un ensemble de systèmes qui partagent des caractéristiques communes et gérées, **satisfaisant les besoins d’un segment de marché ou d’une mission précis**, et développés à partir d’actifs de base communs. Ce **périmètre** décide de ce qui est commun : si le périmètre change, les exigences communes peuvent changer.",
+        "en": "According to the SEI, a product line is a set of systems that share a common, managed set of features, **satisfying the needs of a particular market segment or mission**, and developed from common core assets. This **scope** decides what is common: if the scope changes, the common requirements may change."
       },
       "src": [
         {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. De l'artisanat à l'ingénierie",
-          "quote": "Elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure) comme l'industrie du logiciel en a l'habitude."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. De l'artisanat à l'ingénierie",
-          "quote": "Née à la conférence de Garmisch en 1968"
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. De l'artisanat à l'ingénierie",
-          "quote": "partageant des propriétés communes étendues"
+          "file": "sources-texte/inf4/4-redpl-caise07.md",
+          "loc": "§1 Introduction",
+          "quote": "a software product line (SPL) is a set of software-intensive systems that share a common, managed set of features satisfying the specific needs of a particular market segment or mission"
         }
       ],
       "notions": [
-        "n-production-line"
+        "n-spl-definition-sei",
+        "n-core-assets"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.5 Le retour de l’application vers le domaine",
+        "en": "2.5 Feedback from the application to the domain"
+      }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé : c'est la [[term-mass-customization|personnalisation de masse]]. Le schéma du cours sépare l'espace du problème et l'espace de la solution, et relie [[term-domain-engineering|ingénierie du domaine]], [[term-product-engineering|ingénierie du produit]] et « adaptation engineering ». L'ingénierie du domaine crée les actifs de base réutilisables ; l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis.",
-        "en": "Software is everywhere, so it must be mass-produced BUT customised: this is [[term-mass-customization|mass customisation]]. The course diagram separates the problem space from the solution space, and links [[term-domain-engineering|domain engineering]], [[term-product-engineering|product engineering]] and “adaptation engineering”. Domain engineering creates the reusable core assets; product engineering assembles them to configure a specific product meeting a precise need."
+        "fr": "Le sens n’est pas à sens unique : l’ingénierie d’application peut remonter une **demande de changement** au domaine, et ce retour « may lead to an adaptation of the domain artefacts and thus to an evolution of the software product line ». Une solution propre à un produit peut aussi **rester spécifique** ; la promouvoir au domaine peut demander de la refaire pour la réutilisation.",
+        "en": "The flow is not one-way: application engineering can send a **change request** to the domain, and this feedback “may lead to an adaptation of the domain artefacts and thus to an evolution of the software product line”. A product-specific solution can also **stay specific**; promoting it to the domain may require reengineering it for reuse."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/8-chapitre-livre-domain-engineering.md",
+          "loc": "§10.1.3 Interrelation with Application Requirements Engineering",
+          "quote": "This feedback may lead to an adaptation of the domain artefacts and thus to an evolution of the software product line."
+        }
+      ],
+      "notions": [
+        "n-evolution-feedback"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.5.1 Exemple corrigé : où se décide quoi ? (quiz 0)",
+        "en": "2.5.1 Worked example: where is what decided? (quiz 0)"
+      },
+      "level": 3
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Situation",
+          "en": "Situation"
+        },
+        {
+          "fr": "Où se décide",
+          "en": "Où se décide"
+        },
+        {
+          "fr": "Pourquoi",
+          "en": "Pourquoi"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Alpha ne veut pas l’option PDFExport ; Beta l’exige",
+            "en": "Alpha ne veut pas l’option PDFExport ; Beta l’exige"
+          },
+          {
+            "fr": "ingénierie de l’**application** Alpha",
+            "en": "ingénierie de l’**application** Alpha"
+          },
+          {
+            "fr": "c’est une **sélection** de produit ; supprimer PDFExport du modèle changerait le **périmètre** de la famille",
+            "en": "c’est une **sélection** de produit ; supprimer PDFExport du modèle changerait le **périmètre** de la famille"
+          }
+        ],
+        [
+          {
+            "fr": "Un nouveau produit ne satisferait pas une exigence commune de la famille",
+            "en": "Un nouveau produit ne satisferait pas une exigence commune de la famille"
+          },
+          {
+            "fr": "**domaine** : réviser le périmètre ou la variabilité, ou garder le produit hors famille",
+            "en": "**domaine** : réviser le périmètre ou la variabilité, ou garder le produit hors famille"
+          },
+          {
+            "fr": "rien n’est révisé automatiquement ; changer le périmètre peut changer ce qui est commun",
+            "en": "rien n’est révisé automatiquement ; changer le périmètre peut changer ce qui est commun"
+          }
+        ],
+        [
+          {
+            "fr": "Une application découvre une exigence que les actifs du domaine ne supportent pas",
+            "en": "Une application découvre une exigence que les actifs du domaine ne supportent pas"
+          },
+          {
+            "fr": "demande de changement vers le **domaine**",
+            "en": "demande de changement vers le **domaine**"
+          },
+          {
+            "fr": "la solution peut aussi rester propre au produit ; elle ne devient pas obligatoire pour la famille",
+            "en": "la solution peut aussi rester propre au produit ; elle ne devient pas obligatoire pour la famille"
+          }
+        ],
+        [
+          {
+            "fr": "Deux applications sur deux choisissent l’option Analytics, optionnelle dans le domaine",
+            "en": "Deux applications sur deux choisissent l’option Analytics, optionnelle dans le domaine"
+          },
+          {
+            "fr": "ne change **pas** le modèle de domaine",
+            "en": "ne change **pas** le modèle de domaine"
+          },
+          {
+            "fr": "des observations ne prouvent pas l’intention de la famille ; évaluer périmètre et besoins avant de modifier",
+            "en": "des observations ne prouvent pas l’intention de la famille ; évaluer périmètre et besoins avant de modifier"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 11",
+          "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 3",
+          "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 4",
+          "quote": "An application team discovers a requirement unsupported by current domain assets."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 9",
+          "quote": "A family’s domain model explicitly makes Analytics optional."
+        }
+      ],
+      "notions": [
+        "n-evolution-feedback",
+        "n-application-engineering",
+        "n-spl-definition-sei"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège d'examen : « domaine » = haut du schéma = on prépare pour TOUS les produits ; « produit » = bas du schéma = on configure UN produit. Et ne confonds pas les axes : problème (gauche) / solution (droite).",
+        "en": "Exam trap: “domain” = top of the diagram = we prepare for ALL products; “product” = bottom = we configure ONE product. And do not mix up the axes: problem (left) / solution (right)."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. Personnalisation de masse",
-          "quote": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé."
+          "loc": "5. Framework PLE",
+          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
         },
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "3. Personnalisation de masse",
-          "quote": "L'ingénierie du domaine crée les actifs de base réutilisables, et l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis."
+          "loc": "5. Framework PLE",
+          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "5. Framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
         }
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Domaine = pour tous les produits (modèle de variabilité, composants) ; application = un produit (sélection, assemblage). Le périmètre de la famille décide du « commun ». Un choix de client est une sélection, pas un changement de périmètre ; l’application peut demander un changement au domaine.",
+        "en": "Domain = for all products (variability model, components); application = one product (selection, assembly). The family’s scope decides what is “common”. A customer’s choice is a selection, not a scope change; the application can send a change request to the domain."
+      }
     },
     {
       "type": "checkpoint",
-      "quizId": "inf4-01-qz-04"
+      "quizId": "inf4-01-qz-09"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Six mécanismes de réutilisation, de la duplication à la ligne de produits",
-        "en": "Six reuse mechanisms, from duplication to product lines"
+        "fr": "3. Un projet VariaMos : où placer quoi (tutoriel 0)",
+        "en": "3. A VariaMos project: where to put what (tutorial 0)"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 La structure d’un projet",
+        "en": "3.1 A project’s structure"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Élément de VariaMos",
+          "en": "Élément de VariaMos"
+        },
+        {
+          "fr": "Concept du cours",
+          "en": "Concept du cours"
+        },
+        {
+          "fr": "Règle",
+          "en": "Règle"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**Projet** → **ligne de produits**",
+            "en": "**Projet** → **ligne de produits**"
+          },
+          {
+            "fr": "la famille",
+            "en": "la famille"
+          },
+          {
+            "fr": "une ligne = « a family of them », pas un produit ; un projet peut en contenir plusieurs",
+            "en": "une ligne = « a family of them », pas un produit ; un projet peut en contenir plusieurs"
+          }
+        ],
+        [
+          {
+            "fr": "**Domain engineering**",
+            "en": "**Domain engineering**"
+          },
+          {
+            "fr": "ingénierie de domaine",
+            "en": "ingénierie de domaine"
+          },
+          {
+            "fr": "on y range les modèles **réutilisables** de la famille (exigences, variabilité)",
+            "en": "on y range les modèles **réutilisables** de la famille (exigences, variabilité)"
+          }
+        ],
+        [
+          {
+            "fr": "**Application engineering** → **application**",
+            "en": "**Application engineering** → **application**"
+          },
+          {
+            "fr": "un produit de la famille",
+            "en": "un produit de la famille"
+          },
+          {
+            "fr": "une **nouvelle application par membre** de la famille : on y fait la configuration et la dérivation",
+            "en": "une **nouvelle application par membre** de la famille : on y fait la configuration et la dérivation"
+          }
+        ],
+        [
+          {
+            "fr": "**Adaptation** (sous une application)",
+            "en": "**Adaptation** (sous une application)"
+          },
+          {
+            "fr": "un **contexte** d’un même système auto-adaptatif",
+            "en": "un **contexte** d’un même système auto-adaptatif"
+          },
+          {
+            "fr": "ce n’est ni un produit ni une ligne : plage, rue, Mars pour le même robot",
+            "en": "ce n’est ni un produit ni une ligne : plage, rue, Mars pour le même robot"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2 Workspace",
+          "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5",
+          "quote": "A product line is not just a product, system or application, but a family of them."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5",
+          "quote": "For each new member of the family, a new Application must be created to carry out in that space the whole process of configuration, customisation and derivation of each new product."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.6",
+          "quote": "The same system can have several contexts of adaptation, for example, an object gathering robot can be designed to adapt correctly to the particular and changing conditions of a beach"
+        }
+      ],
+      "notions": [
+        "n-vm-project-structure",
+        "n-vm-application-per-member",
+        "n-vm-adaptation"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Software ou System, et les gestes de l’éditeur",
+        "en": "3.2 Software or System, and the editor’s actions"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Fait du tutoriel 0",
+          "en": "Fait du tutoriel 0"
+        },
+        {
+          "fr": "À retenir",
+          "en": "À retenir"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Type **Software** ou **System**",
+            "en": "Type **Software** ou **System**"
+          },
+          {
+            "fr": "la différence porte surtout sur les **gabarits d’exigences** utilisés",
+            "en": "la différence porte surtout sur les **gabarits d’exigences** utilisés"
+          }
+        ],
+        [
+          {
+            "fr": "Ajouter un élément",
+            "en": "Ajouter un élément"
+          },
+          {
+            "fr": "le **glisser** depuis la palette vers la zone d’édition",
+            "en": "le **glisser** depuis la palette vers la zone d’édition"
+          }
+        ],
+        [
+          {
+            "fr": "Modifier les propriétés",
+            "en": "Modifier les propriétés"
+          },
+          {
+            "fr": "**clic droit** sur l’élément ou la relation, puis Properties",
+            "en": "**clic droit** sur l’élément ou la relation, puis Properties"
+          }
+        ],
+        [
+          {
+            "fr": "Enregistrer",
+            "en": "Enregistrer"
+          },
+          {
+            "fr": "pas de sauvegarde automatique ; un invité ne peut que **télécharger** le projet en JSON",
+            "en": "pas de sauvegarde automatique ; un invité ne peut que **télécharger** le projet en JSON"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§1.2",
+          "quote": "The difference between the two lies mainly in the type of templates that will be used to specify the requirements"
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.2.1",
+          "quote": "Drag an element from palette to edition area."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.2.3",
+          "quote": "Right-click on the appropriate element or relationship."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§1.4",
+          "quote": "You will need to save your work frequently as this version of VariaMos does not have autosave."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§1.4",
+          "quote": "If the user is logged in as a guest, they will only be able to download the project as a JSON file."
+        }
+      ],
+      "notions": [
+        "n-vm-software-vs-system"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2.1 Exemple corrigé : l’éditeur de texte et le robot",
+        "en": "3.2.1 Worked example: the text editor and the robot"
+      },
+      "level": 3
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une entreprise conçoit **une** famille d’éditeurs de texte (cœur commun, options gérées) et veut SchoolEditor et LegalEditor : on crée **une** ligne « Text Editors », les modèles réutilisables sous Domain Engineering, et **deux applications**. Un seul robot qui doit s’adapter à la plage ou à la rue : ce sont deux **espaces d’adaptation** de la même application, pas deux lignes ; créer ces espaces ne prouve pas que le robot détecte correctement le changement de contexte.",
+        "en": "A company designs **one** family of text editors (shared core, managed options) and wants SchoolEditor and LegalEditor: you create **one** “Text Editors” line, the reusable models under Domain Engineering, and **two applications**. One robot that must adapt to the beach or the street: these are two **adaptation spaces** of the same application, not two lines; creating the spaces does not prove the robot detects context changes correctly."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 10",
+          "quote": "A company deliberately engineers one text-editor family with a shared core and managed optional features."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 12",
+          "quote": "One robot application must adapt its behaviour when deployed on a beach or on a city street."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.9",
+          "quote": "To create adaptation models in the application:"
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.7",
+          "quote": "Right-click on Domain engineering in your product line."
+        }
+      ],
+      "notions": [
+        "n-vm-project-structure",
+        "n-vm-application-per-member",
+        "n-vm-adaptation"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Projet → ligne(s) → Domain engineering (modèles réutilisables) et Application engineering (une application par produit) ; adaptation = contexte d’un même système. Software / System = gabarits d’exigences.",
+        "en": "Project → line(s) → Domain engineering (reusable models) and Application engineering (one application per product); adaptation = context of one system. Software / System = requirements templates."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-01-qz-14"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. Six mécanismes de réutilisation",
+        "en": "4. Six reuse mechanisms"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 La liste et chaque mécanisme",
+        "en": "4.1 The list and each mechanism"
       }
     },
     {
@@ -569,6 +1267,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "4.2 Ce que la ligne de produits apporte en plus",
+        "en": "4.2 What the product line adds"
+      }
+    },
+    {
       "type": "callout",
       "variant": "tip",
       "text": {
@@ -584,115 +1289,129 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "exam",
+      "text": {
+        "fr": "Piège : **copier un produit complet dans plusieurs dépôts** et le maintenir séparément est de la **réutilisation par duplication** : cela ne suffit pas à faire une ligne de produits. Il faut des actifs partagés gouvernés et une variabilité **explicite** ; sinon propager un correctif devient plus dur, et un code de départ identique ne garantit aucune évolution coordonnée.",
+        "en": "Trap: **copying a complete product into several repositories** and maintaining it separately is **duplication reuse**: it is not enough to make a product line. You need governed shared assets and **explicit** variability; otherwise propagating a fix gets harder, and identical initial code guarantees no coordinated evolution."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 5",
+          "quote": "A team copies a completed product into several repositories and maintains each copy independently."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "4. Duplication",
+          "quote": "Très difficile à faire évoluer, maintenance cauchemardesque, réutilisation purement opportuniste."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Six mécanismes : duplication, deltas, gestion de configuration, composants, aspects, ligne de produits. Les quatre premiers ont des limites (évolution, propagation, assemblage) que la ligne de produits traite par une vue intégrée et une conception pour la réutilisation.",
+        "en": "Six mechanisms: duplication, deltas, configuration management, components, aspects, product line. The first four have limits (evolution, propagation, assembly) that the product line addresses with an integrated view and design for reuse."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-01-qz-07"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "Le framework PLE : le schéma central",
-        "en": "The PLE framework: the central diagram"
+        "fr": "5. Contexte : pourquoi une ligne, ce qu’elle coûte",
+        "en": "5. Context: why a line, what it costs"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.1 Du sur-mesure à la personnalisation de masse",
+        "en": "5.1 From tailor-made to mass customisation"
       }
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "C'est le cœur du cours. Le schéma est une matrice : en haut le Domain Engineering, en bas le Product Engineering ; à gauche le Problem Definition, à droite le Problem Solution. Au centre, le « Configuration Process ».",
-        "en": "This is the heart of the course. The diagram is a matrix: Domain Engineering on top, Product Engineering at the bottom; Problem Definition on the left, Problem Solution on the right. In the centre, the “Configuration Process”."
+        "fr": "L'[[term-craft|artisanat]], c'est le point de départ : des outils primitifs taillés à la main, une occupation spécialisée. Puis viennent les lignes de production : utilisées à Venise au 12e siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de la Ford T (1908-1927).",
+        "en": "[[term-craft|Craft]] is the starting point: primitive hand-made tools, a specialised occupation. Then come production lines: used in Venice in the 12th century (shipyards with specialised roles), then popularised by the Ford Model T line (1908-1927)."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Outils primitifs taillés à la main, occupation spécialisée."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Utilisées à Venise au 12ème siècle (chantiers navals avec rôles spécialisés), puis popularisées par la ligne de production de la Ford T (1908-1927)."
         }
       ],
       "notions": [
-        "n-ple-framework-sei",
-        "n-domain-engineering",
-        "n-application-engineering"
+        "n-production-line",
+        "n-craft-engineering-art-design"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "**En haut (domaine)** : on analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model). **En bas (produit)** : un client veut une application spécifique. On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini.",
-        "en": "**On top (domain)**: we analyse the market, model ALL possible variations (Variability Model) and code the reusable components (Components Model). **At the bottom (product)**: a customer wants a specific application. Their requirements are selected in the variability model (Configuration), which automatically derives the architecture and assembles the components to create the finished product."
+        "fr": "Leur limite : elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure), alors que l'industrie du logiciel y est habituée. L'ingénierie logicielle, elle, est née à la conférence de Garmisch en 1968, pour « industrialiser la production de logiciels ». Dijkstra (1969) et Parnas (1976) ont introduit l'idée que les programmes devraient être conçus comme des « familles » partageant des propriétés communes étendues.",
+        "en": "Their limit: they cannot deliver individualised (tailor-made) products, whereas the software industry is used to them. Software engineering was born at the Garmisch conference in 1968, to “industrialise software production”. Dijkstra (1969) and Parnas (1976) introduced the idea that programs should be designed as “families” sharing extended common properties."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Elles n'ont pas la capacité de livrer des produits individualisés (sur-mesure) comme l'industrie du logiciel en a l'habitude."
         },
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "Née à la conférence de Garmisch en 1968"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "3. De l'artisanat à l'ingénierie",
+          "quote": "partageant des propriétés communes étendues"
         }
       ],
       "notions": [
-        "n-ple-framework-sei",
-        "n-domain-engineering"
+        "n-production-line"
       ]
     },
     {
       "type": "paragraph",
       "text": {
-        "fr": "Le SEI résume cela en trois activités essentielles qui doivent interagir de manière itérative : le développement des actifs de base (Core Asset Development), le développement des produits (Product Development) et la gestion (Management).",
-        "en": "The SEI sums this up in three essential activities that must interact iteratively: Core Asset Development, Product Development and Management."
+        "fr": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé : c'est la [[term-mass-customization|personnalisation de masse]]. Le schéma du cours sépare l'espace du problème et l'espace de la solution, et relie [[term-domain-engineering|ingénierie du domaine]], [[term-product-engineering|ingénierie du produit]] et « adaptation engineering ». L'ingénierie du domaine crée les actifs de base réutilisables ; l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis.",
+        "en": "Software is everywhere, so it must be mass-produced BUT customised: this is [[term-mass-customization|mass customisation]]. The course diagram separates the problem space from the solution space, and links [[term-domain-engineering|domain engineering]], [[term-product-engineering|product engineering]] and “adaptation engineering”. Domain engineering creates the reusable core assets; product engineering assembles them to configure a specific product meeting a precise need."
       },
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "Développement des actifs de base (Core Asset Development), Développement des produits (Product Development), et la Gestion (Management)."
+          "loc": "3. Personnalisation de masse",
+          "quote": "Le logiciel étant partout, il doit être produit en masse MAIS personnalisé."
         },
         {
           "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "qui doivent interagir de manière itérative"
-        }
-      ],
-      "notions": [
-        "n-ple-framework-sei",
-        "n-core-assets"
-      ]
-    },
-    {
-      "type": "callout",
-      "variant": "exam",
-      "text": {
-        "fr": "Piège d'examen : « domaine » = haut du schéma = on prépare pour TOUS les produits ; « produit » = bas du schéma = on configure UN produit. Et ne confonds pas les axes : problème (gauche) / solution (droite).",
-        "en": "Exam trap: “domain” = top of the diagram = we prepare for ALL products; “product” = bottom = we configure ONE product. And do not mix up the axes: problem (left) / solution (right)."
-      },
-      "src": [
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "Un vaste diagramme matriciel séparant le haut (Domain Engineering) du bas (Product Engineering), et la gauche (Problem Definition) de la droite (Problem Solution)."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "On analyse le marché, on modélise TOUTES les variations possibles (Variability Model) et on code les composants réutilisables (Components Model)."
-        },
-        {
-          "file": "ressources/S3__INF4/mardown/1__introduction.md",
-          "loc": "5. Framework PLE",
-          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+          "loc": "3. Personnalisation de masse",
+          "quote": "L'ingénierie du domaine crée les actifs de base réutilisables, et l'ingénierie du produit les assemble pour configurer un produit spécifique répondant à un besoin précis."
         }
       ]
     },
     {
       "type": "checkpoint",
-      "quizId": "inf4-01-qz-09"
+      "quizId": "inf4-01-qz-04"
     },
     {
-      "type": "heading",
+      "type": "subheading",
       "text": {
-        "fr": "Pourquoi s'embêter ? Les bénéfices",
-        "en": "Why bother? The benefits"
+        "fr": "5.2 Bénéfices annoncés et exemples industriels",
+        "en": "5.2 Reported benefits and industrial examples"
       }
     },
     {
@@ -728,10 +1447,11 @@
       ]
     },
     {
-      "type": "paragraph",
+      "type": "callout",
+      "variant": "repere",
       "text": {
-        "fr": "Trois exemples industriels cités. **CelsiusTech** (systèmes navals complexes) : 70 %+ de réutilisation, le ratio coût matériel/logiciel s'est inversé. **Hewlett Packard** (imprimantes) : temps de développement réduit de 67 %, avec 5x plus de produits sortis. **Baxter** (médical) : réduction massive des erreurs et gains financiers directs grâce à la vérification de l'ingénierie de domaine.",
-        "en": "Three industrial examples are cited. **CelsiusTech** (complex naval systems): 70%+ reuse, the hardware/software cost ratio was inverted. **Hewlett Packard** (printers): development time reduced by 67%, with 5x more products released. **Baxter** (medical): massive error reduction and direct financial gains thanks to verification of domain engineering."
+        "fr": "Les chiffres varient selon les supports (« time to market −98 % » dans le cours 1, « facteurs de 2 à 50 » dans RED-PL) : citer la source. Exemples : CelsiusTech (70 %+ de réutilisation), Hewlett Packard (développement −67 %, 5× plus de produits), secteur médical (erreurs réduites).",
+        "en": "Figures vary between sources (“time to market −98%” in lecture 1, “factors of 2 to 50” in RED-PL): cite the source. Examples: CelsiusTech (70%+ reuse), Hewlett Packard (development −67%, 5× more products), medical sector (fewer errors)."
       },
       "src": [
         {
@@ -749,21 +1469,13 @@
           "loc": "6. Exemples industriels",
           "quote": "Secteur médical. Réduction massive des erreurs et gains financiers directs grâce à la vérification de l'ingénierie de domaine."
         }
-      ],
-      "notions": [
-        "n-pl-success-examples",
-        "n-celsiustech"
       ]
     },
     {
-      "type": "checkpoint",
-      "quizId": "inf4-01-qz-11"
-    },
-    {
-      "type": "heading",
+      "type": "subheading",
       "text": {
-        "fr": "Le prix à payer : la courbe d'investissement",
-        "en": "The price to pay: the investment curve"
+        "fr": "5.3 La courbe d’investissement",
+        "en": "5.3 The investment curve"
       }
     },
     {
@@ -839,6 +1551,14 @@
           "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
         }
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Coût initial élevé (« big bang »), coût marginal presque plat ; point de rentabilité souvent à 3 ou 4 produits ; jamais rentable pour un seul produit.",
+        "en": "High initial cost (“big bang”), nearly flat marginal cost; break-even often at 3 or 4 products; never worthwhile for a single product."
+      }
     },
     {
       "type": "checkpoint",
@@ -1118,6 +1838,74 @@
         }
       ],
       "notion": "n-investment-curves"
+    },
+    {
+      "id": "term-scope",
+      "fr": "périmètre de la famille (scope)",
+      "en": "family scope",
+      "definition": {
+        "fr": "Segment de marché ou mission que la ligne vise ; il décide de ce qui est commun à tous les produits.",
+        "en": "The market segment or mission the line targets; it decides what is common to all products."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/4-redpl-caise07.md",
+          "loc": "§1 Introduction",
+          "quote": "a software product line (SPL) is a set of software-intensive systems that share a common, managed set of features satisfying the specific needs of a particular market segment or mission"
+        }
+      ],
+      "notion": "n-spl-definition-sei"
+    },
+    {
+      "id": "term-domain-feedback",
+      "fr": "retour vers le domaine",
+      "en": "feedback to the domain",
+      "definition": {
+        "fr": "Demande de changement de l’application vers le domaine, pouvant faire évoluer la ligne.",
+        "en": "A change request from the application to the domain, which may make the line evolve."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/8-chapitre-livre-domain-engineering.md",
+          "loc": "§10.1.3 Interrelation with Application Requirements Engineering",
+          "quote": "This feedback may lead to an adaptation of the domain artefacts and thus to an evolution of the software product line."
+        }
+      ],
+      "notion": "n-evolution-feedback"
+    },
+    {
+      "id": "term-vm-application",
+      "fr": "application (VariaMos)",
+      "en": "application (VariaMos)",
+      "definition": {
+        "fr": "Un produit de la famille : on y fait toute la configuration, la personnalisation et la dérivation.",
+        "en": "One member of the family: all configuration, customisation and derivation take place in it."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5",
+          "quote": "For each new member of the family, a new Application must be created to carry out in that space the whole process of configuration, customisation and derivation of each new product."
+        }
+      ],
+      "notion": "n-vm-application-per-member"
+    },
+    {
+      "id": "term-adaptation",
+      "fr": "adaptation (VariaMos)",
+      "en": "adaptation (VariaMos)",
+      "definition": {
+        "fr": "Contexte d’un même système auto-adaptatif (plage, rue) ; ni un produit ni une ligne.",
+        "en": "A context of one self-adaptive system (beach, street); neither a product nor a line."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.6",
+          "quote": "The same system can have several contexts of adaptation, for example, an object gathering robot can be designed to adapt correctly to the particular and changing conditions of a beach"
+        }
+      ],
+      "notion": "n-vm-adaptation"
     }
   ],
   "notions": [
@@ -1148,7 +1936,12 @@
     "n-reuse-history",
     "n-sandwich-store",
     "n-spl-definition-sei",
-    "n-variability"
+    "n-variability",
+    "n-evolution-feedback",
+    "n-vm-project-structure",
+    "n-vm-application-per-member",
+    "n-vm-adaptation",
+    "n-vm-software-vs-system"
   ],
   "keyPoints": [
     {
@@ -1341,6 +2134,28 @@
           "loc": "6. Courbes d'investissement",
           "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
         }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le périmètre de la famille décide du « commun » ; une application peut demander un changement au domaine.",
+        "en": "The family’s scope decides what is “common”; an application can send a change request to the domain."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/4-redpl-caise07.md",
+          "loc": "§1 Introduction",
+          "quote": "a software product line (SPL) is a set of software-intensive systems that share a common, managed set of features satisfying the specific needs of a particular market segment or mission"
+        },
+        {
+          "file": "sources-texte/inf4/8-chapitre-livre-domain-engineering.md",
+          "loc": "§10.1.3 Interrelation with Application Requirements Engineering",
+          "quote": "This feedback may lead to an adaptation of the domain artefacts and thus to an evolution of the software product line."
+        }
+      ],
+      "notions": [
+        "n-spl-definition-sei",
+        "n-evolution-feedback"
       ]
     }
   ],
@@ -1567,6 +2382,68 @@
       ],
       "notions": [
         "n-configuration-management-reuse"
+      ]
+    },
+    {
+      "id": "inf4-01-fc-17",
+      "termId": "term-scope",
+      "front": {
+        "fr": "Périmètre d’une famille : rôle ?",
+        "en": "A family’s scope: role?"
+      },
+      "back": {
+        "fr": "Segment de marché ou mission visés ; il décide de ce qui est commun ; s’il change, le commun peut changer.",
+        "en": "Targeted market segment or mission; it decides what is common; if it changes, the common part may change."
+      },
+      "notions": [
+        "n-spl-definition-sei"
+      ]
+    },
+    {
+      "id": "inf4-01-fc-18",
+      "termId": "term-domain-feedback",
+      "front": {
+        "fr": "Retour application → domaine ?",
+        "en": "Application → domain feedback?"
+      },
+      "back": {
+        "fr": "Demande de changement vers le domaine ; peut faire évoluer la ligne. Une solution peut aussi rester propre au produit.",
+        "en": "Change request to the domain; may make the line evolve. A solution can also stay specific to the product."
+      },
+      "notions": [
+        "n-evolution-feedback"
+      ]
+    },
+    {
+      "id": "inf4-01-fc-19",
+      "termId": "term-vm-application",
+      "front": {
+        "fr": "VariaMos : où va chaque produit de la famille ?",
+        "en": "VariaMos: where does each family member go?"
+      },
+      "back": {
+        "fr": "Une application par produit, sous Application engineering ; les modèles réutilisables sous Domain engineering.",
+        "en": "One application per product, under Application engineering; reusable models under Domain engineering."
+      },
+      "notions": [
+        "n-vm-application-per-member",
+        "n-vm-project-structure"
+      ]
+    },
+    {
+      "id": "inf4-01-fc-20",
+      "termId": "term-adaptation",
+      "front": {
+        "fr": "Adaptation ou application ?",
+        "en": "Adaptation or application?"
+      },
+      "back": {
+        "fr": "Adaptation = contexte d’un même système (plage / rue) ; application = un produit de la famille.",
+        "en": "Adaptation = a context of one system (beach / street); application = one family member."
+      },
+      "notions": [
+        "n-vm-adaptation",
+        "n-vm-software-vs-system"
       ]
     }
   ],
@@ -2085,6 +2962,246 @@
         "fr": "Croire qu’une ligne de produits est rentable pour un seul produit.",
         "en": "Believing a product line pays off for a single product."
       }
+    },
+    {
+      "id": "inf4-01-qz-14",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour configurer le client Alpha, il faut supprimer l’option PDFExport du modèle de la famille.",
+        "en": "To configure customer Alpha, the PDFExport option must be deleted from the family model."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est une sélection de produit (application Alpha), pas un changement de périmètre de la famille.",
+        "en": "FALSE: it is a product selection (Alpha application), not a change of the family’s scope."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 11",
+          "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it."
+        }
+      ],
+      "notions": [
+        "n-vm-application-per-member",
+        "n-application-engineering"
+      ],
+      "objective": "o5"
+    },
+    {
+      "id": "inf4-01-qz-15",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un produit qui ne satisfait pas une exigence commune de la famille oblige à réviser le périmètre ou la variabilité, ou à le laisser hors de la famille.",
+        "en": "A product that does not satisfy a common requirement of the family forces a revision of the scope or the variability, or leaving it outside the family."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : rien n’est révisé automatiquement ; le périmètre décide de ce qui est commun.",
+        "en": "TRUE: nothing is revised automatically; the scope decides what is common."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 3",
+          "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
+        },
+        {
+          "file": "sources-texte/inf4/4-redpl-caise07.md",
+          "loc": "§1 Introduction",
+          "quote": "a software product line (SPL) is a set of software-intensive systems that share a common, managed set of features satisfying the specific needs of a particular market segment or mission"
+        }
+      ],
+      "notions": [
+        "n-spl-definition-sei"
+      ],
+      "objective": "o5"
+    },
+    {
+      "id": "inf4-01-qz-16",
+      "type": "true_false",
+      "statement": {
+        "fr": "Si deux applications choisissent toutes les deux Analytics, Analytics doit devenir obligatoire dans le modèle de domaine.",
+        "en": "If two applications both choose Analytics, Analytics must become mandatory in the domain model."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : des observations ne prouvent pas l’intention de la famille ; on évalue le périmètre et les besoins.",
+        "en": "FALSE: observations do not prove the family’s intent; you assess scope and needs."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 9",
+          "quote": "A family’s domain model explicitly makes Analytics optional."
+        }
+      ],
+      "notions": [
+        "n-vm-application-per-member"
+      ],
+      "objective": "o5"
+    },
+    {
+      "id": "inf4-01-qz-17",
+      "type": "true_false",
+      "statement": {
+        "fr": "Copier un produit complet dans plusieurs dépôts maintenus séparément suffit à faire une ligne de produits.",
+        "en": "Copying a complete product into several separately maintained repositories is enough to make a product line."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est de la duplication ; il faut des actifs partagés gouvernés et une variabilité explicite.",
+        "en": "FALSE: it is duplication; you need governed shared assets and explicit variability."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 5",
+          "quote": "A team copies a completed product into several repositories and maintains each copy independently."
+        }
+      ],
+      "notions": [
+        "n-duplication-reuse"
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-01-qz-18",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le retour d’une application vers le domaine peut conduire à adapter les actifs du domaine et à faire évoluer la ligne de produits.",
+        "en": "Feedback from an application to the domain may lead to adapting the domain assets and evolving the product line."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « This feedback may lead to an adaptation of the domain artefacts ».",
+        "en": "TRUE: “This feedback may lead to an adaptation of the domain artefacts”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/8-chapitre-livre-domain-engineering.md",
+          "loc": "§10.1.3 Interrelation with Application Requirements Engineering",
+          "quote": "This feedback may lead to an adaptation of the domain artefacts and thus to an evolution of the software product line."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 4",
+          "quote": "An application team discovers a requirement unsupported by current domain assets."
+        }
+      ],
+      "notions": [
+        "n-evolution-feedback"
+      ],
+      "objective": "o5"
+    },
+    {
+      "id": "inf4-01-qz-19",
+      "type": "mcq",
+      "question": {
+        "fr": "Une entreprise veut SchoolEditor et LegalEditor, deux produits d’une même famille d’éditeurs. Quelles actions conviennent dans VariaMos ? (plusieurs réponses)",
+        "en": "A company wants SchoolEditor and LegalEditor, two products of one editor family. Which VariaMos actions fit? (several answers)"
+      },
+      "options": [
+        {
+          "fr": "Créer une ligne « Text Editors ».",
+          "en": "Create a “Text Editors” line."
+        },
+        {
+          "fr": "Créer SchoolEditor et LegalEditor comme applications de cette ligne.",
+          "en": "Create SchoolEditor and LegalEditor as applications of that line."
+        },
+        {
+          "fr": "Placer les modèles réutilisables sous Domain Engineering.",
+          "en": "Place the reusable models under Domain Engineering."
+        },
+        {
+          "fr": "Créer une ligne par option facultative.",
+          "en": "Create a line for each optional feature."
+        }
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": {
+        "fr": "Une famille = une ligne ; un produit = une application ; le réutilisable va au domaine. Une ligne par option n’a pas de sens.",
+        "en": "A family = one line; a product = an application; the reusable goes to the domain. A line per option makes no sense."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 10",
+          "quote": "A company deliberately engineers one text-editor family with a shared core and managed optional features."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5",
+          "quote": "For each new member of the family, a new Application must be created to carry out in that space the whole process of configuration, customisation and derivation of each new product."
+        }
+      ],
+      "notions": [
+        "n-vm-application-per-member",
+        "n-vm-project-structure"
+      ],
+      "objective": "o6"
+    },
+    {
+      "id": "inf4-01-qz-20",
+      "type": "mcq",
+      "question": {
+        "fr": "Un seul robot doit s’adapter à la plage ou à la rue. Que sont « Beach » et « Street » dans VariaMos ?",
+        "en": "One robot must adapt to the beach or the street. What are “Beach” and “Street” in VariaMos?"
+      },
+      "options": [
+        {
+          "fr": "Deux lignes de produits distinctes.",
+          "en": "Two separate product lines."
+        },
+        {
+          "fr": "Deux espaces d’adaptation de la même application.",
+          "en": "Two adaptation spaces of the same application."
+        },
+        {
+          "fr": "Deux produits d’une même famille.",
+          "en": "Two products of one family."
+        },
+        {
+          "fr": "Deux domaines d’ingénierie.",
+          "en": "Two engineering domains."
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "Une adaptation est un contexte d’un même système ; ce n’est ni un produit ni une ligne.",
+        "en": "An adaptation is a context of one system; it is neither a product nor a line."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 12",
+          "quote": "One robot application must adapt its behaviour when deployed on a beach or on a city street."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.6",
+          "quote": "The same system can have several contexts of adaptation, for example, an object gathering robot can be designed to adapt correctly to the particular and changing conditions of a beach"
+        }
+      ],
+      "notions": [
+        "n-vm-adaptation",
+        "n-vm-software-vs-system"
+      ],
+      "objective": "o6"
     }
   ],
   "exercises": [
@@ -2222,6 +3339,53 @@
           "quote": "dès qu'un certain nombre de produits (souvent 3 ou 4) sont développés, l'approche devient massivement rentable"
         }
       ]
+    },
+    {
+      "id": "inf4-01-ex-04",
+      "title": {
+        "fr": "Domaine ou application ? (quiz 0)",
+        "en": "Domain or application? (quiz 0)"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o5",
+      "notions": [
+        "n-evolution-feedback",
+        "n-vm-application-per-member",
+        "n-spl-definition-sei"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 11",
+          "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 3",
+          "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 4",
+          "quote": "An application team discovers a requirement unsupported by current domain assets."
+        }
+      ],
+      "statement": {
+        "fr": "Pour chaque cas, dis si la décision se prend dans l’ingénierie de **domaine** ou d’**application**, et pourquoi : (a) le client Alpha ne veut pas PDFExport, optionnel dans la famille ; (b) un nouveau produit ne satisferait pas une exigence commune à toute la famille ; (c) une application découvre une exigence que les actifs du domaine ne supportent pas.",
+        "en": "For each case, say whether the decision is made in **domain** or **application** engineering, and why: (a) customer Alpha does not want PDFExport, optional in the family; (b) a new product would not satisfy a requirement common to the whole family; (c) an application discovers a requirement the domain assets do not support."
+      },
+      "hints": [
+        {
+          "fr": "Une sélection de produit n’est pas un changement de périmètre.",
+          "en": "A product selection is not a scope change."
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé.** (a) **Application** : c’est une sélection ; supprimer PDFExport du modèle changerait la famille. (b) **Domaine** : réviser le périmètre ou la variabilité, ou garder le produit hors famille. (c) **Application** d’abord (elle peut garder une solution propre au produit), puis **demande de changement** vers le domaine ; la promouvoir peut exiger de la refaire pour la réutilisation.",
+        "en": "**Proposed solution.** (a) **Application**: it is a selection; deleting PDFExport from the model would change the family. (b) **Domain**: revise the scope or the variability, or keep the product outside the family. (c) **Application** first (it can keep a product-specific solution), then a **change request** to the domain; promoting it may require reengineering it for reuse."
+      }
     }
   ],
   "writing": [

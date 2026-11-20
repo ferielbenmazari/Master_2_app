@@ -1,0 +1,656 @@
+{
+  "id": "inf4-quiz-prof-2",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Quiz 2 du prof (tutoriel 2, feature models)",
+    "en": "Teacher’s quiz 2 (tutorial 2, feature models)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/16-quiz2.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du prof, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites du tutoriel et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "The teacher’s questions, with no official answers in the files: the answers are **proposed** (deduced from the tutorial and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-quiz-prof-2-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "A selected parent P has mandatory child C. Which statement follows from the mandatory relationship?",
+            "en": "A selected parent P has mandatory child C. Which statement follows from the mandatory relationship?"
+          },
+          "options": [
+            {
+              "fr": "C must be selected whenever P is selected.",
+              "en": "C must be selected whenever P is selected."
+            },
+            {
+              "fr": "C must occur in every product even if P is optional and absent.",
+              "en": "C must occur in every product even if P is optional and absent."
+            },
+            {
+              "fr": "The relationship defines how many users may execute C.",
+              "en": "The relationship defines how many users may execute C."
+            },
+            {
+              "fr": "C must be omitted whenever P is selected.",
+              "en": "C must be omitted whenever P is selected."
+            },
+            {
+              "fr": "Selecting P leaves selection of C unconstrained.",
+              "en": "Selecting P leaves selection of C unconstrained."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a. *Mandatory* : si P est sélectionné, C l'est. (b) un parent optionnel absent supprime son sous-arbre.",
+            "en": "Proposed answer: a. Mandatory: whenever P is selected, C is selected; an absent optional P removes C."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 1",
+              "quote": "A selected parent P has mandatory child C. Which statement follows from the mandatory relationship?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "For two features A and B, the tutorial’s Includes relationship from A to B means A requires B. Which statements hold?",
+            "en": "For two features A and B, the tutorial’s Includes relationship from A to B means A requires B. Which statements hold?"
+          },
+          "options": [
+            {
+              "fr": "Selecting A entails selecting B.",
+              "en": "Selecting A entails selecting B."
+            },
+            {
+              "fr": "Selecting B necessarily entails selecting A.",
+              "en": "Selecting B necessarily entails selecting A."
+            },
+            {
+              "fr": "The dependency makes both features mandatory in every product.",
+              "en": "The dependency makes both features mandatory in every product."
+            },
+            {
+              "fr": "Selecting A while omitting B violates the dependency.",
+              "en": "Selecting A while omitting B violates the dependency."
+            },
+            {
+              "fr": "A and B cannot be selected together.",
+              "en": "A and B cannot be selected together."
+            }
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, d. *Includes* de A vers B = A requires B : A sans B viole la dépendance (d), A entraîne B (a). (b) réciproque fausse ; (c), (e) faux.",
+            "en": "Proposed answer: a, d. Includes from A to B means A requires B: A entails B (a) and A without B violates it (d); B does not entail A."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 2",
+              "quote": "For two features A and B, the tutorial’s Includes relationship from A to B means A requires B. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A requirement permits between one and three child features under selected P. A modeller instead makes all three children mandatory under P. With no other constraints, which statements hold?",
+            "en": "A requirement permits between one and three child features under selected P. A modeller instead makes all three children mandatory under P. With no other constraints, which statements hold?"
+          },
+          "options": [
+            {
+              "fr": "The model rejects some selections permitted by the requirement.",
+              "en": "The model rejects some selections permitted by the requirement."
+            },
+            {
+              "fr": "The mandatory-child model and the requirement admit the same selections.",
+              "en": "The mandatory-child model and the requirement admit the same selections."
+            },
+            {
+              "fr": "The mandatory-child model violates the upper bound of the requirement.",
+              "en": "The mandatory-child model violates the upper bound of the requirement."
+            },
+            {
+              "fr": "A [1..3] group would express the stated permitted counts.",
+              "en": "A [1..3] group would express the stated permitted counts."
+            },
+            {
+              "fr": "The difference can be fixed by renaming the features alone.",
+              "en": "The difference can be fixed by renaming the features alone."
+            }
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, d. Tout obligatoire n'admet que la sélection {1,2,3} : on **rejette** les sélections à 1 ou 2 enfants (a). Un groupe `[1..3]` exprime les effectifs permis (d). (c) la borne haute (3) n'est pas violée ; (e) renommer n'y change rien.",
+            "en": "Proposed answer: a, d. Making all three mandatory rejects the selections of one or two children that the requirement permits (a); a [1..3] group expresses the permitted counts (d)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 3",
+              "quote": "A requirement permits between one and three child features under selected P. A modeller instead makes all three children mandatory under P. With no other constraints, which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A modeller adds a response-time attribute to a feature as part of the tutorial’s proposed quality extensions. Which practices help make this attribute useful?",
+            "en": "A modeller adds a response-time attribute to a feature as part of the tutorial’s proposed quality extensions. Which practices help make this attribute useful?"
+          },
+          "options": [
+            {
+              "fr": "Define an allowed domain and any acceptance bound.",
+              "en": "Define an allowed domain and any acceptance bound."
+            },
+            {
+              "fr": "Keep the target value distinct from evidence that an implementation meets it.",
+              "en": "Keep the target value distinct from evidence that an implementation meets it."
+            },
+            {
+              "fr": "Assume that setting a value forces generated code to meet it.",
+              "en": "Assume that setting a value forces generated code to meet it."
+            },
+            {
+              "fr": "Specify a unit and the conditions under which the time is measured.",
+              "en": "Specify a unit and the conditions under which the time is measured."
+            },
+            {
+              "fr": "Use arbitrary numbers without units because the field is numeric.",
+              "en": "Use arbitrary numbers without units because the field is numeric."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, b, d. Un attribut utile a un domaine et des bornes d'acceptation (a), une unité et des conditions de mesure (d), et la valeur **cible** reste distincte de la preuve que l'implémentation l'atteint (b). (c) fixer une valeur dans le modèle ne garantit rien sur le code ; (e) faux.",
+            "en": "Proposed answer: a, b, d. A useful attribute has a domain and acceptance bound (a), keeps the target distinct from evidence (b) and specifies unit and measurement conditions (d); setting a value does not make code meet it."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 4",
+              "quote": "A modeller adds a response-time attribute to a feature as part of the tutorial’s proposed quality extensions. Which practices help make this attribute useful?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A selected parent has exactly three child features A, B and C in a [1..2] group. There are no other constraints or attributes. How many distinct child-selection sets are allowed?",
+            "en": "A selected parent has exactly three child features A, B and C in a [1..2] group. There are no other constraints or attributes. How many distinct child-selection sets are allowed?"
+          },
+          "options": [
+            {
+              "fr": "Seven.",
+              "en": "Seven."
+            },
+            {
+              "fr": "Eight.",
+              "en": "Eight."
+            },
+            {
+              "fr": "Six.",
+              "en": "Six."
+            },
+            {
+              "fr": "Three.",
+              "en": "Three."
+            },
+            {
+              "fr": "Two.",
+              "en": "Two."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c. `[1..2]` parmi 3 : C(3,1) + C(3,2) = 3 + 3 = **6** (vérifié).",
+            "en": "Proposed answer: c. [1..2] among three children: C(3,1) + C(3,2) = 3 + 3 = 6 selections."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 5",
+              "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group. There are no other constraints or attributes. How many distinct child-selection sets are allowed?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A requires B and B requires C. Assume no other constraints. Which statements follow?",
+            "en": "A requires B and B requires C. Assume no other constraints. Which statements follow?"
+          },
+          "options": [
+            {
+              "fr": "Selecting C entails selecting A.",
+              "en": "Selecting C entails selecting A."
+            },
+            {
+              "fr": "Omitting A forces B and C to be omitted.",
+              "en": "Omitting A forces B and C to be omitted."
+            },
+            {
+              "fr": "The dependencies prohibit selecting A, B and C together.",
+              "en": "The dependencies prohibit selecting A, B and C together."
+            },
+            {
+              "fr": "Selecting A entails selecting C.",
+              "en": "Selecting A entails selecting C."
+            },
+            {
+              "fr": "Selecting B without A can be valid if C is selected.",
+              "en": "Selecting B without A can be valid if C is selected."
+            }
+          ],
+          "correct": [
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : d, e. Transitivité : A ⇒ B et B ⇒ C donnent A ⇒ C (d). B sans A est valide si C est choisi (e). (a) C n'entraîne pas A ; (b) ¬A ne force rien ; (c) A, B, C ensemble sont permis.",
+            "en": "Proposed answer: d, e. Transitivity: A entails C (d). B without A is valid if C is selected (e). C does not entail A and omitting A forces nothing."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 6",
+              "quote": "A requires B and B requires C. Assume no other constraints. Which statements follow?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Which operations implement the tutorial’s List group with one to three list types?",
+            "en": "Which operations implement the tutorial’s List group with one to three list types?"
+          },
+          "options": [
+            {
+              "fr": "Connect the parent to the bundle and the bundle to each child.",
+              "en": "Connect the parent to the bundle and the bundle to each child."
+            },
+            {
+              "fr": "Add a Bundle and set Type to Range.",
+              "en": "Add a Bundle and set Type to Range."
+            },
+            {
+              "fr": "Set RangeMin to 3 and RangeMax to 1.",
+              "en": "Set RangeMin to 3 and RangeMax to 1."
+            },
+            {
+              "fr": "Set RangeMin to 1 and RangeMax to 3.",
+              "en": "Set RangeMin to 1 and RangeMax to 3."
+            },
+            {
+              "fr": "Connect each child directly to the root as globally mandatory.",
+              "en": "Connect each child directly to the root as globally mandatory."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, b, d. T2 §3.4 : un **Bundle** de type **Range**, RangeMin 1 et RangeMax 3, relié au parent puis à chaque enfant. (c) 3..1 est incohérent ; (e) faux.",
+            "en": "Proposed answer: a, b, d. Connect the parent to a Bundle and the bundle to each child (a); the bundle has type Range (b), RangeMin 1 and RangeMax 3 (d)."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 7",
+              "quote": "Which operations implement the tutorial’s List group with one to three list types?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q08",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Which action matches the tutorial’s dependency “Images requires Rtf format”?",
+            "en": "Which action matches the tutorial’s dependency “Images requires Rtf format”?"
+          },
+          "options": [
+            {
+              "fr": "Make Images a mandatory child of the root solely to express the dependency.",
+              "en": "Make Images a mandatory child of the root solely to express the dependency."
+            },
+            {
+              "fr": "Put Images and Rtf in a [1..1] bundle.",
+              "en": "Put Images and Rtf in a [1..1] bundle."
+            },
+            {
+              "fr": "Draw from Images to Rtf format and set the relationship type to Includes.",
+              "en": "Draw from Images to Rtf format and set the relationship type to Includes."
+            },
+            {
+              "fr": "Draw from Rtf format to Images and select Includes.",
+              "en": "Draw from Rtf format to Images and select Includes."
+            },
+            {
+              "fr": "Rename Images to Rtf without connecting them.",
+              "en": "Rename Images to Rtf without connecting them."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c. T2 §3.4 : tracer de Images vers Rtf format et choisir le type **Includes**.",
+            "en": "Proposed answer: c. Draw from Images to Rtf format and set the relationship type to Includes."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 8",
+              "quote": "Which action matches the tutorial’s dependency “Images requires Rtf format”?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Text alignment is selected. Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]. Ignore all other choices. How many distinct sets of supported alignment modes exist?",
+            "en": "Text alignment is selected. Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]. Ignore all other choices. How many distinct sets of supported alignment modes exist?"
+          },
+          "options": [
+            {
+              "fr": "Four.",
+              "en": "Four."
+            },
+            {
+              "fr": "One.",
+              "en": "One."
+            },
+            {
+              "fr": "Fifteen.",
+              "en": "Fifteen."
+            },
+            {
+              "fr": "Twenty-four.",
+              "en": "Twenty-four."
+            },
+            {
+              "fr": "Sixteen.",
+              "en": "Sixteen."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c. `[1..4]` parmi 4 valeurs distinctes : 2⁴ − 1 = **15** (vérifié).",
+            "en": "Proposed answer: c. [1..4] among four distinct values: 2⁴ − 1 = 15 non-empty sets."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 9",
+              "quote": "Text alignment is selected. Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]. Ignore all other choices. How many distinct sets of supported alignment modes exist?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Use this local fragment of ClothingStores: Shop is optional under the root; Cart is mandatory under Shop; selected Shop requires [1..2] of Online payment and Offline payment. Ignore all other constraints. Which statements hold?",
+            "en": "Use this local fragment of ClothingStores: Shop is optional under the root; Cart is mandatory under Shop; selected Shop requires [1..2] of Online payment and Offline payment. Ignore all other constraints. Which statements hold?"
+          },
+          "options": [
+            {
+              "fr": "Shop with Cart and Online payment alone satisfies this fragment.",
+              "en": "Shop with Cart and Online payment alone satisfies this fragment."
+            },
+            {
+              "fr": "Shop with Cart and both payment methods satisfies this fragment.",
+              "en": "Shop with Cart and both payment methods satisfies this fragment."
+            },
+            {
+              "fr": "Shop without Cart satisfies the fragment if both payment methods are selected.",
+              "en": "Shop without Cart satisfies the fragment if both payment methods are selected."
+            },
+            {
+              "fr": "Shop with Cart but neither payment method satisfies the fragment.",
+              "en": "Shop with Cart but neither payment method satisfies the fragment."
+            },
+            {
+              "fr": "Omitting Shop and all its descendants satisfies this fragment.",
+              "en": "Omitting Shop and all its descendants satisfies this fragment."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, b, e. Shop est optionnel : l'omettre avec tous ses descendants satisfait le fragment (e). Si Shop est choisi : Cart obligatoire et `[1..2]` paiements ; (a) un seul paiement, (b) les deux conviennent. (c) sans Cart, non ; (d) aucun paiement, non.",
+            "en": "Proposed answer: a, b, e. Shop is optional, so omitting it with its descendants satisfies the fragment (e); if Shop is chosen, Cart is mandatory and [1..2] payments are needed (a, b)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 10",
+              "quote": "Use this local fragment of ClothingStores: Shop is optional under the root; Cart is mandatory under Shop; selected Shop requires [1..2] of Online payment and Offline payment. Ignore all other constraints. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Use this local model: Web management requires Login; Login is a child of User; User model is mandatory under User. Child selection entails parent selection. Which features are necessarily selected if Web management is selected?",
+            "en": "Use this local model: Web management requires Login; Login is a child of User; User model is mandatory under User. Child selection entails parent selection. Which features are necessarily selected if Web management is selected?"
+          },
+          "options": [
+            {
+              "fr": "Account, solely because it is another child of User.",
+              "en": "Account, solely because it is another child of User."
+            },
+            {
+              "fr": "Login.",
+              "en": "Login."
+            },
+            {
+              "fr": "Demo data, solely because it shares the root.",
+              "en": "Demo data, solely because it shares the root."
+            },
+            {
+              "fr": "User model.",
+              "en": "User model."
+            },
+            {
+              "fr": "User.",
+              "en": "User."
+            }
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : b, d, e. Web management requires Login ; Login a pour parent User, donc User est sélectionné (e) ; User model est obligatoire sous User (d) ; Login (b). Account et Demo data ne sont pas forcés.",
+            "en": "Proposed answer: b, d, e. Web management requires Login; Login’s parent User is selected (e); User model is mandatory under User (d). Account and Demo data are not forced."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 11",
+              "quote": "Use this local model: Web management requires Login; Login is a child of User; User model is mandatory under User. Child selection entails parent selection. Which features are necessarily selected if Web management is selected?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-2-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "List is selected. Its children Alphabetic, Numeric and Vignette form [1..3]. Alphabetic, when selected, must support [1..2] of Upper and Lower. Numeric and Vignette are omitted. Which selections for Alphabetic’s supported types are valid?",
+            "en": "List is selected. Its children Alphabetic, Numeric and Vignette form [1..3]. Alphabetic, when selected, must support [1..2] of Upper and Lower. Numeric and Vignette are omitted. Which selections for Alphabetic’s supported types are valid?"
+          },
+          "options": [
+            {
+              "fr": "Upper only.",
+              "en": "Upper only."
+            },
+            {
+              "fr": "No type.",
+              "en": "No type."
+            },
+            {
+              "fr": "Roman only.",
+              "en": "Roman only."
+            },
+            {
+              "fr": "Lower only.",
+              "en": "Lower only."
+            },
+            {
+              "fr": "Upper and Lower.",
+              "en": "Upper and Lower."
+            }
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, d, e. Seul Alphabetic est choisi ; il faut `[1..2]` parmi Upper et Lower : Upper seul (a), Lower seul (d), les deux (e). « Aucun type » viole `[1..2]` (b) ; Roman appartient à Numeric (c).",
+            "en": "Proposed answer: a, d, e. Only Alphabetic is chosen (the group needs at least one child); [1..2] of Upper and Lower allows Upper only (a), Lower only (d), or both (e)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 12",
+              "quote": "List is selected. Its children Alphabetic, Numeric and Vignette form [1..3]. Alphabetic, when selected, must support [1..2] of Upper and Lower. Numeric and Vignette are omitted. Which selections for Alphabetic’s supported types are valid?"
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

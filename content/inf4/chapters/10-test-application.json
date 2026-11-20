@@ -1,10 +1,10 @@
 {
   "id": "inf4-10-test-application",
   "courseId": "inf4",
-  "order": 10,
+  "order": 13,
   "title": {
-    "fr": "Ingénierie d'application (3/3) : tester sans tout retester",
-    "en": "Application engineering (3/3): testing without retesting everything"
+    "fr": "Tester une application sans tout retester",
+    "en": "Testing an application without retesting everything"
   },
   "hook": {
     "fr": "Les tests du domaine existent déjà : lesquels rejoue-t-on, lesquels adapte-t-on, lesquels écrit-on de zéro, et que faut-il vérifier qu'un système unique ignore ?",
@@ -19,8 +19,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Tester une application sans tout retester",
-        "en": "Testing an application without retesting everything"
+        "fr": "1. Tester une application sans tout retester",
+        "en": "1. Testing an application without retesting everything"
       }
     },
     {
@@ -221,8 +221,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Ce qu'un système unique ne teste pas : la liaison de la variabilité",
-        "en": "What single-system engineering does not test: variability binding"
+        "fr": "2. Ce qu'un système unique ne teste pas : la liaison de la variabilité",
+        "en": "2. What single-system engineering does not test: variability binding"
       }
     },
     {
@@ -539,8 +539,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Trois niveaux de test, quatre catégories d'exigences",
-        "en": "Three test levels, four requirement categories"
+        "fr": "3. Trois niveaux de test, quatre catégories d'exigences",
+        "en": "3. Three test levels, four requirement categories"
       }
     },
     {
@@ -914,8 +914,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Planifier, spécifier, exécuter",
-        "en": "Plan, specify, execute"
+        "fr": "4. Planifier, spécifier, exécuter",
+        "en": "4. Plan, specify, execute"
       }
     },
     {
@@ -1059,6 +1059,151 @@
     {
       "type": "checkpoint",
       "quizId": "inf4-10-qz-14"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "5. Tester le comportement ET le code produit (TP TaskForge)",
+        "en": "5. Testing behaviour AND the generated code (TaskForge exercise)"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.1 Deux familles de vérifications",
+        "en": "5.1 Two families of checks"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Vérification",
+          "en": "Vérification"
+        },
+        {
+          "fr": "Exemples du TP",
+          "en": "Exemples du TP"
+        },
+        {
+          "fr": "Ce qu’elle prouve",
+          "en": "Ce qu’elle prouve"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**Comportement**",
+            "en": "**Comportement**"
+          },
+          {
+            "fr": "créer, renommer, terminer, supprimer une tâche ; un titre d’espaces n’ajoute rien ; recharger conserve ou non les tâches ; priorité, échéance ; filtre et compteur ; export CSV avec virgule et guillemets",
+            "en": "créer, renommer, terminer, supprimer une tâche ; un titre d’espaces n’ajoute rien ; recharger conserve ou non les tâches ; priorité, échéance ; filtre et compteur ; export CSV avec virgule et guillemets"
+          },
+          {
+            "fr": "le produit fait ce qu’on attend dans chaque configuration",
+            "en": "le produit fait ce qu’on attend dans chaque configuration"
+          }
+        ],
+        [
+          {
+            "fr": "**Code produit**",
+            "en": "**Code produit**"
+          },
+          {
+            "fr": "chercher `function exportCSV`, `function exportJSON`, `function updateStatistics`, `localStorage.setItem` : **absents** des produits qui ne les sélectionnent pas",
+            "en": "chercher `function exportCSV`, `function exportJSON`, `function updateStatistics`, `localStorage.setItem` : **absents** des produits qui ne les sélectionnent pas"
+          },
+          {
+            "fr": "le code non sélectionné a bien été **retiré**",
+            "en": "le code non sélectionné a bien été **retiré**"
+          }
+        ],
+        [
+          {
+            "fr": "**Refus de génération**",
+            "en": "**Refus de génération**"
+          },
+          {
+            "fr": "Memory avec LocalStorage ; JSONExport avec Kiosk",
+            "en": "Memory avec LocalStorage ; JSONExport avec Kiosk"
+          },
+          {
+            "fr": "le générateur applique les contraintes du modèle",
+            "en": "le générateur applique les contraintes du modèle"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Vérifier le comportement ET le code"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "ils doivent être absents des produits qui ne les sélectionnent pas"
+        }
+      ],
+      "notions": [
+        "n-test-behaviour-and-code"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le **nom d’une feature dans un manifeste** n’est pas la preuve que son implémentation est présente : on compare les blocs de fonctions. Et le générateur « ne prouve pas la correction de tout JavaScript arbitraire » : **les tests restent nécessaires**. Après une évolution (ajouter ClearCompleted), on fait un **test de non-régression** : les produits existants fonctionnent comme avant.",
+        "en": "A **feature’s name in a manifest** is not proof that its implementation is present: you compare function blocks. And the generator “does not prove the correctness of arbitrary JavaScript”: **tests remain necessary**. After an evolution (adding ClearCompleted), you run a **non-regression test**: existing products work as before."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §4",
+          "quote": "Il ne prouve pas la correction de tout JavaScript arbitraire : vos tests restent nécessaires."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5 (temps)",
+          "quote": "Test de non-régression et livraison"
+        }
+      ],
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "explain": true
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "Le lien avec les quatre catégories d’exigences du livre : le comportement commun (créer, renommer…) relève du **test de communalité**, les options choisies (priorité, échéance) du **test de variant**, et une feature ajoutée en cours de route (ClearCompleted) d’un test d’**extension** : lecture proposée, le TP ne les nomme pas ainsi.",
+        "en": "The link with the book’s four requirement categories: common behaviour (create, rename…) falls under the **commonality test**, chosen options (priority, due date) under the **variant test**, and a feature added along the way (ClearCompleted) under an **extension** test: a proposed reading, the exercise does not name them this way."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "18.5.1",
+          "quote": "If, for instance, a common component is placed in the context of a specific application with its specific selection of variants, the component can fail even though it has not changed."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Tester le comportement ET le code produit : fonctions absentes des produits qui ne les sélectionnent pas ; le manifeste ne prouve rien ; le générateur ne prouve pas la correction ; non-régression après évolution.",
+        "en": "Test behaviour AND the generated code: functions absent from products that do not select them; the manifest proves nothing; the generator does not prove correctness; non-regression after an evolution."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-10-qz-15"
     }
   ],
   "glossary": [
@@ -1195,6 +1340,23 @@
           "quote": "Traceability is the first keystone for structured reuse."
         }
       ]
+    },
+    {
+      "id": "term-non-regression",
+      "fr": "test de non-régression",
+      "en": "non-regression test",
+      "definition": {
+        "fr": "Test qui vérifie que les produits existants fonctionnent comme avant une évolution.",
+        "en": "A test that checks existing products work as before an evolution."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5 (temps)",
+          "quote": "Test de non-régression et livraison"
+        }
+      ],
+      "notion": "n-test-behaviour-and-code"
     }
   ],
   "notions": [
@@ -1211,7 +1373,8 @@
     "n-application-variant-test",
     "n-application-specific-tests",
     "n-test-activities",
-    "n-at-differences-single-system"
+    "n-at-differences-single-system",
+    "n-test-behaviour-and-code"
   ],
   "keyPoints": [
     {
@@ -1712,6 +1875,54 @@
       ],
       "notions": [
         "n-at-differences-single-system"
+      ]
+    },
+    {
+      "id": "inf4-10-fc-30",
+      "termId": "term-non-regression",
+      "front": {
+        "fr": "Après une évolution, quel test ?",
+        "en": "After an evolution, which test?"
+      },
+      "back": {
+        "fr": "Un test de non-régression : les produits existants doivent fonctionner comme avant.",
+        "en": "A non-regression test: existing products must work as before."
+      },
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5 (temps)",
+          "quote": "Test de non-régression et livraison"
+        }
+      ]
+    },
+    {
+      "id": "inf4-10-fc-31",
+      "front": {
+        "fr": "Vérifier qu’un produit n’a pas une feature : comment ?",
+        "en": "Checking that a product does not have a feature: how?"
+      },
+      "back": {
+        "fr": "Chercher le code de la fonction dans le produit généré (absent) ; le nom dans un manifeste ne prouve rien.",
+        "en": "Search the function’s code in the generated product (absent); the name in a manifest proves nothing."
+      },
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "ils doivent être absents des produits qui ne les sélectionnent pas"
+        }
       ]
     }
   ],
@@ -2309,6 +2520,132 @@
         "fr": "Croire que les tests de liaison existent aussi en système unique.",
         "en": "Believing binding tests also exist in single-system engineering."
       }
+    },
+    {
+      "id": "inf4-10-qz-15",
+      "type": "true_false",
+      "statement": {
+        "fr": "Si le manifeste d’un produit liste la feature CSVExport, l’implémentation de l’export CSV est forcément présente dans le code produit.",
+        "en": "If a product’s manifest lists the CSVExport feature, the CSV export implementation is necessarily present in the generated code."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation.",
+        "en": "FALSE: a feature’s name in a manifest is not proof that its implementation is present."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+        }
+      ],
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-10-qz-16",
+      "type": "true_false",
+      "statement": {
+        "fr": "Un générateur de produits qui refuse les configurations invalides garantit que le code JavaScript produit est correct.",
+        "en": "A product generator that refuses invalid configurations guarantees that the generated JavaScript code is correct."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : il ne prouve pas la correction du code ; les tests restent nécessaires.",
+        "en": "FALSE: it does not prove the code’s correctness; tests remain necessary."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §4",
+          "quote": "Il ne prouve pas la correction de tout JavaScript arbitraire : vos tests restent nécessaires."
+        }
+      ],
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-10-qz-18",
+      "type": "true_false",
+      "statement": {
+        "fr": "Après avoir ajouté une feature à la ligne, on régénère toujours tous les produits à partir de la même version du gabarit, puis on vérifie la non-régression.",
+        "en": "After adding a feature to the line, you always regenerate all products from the same template version, then check non-regression."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : le TP demande de régénérer les trois produits à partir de la même version du gabarit et de faire un test de non-régression.",
+        "en": "TRUE: the exercise asks to regenerate the three products from the same template version and to run a non-regression test."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Régénérez les trois produits à partir de la même version du gabarit."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5 (temps)",
+          "quote": "Test de non-régression et livraison"
+        }
+      ],
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-10-qz-17",
+      "type": "mcq",
+      "question": {
+        "fr": "Comment vérifier qu’un produit généré sans CSVExport ne contient pas l’export CSV ?",
+        "en": "How do you check that a product generated without CSVExport does not contain the CSV export?"
+      },
+      "options": [
+        {
+          "fr": "Chercher la fonction exportCSV dans le code du produit : elle doit être absente.",
+          "en": "Search the exportCSV function in the product’s code: it must be absent."
+        },
+        {
+          "fr": "Lire le manifeste de construction : si CSVExport n’y est pas, c’est prouvé.",
+          "en": "Read the build manifest: if CSVExport is not there, it is proven."
+        },
+        {
+          "fr": "Cliquer partout dans l’interface.",
+          "en": "Click everywhere in the interface."
+        }
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": {
+        "fr": "On compare les blocs de fonctions du code produit ; le manifeste ne prouve pas la présence ou l’absence de l’implémentation, et l’interface seule ne montre pas le code.",
+        "en": "You compare the function blocks of the generated code; the manifest does not prove the implementation’s presence or absence, and the interface alone does not show the code."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "ils doivent être absents des produits qui ne les sélectionnent pas"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+        }
+      ],
+      "notions": [
+        "n-test-behaviour-and-code"
+      ],
+      "objective": "o1"
     }
   ],
   "exercises": [

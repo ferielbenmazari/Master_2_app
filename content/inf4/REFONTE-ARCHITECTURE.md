@@ -285,3 +285,8 @@ Historique, chiffres et cas industriels (inchangé) ; mode d'emploi pas à pas d
 - **seulement par fragments** : périmètre (*scope*) de la famille, retour application → domaine (notion ★ « jamais citée » promue A par les quiz 0-4 et 0-11), « observé ≠ voulu » ;
 - **couvert** : ingénierie d'application, architecture de référence, tests du domaine, duplication, sémantique obligatoire / optionnel / requires / excludes, cardinalités.
 → le plan §8.2 (chapitres 1, 3, 5 enrichis ou créés) vise exactement ces trous ; **aucun n'est encore écrit**.
+
+### 8.7 Réalisation du 2026-11-20
+- **Fait** : chapitre 1 refondu (communalité / variabilité / dépendances, framework, périmètre, retour vers le domaine, structure VariaMos, six mécanismes, coût) ; chapitre 3 complété (implications, comptage des groupes, fragments, notation VariaMos / UVL) ; chapitres 7 et 8 complétés (tutoriels 3 et 4) ; **deux chapitres nouveaux** (gabarit SECRET, configuration et évolution) ; parties TaskForge dans « Conception et réalisation » et « Tester » ; 36 questions des quiz du prof dans `exams/` ; 50 notions et 6 sources ajoutées. 13 chapitres, 25 800 mots (~143 min).
+- **Écarts avec le plan §8.2** : les six mécanismes de réutilisation et le coût sont restés au chapitre 1 (non déplacés au chapitre 2) ; le tableau du gabarit des stratégies (chapitre 6) n'est pas encore allégé ; les chapitres 12 et 13 ont reçu leurs parties TaskForge mais gardent leur ancienne structure.
+- **À faire** : refondre les chapitres 2, 4, 10, 11 ; restructurer 12 et 13 ; resserrer le chapitre 3 (17 min) ; compléter quiz 3 à 5 quand les fichiers seront disponibles ; traduire en anglais les cellules de tableau des chapitres ajoutés (elles sont en français dans la version anglaise).

@@ -4,7 +4,8 @@
 > Fichiers : **S1** = `1-introduction-to-ple.md`, **S2** = Böckle (`2-software-…`), **S3** = livre, partie IV (`3-book-chapter-…`), **S4** = RED-PL (`4-redpl-caise07.md`), **S6** = slides « (Software) PLE » (`6-redpl-caise07.md`), **S7** = slides transformation / vérification (`7-domain-…`), **S8** = Pohl ch.10 (`8-chapitre-livre-…`).
 
 ## 1. Formats d'évaluation
-- **Aucune annale, aucun barème, aucune consigne d'examen dans les supports.** Format réel du contrôle : *à confirmer* auprès de l'enseignant (les partiels blancs seront donc construits sur les formats d'exercice ci-dessous — `exams/blanc-01.json`).
+- **Mise à jour du 2026-11-20** (voir `ANALYSE-EPI.md`) : le prof a donné des **quiz** (`11__quiz0.md`, `14__quiz1.md`, `16__quiz2.md` ; quiz 3 à 5 vides), une **consigne** (« The final exam will cover all lecture, all tutorials and all recommended readings ») et un **barème de TP** (TaskForge, sur 20 : modèle correct et justifié 4 · diagnostics et corrections 4 · reconstruction depuis le code et traçabilité 4 · configurations, génération et évolution réutilisable 5 · tests et explication des limites 3). Il n'y a toujours **aucune annale d'examen** : format réel du contrôle *à confirmer*.
+- **Format des quiz** : QCM « Select all correct statements » (parfois une seule réponse), 1 ou 2 points, scénarios courts ; aucun corrigé dans les fichiers (corrigés de l'app : *proposés*).
 - Formats d'exercice **effectivement présents** dans les slides :
   1. **Analyse manuelle d'un feature model** : construire des produits, compter l'espace des combinaisons (2^13) et les produits réellement permis (46), expliquer pourquoi [S6 p. 26-27].
   2. **Construire un modèle de variabilité à partir d'exigences rédigées au gabarit** (R1-R5 + contrainte C1, ligne de magasins d'électroménager) [S6 p. 68-69].

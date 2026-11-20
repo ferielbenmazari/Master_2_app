@@ -1,10 +1,10 @@
 {
   "id": "inf4-06-ingenierie-application-2",
   "courseId": "inf4",
-  "order": 9,
+  "order": 12,
   "title": {
-    "fr": "Ingénierie d'application (2/3) : architecture, coût et réalisation",
-    "en": "Application engineering (2/3): architecture, cost and realisation"
+    "fr": "Conception et réalisation d’une application",
+    "en": "Designing and building an application"
   },
   "hook": {
     "fr": "Le client a choisi ses variants : comment lier la variabilité de l'architecture de référence, chiffrer ce que ça coûte, puis configurer et assembler l'application sans tout réécrire ?",
@@ -19,8 +19,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Du client au produit : que reprend-on, que doit-on écrire ?",
-        "en": "From customer to product: what do we reuse, what must we write?"
+        "fr": "1. Du client au produit : que reprend-on, que doit-on écrire ?",
+        "en": "1. From customer to product: what do we reuse, what must we write?"
       }
     },
     {
@@ -58,8 +58,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Conception : spécialiser l'architecture de référence",
-        "en": "Design: specialising the reference architecture"
+        "fr": "2. Conception : spécialiser l'architecture de référence",
+        "en": "2. Design: specialising the reference architecture"
       }
     },
     {
@@ -460,8 +460,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Combien coûte un variant ? Les catégories A à D",
-        "en": "How much does a variant cost? Categories A to D"
+        "fr": "3. Combien coûte un variant ? Les catégories A à D",
+        "en": "3. How much does a variant cost? Categories A to D"
       }
     },
     {
@@ -691,8 +691,8 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Réalisation : configurer et assembler",
-        "en": "Realisation: configuring and assembling"
+        "fr": "4. Réalisation : configurer et assembler",
+        "en": "4. Realisation: configuring and assembling"
       }
     },
     {
@@ -968,8 +968,284 @@
     {
       "type": "heading",
       "text": {
-        "fr": "Ce qui change par rapport à un système unique",
-        "en": "What differs from single-system engineering"
+        "fr": "5. Retrouver la variabilité dans un code existant (TP TaskForge)",
+        "en": "5. Recovering variability from existing code (TaskForge exercise)"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.1 Variabilité fixée à la construction",
+        "en": "5.1 Variability fixed at build time"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "**Variabilité de construction** : la liaison des variants se fait **avant** l’exécution, en **retirant du code les blocs non sélectionnés** (ici des blocs `//#if Option … //#endif`). Cacher un bouton dans un produit qui contient tout le code et retirer le composant à la production sont **deux stratégies différentes** ; le TP retire le code non sélectionné.",
+        "en": "**Build-time variability**: variants are bound **before** execution, by **removing unselected blocks from the code** (here `//#if Option … //#endif` blocks). Hiding a button in a product that contains all the code and removing the component at production are **two different strategies**; the exercise removes unselected code."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "cacher un bouton dans un produit contenant tout le code et retirer le composant au moment de la production correspondent à deux stratégies différentes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "C’est la forme la plus nette de la **liaison des variants** vue plus haut (compilation, édition de liens, déploiement) : deux alternatives comme les deux fonctions `persist()` de Memory et LocalStorage ne peuvent pas coexister dans un même produit.",
+        "en": "This is the sharpest form of the **variant binding** seen above (compilation, linking, deployment): two alternatives such as the two `persist()` functions of Memory and LocalStorage cannot coexist in the same product."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        }
+      ],
+      "notions": [
+        "n-build-time-variability"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.2 Méthode : reconstruire un modèle à partir d’un code",
+        "en": "5.2 Method: rebuilding a model from code"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Reconstruire la variabilité d’un code existant",
+        "en": "Rebuilding the variability of existing code"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Explorer **deux produits** et noter les différences, en distinguant capacité, choix à l’exécution et donnée.",
+            "en": "Explore **two products** and note the differences, distinguishing capability, runtime choice and data."
+          },
+          "why": {
+            "fr": "« disposer de priorités » est une feature ; « cette tâche est haute » est une donnée.",
+            "en": "“having priorities” is a feature; “this task is high” is data."
+          }
+        },
+        {
+          "do": {
+            "fr": "Lire le code : repérer les **blocs conditionnels** et le **contrat de construction** en tête.",
+            "en": "Read the code: find the **conditional blocks** and the **build contract** at the top."
+          },
+          "why": {
+            "fr": "Le contrat donne les alternatives et les dépendances.",
+            "en": "The contract gives the alternatives and dependencies."
+          }
+        },
+        {
+          "do": {
+            "fr": "Remplir la **matrice option, bloc, comportement visible, dépendance, nature de la justification**.",
+            "en": "Fill in the **matrix option, block, visible behaviour, dependency, nature of the justification**."
+          },
+          "why": {
+            "fr": "Elle relie chaque feature à un morceau de code.",
+            "en": "It ties each feature to a piece of code."
+          }
+        },
+        {
+          "do": {
+            "fr": "Construire le modèle (nouvelle option et contrainte du contrat) puis le **vérifier** : syntaxe, existence, features mortes, chaque option sélectionnable, nombre exact, anciens produits toujours représentables.",
+            "en": "Build the model (new option and contract constraint) then **verify** it: syntax, existence, dead features, each option selectable, exact count, old products still representable."
+          },
+          "why": {
+            "fr": "Le modèle ne doit pas perdre d’anciens produits.",
+            "en": "The model must not lose old products."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §1",
+          "quote": "Distinguez : capacité de l’application, choix utilisateur pendant l’exécution, et donnée d’une tâche."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Complétez la matrice suivante, avec un exemple pour chaque option"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notions": [
+        "n-reverse-engineer-variability"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.3 Exemple corrigé : le contrat TaskForge et sa matrice",
+        "en": "5.3 Worked example: the TaskForge contract and its matrix"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Règle du contrat",
+          "en": "Règle du contrat"
+        },
+        {
+          "fr": "Traduction dans le modèle",
+          "en": "Traduction dans le modèle"
+        },
+        {
+          "fr": "Nature de la justification",
+          "en": "Nature de la justification"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Exactement un stockage : Memory ou LocalStorage",
+            "en": "Exactement un stockage : Memory ou LocalStorage"
+          },
+          {
+            "fr": "Storage obligatoire, groupe **alternatif**",
+            "en": "Storage obligatoire, groupe **alternatif**"
+          },
+          {
+            "fr": "architecture : les deux `persist()` ne coexistent pas",
+            "en": "architecture : les deux `persist()` ne coexistent pas"
+          }
+        ],
+        [
+          {
+            "fr": "Kiosk implique Memory",
+            "en": "Kiosk implique Memory"
+          },
+          {
+            "fr": "Kiosk ⇒ Memory",
+            "en": "Kiosk ⇒ Memory"
+          },
+          {
+            "fr": "politique produit (aucun stockage persistant)",
+            "en": "politique produit (aucun stockage persistant)"
+          }
+        ],
+        [
+          {
+            "fr": "Statistics appelle `visibleTasks()`, fourni par Filters",
+            "en": "Statistics appelle `visibleTasks()`, fourni par Filters"
+          },
+          {
+            "fr": "Statistics ⇒ Filters",
+            "en": "Statistics ⇒ Filters"
+          },
+          {
+            "fr": "technique : établie par un appel de fonction",
+            "en": "technique : établie par un appel de fonction"
+          }
+        ],
+        [
+          {
+            "fr": "JSONExport implique LocalStorage",
+            "en": "JSONExport implique LocalStorage"
+          },
+          {
+            "fr": "JSONExport ⇒ LocalStorage",
+            "en": "JSONExport ⇒ LocalStorage"
+          },
+          {
+            "fr": "commerciale : « PAS une nécessité technique », une autre politique serait possible",
+            "en": "commerciale : « PAS une nécessité technique », une autre politique serait possible"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 1. Exactement un stockage : Memory ou LocalStorage."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 2. Kiosk implique Memory (politique produit : aucun stockage persistant)."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 3. Statistics appelle visibleTasks(), fourni par Filters."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 4. JSONExport implique LocalStorage (politique commerciale de cette version,"
+        }
+      ],
+      "notions": [
+        "n-reverse-engineer-variability",
+        "n-dependency-justification"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une dépendance **technique** peut se lire dans un appel de fonction ; une règle **commerciale** ou de politique ne se déduit pas du code : il faut la confirmer avec une partie prenante. De même, **deux produits observés ne prouvent pas** que toutes les combinaisons sont permises : le modèle se fonde sur les blocs conditionnels, les dépendances et le contrat, pas sur deux captures. Le tableau `tasks`, la fonction `render` ou chaque bouton ne deviennent pas automatiquement des features.",
+        "en": "A **technical** dependency can be read in a function call; a **commercial** or policy rule cannot be deduced from the code: it must be confirmed with a stakeholder. Likewise, **two observed products do not prove** that all combinations are allowed: the model rests on the conditional blocks, the dependencies and the contract, not on two screenshots. The `tasks` array, the `render` function or each button do not automatically become features."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Une dépendance technique peut être établie par un appel de fonction. Une règle commerciale ne se déduit pas de cet appel"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "Expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Pourquoi le tableau `tasks`, la fonction `render` et chaque bouton individuel ne deviennent-ils pas automatiquement des features ?"
+        }
+      ],
+      "notions": [
+        "n-dependency-justification",
+        "n-observed-products-not-proof"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Construction : le code non sélectionné est retiré ; deux alternatives ne coexistent pas. Reconstruire = contrat + blocs conditionnels + matrice, puis vérifier le modèle. Nature d’une dépendance : technique, produit ou commerciale. Deux produits observés ne prouvent rien sur les combinaisons permises.",
+        "en": "Build time: unselected code is removed; two alternatives do not coexist. Rebuilding = contract + conditional blocks + matrix, then verify the model. Nature of a dependency: technical, product or commercial. Two observed products prove nothing about allowed combinations."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-06-qz-15"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "6. Ce qui change par rapport à un système unique",
+        "en": "6. What differs from single-system engineering"
       }
     },
     {
@@ -1189,6 +1465,40 @@
           "quote": "an application-specific plug-in component has to carry all interfaces that are determined by the domain architecture for such a plug-in"
         }
       ]
+    },
+    {
+      "id": "term-build-time-variability",
+      "fr": "variabilité de construction",
+      "en": "build-time variability",
+      "definition": {
+        "fr": "Liaison des variants avant l’exécution, en retirant du code les blocs non sélectionnés.",
+        "en": "Variant binding before execution, by removing unselected blocks from the code."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        }
+      ],
+      "notion": "n-build-time-variability"
+    },
+    {
+      "id": "term-traceability-matrix",
+      "fr": "matrice option, code, dépendance",
+      "en": "option–code–dependency matrix",
+      "definition": {
+        "fr": "Tableau qui relie chaque option à son bloc de code, son comportement, sa dépendance et la nature de la justification.",
+        "en": "A table linking each option to its code block, behaviour, dependency and the nature of the justification."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Complétez la matrice suivante, avec un exemple pour chaque option"
+        }
+      ],
+      "notion": "n-reverse-engineer-variability"
     }
   ],
   "notions": [
@@ -1209,7 +1519,11 @@
     "n-parameter-consistency",
     "n-application-specific-components",
     "n-building-application",
-    "n-ar-differences-single-system"
+    "n-ar-differences-single-system",
+    "n-build-time-variability",
+    "n-reverse-engineer-variability",
+    "n-dependency-justification",
+    "n-observed-products-not-proof"
   ],
   "keyPoints": [
     {
@@ -1383,6 +1697,28 @@
       ],
       "notions": [
         "n-application-realisation-goal"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Variabilité de construction : le code non sélectionné est retiré ; reconstruire un modèle = contrat + blocs + matrice, puis vérifier.",
+        "en": "Build-time variability: unselected code is removed; rebuilding a model = contract + blocks + matrix, then verify."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Complétez la matrice suivante, avec un exemple pour chaque option"
+        }
+      ],
+      "notions": [
+        "n-build-time-variability",
+        "n-reverse-engineer-variability"
       ]
     }
   ],
@@ -1725,6 +2061,63 @@
       ],
       "notions": [
         "n-ar-differences-single-system"
+      ]
+    },
+    {
+      "id": "inf4-06-fc-30",
+      "termId": "term-build-time-variability",
+      "front": {
+        "fr": "Variabilité de construction ?",
+        "en": "Build-time variability?"
+      },
+      "back": {
+        "fr": "Les variants sont liés avant l’exécution : le code non sélectionné est retiré (≠ cacher un bouton).",
+        "en": "Variants are bound before execution: unselected code is removed (≠ hiding a button)."
+      },
+      "notions": [
+        "n-build-time-variability"
+      ]
+    },
+    {
+      "id": "inf4-06-fc-31",
+      "termId": "term-traceability-matrix",
+      "front": {
+        "fr": "Reconstruire la variabilité d’un code : la méthode ?",
+        "en": "Rebuilding a code’s variability: the method?"
+      },
+      "back": {
+        "fr": "Explorer 2 produits ; lire blocs et contrat ; matrice option / bloc / comportement / dépendance / justification ; modèle puis vérification.",
+        "en": "Explore 2 products; read blocks and contract; matrix option / block / behaviour / dependency / justification; model then verification."
+      },
+      "notions": [
+        "n-reverse-engineer-variability"
+      ]
+    },
+    {
+      "id": "inf4-06-fc-32",
+      "front": {
+        "fr": "Technique, produit ou commerciale : nature d’une dépendance ?",
+        "en": "Technical, product or commercial: nature of a dependency?"
+      },
+      "back": {
+        "fr": "Technique : lisible dans un appel (Statistics → Filters). Produit / commerciale : une règle (Kiosk, JSONExport) qui ne se déduit pas du code.",
+        "en": "Technical: readable in a call (Statistics → Filters). Product / commercial: a rule (Kiosk, JSONExport) that cannot be deduced from the code."
+      },
+      "notions": [
+        "n-dependency-justification",
+        "n-observed-products-not-proof"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Une dépendance technique peut être établie par un appel de fonction. Une règle commerciale ne se déduit pas de cet appel"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "Expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées."
+        }
       ]
     }
   ],
@@ -2308,6 +2701,150 @@
         "n-ar-differences-single-system"
       ],
       "objective": "o1"
+    },
+    {
+      "id": "inf4-06-qz-15",
+      "type": "true_false",
+      "statement": {
+        "fr": "Cacher un bouton dans un produit qui contient tout le code et retirer le composant à la production sont la même stratégie.",
+        "en": "Hiding a button in a product that contains all the code and removing the component at production are the same strategy."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : ce sont deux stratégies différentes ; le TP retire effectivement le code non sélectionné.",
+        "en": "FALSE: they are two different strategies; the exercise actually removes unselected code."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "cacher un bouton dans un produit contenant tout le code et retirer le composant au moment de la production correspondent à deux stratégies différentes"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        }
+      ],
+      "notions": [
+        "n-build-time-variability"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-06-qz-16",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans TaskForge, JSONExport implique LocalStorage par une nécessité technique du langage.",
+        "en": "In TaskForge, JSONExport implies LocalStorage by a technical necessity of the language."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est une règle commerciale de cette version, « PAS une nécessité technique ».",
+        "en": "FALSE: it is a commercial rule of this version, “NOT a technical necessity”."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 4. JSONExport implique LocalStorage (politique commerciale de cette version,"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Une dépendance technique peut être établie par un appel de fonction. Une règle commerciale ne se déduit pas de cet appel"
+        }
+      ],
+      "notions": [
+        "n-dependency-justification"
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Prendre une règle commerciale pour une contrainte technique.",
+        "en": "Taking a commercial rule for a technical constraint."
+      }
+    },
+    {
+      "id": "inf4-06-qz-17",
+      "type": "true_false",
+      "statement": {
+        "fr": "Deux produits observés suffisent à prouver que toutes les combinaisons de features sont autorisées.",
+        "en": "Two observed products are enough to prove that all feature combinations are allowed."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le modèle se fonde sur les blocs conditionnels, les dépendances et le contrat.",
+        "en": "FALSE: the model rests on the conditional blocks, the dependencies and the contract."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "Expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées."
+        }
+      ],
+      "notions": [
+        "n-observed-products-not-proof"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-06-qz-18",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une dépendance technique peut être établie par un appel de fonction, par exemple Statistics qui appelle visibleTasks() fourni par Filters.",
+        "en": "A technical dependency can be established by a function call, for example Statistics calling visibleTasks() provided by Filters."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : c’est le cas de Statistics ⇒ Filters, de nature technique.",
+        "en": "TRUE: this is the case of Statistics ⇒ Filters, technical in nature."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 3. Statistics appelle visibleTasks(), fourni par Filters."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Une dépendance technique peut être établie par un appel de fonction. Une règle commerciale ne se déduit pas de cet appel"
+        }
+      ],
+      "notions": [
+        "n-dependency-justification"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-06-qz-19",
+      "type": "true_false",
+      "statement": {
+        "fr": "Ajouter une fonctionnalité au modèle ne doit jamais supprimer les anciens produits : ils restent représentables quand la nouvelle feature est exclue.",
+        "en": "Adding a feature to the model must never remove the old products: they stay representable when the new feature is excluded."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : condition d’une évolution sans régression.",
+        "en": "TRUE: the condition for an evolution without regression."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notions": [
+        "n-reverse-engineer-variability"
+      ],
+      "objective": "o1"
     }
   ],
   "exercises": [
@@ -2496,6 +3033,57 @@
       "trap": {
         "fr": "Faire corriger par l'application un défaut qui vient d'un artefact de domaine.",
         "en": "Having the application fix a defect that comes from a domain artefact."
+      }
+    },
+    {
+      "id": "inf4-06-ex-04",
+      "title": {
+        "fr": "Reconstruire un modèle à partir d’un contrat de construction",
+        "en": "Rebuild a model from a build contract"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "apply",
+      "objective": "o1",
+      "notions": [
+        "n-reverse-engineer-variability",
+        "n-dependency-justification"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 1. Exactement un stockage : Memory ou LocalStorage."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 2. Kiosk implique Memory (politique produit : aucun stockage persistant)."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 3. Statistics appelle visibleTasks(), fourni par Filters."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "// 4. JSONExport implique LocalStorage (politique commerciale de cette version,"
+        }
+      ],
+      "statement": {
+        "fr": "Contrat : (1) exactement un stockage, Memory ou LocalStorage ; (2) Kiosk implique Memory ; (3) Statistics appelle visibleTasks(), fourni par Filters ; (4) JSONExport implique LocalStorage. Options facultatives : Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk, JSONExport. Écris le modèle, donne la nature de chaque dépendance et le nombre de produits.",
+        "en": "Contract: (1) exactly one storage, Memory or LocalStorage; (2) Kiosk implies Memory; (3) Statistics calls visibleTasks(), provided by Filters; (4) JSONExport implies LocalStorage. Optional features: Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk, JSONExport. Write the model, give the nature of each dependency and the number of products."
+      },
+      "hints": [
+        {
+          "fr": "Une règle de politique ne se déduit pas d’un appel de fonction.",
+          "en": "A policy rule cannot be deduced from a function call."
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé.** Racine TaskForge ; TaskManagement et Storage obligatoires ; Storage : alternative Memory / LocalStorage ; sept options facultatives ; contraintes Kiosk ⇒ Memory (politique produit), Statistics ⇒ Filters (technique), JSONExport ⇒ LocalStorage (commerciale). Produits : 8 (Priorities, DueDates, CSVExport) × 3 (Filters et Statistics) × 4 (stockage, Kiosk, JSONExport) = **96** (compté par énumération).",
+        "en": "**Proposed solution.** Root TaskForge; TaskManagement and Storage mandatory; Storage: alternative Memory / LocalStorage; seven optional features; constraints Kiosk ⇒ Memory (product policy), Statistics ⇒ Filters (technical), JSONExport ⇒ LocalStorage (commercial). Products: 8 (Priorities, DueDates, CSVExport) × 3 (Filters and Statistics) × 4 (storage, Kiosk, JSONExport) = **96** (counted by enumeration)."
       }
     }
   ],

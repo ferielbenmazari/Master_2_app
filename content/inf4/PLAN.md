@@ -9,24 +9,26 @@
 
 ## Chapitres
 
-| # | Fichier | Titre de travail | Source (mardown/) | État |
+| # (ordre) | Fichier | Titre | Sources | État |
 |---|---|---|---|---|
-| 01 | `01-variabilite.json` | Du sur-mesure à la ligne de produits : la variabilité | 1__introduction.md | à faire |
-| 02 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | cours rédigé (draft) |
-| 03 | `03-cadre-ple.json` | Les feature models : lire, donner la sémantique, compter | 5__soft_ple_detailed.md + 6__ple.md | refonte structurée (pilote, 2026-11-18, draft) |
-| 04 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | cours rédigé (draft) |
-| 05 | `05-ingenierie-application-1.json` | Ingénierie d'application (1/3) : exigences et variantes | 3__application_engineering.md (1re moitié) | cours rédigé (draft) |
-| 06 | `06-ingenierie-application-2.json` | Ingénierie d'application (2/3) : architecture, coût et réalisation | 3__application_engineering.md (ch. 16-17) | refonte pédagogique (draft) |
-| 10 | `10-test-application.json` | Ingénierie d'application (3/3) : tester sans tout retester | 3__application_engineering.md (ch. 18) | refonte pédagogique (draft) — issu de la coupure du 06 (20 min) |
-| 09 | `09-strategies-exigences-pl.json` | Éliciter et spécifier les exigences d’une ligne : trois stratégies | 5__soft_ple_detailed.md + 6__ple.md | refonte structurée (2026-11-18, draft) |
-| 07 | `07-transformation-verification.json` | Traduire un modèle en contraintes : générer et compter les produits | 7__ple.md | refonte structurée (2026-11-18, draft) |
-| 11 | `11-verification-diagnostic.json` | Vérifier, diagnostiquer et corriger un modèle de ligne de produits | 7__ple.md | nouveau, refonte structurée (2026-11-18, draft) |
-| 08 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | refonte pédagogique (draft) |
+| 1 | `01-variabilite.json` | Variabilité et ligne de produits : les notions de base | 1__introduction.md + tutoriel 0 + quiz 0 | refondu (2026-11-20, draft) |
+| 2 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | cours rédigé (draft) — **à refondre** |
+| 3 | `03-cadre-ple.json` | Les feature models : lire, donner la sémantique, compter | 5__soft_ple_detailed.md + 6__ple.md + tutoriels 2 et 3 + quiz 2 | refondu, complété (2026-11-20, draft) — 17 min, à resserrer |
+| 4 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | cours rédigé (draft) — **à refondre** |
+| 5 | `12-gabarit-secret.json` | Écrire une exigence de ligne : le gabarit SECRET | tutoriel 1 + annexe 1 + quiz 1 | **nouveau** (2026-11-20, draft) |
+| 6 | `09-strategies-exigences-pl.json` | Éliciter et spécifier les exigences d’une ligne : trois stratégies | 5__soft_ple_detailed.md + 6__ple.md | refondu (2026-11-18, draft) — à alléger (gabarit renvoyé au chapitre SECRET) |
+| 7 | `07-transformation-verification.json` | Traduire un modèle en contraintes : générer et compter les produits | 7__ple.md + tutoriel 3 | refondu, complété (2026-11-20, draft) |
+| 8 | `11-verification-diagnostic.json` | Vérifier, diagnostiquer et corriger un modèle de ligne de produits | 7__ple.md + tutoriel 4 | refondu, complété (2026-11-20, draft) |
+| 9 | `13-configuration-automatique.json` | Configurer, générer et faire évoluer un produit | tutoriel 5 + TaskForge T3 + tableur ILP | **nouveau** (2026-11-20, draft) |
+| 10 | `05-ingenierie-application-1.json` | Exigences d’application : deltas, variants et catégories | 3__application_engineering.md (1re moitié) | cours rédigé (draft) — **à refondre** |
+| 11 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | refonte pédagogique (draft) — **à refondre** |
+| 12 | `06-ingenierie-application-2.json` | Conception et réalisation d’une application | 3__application_engineering.md (ch. 16-17) + TaskForge T2 | parties TaskForge ajoutées et titres numérotés (2026-11-20, draft) — **à refondre** |
+| 13 | `10-test-application.json` | Tester une application sans tout retester | 3__application_engineering.md (ch. 18) + TaskForge T3 | partie TaskForge ajoutée et titres numérotés (2026-11-20, draft) — **à refondre** |
 
 Ressource d'exercice : `EPI/5__configuration ILP(1).xlsx` (configuration par programmation linéaire en nombres entiers) → exercices du chapitre 07 ou 08.
 
 ## Partiels
-Pas d'annale → `exams/blanc-01.json` (mock).
+Quiz du prof (annales, corrigés **proposés**) : `exams/quiz-prof-0.json`, `quiz-prof-1.json`, `quiz-prof-2.json` (36 questions, 20 points chacun). quiz3 à quiz5 : fichiers vides au 2026-11-20. Analyse globale : `ANALYSE-EPI.md`.
 
 ## Écarts détectés (termes EN : texte / glossaire actuel → PDF original)
 > Établi le 2026-11-06 par `course-analyst` (notions.json) en cherchant chaque `glossary[].en` et chaque terme `**gras**` de la version EN dans `sources-texte/inf4/*.md`. Le PDF fait foi. À traiter par le `fact-checker` (C09). Les termes absents de la liste ont été retrouvés tels quels (ou ne sont que des tournures pédagogiques sans valeur de terme).

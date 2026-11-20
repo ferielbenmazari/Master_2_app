@@ -1,0 +1,660 @@
+{
+  "id": "inf4-quiz-prof-0",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Quiz 0 du prof (tutoriel 0, ingénierie de domaine et d’application)",
+    "en": "Teacher’s quiz 0 (tutorial 0, domain and application engineering)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/11-quiz0.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du prof, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites du tutoriel et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "The teacher’s questions, with no official answers in the files: the answers are **proposed** (deduced from the tutorial and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-quiz-prof-0-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Which statements describe application engineering in a product line?",
+            "en": "Which statements describe application engineering in a product line?"
+          },
+          "options": [
+            {
+              "fr": "It removes the need to elicit the particular customer's requirements.",
+              "en": "It removes the need to elicit the particular customer's requirements."
+            },
+            {
+              "fr": "It consists exclusively of writing all components from scratch.",
+              "en": "It consists exclusively of writing all components from scratch."
+            },
+            {
+              "fr": "It defines every possible family variation independently of any application.",
+              "en": "It defines every possible family variation independently of any application."
+            },
+            {
+              "fr": "It relates product-specific needs to the variability supported by the family.",
+              "en": "It relates product-specific needs to the variability supported by the family."
+            },
+            {
+              "fr": "It uses domain assets to realise a particular application.",
+              "en": "It uses domain assets to realise a particular application."
+            }
+          ],
+          "correct": [
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : d, e. L'ingénierie d'application relie les besoins d'un produit à la variabilité de la famille (d) et réalise l'application avec les actifs du domaine (e). (a) elle élicite bien les exigences du client ; (b) elle réutilise ; (c) c'est l'ingénierie de domaine.",
+            "en": "Proposed answer: d, e. Application engineering relates product-specific needs to the family’s variability (d) and realises the application with domain assets (e). It still elicits the customer’s requirements, it reuses assets, and defining all family variations belongs to domain engineering."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 1",
+              "quote": "Which statements describe application engineering in a product line?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Which artefacts can be engineered for reuse in a software product line?",
+            "en": "Which artefacts can be engineered for reuse in a software product line?"
+          },
+          "options": [
+            {
+              "fr": "Only artefacts belonging to one delivered product, excluding family assets.",
+              "en": "Only artefacts belonging to one delivered product, excluding family assets."
+            },
+            {
+              "fr": "Reusable test artefacts applicable to supported variants.",
+              "en": "Reusable test artefacts applicable to supported variants."
+            },
+            {
+              "fr": "Family-level requirements with documented variability.",
+              "en": "Family-level requirements with documented variability."
+            },
+            {
+              "fr": "Only executable binaries, because other artefacts cannot be reused.",
+              "en": "Only executable binaries, because other artefacts cannot be reused."
+            },
+            {
+              "fr": "A reference architecture supporting the family’s options.",
+              "en": "A reference architecture supporting the family’s options."
+            }
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : b, c, e. On construit pour la réutilisation des tests, des exigences avec variabilité, une architecture de référence. (a) et (d) : faux, ce sont des actifs de famille, pas seulement un binaire ou un produit.",
+            "en": "Proposed answer: b, c, e. Reusable tests, family-level requirements with variability and a reference architecture are engineered for reuse; assets of a single product or only binaries are not the point."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 2",
+              "quote": "Which artefacts can be engineered for reuse in a software product line?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it. Which conclusions are justified?",
+            "en": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it. Which conclusions are justified?"
+          },
+          "options": [
+            {
+              "fr": "The team must assess whether to revise the scope or variability, or keep the product outside the family.",
+              "en": "The team must assess whether to revise the scope or variability, or keep the product outside the family."
+            },
+            {
+              "fr": "Removing the requirement from one application automatically revises all domain artefacts.",
+              "en": "Removing the requirement from one application automatically revises all domain artefacts."
+            },
+            {
+              "fr": "The requirement was necessarily classified incorrectly for the original scope.",
+              "en": "The requirement was necessarily classified incorrectly for the original scope."
+            },
+            {
+              "fr": "The new product can be included without reconsidering any family assumptions.",
+              "en": "The new product can be included without reconsidering any family assumptions."
+            },
+            {
+              "fr": "A change in scope can change which requirements count as common.",
+              "en": "A change in scope can change which requirements count as common."
+            }
+          ],
+          "correct": [
+            0,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, e. Un produit qui viole une exigence commune oblige à choisir : réviser le périmètre ou la variabilité, ou laisser le produit hors de la famille (a). Le périmètre détermine ce qui est commun (e). (b) rien n'est révisé « automatiquement » ; (c) l'exigence était correcte pour l'ancien périmètre ; (d) faux.",
+            "en": "Proposed answer: a, e. The team must decide between revising the scope or the variability and keeping the product outside the family (a); the scope determines what is common (e). Nothing is revised automatically and the requirement was correct for the old scope."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 3",
+              "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it. Which conclusions are justified?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "An application team discovers a requirement unsupported by current domain assets. Which statements are justified?",
+            "en": "An application team discovers a requirement unsupported by current domain assets. Which statements are justified?"
+          },
+          "options": [
+            {
+              "fr": "Application engineering may provide a change request to domain engineering.",
+              "en": "Application engineering may provide a change request to domain engineering."
+            },
+            {
+              "fr": "A product-specific solution may be retained without making it a reusable domain asset.",
+              "en": "A product-specific solution may be retained without making it a reusable domain asset."
+            },
+            {
+              "fr": "The requirement must automatically become mandatory for every family member.",
+              "en": "The requirement must automatically become mandatory for every family member."
+            },
+            {
+              "fr": "The existence of feedback means the distinction between the two processes is meaningless.",
+              "en": "The existence of feedback means the distinction between the two processes is meaningless."
+            },
+            {
+              "fr": "Promoting the solution to the domain may require reengineering it for reuse.",
+              "en": "Promoting the solution to the domain may require reengineering it for reuse."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, b, e. Retour application → domaine par une demande de changement (a) ; une solution propre au produit peut rester spécifique (b) ; la promouvoir peut exiger de la refaire pour la réutilisation (e). (c) rien ne la rend obligatoire ; (d) le retour d'information n'abolit pas la distinction.",
+            "en": "Proposed answer: a, b, e. Application engineering may send a change request to the domain (a); a product-specific solution may stay specific (b); promoting it may require reengineering (e). Nothing becomes mandatory automatically, and feedback does not erase the distinction."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 4",
+              "quote": "An application team discovers a requirement unsupported by current domain assets. Which statements are justified?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A team copies a completed product into several repositories and maintains each copy independently. Which statements follow?",
+            "en": "A team copies a completed product into several repositories and maintains each copy independently. Which statements follow?"
+          },
+          "options": [
+            {
+              "fr": "The number of repositories alone determines whether the team has a product line.",
+              "en": "The number of repositories alone determines whether the team has a product line."
+            },
+            {
+              "fr": "Introducing governed shared assets and explicit variation could move the approach towards PLE.",
+              "en": "Introducing governed shared assets and explicit variation could move the approach towards PLE."
+            },
+            {
+              "fr": "Independent copies can make propagation of shared fixes harder.",
+              "en": "Independent copies can make propagation of shared fixes harder."
+            },
+            {
+              "fr": "The use of identical initial source code guarantees coordinated future evolution.",
+              "en": "The use of identical initial source code guarantees coordinated future evolution."
+            },
+            {
+              "fr": "Code copying demonstrates some reuse but does not by itself establish product line engineering.",
+              "en": "Code copying demonstrates some reuse but does not by itself establish product line engineering."
+            }
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : b, c, e. La copie est une forme de réutilisation (« copy & own »), mais elle ne suffit pas à faire une ligne de produits (e) ; chaque copie évolue seule, donc propager un correctif est plus dur (c) ; des actifs partagés gouvernés et une variabilité explicite rapprochent de la PLE (b). (a) le nombre de dépôts ne décide pas ; (d) un code initial identique ne garantit aucune évolution coordonnée.",
+            "en": "Proposed answer: b, c, e. Copying is some reuse but does not make a product line (e); independent copies make shared fixes harder (c); governed shared assets and explicit variation move towards PLE (b). Repository count and identical initial code prove nothing."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 5",
+              "quote": "A team copies a completed product into several repositories and maintains each copy independently. Which statements follow?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "For selectable features A and B, interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection. Consider each relation separately. Which statements hold?",
+            "en": "For selectable features A and B, interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection. Consider each relation separately. Which statements hold?"
+          },
+          "options": [
+            {
+              "fr": "Under A requires B, excluding A forces B to be excluded.",
+              "en": "Under A requires B, excluding A forces B to be excluded."
+            },
+            {
+              "fr": "Under A requires B, choosing B forces A.",
+              "en": "Under A requires B, choosing B forces A."
+            },
+            {
+              "fr": "Under A requires B, choosing A without B violates the relation.",
+              "en": "Under A requires B, choosing A without B violates the relation."
+            },
+            {
+              "fr": "Under A excludes B, both features must be absent.",
+              "en": "Under A excludes B, both features must be absent."
+            },
+            {
+              "fr": "Under A excludes B, the forbidden joint selection is unchanged if the endpoints are exchanged.",
+              "en": "Under A excludes B, the forbidden joint selection is unchanged if the endpoints are exchanged."
+            }
+          ],
+          "correct": [
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c, e. A ⇒ B : choisir A sans B viole la relation (c). `excludes` interdit la sélection conjointe, et c'est **symétrique** (e). (a) ¬A ne dit rien sur B ; (b) c'est la réciproque ; (d) A et B peuvent être **tous deux absents** : seul le couple (1,1) est interdit.",
+            "en": "Proposed answer: c, e. A requires B: choosing A without B violates it (c); excludes is symmetric (e). Excluding A says nothing about B, B does not force A, and excludes does not require both to be absent."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 6",
+              "quote": "For selectable features A and B, interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection. Consider each relation separately. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "According to Tutorial 0, what is the main stated reason for choosing Software or System when creating a product line?",
+            "en": "According to Tutorial 0, what is the main stated reason for choosing Software or System when creating a product line?"
+          },
+          "options": [
+            {
+              "fr": "To determine whether relationships can be drawn.",
+              "en": "To determine whether relationships can be drawn."
+            },
+            {
+              "fr": "To choose the requirements templates appropriate to the nature of the product line.",
+              "en": "To choose the requirements templates appropriate to the nature of the product line."
+            },
+            {
+              "fr": "To choose whether the project can contain more than one application.",
+              "en": "To choose whether the project can contain more than one application."
+            },
+            {
+              "fr": "To turn autosave on or off.",
+              "en": "To turn autosave on or off."
+            },
+            {
+              "fr": "To decide whether the project is private or publicly reusable.",
+              "en": "To decide whether the project is private or publicly reusable."
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : b. T0 §1.2 : la différence entre Software et System porte « mainly on the type of templates used to specify the requirements ».",
+            "en": "Proposed answer: b. Tutorial 0, §1.2: the Software / System choice mainly selects the requirements templates."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 7",
+              "quote": "According to Tutorial 0, what is the main stated reason for choosing Software or System when creating a product line?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q08",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Which diagram-editing actions are documented in Tutorial 0?",
+            "en": "Which diagram-editing actions are documented in Tutorial 0?"
+          },
+          "options": [
+            {
+              "fr": "Rename the project to add an element to the active diagram.",
+              "en": "Rename the project to add an element to the active diagram."
+            },
+            {
+              "fr": "Download project to change the properties of a selected relationship.",
+              "en": "Download project to change the properties of a selected relationship."
+            },
+            {
+              "fr": "Drag an element from the palette into the editing area to add it.",
+              "en": "Drag an element from the palette into the editing area to add it."
+            },
+            {
+              "fr": "Right-click an element or relationship and choose Properties to edit its properties.",
+              "en": "Right-click an element or relationship and choose Properties to edit its properties."
+            },
+            {
+              "fr": "Use Save project as to create a relationship between two existing elements.",
+              "en": "Use Save project as to create a relationship between two existing elements."
+            }
+          ],
+          "correct": [
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c, d. T0 §2.2.1 : glisser un élément de la palette ; §2.2.3 : clic droit puis Properties. Les autres associent une action de menu projet à un effet sans rapport.",
+            "en": "Proposed answer: c, d. Tutorial 0: drag an element from the palette (§2.2.1) and right-click then Properties (§2.2.3). The other options pair a menu action with an unrelated effect."
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 8",
+              "quote": "Which diagram-editing actions are documented in Tutorial 0?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A family’s domain model explicitly makes Analytics optional. Both applications created so far select it. A reviewer argues that Analytics should be declared mandatory because it appears in every observed application. Which statements are justified?",
+            "en": "A family’s domain model explicitly makes Analytics optional. Both applications created so far select it. A reviewer argues that Analytics should be declared mandatory because it appears in every observed application. Which statements are justified?"
+          },
+          "options": [
+            {
+              "fr": "The two application selections automatically override the domain model in VariaMos.",
+              "en": "The two application selections automatically override the domain model in VariaMos."
+            },
+            {
+              "fr": "Every feature appearing in two products must be mandatory.",
+              "en": "Every feature appearing in two products must be mandatory."
+            },
+            {
+              "fr": "A no-Analytics product may remain valid if it satisfies all other family constraints.",
+              "en": "A no-Analytics product may remain valid if it satisfies all other family constraints."
+            },
+            {
+              "fr": "The observations do not by themselves establish that Analytics is mandatory in the intended family.",
+              "en": "The observations do not by themselves establish that Analytics is mandatory in the intended family."
+            },
+            {
+              "fr": "The team should assess intended scope and needs before changing the domain model.",
+              "en": "The team should assess intended scope and needs before changing the domain model."
+            }
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c, d, e. Optionnel dans le domaine : un produit sans Analytics reste valide s'il respecte les autres contraintes (c). Deux observations n'établissent pas l'intention de la famille (d) ; on évalue le périmètre et les besoins avant de modifier le domaine (e). (a) les sélections d'une application ne modifient pas le modèle de domaine ; (b) faux.",
+            "en": "Proposed answer: c, d, e. A product without Analytics can stay valid (c); observations do not establish intent (d); assess scope and needs before changing the domain model (e). Application selections do not override the domain model."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 9",
+              "quote": "A family’s domain model explicitly makes Analytics optional. Both applications created so far select it. A reviewer argues that Analytics should be declared mandatory because it appears in every observed application. Which statements are justified?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A company deliberately engineers one text-editor family with a shared core and managed optional features. It needs SchoolEditor and LegalEditor as two products of that family. Using Tutorial 0, which actions fit this decision?",
+            "en": "A company deliberately engineers one text-editor family with a shared core and managed optional features. It needs SchoolEditor and LegalEditor as two products of that family. Using Tutorial 0, which actions fit this decision?"
+          },
+          "options": [
+            {
+              "fr": "Represent the two distinct products only as adaptations of one application.",
+              "en": "Represent the two distinct products only as adaptations of one application."
+            },
+            {
+              "fr": "Create SchoolEditor and LegalEditor as applications under that product line.",
+              "en": "Create SchoolEditor and LegalEditor as applications under that product line."
+            },
+            {
+              "fr": "Place reusable family models under Domain Engineering.",
+              "en": "Place reusable family models under Domain Engineering."
+            },
+            {
+              "fr": "Create one Text Editors product line in the project.",
+              "en": "Create one Text Editors product line in the project."
+            },
+            {
+              "fr": "Create a new product line for every optional feature.",
+              "en": "Create a new product line for every optional feature."
+            }
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : b, c, d. Deux produits d'une même famille = deux **applications** sous la ligne « Text editors » (b, d) ; les modèles réutilisables vont sous Domain Engineering (c). (a) une *adaptation* est un contexte d'un même système, pas un produit (T0 §2.1.6) ; (e) faux.",
+            "en": "Proposed answer: b, c, d. Two products of one family are two applications under one line (b, d); reusable models go under Domain Engineering (c). Adaptations are contexts of one application, not products."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 10",
+              "quote": "A company deliberately engineers one text-editor family with a shared core and managed optional features. It needs SchoolEditor and LegalEditor as two products of that family. Using Tutorial 0, which actions fit this decision?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it. A student proposes deleting PDFExport from the family model to configure Alpha. Which statements are correct?",
+            "en": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it. A student proposes deleting PDFExport from the family model to configure Alpha. Which statements are correct?"
+          },
+          "options": [
+            {
+              "fr": "The proposal confuses a product-specific selection with a change to family scope.",
+              "en": "The proposal confuses a product-specific selection with a change to family scope."
+            },
+            {
+              "fr": "Creating an Alpha application node alone proves that PDFExport is deselected.",
+              "en": "Creating an Alpha application node alone proves that PDFExport is deselected."
+            },
+            {
+              "fr": "Alpha’s decision belongs in the engineering of the Alpha application.",
+              "en": "Alpha’s decision belongs in the engineering of the Alpha application."
+            },
+            {
+              "fr": "The family should retain PDFExport as supported variability if both products remain in scope.",
+              "en": "The family should retain PDFExport as supported variability if both products remain in scope."
+            },
+            {
+              "fr": "PDFExport must become mandatory for every product because Beta needs it.",
+              "en": "PDFExport must become mandatory for every product because Beta needs it."
+            }
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : a, c, d. Supprimer PDFExport pour configurer Alpha confond sélection de produit et périmètre de famille (a) ; la décision d'Alpha relève de l'application Alpha (c) ; la famille garde la variabilité tant que les deux produits restent dans le périmètre (d). (b) créer un nœud d'application ne configure rien ; (e) faux.",
+            "en": "Proposed answer: a, c, d. Deleting PDFExport confuses a product selection with the family scope (a); Alpha’s decision belongs to Alpha’s application (c); the family keeps the variability while both products are in scope (d)."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 11",
+              "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it. A student proposes deleting PDFExport from the family model to configure Alpha. Which statements are correct?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-0-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "One robot application must adapt its behaviour when deployed on a beach or on a city street. The team explicitly treats these as contexts of the same product. Which statements follow from Tutorial 0?",
+            "en": "One robot application must adapt its behaviour when deployed on a beach or on a city street. The team explicitly treats these as contexts of the same product. Which statements follow from Tutorial 0?"
+          },
+          "options": [
+            {
+              "fr": "Each context must be a separate product line because the terrain differs.",
+              "en": "Each context must be a separate product line because the terrain differs."
+            },
+            {
+              "fr": "The two spaces automatically specify a safe transition policy.",
+              "en": "The two spaces automatically specify a safe transition policy."
+            },
+            {
+              "fr": "Beach and Street can be adaptation spaces under that robot application.",
+              "en": "Beach and Street can be adaptation spaces under that robot application."
+            },
+            {
+              "fr": "Context-specific models can be created under the corresponding adaptation.",
+              "en": "Context-specific models can be created under the corresponding adaptation."
+            },
+            {
+              "fr": "Creating the two spaces establishes that the robot senses context changes correctly.",
+              "en": "Creating the two spaces establishes that the robot senses context changes correctly."
+            }
+          ],
+          "correct": [
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "Réponse proposée : c, d. T0 §2.1.6 et §2.1.9 : Beach et Street sont des espaces d'adaptation sous l'application robot (c), avec des modèles propres (d). (a) faux ; (b) et (e) : la création des espaces ne définit ni politique de transition ni correction de la détection du contexte.",
+            "en": "Proposed answer: c, d. Tutorial 0: Beach and Street are adaptation spaces under the robot application (c) with their own models (d). Creating them does not define a transition policy or prove correct context sensing."
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/11-quiz0.md",
+              "loc": "Question 12",
+              "quote": "One robot application must adapt its behaviour when deployed on a beach or on a city street. The team explicitly treats these as contexts of the same product. Which statements follow from Tutorial 0?"
+            },
+            {
+              "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+              "loc": "§2 Workspace",
+              "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
