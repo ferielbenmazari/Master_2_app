@@ -69,7 +69,7 @@ export default function ExamPlay({
   const blank = all.filter(({ q }) => isBlank(q, session.answers[q.id])).length
   const minutes = Math.floor(timer.remainingSec / 60)
   const bucket = announceBucket(timer.remainingSec)
-  const title = pickLang(exam.title, prefs.langMode).main
+  const title = pickLang(exam.title, prefs.examLang).main
 
   return (
     <div className="flex flex-col gap-4">
@@ -89,7 +89,7 @@ export default function ExamPlay({
         </div>
         <span className="mono dim">{UI.exams.sectionOf(index + 1, sectionCount)}</span>
         <div className="flex basis-full justify-end">
-          <LangToggle value={prefs.langMode} onChange={(langMode) => setPrefs({ langMode })} />
+          <LangToggle value={prefs.examLang} onChange={(examLang) => setPrefs({ examLang })} />
         </div>
       </div>
       {/* annonce rare (paliers 5 min, 10, 2, 1, 0) : le lecteur d'écran n'entend pas chaque seconde */}
@@ -101,7 +101,7 @@ export default function ExamPlay({
         <ol className="exam-nav">
           {exam.sections.map((s, i) => {
             const count = answeredCount(exam, i, session.answers)
-            const t = pickLang(s.title, prefs.langMode).main
+            const t = pickLang(s.title, prefs.examLang).main
             return (
               <li key={i} className="flex">
                 <button

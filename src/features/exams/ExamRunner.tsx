@@ -100,7 +100,7 @@ function ExamFlow({ exam, list, code }: { exam: Exam; list: string; code: string
               <Icon icon={ChevronLeft} size={14} />
               {UI.exams.back(code)}
             </Link>
-            <h1 className="display text-2xl">{pickLang(exam.title, prefs.langMode).main}</h1>
+            <h1 className="display text-2xl">{pickLang(exam.title, prefs.examLang).main}</h1>
             <ExamIntro exam={exam} notice={notice} onStart={start} />
           </>
         )}

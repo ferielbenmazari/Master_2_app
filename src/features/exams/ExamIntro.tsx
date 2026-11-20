@@ -60,8 +60,8 @@ export default function ExamIntro({
           <Tag>{UI.exams.questions(total)}</Tag>
           <Tag>{UI.exams.points(totalPoints(exam))}</Tag>
         </div>
-        <LangToggle value={prefs.langMode} onChange={(langMode) => setPrefs({ langMode })} />
-        <h2 className="display text-xl leading-tight">{pickLang(exam.title, prefs.langMode).main}</h2>
+        <LangToggle value={prefs.examLang} onChange={(examLang) => setPrefs({ examLang })} />
+        <h2 className="display text-xl leading-tight">{pickLang(exam.title, prefs.examLang).main}</h2>
         <section aria-labelledby="exam-rules" className="flex flex-col gap-2">
           <h3 id="exam-rules" className="mono dim">
             {UI.exams.introHeading}
@@ -83,7 +83,7 @@ export default function ExamIntro({
           <ul className="flex flex-col gap-1 text-sm">
             {exam.sections.map((s, i) => (
               <li key={i}>
-                {UI.exams.sectionLine(pickLang(s.title, prefs.langMode).main, s.points, s.questions.length)}
+                {UI.exams.sectionLine(pickLang(s.title, prefs.examLang).main, s.points, s.questions.length)}
               </li>
             ))}
           </ul>

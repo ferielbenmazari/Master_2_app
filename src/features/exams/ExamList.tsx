@@ -72,7 +72,7 @@ export default function ExamList() {
       ) : (
         <ul aria-label={UI.exams.list} className="stagger flex flex-col gap-3">
           {rows.map(({ slug, exam }, i) => {
-            const title = pickLang(exam.title, prefs.langMode)
+            const title = pickLang(exam.title, prefs.examLang)
             const score = best.get(exam.id)
             const running = loadExamSession(exam.id) !== null
             return (

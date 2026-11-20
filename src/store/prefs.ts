@@ -16,6 +16,8 @@ export interface Prefs {
   avatar: CourseColor
   theme: Theme
   langMode: LangMode
+  /** Langue des partiels, choisie au moment de passer l'épreuve (indépendante du lecteur). */
+  examLang: LangMode
   trainLang: 'fr' | 'en'
   quizTimer: QuizTimer
   newPerDay: number
@@ -29,6 +31,7 @@ export const DEFAULT_PREFS: Prefs = {
   avatar: 'lime',
   theme: 'system',
   langMode: 'both',
+  examLang: 'fr',
   trainLang: 'fr',
   quizTimer: 0,
   newPerDay: 20,
@@ -48,6 +51,7 @@ export function loadPrefs(): Prefs {
       avatar: AVATAR_COLORS.includes(r.avatar as CourseColor) ? (r.avatar as CourseColor) : DEFAULT_PREFS.avatar,
       theme: THEMES.includes(r.theme as Theme) ? (r.theme as Theme) : DEFAULT_PREFS.theme,
       langMode: LANG_MODES.includes(r.langMode as LangMode) ? (r.langMode as LangMode) : DEFAULT_PREFS.langMode,
+      examLang: LANG_MODES.includes(r.examLang as LangMode) ? (r.examLang as LangMode) : DEFAULT_PREFS.examLang,
       trainLang: r.trainLang === 'en' ? 'en' : 'fr',
       quizTimer: QUIZ_TIMERS.includes(r.quizTimer as QuizTimer) ? (r.quizTimer as QuizTimer) : DEFAULT_PREFS.quizTimer,
       newPerDay:

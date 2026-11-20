@@ -50,6 +50,7 @@ const prefsSchema = z.object({
   avatar: z.enum(AVATAR_COLORS as [string, ...string[]]),
   theme: z.enum(['system', 'light', 'dark']),
   langMode: z.enum(['fr', 'both', 'en']),
+  examLang: z.enum(['fr', 'both', 'en']).optional(),
   trainLang: z.enum(['fr', 'en']),
   quizTimer: z.union([z.literal(0), z.literal(15), z.literal(30), z.literal(60)]).optional(),
   newPerDay: z.number().int().min(0).max(MAX_NEW_PER_DAY).optional(),

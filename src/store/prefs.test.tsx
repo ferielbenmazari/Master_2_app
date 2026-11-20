@@ -31,6 +31,14 @@ describe('prefs', () => {
     expect(loadPrefs().pseudo).toBe('Zoé')
   })
 
+  it('langue des partiels : FR par défaut, indépendante du lecteur, valeurs invalides ignorées', () => {
+    expect(loadPrefs().examLang).toBe('fr')
+    savePrefs({ ...DEFAULT_PREFS, langMode: 'both', examLang: 'en' })
+    expect(loadPrefs()).toMatchObject({ langMode: 'both', examLang: 'en' })
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ pseudo: 'A', examLang: 'de' }))
+    expect(loadPrefs().examLang).toBe('fr')
+  })
+
   it('minuteur du quiz : désactivé par défaut, valeurs autorisées seulement', () => {
     expect(loadPrefs().quizTimer).toBe(0)
     expect(loadPrefs().newPerDay).toBe(20)

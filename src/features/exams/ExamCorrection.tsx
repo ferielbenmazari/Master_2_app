@@ -65,7 +65,7 @@ export default function ExamCorrection({
           <Tag tilt="left">{exam.correctionStatus === 'proposed' ? UI.exams.proposed : UI.exams.official}</Tag>
           {timedOut && <Tag>{UI.exams.expiredNote}</Tag>}
         </div>
-        <LangToggle value={prefs.langMode} onChange={(langMode) => setPrefs({ langMode })} />
+        <LangToggle value={prefs.examLang} onChange={(examLang) => setPrefs({ examLang })} />
       </Panel>
 
       {exam.sections.map((s, si) => (
