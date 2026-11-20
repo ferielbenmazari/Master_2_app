@@ -14,7 +14,7 @@ import ExamQuestionStem from './ExamQuestionStem'
 
 const fmt = (n: number) => String(Math.round(n * 100) / 100).replace('.', ',')
 
-function BothLangs({ text, bothLayout }: { text: { fr: string; en: string }; bothLayout: 'columns' | 'stack' }) {
+function BothLangs({ text, bothLayout }: { text: { fr: string; en: string }; bothLayout: Layout }) {
   return (
     <Bilingual
       layout={bothLayout}
@@ -43,7 +43,7 @@ export default function ExamReview({
   n: number
   total: number
   layout: Layout
-  bothLayout: 'columns' | 'stack'
+  bothLayout: Layout
   answer: ExamAnswer | undefined
   score: QuestionScore
   checked: readonly number[]

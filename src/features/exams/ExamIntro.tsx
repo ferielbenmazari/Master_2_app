@@ -8,6 +8,7 @@ import Tag from '@/components/ui/Tag'
 import type { Exam } from '@/content/schema'
 import { UI } from '@/i18n/ui'
 import { pickLang } from '@/lib/bilingual'
+import LangToggle from '@/components/ui/LangToggle'
 import { usePrefs } from '@/store/PrefsProvider'
 import type { Attempt } from '@/store/db'
 import { getAttempts } from '@/store/progress'
@@ -29,7 +30,7 @@ export default function ExamIntro({
   notice: string | null
   onStart: () => void
 }) {
-  const { prefs } = usePrefs()
+  const { prefs, setPrefs } = usePrefs()
   const { layout } = useExamLayout()
   const [attempts, setAttempts] = useState<Attempt[] | null>(null)
 
@@ -59,6 +60,7 @@ export default function ExamIntro({
           <Tag>{UI.exams.questions(total)}</Tag>
           <Tag>{UI.exams.points(totalPoints(exam))}</Tag>
         </div>
+        <LangToggle value={prefs.langMode} onChange={(langMode) => setPrefs({ langMode })} />
         <h2 className="display text-xl leading-tight">{pickLang(exam.title, prefs.langMode).main}</h2>
         <section aria-labelledby="exam-rules" className="flex flex-col gap-2">
           <h3 id="exam-rules" className="mono dim">

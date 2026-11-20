@@ -479,7 +479,7 @@ export const UI = {
     false: 'Faux',
     tfGroup: 'Vrai ou faux',
     justification: 'Justification (facultative)',
-    mcqHint: 'Plusieurs réponses possibles.',
+    mcqHint: 'Coche la ou les bonnes réponses.',
     answerLabel: 'Ta réponse',
     answerHelp: 'Sauvegardée automatiquement sur cet appareil.',
     submit: 'Rendre ma copie',

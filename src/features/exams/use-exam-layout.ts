@@ -6,8 +6,8 @@ import { usePrefs } from '@/store/PrefsProvider'
 export function useExamLayout(): {
   /** Énoncés : une langue, ou FR+EN selon la largeur. */
   layout: Layout
-  /** Corrections : toujours les deux langues (colonnes sur grand écran). */
-  bothLayout: 'columns' | 'stack'
+  /** Corrections : selon le sélecteur FR · FR+EN · EN (FR+EN en colonnes sur grand écran). */
+  bothLayout: Layout
   /** Langue de saisie (attribut `lang` des zones de texte). */
   inputLang: 'fr' | 'en'
 } {
@@ -15,7 +15,7 @@ export function useExamLayout(): {
   const wide = useMediaQuery('(min-width: 1024px)')
   return {
     layout: layoutFor(prefs.langMode, wide),
-    bothLayout: wide ? 'columns' : 'stack',
+    bothLayout: layoutFor(prefs.langMode, wide),
     inputLang: prefs.langMode === 'en' ? 'en' : prefs.langMode === 'fr' ? 'fr' : prefs.trainLang,
   }
 }

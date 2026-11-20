@@ -10,6 +10,7 @@ import { pickLang } from '@/lib/bilingual'
 import { announceBucket, examDeadline, examTimer, formatClock } from '@/lib/exam-timer'
 import { useNow } from '@/lib/use-now'
 import type { ExamAnswer, ExamSession } from '@/store/exam-session'
+import LangToggle from '@/components/ui/LangToggle'
 import { usePrefs } from '@/store/PrefsProvider'
 import ConfirmAction from './ConfirmAction'
 import { answeredCount, flattenQuestions, isBlank } from './exam-logic'
@@ -31,7 +32,7 @@ export default function ExamPlay({
   onSubmit: (at: number) => void
   onAbandon: () => void
 }) {
-  const { prefs } = usePrefs()
+  const { prefs, setPrefs } = usePrefs()
   const { layout, inputLang } = useExamLayout()
   const now = useNow(1000)
   const timer = examTimer(session.startedAt, exam.durationMinutes, now)
@@ -72,7 +73,7 @@ export default function ExamPlay({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="exam-hud" data-tone={timer.tone}>
+      <div className="exam-hud flex-wrap" data-tone={timer.tone}>
         <TimerRing
           seconds={timer.remainingSec}
           total={timer.totalSec}
@@ -87,6 +88,9 @@ export default function ExamPlay({
           </span>
         </div>
         <span className="mono dim">{UI.exams.sectionOf(index + 1, sectionCount)}</span>
+        <div className="flex basis-full justify-end">
+          <LangToggle value={prefs.langMode} onChange={(langMode) => setPrefs({ langMode })} />
+        </div>
       </div>
       {/* annonce rare (paliers 5 min, 10, 2, 1, 0) : le lecteur d'écran n'entend pas chaque seconde */}
       <div role="status" aria-live="polite" className="sr-only">

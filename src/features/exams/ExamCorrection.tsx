@@ -1,6 +1,8 @@
 import { Save } from 'lucide-react'
 import { useMemo } from 'react'
 import Bilingual from '@/components/content/Bilingual'
+import LangToggle from '@/components/ui/LangToggle'
+import { usePrefs } from '@/store/PrefsProvider'
 import Button from '@/components/ui/Button'
 import Panel from '@/components/ui/Panel'
 import Tag from '@/components/ui/Tag'
@@ -30,6 +32,7 @@ export default function ExamCorrection({
   onSave: (note: number) => void | Promise<void>
   onQuit: () => void
 }) {
+  const { prefs, setPrefs } = usePrefs()
   const { layout, bothLayout } = useExamLayout()
   const score = useMemo(() => scoreExam(exam, session.answers, session.grading), [exam, session.answers, session.grading])
   const all = useMemo(() => flattenQuestions(exam), [exam])
@@ -62,6 +65,7 @@ export default function ExamCorrection({
           <Tag tilt="left">{exam.correctionStatus === 'proposed' ? UI.exams.proposed : UI.exams.official}</Tag>
           {timedOut && <Tag>{UI.exams.expiredNote}</Tag>}
         </div>
+        <LangToggle value={prefs.langMode} onChange={(langMode) => setPrefs({ langMode })} />
       </Panel>
 
       {exam.sections.map((s, si) => (
