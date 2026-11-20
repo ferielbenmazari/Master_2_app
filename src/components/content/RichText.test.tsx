@@ -40,3 +40,15 @@ describe('libellé des termes sans |label', () => {
     expect(container.querySelector('strong')?.textContent).toBe('originality')
   })
 })
+
+describe('liens dans une correction', () => {
+  it('lien interne (#/…) : même onglet ; lien externe : nouvel onglet', () => {
+    const text = '- ✘ **b.** raison\n\n→ Revoir : [§ 2.3](#/matiere/inf4/chapitre/c/lire?partie=2.3) et [source](https://a.fr)'
+    const { container } = render(wrap(<RichText block noTerms lang="fr" text={text} />))
+    const [internal, external] = Array.from(container.querySelectorAll('a'))
+    expect(internal?.getAttribute('href')).toBe('#/matiere/inf4/chapitre/c/lire?partie=2.3')
+    expect(internal?.getAttribute('target')).toBeNull()
+    expect(external?.getAttribute('target')).toBe('_blank')
+    expect(container.querySelector('li')?.textContent).toContain('raison')
+  })
+})

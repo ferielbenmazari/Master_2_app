@@ -1,4 +1,4 @@
-import { parseRich, parseRichBlocks, safeHref, type RichNode } from './rich-text'
+import { isInternalHref, parseRich, parseRichBlocks, safeHref, type RichNode } from './rich-text'
 
 /** Tous les nœuds, à plat. */
 function walk(nodes: RichNode[]): RichNode[] {
@@ -92,6 +92,19 @@ describe('safeHref', () => {
     expect(safeHref('//evil.fr')).toBeNull()
     expect(safeHref('/relatif')).toBeNull()
     expect(safeHref('')).toBeNull()
+  })
+  it('liens internes à l’app (routeur en hash)', () => {
+    const h = '#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2'
+    expect(safeHref(h)).toBe(h)
+    expect(isInternalHref(h)).toBe(true)
+    expect(isInternalHref('https://a.fr')).toBe(false)
+    expect(safeHref('#/matiere/../../x')).toBeNull()
+    expect(safeHref('#javascript:alert(1)')).toBeNull()
+    expect(safeHref('#/a b')).toBeNull()
+  })
+  it('un lien interne en markdown devient un <a> interne', () => {
+    const n = parseRich('voir [§ 3.2](#/matiere/inf4/chapitre/x/lire?partie=3.2)')
+    expect(n).toContainEqual({ kind: 'el', tag: 'a', href: '#/matiere/inf4/chapitre/x/lire?partie=3.2', children: [{ kind: 'text', value: '§ 3.2' }] })
   })
 })
 

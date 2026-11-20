@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { parseRich, parseRichBlocks, type RichBlock, type RichNode } from '@/lib/rich-text'
+import { isInternalHref, parseRich, parseRichBlocks, type RichBlock, type RichNode } from '@/lib/rich-text'
 import { UI } from '@/i18n/ui'
 import TermChip, { TermLabel } from './TermChip'
 
@@ -17,6 +17,12 @@ function render(nodes: RichNode[], noTerms: boolean, lang: Lang): ReactNode[] {
         return <TermChip key={i} termId={n.termId} label={n.label} lang={lang} />
       case 'el': {
         const kids = render(n.children, noTerms, lang)
+        if (n.tag === 'a' && n.href && isInternalHref(n.href))
+          return (
+            <a key={i} href={n.href} className="underline">
+              {kids}
+            </a>
+          )
         if (n.tag === 'a')
           return (
             <a

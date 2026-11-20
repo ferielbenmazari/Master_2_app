@@ -25,9 +25,18 @@ const ENTITIES: Record<string, string> = {
   '&#39;': "'",
 }
 
-/** Seuls http(s) et mailto sont acceptés ; `javascript:`, `data:`, etc. → `null`. */
+/** Lien interne à l'app (routeur en hash) : `#/matiere/inf4/chapitre/<id>/lire?partie=3.2`. */
+const INTERNAL = /^#\/[A-Za-z0-9\-_/]+(\?[A-Za-z0-9\-_.=&]+)?$/
+
+/** Vrai si le lien mène à une page de l'app (ouvert dans l'app, pas dans un nouvel onglet). */
+export function isInternalHref(href: string): boolean {
+  return INTERNAL.test(href) && !href.includes('..')
+}
+
+/** Seuls http(s), mailto et les liens internes `#/…` sont acceptés ; `javascript:`, `data:`, etc. → `null`. */
 export function safeHref(href: string | null | undefined): string | null {
   const h = (href ?? '').trim()
+  if (isInternalHref(h)) return h
   // retire les caractères de contrôle/espaces que les navigateurs ignorent dans le schéma (« java\tscript: »)
   // eslint-disable-next-line no-control-regex
   const compact = h.replace(/[\s\x00-\x1F]+/g, '')
