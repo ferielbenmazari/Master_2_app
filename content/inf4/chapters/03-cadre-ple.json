@@ -46,10 +46,23 @@
         "en": "Place the other PLM languages (OVM, DOPLER, constraints), the dialects and the limits of feature models."
       },
       "level": "understand"
+    },
+    {
+      "id": "o5",
+      "text": {
+        "fr": "Raisonner sur requires / excludes (sens unique, transitivité), compter les sélections d’un groupe [m..n] et lire un fragment.",
+        "en": "Reason about requires / excludes (one-way, transitivity), count the selections of an [m..n] group and read a fragment."
+      },
+      "level": "apply"
     }
   ],
   "examFocus": {
-    "documented": [],
+    "documented": [
+      {
+        "fr": "Quiz 2 du prof (12 questions) : Includes, groupes [1..2] et [1..4] (6 et 15), fragments ClothingStores ; quiz 0, question 6 (requires / excludes). Consigne du prof : l’examen couvre tous les tutoriels.",
+        "en": "Teacher’s quiz 2 (12 questions): Includes, [1..2] and [1..4] groups (6 and 15), ClothingStores fragments; quiz 0, question 6 (requires / excludes). Teacher’s instruction: the exam covers all tutorials."
+      }
+    ],
     "probable": [
       {
         "fr": "Exercice du prof (S6, slides 26-27) : construire au moins 12 produits, espace des combinaisons (2¹³ = 8192), produits autorisés (46) et « Why? ». Aucune annale INF4 : format d’exercice probable, pas attesté.",
@@ -100,6 +113,10 @@
       {
         "fr": "Lister quelques configurations valides et justifier pourquoi une configuration est interdite.",
         "en": "List some valid configurations and justify why a configuration is forbidden."
+      },
+      {
+        "fr": "Compter les sélections d’un groupe [m..n] et lire un fragment de modèle sans supposer de règle hors du fragment.",
+        "en": "Count the selections of an [m..n] group and read a model fragment without assuming rules outside it."
       }
     ],
     "distinctions": [
@@ -131,7 +148,7 @@
       }
     ]
   },
-  "estimatedMinutes": 12,
+  "estimatedMinutes": 15,
   "sources": [
     "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
     "ressources/S3__INF4/mardown/6__ple.md",
@@ -268,6 +285,10 @@
         {
           "fr": "Effet sur le nombre de produits",
           "en": "Effect on the number of products"
+        },
+        {
+          "fr": "Dans VariaMos (tutoriels 2 et 3) et UVL",
+          "en": "In VariaMos (tutorials 2 and 3) and UVL"
         }
       ],
       "rows": [
@@ -287,6 +308,10 @@
           {
             "fr": "Aucun (×1)",
             "en": "None (×1)"
+          },
+          {
+            "fr": "Élément **Root feature** (le nom de la ligne)",
+            "en": "**Root feature** element (the line’s name)"
           }
         ],
         [
@@ -305,6 +330,10 @@
           {
             "fr": "Aucun (×1)",
             "en": "None (×1)"
+          },
+          {
+            "fr": "Relation **Mandatory** (du parent vers l’enfant) ; UVL : `mandatory`",
+            "en": "**Mandatory** relationship (parent to child); UVL: `mandatory`"
           }
         ],
         [
@@ -323,6 +352,10 @@
           {
             "fr": "×2 (si le parent est présent)",
             "en": "×2 (if the parent is present)"
+          },
+          {
+            "fr": "Relation de type **Optional** ; UVL : `optional`",
+            "en": "Relationship of type **Optional**; UVL: `optional`"
           }
         ],
         [
@@ -341,6 +374,10 @@
           {
             "fr": "× nombre d’alternatives",
             "en": "× number of alternatives"
+          },
+          {
+            "fr": "**Bundle** XOR (ou Range 1..1) ; UVL : `alternative`",
+            "en": "**Bundle** XOR (or Range 1..1); UVL: `alternative`"
           }
         ],
         [
@@ -359,6 +396,10 @@
           {
             "fr": "× nombre de sous-ensembles de taille m à n",
             "en": "× number of subsets of size m to n"
+          },
+          {
+            "fr": "**Bundle** de type **Range** : RangeMin, RangeMax",
+            "en": "**Bundle** of type **Range**: RangeMin, RangeMax"
           }
         ],
         [
@@ -377,6 +418,10 @@
           {
             "fr": "Une configuration par nombre permis",
             "en": "One configuration per allowed number"
+          },
+          {
+            "fr": "Relation de type **IndividualCardinality** : MinValue, MaxValue",
+            "en": "Relationship of type **IndividualCardinality**: MinValue, MaxValue"
           }
         ],
         [
@@ -395,6 +440,10 @@
           {
             "fr": "Retire les produits avec A sans B",
             "en": "Removes products with A but not B"
+          },
+          {
+            "fr": "Relation de type **Includes** (de A vers B) ; UVL : `A => B` dans `constraints`",
+            "en": "**Includes** relationship (from A to B); UVL: `A => B` in `constraints`"
           }
         ],
         [
@@ -413,6 +462,10 @@
           {
             "fr": "Retire les produits avec A et B",
             "en": "Removes products with both A and B"
+          },
+          {
+            "fr": "Relation **Excludes** ; UVL : une contrainte dans `constraints`",
+            "en": "**Excludes** relationship; UVL: a constraint in `constraints`"
           }
         ],
         [
@@ -431,6 +484,10 @@
           {
             "fr": "Retire les produits qui la violent",
             "en": "Removes products that violate it"
+          },
+          {
+            "fr": "Contrainte textuelle en **CLIF**, notation préfixe : `(if (= Advanced 1) (>= VoiceControl::Version 2))`",
+            "en": "Textual constraint in **CLIF**, prefix notation: `(if (= Advanced 1) (>= VoiceControl::Version 2))`"
           }
         ]
       ],
@@ -484,6 +541,41 @@
           "file": "ressources/S3__INF4/mardown/5__soft_ple_detailed.md",
           "loc": "Page 29",
           "quote": "Boolean, Arithmetic, Symbolic (`all_different(...)`, `relation(...)`,"
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.4",
+          "quote": "If only some products of the product line have the requirement, proceed as above and change the type of the relationship by clicking on it and selecting the Optional option."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.4",
+          "quote": "If a requirement requires another requirement, for example, Images requires Rtf format, let’s proceed as follows"
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.4",
+          "quote": "Drag and drop a Bundle element to the diagram."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "The “Range” elements in the model are VariaMos’s mechanism of representing “Group cardinalities” in Feature Models."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "Change the type of the relationship to \"IndividualCardinality\" to reveal the range parameters."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "VariaMos utilizes the CLIF (Common Logic Interchange Format) language, which is a LISP-like language"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §2",
+          "quote": "Ajoutez Storage comme enfant obligatoire de TaskForge, puis son groupe alternatif."
         }
       ],
       "notions": [
@@ -493,7 +585,10 @@
         "n-individual-cardinalities",
         "n-requires-mutex",
         "n-complex-constraints",
-        "n-fm-foda"
+        "n-fm-foda",
+        "n-vm-includes-requires",
+        "n-vm-bundle-range",
+        "n-uvl-syntax"
       ]
     },
     {
@@ -1224,15 +1319,577 @@
     {
       "type": "heading",
       "text": {
-        "fr": "3. Représentation extensive ou intensive ; PLM et PM",
-        "en": "3. Extensive or intensive representation; PLM and PM"
+        "fr": "3. Raisonner juste sur un modèle : implications, groupes et fragments",
+        "en": "3. Reasoning correctly about a model: implications, groups and fragments"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "3.1 La représentation extensive : matrice et breakdown structure",
-        "en": "3.1 Extensive representation: matrix and breakdown structure"
+        "fr": "3.1 Ce que chaque relation permet de conclure",
+        "en": "3.1 What each relationship lets you conclude"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Relation",
+          "en": "Relation"
+        },
+        {
+          "fr": "On peut conclure",
+          "en": "On peut conclure"
+        },
+        {
+          "fr": "On ne peut pas conclure",
+          "en": "On ne peut pas conclure"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**A requires B** (A ⇒ B)",
+            "en": "**A requires B** (A ⇒ B)"
+          },
+          {
+            "fr": "A choisie ⇒ B choisie ; B absente ⇒ A absente",
+            "en": "A choisie ⇒ B choisie ; B absente ⇒ A absente"
+          },
+          {
+            "fr": "B ⇒ A (réciproque) ; A absente ⇒ B absente",
+            "en": "B ⇒ A (réciproque) ; A absente ⇒ B absente"
+          }
+        ],
+        [
+          {
+            "fr": "**A excludes B**",
+            "en": "**A excludes B**"
+          },
+          {
+            "fr": "symétrique ; A choisie ⇒ B absente",
+            "en": "symétrique ; A choisie ⇒ B absente"
+          },
+          {
+            "fr": "que les deux doivent être absentes : l’une des deux ou aucune est permise",
+            "en": "que les deux doivent être absentes : l’une des deux ou aucune est permise"
+          }
+        ],
+        [
+          {
+            "fr": "Chaîne **A ⇒ B, B ⇒ C**",
+            "en": "Chaîne **A ⇒ B, B ⇒ C**"
+          },
+          {
+            "fr": "A ⇒ C (transitivité)",
+            "en": "A ⇒ C (transitivité)"
+          },
+          {
+            "fr": "C ⇒ A ; B sans A est permis",
+            "en": "C ⇒ A ; B sans A est permis"
+          }
+        ],
+        [
+          {
+            "fr": "Enfant **obligatoire** C sous P",
+            "en": "Enfant **obligatoire** C sous P"
+          },
+          {
+            "fr": "P choisi ⇒ C choisi ; C choisi ⇒ P choisi",
+            "en": "P choisi ⇒ C choisi ; C choisi ⇒ P choisi"
+          },
+          {
+            "fr": "C présent alors que P est absent",
+            "en": "C présent alors que P est absent"
+          }
+        ],
+        [
+          {
+            "fr": "Enfant **optionnel** C sous P",
+            "en": "Enfant **optionnel** C sous P"
+          },
+          {
+            "fr": "C choisi ⇒ P choisi",
+            "en": "C choisi ⇒ P choisi"
+          },
+          {
+            "fr": "P choisi ⇒ C choisi",
+            "en": "P choisi ⇒ C choisi"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 6",
+          "quote": "interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 10 defines the optional relationship obligating the parent to be present if the child feature is selected, but not the opposite."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Lines 9, 11 and 12 are the mandatory relationships between the features, meaning that their selection status must match."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 13 defines the exclusion relationship, meaning that only one of F3 or F4 can be set to 1 at any time by making their sum always less than or equal to 1."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 6",
+          "quote": "A requires B and B requires C. Assume no other constraints. Which statements follow?"
+        }
+      ],
+      "notions": [
+        "n-implication-reasoning",
+        "n-vm-includes-requires"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "« A requires B » est une **implication à sens unique** : sa contraposée est valable, sa réciproque et son inverse ne le sont pas. Plusieurs questions des quiz 0 et 2 portent sur cette seule distinction (Includes, transitivité, « excludes » symétrique).",
+        "en": "“A requires B” is a **one-way implication**: its contrapositive holds, its converse and its inverse do not. Several questions of quizzes 0 and 2 rest on this single distinction (Includes, transitivity, symmetric “excludes”)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 6",
+          "quote": "interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection"
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 6",
+          "quote": "A requires B and B requires C. Assume no other constraints. Which statements follow?"
+        }
+      ],
+      "notions": [
+        "n-implication-reasoning"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Méthode : compter les sélections permises d’un groupe",
+        "en": "3.2 Method: counting the selections a group allows"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Compter les sélections d’un groupe [m..n] parmi k enfants",
+        "en": "Counting the selections of an [m..n] group among k children"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lister les tailles permises : i = m, m+1, …, n.",
+            "en": "List the allowed sizes: i = m, m+1, …, n."
+          },
+          "why": {
+            "fr": "La cardinalité de groupe borne le nombre d’enfants choisis.",
+            "en": "The group cardinality bounds the number of children chosen."
+          }
+        },
+        {
+          "do": {
+            "fr": "Pour chaque taille i, compter les sous-ensembles de i enfants parmi k : C(k, i).",
+            "en": "For each size i, count the subsets of i children among k: C(k, i)."
+          },
+          "why": {
+            "fr": "Les enfants sont distincts : {A,B} et {B,A} sont la même sélection.",
+            "en": "The children are distinct: {A,B} and {B,A} are the same selection."
+          }
+        },
+        {
+          "do": {
+            "fr": "Additionner ; ajouter « parent absent » si le parent est optionnel.",
+            "en": "Add up; add “parent absent” if the parent is optional."
+          },
+          "why": {
+            "fr": "Un parent absent supprime tout son sous-arbre.",
+            "en": "An absent parent removes its whole subtree."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 5",
+          "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+        }
+      ],
+      "notions": [
+        "n-group-selection-count"
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Groupe",
+          "en": "Groupe"
+        },
+        {
+          "fr": "Calcul",
+          "en": "Calcul"
+        },
+        {
+          "fr": "Sélections permises",
+          "en": "Sélections permises"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "[1..2] parmi 3 enfants",
+            "en": "[1..2] parmi 3 enfants"
+          },
+          {
+            "fr": "C(3,1) + C(3,2) = 3 + 3",
+            "en": "C(3,1) + C(3,2) = 3 + 3"
+          },
+          {
+            "fr": "**6**",
+            "en": "**6**"
+          }
+        ],
+        [
+          {
+            "fr": "[1..3] parmi 3 enfants",
+            "en": "[1..3] parmi 3 enfants"
+          },
+          {
+            "fr": "3 + 3 + 1",
+            "en": "3 + 3 + 1"
+          },
+          {
+            "fr": "**7** (= 2³ − 1)",
+            "en": "**7** (= 2³ − 1)"
+          }
+        ],
+        [
+          {
+            "fr": "[1..4] parmi 4 valeurs (attribut Align)",
+            "en": "[1..4] parmi 4 valeurs (attribut Align)"
+          },
+          {
+            "fr": "4 + 6 + 4 + 1",
+            "en": "4 + 6 + 4 + 1"
+          },
+          {
+            "fr": "**15** (= 2⁴ − 1)",
+            "en": "**15** (= 2⁴ − 1)"
+          }
+        ],
+        [
+          {
+            "fr": "[1..1] parmi 3 enfants (XOR)",
+            "en": "[1..1] parmi 3 enfants (XOR)"
+          },
+          {
+            "fr": "C(3,1)",
+            "en": "C(3,1)"
+          },
+          {
+            "fr": "**3**",
+            "en": "**3**"
+          }
+        ],
+        [
+          {
+            "fr": "3 enfants tous obligatoires",
+            "en": "3 enfants tous obligatoires"
+          },
+          {
+            "fr": "une seule sélection : {A,B,C}",
+            "en": "une seule sélection : {A,B,C}"
+          },
+          {
+            "fr": "**1**",
+            "en": "**1**"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 5",
+          "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 9",
+          "quote": "Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 3",
+          "quote": "A requirement permits between one and three child features under selected P."
+        }
+      ],
+      "notions": [
+        "n-group-selection-count"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Quiz 2, question 3 : une exigence permet « entre un et trois » enfants (7 sélections). Un modèle qui rend les trois obligatoires n’en admet qu’une : il **rejette les 6 autres**, alors que la borne haute (3) n’est pas violée. Un groupe `[1..3]` exprime exactement l’exigence.",
+        "en": "Quiz 2, question 3: a requirement permits “between one and three” children (7 selections). A model making all three mandatory admits only one: it **rejects the other 6**, although the upper bound (3) is not violated. A `[1..3]` group expresses the requirement exactly."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 3",
+          "quote": "A requirement permits between one and three child features under selected P."
+        }
+      ],
+      "notions": [
+        "n-group-selection-count"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 Lire un fragment de modèle",
+        "en": "3.3 Reading a model fragment"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Fragment (les autres contraintes sont ignorées)",
+          "en": "Fragment (les autres contraintes sont ignorées)"
+        },
+        {
+          "fr": "Résultat",
+          "en": "Résultat"
+        },
+        {
+          "fr": "Raisonnement",
+          "en": "Raisonnement"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Shop optionnel ; Cart obligatoire sous Shop ; Shop requires [1..2] de Online payment et Offline payment",
+            "en": "Shop optionnel ; Cart obligatoire sous Shop ; Shop requires [1..2] de Online payment et Offline payment"
+          },
+          {
+            "fr": "**4** configurations locales : sans Shop ; Shop + Cart + Online ; Shop + Cart + Offline ; Shop + Cart + les deux",
+            "en": "**4** configurations locales : sans Shop ; Shop + Cart + Online ; Shop + Cart + Offline ; Shop + Cart + les deux"
+          },
+          {
+            "fr": "Omettre Shop et ses descendants est permis. Si Shop est choisi : Cart obligatoire, et 1 ou 2 paiements (jamais 0).",
+            "en": "Omettre Shop et ses descendants est permis. Si Shop est choisi : Cart obligatoire, et 1 ou 2 paiements (jamais 0)."
+          }
+        ],
+        [
+          {
+            "fr": "Web management requires Login ; Login est enfant de User ; User model obligatoire sous User",
+            "en": "Web management requires Login ; Login est enfant de User ; User model obligatoire sous User"
+          },
+          {
+            "fr": "forcément choisies : **Login, User, User model**",
+            "en": "forcément choisies : **Login, User, User model**"
+          },
+          {
+            "fr": "Un enfant suppose son parent ; un obligatoire suit son parent. Account (frère de Login) et Demo data ne sont pas forcés.",
+            "en": "Un enfant suppose son parent ; un obligatoire suit son parent. Account (frère de Login) et Demo data ne sont pas forcés."
+          }
+        ],
+        [
+          {
+            "fr": "List choisie, enfants Alphabetic / Numeric / Vignette en [1..3] ; Alphabetic requiert [1..2] de Upper / Lower ; Numeric et Vignette omis",
+            "en": "List choisie, enfants Alphabetic / Numeric / Vignette en [1..3] ; Alphabetic requiert [1..2] de Upper / Lower ; Numeric et Vignette omis"
+          },
+          {
+            "fr": "types d’Alphabetic : **3** sélections (Upper, Lower, les deux)",
+            "en": "types d’Alphabetic : **3** sélections (Upper, Lower, les deux)"
+          },
+          {
+            "fr": "Il faut au moins un enfant : Alphabetic est choisie. « Aucun type » viole [1..2] ; Roman appartient à Numeric.",
+            "en": "Il faut au moins un enfant : Alphabetic est choisie. « Aucun type » viole [1..2] ; Roman appartient à Numeric."
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 10",
+          "quote": "Use this local fragment of ClothingStores: Shop is optional under the root; Cart is mandatory under Shop; selected Shop requires [1..2] of Online payment and Offline payment."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 11",
+          "quote": "Use this local model: Web management requires Login; Login is a child of User; User model is mandatory under User. Child selection entails parent selection."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 12",
+          "quote": "List is selected. Its children Alphabetic, Numeric and Vignette form [1..3]."
+        }
+      ],
+      "notions": [
+        "n-implication-reasoning",
+        "n-group-selection-count"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.4 Attributs, features abstraites, cas ClothingStores",
+        "en": "3.4 Attributes, abstract features, the ClothingStores case"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Élément",
+          "en": "Élément"
+        },
+        {
+          "fr": "Ce qu’il faut savoir",
+          "en": "Ce qu’il faut savoir"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**Attribut** d’une feature",
+            "en": "**Attribut** d’une feature"
+          },
+          {
+            "fr": "domaine de valeurs (String, Integer…) et plage [m..n] du nombre de valeurs choisies ; Align {Left, Right, Center, Justify} en [1..4] autorise 15 ensembles",
+            "en": "domaine de valeurs (String, Integer…) et plage [m..n] du nombre de valeurs choisies ; Align {Left, Right, Center, Justify} en [1..4] autorise 15 ensembles"
+          }
+        ],
+        [
+          {
+            "fr": "**Attribut de qualité** (ex. temps de réponse)",
+            "en": "**Attribut de qualité** (ex. temps de réponse)"
+          },
+          {
+            "fr": "une exigence non fonctionnelle n’est pas booléenne : domaine et borne d’acceptation, unité et conditions de mesure ; la valeur **cible** n’est pas la **preuve** que l’implémentation l’atteint (réponse proposée, quiz 2)",
+            "en": "une exigence non fonctionnelle n’est pas booléenne : domaine et borne d’acceptation, unité et conditions de mesure ; la valeur **cible** n’est pas la **preuve** que l’implémentation l’atteint (réponse proposée, quiz 2)"
+          }
+        ],
+        [
+          {
+            "fr": "**Feature abstraite** (contour pointillé)",
+            "en": "**Feature abstraite** (contour pointillé)"
+          },
+          {
+            "fr": "sémantiquement identique à une feature concrète ; sert à structurer ; il lui faut des features concrètes dessous",
+            "en": "sémantiquement identique à une feature concrète ; sert à structurer ; il lui faut des features concrètes dessous"
+          }
+        ],
+        [
+          {
+            "fr": "Feature ≠ donnée",
+            "en": "Feature ≠ donnée"
+          },
+          {
+            "fr": "« disposer de priorités » est une feature ; « cette tâche est de priorité haute » est une donnée : un détail technique n’est pas forcément une feature (TaskForge)",
+            "en": "« disposer de priorités » est une feature ; « cette tâche est de priorité haute » est une donnée : un détail technique n’est pas forcément une feature (TaskForge)"
+          }
+        ],
+        [
+          {
+            "fr": "Cas **ClothingStores**",
+            "en": "Cas **ClothingStores**"
+          },
+          {
+            "fr": "25 features d’une boutique en ligne ; fil rouge des tutoriels 2 à 5",
+            "en": "25 features d’une boutique en ligne ; fil rouge des tutoriels 2 à 5"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "Select the domain of values that can accept the attribute"
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§1",
+          "quote": "the features are boolean in nature since they represent functional requirements, and that the non-functional requirements are of a more diverse nature"
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 4",
+          "quote": "Keep the target value distinct from evidence that an implementation meets it."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "They are functionally and semantically identical to concrete features, but serve to both better structure and organize the model"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §1",
+          "quote": "« disposer de priorités » est une feature ; « cette tâche est de priorité haute » est une donnée."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§4 Proposed activity",
+          "quote": "ClothingStores is a software product line (SPL) that consists of the development of an e-commerce store system family to manage and sell clothes."
+        }
+      ],
+      "notions": [
+        "n-vm-attributes",
+        "n-nfr-as-attributes",
+        "n-vm-abstract-feature",
+        "n-feature-vs-data",
+        "n-clothingstores-case"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "requires = sens unique (contraposée vraie, réciproque fausse), transitif ; excludes = symétrique, « aucune des deux » permis. Groupe [m..n] parmi k : somme des C(k, i). Fragment : appliquer chaque relation séparément, un enfant suppose son parent.",
+        "en": "requires = one-way (contrapositive true, converse false), transitive; excludes = symmetric, “neither” allowed. [m..n] group among k: sum of C(k, i). Fragment: apply each relationship separately, a child implies its parent."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-03-qz-19"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. Représentation extensive ou intensive ; PLM et PM",
+        "en": "4. Extensive or intensive representation; PLM and PM"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 La représentation extensive : matrice et breakdown structure",
+        "en": "4.1 Extensive representation: matrix and breakdown structure"
       }
     },
     {
@@ -1466,8 +2123,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.2 Le problème de passage à l’échelle",
-        "en": "3.2 The scalability problem"
+        "fr": "4.2 Le problème de passage à l’échelle",
+        "en": "4.2 The scalability problem"
       }
     },
     {
@@ -1505,8 +2162,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.3 La représentation intensive : PLM (domaine) et PM (produit)",
-        "en": "3.3 Intensive representation: PLM (domain) and PM (product)"
+        "fr": "4.3 La représentation intensive : PLM (domaine) et PM (produit)",
+        "en": "4.3 Intensive representation: PLM (domain) and PM (product)"
       }
     },
     {
@@ -1680,15 +2337,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "4. Les autres langages de modèles de ligne de produits",
-        "en": "4. The other product line modelling languages"
+        "fr": "5. Les autres langages de modèles de ligne de produits",
+        "en": "5. The other product line modelling languages"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "4.1 Les quatre langages du cours",
-        "en": "4.1 The four languages of the course"
+        "fr": "5.1 Les quatre langages du cours",
+        "en": "5.1 The four languages of the course"
       }
     },
     {
@@ -1851,8 +2508,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.2 DOPLER en bref",
-        "en": "4.2 DOPLER in brief"
+        "fr": "5.2 DOPLER en bref",
+        "en": "5.2 DOPLER in brief"
       }
     },
     {
@@ -1903,8 +2560,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.3 Les modèles par contraintes en bref",
-        "en": "4.3 Constraint-based models in brief"
+        "fr": "5.3 Les modèles par contraintes en bref",
+        "en": "5.3 Constraint-based models in brief"
       }
     },
     {
@@ -1969,15 +2626,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "5. Dialectes et limites des feature models",
-        "en": "5. Dialects and limits of feature models"
+        "fr": "6. Dialectes et limites des feature models",
+        "en": "6. Dialects and limits of feature models"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "5.1 Les dialectes",
-        "en": "5.1 The dialects"
+        "fr": "6.1 Les dialectes",
+        "en": "6.1 The dialects"
       }
     },
     {
@@ -2028,8 +2685,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "5.2 Les limites : l’exemple du système de freinage",
-        "en": "5.2 The limits: the braking system example"
+        "fr": "6.2 Les limites : l’exemple du système de freinage",
+        "en": "6.2 The limits: the braking system example"
       }
     },
     {
@@ -2073,8 +2730,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "5.3 La question de discussion du prof",
-        "en": "5.3 The teacher’s discussion question"
+        "fr": "6.3 La question de discussion du prof",
+        "en": "6.3 The teacher’s discussion question"
       }
     },
     {
@@ -2355,6 +3012,79 @@
         }
       ],
       "notion": "n-fm-semantics"
+    },
+    {
+      "id": "term-includes",
+      "fr": "Includes (VariaMos)",
+      "en": "Includes (VariaMos)",
+      "definition": {
+        "fr": "Type de relation « A requires B » : sélectionner A entraîne sélectionner B.",
+        "en": "Relationship type “A requires B”: selecting A entails selecting B."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.4",
+          "quote": "If a requirement requires another requirement, for example, Images requires Rtf format, let’s proceed as follows"
+        }
+      ],
+      "notion": "n-vm-includes-requires"
+    },
+    {
+      "id": "term-bundle-range",
+      "fr": "bundle de type Range",
+      "en": "bundle of type Range",
+      "definition": {
+        "fr": "Élément VariaMos qui représente une cardinalité de groupe (RangeMin, RangeMax).",
+        "en": "A VariaMos element that represents a group cardinality (RangeMin, RangeMax)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "The “Range” elements in the model are VariaMos’s mechanism of representing “Group cardinalities” in Feature Models."
+        }
+      ],
+      "notion": "n-vm-bundle-range"
+    },
+    {
+      "id": "term-abstract-feature",
+      "fr": "feature abstraite",
+      "en": "abstract feature",
+      "definition": {
+        "fr": "Feature à contour pointillé, identique à une concrète pour la sémantique, qui sert à structurer le modèle.",
+        "en": "A dashed-outline feature, identical to a concrete one for semantics, used to structure the model."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "They are functionally and semantically identical to concrete features, but serve to both better structure and organize the model"
+        }
+      ],
+      "notion": "n-vm-abstract-feature"
+    },
+    {
+      "id": "term-feature-attribute",
+      "fr": "attribut de feature",
+      "en": "feature attribute",
+      "definition": {
+        "fr": "Valeur portée par une feature : un domaine de valeurs et une plage [m..n] du nombre de valeurs choisies.",
+        "en": "A value carried by a feature: a domain of values and an [m..n] range for the number of values chosen."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "Select the domain of values that can accept the attribute"
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+        }
+      ],
+      "notion": "n-vm-attributes"
     }
   ],
   "notions": [
@@ -2382,7 +3112,17 @@
     "n-product-model",
     "n-requires-mutex",
     "n-scalability-issue",
-    "n-xor-alternatives"
+    "n-xor-alternatives",
+    "n-implication-reasoning",
+    "n-vm-includes-requires",
+    "n-group-selection-count",
+    "n-vm-bundle-range",
+    "n-vm-attributes",
+    "n-nfr-as-attributes",
+    "n-vm-abstract-feature",
+    "n-clothingstores-case",
+    "n-uvl-syntax",
+    "n-feature-vs-data"
   ],
   "keyPoints": [
     {
@@ -2593,6 +3333,49 @@
       ],
       "notions": [
         "n-fm-limitations"
+      ]
+    },
+    {
+      "text": {
+        "fr": "requires = implication à sens unique (contraposée vraie, réciproque fausse), transitive ; excludes = symétrique.",
+        "en": "requires = one-way implication (contrapositive true, converse false), transitive; excludes = symmetric."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 6",
+          "quote": "interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 10 defines the optional relationship obligating the parent to be present if the child feature is selected, but not the opposite."
+        }
+      ],
+      "notions": [
+        "n-implication-reasoning",
+        "n-vm-includes-requires"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sélections d’un groupe [m..n] parmi k enfants : somme des C(k, i) ; [1..2] parmi 3 = 6, [1..4] parmi 4 = 15.",
+        "en": "Selections of an [m..n] group among k children: sum of C(k, i); [1..2] among 3 = 6, [1..4] among 4 = 15."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 5",
+          "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 9",
+          "quote": "Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]."
+        }
+      ],
+      "notions": [
+        "n-group-selection-count"
       ]
     }
   ],
@@ -2907,6 +3690,130 @@
         "n-dopler",
         "n-dopler-decisions",
         "n-dopler-assets-inclusion"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-19",
+      "termId": "term-includes",
+      "front": {
+        "fr": "A requires B : que peut-on conclure ?",
+        "en": "A requires B: what can you conclude?"
+      },
+      "back": {
+        "fr": "A choisie ⇒ B choisie ; B absente ⇒ A absente. Pas de réciproque ; transitif.",
+        "en": "A chosen ⇒ B chosen; B absent ⇒ A absent. No converse; transitive."
+      },
+      "notions": [
+        "n-vm-includes-requires",
+        "n-implication-reasoning"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-20",
+      "front": {
+        "fr": "Compter les sélections d’un groupe [m..n] parmi k enfants ?",
+        "en": "Counting the selections of an [m..n] group among k children?"
+      },
+      "back": {
+        "fr": "Somme des C(k, i) pour i de m à n. Exemples : [1..2] parmi 3 = 6 ; [1..4] parmi 4 = 15.",
+        "en": "Sum of C(k, i) for i from m to n. Examples: [1..2] among 3 = 6; [1..4] among 4 = 15."
+      },
+      "notions": [
+        "n-group-selection-count"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 5",
+          "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 9",
+          "quote": "Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]."
+        }
+      ]
+    },
+    {
+      "id": "inf4-03-fc-21",
+      "front": {
+        "fr": "Lire un fragment de modèle : la procédure ?",
+        "en": "Reading a model fragment: the procedure?"
+      },
+      "back": {
+        "fr": "Repérer ce qui est forcé ; appliquer chaque relation séparément ; un enfant suppose son parent ; parent optionnel absent = sous-arbre absent.",
+        "en": "Spot what is forced; apply each relationship separately; a child implies its parent; absent optional parent = absent subtree. Example (ClothingStores): optional Shop, mandatory Cart, [1..2] payments = 4 local configurations."
+      },
+      "notions": [
+        "n-implication-reasoning",
+        "n-group-selection-count",
+        "n-clothingstores-case"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 10",
+          "quote": "Use this local fragment of ClothingStores: Shop is optional under the root; Cart is mandatory under Shop; selected Shop requires [1..2] of Online payment and Offline payment."
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 11",
+          "quote": "Use this local model: Web management requires Login; Login is a child of User; User model is mandatory under User. Child selection entails parent selection."
+        }
+      ]
+    },
+    {
+      "id": "inf4-03-fc-22",
+      "termId": "term-bundle-range",
+      "front": {
+        "fr": "Dans VariaMos : cardinalité de groupe et attribut ?",
+        "en": "In VariaMos: group cardinality and attribute?"
+      },
+      "back": {
+        "fr": "Bundle de type Range (RangeMin, RangeMax). Attribut = domaine de valeurs + plage [m..n] ; attribut de qualité = domaine, unité, conditions de mesure.",
+        "en": "Bundle of type Range (RangeMin, RangeMax). Attribute = domain of values + [m..n] range; quality attribute = domain, unit, measurement conditions."
+      },
+      "notions": [
+        "n-vm-bundle-range",
+        "n-vm-attributes",
+        "n-nfr-as-attributes"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-23",
+      "termId": "term-abstract-feature",
+      "front": {
+        "fr": "Feature abstraite ; feature ≠ donnée ?",
+        "en": "Abstract feature; feature ≠ data?"
+      },
+      "back": {
+        "fr": "Feature abstraite : structure le modèle, sémantique identique à une concrète. Une feature n’est ni une donnée (« cette tâche est haute ») ni un détail technique.",
+        "en": "Abstract feature: structures the model, same semantics as a concrete one. A feature is neither data (“this task is high priority”) nor a technical detail."
+      },
+      "notions": [
+        "n-vm-abstract-feature",
+        "n-feature-vs-data"
+      ]
+    },
+    {
+      "id": "inf4-03-fc-24",
+      "front": {
+        "fr": "UVL : alternative et implication ?",
+        "en": "UVL: alternative and implication?"
+      },
+      "back": {
+        "fr": "Groupes `mandatory`, `optional`, `alternative`, `or` sous `features` ; implications `A => B` sous `constraints`.",
+        "en": "Groups `mandatory`, `optional`, `alternative`, `or` under `features`; implications `A => B` under `constraints`."
+      },
+      "notions": [
+        "n-uvl-syntax"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §2",
+          "quote": "Ajoutez Storage comme enfant obligatoire de TaskForge, puis son groupe alternatif."
+        }
       ]
     }
   ],
@@ -3650,6 +4557,112 @@
           "quote": "But Decision Model is more a process model than a variability model!"
         }
       ]
+    },
+    {
+      "id": "inf4-03-qz-19",
+      "type": "mcq",
+      "question": {
+        "fr": "A requires B et B requires C, sans autre contrainte. Lesquelles de ces conclusions sont justifiées ? (plusieurs réponses)",
+        "en": "A requires B and B requires C, with no other constraint. Which conclusions are justified? (several answers)"
+      },
+      "options": [
+        {
+          "fr": "Choisir A impose de choisir C.",
+          "en": "Choosing A forces choosing C."
+        },
+        {
+          "fr": "Omettre A force à omettre B et C.",
+          "en": "Omitting A forces omitting B and C."
+        },
+        {
+          "fr": "Choisir C impose de choisir A.",
+          "en": "Choosing C forces choosing A."
+        },
+        {
+          "fr": "B sans A est permis si C est choisi.",
+          "en": "B without A is allowed if C is chosen."
+        }
+      ],
+      "correct": [
+        0,
+        3
+      ],
+      "explanation": {
+        "fr": "Transitivité : A ⇒ B ⇒ C donne A ⇒ C. La réciproque et l’inverse ne sont pas valides : C n’entraîne pas A, omettre A ne dit rien sur B ni C ; B sans A reste permis.",
+        "en": "Transitivity: A ⇒ B ⇒ C gives A ⇒ C. The converse and the inverse are not valid: C does not entail A, omitting A says nothing about B or C; B without A stays allowed."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Question 6",
+          "quote": "interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection"
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 6",
+          "quote": "A requires B and B requires C. Assume no other constraints. Which statements follow?"
+        }
+      ],
+      "notions": [
+        "n-implication-reasoning",
+        "n-vm-includes-requires"
+      ],
+      "objective": "o5",
+      "trap": {
+        "fr": "Lire « requires » comme une équivalence.",
+        "en": "Reading “requires” as an equivalence."
+      }
+    },
+    {
+      "id": "inf4-03-qz-20",
+      "type": "mcq",
+      "question": {
+        "fr": "Un parent sélectionné a trois enfants A, B, C dans un groupe [1..2], sans autre contrainte. Combien de sélections d’enfants sont permises ?",
+        "en": "A selected parent has three children A, B, C in a [1..2] group, with no other constraint. How many child selections are allowed?"
+      },
+      "options": [
+        {
+          "fr": "3",
+          "en": "3"
+        },
+        {
+          "fr": "6",
+          "en": "6"
+        },
+        {
+          "fr": "7",
+          "en": "7"
+        },
+        {
+          "fr": "8",
+          "en": "8"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "C(3,1) + C(3,2) = 3 + 3 = 6. 7 compterait aussi la sélection {A,B,C}, interdite par la borne 2 ; 8 compterait en plus la sélection vide.",
+        "en": "C(3,1) + C(3,2) = 3 + 3 = 6. 7 would also count {A,B,C}, forbidden by the bound 2; 8 would also count the empty selection."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 5",
+          "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group."
+        }
+      ],
+      "notions": [
+        "n-group-selection-count",
+        "n-vm-attributes"
+      ],
+      "objective": "o5",
+      "trap": {
+        "fr": "Oublier la borne haute ou compter la sélection vide.",
+        "en": "Forgetting the upper bound or counting the empty selection."
+      }
     }
   ],
   "exercises": [
@@ -3806,6 +4819,46 @@
           "quote": "Product Line Models (PLMs): Intensive representation"
         }
       ]
+    },
+    {
+      "id": "inf4-03-ex-04",
+      "title": {
+        "fr": "Compter les sélections d’un attribut",
+        "en": "Count the selections of an attribute"
+      },
+      "difficulty": 1,
+      "level": "apply",
+      "objective": "o5",
+      "notions": [
+        "n-group-selection-count",
+        "n-vm-attributes"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Question 9",
+          "quote": "Its Align attribute is a set of distinct values from {Left,Right,Center,Justify}, with [1..4]."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+        }
+      ],
+      "statement": {
+        "fr": "L’attribut Align de la feature Text alignment prend ses valeurs dans {Left, Right, Center, Justify}. Combien d’ensembles de valeurs sont permis avec la plage [1..4] ? Et avec [2..3] ?",
+        "en": "The Align attribute of the Text alignment feature takes its values in {Left, Right, Center, Justify}. How many sets of values are allowed with the range [1..4]? And with [2..3]?"
+      },
+      "hints": [
+        {
+          "fr": "Additionne les C(4, i) pour les tailles permises.",
+          "en": "Add the C(4, i) for the allowed sizes."
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé.** [1..4] : C(4,1) + C(4,2) + C(4,3) + C(4,4) = 4 + 6 + 4 + 1 = **15** (= 2⁴ − 1, tous les sous-ensembles non vides). [2..3] : C(4,2) + C(4,3) = 6 + 4 = **10**.",
+        "en": "**Proposed solution.** [1..4]: C(4,1) + C(4,2) + C(4,3) + C(4,4) = 4 + 6 + 4 + 1 = **15** (= 2⁴ − 1, every non-empty subset). [2..3]: C(4,2) + C(4,3) = 6 + 4 = **10**."
+      }
     }
   ],
   "writing": [
