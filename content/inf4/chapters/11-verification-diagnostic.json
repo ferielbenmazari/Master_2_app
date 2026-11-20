@@ -115,7 +115,7 @@
       }
     ]
   },
-  "estimatedMinutes": 10,
+  "estimatedMinutes": 12,
   "sources": [
     "ressources/S3__INF4/mardown/7__ple.md",
     "sources-texte/inf4/7-domain-engineering-for-reuse-paris1-part2.md"
@@ -813,15 +813,470 @@
     {
       "type": "heading",
       "text": {
-        "fr": "3. Méthode : diagnostiquer et corriger",
-        "en": "3. Method: diagnosing and fixing"
+        "fr": "3. Tutoriel 4 : vérifier avec des requêtes JSON (PLEIADES)",
+        "en": "3. Tutorial 4: verifying with JSON queries (PLEIADES)"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "3.1 Diagnostiquer à la main : la chaîne de contraintes",
-        "en": "3.1 Diagnosing by hand: the chain of constraints"
+        "fr": "3.1 Pourquoi un langage de requêtes",
+        "en": "3.1 Why a query language"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’inspection manuelle d’un modèle ne passe pas à l’échelle de modèles de **centaines de features**. Le tutoriel 3 y répondait par du code Prolog ; le service **PLEIADES** de VariaMos permet de formuler la tâche de raisonnement **sans connaître le solveur sous-jacent**, par une requête JSON dont le résultat s’affiche sur le modèle.",
+        "en": "Manual inspection does not scale to models with **hundreds of features**. Tutorial 3 answered with Prolog code; VariaMos’s **PLEIADES** service lets you state the reasoning task **without knowing the underlying solver**, as a JSON query whose result is displayed on the model."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "this does not scale to large models that may have hundreds of features or more"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "our new query system presupposes no knowledge of the underlying programming environment"
+        }
+      ],
+      "notions": [
+        "n-pleiades-query"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Le schéma d’une requête",
+        "en": "3.2 A query’s schema"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Champ",
+          "en": "Champ"
+        },
+        {
+          "fr": "Rôle",
+          "en": "Rôle"
+        },
+        {
+          "fr": "Valeurs",
+          "en": "Valeurs"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "`solver`",
+            "en": "`solver`"
+          },
+          {
+            "fr": "solveur de contraintes",
+            "en": "solveur de contraintes"
+          },
+          {
+            "fr": "`minizinc` (Gecode), `swi` (SWI-Prolog), `z3`",
+            "en": "`minizinc` (Gecode), `swi` (SWI-Prolog), `z3`"
+          }
+        ],
+        [
+          {
+            "fr": "`operation`",
+            "en": "`operation`"
+          },
+          {
+            "fr": "opération de raisonnement de base",
+            "en": "opération de raisonnement de base"
+          },
+          {
+            "fr": "`sat`, `solve`, `nsolve`, `optimize`",
+            "en": "`sat`, `solve`, `nsolve`, `optimize`"
+          }
+        ],
+        [
+          {
+            "fr": "`operation_n`",
+            "en": "`operation_n`"
+          },
+          {
+            "fr": "avec `nsolve` : au plus n solutions",
+            "en": "avec `nsolve` : au plus n solutions"
+          },
+          {
+            "fr": "un entier (« **at most** » : rien ne garantit qu’il y en ait n)",
+            "en": "un entier (« **at most** » : rien ne garantit qu’il y en ait n)"
+          }
+        ],
+        [
+          {
+            "fr": "`optimization_target`, `optimization_direction`",
+            "en": "`optimization_target`, `optimization_direction`"
+          },
+          {
+            "fr": "avec `optimize` : variable à optimiser et sens",
+            "en": "avec `optimize` : variable à optimiser et sens"
+          },
+          {
+            "fr": "`min` ou `max`",
+            "en": "`min` ou `max`"
+          }
+        ],
+        [
+          {
+            "fr": "`iterate_over`",
+            "en": "`iterate_over`"
+          },
+          {
+            "fr": "répéter l’opération pour chaque élément du modèle qui correspond",
+            "en": "répéter l’opération pour chaque élément du modèle qui correspond"
+          },
+          {
+            "fr": "type d’élément (feature abstraite, concrète) et `with_value` (comme un « select … where » SQL)",
+            "en": "type d’élément (feature abstraite, concrète) et `with_value` (comme un « select … where » SQL)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The query language relies on JSON documents that follow the following schema"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The “solver” field currently allows for the use of three different systems"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The “operation” field encodes the basic reasoning operation to be performed."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The point about “at most” is worth highlighting, since there are no guarantees that the requested number of solutions exists."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "somewhat similar to a “select … where” query in SQL"
+        }
+      ],
+      "notions": [
+        "n-pleiades-query",
+        "n-pleiades-operations"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 Quelle requête pour quel défaut",
+        "en": "3.3 Which query for which defect"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Question",
+          "en": "Question"
+        },
+        {
+          "fr": "Requête",
+          "en": "Requête"
+        },
+        {
+          "fr": "Lecture du résultat",
+          "en": "Lecture du résultat"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Le modèle est-il **vide** (*void*) ?",
+            "en": "Le modèle est-il **vide** (*void*) ?"
+          },
+          {
+            "fr": "`{\"solver\":\"swi\",\"operation\":\"sat\"}`",
+            "en": "`{\"solver\":\"swi\",\"operation\":\"sat\"}`"
+          },
+          {
+            "fr": "SAT = il existe un produit : **pas vide**",
+            "en": "SAT = il existe un produit : **pas vide**"
+          }
+        ],
+        [
+          {
+            "fr": "Une configuration ?",
+            "en": "Une configuration ?"
+          },
+          {
+            "fr": "`{\"operation\":\"solve\"}`",
+            "en": "`{\"operation\":\"solve\"}`"
+          },
+          {
+            "fr": "une solution, visualisable sur le modèle",
+            "en": "une solution, visualisable sur le modèle"
+          }
+        ],
+        [
+          {
+            "fr": "Est-ce une **fausse** ligne ?",
+            "en": "Est-ce une **fausse** ligne ?"
+          },
+          {
+            "fr": "`{\"operation\":\"nsolve\",\"operation_n\":2}`",
+            "en": "`{\"operation\":\"nsolve\",\"operation_n\":2}`"
+          },
+          {
+            "fr": "deux solutions : pas fausse ; une seule : **fausse** (le test « fausse ligne » échoue)",
+            "en": "deux solutions : pas fausse ; une seule : **fausse** (le test « fausse ligne » échoue)"
+          }
+        ],
+        [
+          {
+            "fr": "Quelles features sont **mortes** ?",
+            "en": "Quelles features sont **mortes** ?"
+          },
+          {
+            "fr": "`{\"operation\":\"sat\",\"iterate_over\":[… \"with_value\":1]}`",
+            "en": "`{\"operation\":\"sat\",\"iterate_over\":[… \"with_value\":1]}`"
+          },
+          {
+            "fr": "une itération **UNSAT** = feature morte ; le modèle affiche un signe « sens interdit »",
+            "en": "une itération **UNSAT** = feature morte ; le modèle affiche un signe « sens interdit »"
+          }
+        ],
+        [
+          {
+            "fr": "Quelles optionnelles sont **fausses** ?",
+            "en": "Quelles optionnelles sont **fausses** ?"
+          },
+          {
+            "fr": "même schéma avec `\"with_value\":0` sur les optionnelles",
+            "en": "même schéma avec `\"with_value\":0` sur les optionnelles"
+          },
+          {
+            "fr": "UNSAT = elle ne peut pas être absente (déduit de la définition ; le tutoriel le demande en exercice)",
+            "en": "UNSAT = elle ne peut pas être absente (déduit de la définition ; le tutoriel le demande en exercice)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "in verification terms, it means that the model is not void"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "which implies simply determining that at least two solutions exist"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "this has failed the check for whether this is a false product line"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "the model is unsatisfiable and no solution can therefore be found, so we know that this feature is “Dead”"
+        }
+      ],
+      "notions": [
+        "n-pleiades-operations",
+        "n-dead-by-iteration",
+        "n-nsolve-false-pl"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.4 Exemple corrigé : le modèle d’amorce (F4 et F5 mortes)",
+        "en": "3.4 Worked example: the starter model (F4 and F5 dead)"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Étape",
+          "en": "Étape"
+        },
+        {
+          "fr": "Résultat sur le modèle d’amorce",
+          "en": "Résultat sur le modèle d’amorce"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "`sat`",
+            "en": "`sat`"
+          },
+          {
+            "fr": "SAT : le modèle n’est pas vide",
+            "en": "SAT : le modèle n’est pas vide"
+          }
+        ],
+        [
+          {
+            "fr": "`nsolve`, `operation_n` = 2",
+            "en": "`nsolve`, `operation_n` = 2"
+          },
+          {
+            "fr": "une seule solution : **fausse** ligne de produits",
+            "en": "une seule solution : **fausse** ligne de produits"
+          }
+        ],
+        [
+          {
+            "fr": "F4 marquée « sélectionnée », puis `solve`",
+            "en": "F4 marquée « sélectionnée », puis `solve`"
+          },
+          {
+            "fr": "insatisfiable : F4 est **morte**",
+            "en": "insatisfiable : F4 est **morte**"
+          }
+        ],
+        [
+          {
+            "fr": "`sat` + `iterate_over` (features concrètes, `with_value` 1)",
+            "en": "`sat` + `iterate_over` (features concrètes, `with_value` 1)"
+          },
+          {
+            "fr": "**F4 et F5** échouent : F5 est morte parce qu’elle est obligatoire sous F4",
+            "en": "**F4 et F5** échouent : F5 est morte parce qu’elle est obligatoire sous F4"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "in verification terms, it means that the model is not void"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "this has failed the check for whether this is a false product line"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "the model is unsatisfiable and no solution can therefore be found, so we know that this feature is “Dead”"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "These one-way signs now indicate that both features F4 and F5 are “Dead” and can never be selected in any configuration since they failed the satisfiability check."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "given the mandatory relationship between F4 and F5, its “dead” status carries down to it"
+        }
+      ],
+      "notions": [
+        "n-dead-by-iteration",
+        "n-nsolve-false-pl"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.5 Choisir le solveur",
+        "en": "3.5 Choosing the solver"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Trois solveurs : **Gecode** (via MiniZinc), **SWI-Prolog** et **Z3**. Le choix tient aux performances sur les contraintes du langage et aux opérations voulues. MiniZinc ne gère pas certaines opérations ; Z3 est le plus rapide mais **partiellement intégré** : énumération de nombreuses solutions et attributs limités. Pour une même question, les solveurs doivent donner le même verdict.",
+        "en": "Three solvers: **Gecode** (via MiniZinc), **SWI-Prolog** and **Z3**. The choice depends on performance on the language’s constraints and the operations wanted. MiniZinc does not support some operations; Z3 is the fastest but **only partly integrated**: limited enumeration of many solutions and attributes. For the same question, solvers must give the same verdict."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The “solver” field currently allows for the use of three different systems"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "while Z3 is by far the fastest solver, it hasn't been fully integrated, and hence is untested and not fully featured."
+        }
+      ],
+      "notions": [
+        "n-pleiades-solvers"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.6 Erreur de syntaxe ou modèle vide ?",
+        "en": "3.6 Syntax error or void model?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le prof demande d’expliquer pourquoi ce sont deux problèmes différents (TaskForge). Une **erreur de syntaxe** empêche de lire le modèle : aucune analyse n’est possible. Un **modèle vide** est bien formé mais n’a **aucun produit** : c’est une requête `sat` qui répond « insatisfiable », et il faut le traiter **avant** d’interpréter morte, noyau ou faussement optionnelle.",
+        "en": "The teacher asks to explain why they are two different problems (TaskForge). A **syntax error** prevents the model from being read: no analysis is possible. A **void model** is well formed but has **no product**: a `sat` query answers “unsatisfiable”, and it must be handled **before** interpreting dead, core or false optional."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §3",
+          "quote": "Expliquez pourquoi une erreur de syntaxe et un modèle sans aucun produit sont deux problèmes différents."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "in verification terms, it means that the model is not void"
+        }
+      ],
+      "notions": [
+        "n-syntax-vs-void"
+      ],
+      "explain": true
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Une requête JSON = solver + operation (+ operation_n, optimisation, iterate_over). sat → vide ? ; nsolve 2 → fausse ? ; sat + iterate_over (1) → mortes ; les trois solveurs : minizinc, swi, z3 (le plus rapide, mais incomplet).",
+        "en": "A JSON query = solver + operation (+ operation_n, optimisation, iterate_over). sat → void? ; nsolve 2 → false? ; sat + iterate_over (1) → dead; the three solvers: minizinc, swi, z3 (fastest, but incomplete)."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-11-qz-13"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. Méthode : diagnostiquer et corriger",
+        "en": "4. Method: diagnosing and fixing"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Diagnostiquer à la main : la chaîne de contraintes",
+        "en": "4.1 Diagnosing by hand: the chain of constraints"
       }
     },
     {
@@ -901,8 +1356,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.2 Les corrections essayées, avant et après",
-        "en": "3.2 The fixes tried, before and after"
+        "fr": "4.2 Les corrections essayées, avant et après",
+        "en": "4.2 The fixes tried, before and after"
       }
     },
     {
@@ -1054,8 +1509,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.3 Le MUS : effacer ou relâcher",
-        "en": "3.3 The MUS: erasing or relaxing"
+        "fr": "4.3 Le MUS : effacer ou relâcher",
+        "en": "4.3 The MUS: erasing or relaxing"
       }
     },
     {
@@ -1086,8 +1541,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.4 Exercice corrigé : pourquoi F5 est morte, et deux corrections",
-        "en": "3.4 Worked exercise: why F5 is dead, and two fixes"
+        "fr": "4.4 Exercice corrigé : pourquoi F5 est morte, et deux corrections",
+        "en": "4.4 Worked exercise: why F5 is dead, and two fixes"
       }
     },
     {
@@ -1199,8 +1654,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.5 Transfert : airbags latéraux et rétroviseurs (Renault)",
-        "en": "3.5 Transfer: side airbags and rear-view mirrors (Renault)"
+        "fr": "4.5 Transfert : airbags latéraux et rétroviseurs (Renault)",
+        "en": "4.5 Transfer: side airbags and rear-view mirrors (Renault)"
       }
     },
     {
@@ -1266,15 +1721,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "4. La vérification de conformité",
-        "en": "4. Conformance checking"
+        "fr": "5. La vérification de conformité",
+        "en": "5. Conformance checking"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "4.1 Définition et méthode",
-        "en": "4.1 Definition and method"
+        "fr": "5.1 Définition et méthode",
+        "en": "5.1 Definition and method"
       }
     },
     {
@@ -1308,8 +1763,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "4.2 Deux règles d’exemple",
-        "en": "4.2 Two example rules"
+        "fr": "5.2 Deux règles d’exemple",
+        "en": "5.2 Two example rules"
       }
     },
     {
@@ -1386,15 +1841,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "5. Pourquoi vérifier est difficile",
-        "en": "5. Why verification is difficult"
+        "fr": "6. Pourquoi vérifier est difficile",
+        "en": "6. Why verification is difficult"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "5.1 Trois raisons",
-        "en": "5.1 Three reasons"
+        "fr": "6.1 Trois raisons",
+        "en": "6.1 Three reasons"
       }
     },
     {
@@ -1438,8 +1893,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "5.2 Le quiz de complexité du prof",
-        "en": "5.2 The teacher’s complexity quiz"
+        "fr": "6.2 Le quiz de complexité du prof",
+        "en": "6.2 The teacher’s complexity quiz"
       }
     },
     {
@@ -1658,6 +2113,45 @@
         }
       ],
       "notion": "n-mus"
+    },
+    {
+      "id": "term-pleiades-query",
+      "fr": "requête PLEIADES",
+      "en": "PLEIADES query",
+      "definition": {
+        "fr": "Document JSON (solver, operation, iterate_over…) qui décrit une tâche de raisonnement sur le modèle courant.",
+        "en": "A JSON document (solver, operation, iterate_over…) that describes a reasoning task on the current model."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The query language relies on JSON documents that follow the following schema"
+        }
+      ],
+      "notion": "n-pleiades-query"
+    },
+    {
+      "id": "term-iterate-over",
+      "fr": "requête itérative (iterate_over)",
+      "en": "iterative query (iterate_over)",
+      "definition": {
+        "fr": "Répète l’opération pour chaque élément du modèle qui correspond au filtre ; un résultat UNSAT marque un élément (par exemple une feature morte).",
+        "en": "Repeats the operation for each model element that matches the filter; an UNSAT result marks an element (for example a dead feature)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "somewhat similar to a “select … where” query in SQL"
+        }
+      ],
+      "notion": "n-dead-by-iteration"
     }
   ],
   "notions": [
@@ -1679,7 +2173,13 @@
     "n-verification-typology",
     "n-void-model",
     "n-why-verification-difficult",
-    "n-why-verification-important"
+    "n-why-verification-important",
+    "n-pleiades-query",
+    "n-pleiades-operations",
+    "n-pleiades-solvers",
+    "n-dead-by-iteration",
+    "n-nsolve-false-pl",
+    "n-syntax-vs-void"
   ],
   "keyPoints": [
     {
@@ -1778,6 +2278,34 @@
       ],
       "notions": [
         "n-fix-dead-feature-exercise"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Requête JSON = solver + operation (sat, solve, nsolve, optimize) + iterate_over ; sat → vide ?, nsolve 2 → fausse ?, iterate_over (1) → mortes.",
+        "en": "JSON query = solver + operation (sat, solve, nsolve, optimize) + iterate_over; sat → void?, nsolve 2 → false?, iterate_over (1) → dead."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The query language relies on JSON documents that follow the following schema"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The “operation” field encodes the basic reasoning operation to be performed."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+        }
+      ],
+      "notions": [
+        "n-pleiades-query",
+        "n-pleiades-operations",
+        "n-dead-by-iteration"
       ]
     }
   ],
@@ -2007,6 +2535,106 @@
       ],
       "notions": [
         "n-why-verification-difficult"
+      ]
+    },
+    {
+      "id": "inf4-11-fc-14",
+      "termId": "term-pleiades-query",
+      "front": {
+        "fr": "Schéma d’une requête PLEIADES ?",
+        "en": "Schema of a PLEIADES query?"
+      },
+      "back": {
+        "fr": "solver (minizinc, swi, z3) ; operation (sat, solve, nsolve, optimize) ; operation_n ; optimization_target / direction ; iterate_over.",
+        "en": "solver (minizinc, swi, z3); operation (sat, solve, nsolve, optimize); operation_n; optimization_target / direction; iterate_over."
+      },
+      "notions": [
+        "n-pleiades-query",
+        "n-pleiades-operations"
+      ]
+    },
+    {
+      "id": "inf4-11-fc-15",
+      "termId": "term-iterate-over",
+      "front": {
+        "fr": "Détecter les features mortes avec une requête ?",
+        "en": "Detecting dead features with a query?"
+      },
+      "back": {
+        "fr": "`sat` + `iterate_over` sur les features avec `with_value` 1 ; chaque itération UNSAT = feature morte.",
+        "en": "`sat` + `iterate_over` over the features with `with_value` 1; every UNSAT iteration = dead feature."
+      },
+      "notions": [
+        "n-dead-by-iteration"
+      ]
+    },
+    {
+      "id": "inf4-11-fc-16",
+      "front": {
+        "fr": "Vide ? fausse ? Quelle opération ?",
+        "en": "Void? false? Which operation?"
+      },
+      "back": {
+        "fr": "Vide : `sat` (UNSAT = vide). Fausse : `nsolve` avec operation_n = 2 (une seule solution = fausse).",
+        "en": "Void: `sat` (UNSAT = void). False: `nsolve` with operation_n = 2 (a single solution = false)."
+      },
+      "notions": [
+        "n-pleiades-operations",
+        "n-nsolve-false-pl"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "in verification terms, it means that the model is not void"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "this has failed the check for whether this is a false product line"
+        }
+      ]
+    },
+    {
+      "id": "inf4-11-fc-17",
+      "front": {
+        "fr": "Z3, Gecode, SWI : lequel choisir ?",
+        "en": "Z3, Gecode, SWI: which to choose?"
+      },
+      "back": {
+        "fr": "Z3 : le plus rapide mais partiel (énumération, attributs) ; Gecode (minizinc) : certaines opérations manquent ; SWI : énumération.",
+        "en": "Z3: fastest but partial (enumeration, attributes); Gecode (minizinc): some operations missing; SWI: enumeration."
+      },
+      "notions": [
+        "n-pleiades-solvers"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "while Z3 is by far the fastest solver, it hasn't been fully integrated, and hence is untested and not fully featured."
+        }
+      ]
+    },
+    {
+      "id": "inf4-11-fc-18",
+      "front": {
+        "fr": "Erreur de syntaxe ≠ modèle vide ?",
+        "en": "Syntax error ≠ void model?"
+      },
+      "back": {
+        "fr": "Syntaxe : modèle illisible, aucune analyse. Vide : modèle valide sans produit (`sat` = UNSAT) ; à traiter avant le reste.",
+        "en": "Syntax: unreadable model, no analysis. Void: valid model with no product (`sat` = UNSAT); handle before anything else."
+      },
+      "notions": [
+        "n-syntax-vs-void"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §3",
+          "quote": "Expliquez pourquoi une erreur de syntaxe et un modèle sans aucun produit sont deux problèmes différents."
+        }
       ]
     }
   ],
@@ -2521,6 +3149,198 @@
           "quote": "Root #=< F2 + F3 + F4,"
         }
       ]
+    },
+    {
+      "id": "inf4-11-qz-13",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une requête {\"solver\":\"minizinc\",\"operation\":\"sat\"} qui répond SAT signifie que le modèle n’est pas vide.",
+        "en": "A query {\"solver\":\"minizinc\",\"operation\":\"sat\"} answering SAT means the model is not void."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « in verification terms, it means that the model is not void ».",
+        "en": "TRUE: “in verification terms, it means that the model is not void”."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "in verification terms, it means that the model is not void"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The query language relies on JSON documents that follow the following schema"
+        }
+      ],
+      "notions": [
+        "n-pleiades-operations",
+        "n-pleiades-query"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-11-qz-14",
+      "type": "true_false",
+      "statement": {
+        "fr": "Avec nsolve et operation_n = 10, le solveur renvoie toujours exactement 10 solutions.",
+        "en": "With nsolve and operation_n = 10, the solver always returns exactly 10 solutions."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : operation_n est un maximum (« at most ») ; si le modèle a 9 solutions, il en renvoie 9.",
+        "en": "FALSE: operation_n is a maximum (“at most”); if the model has 9 solutions, it returns 9."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The point about “at most” is worth highlighting, since there are no guarantees that the requested number of solutions exists."
+        }
+      ],
+      "notions": [
+        "n-pleiades-operations"
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Prendre un maximum pour un nombre exact.",
+        "en": "Taking a maximum for an exact number."
+      }
+    },
+    {
+      "id": "inf4-11-qz-15",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans une requête itérative avec with_value 1, un élément dont l’itération est insatisfiable ne peut jamais être sélectionné : c’est une feature morte.",
+        "en": "In an iterative query with with_value 1, an element whose iteration is unsatisfiable can never be selected: it is a dead feature."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la feature ne peut apparaître dans aucune solution.",
+        "en": "TRUE: the feature cannot appear in any solution."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "These one-way signs now indicate that both features F4 and F5 are “Dead” and can never be selected in any configuration since they failed the satisfiability check."
+        }
+      ],
+      "notions": [
+        "n-dead-by-iteration"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-11-qz-16",
+      "type": "true_false",
+      "statement": {
+        "fr": "Z3 est entièrement intégré à VariaMos et énumère rapidement toutes les solutions, attributs compris.",
+        "en": "Z3 is fully integrated into VariaMos and quickly enumerates all solutions, attributes included."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : Z3 est le plus rapide mais « not fully featured » : énumération et attributs limités.",
+        "en": "FALSE: Z3 is the fastest but “not fully featured”: limited enumeration and attributes."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "while Z3 is by far the fastest solver, it hasn't been fully integrated, and hence is untested and not fully featured."
+        }
+      ],
+      "notions": [
+        "n-pleiades-solvers"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-11-qz-17",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une erreur de syntaxe dans le modèle et un modèle sans aucun produit sont le même problème.",
+        "en": "A syntax error in the model and a model with no product are the same problem."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : le premier empêche toute analyse ; le second est un modèle bien formé qui n’a aucune solution.",
+        "en": "FALSE: the first prevents any analysis; the second is a well-formed model that has no solution."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §3",
+          "quote": "Expliquez pourquoi une erreur de syntaxe et un modèle sans aucun produit sont deux problèmes différents."
+        }
+      ],
+      "notions": [
+        "n-syntax-vs-void"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-11-qz-18",
+      "type": "mcq",
+      "question": {
+        "fr": "Quelle requête permet de savoir si une ligne de produits est « fausse » (un seul produit) ?",
+        "en": "Which query tells you whether a product line is “false” (a single product)?"
+      },
+      "options": [
+        {
+          "fr": "{\"operation\":\"sat\"}",
+          "en": "{\"operation\":\"sat\"}"
+        },
+        {
+          "fr": "{\"operation\":\"nsolve\",\"operation_n\":2}",
+          "en": "{\"operation\":\"nsolve\",\"operation_n\":2}"
+        },
+        {
+          "fr": "{\"operation\":\"optimize\"}",
+          "en": "{\"operation\":\"optimize\"}"
+        },
+        {
+          "fr": "{\"operation\":\"solve\"}",
+          "en": "{\"operation\":\"solve\"}"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "On demande deux solutions : s’il n’y en a qu’une, la ligne est fausse (« at least two solutions exist » pour la réussite du test).",
+        "en": "You ask for two solutions: if there is only one, the line is false (“at least two solutions exist” for the test to pass)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "which implies simply determining that at least two solutions exist"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "this has failed the check for whether this is a false product line"
+        }
+      ],
+      "notions": [
+        "n-nsolve-false-pl",
+        "n-pleiades-operations",
+        "n-pleiades-query"
+      ],
+      "objective": "o1"
     }
   ],
   "exercises": [

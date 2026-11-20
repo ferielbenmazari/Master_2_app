@@ -107,7 +107,7 @@
       }
     ]
   },
-  "estimatedMinutes": 6,
+  "estimatedMinutes": 10,
   "sources": [
     "ressources/S3__INF4/mardown/7__ple.md",
     "ressources/S3__INF4/mardown/4__overview.md"
@@ -883,15 +883,483 @@
     {
       "type": "heading",
       "text": {
-        "fr": "3. Pourquoi transformer un modèle, et comment",
-        "en": "3. Why transform a model, and how"
+        "fr": "3. Tutoriel 3 : analyser un modèle avec SWI-Prolog",
+        "en": "3. Tutorial 3: analysing a model with SWI-Prolog"
       }
     },
     {
       "type": "subheading",
       "text": {
-        "fr": "3.1 Pourquoi transformer un PLM",
-        "en": "3.1 Why transform a PLM"
+        "fr": "3.1 La sémantique d’un modèle : ses affectations satisfaisantes",
+        "en": "3.1 A model’s semantics: its satisfying assignments"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "La **sémantique d’un modèle concret** est l’**ensemble des affectations qui satisfont ses contraintes**, c’est-à-dire les **produits valides** que déterminent ses éléments et leurs relations. Un langage de variabilité a sa propre sémantique : le sens de chaque élément.",
+        "en": "A **concrete model’s semantics** is the **set of satisfying assignments**, that is, the **valid products** determined by its elements and relations. A variability language has its own semantics: the meaning of each element."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "a concrete model’s semantics are the set of satisfying assignments, that is, the valid products as determined by the model’s elements and relations between them"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour une ligne de produits, c’est l’**ensemble des produits autorisés** que le chapitre « Les feature models » apprend à lister et à compter : un solveur le calcule à partir des contraintes.",
+        "en": "For a product line, it is the **set of allowed products** that the chapter “Feature models” teaches you to list and count: a solver computes it from the constraints."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "a concrete model’s semantics are the set of satisfying assignments, that is, the valid products as determined by the model’s elements and relations between them"
+        }
+      ],
+      "notions": [
+        "n-model-semantics-solutions"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Le programme du tutoriel, ligne à ligne",
+        "en": "3.2 The tutorial’s program, line by line"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Ligne",
+          "en": "Ligne"
+        },
+        {
+          "fr": "Rôle dans le programme",
+          "en": "Rôle dans le programme"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "importe le solveur de contraintes",
+            "en": "importe le solveur de contraintes"
+          }
+        ],
+        [
+          {
+            "fr": "2",
+            "en": "2"
+          },
+          {
+            "fr": "déclare le prédicat sur une liste de 5 variables (une par feature)",
+            "en": "déclare le prédicat sur une liste de 5 variables (une par feature)"
+          }
+        ],
+        [
+          {
+            "fr": "3 à 7",
+            "en": "3 à 7"
+          },
+          {
+            "fr": "chaque variable vaut 0 ou 1 (sélectionnée ou non)",
+            "en": "chaque variable vaut 0 ou 1 (sélectionnée ou non)"
+          }
+        ],
+        [
+          {
+            "fr": "8",
+            "en": "8"
+          },
+          {
+            "fr": "F1 = 1 : la racine est toujours présente",
+            "en": "F1 = 1 : la racine est toujours présente"
+          }
+        ],
+        [
+          {
+            "fr": "9, 11, 12",
+            "en": "9, 11, 12"
+          },
+          {
+            "fr": "relations **obligatoires** : le statut de sélection du parent et de l’enfant est le même",
+            "en": "relations **obligatoires** : le statut de sélection du parent et de l’enfant est le même"
+          }
+        ],
+        [
+          {
+            "fr": "10",
+            "en": "10"
+          },
+          {
+            "fr": "relation **optionnelle** : si l’enfant est choisi, le parent l’est ; pas l’inverse",
+            "en": "relation **optionnelle** : si l’enfant est choisi, le parent l’est ; pas l’inverse"
+          }
+        ],
+        [
+          {
+            "fr": "13",
+            "en": "13"
+          },
+          {
+            "fr": "relation **excludes** entre F3 et F4 : leur somme reste ≤ 1",
+            "en": "relation **excludes** entre F3 et F4 : leur somme reste ≤ 1"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 1 imports the constraint solver that will allow us to run our program."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 8 declares that F1 must be 1, that is, the root must always be present."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 10 defines the optional relationship obligating the parent to be present if the child feature is selected, but not the opposite."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Line 13 defines the exclusion relationship, meaning that only one of F3 or F4 can be set to 1 at any time by making their sum always less than or equal to 1."
+        }
+      ],
+      "notions": [
+        "n-swi-translation"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "C’est la même traduction que celle de la partie 2 (exercice F1…F12 en GNU Prolog) : une variable par feature, une contrainte par relation. SWI-Prolog (tutoriel 3) et GNU Prolog (slides) jouent le même rôle ; le tutoriel obtient le code par la fonction de traduction de VariaMos (« Get swi Model »).",
+        "en": "This is the same translation as in part 2 (exercise F1…F12 in GNU Prolog): one variable per feature, one constraint per relation. SWI-Prolog (tutorial 3) and GNU Prolog (slides) play the same role; the tutorial gets the code from VariaMos’s translation function (“Get swi Model”)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 2",
+          "quote": "What you see in the text area in the center of the modal is a translation of your model into its constraint logic programming (CLP) representation."
+        }
+      ],
+      "notions": [
+        "n-swi-translation"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 Trois requêtes sur le modèle d’amorce",
+        "en": "3.3 Three queries on the starter model"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Requête",
+          "en": "Requête"
+        },
+        {
+          "fr": "Ce qu’elle demande",
+          "en": "Ce qu’elle demande"
+        },
+        {
+          "fr": "Résultat sur le modèle d’amorce",
+          "en": "Résultat sur le modèle d’amorce"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "`L = [F4,F2,F3,F1,F5], program(L), label(L).`",
+            "en": "`L = [F4,F2,F3,F1,F5], program(L), label(L).`"
+          },
+          {
+            "fr": "une solution du programme",
+            "en": "une solution du programme"
+          },
+          {
+            "fr": "F1, F2, F3 choisies ; F4 et F5 non",
+            "en": "F1, F2, F3 choisies ; F4 et F5 non"
+          }
+        ],
+        [
+          {
+            "fr": "`… program(L), findall(L, label(L), Ls), length(Ls, N).`",
+            "en": "`… program(L), findall(L, label(L), Ls), length(Ls, N).`"
+          },
+          {
+            "fr": "toutes les solutions et leur nombre",
+            "en": "toutes les solutions et leur nombre"
+          },
+          {
+            "fr": "**N = 1** : une seule solution, donc **fausse** ligne de produits",
+            "en": "**N = 1** : une seule solution, donc **fausse** ligne de produits"
+          }
+        ],
+        [
+          {
+            "fr": "`L = […], F4 #= 1, program(L), label(L).`",
+            "en": "`L = […], F4 #= 1, program(L), label(L).`"
+          },
+          {
+            "fr": "une solution où F4 est sélectionnée",
+            "en": "une solution où F4 est sélectionnée"
+          },
+          {
+            "fr": "**false** : F4 est **morte** (et F5, obligatoire sous F4, avec elle)",
+            "en": "**false** : F4 est **morte** (et F5, obligatoire sous F4, avec elle)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "L = [F4,F2,F3,F1,F5], program(L), label(L)."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "L = [F4,F2,F3,F1,F5], program(L), findall(L, label(L), Ls), length(Ls, NumberOfSols)."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "L = [F4,F2,F3,F1,F5], F4 #= 1, program(L), label(L)."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "This proves that there exists a single solution for our feature model and that we have a defective feature model, as it denotes a “False” Product Line not allowing any other product."
+        }
+      ],
+      "notions": [
+        "n-false-pl-by-counting",
+        "n-swi-translation"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une seule solution ne veut pas dire « trop contraint par erreur de syntaxe » : c’est le défaut **false** du chapitre « Vérifier, diagnostiquer et corriger » (aucune alternative de produit). Forcer une feature à 1 et constater l’échec est exactement la **contrainte de vérification** d’une feature morte.",
+        "en": "A single solution does not mean “too constrained because of a syntax error”: it is the **false** defect of the chapter “Verifying, diagnosing and fixing” (no alternative product). Forcing a feature to 1 and seeing the failure is exactly the **verification constraint** of a dead feature."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "This proves that there exists a single solution for our feature model and that we have a defective feature model, as it denotes a “False” Product Line not allowing any other product."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "L = [F4,F2,F3,F1,F5], F4 #= 1, program(L), label(L)."
+        }
+      ],
+      "notions": [
+        "n-false-pl-by-counting"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.4 Deux écritures de excludes",
+        "en": "3.4 Two ways to write excludes"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "« F3 excludes F4 » s’écrit `F3 + F4 #=< 1` (booléens) ou `F3 * F4 #= 0` (plus général : valable aussi quand une feature est un entier, comme les cardinalités individuelles). Le tutoriel change la ligne 13 et constate que l’**ensemble des solutions reste le même**.",
+        "en": "“F3 excludes F4” is written `F3 + F4 #=< 1` (booleans) or `F3 * F4 #= 0` (more general: also valid when a feature is an integer, like individual cardinalities). The tutorial changes line 13 and observes that the **set of solutions stays the same**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "multiple formalizations can be assigned to our “Excludes” constraint"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "we observe that the set of solutions remains the same"
+        }
+      ],
+      "notions": [
+        "n-excludes-two-formulations"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.5 Noyau et features variables",
+        "en": "3.5 Core and variable features"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "Le **noyau (core)** d’une ligne = les features **présentes dans tous les produits**. Une feature est **variable** si elle vaut 0 dans au moins une solution.",
+        "en": "A line’s **core** = the features **present in all products**. A feature is **variable** if it is 0 in at least one solution."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "features that are definitely present in all products and form (part) of the “core” features"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "This query is designed such that it will allow us to determine or calculate how many times a feature appears as deselected within the set of solutions."
+        }
+      ]
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Trouver noyau et features variables",
+        "en": "Finding core and variable features"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Lancer `program(L).` : la propagation seule révèle les évidences (racine, obligatoires).",
+            "en": "Run `program(L).`: propagation alone reveals the obvious ones (root, mandatory)."
+          },
+          "why": {
+            "fr": "C’est gratuit, mais incomplet.",
+            "en": "It is free, but incomplete."
+          }
+        },
+        {
+          "do": {
+            "fr": "Calculer toutes les solutions, les transposer, puis compter pour chaque feature combien de fois elle vaut 0.",
+            "en": "Compute all solutions, transpose them, then count for each feature how many times it is 0."
+          },
+          "why": {
+            "fr": "Une feature jamais à 0 est dans tous les produits.",
+            "en": "A feature never at 0 is in every product."
+          }
+        },
+        {
+          "do": {
+            "fr": "Si l’énumération est trop longue, remplacer `findall` par `findnsols(n, …)`.",
+            "en": "If enumeration is too long, replace `findall` with `findnsols(n, …)`."
+          },
+          "why": {
+            "fr": "On échantillonne : résultat **approximatif**, sans certitude absolue.",
+            "en": "You sample: **approximate** result, no absolute certainty."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "This query is designed such that it will allow us to determine or calculate how many times a feature appears as deselected within the set of solutions."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "getting an “approximate” calculation of core features by sampling a portion of the space of solutions, which means that we cannot have absolute certainty"
+        }
+      ],
+      "notions": [
+        "n-core-variable-features",
+        "n-findnsols-sampling"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Exemple du tutoriel (navigateur accessible, avec attributs) : seuls **WebBrowser, VoiceControl et Navigation** sont dans le noyau, toutes les autres features sont variables. Les attributs entrent dans le programme sous la forme `FEATURE_ATTRIBUT` (ex. `VOICECONTROL_VERSION`).",
+        "en": "Tutorial example (accessible web browser, with attributes): only **WebBrowser, VoiceControl and Navigation** are in the core, all other features are variable. Attributes enter the program as `FEATURE_ATTRIBUTE` (e.g. `VOICECONTROL_VERSION`)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "only “WebBrowser”, “VoiceControl”, and “Navigation” are truly part of the core, and all other features are variable"
+        }
+      ],
+      "notions": [
+        "n-core-variable-features"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.6 Contraintes textuelles : CLIF",
+        "en": "3.6 Textual constraints: CLIF"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une contrainte qui ne se dessine pas (par exemple « Advanced = 1 ⇒ VoiceControl::Version ≥ 2 ») s’écrit dans VariaMos en **CLIF** (*Common Logic Interchange Format*), langage de type LISP normalisé par l’ISO/IEC 24707 : `(if (= Advanced 1) (>= VoiceControl::Version 2))`. C’est la formule en **notation préfixe** : l’opérateur d’abord, des parenthèses pour séparer les parties.",
+        "en": "A constraint that cannot be drawn (for example “Advanced = 1 ⇒ VoiceControl::Version ≥ 2”) is written in VariaMos in **CLIF** (*Common Logic Interchange Format*), a LISP-like language standardised by ISO/IEC 24707: `(if (= Advanced 1) (>= VoiceControl::Version 2))`. It is the formula in **prefix notation**: operator first, parentheses to split the parts."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "VariaMos utilizes the CLIF (Common Logic Interchange Format) language, which is a LISP-like language"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "As can be seen, it is essentially a one-to-one mapping from our formula above, but in “prefix” form"
+        }
+      ],
+      "notions": [
+        "n-clif-constraints"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Sémantique d’un modèle = ses affectations satisfaisantes. Une variable par feature, une contrainte par relation ; `findall` + `length` compte les produits (1 = fausse ligne) ; forcer F à 1 sans solution = F morte. Noyau = jamais à 0 ; `findnsols` = approximation ; CLIF = notation préfixe.",
+        "en": "A model’s semantics = its satisfying assignments. One variable per feature, one constraint per relation; `findall` + `length` counts products (1 = false line); forcing F to 1 with no solution = F dead. Core = never at 0; `findnsols` = approximation; CLIF = prefix notation."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-07-qz-11"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "4. Pourquoi transformer un modèle, et comment",
+        "en": "4. Why transform a model, and how"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Pourquoi transformer un PLM",
+        "en": "4.1 Why transform a PLM"
       }
     },
     {
@@ -914,8 +1382,8 @@
     {
       "type": "subheading",
       "text": {
-        "fr": "3.2 La transformation de modèles et son cadre",
-        "en": "3.2 Model transformation and its framework"
+        "fr": "4.2 La transformation de modèles et son cadre",
+        "en": "4.2 Model transformation and its framework"
       }
     },
     {
@@ -1113,6 +1581,40 @@
         }
       ],
       "notion": "n-generate-and-count-products"
+    },
+    {
+      "id": "term-core-feature",
+      "fr": "feature du noyau (core)",
+      "en": "core feature",
+      "definition": {
+        "fr": "Feature présente dans tous les produits de la ligne ; les autres sont variables.",
+        "en": "A feature present in all products of the line; the others are variable."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "features that are definitely present in all products and form (part) of the “core” features"
+        }
+      ],
+      "notion": "n-core-variable-features"
+    },
+    {
+      "id": "term-clif",
+      "fr": "CLIF",
+      "en": "CLIF",
+      "definition": {
+        "fr": "Common Logic Interchange Format : langage de type LISP, en notation préfixe, pour les contraintes textuelles de VariaMos.",
+        "en": "Common Logic Interchange Format: a LISP-like language, in prefix notation, for VariaMos’s textual constraints."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "VariaMos utilizes the CLIF (Common Logic Interchange Format) language, which is a LISP-like language"
+        }
+      ],
+      "notion": "n-clif-constraints"
     }
   ],
   "notions": [
@@ -1126,7 +1628,14 @@
     "n-gnu-prolog-exercise",
     "n-model-transformation",
     "n-transformation-framework",
-    "n-why-transform-plm"
+    "n-why-transform-plm",
+    "n-model-semantics-solutions",
+    "n-swi-translation",
+    "n-false-pl-by-counting",
+    "n-core-variable-features",
+    "n-findnsols-sampling",
+    "n-excludes-two-formulations",
+    "n-clif-constraints"
   ],
   "keyPoints": [
     {
@@ -1241,6 +1750,34 @@
       "notions": [
         "n-model-transformation",
         "n-transformation-framework"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Sémantique d’un modèle = ses affectations satisfaisantes ; noyau = présent dans tous les produits ; `findall` + `length` compte, 1 produit = fausse ligne.",
+        "en": "A model’s semantics = its satisfying assignments; core = present in every product; `findall` + `length` counts, 1 product = false line."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "a concrete model’s semantics are the set of satisfying assignments, that is, the valid products as determined by the model’s elements and relations between them"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "features that are definitely present in all products and form (part) of the “core” features"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "This proves that there exists a single solution for our feature model and that we have a defective feature model, as it denotes a “False” Product Line not allowing any other product."
+        }
+      ],
+      "notions": [
+        "n-model-semantics-solutions",
+        "n-core-variable-features",
+        "n-false-pl-by-counting"
       ]
     }
   ],
@@ -1422,6 +1959,85 @@
       ],
       "notions": [
         "n-why-transform-plm"
+      ]
+    },
+    {
+      "id": "inf4-07-fc-30",
+      "termId": "term-core-feature",
+      "front": {
+        "fr": "Noyau et features variables : définition et calcul ?",
+        "en": "Core and variable features: definition and computation?"
+      },
+      "back": {
+        "fr": "Noyau : présentes dans tous les produits (jamais à 0). Calcul : compter les 0 par colonne après `transpose` ; `findnsols` donne une approximation.",
+        "en": "Core: present in every product (never at 0). Computation: count the 0s per column after `transpose`; `findnsols` gives an approximation."
+      },
+      "notions": [
+        "n-core-variable-features",
+        "n-findnsols-sampling"
+      ]
+    },
+    {
+      "id": "inf4-07-fc-31",
+      "front": {
+        "fr": "Sémantique d’un modèle de variabilité ?",
+        "en": "Semantics of a variability model?"
+      },
+      "back": {
+        "fr": "L’ensemble des affectations satisfaisantes, c’est-à-dire les produits valides.",
+        "en": "The set of satisfying assignments, i.e. the valid products."
+      },
+      "notions": [
+        "n-model-semantics-solutions"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "a concrete model’s semantics are the set of satisfying assignments, that is, the valid products as determined by the model’s elements and relations between them"
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-fc-32",
+      "front": {
+        "fr": "Comment détecter une fausse ligne avec SWI-Prolog ?",
+        "en": "How do you detect a false line with SWI-Prolog?"
+      },
+      "back": {
+        "fr": "`findall(L, label(L), Ls), length(Ls, N)` : N = 1 = une seule solution = fausse ligne ; forcer `F #= 1` sans solution = feature morte.",
+        "en": "`findall(L, label(L), Ls), length(Ls, N)`: N = 1 = a single solution = false line; forcing `F #= 1` with no solution = dead feature."
+      },
+      "notions": [
+        "n-false-pl-by-counting",
+        "n-swi-translation"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "L = [F4,F2,F3,F1,F5], program(L), findall(L, label(L), Ls), length(Ls, NumberOfSols)."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "L = [F4,F2,F3,F1,F5], F4 #= 1, program(L), label(L)."
+        }
+      ]
+    },
+    {
+      "id": "inf4-07-fc-33",
+      "termId": "term-clif",
+      "front": {
+        "fr": "CLIF : style et exemple ?",
+        "en": "CLIF: style and example?"
+      },
+      "back": {
+        "fr": "Langage de type LISP, notation préfixe : `(if (= Advanced 1) (>= VoiceControl::Version 2))`.",
+        "en": "LISP-like language, prefix notation: `(if (= Advanced 1) (>= VoiceControl::Version 2))`."
+      },
+      "notions": [
+        "n-clif-constraints"
       ]
     }
   ],
@@ -1833,6 +2449,120 @@
           "quote": "Graphical representation of models makes it impossible to directly reason on them. Because of this, models are usually transformed to executable code in order to reason on them."
         }
       ]
+    },
+    {
+      "id": "inf4-07-qz-11",
+      "type": "true_false",
+      "statement": {
+        "fr": "La sémantique d’un modèle de variabilité est l’ensemble des affectations qui satisfont ses contraintes, c’est-à-dire ses produits valides.",
+        "en": "A variability model’s semantics is the set of assignments that satisfy its constraints, i.e. its valid products."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : tutoriel 3, introduction.",
+        "en": "TRUE: tutorial 3, introduction."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "a concrete model’s semantics are the set of satisfying assignments, that is, the valid products as determined by the model’s elements and relations between them"
+        }
+      ],
+      "notions": [
+        "n-model-semantics-solutions"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-07-qz-12",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une feature est dans le noyau si elle vaut 0 dans au moins une solution.",
+        "en": "A feature is in the core if it is 0 in at least one solution."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est la définition d’une feature **variable**. Le noyau = jamais à 0.",
+        "en": "FALSE: that is the definition of a **variable** feature. Core = never at 0."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "features that are definitely present in all products and form (part) of the “core” features"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "This query is designed such that it will allow us to determine or calculate how many times a feature appears as deselected within the set of solutions."
+        }
+      ],
+      "notions": [
+        "n-core-variable-features"
+      ],
+      "objective": "o1",
+      "trap": {
+        "fr": "Inverser noyau et variable.",
+        "en": "Swapping core and variable."
+      }
+    },
+    {
+      "id": "inf4-07-qz-13",
+      "type": "true_false",
+      "statement": {
+        "fr": "Avec findnsols(16, …), on obtient les features du noyau avec une certitude absolue.",
+        "en": "With findnsols(16, …), you get the core features with absolute certainty."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : on échantillonne une partie de l’espace des solutions ; le résultat est approximatif.",
+        "en": "FALSE: you sample part of the solution space; the result is approximate."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "getting an “approximate” calculation of core features by sampling a portion of the space of solutions, which means that we cannot have absolute certainty"
+        }
+      ],
+      "notions": [
+        "n-findnsols-sampling"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-07-qz-14",
+      "type": "true_false",
+      "statement": {
+        "fr": "Écrire excludes avec F3 * F4 #= 0 au lieu de F3 + F4 #=< 1 donne les mêmes solutions sur des booléens.",
+        "en": "Writing excludes with F3 * F4 #= 0 instead of F3 + F4 #=< 1 gives the same solutions on booleans."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : le tutoriel constate que l’ensemble des solutions reste le même ; le produit reste valable avec des entiers.",
+        "en": "TRUE: the tutorial observes that the set of solutions stays the same; the product stays valid with integers."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "multiple formalizations can be assigned to our “Excludes” constraint"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "we observe that the set of solutions remains the same"
+        }
+      ],
+      "notions": [
+        "n-excludes-two-formulations"
+      ],
+      "objective": "o1"
     }
   ],
   "exercises": [

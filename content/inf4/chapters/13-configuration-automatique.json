@@ -1,0 +1,2114 @@
+{
+  "id": "inf4-13-configuration-automatique",
+  "courseId": "inf4",
+  "order": 13,
+  "title": {
+    "fr": "Configurer, générer et faire évoluer un produit",
+    "en": "Configuring, generating and evolving a product"
+  },
+  "hook": {
+    "fr": "Trois tâches de configuration, l’optimisation d’un coût, puis la génération d’un produit et l’effet d’une évolution : tutoriel 5 et TP TaskForge.",
+    "en": "Three configuration tasks, cost optimisation, then product generation and the effect of an evolution: tutorial 5 and the TaskForge exercise."
+  },
+  "question": {
+    "fr": "Comment choisir, compléter ou optimiser la configuration d’un produit, puis le générer et faire évoluer la ligne sans casser les produits existants ?",
+    "en": "How do you choose, complete or optimise a product’s configuration, then generate it and evolve the line without breaking existing products?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Citer les trois tâches de configuration et la requête de chacune.",
+        "en": "List the three configuration tasks and each one’s query."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Compter les produits d’un modèle avec des éléments imposés ou exclus, et compléter une configuration partielle.",
+        "en": "Count a model’s products with required or excluded elements, and complete a partial configuration."
+      },
+      "level": "apply"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Optimiser un coût total et critiquer un résultat de coût mal posé.",
+        "en": "Optimise a total cost and critique a badly posed cost result."
+      },
+      "level": "analyze"
+    },
+    {
+      "id": "o4",
+      "text": {
+        "fr": "Expliquer le contrôle de couverture et justifier l’évolution du nombre de configurations après un ajout.",
+        "en": "Explain the coverage check and justify the change in the number of configurations after an addition."
+      },
+      "level": "analyze"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Barème TaskForge du prof : « configurations, génération et évolution réutilisable » = 5 points sur 20 (le plus lourd). Tutoriel 5 et son exercice final ; l’examen couvre tous les tutoriels (consigne du prof). Le quiz 5 est vide : non vu.",
+        "en": "Teacher’s TaskForge grid: “configurations, generation and reusable evolution” = 5 points out of 20 (the heaviest). Tutorial 5 and its final exercise; the exam covers all tutorials (teacher’s instruction). Quiz 5 is empty: not seen."
+      }
+    ],
+    "probable": [
+      {
+        "fr": "Compter des produits sous contraintes ; compléter une configuration ; justifier l’évolution d’un nombre de configurations ; critiquer un résultat d’optimisation.",
+        "en": "Count products under constraints; complete a configuration; justify a change in the number of configurations; critique an optimisation result."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Feature models et comptage ; requêtes sat / solve / nsolve ; défauts d’un modèle.",
+    "en": "Feature models and counting; sat / solve / nsolve queries; model defects."
+  },
+  "next": {
+    "fr": "Exigences d’application : les écarts (deltas) entre ce que veut le client et ce que la ligne offre.",
+    "en": "Application requirements: the gaps (deltas) between what the customer wants and what the line offers."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "Trois tâches : trouver, compléter (partielle), optimiser ; mêmes requêtes pour les deux premières.",
+        "en": "Three tasks: find, complete (partial), optimise; same queries for the first two."
+      },
+      {
+        "fr": "Complète = tout le reste exclu ; partielle = le reste indécidé.",
+        "en": "Complete = everything else excluded; partial = the rest undecided."
+      },
+      {
+        "fr": "Contrôle de couverture ; 72 → 96 → 192 pour TaskForge.",
+        "en": "Coverage check; 72 → 96 → 192 for TaskForge."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Compter les produits avec F imposée ou exclue (9, 4, 5, 2 sur le modèle du tutoriel 5).",
+        "en": "Count products with F required or excluded (9, 4, 5, 2 on tutorial 5’s model)."
+      },
+      {
+        "fr": "Justifier l’évolution d’un nombre de configurations ; critiquer un coût mal posé.",
+        "en": "Justify a change in the number of configurations; critique a badly posed cost."
+      }
+    ],
+    "distinctions": [
+      {
+        "fr": "Exclu ≠ indécidé ; « Solution 0 » ≠ zéro solution ; optimiser ≠ énumérer.",
+        "en": "Excluded ≠ undecided; “Solution 0” ≠ zero solutions; optimising ≠ enumerating."
+      }
+    ],
+    "links": [
+      {
+        "fr": "Même problème que le tableur ILP et le chapitre RED-PL ; la génération relie la configuration à la liaison des variants du chapitre « Conception et réalisation ».",
+        "en": "Same problem as the ILP spreadsheet and the RED-PL chapter; generation links configuration to the variant binding of the chapter “Designing and building”."
+      }
+    ]
+  },
+  "estimatedMinutes": 11,
+  "sources": [
+    "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+    "sources-texte/inf4/24-taskforge-guide-modeles.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "1. Configurer : trois tâches",
+        "en": "1. Configuring: three tasks"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.1 Les trois tâches de configuration",
+        "en": "1.1 The three configuration tasks"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "#",
+          "en": "#"
+        },
+        {
+          "fr": "Tâche",
+          "en": "Tâche"
+        },
+        {
+          "fr": "Requête (tutoriels 4 et 5)",
+          "en": "Requête (tutoriels 4 et 5)"
+        },
+        {
+          "fr": "Si aucune solution",
+          "en": "Si aucune solution"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "1",
+            "en": "1"
+          },
+          {
+            "fr": "trouver une ou plusieurs configurations",
+            "en": "trouver une ou plusieurs configurations"
+          },
+          {
+            "fr": "`solve` ou `nsolve` avec `operation_n`",
+            "en": "`solve` ou `nsolve` avec `operation_n`"
+          },
+          {
+            "fr": "on est **notifié de l’absence**",
+            "en": "on est **notifié de l’absence**"
+          }
+        ],
+        [
+          {
+            "fr": "2",
+            "en": "2"
+          },
+          {
+            "fr": "compléter une configuration **partielle**",
+            "en": "compléter une configuration **partielle**"
+          },
+          {
+            "fr": "les mêmes requêtes, avec des éléments marqués sélectionnés ou exclus",
+            "en": "les mêmes requêtes, avec des éléments marqués sélectionnés ou exclus"
+          },
+          {
+            "fr": "on est notifié de l’**insolubilité**",
+            "en": "on est notifié de l’**insolubilité**"
+          }
+        ],
+        [
+          {
+            "fr": "3",
+            "en": "3"
+          },
+          {
+            "fr": "calculer et ordonner selon une fonction d’optimisation",
+            "en": "calculer et ordonner selon une fonction d’optimisation"
+          },
+          {
+            "fr": "`optimize` avec `optimization_target` et `optimization_direction`",
+            "en": "`optimize` avec `optimization_target` et `optimization_direction`"
+          },
+          {
+            "fr": "—",
+            "en": "—"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "we can identify 3 general tasks that are of interest"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Identify one or more specific configurations if they exist (and visualize them), or be notified of their absence otherwise."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Calculate and order configurations according to some optimization function."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Tasks 1 and 2 share a particularly important aspect in common: the same queries are used for both"
+        }
+      ],
+      "notions": [
+        "n-config-three-tasks"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les tâches 1 et 2 utilisent **les mêmes requêtes** : la seule différence est que certains éléments sont marqués sélectionnés (coche verte) ou exclus. Le tutoriel précise que l’**ordre** dans lequel le solveur énumère les solutions est difficile à contrôler (limite combinatoire, pas limite technique).",
+        "en": "Tasks 1 and 2 use **the same queries**: the only difference is that some elements are marked selected (green check) or excluded. The tutorial notes that the **order** in which the solver enumerates solutions is hard to control (a combinatorial limit, not a technical one)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Tasks 1 and 2 share a particularly important aspect in common: the same queries are used for both"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated"
+        }
+      ],
+      "notions": [
+        "n-config-three-tasks",
+        "n-solution-order-combinatorial"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.2 Configuration complète ou partielle",
+        "en": "1.2 Complete or partial configuration"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "definition",
+      "text": {
+        "fr": "Une configuration **complète** exclut tout ce qui n’est pas listé. Une configuration **partielle** laisse les éléments non cités **indécidés** : « exclu » et « pas encore décidé » sont deux choses différentes.",
+        "en": "A **complete** configuration excludes everything that is not listed. A **partial** configuration leaves the elements not cited **undecided**: “excluded” and “not yet decided” are two different things."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.3 Exemple corrigé : le modèle du tutoriel 5",
+        "en": "1.3 Worked example: tutorial 5’s model"
+      }
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  R[\"Root\"] --- G{{\"Range 1..1\"}}\n  G --- F2[\"F2\"]\n  G --- F3[\"F3 (abstract)\"]\n  G --- F4[\"F4 (abstract)\"]\n  R -.->|optional| F1[\"F1 (abstract)\"]\n  F3 -.->|optional| F7[\"F7\"]\n  F3 --- F10[\"F10 ●\"]\n  F4 -.->|optional| F9[\"F9\"]\n  F4 --- F8[\"F8 ●\"]\n  F1 -.->|optional| F5[\"F5\"]\n  F1 --- F6[\"F6 ●\"]\n  F5 ==>|includes| F9\n  F10 -. excludes .- F6",
+      "caption": {
+        "fr": "Le modèle de la partie 1 du tutoriel 5 (redessiné ; ● obligatoire). Un groupe Range 1..1 sous la racine choisit exactement un parmi F2, F3, F4 ; F5 requires F9 ; F10 excludes F6.",
+        "en": "The model of tutorial 5, part 1 (redrawn; ● mandatory). A Range 1..1 group under the root picks exactly one of F2, F3, F4; F5 requires F9; F10 excludes F6."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Configuration partielle",
+          "en": "Configuration partielle"
+        },
+        {
+          "fr": "Produits",
+          "en": "Produits"
+        },
+        {
+          "fr": "Raisonnement",
+          "en": "Raisonnement"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "aucune",
+            "en": "aucune"
+          },
+          {
+            "fr": "**9**",
+            "en": "**9**"
+          },
+          {
+            "fr": "F2 : 2 ; F3 : 2 ; F4 : 5 (2 sans F1, 3 avec F1)",
+            "en": "F2 : 2 ; F3 : 2 ; F4 : 5 (2 sans F1, 3 avec F1)"
+          }
+        ],
+        [
+          {
+            "fr": "F5 sélectionnée",
+            "en": "F5 sélectionnée"
+          },
+          {
+            "fr": "**1**",
+            "en": "**1**"
+          },
+          {
+            "fr": "F5 impose F9, qui impose F4 ; F1, F6 suivent ; seul F4 + F9 + F1 + F5 reste",
+            "en": "F5 impose F9, qui impose F4 ; F1, F6 suivent ; seul F4 + F9 + F1 + F5 reste"
+          }
+        ],
+        [
+          {
+            "fr": "F5 et F2 sélectionnées",
+            "en": "F5 et F2 sélectionnées"
+          },
+          {
+            "fr": "**0**",
+            "en": "**0**"
+          },
+          {
+            "fr": "F5 impose F4, qui exclut F2 (groupe 1..1) : à revoir côté modèle ou exigences",
+            "en": "F5 impose F4, qui exclut F2 (groupe 1..1) : à revoir côté modèle ou exigences"
+          }
+        ],
+        [
+          {
+            "fr": "F4 exclue",
+            "en": "F4 exclue"
+          },
+          {
+            "fr": "**4**",
+            "en": "**4**"
+          },
+          {
+            "fr": "F2 : 2 ; F3 : 2",
+            "en": "F2 : 2 ; F3 : 2"
+          }
+        ],
+        [
+          {
+            "fr": "F1 sélectionnée",
+            "en": "F1 sélectionnée"
+          },
+          {
+            "fr": "**4**",
+            "en": "**4**"
+          },
+          {
+            "fr": "F1 impose F6, donc exclut F3 (F10 excludes F6) : F2 → 1 ; F4 → 3",
+            "en": "F1 impose F6, donc exclut F3 (F10 excludes F6) : F2 → 1 ; F4 → 3"
+          }
+        ],
+        [
+          {
+            "fr": "F1 exclue",
+            "en": "F1 exclue"
+          },
+          {
+            "fr": "**5**",
+            "en": "**5**"
+          },
+          {
+            "fr": "F2 : 1 ; F3 : 2 ; F4 : 2 (F9 libre)",
+            "en": "F2 : 1 ; F3 : 2 ; F4 : 2 (F9 libre)"
+          }
+        ],
+        [
+          {
+            "fr": "F4 sélectionnée, F3 et F1 exclues",
+            "en": "F4 sélectionnée, F3 et F1 exclues"
+          },
+          {
+            "fr": "**2**",
+            "en": "**2**"
+          },
+          {
+            "fr": "F8 imposée ; seule F9 est libre",
+            "en": "F8 imposée ; seule F9 est libre"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "there is only one solution where F5 is selected"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "F5 and F2 can never coexist"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "there are only 4 products that satisfy this partial configuration"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les trois derniers résultats sont l’**exercice final** du tutoriel (corrigé proposé, vérifié en énumérant les produits). Le tutoriel donne lui-même 9, 1, « jamais ensemble » et 4. Piège de lecture : « **Solution 0** » dans l’onglet des résultats est la **première** réponse (numérotation à partir de 0), pas « zéro solution ». Et demander 10 solutions à un modèle qui n’en a que 9 en renvoie 9.",
+        "en": "The last three results are the tutorial’s **final exercise** (proposed solution, checked by enumerating the products). The tutorial itself gives 9, 1, “never together” and 4. Reading trap: “**Solution 0**” in the results tab is the **first** answer (numbering from 0), not “zero solutions”. And asking 10 solutions from a model that has only 9 returns 9."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "does not mean that 0 solutions were found"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "F5 and F2 can never coexist"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.4 Deuxième exemple : compléter une demande TaskForge",
+        "en": "1.4 Second example: completing a TaskForge request"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Élément du modèle v2",
+          "en": "Élément du modèle v2"
+        },
+        {
+          "fr": "Règle",
+          "en": "Règle"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Storage",
+            "en": "Storage"
+          },
+          {
+            "fr": "obligatoire, groupe alternatif : Memory ou LocalStorage",
+            "en": "obligatoire, groupe alternatif : Memory ou LocalStorage"
+          }
+        ],
+        [
+          {
+            "fr": "options",
+            "en": "options"
+          },
+          {
+            "fr": "Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk, JSONExport (optionnelles)",
+            "en": "Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk, JSONExport (optionnelles)"
+          }
+        ],
+        [
+          {
+            "fr": "contraintes",
+            "en": "contraintes"
+          },
+          {
+            "fr": "Statistics ⇒ Filters ; Kiosk ⇒ Memory ; JSONExport ⇒ LocalStorage",
+            "en": "Statistics ⇒ Filters ; Kiosk ⇒ Memory ; JSONExport ⇒ LocalStorage"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "JSONExport implique LocalStorage (politique commerciale de cette version"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "imposez Statistics et excluez LocalStorage. Quels autres choix deviennent nécessaires ?"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Demande partielle : **Statistics** imposé, **LocalStorage** exclu. Alors **Memory** (alternative) et **Filters** (Statistics ⇒ Filters) deviennent nécessaires ; **JSONExport** est exclu (il exige LocalStorage). Kiosk, Priorities, DueDates et CSVExport restent libres : **2⁴ = 16 produits** (calcul par énumération, corrigé proposé). Les trois commandes du TP (Kiosque, Étudiant, Pro) sont valides ; JSONExport avec Kiosk est refusée (JSONExport ⇒ LocalStorage et Kiosk ⇒ Memory).",
+        "en": "Partial request: **Statistics** required, **LocalStorage** excluded. Then **Memory** (the alternative) and **Filters** (Statistics ⇒ Filters) become necessary; **JSONExport** is excluded (it requires LocalStorage). Kiosk, Priorities, DueDates and CSVExport stay free: **2⁴ = 16 products** (computed by enumeration, proposed solution). The three orders of the exercise (Kiosque, Étudiant, Pro) are valid; JSONExport with Kiosk is refused (JSONExport ⇒ LocalStorage and Kiosk ⇒ Memory)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "imposez Statistics et excluez LocalStorage. Quels autres choix deviennent nécessaires ?"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Testez ensuite une demande contenant à la fois JSONExport et Kiosk et expliquez le refus."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "JSONExport implique LocalStorage (politique commerciale de cette version"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "explain": true
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Trois tâches : trouver, compléter une configuration partielle, optimiser. Mêmes requêtes pour les deux premières. Complète = tout le reste exclu ; partielle = le reste indécidé. Compter les produits avec des éléments imposés ou exclus se fait par cas.",
+        "en": "Three tasks: find, complete a partial configuration, optimise. Same queries for the first two. Complete = everything else excluded; partial = the rest undecided. Counting products with required or excluded elements is done case by case."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-13-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "2. Optimiser une configuration",
+        "en": "2. Optimising a configuration"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Définir le coût, puis optimiser",
+        "en": "2.1 Define the cost, then optimise"
+      }
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Trouver le produit le plus cher ou le moins cher",
+        "en": "Finding the most expensive or cheapest product"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Donner un **attribut de coût** aux features (entier).",
+            "en": "Give the features a **cost attribute** (integer)."
+          },
+          "why": {
+            "fr": "L’optimisation porte sur une variable numérique.",
+            "en": "Optimisation works on a numeric variable."
+          }
+        },
+        {
+          "do": {
+            "fr": "Ajouter une contrainte qui définit le **coût total** : `(int TotCost)` et `(= TotCost (somme des feature × feature::Cost))`.",
+            "en": "Add a constraint that defines the **total cost**: `(int TotCost)` and `(= TotCost (sum of feature × feature::Cost))`."
+          },
+          "why": {
+            "fr": "Une feature absente (0) ne coûte rien ; présente (1), elle coûte son attribut.",
+            "en": "An absent feature (0) costs nothing; present (1) it costs its attribute."
+          }
+        },
+        {
+          "do": {
+            "fr": "Écrire la requête `optimize` avec `optimization_target` : TotCost et la direction `max` ou `min`.",
+            "en": "Write the `optimize` query with `optimization_target`: TotCost and direction `max` or `min`."
+          },
+          "why": {
+            "fr": "La direction choisit entre le plus cher et le moins cher.",
+            "en": "The direction picks between most expensive and cheapest."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Relire le résultat** : le modèle de coût est-il bien posé ?",
+            "en": "**Reread the result**: is the cost model well posed?"
+          },
+          "why": {
+            "fr": "Un résultat étrange révèle souvent une erreur de modélisation.",
+            "en": "A strange result often reveals a modelling error."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "This encodes the fact that the TotCost variable is an integer and is related to the sum of all the costs"
+        }
+      ],
+      "notions": [
+        "n-optimal-configuration",
+        "n-total-cost-constraint"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1.1 Exemple corrigé : le navigateur du tutoriel 5",
+        "en": "2.1.1 Worked example: tutorial 5’s browser"
+      },
+      "level": 3
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Avec `max`, on obtient le produit le plus cher ; avec `min`, le moins cher. Le produit le moins cher **évitait** le module de navigation à onglets parce que sa cardinalité (0 à 3 onglets personnalisés) rendait ce choix gratuit : le **coût était mal posé**. En ajoutant un coût de 5 à Tabbing, Tabbing n’appartient plus au produit le moins cher, tandis que le produit le plus cher ne change pas.",
+        "en": "With `max` you get the most expensive product; with `min`, the cheapest. The cheapest product **avoided** the tabbed navigation module because its cardinality (0 to 3 custom tabs) made that choice free: the **cost was badly posed**. After adding a cost of 5 to Tabbing, Tabbing is no longer part of the cheapest product, while the most expensive product does not change."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "what is the cheapest product that can be produced by our product line"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "is no longer part of the cheapest possible product"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "which corresponds to the most expensive product, this change has no effect"
+        }
+      ],
+      "notions": [
+        "n-optimal-configuration"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Les limites : l’outil ne remplace pas le jugement",
+        "en": "2.2 Limits: the tool does not replace judgement"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "L’automatisation fait gagner du temps et **révèle** les erreurs de modélisation, mais « human involvement is also important, no matter the sophistication of the analysis tools » : c’est à l’ingénieur d’interpréter le résultat et d’attraper les défauts du problème posé au solveur.",
+        "en": "Automation saves time and **reveals** modelling errors, but “human involvement is also important, no matter the sophistication of the analysis tools”: the engineer must interpret the result and catch the flaws in the problem posed to the solver."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "human involvement is also important, no matter the sophistication of the analysis tools"
+        }
+      ],
+      "notions": [
+        "n-config-human-judgement"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.3 Le lien avec le tableur ILP du prof et RED-PL",
+        "en": "2.3 The link with the teacher’s ILP spreadsheet and RED-PL"
+      }
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "text": {
+        "fr": "Le tableur « Product Line configuration using ILP » (prof, non citable) pose la même idée sous Excel : des features avec un **coût** et un **revenu**, un vecteur de **configuration** 0 / 1, des totaux (somme configuration × coût), et des configurations types (maximale, minimale, « sans F9 »). C’est le problème d’optimisation de ce chapitre, vu comme **programmation linéaire en nombres entiers**, comme dans le chapitre « RED-PL : dériver les exigences d’un produit ».",
+        "en": "The “Product Line configuration using ILP” spreadsheet (teacher’s, not citable) poses the same idea in Excel: features with a **cost** and a **revenue**, a 0 / 1 **configuration** vector, totals (sum of configuration × cost), and typical configurations (maximal, minimal, “without F9”). It is this chapter’s optimisation problem, seen as **integer linear programming**, as in the chapter “RED-PL: deriving a product’s requirements”."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/4-redpl-caise07.md",
+          "loc": "p. 7",
+          "quote": "formalized using an Integer Linear Programming (ILP) notation"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Optimiser = définir un coût total, puis `optimize` avec une cible et `min` / `max`. Un résultat surprenant signale souvent un coût mal posé : relire. Le jugement humain reste nécessaire.",
+        "en": "Optimising = define a total cost, then `optimize` with a target and `min` / `max`. A surprising result often signals a badly posed cost: reread. Human judgement remains necessary."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-13-qz-02"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "3. Générer un produit et faire évoluer la ligne",
+        "en": "3. Generating a product and evolving the line"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 Du modèle au produit : valider, puis générer",
+        "en": "3.1 From model to product: validate, then generate"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Dans le TP TaskForge, une configuration est d’abord **validée** contre le modèle (les mêmes contraintes que dans l’outil d’analyse), puis le générateur **retire du code les blocs non sélectionnés** : « le code non sélectionné est effectivement retiré ». C’est la variabilité fixée à la **construction** (chapitre « Conception et réalisation d’une application »), pas un bouton caché.",
+        "en": "In the TaskForge exercise, a configuration is first **validated** against the model (the same constraints as in the analysis tool), then the generator **removes unselected blocks from the code**: “unselected code is effectively removed”. This is variability fixed at **build time** (chapter “Designing and building an application”), not a hidden button."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        }
+      ],
+      "notions": [
+        "n-generation-coverage-check"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Le contrôle de couverture",
+        "en": "3.2 The coverage check"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Le générateur **refuse une option présente dans le code mais absente du modèle**, même si cette option n’est pas sélectionnée : « ce contrôle de couverture évite de laisser des options du code hors de la ligne de produits ». Il refuse aussi une configuration invalide (Memory avec LocalStorage ; JSONExport avec Kiosk).",
+        "en": "The generator **refuses an option present in the code but absent from the model**, even if that option is not selected: “this coverage check avoids leaving code options outside the product line”. It also refuses an invalid configuration (Memory with LocalStorage; JSONExport with Kiosk)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §5",
+          "quote": "la génération doit refuser une option inconnue, même si cette option n’est pas sélectionnée."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §5",
+          "quote": "Ce contrôle de couverture évite de laisser des options du code hors de la ligne de produits."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Testez ensuite une demande contenant à la fois JSONExport et Kiosk et expliquez le refus."
+        }
+      ],
+      "notions": [
+        "n-generation-coverage-check"
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 L’effet d’une évolution sur le nombre de configurations",
+        "en": "3.3 The effect of an evolution on the number of configurations"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Version du modèle",
+          "en": "Version du modèle"
+        },
+        {
+          "fr": "Changement",
+          "en": "Changement"
+        },
+        {
+          "fr": "Configurations",
+          "en": "Configurations"
+        },
+        {
+          "fr": "Calcul",
+          "en": "Calcul"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "v1 (11 éléments)",
+            "en": "v1 (11 éléments)"
+          },
+          {
+            "fr": "modèle de départ",
+            "en": "modèle de départ"
+          },
+          {
+            "fr": "**72**",
+            "en": "**72**"
+          },
+          {
+            "fr": "8 (Priorities, DueDates, CSVExport) × 3 (Filters, Statistics) × 3 (stockage, Kiosk)",
+            "en": "8 (Priorities, DueDates, CSVExport) × 3 (Filters, Statistics) × 3 (stockage, Kiosk)"
+          }
+        ],
+        [
+          {
+            "fr": "v2 (12 éléments)",
+            "en": "v2 (12 éléments)"
+          },
+          {
+            "fr": "+ JSONExport, avec JSONExport ⇒ LocalStorage",
+            "en": "+ JSONExport, avec JSONExport ⇒ LocalStorage"
+          },
+          {
+            "fr": "**96**",
+            "en": "**96**"
+          },
+          {
+            "fr": "8 × 3 × 4 (le stockage, Kiosk et JSONExport donnent 4 cas)",
+            "en": "8 × 3 × 4 (le stockage, Kiosk et JSONExport donnent 4 cas)"
+          }
+        ],
+        [
+          {
+            "fr": "v3",
+            "en": "v3"
+          },
+          {
+            "fr": "+ ClearCompleted, optionnelle, aucune contrainte",
+            "en": "+ ClearCompleted, optionnelle, aucune contrainte"
+          },
+          {
+            "fr": "**192**",
+            "en": "**192**"
+          },
+          {
+            "fr": "96 × 2 : une option libre double le nombre",
+            "en": "96 × 2 : une option libre double le nombre"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "comme feature optionnelle à la racine dans FlamapyIDE, sans nouvelle contrainte métier"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notions": [
+        "n-evolution-count"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une évolution qui ajoute une option **libre** double le nombre de configurations ; une option **liée** par une contrainte l’augmente de moins. Dans les deux cas, les **anciens produits restent représentables** quand la nouvelle feature est exclue : c’est la condition d’une évolution sans régression. Les comptes sont calculés par énumération (corrigé proposé).",
+        "en": "An evolution that adds a **free** option doubles the number of configurations; an option **tied** by a constraint raises it by less. In both cases the **old products stay representable** when the new feature is excluded: this is the condition for an evolution without regression. Counts are computed by enumeration (proposed solution)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notions": [
+        "n-evolution-count"
+      ],
+      "explain": true
+    },
+    {
+      "type": "method",
+      "title": {
+        "fr": "Faire évoluer la ligne (exemple ClearCompleted)",
+        "en": "Evolving the line (ClearCompleted example)"
+      },
+      "steps": [
+        {
+          "do": {
+            "fr": "Ajouter la **feature** optionnelle au modèle, sans contrainte métier ; vérifier le modèle.",
+            "en": "Add the optional **feature** to the model, with no business constraint; check the model."
+          },
+          "why": {
+            "fr": "Le modèle reste la référence.",
+            "en": "The model stays the reference."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Comparer** le nombre de configurations avec la version précédente et le **justifier**.",
+            "en": "**Compare** the number of configurations with the previous version and **justify** it."
+          },
+          "why": {
+            "fr": "Le prof demande « Justifiez l’évolution du nombre ».",
+            "en": "The teacher asks “justify the evolution of the number”."
+          }
+        },
+        {
+          "do": {
+            "fr": "Ajouter au gabarit de code un bloc conditionnel pour la feature.",
+            "en": "Add to the code template a conditional block for the feature."
+          },
+          "why": {
+            "fr": "Le code commun reste unique.",
+            "en": "The shared code stays single."
+          }
+        },
+        {
+          "do": {
+            "fr": "**Régénérer** tous les produits à partir de la même version du gabarit ; contrôler présence **et** absence du code.",
+            "en": "**Regenerate** all products from the same template version; check the code’s presence **and** absence."
+          },
+          "why": {
+            "fr": "Les produits qui n’ont pas la feature ne doivent pas contenir son code.",
+            "en": "Products without the feature must not contain its code."
+          }
+        },
+        {
+          "do": {
+            "fr": "Faire un **test de non-régression**.",
+            "en": "Run a **non-regression test**."
+          },
+          "why": {
+            "fr": "Les produits existants doivent fonctionner comme avant.",
+            "en": "Existing products must work as before."
+          }
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "comme feature optionnelle à la racine dans FlamapyIDE, sans nouvelle contrainte métier"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5 (temps)",
+          "quote": "Test de non-régression et livraison"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        }
+      ],
+      "notions": [
+        "n-evolution-count"
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Valider la configuration, puis générer ; contrôle de couverture (option du code absente du modèle = refus) ; évolution : comparer et justifier le nombre (72 → 96 → 192), vérifier présence et absence du code, non-régression.",
+        "en": "Validate the configuration, then generate; coverage check (code option absent from the model = refusal); evolution: compare and justify the count (72 → 96 → 192), check code presence and absence, non-regression."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-13-qz-03"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-configuration-task",
+      "fr": "tâches de configuration",
+      "en": "configuration tasks",
+      "definition": {
+        "fr": "Trouver des configurations, compléter une configuration partielle, optimiser selon une fonction.",
+        "en": "Finding configurations, completing a partial configuration, optimising according to a function."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "we can identify 3 general tasks that are of interest"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model."
+        }
+      ],
+      "notion": "n-config-three-tasks"
+    },
+    {
+      "id": "term-partial-configuration",
+      "fr": "configuration partielle",
+      "en": "partial configuration",
+      "definition": {
+        "fr": "Choix qui laisse des éléments indécidés ; une configuration complète exclut tout ce qui n’est pas listé.",
+        "en": "A choice that leaves elements undecided; a complete configuration excludes everything not listed."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model."
+        }
+      ],
+      "notion": "n-partial-configuration"
+    },
+    {
+      "id": "term-optimal-configuration",
+      "fr": "configuration optimale",
+      "en": "optimal configuration",
+      "definition": {
+        "fr": "Produit qui minimise ou maximise une variable cible, par exemple un coût total.",
+        "en": "A product that minimises or maximises a target variable, for example a total cost."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "what is the cheapest product that can be produced by our product line"
+        }
+      ],
+      "notion": "n-optimal-configuration"
+    },
+    {
+      "id": "term-total-cost",
+      "fr": "coût total (TotCost)",
+      "en": "total cost (TotCost)",
+      "definition": {
+        "fr": "Variable entière égale à la somme des coûts des features présentes.",
+        "en": "An integer variable equal to the sum of the costs of the features present."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "This encodes the fact that the TotCost variable is an integer and is related to the sum of all the costs"
+        }
+      ],
+      "notion": "n-total-cost-constraint"
+    },
+    {
+      "id": "term-coverage-check",
+      "fr": "contrôle de couverture",
+      "en": "coverage check",
+      "definition": {
+        "fr": "Refus de générer si le code contient une option absente du modèle.",
+        "en": "Refusal to generate if the code contains an option absent from the model."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §5",
+          "quote": "Ce contrôle de couverture évite de laisser des options du code hors de la ligne de produits."
+        }
+      ],
+      "notion": "n-generation-coverage-check"
+    },
+    {
+      "id": "term-evolution-count",
+      "fr": "évolution de la ligne",
+      "en": "line evolution",
+      "definition": {
+        "fr": "Ajout d’une feature : on compare et justifie le nombre de configurations, les anciens produits restent représentables.",
+        "en": "Adding a feature: compare and justify the number of configurations, old products stay representable."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notion": "n-evolution-count"
+    }
+  ],
+  "notions": [
+    "n-config-three-tasks",
+    "n-partial-configuration",
+    "n-optimal-configuration",
+    "n-total-cost-constraint",
+    "n-config-human-judgement",
+    "n-solution-order-combinatorial",
+    "n-evolution-count",
+    "n-generation-coverage-check"
+  ],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Trois tâches de configuration : trouver, compléter une configuration partielle, optimiser.",
+        "en": "Three configuration tasks: find, complete a partial configuration, optimise."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "we can identify 3 general tasks that are of interest"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Calculate and order configurations according to some optimization function."
+        }
+      ],
+      "notions": [
+        "n-config-three-tasks"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Complète : tout ce qui n’est pas listé est exclu. Partielle : éléments non cités indécidés.",
+        "en": "Complete: everything not listed is excluded. Partial: non-cited elements undecided."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Optimiser : coût total défini par contrainte, puis `optimize` avec cible et min / max.",
+        "en": "Optimising: total cost defined by a constraint, then `optimize` with a target and min / max."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "This encodes the fact that the TotCost variable is an integer and is related to the sum of all the costs"
+        }
+      ],
+      "notions": [
+        "n-optimal-configuration",
+        "n-total-cost-constraint"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Un résultat d’optimisation surprenant révèle un coût mal posé ; le jugement humain reste nécessaire.",
+        "en": "A surprising optimisation result reveals a badly posed cost; human judgement stays necessary."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "is no longer part of the cheapest possible product"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "human involvement is also important, no matter the sophistication of the analysis tools"
+        }
+      ],
+      "notions": [
+        "n-config-human-judgement"
+      ]
+    },
+    {
+      "text": {
+        "fr": "Évolution : contrôle de couverture, nombre de configurations comparé et justifié (72 → 96 → 192), anciens produits conservés.",
+        "en": "Evolution: coverage check, number of configurations compared and justified (72 → 96 → 192), old products kept."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §5",
+          "quote": "Ce contrôle de couverture évite de laisser des options du code hors de la ligne de produits."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notions": [
+        "n-generation-coverage-check",
+        "n-evolution-count"
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "inf4-13-fc-01",
+      "termId": "term-configuration-task",
+      "front": {
+        "fr": "Les trois tâches de configuration ?",
+        "en": "The three configuration tasks?"
+      },
+      "back": {
+        "fr": "1) trouver des configurations ; 2) compléter une configuration partielle ; 3) optimiser selon une fonction.",
+        "en": "1) find configurations; 2) complete a partial configuration; 3) optimise according to a function."
+      },
+      "notions": [
+        "n-config-three-tasks"
+      ]
+    },
+    {
+      "id": "inf4-13-fc-02",
+      "front": {
+        "fr": "Quelles tâches partagent les mêmes requêtes ?",
+        "en": "Which tasks share the same queries?"
+      },
+      "back": {
+        "fr": "Les tâches 1 et 2 ; seule change la sélection / exclusion d’éléments.",
+        "en": "Tasks 1 and 2; only the selection / exclusion of elements changes."
+      },
+      "notions": [
+        "n-config-three-tasks"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Tasks 1 and 2 share a particularly important aspect in common: the same queries are used for both"
+        }
+      ]
+    },
+    {
+      "id": "inf4-13-fc-03",
+      "termId": "term-partial-configuration",
+      "front": {
+        "fr": "Complète ou partielle ?",
+        "en": "Complete or partial?"
+      },
+      "back": {
+        "fr": "Complète : tout ce qui n’est pas listé est exclu. Partielle : les éléments non cités sont indécidés.",
+        "en": "Complete: everything not listed is excluded. Partial: non-cited elements are undecided."
+      },
+      "notions": [
+        "n-partial-configuration"
+      ]
+    },
+    {
+      "id": "inf4-13-fc-04",
+      "front": {
+        "fr": "Modèle du tutoriel 5 : produits au total, avec F1, sans F1 ?",
+        "en": "Tutorial 5’s model: products in total, with F1, without F1?"
+      },
+      "back": {
+        "fr": "9 au total ; 4 avec F1 ; 5 sans F1 ; 1 avec F5 ; 4 sans F4.",
+        "en": "9 in total; 4 with F1; 5 without F1; 1 with F5; 4 without F4."
+      },
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "there is only one solution where F5 is selected"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "there are only 4 products that satisfy this partial configuration"
+        }
+      ]
+    },
+    {
+      "id": "inf4-13-fc-05",
+      "termId": "term-optimal-configuration",
+      "front": {
+        "fr": "Requête pour le produit le moins cher ?",
+        "en": "Query for the cheapest product?"
+      },
+      "back": {
+        "fr": "`optimize` avec `optimization_target`: TotCost et `optimization_direction`: min.",
+        "en": "`optimize` with `optimization_target`: TotCost and `optimization_direction`: min."
+      },
+      "notions": [
+        "n-optimal-configuration"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "what is the cheapest product that can be produced by our product line"
+        }
+      ]
+    },
+    {
+      "id": "inf4-13-fc-06",
+      "termId": "term-total-cost",
+      "front": {
+        "fr": "Définir le coût total ?",
+        "en": "Defining the total cost?"
+      },
+      "back": {
+        "fr": "`(int TotCost)` puis `(= TotCost (somme feature × feature::Cost))`.",
+        "en": "`(int TotCost)` then `(= TotCost (sum feature × feature::Cost))`."
+      },
+      "notions": [
+        "n-total-cost-constraint"
+      ]
+    },
+    {
+      "id": "inf4-13-fc-07",
+      "front": {
+        "fr": "Quel est le message du tutoriel sur le jugement humain ?",
+        "en": "What is the tutorial’s message on human judgement?"
+      },
+      "back": {
+        "fr": "L’outil révèle les erreurs de modélisation (coût mal posé) mais l’interprétation reste humaine.",
+        "en": "The tool reveals modelling errors (badly posed cost) but interpretation stays human."
+      },
+      "notions": [
+        "n-config-human-judgement"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "human involvement is also important, no matter the sophistication of the analysis tools"
+        }
+      ]
+    },
+    {
+      "id": "inf4-13-fc-08",
+      "termId": "term-coverage-check",
+      "front": {
+        "fr": "Contrôle de couverture ?",
+        "en": "Coverage check?"
+      },
+      "back": {
+        "fr": "Le générateur refuse une option du code absente du modèle, même non sélectionnée.",
+        "en": "The generator refuses a code option absent from the model, even if not selected."
+      },
+      "notions": [
+        "n-generation-coverage-check"
+      ]
+    },
+    {
+      "id": "inf4-13-fc-09",
+      "termId": "term-evolution-count",
+      "front": {
+        "fr": "TaskForge : 72, 96, 192 ?",
+        "en": "TaskForge: 72, 96, 192?"
+      },
+      "back": {
+        "fr": "v1 = 72 ; v2 (+ JSONExport ⇒ LocalStorage) = 96 ; v3 (+ ClearCompleted libre) = 192, le double.",
+        "en": "v1 = 72; v2 (+ JSONExport ⇒ LocalStorage) = 96; v3 (+ free ClearCompleted) = 192, double."
+      },
+      "notions": [
+        "n-evolution-count"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        }
+      ]
+    },
+    {
+      "id": "inf4-13-fc-10",
+      "front": {
+        "fr": "Faire évoluer une ligne : la méthode ?",
+        "en": "Evolving a line: the method?"
+      },
+      "back": {
+        "fr": "Ajouter la feature, comparer et justifier le nombre, ajouter le bloc de code, régénérer, vérifier présence et absence, non-régression.",
+        "en": "Add the feature, compare and justify the count, add the code block, regenerate, check presence and absence, non-regression."
+      },
+      "notions": [
+        "n-evolution-count"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "comme feature optionnelle à la racine dans FlamapyIDE, sans nouvelle contrainte métier"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5 (temps)",
+          "quote": "Test de non-régression et livraison"
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "inf4-13-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour trouver des configurations et pour compléter une configuration partielle, on utilise les mêmes requêtes ; seul le marquage des éléments change.",
+        "en": "To find configurations and to complete a partial configuration, you use the same queries; only the marking of elements changes."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : tâches 1 et 2 du tutoriel 5.",
+        "en": "TRUE: tasks 1 and 2 of tutorial 5."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Tasks 1 and 2 share a particularly important aspect in common: the same queries are used for both"
+        }
+      ],
+      "notions": [
+        "n-config-three-tasks"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-13-qz-02",
+      "type": "true_false",
+      "statement": {
+        "fr": "Une configuration partielle exclut tout ce qui n’est pas cité.",
+        "en": "A partial configuration excludes everything that is not cited."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est la configuration **complète**. La partielle laisse les éléments non cités indécidés.",
+        "en": "FALSE: that is the **complete** configuration. The partial one leaves non-cited elements undecided."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Confondre indécidé et exclu.",
+        "en": "Confusing undecided with excluded."
+      }
+    },
+    {
+      "id": "inf4-13-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "« Solution 0 » dans l’onglet des résultats signifie qu’aucune solution n’a été trouvée.",
+        "en": "“Solution 0” in the results tab means that no solution was found."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est la réponse à la première requête (numérotation à partir de 0).",
+        "en": "FALSE: it is the answer to the first query (numbering from 0)."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "does not mean that 0 solutions were found"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-13-qz-04",
+      "type": "true_false",
+      "statement": {
+        "fr": "Si l’on demande 10 solutions et que le solveur en renvoie 9, le modèle a exactement 9 solutions.",
+        "en": "If you ask for 10 solutions and the solver returns 9, the model has exactly 9 solutions."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « while we requested 10 solutions, only 9 really exist ».",
+        "en": "TRUE: “while we requested 10 solutions, only 9 really exist”."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-13-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans le modèle du tutoriel 5, sélectionner F5 et F2 donne un produit valide.",
+        "en": "In tutorial 5’s model, selecting F5 and F2 gives a valid product."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : F5 impose F9, donc F4, qui exclut F2 (groupe 1..1) : « F5 and F2 can never coexist ».",
+        "en": "FALSE: F5 requires F9, hence F4, which excludes F2 (1..1 group): “F5 and F2 can never coexist”."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "F5 and F2 can never coexist"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-13-qz-06",
+      "type": "true_false",
+      "statement": {
+        "fr": "Après avoir associé un coût de 5 à Tabbing, le produit le plus cher change.",
+        "en": "After giving Tabbing a cost of 5, the most expensive product changes."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est le produit le **moins cher** qui change ; le plus cher reste le même (« this change has no effect »).",
+        "en": "FALSE: it is the **cheapest** product that changes; the most expensive stays the same (“this change has no effect”)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "is no longer part of the cheapest possible product"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "which corresponds to the most expensive product, this change has no effect"
+        }
+      ],
+      "notions": [
+        "n-optimal-configuration"
+      ],
+      "objective": "o3"
+    },
+    {
+      "id": "inf4-13-qz-07",
+      "type": "true_false",
+      "statement": {
+        "fr": "Ajouter une option facultative sans aucune contrainte double le nombre de configurations.",
+        "en": "Adding an optional feature with no constraint doubles the number of configurations."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la feature est indépendante, elle peut être présente ou non (96 → 192 pour ClearCompleted).",
+        "en": "TRUE: the feature is independent, it can be present or not (96 → 192 for ClearCompleted)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "comme feature optionnelle à la racine dans FlamapyIDE, sans nouvelle contrainte métier"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        }
+      ],
+      "notions": [
+        "n-evolution-count"
+      ],
+      "objective": "o4"
+    },
+    {
+      "id": "inf4-13-qz-08",
+      "type": "true_false",
+      "statement": {
+        "fr": "Le générateur accepte une option présente dans le code mais absente du modèle, tant qu’elle n’est pas sélectionnée.",
+        "en": "The generator accepts an option present in the code but absent from the model, as long as it is not selected."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : la génération refuse une option inconnue, même non sélectionnée (contrôle de couverture).",
+        "en": "FALSE: generation refuses an unknown option, even if not selected (coverage check)."
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §5",
+          "quote": "la génération doit refuser une option inconnue, même si cette option n’est pas sélectionnée."
+        }
+      ],
+      "notions": [
+        "n-generation-coverage-check"
+      ],
+      "objective": "o4",
+      "trap": {
+        "fr": "Croire qu’une option non sélectionnée n’est pas contrôlée.",
+        "en": "Believing an unselected option is not checked."
+      }
+    },
+    {
+      "id": "inf4-13-qz-09",
+      "type": "mcq",
+      "question": {
+        "fr": "Quelle tâche de configuration correspond à une requête `optimize` ?",
+        "en": "Which configuration task corresponds to an `optimize` query?"
+      },
+      "options": [
+        {
+          "fr": "Trouver une configuration",
+          "en": "Trouver une configuration"
+        },
+        {
+          "fr": "Compléter une configuration partielle",
+          "en": "Compléter une configuration partielle"
+        },
+        {
+          "fr": "Calculer et ordonner selon une fonction d’optimisation",
+          "en": "Compute and order according to an optimisation function"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "Tâche 3 : `optimize` avec `optimization_target` et `optimization_direction`.",
+        "en": "Task 3: `optimize` with `optimization_target` and `optimization_direction`."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Calculate and order configurations according to some optimization function."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+        }
+      ],
+      "notions": [
+        "n-optimal-configuration",
+        "n-config-three-tasks"
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-13-qz-10",
+      "type": "mcq",
+      "question": {
+        "fr": "Dans le modèle du tutoriel 5, combien de produits contiennent F1 ?",
+        "en": "In tutorial 5’s model, how many products contain F1?"
+      },
+      "options": [
+        {
+          "fr": "2",
+          "en": "2"
+        },
+        {
+          "fr": "4",
+          "en": "4"
+        },
+        {
+          "fr": "5",
+          "en": "5"
+        },
+        {
+          "fr": "9",
+          "en": "9"
+        }
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": {
+        "fr": "F1 impose F6, donc exclut F3 : F2 donne 1 produit, F4 en donne 3. Total 4 (et 5 sans F1 : 9 au total).",
+        "en": "F1 requires F6, hence excludes F3: F2 gives 1 product, F4 gives 3. Total 4 (and 5 without F1: 9 in all)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "there is only one solution where F5 is selected"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "objective": "o2",
+      "trap": {
+        "fr": "Oublier que F1 exclut F3.",
+        "en": "Forgetting that F1 excludes F3."
+      }
+    },
+    {
+      "id": "inf4-13-qz-11",
+      "type": "mcq",
+      "question": {
+        "fr": "TaskForge v2 : on impose Statistics et on exclut LocalStorage. Quels choix deviennent nécessaires ? (plusieurs réponses)",
+        "en": "TaskForge v2: Statistics is required and LocalStorage excluded. Which choices become necessary? (several answers)"
+      },
+      "options": [
+        {
+          "fr": "Memory",
+          "en": "Memory"
+        },
+        {
+          "fr": "Filters",
+          "en": "Filters"
+        },
+        {
+          "fr": "JSONExport",
+          "en": "JSONExport"
+        },
+        {
+          "fr": "Kiosk",
+          "en": "Kiosk"
+        }
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "explanation": {
+        "fr": "Memory (seule alternative) et Filters (Statistics ⇒ Filters). JSONExport est exclu, Kiosk reste libre.",
+        "en": "Memory (the only alternative) and Filters (Statistics ⇒ Filters). JSONExport is excluded, Kiosk stays free."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "imposez Statistics et excluez LocalStorage. Quels autres choix deviennent nécessaires ?"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Contrat de construction",
+          "quote": "JSONExport implique LocalStorage (politique commerciale de cette version"
+        }
+      ],
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-13-qz-12",
+      "type": "mcq",
+      "question": {
+        "fr": "La version v2 de TaskForge a 96 configurations. On ajoute ClearCompleted, optionnelle, sans contrainte. Combien en v3 ?",
+        "en": "TaskForge v2 has 96 configurations. ClearCompleted is added, optional, with no constraint. How many in v3?"
+      },
+      "options": [
+        {
+          "fr": "97",
+          "en": "97"
+        },
+        {
+          "fr": "144",
+          "en": "144"
+        },
+        {
+          "fr": "192",
+          "en": "192"
+        },
+        {
+          "fr": "288",
+          "en": "288"
+        }
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": {
+        "fr": "96 × 2 = 192 : une option libre double le nombre (anciens produits conservés avec la feature exclue).",
+        "en": "96 × 2 = 192: a free option doubles the number (old products kept with the feature excluded)."
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+        }
+      ],
+      "notions": [
+        "n-evolution-count"
+      ],
+      "objective": "o4"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "inf4-13-ex-01",
+      "title": {
+        "fr": "Exercice du prof : compter avec des éléments imposés ou exclus (tutoriel 5)",
+        "en": "Teacher’s exercise: counting with required or excluded elements (tutorial 5)"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "apply",
+      "objective": "o2",
+      "notions": [
+        "n-partial-configuration"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "while we requested 10 solutions, only 9 really exist"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "there is only one solution where F5 is selected"
+        }
+      ],
+      "statement": {
+        "fr": "Sur le modèle de la partie 1 du tutoriel 5 : (a) combien de solutions en sélectionnant F1 ? (b) en désélectionnant F1 ? (c) en sélectionnant F4 et en désélectionnant F3 et F1 ?",
+        "en": "On the model of tutorial 5, part 1: (a) how many solutions when selecting F1? (b) when deselecting F1? (c) when selecting F4 and deselecting F3 and F1?"
+      },
+      "hints": [
+        {
+          "fr": "Raisonne par cas sur le groupe Range 1..1 : F2, F3 ou F4.",
+          "en": "Reason by case on the Range 1..1 group: F2, F3 or F4."
+        },
+        {
+          "fr": "F1 impose F6, et F10 excludes F6.",
+          "en": "F1 requires F6, and F10 excludes F6."
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé** (vérifié en énumérant les 9 produits). (a) **4** : F1 ⇒ F6, donc pas F3 (F10 excludes F6) ; avec F2 : 1 produit (F5 est impossible, il exige F9, donc F4) ; avec F4 : F5 absent (F9 libre : 2) ou F5 présent avec F9 (1), soit 3. (b) **5** : F2 : 1 ; F3 : 2 (F7 libre) ; F4 : 2 (F9 libre). (c) **2** : F8 est imposée, seule F9 reste libre.",
+        "en": "**Proposed solution** (checked by enumerating the 9 products). (a) **4**: F1 ⇒ F6, so not F3 (F10 excludes F6); with F2: 1 product (F5 is impossible, it requires F9, hence F4); with F4: F5 absent (F9 free: 2) or F5 present with F9 (1), i.e. 3. (b) **5**: F2: 1; F3: 2 (F7 free); F4: 2 (F9 free). (c) **2**: F8 is forced, only F9 is free."
+      }
+    },
+    {
+      "id": "inf4-13-ex-02",
+      "title": {
+        "fr": "TaskForge : compléter une demande et justifier une évolution",
+        "en": "TaskForge: completing a request and justifying an evolution"
+      },
+      "difficulty": 2,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o4",
+      "notions": [
+        "n-partial-configuration",
+        "n-evolution-count"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "imposez Statistics et excluez LocalStorage. Quels autres choix deviennent nécessaires ?"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        }
+      ],
+      "statement": {
+        "fr": "Modèle v2 : Storage alternatif (Memory / LocalStorage) ; options Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk, JSONExport ; Statistics ⇒ Filters, Kiosk ⇒ Memory, JSONExport ⇒ LocalStorage. (a) On impose Statistics et on exclut LocalStorage : quels choix deviennent nécessaires ? Combien de produits restent ? (b) On ajoute ClearCompleted, optionnelle sans contrainte : combien de configurations passe-t-on de 96 à ? Justifie.",
+        "en": "Model v2: Storage alternative (Memory / LocalStorage); options Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk, JSONExport; Statistics ⇒ Filters, Kiosk ⇒ Memory, JSONExport ⇒ LocalStorage. (a) Statistics is required and LocalStorage excluded: which choices become necessary? How many products remain? (b) ClearCompleted is added, optional with no constraint: from 96 to how many configurations? Justify."
+      },
+      "hints": [
+        {
+          "fr": "Si LocalStorage est exclu, que reste-t-il de l’alternative ?",
+          "en": "If LocalStorage is excluded, what is left of the alternative?"
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé.** (a) **Memory** (seule alternative) et **Filters** (Statistics ⇒ Filters) ; JSONExport est exclu (⇒ LocalStorage). Kiosk, Priorities, DueDates, CSVExport sont libres : 2⁴ = **16** produits. (b) **192** : une option libre double le nombre ; les anciens produits restent représentables avec ClearCompleted exclue.",
+        "en": "**Proposed solution.** (a) **Memory** (the only alternative) and **Filters** (Statistics ⇒ Filters); JSONExport is excluded (⇒ LocalStorage). Kiosk, Priorities, DueDates, CSVExport are free: 2⁴ = **16** products. (b) **192**: a free option doubles the number; old products stay representable with ClearCompleted excluded."
+      }
+    },
+    {
+      "id": "inf4-13-ex-03",
+      "title": {
+        "fr": "Un coût mal posé",
+        "en": "A badly posed cost"
+      },
+      "difficulty": 2,
+      "level": "analyze",
+      "objective": "o3",
+      "notions": [
+        "n-optimal-configuration",
+        "n-config-human-judgement"
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "what is the cheapest product that can be produced by our product line"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "is no longer part of the cheapest possible product"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "human involvement is also important, no matter the sophistication of the analysis tools"
+        }
+      ],
+      "statement": {
+        "fr": "Le produit le moins cher d’un navigateur évite le module de navigation à onglets, alors que « avoir des onglets » semble normal. Quelle erreur de modélisation soupçonner, et comment la corriger ?",
+        "en": "The cheapest product of a browser avoids the tabbed navigation module, although “having tabs” seems normal. Which modelling error should you suspect, and how do you fix it?"
+      },
+      "hints": [
+        {
+          "fr": "Que vaut un module absent dans la somme des coûts ?",
+          "en": "What does an absent module count for in the sum of costs?"
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé** (tutoriel 5). Une feature absente ne coûte rien : si le module de base n’a pas de coût, l’éviter est « gratuit », donc optimal. Il faut donner un coût au module (le tutoriel met 5 à Tabbing) ; le produit le moins cher change, le plus cher non. Leçon : relire le résultat, le jugement humain reste nécessaire.",
+        "en": "**Proposed solution** (tutorial 5). An absent feature costs nothing: if the base module has no cost, avoiding it is “free”, hence optimal. The module needs a cost (the tutorial sets 5 on Tabbing); the cheapest product changes, the most expensive does not. Lesson: reread the result, human judgement stays necessary."
+      }
+    }
+  ],
+  "writing": [
+    {
+      "id": "inf4-13-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "A partial configuration leaves the elements that are not cited undecided.",
+      "accepted": [
+        "A partial configuration leaves the elements not cited undecided."
+      ]
+    },
+    {
+      "id": "inf4-13-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "Tasks 1 and 2 use the {{same}} queries; the only difference is whether elements are marked {{selected}} or deselected.",
+      "translation": "Les tâches 1 et 2 utilisent les mêmes requêtes ; la seule différence est de savoir si des éléments sont marqués comme sélectionnés ou désélectionnés."
+    },
+    {
+      "id": "inf4-13-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Solution 0 in the results tab means that the solver found no solution.",
+      "error": "means that the solver found no solution",
+      "corrected": "is the answer to the first query, because numbering starts at 0",
+      "explanation": {
+        "fr": "Le tutoriel précise que « Solution 0 » ne veut pas dire « zéro solution ».",
+        "en": "The tutorial states that “Solution 0” does not mean “zero solutions”."
+      }
+    },
+    {
+      "id": "inf4-13-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique ce qui change quand on ajoute une option facultative sans contrainte à une ligne de produits.",
+        "en": "In 2-3 English sentences, explain what changes when you add an optional feature with no constraint to a product line."
+      },
+      "modelAnswer": "The number of configurations doubles, because the new feature can be present or absent in every existing product. The old products stay representable when the new feature is excluded, so nothing is lost. We should still regenerate the products and run a non-regression test.",
+      "keywords": [
+        "doubles",
+        "present or absent",
+        "old products",
+        "non-regression"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai dit que le nombre double et pourquoi.",
+          "en": "I said the number doubles and why."
+        },
+        {
+          "fr": "J’ai dit que les anciens produits restent représentables.",
+          "en": "I said old products stay representable."
+        },
+        {
+          "fr": "J’ai parlé de non-régression.",
+          "en": "I mentioned non-regression."
+        }
+      ],
+      "usefulPhrases": [
+        "the number of configurations doubles",
+        "stay representable",
+        "a non-regression test"
+      ]
+    }
+  ]
+}
