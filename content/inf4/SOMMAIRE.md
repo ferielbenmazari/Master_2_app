@@ -376,3 +376,20 @@
   - 5.2 Le manifeste ne prouve rien ; limites du générateur
   - 5.3 Lien avec les quatre catégories d’exigences
 
+## Chapitre 14 — Fiche : ce que chaque tutoriel t’apprend
+*≈ 2 min · 6 quiz · 9 flashcards · 1 exercices*
+
+- **1. Vue d’ensemble : six tutoriels, une même chaîne**
+  - 1.1 Le fil rouge
+  - 1.2 Le tableau à retenir
+- **2. Tutoriel par tutoriel : but, savoir-faire, pièges**
+  - 2.1 Tutoriel 0 : créer projets, lignes et produits
+  - 2.2 Tutoriel 1 et son annexe : spécifier les exigences
+  - 2.3 Tutoriel 2 : modéliser la variabilité des exigences
+  - 2.4 Tutoriel 3 : du modèle au code, puis l’analyse
+  - 2.5 Tutoriel 4 : vérifier automatiquement
+  - 2.6 Tutoriel 5 : configurer automatiquement
+- **3. TaskForge : la même chaîne sur du code**
+  - 3.1 Les trois TP
+  - 3.2 Le barème : ce que le prof évalue
+

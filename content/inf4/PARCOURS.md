@@ -24,6 +24,8 @@
 | **2 · Solide** | 6 Stratégies · 10 Exigences d'application · 12 Conception et réalisation · 13 Tester | ≈ 45 min | exercice des magasins ; catégories A à D ; tests 18-1 et 18-2 |
 | **3 · Complet** | 2 Principes · 4 OVM · 11 RED-PL | ≈ 30 min | « À retenir » et flashcards ★★★ |
 
+**Pour commencer** : la fiche « Ce que chaque tutoriel t’apprend » (chapitre 14, 6 min) donne le but et le piège de chaque tutoriel, avec un lien vers le cours.
+
 **Si tu n'as que 3 heures** : niveau 1, uniquement les parties « À retenir », les quiz du prof et le partiel blanc 1. **6 heures** : niveau 1 en entier + blanc 1 + « À retenir » du niveau 2. **10 heures** : tout, avec les deux blancs. Chaque jour, **5 minutes d'Express** (flashcards et quiz entrelacés).
 
 ## Calendrier type (≈ 40 min par jour, du 21 novembre au 6 décembre)

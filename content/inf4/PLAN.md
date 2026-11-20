@@ -24,6 +24,7 @@
 | 11 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | restructuré (2026-11-20, draft) : parties numérotées, définitions, « À retenir » |
 | 12 | `06-ingenierie-application-2.json` | Conception et réalisation d’une application | 3__application_engineering.md (ch. 16-17) + TaskForge T2 | parties TaskForge ajoutées et titres numérotés (2026-11-20, draft) |
 | 13 | `10-test-application.json` | Tester une application sans tout retester | 3__application_engineering.md (ch. 18) + TaskForge T3 | partie TaskForge ajoutée et titres numérotés (2026-11-20, draft) |
+| 14 | `14-fiche-tutoriels.json` | Fiche : ce que chaque tutoriel t’apprend | tutoriels T0 à T5, TaskForge, consigne du prof | **nouveau** (2026-11-20, draft) : but, savoir-faire et piège de chaque tutoriel, liens vers les sous-parties |
 
 Ressource d'exercice : `EPI/5__configuration ILP(1).xlsx` (configuration par programmation linéaire en nombres entiers) → exercices du chapitre 07 ou 08.
 

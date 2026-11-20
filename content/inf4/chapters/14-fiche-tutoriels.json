@@ -1,0 +1,1428 @@
+{
+  "id": "inf4-14-fiche-tutoriels",
+  "courseId": "inf4",
+  "order": 14,
+  "title": {
+    "fr": "Fiche : ce que chaque tutoriel t’apprend",
+    "en": "Sheet: what each tutorial teaches you"
+  },
+  "hook": {
+    "fr": "Le but, le savoir-faire et le piège de chaque tutoriel VariaMos (T0 à T5) et du TP TaskForge, avec un lien vers le cours pour chacun.",
+    "en": "The goal, the skills and the trap of each VariaMos tutorial (T0 to T5) and of the TaskForge exercise, with a link to the course for each."
+  },
+  "question": {
+    "fr": "À quoi sert chaque tutoriel du prof, et que dois-je savoir faire après l’avoir suivi ?",
+    "en": "What is each of the teacher’s tutorials for, and what must I be able to do afterwards?"
+  },
+  "objectives": [
+    {
+      "id": "o1",
+      "text": {
+        "fr": "Dire le but de chaque tutoriel et son ordre dans la chaîne.",
+        "en": "State each tutorial’s goal and its place in the chain."
+      },
+      "level": "remember"
+    },
+    {
+      "id": "o2",
+      "text": {
+        "fr": "Associer chaque tutoriel à son savoir-faire et à son piège de quiz.",
+        "en": "Match each tutorial with its skill and its quiz trap."
+      },
+      "level": "understand"
+    },
+    {
+      "id": "o3",
+      "text": {
+        "fr": "Situer le TP TaskForge et son barème.",
+        "en": "Place the TaskForge exercise and its grading grid."
+      },
+      "level": "remember"
+    }
+  ],
+  "examFocus": {
+    "documented": [
+      {
+        "fr": "Consigne du prof : l’examen couvre tous les tutoriels ; quiz 0 à 2 construits sur les tutoriels 0 à 2 ; barème TaskForge sur 20.",
+        "en": "Teacher’s instruction: the exam covers all tutorials; quizzes 0 to 2 built on tutorials 0 to 2; TaskForge grid out of 20."
+      }
+    ]
+  },
+  "prerequisites": {
+    "fr": "Aucun : c’est une fiche de révision ; chaque ligne renvoie au chapitre détaillé.",
+    "en": "None: it is a revision sheet; each line links to the detailed chapter."
+  },
+  "next": {
+    "fr": "Revoir les sous-parties liées, puis faire les quiz du prof dans « Partiels ».",
+    "en": "Review the linked sub-parts, then take the teacher’s quizzes in “Mock exams”."
+  },
+  "synthesis": {
+    "mustKnow": [
+      {
+        "fr": "T0 projet · T1 exigences SECRET · T2 feature model · T3 code et comptage · T4 vérification JSON · T5 configuration ; TaskForge = la chaîne sur du code.",
+        "en": "T0 project · T1 SECRET requirements · T2 feature model · T3 code and counting · T4 JSON verification · T5 configuration; TaskForge = the chain on code."
+      }
+    ],
+    "mustDo": [
+      {
+        "fr": "Pour chaque tutoriel : dire son but, son savoir-faire et son piège, puis revoir la sous-partie liée.",
+        "en": "For each tutorial: state its goal, skill and trap, then review the linked sub-part."
+      }
+    ]
+  },
+  "estimatedMinutes": 6,
+  "sources": [
+    "sources-texte/inf4/9-applications.md",
+    "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+    "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+    "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+    "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+    "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+    "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+    "sources-texte/inf4/24-taskforge-guide-modeles.md"
+  ],
+  "status": "draft",
+  "story": [
+    {
+      "type": "heading",
+      "text": {
+        "fr": "1. Vue d’ensemble : six tutoriels, une même chaîne",
+        "en": "1. Overview: six tutorials, one chain"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.1 Le fil rouge",
+        "en": "1.1 The common thread"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les tutoriels se font **dans l’ordre** et suivent la vie d’une ligne de produits : créer le projet (T0), écrire les exigences (T1), les modéliser (T2), obtenir le code du modèle (T3), le vérifier (T4), configurer un produit (T5). Le TP **TaskForge** refait toute la chaîne sur du vrai code. Le prof l’a écrit : l’examen couvre **tous** les tutoriels.",
+        "en": "The tutorials are done **in order** and follow a product line’s life: create the project (T0), write the requirements (T1), model them (T2), get the model’s code (T3), verify it (T4), configure a product (T5). The **TaskForge** exercise redoes the whole chain on real code. The teacher wrote it: the exam covers **all** tutorials."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/9-applications.md",
+          "loc": "consigne",
+          "quote": "Tutorials should be achieved in sequencial order."
+        },
+        {
+          "file": "sources-texte/inf4/9-applications.md",
+          "loc": "consigne",
+          "quote": "The final exam will cover all lecture, all tutorials and all recommended readings of the Software Factories course."
+        }
+      ]
+    },
+    {
+      "type": "diagram",
+      "mermaid": "flowchart TB\n  T0[\"T0 Project: line, domain, applications\"] --> T1[\"T1 Requirements: SECRET template\"]\n  T1 --> T2[\"T2 Feature model: attributes, ranges\"]\n  T2 --> T3[\"T3 Code: SWI-Prolog, counting\"]\n  T3 --> T4[\"T4 Verification: JSON queries\"]\n  T4 --> T5[\"T5 Configuration: partial, optimal\"]\n  T5 -.-> TF[\"TaskForge: same chain on real code (UVL, generator)\"]",
+      "caption": {
+        "fr": "Les six tutoriels VariaMos dans l’ordre, et TaskForge qui refait la chaîne sur du code.",
+        "en": "The six VariaMos tutorials in order, and TaskForge redoing the chain on code."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/9-applications.md",
+          "loc": "consigne",
+          "quote": "Tutorials should be achieved in sequencial order."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.2 Le tableau à retenir",
+        "en": "1.2 The table to remember"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Tutoriel",
+          "en": "Tutoriel"
+        },
+        {
+          "fr": "But",
+          "en": "But"
+        },
+        {
+          "fr": "Savoir-faire clé",
+          "en": "Savoir-faire clé"
+        },
+        {
+          "fr": "Cours",
+          "en": "Cours"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "T0",
+            "en": "T0"
+          },
+          {
+            "fr": "structurer un projet VariaMos",
+            "en": "structurer un projet VariaMos"
+          },
+          {
+            "fr": "placer ligne, modèles du domaine, applications, adaptations",
+            "en": "placer ligne, modèles du domaine, applications, adaptations"
+          },
+          {
+            "fr": "[ch. 1 § 3.1](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=3.1)",
+            "en": "[ch. 1 § 3.1](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=3.1)"
+          }
+        ],
+        [
+          {
+            "fr": "T1",
+            "en": "T1"
+          },
+          {
+            "fr": "spécifier les exigences de domaine",
+            "en": "spécifier les exigences de domaine"
+          },
+          {
+            "fr": "écrire au gabarit SECRET, choisir le type, relier les exigences",
+            "en": "écrire au gabarit SECRET, choisir le type, relier les exigences"
+          },
+          {
+            "fr": "[ch. 5 § 1.2](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=1.2)",
+            "en": "[ch. 5 § 1.2](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=1.2)"
+          }
+        ],
+        [
+          {
+            "fr": "T2",
+            "en": "T2"
+          },
+          {
+            "fr": "modéliser la variabilité des exigences",
+            "en": "modéliser la variabilité des exigences"
+          },
+          {
+            "fr": "feature model avec attributs et cardinalités ; compter un groupe",
+            "en": "feature model avec attributs et cardinalités ; compter un groupe"
+          },
+          {
+            "fr": "[ch. 3 § 3.2](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2)",
+            "en": "[ch. 3 § 3.2](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2)"
+          }
+        ],
+        [
+          {
+            "fr": "T3",
+            "en": "T3"
+          },
+          {
+            "fr": "obtenir le code du modèle et l’analyser",
+            "en": "obtenir le code du modèle et l’analyser"
+          },
+          {
+            "fr": "programme SWI-Prolog : compter, noyau, features mortes",
+            "en": "programme SWI-Prolog : compter, noyau, features mortes"
+          },
+          {
+            "fr": "[ch. 7 § 3.1](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.1)",
+            "en": "[ch. 7 § 3.1](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.1)"
+          }
+        ],
+        [
+          {
+            "fr": "T4",
+            "en": "T4"
+          },
+          {
+            "fr": "vérifier automatiquement",
+            "en": "vérifier automatiquement"
+          },
+          {
+            "fr": "requêtes JSON : sat, nsolve, iterate_over",
+            "en": "requêtes JSON : sat, nsolve, iterate_over"
+          },
+          {
+            "fr": "[ch. 8 § 3.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)",
+            "en": "[ch. 8 § 3.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)"
+          }
+        ],
+        [
+          {
+            "fr": "T5",
+            "en": "T5"
+          },
+          {
+            "fr": "configurer automatiquement",
+            "en": "configurer automatiquement"
+          },
+          {
+            "fr": "configuration partielle, comptage, optimisation d’un coût",
+            "en": "configuration partielle, comptage, optimisation d’un coût"
+          },
+          {
+            "fr": "[ch. 9 § 1.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.1)",
+            "en": "[ch. 9 § 1.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.1)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to explain how to create software product line projects using VariaMos"
+        },
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to provide comprehensive guidance on specifying Domain Requirements in VariaMos."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "Introduction",
+          "quote": "In this tutorial, we will intricately model the variability inherent in the domain requirements of a text editor product line."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the process of constructing and using the computational code of models built under the VariaMos modeling environment."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "T0 projet · T1 exigences (SECRET) · T2 feature model · T3 code et comptage · T4 vérification · T5 configuration ; TaskForge = la même chaîne sur du code.",
+        "en": "T0 project · T1 requirements (SECRET) · T2 feature model · T3 code and counting · T4 verification · T5 configuration; TaskForge = the same chain on code."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-14-qz-01"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "2. Tutoriel par tutoriel : but, savoir-faire, pièges",
+        "en": "2. Tutorial by tutorial: goal, skills, traps"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Tutoriel 0 : créer projets, lignes et produits",
+        "en": "2.1 Tutorial 0: creating projects, lines and products"
+      }
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**But** : prendre en main VariaMos et y placer les notions du cours.",
+          "en": "**Goal**: get started with VariaMos and map the course notions onto it."
+        },
+        {
+          "fr": "**Savoir faire** : une ligne = une famille ; Domain engineering = modèles réutilisables ; une application par produit ; une adaptation = un contexte d’un même système.",
+          "en": "**Skills**: a line = a family; Domain engineering = reusable models; one application per product; an adaptation = a context of one system."
+        },
+        {
+          "fr": "**Piège du quiz 0** : le choix d’un client est une sélection (application), pas un changement du modèle de la famille ; deux produits observés ne prouvent pas qu’une option est obligatoire.",
+          "en": "**Quiz 0 trap**: a customer’s choice is a selection (application), not a change to the family model; two observed products do not prove an option is mandatory."
+        },
+        {
+          "fr": "**Revoir** : [ch. 1 § 3.1](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=3.1) · [ch. 1 § 2.5](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=2.5)",
+          "en": "**Review**: [ch. 1 § 3.1](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=3.1) · [ch. 1 § 2.5](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=2.5)"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to explain how to create software product line projects using VariaMos"
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "an open-source, collaborative and extensible Web tool to create engineering languages for engineering (dynamic) product lines and self-adaptive systems"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Tutoriel 1 et son annexe : spécifier les exigences",
+        "en": "2.2 Tutorial 1 and its appendix: specifying requirements"
+      }
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**But** : écrire les exigences de la famille en langue naturelle structurée (gabarit SECRET), dans le modèle « Domain Requirements - AC ».",
+          "en": "**Goal**: write the family’s requirements in structured natural language (SECRET template), in the “Domain Requirements - AC” model."
+        },
+        {
+          "fr": "**Savoir faire** : « <all, some, those> systems of the … <shall, could, should, will> provide … » ; types (fonctionnelle, sécurité, autre non fonctionnelle dont Constraint) ; dix relations ; générer le SRS.",
+          "en": "**Skills**: “<all, some, those> systems of the … <shall, could, should, will> provide …”; types (functional, security, other non-functional including Constraint); ten relationships; generate the SRS."
+        },
+        {
+          "fr": "**Piège du quiz 1** : étendue (All / Some / Those) ≠ priorité (shall) ≠ condition ; « eventually » = sans borne ; « user-friendly » doit devenir mesurable.",
+          "en": "**Quiz 1 trap**: extent (All / Some / Those) ≠ priority (shall) ≠ condition; “eventually” = no bound; “user-friendly” must become measurable."
+        },
+        {
+          "fr": "**Revoir** : [ch. 5 § 2.1](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=2.1) · [ch. 5 § 3.3](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=3.3) · [ch. 5 § 4.2](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=4.2)",
+          "en": "**Review**: [ch. 5 § 2.1](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=2.1) · [ch. 5 § 3.3](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=3.3) · [ch. 5 § 4.2](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=4.2)"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to provide comprehensive guidance on specifying Domain Requirements in VariaMos."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.3 Tutoriel 2 : modéliser la variabilité des exigences",
+        "en": "2.3 Tutorial 2: modelling requirements variability"
+      }
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**But** : traduire les exigences FR-1 à FR-31 de l’éditeur de texte en feature model étendu (attributs, cardinalités), puis faire de même pour ClothingStores.",
+          "en": "**Goal**: turn the text editor’s requirements FR-1 to FR-31 into an extended feature model (attributes, cardinalities), then do the same for ClothingStores."
+        },
+        {
+          "fr": "**Savoir faire** : ALL → mandatory ; SOME → optional ; requires → Includes ; « between 1 and 3 » → Bundle Range [1..3] ; attribut avec domaine et plage ; compter les sélections d’un groupe.",
+          "en": "**Skills**: ALL → mandatory; SOME → optional; requires → Includes; “between 1 and 3” → Bundle Range [1..3]; attribute with domain and range; count a group’s selections."
+        },
+        {
+          "fr": "**Piège du quiz 2** : requires est à sens unique ; [1..2] parmi 3 = 6 ; [1..4] parmi 4 = 15 ; un parent optionnel absent supprime son sous-arbre.",
+          "en": "**Quiz 2 trap**: requires is one-way; [1..2] among 3 = 6; [1..4] among 4 = 15; an absent optional parent removes its subtree."
+        },
+        {
+          "fr": "**Revoir** : [ch. 3 § 3.1](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1) · [ch. 3 § 3.2](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2) · [ch. 3 § 3.3](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3)",
+          "en": "**Review**: [ch. 3 § 3.1](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1) · [ch. 3 § 3.2](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2) · [ch. 3 § 3.3](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3)"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "Introduction",
+          "quote": "In this tutorial, we will intricately model the variability inherent in the domain requirements of a text editor product line."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§1 FR-15",
+          "quote": "Those systems of the text editor product line that include the List feature must provide the user with the ability to choose between 1 and 3 list types"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.4 Tutoriel 3 : du modèle au code, puis l’analyse",
+        "en": "2.4 Tutorial 3: from model to code, then analysis"
+      }
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**But** : obtenir la sémantique exécutable du modèle (programme SWI-Prolog) et l’interroger dans SWISH.",
+          "en": "**Goal**: get the model’s executable semantics (SWI-Prolog program) and query it in SWISH."
+        },
+        {
+          "fr": "**Savoir faire** : lire le programme (une variable par feature, une contrainte par relation) ; findall + length pour compter ; forcer F à 1 pour trouver une feature morte ; noyau et features variables ; contraintes CLIF.",
+          "en": "**Skills**: read the program (one variable per feature, one constraint per relation); findall + length to count; force F to 1 to find a dead feature; core and variable features; CLIF constraints."
+        },
+        {
+          "fr": "**Pièges** : une seule solution = ligne fausse ; findnsols donne une approximation ; excludes s’écrit F3 + F4 ≤ 1 ou F3 × F4 = 0.",
+          "en": "**Traps**: a single solution = false line; findnsols gives an approximation; excludes is written F3 + F4 ≤ 1 or F3 × F4 = 0."
+        },
+        {
+          "fr": "**Revoir** : [ch. 7 § 3.2](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2) · [ch. 7 § 3.3](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3) · [ch. 7 § 3.5](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5)",
+          "en": "**Review**: [ch. 7 § 3.2](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2) · [ch. 7 § 3.3](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3) · [ch. 7 § 3.5](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5)"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the process of constructing and using the computational code of models built under the VariaMos modeling environment."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "an online SWI Prolog playground that allows users to run Prolog programs without needing to install anything locally"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.5 Tutoriel 4 : vérifier automatiquement",
+        "en": "2.5 Tutorial 4: automated verification"
+      }
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**But** : faire les mêmes analyses sans écrire de Prolog, par des requêtes JSON envoyées au service PLEIADES.",
+          "en": "**Goal**: run the same analyses without writing Prolog, through JSON queries sent to the PLEIADES service."
+        },
+        {
+          "fr": "**Savoir faire** : sat → vide ? ; nsolve 2 → fausse ? ; sat + iterate_over (1) → mortes, (0) → faussement optionnelles ; choisir le solveur (minizinc, swi, z3).",
+          "en": "**Skills**: sat → void?; nsolve 2 → false?; sat + iterate_over (1) → dead, (0) → false optional; choose the solver (minizinc, swi, z3)."
+        },
+        {
+          "fr": "**Pièges** : operation_n est un maximum ; vérifier, c’est chercher l’absence de solution ; erreur de syntaxe ≠ modèle vide.",
+          "en": "**Traps**: operation_n is a maximum; verifying means looking for the absence of a solution; syntax error ≠ void model."
+        },
+        {
+          "fr": "**Revoir** : [ch. 8 § 3.2](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.2) · [ch. 8 § 3.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3) · [ch. 8 § 3.6](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.6)",
+          "en": "**Review**: [ch. 8 § 3.2](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.2) · [ch. 8 § 3.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3) · [ch. 8 § 3.6](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.6)"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.6 Tutoriel 5 : configurer automatiquement",
+        "en": "2.6 Tutorial 5: automated configuration"
+      }
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**But** : trouver, compléter et optimiser les configurations d’un modèle.",
+          "en": "**Goal**: find, complete and optimise a model’s configurations."
+        },
+        {
+          "fr": "**Savoir faire** : trois tâches ; configuration partielle (sélectionner / exclure) ; compter (9, puis 4, 5, 2 dans l’exercice) ; coût total et optimize min / max ; relire un résultat de coût.",
+          "en": "**Skills**: three tasks; partial configuration (select / exclude); count (9, then 4, 5, 2 in the exercise); total cost and optimize min / max; reread a cost result."
+        },
+        {
+          "fr": "**Pièges** : « Solution 0 » ≠ zéro solution ; exclu ≠ indécidé ; le jugement humain reste nécessaire.",
+          "en": "**Traps**: “Solution 0” ≠ zero solutions; excluded ≠ undecided; human judgement remains necessary."
+        },
+        {
+          "fr": "**Revoir** : [ch. 9 § 1.2](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) · [ch. 9 § 1.3](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3) · [ch. 9 § 2.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1)",
+          "en": "**Review**: [ch. 9 § 1.2](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) · [ch. 9 § 1.3](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3) · [ch. 9 § 2.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1)"
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Chaque tutoriel a un but et un piège : T0 sélection ≠ périmètre ; T1 étendue ≠ priorité ; T2 requires à sens unique et comptage ; T3 une solution = ligne fausse ; T4 operation_n est un maximum ; T5 exclu ≠ indécidé.",
+        "en": "Each tutorial has a goal and a trap: T0 selection ≠ scope; T1 extent ≠ priority; T2 one-way requires and counting; T3 one solution = false line; T4 operation_n is a maximum; T5 excluded ≠ undecided."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-14-qz-03"
+    },
+    {
+      "type": "heading",
+      "text": {
+        "fr": "3. TaskForge : la même chaîne sur du code",
+        "en": "3. TaskForge: the same chain on code"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 Les trois TP",
+        "en": "3.1 The three exercises"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Trois tutoriels individuels de 2 heures : tu es ingénieur chez TaskForge et tu passes des exigences à des applications qui fonctionnent, avec **FlamapyIDE** (modèle **UVL** : éditer, vérifier, configurer) et un **générateur** fourni (FlamapyIDE ne génère pas l’application).",
+        "en": "Three individual 2-hour tutorials: you are an engineer at TaskForge and go from requirements to working applications, with **FlamapyIDE** (**UVL** model: edit, verify, configure) and a provided **generator** (FlamapyIDE does not generate the application)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Introduction",
+          "quote": "Vous êtes ingénieur logiciel chez TaskForge, éditeur de gestionnaires de tâches."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce que font les deux outils",
+          "quote": "Éditer le modèle UVL, afficher l’arbre, vérifier, configurer"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce que font les deux outils",
+          "quote": "FlamapyIDE ne génère pas lui-même l’application TaskForge"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "TP",
+          "en": "TP"
+        },
+        {
+          "fr": "But",
+          "en": "But"
+        },
+        {
+          "fr": "Ce qu’on rend",
+          "en": "Ce qu’on rend"
+        },
+        {
+          "fr": "Cours",
+          "en": "Cours"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "T1",
+            "en": "T1"
+          },
+          {
+            "fr": "passer d’exigences à un modèle, puis diagnostiquer trois défauts",
+            "en": "passer d’exigences à un modèle, puis diagnostiquer trois défauts"
+          },
+          {
+            "fr": "modèle UVL ; trois modèles corrigés (feature morte, faussement optionnelle, modèle vide)",
+            "en": "modèle UVL ; trois modèles corrigés (feature morte, faussement optionnelle, modèle vide)"
+          },
+          {
+            "fr": "[ch. 8 § 1.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3)",
+            "en": "[ch. 8 § 1.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3)"
+          }
+        ],
+        [
+          {
+            "fr": "T2",
+            "en": "T2"
+          },
+          {
+            "fr": "reconstruire un modèle à partir d’un code et établir la traçabilité",
+            "en": "reconstruire un modèle à partir d’un code et établir la traçabilité"
+          },
+          {
+            "fr": "modèle v2 ; matrice option, code, dépendance, test",
+            "en": "modèle v2 ; matrice option, code, dépendance, test"
+          },
+          {
+            "fr": "[ch. 12 § 5.2](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)",
+            "en": "[ch. 12 § 5.2](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)"
+          }
+        ],
+        [
+          {
+            "fr": "T3",
+            "en": "T3"
+          },
+          {
+            "fr": "livrer trois applications depuis le même code et faire évoluer la ligne",
+            "en": "livrer trois applications depuis le même code et faire évoluer la ligne"
+          },
+          {
+            "fr": "trois configurations, trois produits, tests, ajout de ClearCompleted",
+            "en": "trois configurations, trois produits, tests, ajout de ClearCompleted"
+          },
+          {
+            "fr": "[ch. 9 § 3.3](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3)",
+            "en": "[ch. 9 § 3.3](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3)"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1",
+          "quote": "passer d’exigences à un modèle de ligne de produits, puis diagnostiquer trois défauts indépendants"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2",
+          "quote": "reconstruire un modèle à partir d’un produit à options de construction et établir une traçabilité qui permettra sa réutilisation"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3",
+          "quote": "livrer trois applications à partir du même code réutilisable et assurer une évolution commune"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Le barème : ce que le prof évalue",
+        "en": "3.2 The grading grid: what the teacher assesses"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Critère",
+          "en": "Critère"
+        },
+        {
+          "fr": "Points",
+          "en": "Points"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "Modèle T1 correct et justifié",
+            "en": "Modèle T1 correct et justifié"
+          },
+          {
+            "fr": "4",
+            "en": "4"
+          }
+        ],
+        [
+          {
+            "fr": "Diagnostics et corrections",
+            "en": "Diagnostics et corrections"
+          },
+          {
+            "fr": "4",
+            "en": "4"
+          }
+        ],
+        [
+          {
+            "fr": "Reconstruction depuis le code et traçabilité",
+            "en": "Reconstruction depuis le code et traçabilité"
+          },
+          {
+            "fr": "4",
+            "en": "4"
+          }
+        ],
+        [
+          {
+            "fr": "Configurations, génération et évolution réutilisable",
+            "en": "Configurations, génération et évolution réutilisable"
+          },
+          {
+            "fr": "5",
+            "en": "5"
+          }
+        ],
+        [
+          {
+            "fr": "Tests et explication des limites",
+            "en": "Tests et explication des limites"
+          },
+          {
+            "fr": "3",
+            "en": "3"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce qui sera évalué",
+          "quote": "Modèle T1 correct et justifié"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce qui sera évalué",
+          "quote": "Configurations, génération et évolution réutilisable"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "TaskForge : T1 modéliser et diagnostiquer, T2 retrouver la variabilité dans un code, T3 configurer, générer, tester et faire évoluer. Le critère le plus lourd : configurations, génération et évolution (5 / 20).",
+        "en": "TaskForge: T1 model and diagnose, T2 recover variability from code, T3 configure, generate, test and evolve. The heaviest criterion: configurations, generation and evolution (5 / 20)."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "quizId": "inf4-14-qz-05"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-variamos",
+      "fr": "VariaMos",
+      "en": "VariaMos",
+      "definition": {
+        "fr": "Outil web libre et collaboratif pour modéliser des lignes de produits (et des systèmes auto-adaptatifs) : le support des tutoriels 0 à 5.",
+        "en": "An open, collaborative web tool to model product lines (and self-adaptive systems): the platform of tutorials 0 to 5."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "an open-source, collaborative and extensible Web tool to create engineering languages for engineering (dynamic) product lines and self-adaptive systems"
+        }
+      ]
+    },
+    {
+      "id": "term-pleiades",
+      "fr": "PLEIADES",
+      "en": "PLEIADES",
+      "definition": {
+        "fr": "Service de raisonnement de VariaMos qui exécute les requêtes JSON de vérification et de configuration (tutoriels 4 et 5).",
+        "en": "VariaMos’s reasoning service that runs the JSON verification and configuration queries (tutorials 4 and 5)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        }
+      ]
+    },
+    {
+      "id": "term-swish",
+      "fr": "SWISH",
+      "en": "SWISH",
+      "definition": {
+        "fr": "Environnement SWI-Prolog en ligne où l’on colle le code du modèle pour l’interroger (tutoriel 3).",
+        "en": "An online SWI-Prolog environment where the model’s code is pasted and queried (tutorial 3)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "an online SWI Prolog playground that allows users to run Prolog programs without needing to install anything locally"
+        }
+      ]
+    },
+    {
+      "id": "term-flamapyide",
+      "fr": "FlamapyIDE",
+      "en": "FlamapyIDE",
+      "definition": {
+        "fr": "Outil du TP TaskForge pour éditer, vérifier et configurer un modèle UVL ; il ne génère pas l’application.",
+        "en": "The TaskForge tool to edit, verify and configure a UVL model; it does not generate the application."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce que font les deux outils",
+          "quote": "Éditer le modèle UVL, afficher l’arbre, vérifier, configurer"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce que font les deux outils",
+          "quote": "FlamapyIDE ne génère pas lui-même l’application TaskForge"
+        }
+      ]
+    },
+    {
+      "id": "term-uvl",
+      "fr": "UVL",
+      "en": "UVL",
+      "definition": {
+        "fr": "Format texte de feature model utilisé dans TaskForge (groupes mandatory, optional, alternative ; contraintes).",
+        "en": "A textual feature-model format used in TaskForge (mandatory, optional, alternative groups; constraints)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce que font les deux outils",
+          "quote": "Éditer le modèle UVL, afficher l’arbre, vérifier, configurer"
+        }
+      ]
+    },
+    {
+      "id": "term-taskforge",
+      "fr": "TaskForge",
+      "en": "TaskForge",
+      "definition": {
+        "fr": "Cas du TP noté : une famille de gestionnaires de tâches, des exigences jusqu’aux applications générées et testées.",
+        "en": "The graded exercise case: a family of task managers, from requirements to generated, tested applications."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Introduction",
+          "quote": "Vous êtes ingénieur logiciel chez TaskForge, éditeur de gestionnaires de tâches."
+        }
+      ]
+    }
+  ],
+  "notions": [],
+  "keyPoints": [
+    {
+      "text": {
+        "fr": "Six tutoriels dans l’ordre, une seule chaîne : projet, exigences, modèle, code, vérification, configuration.",
+        "en": "Six tutorials in order, one chain: project, requirements, model, code, verification, configuration."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/9-applications.md",
+          "loc": "consigne",
+          "quote": "Tutorials should be achieved in sequencial order."
+        }
+      ],
+      "notions": []
+    },
+    {
+      "text": {
+        "fr": "T0 : placer les notions dans VariaMos ; T1 : écrire au gabarit SECRET.",
+        "en": "T0: map notions onto VariaMos; T1: write with the SECRET template."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to explain how to create software product line projects using VariaMos"
+        },
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to provide comprehensive guidance on specifying Domain Requirements in VariaMos."
+        }
+      ],
+      "notions": []
+    },
+    {
+      "text": {
+        "fr": "T2 : feature model avec attributs et cardinalités ; T3 : code SWI-Prolog pour compter et analyser.",
+        "en": "T2: feature model with attributes and cardinalities; T3: SWI-Prolog code to count and analyse."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "Introduction",
+          "quote": "In this tutorial, we will intricately model the variability inherent in the domain requirements of a text editor product line."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the process of constructing and using the computational code of models built under the VariaMos modeling environment."
+        }
+      ],
+      "notions": []
+    },
+    {
+      "text": {
+        "fr": "T4 : vérifier par requêtes JSON ; T5 : configurer et optimiser.",
+        "en": "T4: verify with JSON queries; T5: configure and optimise."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        }
+      ],
+      "notions": []
+    },
+    {
+      "text": {
+        "fr": "TaskForge : la chaîne sur du code, notée sur 20 (configurations, génération et évolution : 5 points).",
+        "en": "TaskForge: the chain on code, graded out of 20 (configurations, generation and evolution: 5 points)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Introduction",
+          "quote": "Vous êtes ingénieur logiciel chez TaskForge, éditeur de gestionnaires de tâches."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce qui sera évalué",
+          "quote": "Configurations, génération et évolution réutilisable"
+        }
+      ],
+      "notions": []
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "inf4-14-fc-01",
+      "front": {
+        "fr": "Tutoriel 0 : but et savoir-faire ?",
+        "en": "Tutorial 0: goal and skills?"
+      },
+      "back": {
+        "fr": "Prendre en main VariaMos : ligne = famille, Domain engineering = modèles réutilisables, une application par produit, adaptation = contexte.",
+        "en": "Get started with VariaMos: line = family, Domain engineering = reusable models, one application per product, adaptation = context."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to explain how to create software product line projects using VariaMos"
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-02",
+      "front": {
+        "fr": "Tutoriel 1 : but et savoir-faire ?",
+        "en": "Tutorial 1: goal and skills?"
+      },
+      "back": {
+        "fr": "Spécifier les exigences de domaine au gabarit SECRET (modèle Domain Requirements - AC) ; types, relations, SRS.",
+        "en": "Specify domain requirements with the SECRET template (Domain Requirements - AC model); types, relationships, SRS."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to provide comprehensive guidance on specifying Domain Requirements in VariaMos."
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-03",
+      "front": {
+        "fr": "Tutoriel 2 : but et savoir-faire ?",
+        "en": "Tutorial 2: goal and skills?"
+      },
+      "back": {
+        "fr": "Modéliser la variabilité des exigences en feature model avec attributs et cardinalités (Includes, Bundle Range) ; compter un groupe.",
+        "en": "Model requirements variability as a feature model with attributes and cardinalities (Includes, Bundle Range); count a group."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "Introduction",
+          "quote": "In this tutorial, we will intricately model the variability inherent in the domain requirements of a text editor product line."
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-04",
+      "front": {
+        "fr": "Tutoriel 3 : but et savoir-faire ?",
+        "en": "Tutorial 3: goal and skills?"
+      },
+      "back": {
+        "fr": "Obtenir le code SWI-Prolog du modèle et l’interroger : compter (findall), feature morte (F #= 1), noyau, CLIF.",
+        "en": "Get the model’s SWI-Prolog code and query it: count (findall), dead feature (F #= 1), core, CLIF."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the process of constructing and using the computational code of models built under the VariaMos modeling environment."
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-05",
+      "front": {
+        "fr": "Tutoriel 4 : but et savoir-faire ?",
+        "en": "Tutorial 4: goal and skills?"
+      },
+      "back": {
+        "fr": "Vérifier par requêtes JSON (PLEIADES) : sat → vide, nsolve 2 → fausse, iterate_over → mortes.",
+        "en": "Verify with JSON queries (PLEIADES): sat → void, nsolve 2 → false, iterate_over → dead."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-06",
+      "front": {
+        "fr": "Tutoriel 5 : but et savoir-faire ?",
+        "en": "Tutorial 5: goal and skills?"
+      },
+      "back": {
+        "fr": "Configurer : trouver, compléter (partielle), optimiser (coût total, min / max).",
+        "en": "Configure: find, complete (partial), optimise (total cost, min / max)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-07",
+      "front": {
+        "fr": "TaskForge T1 : but ?",
+        "en": "TaskForge T1: goal?"
+      },
+      "back": {
+        "fr": "Passer d’exigences à un modèle UVL, puis diagnostiquer trois défauts (morte, faussement optionnelle, vide).",
+        "en": "Go from requirements to a UVL model, then diagnose three defects (dead, false optional, void)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1",
+          "quote": "passer d’exigences à un modèle de ligne de produits, puis diagnostiquer trois défauts indépendants"
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-08",
+      "front": {
+        "fr": "TaskForge T2 : but ?",
+        "en": "TaskForge T2: goal?"
+      },
+      "back": {
+        "fr": "Reconstruire le modèle à partir d’un code et établir la traçabilité (matrice option, code, dépendance, test).",
+        "en": "Rebuild the model from code and establish traceability (option, code, dependency, test matrix)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2",
+          "quote": "reconstruire un modèle à partir d’un produit à options de construction et établir une traçabilité qui permettra sa réutilisation"
+        }
+      ]
+    },
+    {
+      "id": "inf4-14-fc-09",
+      "front": {
+        "fr": "TaskForge T3 : but ?",
+        "en": "TaskForge T3: goal?"
+      },
+      "back": {
+        "fr": "Livrer trois applications depuis le même code, les tester, puis faire évoluer la ligne (ClearCompleted).",
+        "en": "Deliver three applications from the same code, test them, then evolve the line (ClearCompleted)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3",
+          "quote": "livrer trois applications à partir du même code réutilisable et assurer une évolution commune"
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "inf4-14-qz-01",
+      "type": "true_false",
+      "statement": {
+        "fr": "Les tutoriels se font dans l’ordre : le tutoriel 2 peut reprendre le projet créé au tutoriel 1.",
+        "en": "The tutorials are done in order: tutorial 2 can reuse the project created in tutorial 1."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : la consigne demande de les faire dans l’ordre, et le tutoriel 2 permet de sauter la création du projet si le tutoriel 1 est fait.",
+        "en": "TRUE: the instructions ask to do them in order, and tutorial 2 lets you skip project creation if tutorial 1 is done."
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/9-applications.md",
+          "loc": "consigne",
+          "quote": "Tutorials should be achieved in sequencial order."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§2",
+          "quote": "If you did the tutorial Tutorial 1 - Requirements Specification in VariaMos.docx you can skip this step"
+        }
+      ],
+      "objective": "o1"
+    },
+    {
+      "id": "inf4-14-qz-02",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour savoir si un modèle a des features mortes sans écrire une ligne de Prolog, c’est le tutoriel 3 qu’il faut revoir.",
+        "en": "To find out whether a model has dead features without writing a line of Prolog, tutorial 3 is the one to review."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : c’est le tutoriel 4 (PLEIADES). Le tutoriel 3 fait écrire et lancer des requêtes SWI-Prolog. → [ch. 8 § 3.1](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.1)",
+        "en": "FALSE: that is tutorial 4 (PLEIADES). Tutorial 3 has you write and run SWI-Prolog queries. → [ch. 8 § 3.1](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.1)"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the process of constructing and using the computational code of models built under the VariaMos modeling environment."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        }
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-14-qz-03",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans le tutoriel 2, « those systems that include the List feature must provide … between 1 and 3 list types » se modélise par un Bundle de type Range [1..3].",
+        "en": "In tutorial 2, “those systems that include the List feature must provide … between 1 and 3 list types” is modelled by a Bundle of type Range [1..3]."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : RangeMin 1, RangeMax 3, relié à List puis à chaque type de liste. → [ch. 3 § 3.2](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2)",
+        "en": "TRUE: RangeMin 1, RangeMax 3, connected to List then to each list type. → [ch. 3 § 3.2](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2)"
+      },
+      "level": "apply",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§1 FR-15",
+          "quote": "Those systems of the text editor product line that include the List feature must provide the user with the ability to choose between 1 and 3 list types"
+        }
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-14-qz-04",
+      "type": "true_false",
+      "statement": {
+        "fr": "Pour écrire une exigence de sécurité avec un critère proposé par l’ontologie SCORE, il faut revoir le tutoriel 5.",
+        "en": "To write a security requirement with a criterion suggested by the SCORE ontology, you should review tutorial 5."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : SCORE est dans le tutoriel 1 (exigences). Le tutoriel 5 porte sur la configuration automatique. → [ch. 5 § 5.3](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=5.3)",
+        "en": "FALSE: SCORE is in tutorial 1 (requirements). Tutorial 5 is about automated configuration. → [ch. 5 § 5.3](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=5.3)"
+      },
+      "level": "analyze",
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to provide comprehensive guidance on specifying Domain Requirements in VariaMos."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        }
+      ],
+      "objective": "o2"
+    },
+    {
+      "id": "inf4-14-qz-05",
+      "type": "true_false",
+      "statement": {
+        "fr": "Dans TaskForge, VariaMos génère les trois applications.",
+        "en": "In TaskForge, VariaMos generates the three applications."
+      },
+      "answer": false,
+      "justification": {
+        "fr": "FAUX : TaskForge utilise FlamapyIDE (modèle UVL) et un générateur fourni ; FlamapyIDE ne génère pas lui-même l’application. → [ch. 9 § 3.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)",
+        "en": "FALSE: TaskForge uses FlamapyIDE (UVL model) and a provided generator; FlamapyIDE does not generate the application itself. → [ch. 9 § 3.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)"
+      },
+      "level": "understand",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Ce que font les deux outils",
+          "quote": "FlamapyIDE ne génère pas lui-même l’application TaskForge"
+        }
+      ],
+      "objective": "o3"
+    },
+    {
+      "id": "inf4-14-qz-06",
+      "type": "true_false",
+      "statement": {
+        "fr": "L’examen final couvre tous les tutoriels, et pas seulement les cours magistraux.",
+        "en": "The final exam covers all tutorials, not only the lectures."
+      },
+      "answer": true,
+      "justification": {
+        "fr": "VRAI : « The final exam will cover all lecture, all tutorials and all recommended readings ».",
+        "en": "TRUE: “The final exam will cover all lecture, all tutorials and all recommended readings”."
+      },
+      "level": "remember",
+      "src": [
+        {
+          "file": "sources-texte/inf4/9-applications.md",
+          "loc": "consigne",
+          "quote": "The final exam will cover all lecture, all tutorials and all recommended readings of the Software Factories course."
+        }
+      ],
+      "objective": "o1"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "inf4-14-ex-01",
+      "title": {
+        "fr": "Quel tutoriel pour quel besoin ?",
+        "en": "Which tutorial for which need?"
+      },
+      "difficulty": 1,
+      "examStyle": true,
+      "level": "analyze",
+      "objective": "o2",
+      "notions": [],
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to provide comprehensive guidance on specifying Domain Requirements in VariaMos."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the process of constructing and using the computational code of models built under the VariaMos modeling environment."
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated analyses of Variability Models through the use of the PLEIADES back-end."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to demonstrate the mechanisms for automated configuration of Variability Models through the use of the VariaMos PLEIADES back-end."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "Introduction",
+          "quote": "This tutorial aims to explain how to create software product line projects using VariaMos"
+        }
+      ],
+      "statement": {
+        "fr": "Pour chaque besoin, dis quel tutoriel t’apprend à le traiter et quel savoir-faire utiliser : (a) savoir si un modèle a au moins un produit, sans écrire de code ; (b) écrire « certains éditeurs peuvent exporter le texte » au gabarit ; (c) compter les produits d’un modèle dans SWISH ; (d) trouver le produit le moins cher ; (e) dire où créer deux produits d’une même famille.",
+        "en": "For each need, say which tutorial teaches you to handle it and which skill to use: (a) find out whether a model has at least one product, without writing code; (b) write “some editors can export the text” with the template; (c) count a model’s products in SWISH; (d) find the cheapest product; (e) say where to create two products of one family."
+      },
+      "hints": [
+        {
+          "fr": "Repère le tableau de la partie 1.2.",
+          "en": "Use the table in part 1.2."
+        }
+      ],
+      "solution": {
+        "fr": "**Corrigé proposé.** (a) **T4** : requête `sat` (SAT = non vide). → [ch. 8 § 3.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)\n(b) **T1** : « Some systems of the text editors product line could provide the user with the ability to export the text ». → [ch. 5 § 2.1](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=2.1)\n(c) **T3** : `findall` puis `length`. → [ch. 7 § 3.3](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3)\n(d) **T5** : coût total défini par une contrainte, puis `optimize` en `min`. → [ch. 9 § 2.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1)\n(e) **T0** : deux applications sous la même ligne de produits. → [ch. 1 § 3.1](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=3.1)",
+        "en": "**Proposed solution.** (a) **T4**: a `sat` query (SAT = not void). → [ch. 8 § 3.3](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)\n(b) **T1**: “Some systems of the text editors product line could provide the user with the ability to export the text”. → [ch. 5 § 2.1](#/matiere/inf4/chapitre/inf4-12-gabarit-secret/lire?partie=2.1)\n(c) **T3**: `findall` then `length`. → [ch. 7 § 3.3](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3)\n(d) **T5**: total cost defined by a constraint, then `optimize` with `min`. → [ch. 9 § 2.1](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1)\n(e) **T0**: two applications under the same product line. → [ch. 1 § 3.1](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=3.1)"
+      }
+    }
+  ],
+  "writing": [
+    {
+      "id": "inf4-14-wr-01",
+      "kind": "reorder",
+      "prompt": {
+        "fr": "Remets les mots dans l’ordre.",
+        "en": "Put the words in order."
+      },
+      "answer": "Tutorial 4 verifies a model with JSON queries.",
+      "accepted": [
+        "Tutorial 4 verifies a model with JSON queries"
+      ]
+    },
+    {
+      "id": "inf4-14-wr-02",
+      "kind": "cloze",
+      "prompt": {
+        "fr": "Complète.",
+        "en": "Fill in."
+      },
+      "text": "Tutorial 3 translates the model into a {{SWI-Prolog}} program and counts its {{solutions}}.",
+      "translation": "Le tutoriel 3 traduit le modèle en programme SWI-Prolog et compte ses solutions."
+    },
+    {
+      "id": "inf4-14-wr-03",
+      "kind": "spot_error",
+      "prompt": {
+        "fr": "Repère l’erreur et corrige-la.",
+        "en": "Spot the mistake and correct it."
+      },
+      "sentence": "Tutorial 2 teaches how to configure products automatically.",
+      "error": "how to configure products automatically",
+      "corrected": "how to model requirements variability as a feature model",
+      "explanation": {
+        "fr": "La configuration automatique est le tutoriel 5 ; le tutoriel 2 modélise la variabilité des exigences.",
+        "en": "Automated configuration is tutorial 5; tutorial 2 models requirements variability."
+      }
+    },
+    {
+      "id": "inf4-14-wr-04",
+      "kind": "free",
+      "prompt": {
+        "fr": "En 2-3 phrases anglaises, explique ce que les tutoriels 3 et 4 ont en commun et ce qui les distingue.",
+        "en": "In 2-3 English sentences, explain what tutorials 3 and 4 have in common and how they differ."
+      },
+      "modelAnswer": "Both tutorials analyse a variability model with a solver to find defects such as a false product line or dead features. Tutorial 3 works directly on the SWI-Prolog code of the model, while tutorial 4 uses JSON queries sent to the PLEIADES service, so no Prolog is needed.",
+      "keywords": [
+        "solver",
+        "dead features",
+        "SWI-Prolog",
+        "JSON queries",
+        "PLEIADES"
+      ],
+      "checklist": [
+        {
+          "fr": "J’ai dit ce qu’ils ont en commun (analyse par solveur).",
+          "en": "I said what they share (solver analysis)."
+        },
+        {
+          "fr": "J’ai distingué code Prolog et requêtes JSON.",
+          "en": "I distinguished Prolog code and JSON queries."
+        }
+      ],
+      "usefulPhrases": [
+        "Both tutorials",
+        "while tutorial 4",
+        "no Prolog is needed"
+      ]
+    }
+  ]
+}
