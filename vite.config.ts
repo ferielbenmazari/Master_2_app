@@ -80,5 +80,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
     include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts', 'tools/**/*.test.ts'],
+    // 65 fichiers jsdom en parallèle (un worker par cœur) se disputent le processeur : les tests dépassaient leurs délais
+    // par intermittence. Six workers donnent la même durée totale (≈ 48 s) sans dépassement.
+    maxWorkers: 6,
+    testTimeout: 20000,
+    hookTimeout: 20000,
   },
 })
