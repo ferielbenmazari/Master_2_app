@@ -224,3 +224,64 @@ Les identifiants des chapitres sont conservés (l'ordre passe par `course.json.c
   - Ordre : le chapitre 7 suit le chapitre 6 (`course.json`) ; notions de vérification réaffectées au chapitre 11.
 - **2026-11-18, chapitre 5 « Éliciter et spécifier les exigences d’une ligne : trois stratégies »** (`09-strategies-exigences-pl.json`, 9 min, 5 parties) : tableau des 3 stratégies avec la limite soulevée par le prof ; stratégie dirigée par les exigences (5 étapes reliées au triptyque communalité / variabilité / dépendances), gabarit de Mazo et al. en tableau, **ALL / SOME = variabilité ≠ SHALL / SHOULD / COULD = priorité** (piège), fiche IEEE 830 adaptée, piège des mots-clés ; méthode + corrigé des magasins d’électroménager (exigence → mot-clé → feature, solution redessinée, 12 produits et remarque proposée sur Payment) ; UNIX de la documentation au modèle ; produit de référence (3 étapes, déroulé RedHat → SUSE → Ubuntu, lien avec la représentation extensive, réponse proposée sur l’influence du premier produit) ; multi-points de vue (4 étapes, OVM pivot, limites). 2 schémas, 13 quiz (3 nouveaux), 10 flashcards.
 
+
+---
+
+## 8. Mise à jour du 2026-11-20 : tutoriels VariaMos, quiz du prof, archive TaskForge
+
+> **Statut : proposé, à valider.** Nouvelles ressources déposées dans `ressources/S3__INF4/epi/` : tutoriels T0 à T5 (PDF), annexe SECRET, `9__applications.md`, quiz 0 à 2 (quiz 3 à 5 vides), ISO/IEC 24707, archive TaskForge. Corrigés et savoir-faire : `content/inf4/QUIZ-PROF.md`.
+
+### 8.1 Ce qui change dans les niveaux de preuve
+- **Preuve nouvelle** : `9__applications.md` : « The final exam will cover all lecture, all tutorials and all recommended readings ». Les tutoriels passent de « repère » (VariaMos) à **niveau A\*** ; les notions posées dans un quiz du prof sont **A documenté** (le quiz est le meilleur indice du format d'examen : questions à choix multiples « Select all correct statements », scénarios, justifications).
+- **Ce qui manque au cours actuel** (aucune occurrence dans les 11 chapitres) : gabarit **SECRET** en 11 parties, types d'exigences (fonctionnelle, sécurité, autres non fonctionnelles, contraintes), **dix relations entre exigences** (rationalisation, évolution, raffinement, généralisation, recouvrement, dépendance, contribution, opérationnalisation, conflits, interactivité), ontologie SCORE (30 critères de sécurité), génération du SRS ; **Bundle / Range**, attributs, abstract features, cardinalités individuelles dans VariaMos ; **requêtes JSON PLEIADES** (`sat`, `solve`, `nsolve`, `optimize`, `iterate_over`) ; **configuration automatique** (trois tâches, configuration partielle, optimisation) ; syntaxe **CLIF** ; noyau (*core*) et features variables.
+- **Déjà couvert, à relier** : sémantique des relations (chapitres « Les feature models » et « Traduire un modèle en contraintes »), défauts d'un modèle (« Vérifier, diagnostiquer et corriger »), gabarit « ALL / SOME… » de Mazo et al. (chapitre « Trois stratégies »), copie / duplication (chapitre « Pourquoi une ligne de produits »), retour application → domaine (chapitre « Conception et réalisation »).
+
+### 8.2 Architecture proposée : 13 chapitres au lieu de 11 (deux nouveaux)
+
+| # | Chapitre | Statut | Ce qui s'ajoute (tutoriel / quiz) |
+|---|---|---|---|
+| 1 | Variabilité et ligne de produits : notions de base | à refondre | **T0 / quiz0** : domaine vs application vs adaptation dans VariaMos ; périmètre et ce qui est « commun » ; copie ≠ ligne ; retour application → domaine ; fiche « prise en main » (Software / System, palette, propriétés) |
+| 2 | Pourquoi une ligne de produits | à refondre | inchangé (condensé) |
+| 3 | Les feature models | refondu, **à compléter** | **T2 / quiz2** : notation VariaMos (Includes, Bundle Range, attributs, abstract features, cardinalité individuelle) ; **méthode de comptage d'un groupe `[m..n]`** (6 et 15) ; pièges d'implication (réciproque, contraposée, transitivité) ; lecture d'un fragment |
+| 4 | Exigences de domaine et modèle OVM | à refondre | inchangé |
+| 5 | **Écrire une exigence de ligne : le gabarit SECRET** | **nouveau** | **T1 + annexe / quiz1** : 11 parties du gabarit, ALL / SOME / THOSE, SHALL / SHOULD / COULD, types d'exigences, 15 propriétés, dix relations, SRS ; pièges : *eventually*, « user-friendly » rendu mesurable, conflit, phrase ambiguë |
+| 6 | Éliciter une ligne : trois stratégies | refondu, **allégé** | le tableau du gabarit renvoie au chapitre 5 |
+| 7 | Traduire un modèle en contraintes | refondu, **à compléter** | **T3 / quiz3** : traduction SWI-Prolog, `findall`, `findnsols`, noyau et variables, `F3 * F4 #= 0`, CLIF, attributs |
+| 8 | Vérifier, diagnostiquer et corriger | refondu, **à compléter** | **T4 / quiz4** : requêtes JSON, solveurs, `iterate_over` ↔ mortes / fausses optionnelles, `nsolve 2` ↔ fausse ligne |
+| 9 | **Configurer automatiquement un produit** | **nouveau** | **T5 / quiz5** : trois tâches, configuration partielle et complétion, comptage avec sélection / exclusion, optimisation (`optimize`, min / max), limites du modèle de coût ; lien avec l'ILP du chapitre RED-PL |
+| 10 | Exigences d'application : deltas, catégories A à D | à refondre | inchangé |
+| 11 | RED-PL | à refondre | inchangé |
+| 12 | Conception et réalisation d'une application | à refondre | inchangé |
+| 13 | Tester une application | à refondre | inchangé |
+
+Chaque chapitre « tutoriel » suit le gabarit §11.2 : définition → tableau → méthode + **exemple corrigé** → pièges → retenir. Les **questions du prof** deviennent des items `mcq` à réponses multiples (`correct: number[]`, déjà prévu par le modèle de contenu), marqués « question du prof (tutoriel n) », avec corrigé **proposé** et la raison de chaque proposition fausse.
+
+### 8.3 Ce qui est condensé, pas supprimé
+Historique, chiffres et cas industriels (inchangé) ; mode d'emploi pas à pas de VariaMos (clics, menus) réduit à un tableau de 6 lignes, sauf les faits testés (structure du projet, Software / System, types d'éléments) ; archive TaskForge : un **encadré** dans les chapitres 8 et 9 (mêmes notions : vide, morte, faussement optionnelle, noyau, configuration partielle ; format UVL) en attendant de savoir si le prof l'a donnée ; ISO 24707 : une ligne sur CLIF.
+
+### 8.4 Ordre de travail proposé (le plus rentable d'abord)
+1. Sources : extraire les 6 tutoriels et l'annexe dans `sources-texte/inf4/`, les déclarer dans `sources.json` (citations vérifiables).
+2. **Chapitre 5 (SECRET)** puis **chapitre 3 (compléments quiz2)** : ils portent les deux quiz que nous avons.
+3. Chapitre 1 (quiz0), puis chapitres 7 et 8 et **chapitre 9 (T3 à T5)**, dès que vous redéposez quiz 3 à 5.
+4. Les chapitres 2, 4, 10, 11, 12, 13 restants (refonte du plan du 2026-11-18).
+5. Les 36 questions du prof (et celles des quiz 3 à 5) dans les chapitres ; partiel blanc dans le format du prof.
+
+### 8.5 À confirmer par vous
+1. quiz3 / quiz4 / quiz5 (vides), questions et rendus de l'intranet : à redéposer ou à coller.
+2. Format et date du partiel INF4 (aucune annale) ; ce que le prof a dit sur l'examen en classe.
+3. L'archive TaskForge vient-elle du prof (outil FlamapyIDE, pas VariaMos) ?
+4. L'ISO 24707 est-elle une lecture recommandée ?
+5. Validation de l'architecture §8.2 (deux chapitres nouveaux, SECRET avant les stratégies).
+
+### 8.6 Audit de couverture du 2026-11-20 (script, lecture seule)
+
+**Notions** (`notions.json`, 253 : 67 ★★★, 92 ★★, 94 ★) croisées avec les blocs et items des 11 chapitres actuels :
+- les **159 notions ★★ et ★★★ sont toutes citées** ; 0 notion enseignée hors de son chapitre d'attache ;
+- **41 notions ★ jamais citées** (historique, cas industriels, organisation du cours, pistes de recherche) : prévues en repère ; à retrouver ou à écarter à la refonte des chapitres 1, 2, 4, 8, 11. Deux ont disparu des chapitres déjà refondus alors que le plan les gardait : *OVM : point de variation auxiliaire*, *problème de terminologie* ;
+- **1 notion enseignée dans deux chapitres** : *feature morte* (utilisée dans l'exemple Prolog du chapitre « Traduire », définie dans « Vérifier ») ; voulu, à garder avec un renvoi.
+
+**Quiz du prof** (36 questions) croisés avec le texte du cours actuel (mots-clés, donc approximatif) :
+- **absent des 11 chapitres** : distinction fonctionnel / non fonctionnel, gabarit SECRET (11 parties) et énoncés RELAX (*eventually*), relations entre exigences (contribution, opérationnalisation…), modèle « Domain Requirements - AC » et SRS, espaces d'adaptation, structure d'un projet VariaMos, Bundle / Range, **réciproque, contraposée et transitivité** d'un *requires* (aucun des 4 chapitres refondus ne les nomme), comptage des sélections d'un groupe `[m..n]` ;
+- **seulement par fragments** : périmètre (*scope*) de la famille, retour application → domaine (notion ★ « jamais citée » promue A par les quiz 0-4 et 0-11), « observé ≠ voulu » ;
+- **couvert** : ingénierie d'application, architecture de référence, tests du domaine, duplication, sémantique obligatoire / optionnel / requires / excludes, cardinalités.
+→ le plan §8.2 (chapitres 1, 3, 5 enrichis ou créés) vise exactement ces trous ; **aucun n'est encore écrit**.

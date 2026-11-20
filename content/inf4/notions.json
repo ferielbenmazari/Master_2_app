@@ -255,8 +255,8 @@
         "fr": "Définition d’une ligne de produits logiciels (SEI, 2001)",
         "en": "Software product line (SEI, 2001)"
       },
-      "importance": 1,
-      "why": "citée telle quelle dans le cours 1 (slide « Mass customization ») ET dans l'article RED-PL (introduction) : répétée dans 2 supports",
+      "importance": 3,
+      "why": "quiz0 Q3 et Q5 : ce qui est « commun » dépend du périmètre de la famille ; la définition (ensemble de systèmes partageant des caractéristiques gérées) fixe ce périmètre ; promue de ★ à ★★★",
       "chapter": "01",
       "src": [
         {
@@ -2925,9 +2925,9 @@
         "fr": "Retour d’information de l’ingénierie d’application vers le domaine",
         "en": "Feedback from application requirements engineering"
       },
-      "importance": 1,
-      "why": "§10.1.3 : évolution de la ligne de produits ; symétrique de §15.1.2",
-      "chapter": "04",
+      "importance": 3,
+      "why": "quiz0 Q4 et Q11 : retour de l’application vers le domaine (demande de changement) ; promue de ★ à ★★★ et placée avec le framework PLE",
+      "chapter": "01",
       "src": [
         {
           "file": "sources-texte/inf4/8-chapitre-livre-domain-engineering.md",
@@ -5425,6 +5425,896 @@
           "file": "sources-texte/inf4/4-redpl-caise07.md",
           "loc": "§1 Introduction",
           "quote": "reduced defect rates as high as 96% and multiplied"
+        }
+      ]
+    },
+    {
+      "id": "n-vm-project-structure",
+      "label": {
+        "fr": "Structure d’un projet VariaMos : projet, lignes de produits, ingénierie de domaine et d’application",
+        "en": "VariaMos project structure"
+      },
+      "importance": 2,
+      "why": "tutoriel 0 §2 ; testé par quiz0 (Q10, Q12) : où placer produits, modèles réutilisables et adaptations",
+      "chapter": "01",
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2 Workspace",
+          "quote": "there is a section corresponding to Domain Engineering and another section corresponding to Application Engineering (the two main processes of Product Line Engineering)"
+        }
+      ]
+    },
+    {
+      "id": "n-vm-application-per-member",
+      "label": {
+        "fr": "Une application par produit de la famille",
+        "en": "One application per family member"
+      },
+      "importance": 3,
+      "why": "tutoriel 0 §2.1.5 ; quiz0 Q10 et Q11 : chaque produit est une application, sa configuration est une décision d’ingénierie d’application",
+      "chapter": "01",
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5 Create a new application",
+          "quote": "For each new member of the family, a new Application must be created to carry out in that space the whole process of configuration, customisation and derivation of each new product."
+        }
+      ]
+    },
+    {
+      "id": "n-vm-adaptation",
+      "label": {
+        "fr": "Adaptation : plusieurs contextes d’un même système",
+        "en": "Adaptation space (one system, several contexts)"
+      },
+      "importance": 2,
+      "why": "tutoriel 0 §2.1.6 ; quiz0 Q12 : une adaptation n’est pas un produit ni une ligne de produits",
+      "chapter": "01",
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.6 Create an adaptation",
+          "quote": "The same system can have several contexts of adaptation, for example, an object gathering robot can be designed to adapt correctly to the particular and changing conditions of a beach"
+        }
+      ]
+    },
+    {
+      "id": "n-vm-software-vs-system",
+      "label": {
+        "fr": "Type de ligne : Software ou System (gabarits d’exigences)",
+        "en": "Software vs System product line type"
+      },
+      "importance": 2,
+      "why": "tutoriel 0 §1.2 ; quiz0 Q7 (réponse unique)",
+      "chapter": "01",
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§1.2 Project creation",
+          "quote": "The difference between the two lies mainly in the type of templates that will be used to specify the requirements"
+        }
+      ]
+    },
+    {
+      "id": "n-vm-includes-requires",
+      "label": {
+        "fr": "Includes = requires (VariaMos)",
+        "en": "Includes relationship (A requires B)"
+      },
+      "importance": 3,
+      "why": "tutoriel 2 §3.4 ; quiz2 Q2 et Q8",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.4 Relationships between features",
+          "quote": "If a requirement requires another requirement, for example, Images requires Rtf format, let’s proceed as follows"
+        }
+      ]
+    },
+    {
+      "id": "n-implication-reasoning",
+      "label": {
+        "fr": "Raisonner sur requires et excludes : sens unique, transitivité, symétrie",
+        "en": "Reasoning about requires and excludes"
+      },
+      "importance": 3,
+      "why": "quiz0 Q6, quiz2 Q2, Q6, Q11 : cinq questions sur 36 testent ce raisonnement (pas de réciproque, pas de contraposée, transitivité, excludes symétrique)",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Q6",
+          "quote": "interpret “A requires B” as A implies B, and “A excludes B” as prohibiting their joint selection"
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Q6",
+          "quote": "A requires B and B requires C. Assume no other constraints. Which statements follow?"
+        }
+      ]
+    },
+    {
+      "id": "n-group-selection-count",
+      "label": {
+        "fr": "Compter les sélections permises d’un groupe [m..n]",
+        "en": "Counting the selections allowed by a group"
+      },
+      "importance": 3,
+      "why": "quiz2 Q5 (6 sélections) et Q9 (15) ; tutoriel 2 §3.5 : un attribut [1..4] autorise 1 à 4 valeurs",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5 Creating attributes",
+          "quote": "we can indicate the range [1..4] to mean that each text editor of the product line could have between 1 and 4 options of the list of values"
+        },
+        {
+          "file": "sources-texte/inf4/16-quiz2.md",
+          "loc": "Q5",
+          "quote": "A selected parent has exactly three child features A, B and C in a [1..2] group."
+        }
+      ]
+    },
+    {
+      "id": "n-vm-bundle-range",
+      "label": {
+        "fr": "Bundle de type Range : cardinalité de groupe dans VariaMos",
+        "en": "Bundle of type Range"
+      },
+      "importance": 2,
+      "why": "tutoriel 2 §3.4 et tutoriel 3 partie 4 ; quiz2 Q7",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "The “Range” elements in the model are VariaMos’s mechanism of representing “Group cardinalities” in Feature Models."
+        },
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.4",
+          "quote": "Drag and drop a Bundle element to the diagram."
+        }
+      ]
+    },
+    {
+      "id": "n-vm-attributes",
+      "label": {
+        "fr": "Attributs d’une feature : domaine de valeurs et cardinalité",
+        "en": "Feature attributes"
+      },
+      "importance": 2,
+      "why": "tutoriel 2 §3.5 ; quiz2 Q4, Q9, Q12",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§3.5",
+          "quote": "Select the domain of values that can accept the attribute"
+        }
+      ]
+    },
+    {
+      "id": "n-nfr-as-attributes",
+      "label": {
+        "fr": "Exigences non fonctionnelles : attributs, niveaux de qualité ou contraintes",
+        "en": "Non-functional requirements as attributes"
+      },
+      "importance": 2,
+      "why": "tutoriel 2 §1 ; quiz2 Q4 (attribut de temps de réponse : domaine, unité, conditions de mesure)",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§1",
+          "quote": "the features are boolean in nature since they represent functional requirements, and that the non-functional requirements are of a more diverse nature"
+        }
+      ]
+    },
+    {
+      "id": "n-vm-abstract-feature",
+      "label": {
+        "fr": "Feature abstraite (contour pointillé)",
+        "en": "Abstract feature"
+      },
+      "importance": 2,
+      "why": "tutoriel 3 partie 4 : identique à une feature concrète pour la sémantique, sert à structurer",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "They are functionally and semantically identical to concrete features, but serve to both better structure and organize the model"
+        }
+      ]
+    },
+    {
+      "id": "n-clothingstores-case",
+      "label": {
+        "fr": "Cas ClothingStores (25 features)",
+        "en": "ClothingStores case"
+      },
+      "importance": 2,
+      "why": "activité proposée du tutoriel 2 ; fil rouge des tutoriels 3 à 5 ; quiz2 Q10",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§4 Proposed activity",
+          "quote": "ClothingStores is a software product line (SPL) that consists of the development of an e-commerce store system family to manage and sell clothes."
+        }
+      ]
+    },
+    {
+      "id": "n-uvl-syntax",
+      "label": {
+        "fr": "Notation UVL : groupes mandatory / optional / alternative et contraintes =>",
+        "en": "UVL notation"
+      },
+      "importance": 2,
+      "why": "TaskForge T1 : cinquième notation d’une même relation, avec FODA, OVM, contraintes et ILP",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §2",
+          "quote": "Ajoutez Storage comme enfant obligatoire de TaskForge, puis son groupe alternatif."
+        }
+      ]
+    },
+    {
+      "id": "n-feature-vs-data",
+      "label": {
+        "fr": "Une feature n’est pas une donnée ni un détail technique",
+        "en": "Feature versus data"
+      },
+      "importance": 2,
+      "why": "TaskForge T2 : « disposer de priorités » est une feature ; la priorité d’une tâche est une donnée",
+      "chapter": "03",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §1",
+          "quote": "« disposer de priorités » est une feature ; « cette tâche est de priorité haute » est une donnée."
+        }
+      ]
+    },
+    {
+      "id": "n-model-semantics-solutions",
+      "label": {
+        "fr": "Sémantique d’un modèle : l’ensemble des affectations satisfaisantes",
+        "en": "Model semantics = satisfying assignments"
+      },
+      "importance": 3,
+      "why": "tutoriel 3 introduction ; relie feature model, contraintes et produits",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Introduction",
+          "quote": "a concrete model’s semantics are the set of satisfying assignments, that is, the valid products as determined by the model’s elements and relations between them"
+        }
+      ]
+    },
+    {
+      "id": "n-swi-translation",
+      "label": {
+        "fr": "Traduction d’un modèle en programme par contraintes SWI-Prolog",
+        "en": "Translation into SWI-Prolog CLP"
+      },
+      "importance": 2,
+      "why": "tutoriel 3 parties 2 et 3 (même traduction que l’exercice GNU Prolog des slides)",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 2",
+          "quote": "What you see in the text area in the center of the modal is a translation of your model into its constraint logic programming (CLP) representation."
+        }
+      ]
+    },
+    {
+      "id": "n-false-pl-by-counting",
+      "label": {
+        "fr": "Détecter une fausse ligne de produits en comptant les solutions",
+        "en": "Detecting a false product line by counting"
+      },
+      "importance": 2,
+      "why": "tutoriel 3 partie 3 : findall et length donnent une seule solution",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "This proves that there exists a single solution for our feature model and that we have a defective feature model, as it denotes a “False” Product Line not allowing any other product."
+        }
+      ]
+    },
+    {
+      "id": "n-core-variable-features",
+      "label": {
+        "fr": "Noyau (core) et features variables",
+        "en": "Core and variable features"
+      },
+      "importance": 3,
+      "why": "tutoriel 3 partie 5 ; exercice final étapes 8 et 9",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "features that are definitely present in all products and form (part) of the “core” features"
+        }
+      ]
+    },
+    {
+      "id": "n-findnsols-sampling",
+      "label": {
+        "fr": "Échantillonner avec findnsols : noyau approximatif",
+        "en": "Sampling with findnsols"
+      },
+      "importance": 2,
+      "why": "tutoriel 3 partie 5 : approximation sans certitude absolue",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "getting an “approximate” calculation of core features by sampling a portion of the space of solutions, which means that we cannot have absolute certainty"
+        }
+      ]
+    },
+    {
+      "id": "n-excludes-two-formulations",
+      "label": {
+        "fr": "Deux formulations de excludes : somme ≤ 1, produit = 0",
+        "en": "Two formulations of excludes"
+      },
+      "importance": 2,
+      "why": "tutoriel 3 partie 3 : même ensemble de solutions ; le produit reste valable avec des entiers",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "multiple formalizations can be assigned to our “Excludes” constraint"
+        }
+      ]
+    },
+    {
+      "id": "n-clif-constraints",
+      "label": {
+        "fr": "CLIF : contraintes textuelles en notation préfixe",
+        "en": "CLIF textual constraints"
+      },
+      "importance": 2,
+      "why": "tutoriel 3 partie 4 ; ISO/IEC 24707 donnée par le prof",
+      "chapter": "07",
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "VariaMos utilizes the CLIF (Common Logic Interchange Format) language, which is a LISP-like language"
+        }
+      ]
+    },
+    {
+      "id": "n-pleiades-query",
+      "label": {
+        "fr": "Requête JSON PLEIADES : solver, operation, iterate_over",
+        "en": "PLEIADES JSON query"
+      },
+      "importance": 3,
+      "why": "tutoriel 4 ; une requête spécifie la tâche de raisonnement sans connaître le solveur",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The query language relies on JSON documents that follow the following schema"
+        }
+      ]
+    },
+    {
+      "id": "n-pleiades-operations",
+      "label": {
+        "fr": "Opérations sat, solve, nsolve, optimize",
+        "en": "sat, solve, nsolve, optimize"
+      },
+      "importance": 3,
+      "why": "tutoriel 4 partie 2 ; sat = modèle non vide, nsolve 2 = ligne non fausse",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The “operation” field encodes the basic reasoning operation to be performed."
+        }
+      ]
+    },
+    {
+      "id": "n-pleiades-solvers",
+      "label": {
+        "fr": "Solveurs : minizinc (Gecode), swi, z3",
+        "en": "Solvers: minizinc, swi, z3"
+      },
+      "importance": 2,
+      "why": "tutoriel 4 partie 2 ; z3 le plus rapide mais partiel",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "The “solver” field currently allows for the use of three different systems"
+        }
+      ]
+    },
+    {
+      "id": "n-dead-by-iteration",
+      "label": {
+        "fr": "Détecter les features mortes par requête itérative",
+        "en": "Dead features by iterative query"
+      },
+      "importance": 3,
+      "why": "tutoriel 4 parties 2 et 3 ; exercice 5",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+        }
+      ]
+    },
+    {
+      "id": "n-nsolve-false-pl",
+      "label": {
+        "fr": "nsolve 2 pour tester « fausse ligne »",
+        "en": "nsolve 2 as false-PL check"
+      },
+      "importance": 2,
+      "why": "tutoriel 4 partie 2",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "determining that at least two solutions exist"
+        }
+      ]
+    },
+    {
+      "id": "n-syntax-vs-void",
+      "label": {
+        "fr": "Erreur de syntaxe et modèle vide : deux problèmes différents",
+        "en": "Syntax error versus void model"
+      },
+      "importance": 2,
+      "why": "TaskForge T1 §3 : question posée dans le tutoriel",
+      "chapter": "11",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §3",
+          "quote": "Expliquez pourquoi une erreur de syntaxe et un modèle sans aucun produit sont deux problèmes différents."
+        }
+      ]
+    },
+    {
+      "id": "n-secret-template",
+      "label": {
+        "fr": "Gabarit SECRET : 11 parties",
+        "en": "SECRET template (11 sections)"
+      },
+      "importance": 3,
+      "why": "annexe 1 §1.2 ; quiz1 Q2 à Q5, Q9, Q11",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/13-appendix-1-secret.md",
+          "loc": "§1.2 Using the SECRET Template",
+          "quote": "The template is divided into a problem space and a solution space, and it is composed of the following 11 sections"
+        }
+      ]
+    },
+    {
+      "id": "n-secret-statement",
+      "label": {
+        "fr": "Forme d’une exigence SECRET : all / some / those, shall / could / should",
+        "en": "SECRET statement form"
+      },
+      "importance": 3,
+      "why": "tutoriel 1 §3.3 ; quiz1 Q2, Q3, Q9, Q12",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "§3.3",
+          "quote": "<all, some, those> systems of the <software product line name> <shall, could, should, will> provide <who?> with the ability to <verb> <object>"
+        }
+      ]
+    },
+    {
+      "id": "n-requirement-types",
+      "label": {
+        "fr": "Types d’exigences : fonctionnelle, sécurité, autre non fonctionnelle, contrainte",
+        "en": "Requirement types in VariaMos"
+      },
+      "importance": 3,
+      "why": "tutoriel 1 §3.4 ; quiz1 Q1, Q7, Q8",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "§3.4",
+          "quote": "Security requirements have the security criteria and security mechanisms parts of the template since they are concerned with the security aspects."
+        },
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "§3.4",
+          "quote": "In the properties of the non-functional requirement, you have to choose the type of the non-functional requirement, External Interfaces, in this case."
+        }
+      ]
+    },
+    {
+      "id": "n-requirement-properties",
+      "label": {
+        "fr": "Propriétés d’une exigence : identifiant, version, priorité, source, risque, justification…",
+        "en": "Requirement properties"
+      },
+      "importance": 2,
+      "why": "tutoriel 1 §3.3 ; quiz1 Q5 (StakeholderPriority) et Q10 (champs à compléter)",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "§3.3",
+          "quote": "StakeholderPriority: The priority of the requirement for the stakeholder."
+        }
+      ]
+    },
+    {
+      "id": "n-requirement-relationships",
+      "label": {
+        "fr": "Dix relations entre exigences (cinq familles de traçabilité)",
+        "en": "Relationships between requirements"
+      },
+      "importance": 3,
+      "why": "annexe 1 §1.5 ; quiz1 Q6 (contribution) et Q10 (conflit)",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/13-appendix-1-secret.md",
+          "loc": "§1.5",
+          "quote": "Contribution: Sometimes, the benefit of a requirement can only be realized if another requirement is implemented first."
+        }
+      ]
+    },
+    {
+      "id": "n-relax-eventually",
+      "label": {
+        "fr": "Énoncés RELAX : eventually",
+        "en": "RELAX statements (eventually)"
+      },
+      "importance": 2,
+      "why": "annexe 1 §1.2 ; quiz1 Q4 : aucune borne de temps",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/13-appendix-1-secret.md",
+          "loc": "§1.2 FR9",
+          "quote": "In this requirement, we have the “eventually” relax statement, which is found in the suggested options."
+        }
+      ]
+    },
+    {
+      "id": "n-score-ontology",
+      "label": {
+        "fr": "Ontologie SCORE : 30 critères de sécurité et mécanismes",
+        "en": "SCORE ontology"
+      },
+      "importance": 2,
+      "why": "tutoriel 1 §3.4 et §3.7",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "§3.4",
+          "quote": "The source of this list is the SCORE ontology that contains 30 security criteria and their relationships."
+        }
+      ]
+    },
+    {
+      "id": "n-srs-generation",
+      "label": {
+        "fr": "Génération du SRS / SyRS",
+        "en": "SRS/SyRS generation"
+      },
+      "importance": 2,
+      "why": "tutoriel 1 §3.8 ; quiz1 Q10",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "§3.8",
+          "quote": "Right click on the Domain Requirement-AC model then choose Generate SRS/SyRS from the tools."
+        }
+      ]
+    },
+    {
+      "id": "n-measurable-requirement",
+      "label": {
+        "fr": "Rendre une exigence de qualité vérifiable",
+        "en": "Making a quality requirement verifiable"
+      },
+      "importance": 3,
+      "why": "quiz1 Q5 et Q11 : population, protocole, seuil mesurable ; tutoriel 1 NFR2 « user-friendly »",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/14-quiz1.md",
+          "loc": "Q5",
+          "quote": "A requirement states “The editor shall be user-friendly.” Which additions would directly make its acceptance more objective?"
+        },
+        {
+          "file": "sources-texte/inf4/12-tutorial-1-requirements-specification.md",
+          "loc": "Quality Requirements",
+          "quote": "NFR2 – Usability: Every text editor in the product line must guarantee user-friendly interfaces"
+        }
+      ]
+    },
+    {
+      "id": "n-those-systems-subset",
+      "label": {
+        "fr": "« Those systems that include X » : délimiter le sous-ensemble de produits concernés",
+        "en": "Scoping a requirement to products with a feature"
+      },
+      "importance": 3,
+      "why": "tutoriel 2 FR2 à FR31 ; quiz1 Q3 et Q9",
+      "chapter": "12",
+      "src": [
+        {
+          "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+          "loc": "§1 FR-15",
+          "quote": "Those systems of the text editor product line that include the List feature must provide the user with the ability to choose between 1 and 3 list types"
+        }
+      ]
+    },
+    {
+      "id": "n-config-three-tasks",
+      "label": {
+        "fr": "Trois tâches de configuration",
+        "en": "Three configuration tasks"
+      },
+      "importance": 3,
+      "why": "tutoriel 5 partie 1",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "we can identify 3 general tasks that are of interest"
+        }
+      ]
+    },
+    {
+      "id": "n-partial-configuration",
+      "label": {
+        "fr": "Configuration partielle : compléter ou constater l’insolubilité",
+        "en": "Partial configuration and completion"
+      },
+      "importance": 3,
+      "why": "tutoriel 5 partie 1 ; TaskForge T3 §1 ; exercice final étapes 2 à 4",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §1",
+          "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+        }
+      ]
+    },
+    {
+      "id": "n-optimal-configuration",
+      "label": {
+        "fr": "Configuration optimale : cibler une variable de coût (optimize, min / max)",
+        "en": "Optimal configuration"
+      },
+      "importance": 3,
+      "why": "tutoriel 5 partie 2 ; exercice final étapes 7 et 8 ; même logique que le tableur ILP",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+        }
+      ]
+    },
+    {
+      "id": "n-total-cost-constraint",
+      "label": {
+        "fr": "Définir le coût total par une contrainte",
+        "en": "Total cost constraint"
+      },
+      "importance": 2,
+      "why": "tutoriel 5 partie 2",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "This encodes the fact that the TotCost variable is an integer and is related to the sum of all the costs"
+        }
+      ]
+    },
+    {
+      "id": "n-config-human-judgement",
+      "label": {
+        "fr": "Limites : le modèle de coût peut être mal posé, le jugement humain reste nécessaire",
+        "en": "Human judgement in configuration"
+      },
+      "importance": 2,
+      "why": "tutoriel 5 conclusion de la partie 2",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "human involvement is also important, no matter the sophistication of the analysis tools"
+        }
+      ]
+    },
+    {
+      "id": "n-solution-order-combinatorial",
+      "label": {
+        "fr": "L’ordre des solutions ne se contrôle pas : limite combinatoire",
+        "en": "Solution order is not controllable"
+      },
+      "importance": 1,
+      "why": "tutoriel 5 partie 1",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated"
+        }
+      ]
+    },
+    {
+      "id": "n-evolution-count",
+      "label": {
+        "fr": "Effet d’une évolution sur le nombre de configurations",
+        "en": "Effect of an evolution on the number of configurations"
+      },
+      "importance": 3,
+      "why": "TaskForge T3 §5 : comparer avec v2 et justifier ; une option libre double le nombre de produits (72, 96, 192)",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §5",
+          "quote": "Vérifiez le modèle et comparez le nombre de configurations avec v2. Justifiez l’évolution du nombre."
+        }
+      ]
+    },
+    {
+      "id": "n-generation-coverage-check",
+      "label": {
+        "fr": "Contrôle de couverture : toute option du code doit figurer dans le modèle",
+        "en": "Coverage check of code options"
+      },
+      "importance": 2,
+      "why": "TaskForge T2 §5",
+      "chapter": "13",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §5",
+          "quote": "Ce contrôle de couverture évite de laisser des options du code hors de la ligne de produits."
+        }
+      ]
+    },
+    {
+      "id": "n-build-time-variability",
+      "label": {
+        "fr": "Variabilité fixée à la construction : retirer le code non sélectionné",
+        "en": "Build-time variability"
+      },
+      "importance": 3,
+      "why": "TaskForge T2 §4 et T3 §4 : barème « configurations, génération et évolution » (5 / 20) ; relie la liaison des variants du livre",
+      "chapter": "06",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        }
+      ]
+    },
+    {
+      "id": "n-reverse-engineer-variability",
+      "label": {
+        "fr": "Retrouver la variabilité dans un code existant : matrice option, code, dépendance, justification",
+        "en": "Recovering variability from existing code"
+      },
+      "importance": 3,
+      "why": "TaskForge T2 : barème « reconstruction depuis le code et traçabilité » (4 / 20)",
+      "chapter": "06",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Complétez la matrice suivante, avec un exemple pour chaque option"
+        }
+      ]
+    },
+    {
+      "id": "n-dependency-justification",
+      "label": {
+        "fr": "Nature d’une dépendance : technique, commerciale ou politique",
+        "en": "Nature of a dependency"
+      },
+      "importance": 2,
+      "why": "TaskForge T2 §2 : JSONExport requiert LocalStorage est une règle de gamme, pas une nécessité technique",
+      "chapter": "06",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §2",
+          "quote": "Une dépendance technique peut être établie par un appel de fonction. Une règle commerciale ne se déduit pas de cet appel"
+        }
+      ]
+    },
+    {
+      "id": "n-observed-products-not-proof",
+      "label": {
+        "fr": "Deux produits observés ne prouvent pas toutes les combinaisons",
+        "en": "Observed products are not proof"
+      },
+      "importance": 2,
+      "why": "TaskForge T2 §3 ; quiz0 Q9 (Analytics observé dans tous les produits)",
+      "chapter": "06",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §3",
+          "quote": "Expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Q9",
+          "quote": "A reviewer argues that Analytics should be declared mandatory because it appears in every observed application."
+        }
+      ]
+    },
+    {
+      "id": "n-test-behaviour-and-code",
+      "label": {
+        "fr": "Tester le comportement ET le code produit ; limites du générateur",
+        "en": "Testing behaviour and generated code"
+      },
+      "importance": 2,
+      "why": "TaskForge T3 §4 ; barème « tests et limites » (3 / 20)",
+      "chapter": "10",
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 3 §4",
+          "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 2 §4",
+          "quote": "Il ne prouve pas la correction de tout JavaScript arbitraire : vos tests restent nécessaires."
         }
       ]
     }
