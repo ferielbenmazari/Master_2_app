@@ -61,4 +61,4 @@
 4. Compter : poser la méthode (cas, C(k, i)) avant le résultat.
 
 ## Lacunes
-Quiz 3 à 5 vides, intranet inaccessible, format réel et barème de l'examen inconnus : `examFocus` reste **probable**. Les chapitres 2, 4, 10 et 11 sont encore dans l'ancien format (contenu correct, forme à refondre).
+Quiz 3 à 5 vides, intranet inaccessible, format réel et barème de l'examen inconnus : `examFocus` reste **probable**. Les chapitres 2, 4, 10, 11, 12 et 13 ont été restructurés sans réécriture complète (contenu vérifié avant, forme uniformisée) : parties numérotées, définitions, « À retenir ».

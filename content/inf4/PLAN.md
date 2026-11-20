@@ -12,18 +12,18 @@
 | # (ordre) | Fichier | Titre | Sources | État |
 |---|---|---|---|---|
 | 1 | `01-variabilite.json` | Variabilité et ligne de produits : les notions de base | 1__introduction.md + tutoriel 0 + quiz 0 | refondu (2026-11-20, draft) |
-| 2 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | cours rédigé (draft) — **à refondre** |
+| 2 | `02-principes-spl.json` | Les principes des lignes de produits logiciels | 2__software_ple.md | restructuré (2026-11-20, draft) : parties numérotées dans l'ordre d'importance, définitions, « À retenir » |
 | 3 | `03-cadre-ple.json` | Les feature models : lire, donner la sémantique, compter | 5__soft_ple_detailed.md + 6__ple.md + tutoriels 2 et 3 + quiz 2 | refondu, complété (2026-11-20, draft) — 17 min, à resserrer |
-| 4 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | cours rédigé (draft) — **à refondre** |
+| 4 | `04-exigences-de-domaine.json` | Ingénierie des exigences de domaine & modèle OVM | 8__ple.md | restructuré (2026-11-20, draft) : parties numérotées dans l'ordre d'importance, définitions, « À retenir » |
 | 5 | `12-gabarit-secret.json` | Écrire une exigence de ligne : le gabarit SECRET | tutoriel 1 + annexe 1 + quiz 1 | **nouveau** (2026-11-20, draft) |
 | 6 | `09-strategies-exigences-pl.json` | Éliciter et spécifier les exigences d’une ligne : trois stratégies | 5__soft_ple_detailed.md + 6__ple.md | refondu (2026-11-18, draft) — à alléger (gabarit renvoyé au chapitre SECRET) |
 | 7 | `07-transformation-verification.json` | Traduire un modèle en contraintes : générer et compter les produits | 7__ple.md + tutoriel 3 | refondu, complété (2026-11-20, draft) |
 | 8 | `11-verification-diagnostic.json` | Vérifier, diagnostiquer et corriger un modèle de ligne de produits | 7__ple.md + tutoriel 4 | refondu, complété (2026-11-20, draft) |
 | 9 | `13-configuration-automatique.json` | Configurer, générer et faire évoluer un produit | tutoriel 5 + TaskForge T3 + tableur ILP | **nouveau** (2026-11-20, draft) |
-| 10 | `05-ingenierie-application-1.json` | Exigences d’application : deltas, variants et catégories | 3__application_engineering.md (1re moitié) | cours rédigé (draft) — **à refondre** |
-| 11 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | refonte pédagogique (draft) — **à refondre** |
-| 12 | `06-ingenierie-application-2.json` | Conception et réalisation d’une application | 3__application_engineering.md (ch. 16-17) + TaskForge T2 | parties TaskForge ajoutées et titres numérotés (2026-11-20, draft) — **à refondre** |
-| 13 | `10-test-application.json` | Tester une application sans tout retester | 3__application_engineering.md (ch. 18) + TaskForge T3 | partie TaskForge ajoutée et titres numérotés (2026-11-20, draft) — **à refondre** |
+| 10 | `05-ingenierie-application-1.json` | Exigences d’application : deltas, variants et catégories | 3__application_engineering.md (1re moitié) | restructuré (2026-11-20, draft) : parties numérotées dans l'ordre d'importance, définitions, « À retenir » |
+| 11 | `08-red-pl.json` | RED-PL : dériver les exigences produit | 4__overview.md | restructuré (2026-11-20, draft) : parties numérotées, définitions, « À retenir » |
+| 12 | `06-ingenierie-application-2.json` | Conception et réalisation d’une application | 3__application_engineering.md (ch. 16-17) + TaskForge T2 | parties TaskForge ajoutées et titres numérotés (2026-11-20, draft) |
+| 13 | `10-test-application.json` | Tester une application sans tout retester | 3__application_engineering.md (ch. 18) + TaskForge T3 | partie TaskForge ajoutée et titres numérotés (2026-11-20, draft) |
 
 Ressource d'exercice : `EPI/5__configuration ILP(1).xlsx` (configuration par programmation linéaire en nombres entiers) → exercices du chapitre 07 ou 08.
 
