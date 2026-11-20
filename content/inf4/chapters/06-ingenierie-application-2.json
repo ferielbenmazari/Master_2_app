@@ -19,8 +19,15 @@
     {
       "type": "heading",
       "text": {
-        "fr": "1. Du client au produit : que reprend-on, que doit-on écrire ?",
-        "en": "1. From customer to product: what do we reuse, what must we write?"
+        "fr": "1. Du client au produit : les trois sous-processus",
+        "en": "1. From customer to product: the three sub-processes"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.1 Trois sous-processus, une même question",
+        "en": "1.1 Three sub-processes, one question"
       }
     },
     {
@@ -63,6 +70,13 @@
       }
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Définitions : architecture d’application et architecture de référence",
+        "en": "2.1 Definitions: application architecture and reference architecture"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "L'[[term-app-arch|architecture d'application]] est une **spécialisation** de l'[[term-ref-arch|architecture de référence]] produite par la conception de domaine. L'architecte d'application lie la variabilité de l'architecture de référence et introduit les changements propres à l'application, selon la spécification de ses exigences. Le résultat part en réalisation, où les composants réutilisables sont assemblés.",
@@ -85,6 +99,13 @@
         "n-application-architecture",
         "n-reference-architecture"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Le rôle de l’architecte d’application",
+        "en": "2.2 The application architect’s role"
+      }
     },
     {
       "type": "paragraph",
@@ -127,6 +148,13 @@
           "quote": "if performance requirements of the application are stricter than defined in the product line, the application architect adds abstractions for threads' synchronisation and communication"
         }
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.3 Lier les variants",
+        "en": "2.3 Binding the variants"
+      }
     },
     {
       "type": "paragraph",
@@ -178,6 +206,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "2.4 Les variants propres à l’application",
+        "en": "2.4 Application-specific variants"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Ces variants propres à une application peuvent être de nouveaux composants ou interfaces, mais aussi de plus grandes structures : configurations de composants, **nouveaux patterns**, voire de nouveaux frameworks de composants.",
@@ -215,6 +250,13 @@
       "notions": [
         "n-binding-of-variants"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.5 Déterminer la configuration",
+        "en": "2.5 Determining the configuration"
+      }
     },
     {
       "type": "paragraph",
@@ -412,6 +454,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "2.6 Le retour vers le domaine : l’application comme banc d’essai",
+        "en": "2.6 Feedback to the domain: the application as a test bed"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "**Retour vers le domaine.** Un variant conçu pour une application peut servir à d'autres. L'application sert alors de **banc d'essai** (test bed) : si tout fonctionne et que la gestion de produit décide d'intégrer les nouveaux artefacts, l'architecte de domaine reprend la main et les refond pour la réutilisation.",
@@ -454,22 +503,105 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "La conception **spécialise l’architecture de référence** : on lie les variants selon le modèle de variabilité d’application et on n’ajoute que ce qui est propre à l’application. La liaison dépend de la qualité de l’architecture de référence ; l’application peut servir de **banc d’essai** pour un variant réutilisable.",
+        "en": "Design **specialises the reference architecture**: variants are bound according to the application variability model and only what is application-specific is added. Binding depends on the quality of the reference architecture; the application can serve as a **test bed** for a reusable variant."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-06-qz-04"
     },
     {
       "type": "heading",
       "text": {
-        "fr": "3. Combien coûte un variant ? Les catégories A à D",
-        "en": "3. How much does a variant cost? Categories A to D"
+        "fr": "3. Le coût d’un variant : catégories A à D, vues de la conception",
+        "en": "3. A variant’s cost: categories A to D, seen from design"
       }
     },
     {
-      "type": "paragraph",
+      "type": "subheading",
       "text": {
-        "fr": "Le coût d'un variant dépend de ce qu'il faut faire pour le réaliser. Le livre le range en **quatre catégories** (A à D, reprises de la section 15.4.4). **A** — le variant est réalisé dans la plateforme : coût faible, surtout trouver les bons paramètres. **B** — il faut développer des composants spécifiques qui n'utilisent que des interfaces du domaine : coût modéré.",
-        "en": "The cost of a variant depends on what has to be done to realise it. The book sorts it into **four categories** (A to D, from section 15.4.4). **A** — the variant is realised in the platform: small cost, mainly finding the right parameters. **B** — application-specific components must be developed but use only domain-specific interfaces: moderate cost."
-      },
+        "fr": "3.1 Les quatre catégories, vues de la conception",
+        "en": "3.1 The four categories, seen from design"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Catégorie",
+          "en": "Catégorie"
+        },
+        {
+          "fr": "Ce qu’il faut faire à la conception",
+          "en": "Ce qu’il faut faire à la conception"
+        },
+        {
+          "fr": "Coût",
+          "en": "Coût"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "**A**",
+            "en": "**A**"
+          },
+          {
+            "fr": "le variant est réalisé dans la plate-forme",
+            "en": "the variant is realised in the platform"
+          },
+          {
+            "fr": "faible : surtout trouver les bons paramètres",
+            "en": "small: mostly finding the right parameters"
+          }
+        ],
+        [
+          {
+            "fr": "**B**",
+            "en": "**B**"
+          },
+          {
+            "fr": "développer des composants spécifiques qui n’utilisent que des interfaces du domaine",
+            "en": "develop specific components that use only domain interfaces"
+          },
+          {
+            "fr": "modéré",
+            "en": "moderate"
+          }
+        ],
+        [
+          {
+            "fr": "**C**",
+            "en": "**C**"
+          },
+          {
+            "fr": "ajouter une grande partie de structure, avec de nouvelles interfaces, simulation et validation",
+            "en": "add a large part of structure, with new interfaces, simulation and validation"
+          },
+          {
+            "fr": "élevé",
+            "en": "high"
+          }
+        ],
+        [
+          {
+            "fr": "**D**",
+            "en": "**D**"
+          },
+          {
+            "fr": "ajouter de grandes parties d’architecture (par exemple un nouveau framework) : l’architecture de référence ne suffit plus",
+            "en": "add large parts of architecture (for example a new framework): the reference architecture no longer suffices"
+          },
+          {
+            "fr": "—",
+            "en": "—"
+          }
+        ]
+      ],
       "src": [
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
@@ -480,19 +612,7 @@
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "16.4",
           "quote": "When the application-specific components provide and use only domain-specific interfaces, the development cost and effort are still moderate (category B, see Section 15.4.4)."
-        }
-      ],
-      "notions": [
-        "n-effort-cost-variants"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": {
-        "fr": "**C** — il faut ajouter une grande partie de structure, avec de nouvelles interfaces à réaliser, simulation et validation : coût élevé. **D** — il faut ajouter de grandes parties d'architecture (par exemple un nouveau framework), au point que l'architecture de référence ne suffit plus.",
-        "en": "**C** — a large new part of the structure is needed, with new interfaces to realise, plus simulation and validation: high cost. **D** — large parts of the architecture must be added (e.g. a new framework), so much that the reference architecture is no longer enough."
-      },
-      "src": [
+        },
         {
           "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
           "loc": "16.4",
@@ -504,9 +624,44 @@
           "quote": "the changes may be very large, to such an extent that they cannot be realised using the reference architecture (category D, see Section 15.4.4)"
         }
       ],
-      "notions": [
-        "n-effort-cost-variants"
-      ]
+      "notions": []
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les quatre catégories sont **définies une seule fois**, au chapitre « Exigences d’application : deltas, variants et catégories », où elles classent les deltas d’exigences ; ici elles servent à **chiffrer ce que coûte la conception** d’un variant : le coût dépend de ce qu’il faut faire pour le réaliser.",
+        "en": "The four categories are **defined once**, in the chapter “Application requirements: deltas, variants and categories”, where they classify requirements deltas; here they are used to **estimate what a variant costs to design**: the cost depends on what has to be done to realise it."
+      },
+      "src": [
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.4",
+          "quote": "If the variant is realised in the platform, the cost is small (category A, see Section 15.4.4)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.4",
+          "quote": "When the application-specific components provide and use only domain-specific interfaces, the development cost and effort are still moderate (category B, see Section 15.4.4)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.4",
+          "quote": "In the case where a large new part of the structure has to be provided, costs and effort are typically high (category C, see Section 15.4.4)."
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/3__application_engineering.md",
+          "loc": "16.4",
+          "quote": "the changes may be very large, to such an extent that they cannot be realised using the reference architecture (category D, see Section 15.4.4)"
+        }
+      ],
+      "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Les facteurs de coût",
+        "en": "3.2 Cost factors"
+      }
     },
     {
       "type": "paragraph",
@@ -544,6 +699,13 @@
       "notions": [
         "n-effort-cost-variants"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 Méthode : classer le coût d’un variant",
+        "en": "3.3 Method: classifying a variant’s cost"
+      }
     },
     {
       "type": "method",
@@ -685,6 +847,14 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Coût d’un variant : A (plate-forme), B (composants spécifiques, interfaces de domaine), C (grande structure, nouvelles interfaces), D (nouveau framework). Le coût est communiqué aux ingénieurs d’exigences, qui adaptent les exigences s’il est trop élevé.",
+        "en": "Variant cost: A (platform), B (specific components, domain interfaces), C (large structure, new interfaces), D (new framework). The cost is communicated to the requirements engineers, who adapt the requirements if it is too high."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-06-qz-06"
     },
@@ -693,6 +863,13 @@
       "text": {
         "fr": "4. Réalisation : configurer et assembler",
         "en": "4. Realisation: configuring and assembling"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Ce que fournit la réalisation",
+        "en": "4.1 What realisation provides"
       }
     },
     {
@@ -729,6 +906,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "4.2 La cohérence des paramètres",
+        "en": "4.2 Parameter consistency"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "**Cohérence des paramètres** : plusieurs composants ont besoin de la même information, d'où de la redondance ; une erreur humaine peut créer des incohérences. La réalisation doit suivre les paramètres et leurs relations. Pour réduire la redondance, la conception et la réalisation de domaine peuvent introduire des composants de configuration ou un outillage.",
@@ -754,6 +938,13 @@
       "notions": [
         "n-parameter-consistency"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.3 Les composants spécifiques",
+        "en": "4.3 Specific components"
+      }
     },
     {
       "type": "paragraph",
@@ -788,6 +979,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "4.4 Construire l’application",
+        "en": "4.4 Building the application"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "**Construire l'application** : les variants de composants sont compilés, liés (link) et déployés sur le matériel ; la variabilité peut être liée à chacune de ces étapes selon le mécanisme de configuration. Un variant de composant est une collection de fichiers (code source, en-têtes, définitions de paramètres).",
@@ -808,6 +1006,13 @@
       "notions": [
         "n-building-application"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.5 Méthode : configurer et assembler",
+        "en": "4.5 Method: configuring and assembling"
+      }
     },
     {
       "type": "method",
@@ -960,6 +1165,14 @@
           "quote": "the problem report has to be taken over by domain engineering for fixing"
         }
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Réalisation : interfaces de domaine sans changement, composants à points de variation internes liés par paramètres (à garder cohérents), composants spécifiques réalisés comme en système unique, puis compilation, link et déploiement. Qui corrige ? L’ingénierie d’application est responsable.",
+        "en": "Realisation: domain interfaces unchanged, components with internal variation points bound by parameters (kept consistent), specific components realised as in single-system engineering, then compile, link and deploy. Who fixes it? Application engineering is responsible."
+      }
     },
     {
       "type": "checkpoint",
@@ -1249,6 +1462,13 @@
       }
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "6.1 Conception et réalisation : les différences",
+        "en": "6.1 Design and realisation: the differences"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Chaque chapitre du livre se termine par la même section. **Conception** : une grande partie de l'architecture est déjà déterminée par l'architecture de référence ; l'architecte lie les points de variation selon le modèle de variabilité d'application et ne conçoit que ce qui manque. **Réalisation** : le développeur choisit des variants de composants réutilisables, qui doivent être cohérents entre eux et conformes à l'architecture d'application ; l'application est construite en configurant composants et interfaces, spécifiques et réutilisables.",
@@ -1300,6 +1520,14 @@
           "quote": "Software product line engineering means that the activities of the application architect require less effort than in single-system software engineering."
         }
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Conception : une grande partie de l’architecture est déjà déterminée par la référence. Réalisation : variants cohérents entre eux, application construite en configurant composants et interfaces.",
+        "en": "Design: a large part of the architecture is already determined by the reference. Realisation: variants consistent with each other, application built by configuring components and interfaces."
+      }
     },
     {
       "type": "checkpoint",

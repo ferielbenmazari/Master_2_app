@@ -24,6 +24,13 @@
       }
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "1.1 Tester sans tout retester : l’idée directrice",
+        "en": "1.1 Testing without retesting everything: the guiding idea"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Une partie des exigences, de l'architecture et des composants de l'application vient du domaine. Faut-il tout retester ? Le test d'application vise une qualité **suffisante** de l'application testée et **complète** le test de domaine. Idée directrice : développer les artefacts de test **une seule fois pour toute la ligne**, les mettre dans les artefacts de domaine et les réutiliser pour plusieurs applications — pour les parties communes **et** variables.",
@@ -45,6 +52,13 @@
         "n-application-testing-goal",
         "n-domain-test-reuse"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.2 La stratégie CRS : parties communes et variables",
+        "en": "1.2 The CRS strategy: common and variable parts"
+      }
     },
     {
       "type": "paragraph",
@@ -75,6 +89,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "1.3 Exemple du livre : trois variants d’authentification",
+        "en": "1.3 Book example: three authentication variants"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Exemple du livre : un scénario de test de domaine contient trois variants d'authentification (lecteur d'empreinte, clavier, lecteur de carte magnétique). Le modèle de variabilité d'application a lié « fingerprint scanner » ; l'ingénieur de test lie ce même variant dans le scénario de domaine pour obtenir le scénario d'application.",
@@ -90,6 +111,13 @@
       "notions": [
         "n-binding-variability-in-tests"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.4 Retrouver les tests réutilisables : la traçabilité",
+        "en": "1.4 Finding reusable tests: traceability"
+      }
     },
     {
       "type": "paragraph",
@@ -117,6 +145,13 @@
       "notions": [
         "n-test-traceability"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "1.5 Méthode : réutiliser un test de domaine",
+        "en": "1.5 Method: reusing a domain test"
+      }
     },
     {
       "type": "method",
@@ -215,6 +250,14 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Le test d’application **complète** le test de domaine : on développe les artefacts de test une fois pour toute la ligne et on les réutilise pour les parties communes et variables. La **traçabilité** retrouve les tests réutilisables ; les **deltas** disent s’ils sont réutilisés, adaptés ou créés.",
+        "en": "Application testing **complements** domain testing: test artefacts are developed once for the whole line and reused for common and variable parts. **Traceability** retrieves the reusable tests; the **deltas** say whether they are reused, adapted or created."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-10-qz-03"
     },
@@ -223,6 +266,13 @@
       "text": {
         "fr": "2. Ce qu'un système unique ne teste pas : la liaison de la variabilité",
         "en": "2. What single-system engineering does not test: variability binding"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1 Trois défauts de liaison",
+        "en": "2.1 Three binding defects"
       }
     },
     {
@@ -337,6 +387,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "2.2 Les deux tests propres à la variabilité",
+        "en": "2.2 The two variability-specific tests"
+      }
+    },
+    {
       "type": "paragraph",
       "explain": true,
       "text": {
@@ -346,6 +403,13 @@
       "notions": [
         "n-tests-related-to-variability"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.3 Le test d’absence de variant",
+        "en": "2.3 The variant absence test"
+      }
     },
     {
       "type": "paragraph",
@@ -373,6 +437,13 @@
       "notions": [
         "n-variant-absence-test"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.4 Le test de dépendances d’application",
+        "en": "2.4 The application dependency test"
+      }
     },
     {
       "type": "paragraph",
@@ -405,6 +476,13 @@
       "notions": [
         "n-application-dependency-test"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.5 Méthode : chercher un défaut de liaison",
+        "en": "2.5 Method: looking for a binding defect"
+      }
     },
     {
       "type": "method",
@@ -533,6 +611,14 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Deux tests propres à la variabilité : **absence de variant** (pas de variant non prévu) et **dépendances d’application** (présence interdite, absence interdite : excludes, requires, mandatory, [min..max]).",
+        "en": "Two variability-specific tests: **variant absence** (no unplanned variant) and **application dependency** (forbidden presence, forbidden absence: excludes, requires, mandatory, [min..max])."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-10-qz-04"
     },
@@ -541,6 +627,13 @@
       "text": {
         "fr": "3. Trois niveaux de test, quatre catégories d'exigences",
         "en": "3. Three test levels, four requirement categories"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.1 Les trois niveaux de test",
+        "en": "3.1 The three test levels"
       }
     },
     {
@@ -654,6 +747,13 @@
       "notions": [
         "n-test-levels"
       ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2 Les quatre catégories d’exigences",
+        "en": "3.2 The four requirement categories"
+      }
     },
     {
       "type": "paragraph",
@@ -806,6 +906,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "3.3 Méthode : choisir le test d’une exigence",
+        "en": "3.3 Method: choosing a requirement’s test"
+      }
+    },
+    {
       "type": "method",
       "title": {
         "fr": "Choisir le test d'une exigence d'application",
@@ -908,6 +1015,14 @@
       ]
     },
     {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Quatre catégories d’exigences au niveau système : communes (test de communalité), variables liées (test de variants), adaptées (test de modification), nouvelles (test d’extension). Trois niveaux : unitaire, intégration, système ; on rejoue les tests unitaires de domaine, même pour la partie commune.",
+        "en": "Four requirement categories at system level: common (commonality test), bound variable (variant test), adapted (modification test), new (extension test). Three levels: unit, integration, system; domain unit tests are re-run, even for the common part."
+      }
+    },
+    {
       "type": "checkpoint",
       "quizId": "inf4-10-qz-08"
     },
@@ -916,6 +1031,13 @@
       "text": {
         "fr": "4. Planifier, spécifier, exécuter",
         "en": "4. Plan, specify, execute"
+      }
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.1 Les trois activités : planifier, spécifier, exécuter",
+        "en": "4.1 The three activities: plan, specify, execute"
       }
     },
     {
@@ -1010,6 +1132,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "4.2 Différences avec un système unique",
+        "en": "4.2 Differences from single-system engineering"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Par rapport à un système unique : exigences et application sont créées en partie en domaine, en partie en application. Ce qui est identique au domaine est testé en **rejouant** les tests de domaine ; ce qui est spécifique se teste comme en système unique, avec des cas à créer ou à adapter. S'y ajoute la validation de la **liaison de la variabilité**, que l'on ne fait pas en système unique.",
@@ -1055,6 +1184,14 @@
           "quote": "It is necessary to repeat unit tests even for common functionality as the specific configuration of the application may influence the test results (Section 13.3)."
         }
       ]
+    },
+    {
+      "type": "callout",
+      "variant": "retenir",
+      "text": {
+        "fr": "Trois activités (planification, spécification, exécution) ; différences avec un système unique : tests de liaison de la variabilité en plus, rejeu des tests de domaine, et test approfondi même du code réutilisé.",
+        "en": "Three activities (planning, specification, execution); differences from single-system engineering: variability binding tests in addition, re-running domain tests, and thorough testing even of reused code."
+      }
     },
     {
       "type": "checkpoint",
@@ -1151,6 +1288,13 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "5.2 Le manifeste ne prouve rien ; limites du générateur",
+        "en": "5.2 The manifest proves nothing; the generator’s limits"
+      }
+    },
+    {
       "type": "paragraph",
       "text": {
         "fr": "Le **nom d’une feature dans un manifeste** n’est pas la preuve que son implémentation est présente : on compare les blocs de fonctions. Et le générateur « ne prouve pas la correction de tout JavaScript arbitraire » : **les tests restent nécessaires**. Après une évolution (ajouter ClearCompleted), on fait un **test de non-régression** : les produits existants fonctionnent comme avant.",
@@ -1177,6 +1321,13 @@
         "n-test-behaviour-and-code"
       ],
       "explain": true
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "5.3 Lien avec les quatre catégories d’exigences",
+        "en": "5.3 Link with the four requirement categories"
+      }
     },
     {
       "type": "callout",
