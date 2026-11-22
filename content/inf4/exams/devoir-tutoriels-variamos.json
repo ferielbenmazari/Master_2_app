@@ -1,0 +1,244 @@
+{
+  "id": "inf4-devoir-tutoriels-variamos",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Devoir : exercices pratiques des tutoriels VariaMos 2 à 5 (corrigé)",
+    "en": "Assignment: hands-on exercises of VariaMos tutorials 2 to 5 (solution)"
+  },
+  "kind": "past",
+  "durationMinutes": 60,
+  "source": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Exercices pratiques de fin de tutoriel (VariaMos). Aucun corrigé n’existe dans les fichiers : le corrigé est **proposé**, lu sur les schémas des tutoriels et calculé par énumération exhaustive (les nombres sont vérifiés). Les questionnaires Google Forms des tutoriels ne sont pas accessibles. Réponds d’abord, puis coche les critères atteints.",
+    "en": "Hands-on exercises at the end of the tutorials (VariaMos). No solution exists in the files: the solution is **proposed**, read from the tutorials’ diagrams and computed by exhaustive enumeration (the figures are checked). The tutorials’ Google Forms questionnaires are not accessible. Answer first, then tick the criteria you met."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions du devoir",
+        "en": "Assignment questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Réponds d’abord seule, puis compare avec le corrigé et coche les critères atteints.",
+        "en": "Answer on your own first, then compare with the solution and tick the criteria you met."
+      },
+      "questions": [
+        {
+          "id": "inf4-devoir-tutoriels-variamos-q01",
+          "type": "open",
+          "points": 5,
+          "prompt": {
+            "fr": "**Tutoriel 2, activité proposée : ClothingStores.** Construis dans VariaMos le feature model de la famille ClothingStores à partir de la liste des features et du schéma du tutoriel, puis complète-le avec des attributs qui représentent des exigences de qualité, et avec de nouvelles features ou relations du domaine. Décris le modèle obtenu : relations sous la racine, sous-arbres, groupe, dépendances, attributs.",
+            "en": "**Tutorial 2, proposed activity: ClothingStores.** Build in VariaMos the feature model of the ClothingStores family from the feature list and the tutorial’s diagram, then complete it with attributes representing quality requirements, and with new domain features or relationships. Describe the resulting model: relationships under the root, subtrees, group, dependencies, attributes."
+          },
+          "material": "Liste des features (tutoriel 2, § 4) :\n\n| ID | Feature | Parent | | ID | Feature | Parent |\n|---|---|---|---|---|---|---|\n| F01 | ClothingStores | — | | F14 | User model | F13 |\n| F02 | Basic views | F01 | | F15 | Account | F13 |\n| F03 | Contact us | F01 | | F16 | Login | F13 |\n| F04 | Shipping | F01 | | F17 | Shop | F01 |\n| F05 | Database management | F01 | | F18 | Cart | F17 |\n| F06 | Demo data | F01 | | F19 | Online payment | F17 |\n| F07 | Product | F01 | | F20 | Offline payment | F17 |\n| F08 | Product model | F07 | | F21 | Web management | F01 |\n| F09 | List of products | F07 | | F22 | Basic views | F21 |\n| F10 | Comments | F07 | | F23 | Product management | F21 |\n| F11 | Sharing system | F07 | | F24 | User management | F21 |\n| F12 | Rating | F07 | | F25 | Comment management | F21 |\n| F13 | User | F01 | | | | |",
+          "correction": {
+            "fr": "**Le modèle du schéma** (tutoriel 2, § 4) :\n\n| Partie | Relations |\n|---|---|\n| sous la racine | **obligatoires** : Basic views (F02), Database management, Product ; **optionnelles** : Contact us, Shipping, Demo data, Shop, Web management, User |\n| Product | List of products et Product model **obligatoires** ; Comments, Sharing system, Rating **optionnelles** |\n| Shop | Cart **obligatoire** ; Online payment et Offline payment dans un groupe **[1..2]** (Bundle de type Range, RangeMin 1, RangeMax 2) |\n| User | User model **obligatoire** ; Login et Account **optionnelles** |\n| Web management | Basic views (F22) **obligatoire** ; Comment management, Product management, User management **optionnelles** |\n| dépendances (Includes) | Web management → Login ; Account → Login ; User management → User model ; Comment management → Comments ; Product management → Product model |\n\nLes fragments des quiz 2 (questions 10 et 11) confirment cette lecture : Shop optionnel, Cart obligatoire, [1..2] paiements ; Web management requires Login ; User model obligatoire sous User. Deux features portent le nom « Basic views » : le modèle fourni ensuite les distingue (BasicWebViews, BasicMgmtViews) et retire les espaces des noms.\n\n**Attributs de qualité** : chaque attribut a un **nom**, un **domaine** (Integer, String…), des **valeurs** permises et, si besoin, une **restriction** (par exemple un intervalle). Pour une exigence de qualité, préciser l’**unité** et les **conditions de mesure**, et garder la valeur cible distincte de la preuve que le produit l’atteint. Exemple : un temps de réponse (Integer, en millisecondes, mesuré dans des conditions fixées) sur List of products.\n\n**Nouvelles features ou relations** : la réponse est libre ; une bonne proposition place la feature sous le bon parent, choisit la relation d’après la formulation de l’exigence (« tout produit » → obligatoire, « peut » → optionnelle, « au moins un parmi » → groupe) et ajoute un Includes quand un composant en utilise un autre.\n\n→ Revoir : [ch. 3 « Les feature models », § 3.4 Attributs, features abstraites, cas ClothingStores](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.4) ; [ch. 3 « Les feature models », § 3.3 Lire un fragment de modèle](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3) ; [ch. 3 « Les feature models », § 3.2 Méthode : compter les sélections permises d’un groupe](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2)",
+            "en": "**The diagram’s model** (tutorial 2, § 4):\n\n| Part | Relationships |\n|---|---|\n| under the root | **mandatory**: Basic views (F02), Database management, Product; **optional**: Contact us, Shipping, Demo data, Shop, Web management, User |\n| Product | List of products and Product model **mandatory**; Comments, Sharing system, Rating **optional** |\n| Shop | Cart **mandatory**; Online payment and Offline payment in a **[1..2]** group (Bundle of type Range, RangeMin 1, RangeMax 2) |\n| User | User model **mandatory**; Login and Account **optional** |\n| Web management | Basic views (F22) **mandatory**; Comment management, Product management, User management **optional** |\n| dependencies (Includes) | Web management → Login; Account → Login; User management → User model; Comment management → Comments; Product management → Product model |\n\nThe quiz 2 fragments (questions 10 and 11) confirm this reading: Shop optional, Cart mandatory, [1..2] payments; Web management requires Login; User model mandatory under User. Two features are named “Basic views”: the model provided later tells them apart (BasicWebViews, BasicMgmtViews) and removes spaces from names.\n\n**Quality attributes**: each attribute has a **name**, a **domain** (Integer, String…), allowed **values** and, if needed, a **restriction** (e.g. a range). For a quality requirement, state the **unit** and the **measurement conditions**, and keep the target value separate from the evidence that the product meets it. Example: a response time (Integer, in milliseconds, measured under fixed conditions) on List of products.\n\n**New features or relationships**: the answer is open; a good proposal places the feature under the right parent, chooses the relationship from the requirement’s wording (“every product” → mandatory, “may” → optional, “at least one of” → group) and adds an Includes when a component uses another.\n\n→ Review: [ch. 3 “Feature models”, § 3.4 Attributes, abstract features, the ClothingStores case](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.4); [ch. 3 “Feature models”, § 3.3 Reading a model fragment](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3); [ch. 3 “Feature models”, § 3.2 Method: counting the selections a group allows](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Obligatoires et optionnelles sous la racine (1 pt)",
+              "en": "Mandatory and optional features under the root (1 pt)"
+            },
+            {
+              "fr": "Les quatre sous-arbres (Product, Shop, User, Web management) (1,5 pt)",
+              "en": "The four subtrees (Product, Shop, User, Web management) (1.5 pt)"
+            },
+            {
+              "fr": "Groupe [1..2] des paiements réalisé avec un Bundle Range (1 pt)",
+              "en": "[1..2] payment group built with a Range Bundle (1 pt)"
+            },
+            {
+              "fr": "Les cinq Includes dans le bon sens (1 pt)",
+              "en": "The five Includes in the right direction (1 pt)"
+            },
+            {
+              "fr": "Un attribut de qualité avec domaine, unité et conditions de mesure (0,5 pt)",
+              "en": "A quality attribute with domain, unit and measurement conditions (0.5 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§4",
+              "quote": "Please create the following feature model in VariaMos and complete it with the corresponding attributes needed to represent some quality requirements"
+            },
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 10",
+              "quote": "Shop is optional under the root; Cart is mandatory under Shop; selected Shop requires [1..2] of Online payment and Offline payment."
+            },
+            {
+              "file": "sources-texte/inf4/16-quiz2.md",
+              "loc": "Question 11",
+              "quote": "Use this local model: Web management requires Login; Login is a child of User; User model is mandatory under User."
+            },
+            {
+              "file": "sources-texte/inf4/15-tutorial-2-feature-model-attributs.md",
+              "loc": "§3.5",
+              "quote": "Select the domain of values that can accept the attribute"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-tutoriels-variamos-q02",
+          "type": "open",
+          "points": 5,
+          "prompt": {
+            "fr": "**Tutoriel 3, partie 6.** Avec le modèle fourni (sans attributs), obtiens son code SWI-Prolog et, dans SWISH : (4) trouve une solution ; (5) trouve 30 solutions ; (6) trouve le nombre total de solutions ; (7) teste trois solutions de ton choix ; (8) trouve les features du noyau ; (9) trouve les features variables. Donne les requêtes et les résultats attendus.",
+            "en": "**Tutorial 3, part 6.** With the provided model (without attributes), get its SWI-Prolog code and, in SWISH: (4) find a solution; (5) find 30 solutions; (6) find the total number of solutions; (7) test three solutions of your choice; (8) find the core features; (9) find the variable features. Give the queries and the expected results."
+          },
+          "material": "Modèle fourni pour les tutoriels 3, 4 et 5 (lu sur le schéma, tutoriel 3 p. 22, tutoriel 4 p. 24, tutoriel 5 p. 20) :\n\n- racine **ClothingStores** ;\n- obligatoires sous la racine : Product (abstraite), BasicWebViews, DBManagement, User (abstraite) ;\n- optionnelles sous la racine : Shipping, ContactUs, DemoData, Shop (abstraite), WebManagement (abstraite) ;\n- **Product** : ListOfProducts et ProductModel obligatoires ; Rating, SharingSystem, Comments optionnelles ;\n- **Shop** : Cart obligatoire ; Range (1..2) sur OnlinePayment et OfflinePayment ;\n- **WebManagement** : BasicMgmtViews obligatoire ; CommentMgmt, ProductMgmt, UserMgmt optionnelles ;\n- **User** : UserModel obligatoire ; Login, Account optionnelles ;\n- Includes : WebManagement → Login ; Account → Login ; UserMgmt → UserModel ; CommentMgmt → Comments ; ProductMgmt → ProductModel.",
+          "correction": {
+            "fr": "Obtenir le code : icône « clé et tournevis », onglet **Solver Specific Semantics**, **swi**, **Get swi Model** ; coller le programme dans SWISH.\n\n| Étape | Requête | Résultat attendu |\n|---|---|---|\n| 4. une solution | `program(L), label(L).` | un produit valide, par exemple le plus petit : ClothingStores, Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel |\n| 5. 30 solutions | `findnsols(30, L, (program(L), label(L)), Sols).` | 30 solutions (il en existe beaucoup plus) |\n| 6. nombre total | `findall(_, (program(L), label(L)), Ls), length(Ls, N).` | **N = 3840** |\n| 8–9. noyau et variables | requête `findall` + `transpose` + `maplist` du tutoriel, qui compte les 0 de chaque feature | noyau = features jamais à 0 ; variables = les autres |\n\n**Pourquoi 3840** (calcul par blocs indépendants) :\n- Shipping, ContactUs, DemoData libres : 2³ = **8** ;\n- Rating, SharingSystem libres : 2² = **4** ;\n- Shop absent, ou présent avec Cart et 1 ou 2 paiements (3 cas) : **4** ;\n- bloc WebManagement / Login / Account / Comments : sans WebManagement, Comments libre (2) × (Login, Account) ∈ {00, 10, 11} (3) = 6 ; avec WebManagement, Login imposée, Account, ProductMgmt, UserMgmt libres (8) × (CommentMgmt, Comments) ∈ {00, 01, 11} (3) = 24 ; total **30** ;\n- 8 × 4 × 4 × 30 = **3840**.\n\n**7. Trois tests** (imposer des valeurs avec `#=` avant `label`, sur la liste dans l’ordre exact du prédicat) : le plus petit produit ci-dessus → **true** ; Shop = 1 avec OnlinePayment = 0 et OfflinePayment = 0 → **false** (groupe 1..2) ; WebManagement = 1 avec Login = 0 → **false** (Includes).\n\n**8. Noyau (8 features)** : ClothingStores, Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel. `program(L).` seul en révèle déjà une partie : la racine et les obligatoires en chaîne.\n\n**9. Variables (17)** : Shipping, ContactUs, DemoData, Rating, SharingSystem, Comments, Shop, Cart, OnlinePayment, OfflinePayment, WebManagement, BasicMgmtViews, CommentMgmt, ProductMgmt, UserMgmt, Login, Account.\n\nAttention : avec le schéma du tutoriel 2, où User est optionnelle, on trouverait 4096 solutions. Le modèle fourni pour les tutoriels 3 à 5 rend User obligatoire.\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.3 Trois requêtes sur le modèle d’amorce](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3) ; [ch. 7 « Traduire un modèle en contraintes », § 3.5 Noyau et features variables](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5) ; [ch. 7 « Traduire un modèle en contraintes », § 3.7 Compter sans tout stocker : ce qu’une énumération prouve](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)",
+            "en": "Getting the code: “wrench and screwdriver” icon, **Solver Specific Semantics** tab, **swi**, **Get swi Model**; paste the program into SWISH.\n\n| Step | Query | Expected result |\n|---|---|---|\n| 4. one solution | `program(L), label(L).` | a valid product, e.g. the smallest: ClothingStores, Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel |\n| 5. 30 solutions | `findnsols(30, L, (program(L), label(L)), Sols).` | 30 solutions (many more exist) |\n| 6. total number | `findall(_, (program(L), label(L)), Ls), length(Ls, N).` | **N = 3840** |\n| 8–9. core and variable | the tutorial’s `findall` + `transpose` + `maplist` query, which counts each feature’s zeros | core = features never at 0; variable = the others |\n\n**Why 3840** (calculation by independent blocks):\n- Shipping, ContactUs, DemoData free: 2³ = **8**;\n- Rating, SharingSystem free: 2² = **4**;\n- Shop absent, or present with Cart and 1 or 2 payments (3 cases): **4**;\n- WebManagement / Login / Account / Comments block: without WebManagement, Comments free (2) × (Login, Account) ∈ {00, 10, 11} (3) = 6; with WebManagement, Login forced, Account, ProductMgmt, UserMgmt free (8) × (CommentMgmt, Comments) ∈ {00, 01, 11} (3) = 24; total **30**;\n- 8 × 4 × 4 × 30 = **3840**.\n\n**7. Three tests** (impose values with `#=` before `label`, on the list in the predicate’s exact order): the smallest product above → **true**; Shop = 1 with OnlinePayment = 0 and OfflinePayment = 0 → **false** (1..2 group); WebManagement = 1 with Login = 0 → **false** (Includes).\n\n**8. Core (8 features)**: ClothingStores, Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel. `program(L).` alone already reveals part of it: the root and chained mandatory features.\n\n**9. Variable (17)**: Shipping, ContactUs, DemoData, Rating, SharingSystem, Comments, Shop, Cart, OnlinePayment, OfflinePayment, WebManagement, BasicMgmtViews, CommentMgmt, ProductMgmt, UserMgmt, Login, Account.\n\nNote: with tutorial 2’s diagram, where User is optional, you would get 4096 solutions. The model provided for tutorials 3 to 5 makes User mandatory.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.3 Three queries on the starter model](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3); [ch. 7 “Translating a model into constraints”, § 3.5 Core and variable features](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5); [ch. 7 “Translating a model into constraints”, § 3.7 Counting without storing everything: what an enumeration proves](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Requêtes justes pour une solution, 30 solutions et le total (1 pt)",
+              "en": "Correct queries for one solution, 30 solutions and the total (1 pt)"
+            },
+            {
+              "fr": "3840 solutions, avec le calcul par blocs (1,5 pt)",
+              "en": "3840 solutions, with the block calculation (1.5 pt)"
+            },
+            {
+              "fr": "Trois tests, dont au moins un qui échoue pour une raison expliquée (1 pt)",
+              "en": "Three tests, at least one failing for an explained reason (1 pt)"
+            },
+            {
+              "fr": "Noyau de 8 features et 17 variables (1,5 pt)",
+              "en": "Core of 8 features and 17 variable ones (1.5 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 6",
+              "quote": "Find the total number of solutions to the model."
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 5",
+              "quote": "time((findall(_, (program(L), label(L)), Ls), length(Ls, NSols)))"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 5",
+              "quote": "that encodes how many times it has been bound to 0, i.e., deselected"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-tutoriels-variamos-q03",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "**Tutoriel 4, partie 4.** Avec le même modèle et le solveur « swi » : (2) vérifie que le modèle est satisfiable ; (3) obtiens une configuration ; (4) vérifie si c’est une fausse ligne de produits ; (5) cherche les features mortes ; (6) cherche les features faussement optionnelles. Donne chaque requête JSON et le résultat attendu.",
+            "en": "**Tutorial 4, part 4.** With the same model and the “swi” solver: (2) check that the model is satisfiable; (3) get a configuration; (4) check whether it is a false product line; (5) look for dead features; (6) look for false optional features. Give each JSON query and the expected result."
+          },
+          "material": "Modèle fourni pour les tutoriels 3, 4 et 5 (lu sur le schéma, tutoriel 3 p. 22, tutoriel 4 p. 24, tutoriel 5 p. 20) :\n\n- racine **ClothingStores** ;\n- obligatoires sous la racine : Product (abstraite), BasicWebViews, DBManagement, User (abstraite) ;\n- optionnelles sous la racine : Shipping, ContactUs, DemoData, Shop (abstraite), WebManagement (abstraite) ;\n- **Product** : ListOfProducts et ProductModel obligatoires ; Rating, SharingSystem, Comments optionnelles ;\n- **Shop** : Cart obligatoire ; Range (1..2) sur OnlinePayment et OfflinePayment ;\n- **WebManagement** : BasicMgmtViews obligatoire ; CommentMgmt, ProductMgmt, UserMgmt optionnelles ;\n- **User** : UserModel obligatoire ; Login, Account optionnelles ;\n- Includes : WebManagement → Login ; Account → Login ; UserMgmt → UserModel ; CommentMgmt → Comments ; ProductMgmt → ProductModel.",
+          "correction": {
+            "fr": "| Étape | Requête | Résultat attendu |\n|---|---|---|\n| 2. satisfiable | `{\"solver\":\"swi\",\"operation\":\"sat\"}` | **SAT** : le modèle n’est pas vide |\n| 3. une configuration | `{\"solver\":\"swi\",\"operation\":\"solve\"}` | un produit, visualisable sur le modèle (« Visualize ») |\n| 4. fausse ligne ? | `{\"solver\":\"swi\",\"operation\":\"nsolve\",\"operation_n\":2}` | **deux** solutions : ce n’est pas une fausse ligne (il y a 3840 produits) |\n| 5. mortes | `{\"solver\":\"swi\",\"operation\":\"sat\",\"iterate_over\":[{\"model_object\":\"element\",\"object_type\":[\"AbstractFeature\",\"ConcreteFeature\"],\"with_value\":1}]}` | **aucun** élément en échec : aucune feature morte |\n| 6. faussement optionnelles | même itération avec `\"with_value\": 0` | seules les features du **noyau** échouent (Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel), ce qui est normal : elles sont obligatoires. Aucune feature **optionnelle** n’échoue : **aucune** faussement optionnelle |\n\nEntre deux requêtes, « Reset model configuration state » retire la configuration affichée ; « Clear Query Results » vide seulement l’onglet des résultats. Le tutoriel ne montre pas la requête de l’étape 6 : elle applique la contrainte de vérification du cours, qui force une optionnelle à 0.\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.3 Quelle requête pour quel défaut](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.4 Exemple corrigé : le modèle d’amorce (F4 et F5 mortes)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)",
+            "en": "| Step | Query | Expected result |\n|---|---|---|\n| 2. satisfiable | `{\"solver\":\"swi\",\"operation\":\"sat\"}` | **SAT**: the model is not void |\n| 3. one configuration | `{\"solver\":\"swi\",\"operation\":\"solve\"}` | a product, viewable on the model (“Visualize”) |\n| 4. false line? | `{\"solver\":\"swi\",\"operation\":\"nsolve\",\"operation_n\":2}` | **two** solutions: not a false line (there are 3840 products) |\n| 5. dead | `{\"solver\":\"swi\",\"operation\":\"sat\",\"iterate_over\":[{\"model_object\":\"element\",\"object_type\":[\"AbstractFeature\",\"ConcreteFeature\"],\"with_value\":1}]}` | **no** element fails: no dead feature |\n| 6. false optional | same iteration with `\"with_value\": 0` | only the **core** features fail (Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel), which is normal: they are mandatory. No **optional** feature fails: **no** false optional feature |\n\nBetween two queries, “Reset model configuration state” removes the displayed configuration; “Clear Query Results” only empties the results tab. The tutorial does not show step 6’s query: it applies the course’s verification constraint, which forces an optional feature to 0.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.3 Which query for which defect](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.4 Worked example: the starter model (F4 and F5 dead)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Requêtes sat, solve et nsolve justes, avec leur lecture (1,5 pt)",
+              "en": "Correct sat, solve and nsolve queries, with their reading (1.5 pt)"
+            },
+            {
+              "fr": "Itération with_value 1 : aucune morte (1 pt)",
+              "en": "with_value 1 iteration: no dead feature (1 pt)"
+            },
+            {
+              "fr": "Itération with_value 0 : seules les features du noyau échouent, aucune faussement optionnelle (1,5 pt)",
+              "en": "with_value 0 iteration: only core features fail, no false optional feature (1.5 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 4",
+              "quote": "With \"swi\" check whether there exist false optional features in your model."
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+            },
+            {
+              "file": "ressources/S3__INF4/mardown/7__ple.md",
+              "loc": "Vérification",
+              "quote": "A verification constraint must be created to force that the optional elements take the 0 value"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-tutoriels-variamos-q04",
+          "type": "open",
+          "points": 6,
+          "prompt": {
+            "fr": "**Tutoriel 5, partie 3.** (2 à 4) Avec le modèle de la partie 1 (Range (1..1) sur F2, F3, F4 ; F3 : F7 optionnelle, F10 obligatoire ; F4 : F8 obligatoire, F9 optionnelle ; F1 optionnelle : F6 obligatoire, F5 optionnelle ; F5 includes F9 ; F10 excludes F6), combien de solutions quand on sélectionne F1 ? quand on désélectionne F1 ? quand on sélectionne F4 et désélectionne F3 et F1 ? (6 à 8) Avec le modèle ClothingStores et la contrainte TotFeat (nombre de features concrètes sélectionnées), combien de features compte le produit qui en a le plus ? et celui qui en a le moins ?",
+            "en": "**Tutorial 5, part 3.** (2 to 4) With the part 1 model (Range (1..1) on F2, F3, F4; F3: F7 optional, F10 mandatory; F4: F8 mandatory, F9 optional; F1 optional: F6 mandatory, F5 optional; F5 includes F9; F10 excludes F6), how many solutions when F1 is selected? when F1 is deselected? when F4 is selected and F3 and F1 are deselected? (6 to 8) With the ClothingStores model and the TotFeat constraint (number of selected concrete features), how many features does the product with the most have? and the one with the fewest?"
+          },
+          "correction": {
+            "fr": "**Étapes 2 à 4** (même requête `nsolve` avec un grand `operation_n`, seul le marquage change) :\n\n| Étape | Résultat | Raisonnement |\n|---|---|---|\n| 2. F1 sélectionnée | **4** | F1 impose F6, donc F3 est exclue (F10 excludes F6). Avec F2 : F5 impossible (elle exige F9, donc F4) → 1. Avec F4 : F5 = 0 et F9 libre → 2, F5 = 1 et F9 = 1 → 1 ; soit 3. Total 4. |\n| 3. F1 désélectionnée | **5** | F2 → 1 ; F3 avec F7 libre → 2 ; F4 avec F9 libre → 2. Total 5 (et 4 + 5 = 9, le total du modèle). |\n| 4. F4 sélectionnée, F3 et F1 désélectionnées | **2** | F8 imposée ; seule F9 reste libre. |\n\n**Étapes 6 à 8** : la contrainte `(int (0 10000) TotFeat)` et `(= TotFeat (somme des features concrètes))`, puis `{\"operation\":\"optimize\",\"solver\":\"swi\",\"optimization_target\":\"TotFeat\",\"optimization_direction\":\"max\"}`, puis `\"min\"`.\n- **Maximum : 20** features concrètes. Toutes peuvent être choisies ensemble : Shop avec les deux paiements, WebManagement avec ses trois options (leurs Includes sont satisfaits), Login et Account.\n- **Minimum : 5** : ListOfProducts, ProductModel, BasicWebViews, DBManagement, UserModel. Ce sont les features concrètes du noyau ; toutes les optionnelles sont à 0.\n\nAttention à l’expression du tutoriel : elle cite **ProductMgmt deux fois** et des noms absents du schéma (ListOfProds, ProdModel, UsersHandling). Il faut l’adapter aux noms de ton modèle, chaque feature concrète une seule fois ; recopiée telle quelle, ProductMgmt compterait double et le maximum afficherait 21. Après une optimisation, recharger le modèle et réinsérer les contraintes avant la suivante (version de novembre 2024).\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.3 Exemple corrigé : le modèle du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1 Définir le coût, puis optimiser](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.1 Exemple corrigé : le navigateur du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.1)",
+            "en": "**Steps 2 to 4** (same `nsolve` query with a large `operation_n`, only the marking changes):\n\n| Step | Result | Reasoning |\n|---|---|---|\n| 2. F1 selected | **4** | F1 forces F6, so F3 is excluded (F10 excludes F6). With F2: F5 impossible (it requires F9, hence F4) → 1. With F4: F5 = 0 and F9 free → 2, F5 = 1 and F9 = 1 → 1; i.e. 3. Total 4. |\n| 3. F1 deselected | **5** | F2 → 1; F3 with F7 free → 2; F4 with F9 free → 2. Total 5 (and 4 + 5 = 9, the model’s total). |\n| 4. F4 selected, F3 and F1 deselected | **2** | F8 forced; only F9 remains free. |\n\n**Steps 6 to 8**: the constraint `(int (0 10000) TotFeat)` and `(= TotFeat (sum of the concrete features))`, then `{\"operation\":\"optimize\",\"solver\":\"swi\",\"optimization_target\":\"TotFeat\",\"optimization_direction\":\"max\"}`, then `\"min\"`.\n- **Maximum: 20** concrete features. All can be chosen together: Shop with both payments, WebManagement with its three options (their Includes are satisfied), Login and Account.\n- **Minimum: 5**: ListOfProducts, ProductModel, BasicWebViews, DBManagement, UserModel. These are the core’s concrete features; every optional feature is at 0.\n\nBeware of the tutorial’s expression: it cites **ProductMgmt twice** and names absent from the diagram (ListOfProds, ProdModel, UsersHandling). Adapt it to your model’s names, each concrete feature once; copied as is, ProductMgmt would count double and the maximum would show 21. After an optimisation, reload the model and reinsert the constraints before the next one (November 2024 version).\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.3 Worked example: tutorial 5’s model](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3); [ch. 9 “Configuring, generating and evolving a product”, § 2.1 Define the cost, then optimise](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1); [ch. 9 “Configuring, generating and evolving a product”, § 2.1.1 Worked example: tutorial 5’s browser](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.1)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Étape 2 : 4 solutions, avec le raisonnement (1 pt)",
+              "en": "Step 2: 4 solutions, with the reasoning (1 pt)"
+            },
+            {
+              "fr": "Étape 3 : 5 solutions, avec le raisonnement (1 pt)",
+              "en": "Step 3: 5 solutions, with the reasoning (1 pt)"
+            },
+            {
+              "fr": "Étape 4 : 2 solutions (1 pt)",
+              "en": "Step 4: 2 solutions (1 pt)"
+            },
+            {
+              "fr": "Requête optimize en max puis en min sur TotFeat (1 pt)",
+              "en": "optimize query in max then min on TotFeat (1 pt)"
+            },
+            {
+              "fr": "Maximum 20 et minimum 5, justifiés ; anomalie de l’expression repérée (2 pts)",
+              "en": "Maximum 20 and minimum 5, justified; anomaly in the expression spotted (2 pts)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 3",
+              "quote": "Calculate how many solutions there are when selecting \"F4\" and deselecting both \"F3\" and \"F1\"."
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 3",
+              "quote": "It defines the TotFeat variable as the total number of concrete features that are selected."
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 3",
+              "quote": "BasicMgmtViews + CommentMgmt + ProductMgmt + UsersHandling + UserMgmt + Login +"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 2",
+              "quote": "the attributes resetting capability is not yet implemented in the tool, so please reload your model before the next step and reinsert the arbitrary constraints"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -457,3 +457,302 @@ constraints
 
 'use strict';
 ```
+
+# TaskForge — fichiers de code et de suivi de l’archive (extraits mot pour mot)
+
+## code/taskforge_existant.js.txt (gabarit complet du T2)
+
+```js
+/* TaskForge: code pédagogique original, licence MIT, 2026.
+   Ce fichier est un GABARIT, pas un script à exécuter directement.
+   Les directives //#if sont interprétées par le générateur fourni.
+   Elles représentent des options de construction (pas des options natives de JS).
+   Lisez d'abord les préconditions, puis les zones conditionnelles.
+*/
+// Contrat de construction issu du produit existant :
+// 1. Exactement un stockage : Memory ou LocalStorage.
+// 2. Kiosk implique Memory (politique produit : aucun stockage persistant).
+// 3. Statistics appelle visibleTasks(), fourni par Filters.
+// 4. JSONExport implique LocalStorage (politique commerciale de cette version,
+//    PAS une nécessité technique : une autre politique serait possible).
+
+'use strict';
+document.getElementById('title').textContent=BUILD.name;
+document.getElementById('edition').textContent=BUILD.selected.join(' · ');
+const fields=document.getElementById('fields'),toolbar=document.getElementById('toolbar');
+const list=document.getElementById('list'),notice=document.getElementById('notice');
+let tasks=[];
+function download(name,text,type){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+function button(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.onclick=fn;return b;}
+function validTitle(title){return title.trim().length>0;}
+
+//#if Memory
+function persist(){ /* Variante volatile : rien à conserver. */ }
+//#endif
+//#if LocalStorage
+const storageKey='taskforge-v1:'+BUILD.name;
+try {const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(saved))tasks=saved.filter(t=>t&&typeof t.title==='string'&&typeof t.id==='string'&&typeof t.done==='boolean');}
+catch(e){notice.textContent='Stockage indisponible ou illisible : données conservées uniquement pendant cette session.';}
+function persist(){try{localStorage.setItem(storageKey,JSON.stringify(tasks));}catch(e){notice.textContent='Échec de la sauvegarde locale : exportez vos données si disponible.';}}
+//#endif
+//#if Kiosk
+notice.textContent='Mode kiosque : les tâches disparaissent au rechargement. Ce mode ne sécurise pas à lui seul un poste partagé.';
+//#endif
+//#if Priorities
+const priority=document.createElement('select');priority.id='priority';priority.setAttribute('aria-label','Priorité');
+for(const value of ['Normale','Haute']){const o=document.createElement('option');o.textContent=value;priority.append(o);}fields.append(priority);
+//#endif
+//#if DueDates
+const due=document.createElement('input');due.type='date';due.id='due';due.setAttribute('aria-label','Échéance');fields.append(due);
+//#endif
+//#if Filters
+const filter=document.createElement('select');filter.id='filter';filter.setAttribute('aria-label','Filtrer');
+for(const value of ['Toutes','À faire','Terminées']){const o=document.createElement('option');o.textContent=value;filter.append(o);}toolbar.append(filter);filter.onchange=render;
+function visibleTasks(){return tasks.filter(t=>filter.value==='Toutes'||(filter.value==='Terminées'?t.done:!t.done));}
+//#endif
+//#if Statistics
+function updateStatistics(){const shown=visibleTasks();document.getElementById('stats').textContent=shown.filter(t=>t.done).length+' / '+shown.length+' tâches affichées terminées';}
+//#endif
+//#if CSVExport
+function csvCell(value){let s=String(value??'');if(/^[=+@\-\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
+function exportCSV(){const rows=[['title','done','priority','due'],...tasks.map(t=>[t.title,t.done,t.priority||'',t.due||''])];download('tasks.csv',rows.map(r=>r.map(csvCell).join(',')).join('\r\n'),'text/csv;charset=utf-8');}
+toolbar.append(button('Exporter CSV',exportCSV));
+//#endif
+//#if JSONExport
+function exportJSON(){download('tasks.json',JSON.stringify(tasks,null,2),'application/json');}
+toolbar.append(button('Exporter JSON',exportJSON));
+//#endif
+
+document.getElementById('add').onsubmit=e=>{
+  e.preventDefault();const input=document.getElementById('task');
+  if(!validTitle(input.value))return;
+  const t={id:String(Date.now())+'-'+Math.random().toString(36).slice(2),title:input.value.trim(),done:false};
+//#if Priorities
+  t.priority=priority.value;
+//#endif
+//#if DueDates
+  t.due=due.value;
+//#endif
+  tasks.push(t);input.value='';persist();render();
+};
+function render(){
+  list.replaceChildren();
+//#if Filters
+  const shown=visibleTasks();
+//#else
+  const shown=tasks;
+//#endif
+  for(const t of shown){
+    const li=document.createElement('li'),check=document.createElement('input');check.type='checkbox';check.checked=t.done;check.setAttribute('aria-label','Terminer '+t.title);
+    check.onchange=()=>{t.done=check.checked;persist();render();};li.append(check);
+    const label=document.createElement('span');label.textContent=t.title;label.style.textDecoration=t.done?'line-through':'none';li.append(label);
+//#if Priorities
+    const p=document.createElement('small');p.textContent='Priorité : '+(t.priority||'Normale');li.append(p);
+//#endif
+//#if DueDates
+    const d=document.createElement('small');d.textContent='Échéance : '+(t.due||'aucune');li.append(d);
+//#endif
+    li.append(button('Renommer',()=>{const name=prompt('Nouveau titre',t.title);if(name!==null&&validTitle(name)){t.title=name.trim();persist();render();}}));
+    li.append(button('Supprimer',()=>{tasks=tasks.filter(x=>x.id!==t.id);persist();render();}));list.append(li);
+  }
+//#if Statistics
+  updateStatistics();
+//#endif
+}
+render();
+
+```
+
+## code/taskforge_a_completer.js.txt (gabarit du T3)
+
+Identique au gabarit complet, sauf la fonction exportCSV, laissée à compléter :
+
+```js
+function exportCSV(){
+  // TODO T3 : construire les lignes, utiliser csvCell, puis download.
+  alert('À compléter : export CSV');
+}
+```
+
+## code/moteur.js (générateur)
+
+```js
+/* TaskForge teaching engine, 2026. MIT. Deliberately restricted UVL Boolean subset. */
+(function(root){
+'use strict';
+function formula(text,names){
+  const tokens=text.match(/=>|[!&|()]|[A-Za-z_][A-Za-z0-9_]*/g)||[];
+  if(tokens.join('')!==text.replace(/\s/g,'')) throw Error('Contrainte non prise en charge : '+text);
+  let i=0;
+  function atom(){const t=tokens[i++]; if(t==='!'){const f=atom();return c=>!f(c);} if(t==='('){const f=imp();if(tokens[i++]!==')')throw Error('Parenthèse manquante');return f;}if(!names.includes(t))throw Error('Feature inconnue : '+t);return c=>c.has(t);}
+  function and(){let f=atom();while(tokens[i]==='&'){i++;const a=f,b=atom();f=c=>a(c)&&b(c);}return f;}
+  function or(){let f=and();while(tokens[i]==='|'){i++;const a=f,b=and();f=c=>a(c)||b(c);}return f;}
+  function imp(){const a=or();if(tokens[i]==='=>'){i++;const b=imp();return c=>!a(c)||b(c);}return a;}
+  const f=imp();if(i!==tokens.length)throw Error('Expression invalide : '+text);return f;
+}
+function parse(text){
+  const nodes=[],groups=[],constraints=[];let section='',stack=[],rootName=null;
+  for(const raw of text.split(/\r?\n/)){
+    if(raw.includes('\t'))throw Error('Utiliser des espaces, pas des tabulations.');
+    const line=raw.replace(/\/\/.*$/,'').trimEnd();if(!line.trim())continue;
+    const t=line.trim(),indent=line.length-line.trimStart().length;
+    if(indent===0){if(!['features','constraints'].includes(t))throw Error('Seules les sections features et constraints sont prises en charge.');section=t;stack=[];continue;}
+    if(section==='constraints'){constraints.push(t);continue;}
+    if(section!=='features')throw Error('Section features manquante.');
+    while(stack.length&&stack[stack.length-1].indent>=indent)stack.pop();
+    const parent=stack[stack.length-1];
+    if(['mandatory','optional','alternative','or'].includes(t)){
+      if(!parent||parent.kind!=='feature')throw Error('Un groupe doit appartenir à une feature.');
+      const g={kind:'group',type:t,parent:parent.name,children:[],indent};groups.push(g);stack.push(g);
+    }else{
+      if(!/^[A-Za-z_][A-Za-z0-9_]*$/.test(t)||nodes.some(n=>n.name===t))throw Error('Nom invalide ou répété : '+t);
+      if(parent&&parent.kind!=='group')throw Error('Un enfant doit être placé dans un groupe.');
+      if(!parent&&rootName)throw Error('Une seule racine attendue.');
+      const n={kind:'feature',name:t,parent:parent?parent.parent:null,group:parent?parent.type:null,indent};
+      if(parent)parent.children.push(t);else rootName=t;nodes.push(n);stack.push(n);
+    }
+  }
+  if(!rootName)throw Error('Modèle vide.');
+  if(groups.some(g=>!g.children.length))throw Error('Groupe vide.');
+  const names=nodes.map(n=>n.name),rules=constraints.map(t=>({text:t,test:formula(t,names)}));
+  function errors(selected){
+    const c=new Set(selected),e=[];
+    for(const x of c)if(!names.includes(x))e.push('Feature inconnue : '+x);
+    if(!c.has(rootName))e.push('Racine absente : '+rootName);
+    for(const n of nodes)if(n.parent&&c.has(n.name)&&!c.has(n.parent))e.push(n.name+' nécessite son parent '+n.parent);
+    for(const g of groups)if(c.has(g.parent)){
+      const k=g.children.filter(x=>c.has(x)).length;
+      if(g.type==='mandatory'&&k!==g.children.length)e.push('Enfants obligatoires manquants de '+g.parent);
+      if(g.type==='alternative'&&k!==1)e.push('Choisir exactement un enfant de '+g.parent);
+      if(g.type==='or'&&k<1)e.push('Choisir au moins un enfant de '+g.parent);
+    }
+    for(const r of rules)if(!r.test(c))e.push('Contrainte violée : '+r.text);
+    return e;
+  }
+  function all(required=[],excluded=[]){
+    if(names.length>18)throw Error('Secours limité à 18 features ; utiliser FlamapyIDE.');
+    for(const n of required.concat(excluded))if(!names.includes(n))throw Error('Feature inconnue dans la sélection partielle : '+n);
+    const out=[];for(let mask=0;mask<2**names.length;mask++){
+      const c=names.filter((n,j)=>mask&(2**j));
+      if(required.every(n=>c.includes(n))&&excluded.every(n=>!c.includes(n))&&!errors(c).length)out.push(c);
+    }return out;
+  }
+  function analysis(){const cs=all();return {count:cs.length,satisfiable:cs.length>0,dead:cs.length?names.filter(n=>cs.every(c=>!c.includes(n))):null,core:cs.length?names.filter(n=>cs.every(c=>c.includes(n))):null,falseOptional:cs.length?nodes.filter(n=>n.group==='optional'&&!cs.some(c=>c.includes(n.parent)&&!c.includes(n.name))).map(n=>n.name):null};}
+  return {names,nodes,groups,constraints,errors,all,analysis};
+}
+function preprocess(source,selected,known){
+  const c=new Set(selected),stack=[],out=[];let active=true;
+  for(const line of source.split(/\r?\n/)){
+    const m=line.match(/^\s*\/\/#(if|else|endif)(?:\s+(\w+))?\s*$/);
+    if(!m){if(/^\s*\/\/#/.test(line))throw Error('Directive invalide : '+line);if(active)out.push(line);continue;}
+    if(m[1]==='if'){
+      if(!known.includes(m[2]))throw Error('Option du code absente du modèle : '+m[2]);
+      stack.push({parent:active,cond:c.has(m[2]),otherwise:false});active=active&&c.has(m[2]);
+    }else if(m[1]==='else'){
+      const s=stack[stack.length-1];if(!s||s.otherwise)throw Error('else mal placé');s.otherwise=true;active=s.parent&&!s.cond;
+    }else{const s=stack.pop();if(!s)throw Error('endif mal placé');active=s.parent;}
+  }
+  if(stack.length)throw Error('endif manquant');return out.join('\n');
+}
+function build(modelText,config,source){
+  const m=parse(modelText);
+  if(!config||typeof config.name!=='string'||!config.name.trim()||!Array.isArray(config.selected))throw Error('Attendu : {name: "Nom", selected: ["TaskForge", ...]}');
+  if(config.selected.some(x=>typeof x!=='string')||new Set(config.selected).size!==config.selected.length)throw Error('Features répétées ou invalides.');
+  const e=m.errors(config.selected);if(e.length)throw Error(e.join('\n'));
+  const code=preprocess(source,config.selected,m.names);
+  const data=JSON.stringify({name:config.name,selected:config.selected}).replace(/</g,'\\u003c');
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+  return '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>'+esc(config.name)+'</title><style>body{font:17px system-ui;max-width:900px;margin:35px auto;padding:20px;background:#f6f8fc;color:#162a42}button,input,select{font:inherit;padding:8px;margin:4px}li{padding:10px;border-bottom:1px solid #ccd}button{cursor:pointer}small{display:block;color:#52647a}#notice{color:#b43b16}#list{padding-left:0;list-style:none}</style><h1 id="title"></h1><small id="edition"></small><p id="notice" role="status"></p><form id="add"><input id="task" placeholder="Nouvelle tâche" aria-label="Nouvelle tâche" required maxlength="150"><span id="fields"></span><button>Ajouter</button></form><section id="toolbar"></section><p id="stats"></p><ul id="list"></ul><script>const BUILD='+data+';\n'+code.replace(/<\/script/gi,'<\\/script')+'\n</script></html>';
+}
+const api={parse,preprocess,build};if(typeof module!=='undefined')module.exports=api;root.TaskForgeEngine=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+```
+
+## configurations/exemple_minimal.json
+
+```json
+{
+  "name": "Mon produit",
+  "selected": [
+    "TaskForge",
+    "TaskManagement",
+    "Storage",
+    "Memory"
+  ]
+}
+```
+
+## configurations/partielle.json
+
+```json
+{
+  "required": [
+    "Statistics"
+  ],
+  "excluded": [
+    "LocalStorage"
+  ]
+}
+```
+
+## produits_exemples/kiosque.html (manifeste de construction)
+
+```js
+const BUILD={"name":"TaskForge Kiosque","selected":["TaskForge","TaskManagement","Storage","Memory","Kiosk","Filters"]};
+```
+
+## produits_exemples/etudiant.html (manifeste de construction)
+
+```js
+const BUILD={"name":"TaskForge Etudiant","selected":["TaskForge","TaskManagement","Storage","LocalStorage","Priorities","DueDates"]};
+```
+
+## produits_exemples/pro.html (manifeste de construction)
+
+```js
+const BUILD={"name":"TaskForge Pro","selected":["TaskForge","TaskManagement","Storage","LocalStorage","Priorities","DueDates","Filters","Statistics","CSVExport","JSONExport"]};
+```
+
+## MATRICE_TESTS.csv
+
+```csv
+ID,Produit,Action,Resultat_attendu,Resultat_observe,Succes,Preuve
+T01,Tous,Creer renommer terminer supprimer une tache,Actions possibles,,,
+T02,Tous,Ajouter un titre compose uniquement d espaces,Aucun ajout,,,
+T03,Kiosque,Ajouter puis recharger,Aucune tache conservee,,,
+T04,Etudiant et Pro,Ajouter puis recharger,Tache conservee ou echec explicite de permission a signaler,,,
+T05,Etudiant et Pro,Choisir priorite et echeance,Valeurs affichees et conservees,,,
+T06,Pro,Terminer une tache et filtrer,Liste et compteur coherents,,,
+T07,Pro,Exporter CSV avec virgule et guillemets,Cellules correctement encodees,,,
+T08,Pro,Exporter JSON,Fichier analysable avec les bonnes taches,,,
+T09,Generateur,Choisir Memory et LocalStorage,Generation refusee,,,
+T10,Generateur,Choisir JSONExport et Kiosk,Generation refusee,,,
+T11,Kiosque,Rechercher les fonctions d export dans le code,Implementations absentes,,,
+T12,Etudiant et Pro v3,Supprimer les terminees,Taches non terminees preservees et sauvegarde actualisee,,,
+T13,Kiosque v3,Rechercher ClearCompleted,Pas de bouton ni de fonction,,,
+```
+
+## TRACEABILITE.csv
+
+```csv
+Exigence,Feature,Type_de_variabilite,Bloc_ou_fonction,Dependance,Justification,Test
+R01,TaskManagement,Obligatoire,onSubmit et render,Socle,Exigence commune,CRUD
+R02,Storage,Obligatoire avec groupe alternatif,persist,Memory XOR LocalStorage,Architecture,Selection invalide refusee
+```
+
+## RENDUS.csv
+
+```csv
+Tutoriel,Element,Attendu,Realise,Commentaire
+T1,Modele,taskforge_v1.uvl,,
+T1,Diagnostics,3 modeles corriges et justifications,,
+T2,Retro-ingenierie,taskforge_v2.uvl et matrice features-code-tests,,
+T3,Modele final,taskforge_v3.uvl,,
+T3,Gabarit,Code commun avec CSV et ClearCompleted,,
+T3,Configurations,3 fichiers JSON,,
+T3,Produits,3 HTML autonomes,,
+T3,Reproductibilite,3 dossiers de construction JSON,,
+T3,Tests,Matrice renseignee et limites,,
+```
+

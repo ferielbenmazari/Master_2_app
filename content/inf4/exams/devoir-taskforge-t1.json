@@ -1,0 +1,335 @@
+{
+  "id": "inf4-devoir-taskforge-t1",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Devoir TaskForge T1 : créer, vérifier et corriger un modèle (corrigé)",
+    "en": "TaskForge T1 assignment: build, check and fix a model (solution)"
+  },
+  "kind": "past",
+  "durationMinutes": 60,
+  "source": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du TP du prof, reprises de l’énoncé de l’intranet. Aucun corrigé n’existe dans les fichiers : le corrigé est **proposé**, rédigé à partir du kit TaskForge et du cours, et les nombres de produits ont été vérifiés par énumération. Réponds d’abord, puis coche les critères atteints pour obtenir ta note.",
+    "en": "Questions from the teacher’s lab, taken from the intranet statement. No solution exists in the files: the solution is **proposed**, written from the TaskForge kit and the course, and product counts were checked by enumeration. Answer first, then tick the criteria you met to get your mark."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions du devoir",
+        "en": "Assignment questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Réponds d’abord seule, puis compare avec le corrigé et coche les critères atteints.",
+        "en": "Answer on your own first, then compare with the solution and tick the criteria you met."
+      },
+      "questions": [
+        {
+          "id": "inf4-devoir-taskforge-t1-q01",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Exigences de la version 1.** Crée une table avec : ID d’exigence, feature(s), obligatoire / optionnel / alternative, contrainte et justification. Utilise exactement les identifiants des exigences, ainsi que TaskForge, TaskManagement et Storage.",
+            "en": "**Version 1 requirements.** Build a table with: requirement ID, feature(s), mandatory / optional / alternative, constraint and justification. Use exactly the identifiers of the requirements, plus TaskForge, TaskManagement and Storage."
+          },
+          "material": "Exigences R01 à R11 (énoncé du T1) :\n\n| ID | Exigence |\n|---|---|\n| R01 | Tout produit gère les tâches : créer, renommer, terminer et supprimer. |\n| R02 | Tout produit utilise exactement un stockage : Memory ou LocalStorage. |\n| R03 | Memory conserve les tâches seulement durant la session de la page ; recharger les efface. |\n| R04 | LocalStorage permet de retrouver les tâches après rechargement, si le navigateur autorise ce stockage. |\n| R05 | Priorities ajoute une priorité normale ou haute. |\n| R06 | DueDates ajoute une échéance. |\n| R07 | Filters permet d’afficher toutes les tâches, celles à faire ou celles terminées. |\n| R08 | CSVExport ajoute l’export CSV. |\n| R09 | Statistics affiche un compteur sur les tâches actuellement filtrées ; son composant nécessite Filters. |\n| R10 | Kiosk signale un usage sur poste partagé et impose Memory. |\n| R11 | Priorities, DueDates, Filters, CSVExport, Statistics et Kiosk sont optionnels, sous réserve des contraintes R09 et R10. |",
+          "correction": {
+            "fr": "| ID | Feature(s) | Variabilité | Contrainte | Justification |\n|---|---|---|---|---|\n| R01 | TaskManagement | obligatoire (enfant de TaskForge) | — | « Tout produit » : commun à toute la famille |\n| R02 | Storage ; Memory, LocalStorage | Storage obligatoire ; groupe **alternatif** | exactement un des deux | « Tout produit » (Storage) + « exactement un » (alternative) |\n| R03 | Memory | variant de l’alternative | — | comportement de Memory (à tester au T3), pas une contrainte du modèle |\n| R04 | LocalStorage | variant de l’alternative | — | comportement de LocalStorage, sous réserve du navigateur |\n| R05 | Priorities | optionnelle | — | « ajoute » une capacité ; R11 |\n| R06 | DueDates | optionnelle | — | R11 |\n| R07 | Filters | optionnelle | — | R11 |\n| R08 | CSVExport | optionnelle | — | R11 |\n| R09 | Statistics | optionnelle | `Statistics => Filters` | « son composant nécessite Filters » |\n| R10 | Kiosk | optionnelle | `Kiosk => Memory` | « impose Memory » |\n| R11 | les six options | optionnelles | sous réserve de R09 et R10 | liste explicite des options |\n\nLes pièges : « Tout produit » donne un **obligatoire** ; « exactement un … ou … » donne un groupe **alternatif** (pas deux obligatoires) ; « nécessite » et « impose » donnent une **implication** dont le sens compte. R03 et R04 décrivent un comportement : ils ne se traduisent pas en contrainte, ils se **testent** (Kiosque : aucune tâche après rechargement ; Étudiant et Pro : tâche conservée). Garder les identifiants exacts permettra de relier modèle et code au T2.\n\n→ Revoir : [ch. 6 « Éliciter et spécifier les exigences d’une ligne », § 3.1 Les étapes](#/matiere/inf4/chapitre/inf4-09-strategies-exigences-pl/lire?partie=3.1) ; [ch. 3 « Les feature models », § 1.2 Le tableau de la notation](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=1.2)",
+            "en": "| ID | Feature(s) | Variability | Constraint | Justification |\n|---|---|---|---|---|\n| R01 | TaskManagement | mandatory (child of TaskForge) | — | “Every product”: common to the whole family |\n| R02 | Storage; Memory, LocalStorage | Storage mandatory; **alternative** group | exactly one of the two | “Every product” (Storage) + “exactly one” (alternative) |\n| R03 | Memory | variant of the alternative | — | Memory’s behaviour (tested in T3), not a model constraint |\n| R04 | LocalStorage | variant of the alternative | — | LocalStorage’s behaviour, subject to the browser |\n| R05 | Priorities | optional | — | “adds” a capability; R11 |\n| R06 | DueDates | optional | — | R11 |\n| R07 | Filters | optional | — | R11 |\n| R08 | CSVExport | optional | — | R11 |\n| R09 | Statistics | optional | `Statistics => Filters` | “its component requires Filters” |\n| R10 | Kiosk | optional | `Kiosk => Memory` | “imposes Memory” |\n| R11 | the six options | optional | subject to R09 and R10 | explicit list of options |\n\nTraps: “Every product” gives a **mandatory** feature; “exactly one … or …” gives an **alternative** group (not two mandatory ones); “requires” and “imposes” give an **implication** whose direction matters. R03 and R04 describe behaviour: they are not translated into constraints, they are **tested** (Kiosque: no task after reload; Étudiant and Pro: task kept). Keeping the exact identifiers will let you link model and code in T2.\n\n→ Review: [ch. 6 “Eliciting and specifying a product line’s requirements”, § 3.1 The steps](#/matiere/inf4/chapitre/inf4-09-strategies-exigences-pl/lire?partie=3.1); [ch. 3 “Feature models”, § 1.2 The notation table](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=1.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "R02 traduite en Storage obligatoire avec un groupe alternatif Memory / LocalStorage (1 pt)",
+              "en": "R02 translated as mandatory Storage with an alternative Memory / LocalStorage group (1 pt)"
+            },
+            {
+              "fr": "R09 et R10 traduites en implications dans le bon sens : Statistics => Filters, Kiosk => Memory (1 pt)",
+              "en": "R09 and R10 translated as implications in the right direction: Statistics => Filters, Kiosk => Memory (1 pt)"
+            },
+            {
+              "fr": "Six options optionnelles, identifiants exacts, R03 et R04 lus comme des comportements à tester (1 pt)",
+              "en": "Six optional options, exact identifiers, R03 and R04 read as behaviours to test (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "Créez une table avec ID d’exigence, feature(s), obligatoire/optionnel/alternative, contrainte et justification."
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "R02 \tTout produit utilise exactement un stockage : Memory ou LocalStorage."
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "La stabilité des identifiants permettra de relier modèle et code."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t1-q02",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Construire le modèle UVL.** À partir du squelette, ajoute Storage comme enfant obligatoire de TaskForge, puis son groupe alternatif ; ajoute les six options ; écris deux implications dans la section `constraints`. Écris le fichier taskforge_v1.uvl complet. Point de contrôle : combien de features compte-t-il ?",
+            "en": "**Build the UVL model.** Starting from the skeleton, add Storage as a mandatory child of TaskForge, then its alternative group; add the six options; write two implications in the `constraints` section. Write the full taskforge_v1.uvl file. Checkpoint: how many features does it have?"
+          },
+          "material": "Squelette fourni (modeles/00_squelette.uvl) :\n\n```\nfeatures\n    TaskForge\n        mandatory\n            TaskManagement\n```\n\nExemple de syntaxe de l’énoncé, sur un autre domaine :\n\n```\nfeatures\n    Lecteur\n        mandatory\n            Format\n                alternative\n                    Texte\n                    HTML\n        optional\n            Images\nconstraints\n    Images => HTML\n```",
+          "correction": {
+            "fr": "```\nfeatures\n    TaskForge\n        mandatory\n            TaskManagement\n            Storage\n                alternative\n                    Memory\n                    LocalStorage\n        optional\n            Priorities\n            DueDates\n            Filters\n            CSVExport\n            Statistics\n            Kiosk\nconstraints\n    Kiosk => Memory\n    Statistics => Filters\n```\n\n**11 features** en comptant la racine et les regroupements : TaskForge, TaskManagement, Storage, Memory, LocalStorage et les six options. L’arbre a un groupe alternatif de deux enfants et six features optionnelles au niveau de la racine : c’est exactement le point de contrôle de l’énoncé, et c’est le « Reference model: TaskForge v1 » du QCM T1.\n\nÀ respecter : un enfant est toujours placé dans un groupe (`mandatory`, `optional`, `alternative`) ; indentation de **quatre espaces**, jamais de tabulation (le générateur refuse : « Utiliser des espaces, pas des tabulations. ») ; pas d’espace dans les noms. Les contraintes portent sur des noms déclarés dans l’arbre.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.1 Du modèle au produit : valider, puis générer](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1) ; [ch. 3 « Les feature models », § 1.2 Le tableau de la notation](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=1.2)",
+            "en": "```\nfeatures\n    TaskForge\n        mandatory\n            TaskManagement\n            Storage\n                alternative\n                    Memory\n                    LocalStorage\n        optional\n            Priorities\n            DueDates\n            Filters\n            CSVExport\n            Statistics\n            Kiosk\nconstraints\n    Kiosk => Memory\n    Statistics => Filters\n```\n\n**11 features** counting the root and the groupings: TaskForge, TaskManagement, Storage, Memory, LocalStorage and the six options. The tree has one alternative group of two children and six optional features at root level: exactly the statement’s checkpoint, and the “Reference model: TaskForge v1” of the T1 quiz.\n\nRules: a child is always placed in a group (`mandatory`, `optional`, `alternative`); **four-space** indentation, never a tab (the generator refuses: “Utiliser des espaces, pas des tabulations.”); no spaces in names. Constraints refer to names declared in the tree.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.1 From model to product: validate, then generate](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1); [ch. 3 “Feature models”, § 1.2 The notation table](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=1.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Storage obligatoire avec Memory et LocalStorage en `alternative`, six options sous `optional` (1,5 pt)",
+              "en": "Mandatory Storage with Memory and LocalStorage under `alternative`, six options under `optional` (1.5 pt)"
+            },
+            {
+              "fr": "Les deux contraintes écrites dans le bon sens (1 pt)",
+              "en": "Both constraints written in the right direction (1 pt)"
+            },
+            {
+              "fr": "11 features annoncées ; indentation par espaces (0,5 pt)",
+              "en": "11 features stated; space indentation (0.5 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§2",
+              "quote": "Ajoutez Storage comme enfant obligatoire de TaskForge, puis son groupe alternatif."
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§2",
+              "quote": "Point de contrôle : votre modèle possède 11 features en comptant la racine et les regroupements."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/moteur.js",
+              "quote": "if(raw.includes('\\t'))throw Error('Utiliser des espaces, pas des tabulations.');"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t1-q03",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Réponds aux trois questions de l’énoncé :\n1. Pourquoi Storage est-il obligatoire mais ses enfants ne sont-ils pas tous obligatoires ?\n2. Pourquoi `Statistics => Filters` n’est-il pas équivalent à `Filters => Statistics` ?\n3. Un enfant optionnel peut-il être sélectionné si son parent est absent ?",
+            "en": "Answer the statement’s three questions:\n1. Why is Storage mandatory while its children are not all mandatory?\n2. Why is `Statistics => Filters` not equivalent to `Filters => Statistics`?\n3. Can an optional child be selected if its parent is absent?"
+          },
+          "correction": {
+            "fr": "1. **Storage** est obligatoire parce que « tout produit utilise » un stockage (R02) : le regroupement est présent partout. Mais R02 dit « **exactement un** » : ses enfants forment un groupe **alternatif** (un seul parmi Memory et LocalStorage). S’ils étaient obligatoires tous les deux, chaque produit aurait les deux stockages, et donc deux `persist()` concurrents : R02 serait violée.\n2. `Statistics => Filters` dit : si Statistics est choisie, Filters l’est aussi (et, par contraposée, sans Filters pas de Statistics). La réciproque `Filters => Statistics` imposerait le compteur à **tout** produit qui filtre, alors que R07 et R11 font de Filters une option indépendante : un produit avec Filters sans Statistics (le Kiosque) est valide. Une implication n’est pas symétrique.\n3. **Non.** Un enfant sélectionné exige son parent : le générateur refuse une liste où « X nécessite son parent ». Exclure un parent optionnel exclut tout son sous-arbre.\n\n→ Revoir : [ch. 3 « Les feature models », § 3.1 Ce que chaque relation permet de conclure](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1) ; [ch. 3 « Les feature models », § 3.3 Lire un fragment de modèle](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3)",
+            "en": "1. **Storage** is mandatory because “every product uses” a storage (R02): the grouping is everywhere. But R02 says “**exactly one**”: its children form an **alternative** group (one of Memory and LocalStorage). If both were mandatory, every product would have both storages, hence two competing `persist()`: R02 would be violated.\n2. `Statistics => Filters` says: if Statistics is chosen, Filters is too (and, by contrapositive, no Filters means no Statistics). The converse `Filters => Statistics` would force the counter on **every** product that filters, whereas R07 and R11 make Filters an independent option: a product with Filters and no Statistics (Kiosque) is valid. An implication is not symmetric.\n3. **No.** A selected child requires its parent: the generator rejects a list where “X needs its parent”. Excluding an optional parent excludes its whole subtree.\n\n→ Review: [ch. 3 “Feature models”, § 3.1 What each relationship lets you conclude](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1); [ch. 3 “Feature models”, § 3.3 Reading a model fragment](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1. Storage obligatoire (R02 « tout produit ») et enfants en alternative (« exactement un ») (1 pt)",
+              "en": "1. Storage mandatory (R02 “every product”) and children in an alternative (“exactly one”) (1 pt)"
+            },
+            {
+              "fr": "2. Implication non symétrique, avec un contre-exemple (Filters sans Statistics) (1 pt)",
+              "en": "2. Non-symmetric implication, with a counter-example (Filters without Statistics) (1 pt)"
+            },
+            {
+              "fr": "3. Non : un enfant sélectionné exige son parent (1 pt)",
+              "en": "3. No: a selected child requires its parent (1 pt)"
+            }
+          ],
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§2",
+              "quote": "pourquoi Storage est-il obligatoire mais ses enfants ne sont-ils pas tous obligatoires ?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/moteur.js",
+              "quote": "for(const n of nodes)if(n.parent&&c.has(n.name)&&!c.has(n.parent))e.push(n.name+' nécessite son parent '+n.parent);"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "R11 \tPriorities, DueDates, Filters, CSVExport, Statistics et Kiosk sont optionnels, sous réserve des contraintes R09 et R10."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t1-q04",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "**Vérifier le modèle.** Avant de lancer les opérations, prédis : (1) au moins un produit existe-t-il ? (2) CSVExport est-il réalisable ? (3) Filters est-il présent dans tous les produits ? (4) quels éléments forment le socle ? Puis donne le résultat attendu des cinq analyses (Satisfiable, Number of configurations, Dead features, Core features, False optional features), avec le calcul du nombre de configurations.",
+            "en": "**Check the model.** Before running the operations, predict: (1) does at least one product exist? (2) is CSVExport feasible? (3) is Filters present in every product? (4) which elements form the core? Then give the expected result of the five analyses (Satisfiable, Number of configurations, Dead features, Core features, False optional features), with the calculation of the number of configurations."
+          },
+          "correction": {
+            "fr": "**Prédictions**\n1. Oui : par exemple la configuration minimale {TaskForge, TaskManagement, Storage, Memory}.\n2. Oui : aucune contrainte ne touche CSVExport ; elle se combine avec l’un ou l’autre stockage.\n3. Non : la configuration minimale n’a pas Filters. Filters n’est imposée que par Statistics.\n4. Le socle (noyau) : **TaskForge, TaskManagement, Storage**.\n\n**Les cinq analyses**\n\n| Analyse | Résultat |\n|---|---|\n| Satisfiable | oui |\n| Number of configurations | **72** |\n| Dead features | aucune |\n| Core features | TaskForge, TaskManagement, Storage |\n| False optional features | aucune |\n\n**Calcul de 72**, par blocs indépendants :\n- Priorities, DueDates, CSVExport sont libres : 2³ = **8** ;\n- (Filters, Statistics) : (0,0), (1,0), (1,1) → **3** (`Statistics => Filters` exclut Statistics seule) ;\n- (stockage, Kiosk) : Memory, Memory + Kiosk, LocalStorage → **3** (`Kiosk => Memory` exclut LocalStorage + Kiosk) ;\n- 8 × 3 × 3 = **72**.\n\nC’est ce que l’énoncé attend : « plusieurs produits, aucune feature morte » et aucune feature annoncée optionnelle rendue implicitement obligatoire. Note l’outil qui a produit chaque résultat (FlamapyIDE ou l’analyseur de l’atelier), et ne confonds pas une estimation structurelle avec le **dénombrement exact** par solveur.\n\n→ Revoir : [ch. 3 « Les feature models », § 2.1 Les étapes](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=2.1) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.3 L’effet d’une évolution sur le nombre de configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3)",
+            "en": "**Predictions**\n1. Yes: for instance the minimal configuration {TaskForge, TaskManagement, Storage, Memory}.\n2. Yes: no constraint touches CSVExport; it combines with either storage.\n3. No: the minimal configuration has no Filters. Filters is only forced by Statistics.\n4. The core: **TaskForge, TaskManagement, Storage**.\n\n**The five analyses**\n\n| Analysis | Result |\n|---|---|\n| Satisfiable | yes |\n| Number of configurations | **72** |\n| Dead features | none |\n| Core features | TaskForge, TaskManagement, Storage |\n| False optional features | none |\n\n**Calculating 72**, by independent blocks:\n- Priorities, DueDates, CSVExport are free: 2³ = **8**;\n- (Filters, Statistics): (0,0), (1,0), (1,1) → **3** (`Statistics => Filters` rules out Statistics alone);\n- (storage, Kiosk): Memory, Memory + Kiosk, LocalStorage → **3** (`Kiosk => Memory` rules out LocalStorage + Kiosk);\n- 8 × 3 × 3 = **72**.\n\nThat is what the statement expects: “several products, no dead feature” and no feature announced as optional made implicitly mandatory. Record which tool produced each result (FlamapyIDE or the workshop analyser), and do not confuse a structural estimate with the **exact count** by a solver.\n\n→ Review: [ch. 3 “Feature models”, § 2.1 The steps](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=2.1); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3); [ch. 9 “Configuring, generating and evolving a product”, § 3.3 The effect of an evolution on the number of configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Les quatre prédictions justes, avec un exemple ou une raison (1 pt)",
+              "en": "The four predictions right, with an example or a reason (1 pt)"
+            },
+            {
+              "fr": "72 configurations, calcul par blocs 8 × 3 × 3 expliqué (1,5 pt)",
+              "en": "72 configurations, block calculation 8 × 3 × 3 explained (1.5 pt)"
+            },
+            {
+              "fr": "Aucune morte, aucune faussement optionnelle, noyau TaskForge / TaskManagement / Storage (1,5 pt)",
+              "en": "No dead, no false optional, core TaskForge / TaskManagement / Storage (1.5 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§3",
+              "quote": "Le modèle attendu doit admettre plusieurs produits, ne comporter aucune feature morte et ne pas rendre implicitement obligatoire une feature annoncée comme optionnelle."
+            },
+            {
+              "file": "sources-texte/inf4/25-enonce-taskforge.md",
+              "loc": "Prise en main de FlamapyIDE",
+              "quote": "Ne confondez pas estimation structurelle et dénombrement exact par solveur."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t1-q05",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "Vérifie les quatre sélections suivantes. Pour chacune, ajoute la racine et les parents obligatoires, et considère les options non citées comme exclues.\n\n| Sélection | Question |\n|---|---|\n| Memory, Kiosk, Filters | Est-elle valide ? |\n| LocalStorage, Kiosk | Quelle contrainte décide ? |\n| Memory, Statistics | Quelle dépendance manque ? |\n| Memory, LocalStorage | Quel groupe décide ? |",
+            "en": "Check the four selections below. For each, add the root and the mandatory parents, and treat the options not listed as excluded.\n\n| Selection | Question |\n|---|---|\n| Memory, Kiosk, Filters | Is it valid? |\n| LocalStorage, Kiosk | Which constraint decides? |\n| Memory, Statistics | Which dependency is missing? |\n| Memory, LocalStorage | Which group decides? |"
+          },
+          "correction": {
+            "fr": "| Sélection (avec TaskForge, TaskManagement, Storage) | Verdict |\n|---|---|\n| Memory, Kiosk, Filters | **valide** : un seul stockage, `Kiosk => Memory` respectée, Statistics absente donc `Statistics => Filters` sans objet. C’est la commande Kiosque du T3. |\n| LocalStorage, Kiosk | **invalide** : `Kiosk => Memory` décide ; Kiosk impose Memory, et le groupe alternatif interdit Memory avec LocalStorage. |\n| Memory, Statistics | **invalide** : il manque **Filters** (`Statistics => Filters`). |\n| Memory, LocalStorage | **invalide** : le groupe **alternatif** de Storage impose exactement un stockage. |\n\nMéthode : compléter la liste (racine, parents obligatoires), exclure le reste, puis tester les règles une par une : groupes, puis contraintes.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.4 Deuxième exemple : compléter une demande TaskForge](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4)",
+            "en": "| Selection (with TaskForge, TaskManagement, Storage) | Verdict |\n|---|---|\n| Memory, Kiosk, Filters | **valid**: one storage, `Kiosk => Memory` holds, Statistics absent so `Statistics => Filters` does not apply. It is T3’s Kiosque order. |\n| LocalStorage, Kiosk | **invalid**: `Kiosk => Memory` decides; Kiosk forces Memory, and the alternative group forbids Memory with LocalStorage. |\n| Memory, Statistics | **invalid**: **Filters** is missing (`Statistics => Filters`). |\n| Memory, LocalStorage | **invalid**: Storage’s **alternative** group requires exactly one storage. |\n\nMethod: complete the list (root, mandatory parents), exclude the rest, then test the rules one by one: groups, then constraints.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2); [ch. 9 “Configuring, generating and evolving a product”, § 1.4 Second example: completing a TaskForge request](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Memory, Kiosk, Filters : valide, justifié (0,75 pt)",
+              "en": "Memory, Kiosk, Filters: valid, justified (0.75 pt)"
+            },
+            {
+              "fr": "LocalStorage, Kiosk : Kiosk => Memory (0,75 pt)",
+              "en": "LocalStorage, Kiosk: Kiosk => Memory (0.75 pt)"
+            },
+            {
+              "fr": "Memory, Statistics : il manque Filters (0,75 pt)",
+              "en": "Memory, Statistics: Filters is missing (0.75 pt)"
+            },
+            {
+              "fr": "Memory, LocalStorage : le groupe alternatif (0,75 pt)",
+              "en": "Memory, LocalStorage: the alternative group (0.75 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§3",
+              "quote": "Pour chacune, ajoutez racine et parents obligatoires et considérez les options non citées comme exclues"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/moteur.js",
+              "quote": "if(g.type==='alternative'&&k!==1)e.push('Choisir exactement un enfant de '+g.parent);"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t1-q06",
+          "type": "open",
+          "points": 1,
+          "prompt": {
+            "fr": "Explique pourquoi une erreur de syntaxe et un modèle sans aucun produit sont deux problèmes différents.",
+            "en": "Explain why a syntax error and a model with no product are two different problems."
+          },
+          "correction": {
+            "fr": "Une **erreur de syntaxe** empêche de **lire** le modèle (tabulation, nom avec espace, enfant hors d’un groupe, deux racines…) : l’outil refuse le fichier et **aucune analyse** n’est possible. Un **modèle vide** est bien formé et se lit, mais ses contraintes se contredisent : il a **zéro produit**, la satisfiabilité répond « non », et les listes de features mortes ou du noyau, calculées sur un ensemble vide, ne veulent rien dire. Les corrections diffèrent : réécrire le texte dans le premier cas ; trouver les contraintes incompatibles dans le second (modèle C).\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.6 Erreur de syntaxe ou modèle vide ?](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.6)",
+            "en": "A **syntax error** prevents the model from being **read** (tab, name with a space, child outside a group, two roots…): the tool rejects the file and **no analysis** is possible. A **void model** is well formed and readable, but its constraints contradict each other: it has **zero products**, satisfiability answers “no”, and lists of dead or core features computed on an empty set mean nothing. The fixes differ: rewrite the text in the first case; find the incompatible constraints in the second (model C).\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.6 Syntax error or void model?](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.6)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Syntaxe = fichier illisible, aucune analyse ; vide = bien formé mais zéro produit, listes sans valeur (1 pt)",
+              "en": "Syntax = unreadable file, no analysis; void = well formed but zero products, lists meaningless (1 pt)"
+            }
+          ],
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§3",
+              "quote": "Expliquez pourquoi une erreur de syntaxe et un modèle sans aucun produit sont deux problèmes différents."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 1 §4",
+              "quote": "des listes de features calculées sur un ensemble vide ne constituent pas un diagnostic utile"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t1-q07",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Diagnostiquer trois modèles fautifs.** Pour A, B et C (chacun repart du modèle de référence avec un défaut indépendant) : vérifie la satisfiabilité, cherche mortes, socle et faussement optionnelles, relève les contraintes en cause, explique en deux à quatre phrases et corrige en respectant R01 à R11. Remplis le tableau « fichier / symptôme / cause / correction / résultat après correction ».",
+            "en": "**Diagnose three faulty models.** For A, B and C (each starts from the reference model with an independent defect): check satisfiability, look for dead, core and false optional features, identify the constraints involved, explain in two to four sentences and fix while respecting R01 to R11. Fill in the table “file / symptom / cause / fix / result after fix”."
+          },
+          "material": "Contraintes de chaque fichier (l’arbre est celui du modèle v1) :\n\n```\nA_morte.uvl              B_fausse_optionnelle.uvl     C_incoherent.uvl\nconstraints              constraints                  constraints\n    Kiosk => Memory          Kiosk => Memory              Kiosk => Memory\n    Statistics => Filters    Statistics => Filters        Statistics => Filters\n    CSVExport => Kiosk       TaskManagement => Filters    Memory\n    CSVExport => LocalStorage                             LocalStorage\n```",
+          "correction": {
+            "fr": "| Fichier | Symptôme | Cause | Correction | Après |\n|---|---|---|---|---|\n| A | satisfiable, **CSVExport morte**, 36 produits | `CSVExport => Kiosk` impose Kiosk donc Memory ; `CSVExport => LocalStorage` impose LocalStorage ; les deux stockages sont alternatifs | retirer **les deux** règles, absentes de R01–R11 | 72 produits, aucune morte |\n| B | satisfiable, **Filters faussement optionnelle** (toujours présente), 48 produits | `TaskManagement => Filters`, alors que TaskManagement est obligatoire | retirer cette contrainte (R11 : Filters optionnelle) | 72 produits |\n| C | **insatisfiable** : 0 produit | les contraintes `Memory` et `LocalStorage` imposent les deux stockages ; le groupe est alternatif | retirer **les deux** contraintes | 72 produits |\n\nExplications types :\n- **A.** Sélectionner CSVExport impose Kiosk, donc Memory, et impose aussi LocalStorage ; or un produit n’a qu’un stockage. Aucun produit ne peut donc contenir CSVExport. Retirer une seule règle ressusciterait CSVExport (48 produits) mais garderait une règle inventée : on retire les deux.\n- **B.** TaskManagement est dans tous les produits, donc Filters aussi : elle est dessinée optionnelle mais toujours présente. Le modèle perd tous les produits sans Filters.\n- **C.** Le modèle est vide : on commence par rétablir l’existence de produits ; les listes de mortes ou de noyau calculées sur zéro produit n’ont pas de sens. N’en retirer qu’une imposerait un stockage à tous et rendrait l’autre morte (R02 à R04 violées).\n\nJamais de correction qui supprime une vraie exigence (par exemple supprimer CSVExport) : ce n’est pas une correction acceptable.\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.6 Exercice corrigé (TaskForge T1) : trois modèles fautifs](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)",
+            "en": "| File | Symptom | Cause | Fix | After |\n|---|---|---|---|---|\n| A | satisfiable, **CSVExport dead**, 36 products | `CSVExport => Kiosk` forces Kiosk hence Memory; `CSVExport => LocalStorage` forces LocalStorage; the two storages are alternatives | remove **both** rules, absent from R01–R11 | 72 products, none dead |\n| B | satisfiable, **Filters false optional** (always present), 48 products | `TaskManagement => Filters`, while TaskManagement is mandatory | remove this constraint (R11: Filters optional) | 72 products |\n| C | **unsatisfiable**: 0 products | the constraints `Memory` and `LocalStorage` force both storages; the group is an alternative | remove **both** constraints | 72 products |\n\nModel explanations:\n- **A.** Selecting CSVExport forces Kiosk, hence Memory, and also forces LocalStorage; but a product has only one storage. So no product can contain CSVExport. Removing only one rule would revive CSVExport (48 products) but keep an invented rule: remove both.\n- **B.** TaskManagement is in every product, so Filters is too: it is drawn optional but always present. The model loses every product without Filters.\n- **C.** The model is void: first restore the existence of products; lists of dead or core features computed on zero products are meaningless. Removing only one would force one storage on everyone and make the other dead (R02 to R04 violated).\n\nNever a fix that deletes a real requirement (e.g. deleting CSVExport): that is not an acceptable correction.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.6 Worked exercise (TaskForge T1): three faulty models](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "A : CSVExport morte, cause (deux stockages imposés), retrait des deux règles (1 pt)",
+              "en": "A: CSVExport dead, cause (two storages forced), removal of both rules (1 pt)"
+            },
+            {
+              "fr": "B : Filters faussement optionnelle, cause TaskManagement => Filters, retrait (1 pt)",
+              "en": "B: Filters false optional, cause TaskManagement => Filters, removal (1 pt)"
+            },
+            {
+              "fr": "C : modèle vide traité en premier, retrait des deux contraintes, aucune vraie exigence supprimée (1 pt)",
+              "en": "C: void model handled first, removal of both constraints, no real requirement deleted (1 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§4",
+              "quote": "Corrigez en respectant R01–R11. Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "modeles/A_morte.uvl",
+              "quote": "Statistics => Filters CSVExport => Kiosk CSVExport => LocalStorage"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "modeles/B_fausse_optionnelle.uvl",
+              "quote": "Statistics => Filters TaskManagement => Filters"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "modeles/C_incoherent.uvl",
+              "quote": "Kiosk => Memory Statistics => Filters Memory LocalStorage"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

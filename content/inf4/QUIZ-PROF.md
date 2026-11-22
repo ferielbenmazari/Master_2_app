@@ -215,7 +215,7 @@ Légende : ✔ vraie · ✘ fausse. « T0 §1.2 » = Tutoriel 0, section 1.2.
 ## 5. Exercices pratiques des tutoriels
 
 ### Tutoriel 2 — modèle ClothingStores (T2 §4)
-**À produire** : l'arbre des 25 features du tableau (colonne *Parent*), avec relation obligatoire ou optionnelle selon le schéma du tutoriel, puis des **attributs de qualité** (par exemple un temps de réponse ou un coût, avec domaine et unité) et des features ou relations supplémentaires. Exporter le projet pour les TP suivants. **À confirmer** : les relations exactes se lisent sur l'image T2 p. 10-11.
+**À produire** : l'arbre des 25 features du tableau (colonne *Parent*), avec relation obligatoire ou optionnelle selon le schéma du tutoriel, puis des **attributs de qualité** (par exemple un temps de réponse ou un coût, avec domaine et unité) et des features ou relations supplémentaires. Exporter le projet pour les TP suivants. **Relations lues sur le schéma (T2 p. 12)** : obligatoires sous la racine Basic views, Database management, Product ; optionnelles Contact us, Shipping, Demo data, Shop, Web management, User ; Product → List of products et Product model obligatoires, Comments, Sharing system, Rating optionnelles ; Shop → Cart obligatoire, [1..2] sur Online / Offline payment ; User → User model obligatoire, Login et Account optionnelles ; Web management → Basic views obligatoire, trois gestions optionnelles ; Includes : Web management → Login, Account → Login, User management → User model, Comment management → Comments, Product management → Product model. Corrigé complet : `exams/devoir-tutoriels-variamos.json`, question 1.
 
 ### Tutoriel 3 — SWI-Prolog (T3 §6, 9 étapes)
 Modèle d'amorce (5 variables) : racine F1 = 1 ; F2 et F3 obligatoires, F4 optionnel avec F3 *excludes* F4, F5 obligatoire sous F4.
@@ -225,7 +225,7 @@ Modèle d'amorce (5 variables) : racine F1 = 1 ; F2 et F3 obligatoires, F4 optio
 - `excludes` peut s'écrire `F3 + F4 #=< 1` ou `F3 * F4 #= 0` (la seconde reste valable avec des entiers) : mêmes solutions.
 - **Noyau (core)** : les features à 1 dans toutes les solutions ; **variables** : celles qui valent 0 dans au moins une solution ; on les calcule en comptant les 0 par colonne après `transpose`. `findnsols(n, …)` échantillonne : résultat **approximatif**, sans certitude.
 
-Exercice final (modèle de T2 sans attributs) : générer le code, trouver 1 solution, 30 solutions, le nombre total, tester 3 configurations, trouver noyau et features variables. **Le nombre exact dépend du modèle final de T2 (image) : à calculer avec vous.**
+Exercice final (modèle de T2 sans attributs) : générer le code, trouver 1 solution, 30 solutions, le nombre total, tester 3 configurations, trouver noyau et features variables. **Résultats (modèle fourni, schéma T3 p. 22, où User est obligatoire ; vérifiés par énumération)** : **3840** solutions (8 × 4 × 4 × 30) ; noyau de 8 features (ClothingStores, Product, ListOfProducts, ProductModel, BasicWebViews, DBManagement, User, UserModel) ; 17 variables. Avec User optionnelle (schéma T2), 4096. Corrigé : `exams/devoir-tutoriels-variamos.json`, question 2.
 
 ### Tutoriel 4 — requêtes PLEIADES (T4 §4)
 | Question | Requête JSON | Lecture |
@@ -248,7 +248,10 @@ Modèle de la partie 1 : Range (1..1) sous la racine vers F2, F3, F4 ; F3 → F7
 | 4. F4 sélectionné, F3 et F1 exclus | **2** | F8 imposé ; seule F9 reste libre. |
 
 Observations du tutoriel (toutes vérifiées) : avec F5 seule, **un** produit ; F5 et F2 sont incompatibles ; sans F4, **4** produits. **Trois tâches de configuration** : (1) trouver des configurations ; (2) compléter une configuration partielle ou signaler qu'elle est insoluble ; (3) calculer et ordonner selon une fonction d'optimisation. Les tâches 1 et 2 utilisent les **mêmes requêtes** : seul change le marquage « sélectionné / exclu ». `optimize` demande `optimization_target` et `optimization_direction` (`min` ou `max`). Leçon finale : le modèle de coût comptait mal le tabbing ; l'outil ne dispense pas du jugement humain.
-Étapes 5 à 8 (somme des features concrètes du modèle ClothingStores) : le **nombre exact** dépend du modèle complet de T4, à calculer avec vous.
+Étapes 5 à 8 (somme des features concrètes du modèle ClothingStores, 20 features concrètes) : **maximum 20**, **minimum 5** (ListOfProducts, ProductModel, BasicWebViews, DBManagement, UserModel). L'expression du tutoriel cite ProductMgmt deux fois et des noms absents du schéma (ListOfProds, ProdModel, UsersHandling) : recopiée telle quelle, le maximum afficherait 21. Corrigé : `exams/devoir-tutoriels-variamos.json`, question 4.
+
+### Devoirs corrigés dans l'app (2026-11-22)
+Aucun corrigé officiel n'existera : l'app fournit les corrigés expliqués. Questions ouvertes avec corrigé et grille d'auto-évaluation : `exams/devoir-taskforge-t1.json`, `devoir-taskforge-t2.json`, `devoir-taskforge-t3.json` (toutes les questions des énoncés T1 à T3) et `devoir-tutoriels-variamos.json` (exercices finaux des tutoriels 2 à 5, questionnaires Google Forms non accessibles). Non corrigé : le bonus TaskForge « Si vous terminez en avance » (coûts au choix de l'étudiant, sans réponse unique).
 
 ## 6. Archive TaskForge (3 tutoriels en français, FlamapyIDE, format UVL)
 
@@ -268,7 +271,7 @@ Diagnostic des trois modèles fautifs (T1 §4) :
 Complétion de T3 §1 : `Statistics` imposé et `LocalStorage` exclu → **Memory** et **Filters** deviennent nécessaires, `JSONExport` est exclu ; Kiosk, Priorities, DueDates, CSVExport restent libres : **16 produits** (2⁴). Les trois commandes (Kiosque, Étudiant, Pro) sont **valides** ; `JSONExport + Kiosk` est **refusée** (JSONExport ⇒ LocalStorage et Kiosk ⇒ Memory).
 
 ## 7. Ce qui reste hors de portée aujourd'hui
-- Corrigés **officiels** : aucun fichier n'en contient ; coller la page « Revue » d'un quiz Moodle permettrait de passer les corrigés concernés en officiels.
+- Corrigés **officiels** : il n'y en aura pas (dit le 2026-11-22). Les corrigés de l'app, fondés sur le cours et les tutoriels, font référence ; ils restent marqués « proposés ».
 - « Rendus » de l'intranet : je ne peux pas les lire ; à coller.
-- Chiffres du modèle ClothingStores (T2, T3 étape 6, T5 étapes 6 à 8) : à calculer à partir des images du PDF.
+- Chiffres du modèle ClothingStores : calculés le 2026-11-22 (voir § 5).
 - ISO/IEC 24707:2018 (Common Logic) : le tutoriel T3 ne s'en sert que pour la syntaxe **CLIF** des contraintes textuelles (`(if (= Advanced 1) (>= VoiceControl::Version 2))`, préfixe, style LISP). La norme entière (78 pages) n'est pas traitée sauf si vous savez que le prof l'a demandée.

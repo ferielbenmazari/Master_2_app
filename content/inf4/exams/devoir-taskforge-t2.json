@@ -1,0 +1,310 @@
+{
+  "id": "inf4-devoir-taskforge-t2",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Devoir TaskForge T2 : retrouver la variabilité dans un code existant (corrigé)",
+    "en": "TaskForge T2 assignment: recovering variability from existing code (solution)"
+  },
+  "kind": "past",
+  "durationMinutes": 60,
+  "source": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du TP du prof, reprises de l’énoncé de l’intranet. Aucun corrigé n’existe dans les fichiers : le corrigé est **proposé**, rédigé à partir du kit TaskForge et du cours, et les nombres de produits ont été vérifiés par énumération. Réponds d’abord, puis coche les critères atteints pour obtenir ta note.",
+    "en": "Questions from the teacher’s lab, taken from the intranet statement. No solution exists in the files: the solution is **proposed**, written from the TaskForge kit and the course, and product counts were checked by enumeration. Answer first, then tick the criteria you met to get your mark."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions du devoir",
+        "en": "Assignment questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Réponds d’abord seule, puis compare avec le corrigé et coche les critères atteints.",
+        "en": "Answer on your own first, then compare with the solution and tick the criteria you met."
+      },
+      "questions": [
+        {
+          "id": "inf4-devoir-taskforge-t2-q01",
+          "type": "open",
+          "points": 2,
+          "prompt": {
+            "fr": "**Explorer la famille existante.** Ouvre kiosque.html et pro.html, ajoute deux tâches, termine-en une, essaie filtres et exports, puis recharge. Consigne au moins trois différences, en distinguant : capacité de l’application, choix de l’utilisateur pendant l’exécution, et donnée d’une tâche.",
+            "en": "**Explore the existing family.** Open kiosque.html and pro.html, add two tasks, finish one, try filters and exports, then reload. Record at least three differences, distinguishing: application capability, user choice at run time, and task data."
+          },
+          "material": "Manifestes affichés en haut des produits fournis :\n\n```\nTaskForge Kiosque : TaskForge · TaskManagement · Storage · Memory · Kiosk · Filters\nTaskForge Pro     : TaskForge · TaskManagement · Storage · LocalStorage · Priorities · DueDates · Filters · Statistics · CSVExport · JSONExport\n```",
+          "correction": {
+            "fr": "**Différences de capacité** (ce que le produit sait faire) :\n1. **Persistance** : au rechargement, le Kiosque perd ses tâches (Memory), le Pro les retrouve (LocalStorage), si le navigateur l’autorise.\n2. **Priorité et échéance** : le Pro a un champ de priorité (Normale / Haute) et un champ de date (Priorities, DueDates) ; le Kiosque n’en a pas.\n3. **Exports** : le Pro a les boutons « Exporter CSV » et « Exporter JSON » ; le Kiosque aucun.\n4. **Compteur** : le Pro affiche « x / y tâches affichées terminées » (Statistics).\n5. **Avertissement kiosque** : le Kiosque affiche « Mode kiosque : les tâches disparaissent au rechargement » (Kiosk).\n\nLes deux ont le **filtre** (Filters) et la gestion des tâches (TaskManagement).\n\n**Ne pas confondre** : « disposer de priorités » est une **capacité** (une feature) ; choisir « À faire » dans le filtre ou « Haute » dans la liste est un **choix pendant l’exécution** ; « cette tâche est de priorité haute » est une **donnée**. Seules les capacités deviennent des features.\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.2 Méthode : reconstruire un modèle à partir d’un code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)",
+            "en": "**Capability differences** (what the product can do):\n1. **Persistence**: on reload, Kiosque loses its tasks (Memory), Pro gets them back (LocalStorage), if the browser allows it.\n2. **Priority and due date**: Pro has a priority field (Normale / Haute) and a date field (Priorities, DueDates); Kiosque has none.\n3. **Exports**: Pro has the “Exporter CSV” and “Exporter JSON” buttons; Kiosque has none.\n4. **Counter**: Pro shows “x / y tâches affichées terminées” (Statistics).\n5. **Kiosk warning**: Kiosque shows “Mode kiosque : les tâches disparaissent au rechargement” (Kiosk).\n\nBoth have the **filter** (Filters) and task management (TaskManagement).\n\n**Do not confuse**: “having priorities” is a **capability** (a feature); choosing “À faire” in the filter or “Haute” in the list is a **run-time choice**; “this task has high priority” is **data**. Only capabilities become features.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.2 Method: rebuilding a model from code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Au moins trois différences de capacité justes (1 pt)",
+              "en": "At least three correct capability differences (1 pt)"
+            },
+            {
+              "fr": "Distinction capacité / choix à l’exécution / donnée, avec un exemple de chaque (1 pt)",
+              "en": "Capability / run-time choice / data distinction, with one example of each (1 pt)"
+            }
+          ],
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§1",
+              "quote": "Par exemple, « disposer de priorités » est une feature ; « cette tâche est de priorité haute » est une donnée."
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§1",
+              "quote": "Le nom du produit et la liste de ses features sont affichés en haut."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/taskforge_existant.js.txt",
+              "quote": "notice.textContent='Mode kiosque : les tâches disparaissent au rechargement."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t2-q02",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "**Inspecter le code source** (taskforge_existant.js.txt). Complète la matrice pour chaque option de construction : fonction ou bloc concerné, comportement visible, dépendance observée, nature de la justification (architecture, technique, commerciale ou politique produit). Exemple donné : Memory → `persist()` vide → perte des tâches au rechargement → alternative à LocalStorage → architecture.",
+            "en": "**Inspect the source code** (taskforge_existant.js.txt). Complete the matrix for each build option: function or block involved, visible behaviour, observed dependency, nature of the justification (architecture, technical, commercial or product policy). Given example: Memory → empty `persist()` → tasks lost on reload → alternative to LocalStorage → architecture."
+          },
+          "material": "Contrat de construction (en tête du gabarit) :\n\n```\n// 1. Exactement un stockage : Memory ou LocalStorage.\n// 2. Kiosk implique Memory (politique produit : aucun stockage persistant).\n// 3. Statistics appelle visibleTasks(), fourni par Filters.\n// 4. JSONExport implique LocalStorage (politique commerciale de cette version,\n//    PAS une nécessité technique : une autre politique serait possible).\n```",
+          "correction": {
+            "fr": "| Option | Bloc ou fonction | Comportement visible | Dépendance | Justification |\n|---|---|---|---|---|\n| Memory | `persist()` vide | tâches perdues au rechargement | alternative à LocalStorage | architecture |\n| LocalStorage | `storageKey`, lecture de `localStorage.getItem` au démarrage, `persist()` avec `localStorage.setItem` | tâches retrouvées après rechargement ; message si le stockage est indisponible | alternative à Memory | architecture |\n| Kiosk | message dans `notice` | avertissement « Mode kiosque » | `Kiosk => Memory` | politique produit (aucun stockage persistant) |\n| Priorities | `select#priority` (Normale, Haute), `t.priority` à l’ajout, « Priorité : » à l’affichage | champ et affichage de la priorité | aucune | option libre |\n| DueDates | `input#due` (date), `t.due`, « Échéance : » | champ et affichage de l’échéance | aucune | option libre |\n| Filters | `select#filter`, `visibleTasks()`, utilisée par `render()` | filtre Toutes / À faire / Terminées | **fournit** `visibleTasks()` | — (fournisseur) |\n| Statistics | `updateStatistics()`, appelée à la fin de `render()` | compteur des tâches affichées terminées | appelle `visibleTasks()` → `Statistics => Filters` | **technique** (appel de fonction) |\n| CSVExport | `csvCell()`, `exportCSV()`, bouton « Exporter CSV » | téléchargement de tasks.csv | aucune | option libre |\n| JSONExport | `exportJSON()`, bouton « Exporter JSON » | téléchargement de tasks.json | `JSONExport => LocalStorage` | **commerciale** (« PAS une nécessité technique ») |\n\nLe socle (TaskManagement) est le code hors de tout bloc : ajout, `render()`, terminer, renommer, supprimer. Une dépendance **technique** se lit dans un appel de fonction (Statistics → visibleTasks) ; une règle **commerciale** ou de **politique produit** ne se déduit pas du code : elle est écrite dans le contrat et se confirme avec une partie prenante.\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3) ; [ch. 12 « Conception et réalisation d’une application », § 5.2 Méthode : reconstruire un modèle à partir d’un code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)",
+            "en": "| Option | Block or function | Visible behaviour | Dependency | Justification |\n|---|---|---|---|---|\n| Memory | empty `persist()` | tasks lost on reload | alternative to LocalStorage | architecture |\n| LocalStorage | `storageKey`, reading `localStorage.getItem` at start-up, `persist()` with `localStorage.setItem` | tasks back after reload; message if storage is unavailable | alternative to Memory | architecture |\n| Kiosk | message in `notice` | “Mode kiosque” warning | `Kiosk => Memory` | product policy (no persistent storage) |\n| Priorities | `select#priority` (Normale, Haute), `t.priority` on add, “Priorité :” on display | priority field and display | none | free option |\n| DueDates | `input#due` (date), `t.due`, “Échéance :” | due-date field and display | none | free option |\n| Filters | `select#filter`, `visibleTasks()`, used by `render()` | filter Toutes / À faire / Terminées | **provides** `visibleTasks()` | — (provider) |\n| Statistics | `updateStatistics()`, called at the end of `render()` | counter of displayed finished tasks | calls `visibleTasks()` → `Statistics => Filters` | **technical** (function call) |\n| CSVExport | `csvCell()`, `exportCSV()`, “Exporter CSV” button | downloads tasks.csv | none | free option |\n| JSONExport | `exportJSON()`, “Exporter JSON” button | downloads tasks.json | `JSONExport => LocalStorage` | **commercial** (“NOT a technical necessity”) |\n\nThe core (TaskManagement) is the code outside any block: add, `render()`, finish, rename, delete. A **technical** dependency is read in a function call (Statistics → visibleTasks); a **commercial** or **product policy** rule cannot be deduced from the code: it is written in the contract and confirmed with a stakeholder.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3); [ch. 12 “Designing and building an application”, § 5.2 Method: rebuilding a model from code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Les neuf options reliées à leur bloc ou fonction (1,5 pt)",
+              "en": "The nine options linked to their block or function (1.5 pt)"
+            },
+            {
+              "fr": "Les trois dépendances (alternative, Kiosk => Memory, Statistics => Filters) et JSONExport => LocalStorage (1,5 pt)",
+              "en": "The three dependencies (alternative, Kiosk => Memory, Statistics => Filters) and JSONExport => LocalStorage (1.5 pt)"
+            },
+            {
+              "fr": "Nature juste : architecture, politique produit, technique, commerciale (1 pt)",
+              "en": "Right nature: architecture, product policy, technical, commercial (1 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§2",
+              "quote": "Recherchez //#if et les contrats de construction en début de fichier."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/taskforge_existant.js.txt",
+              "quote": "3. Statistics appelle visibleTasks(), fourni par Filters."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/taskforge_existant.js.txt",
+              "quote": "4. JSONExport implique LocalStorage (politique commerciale de cette version, PAS une nécessité technique : une autre politique serait possible)."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t2-q03",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "Réponds aux six questions sur le code :\n1. Quels blocs sont présents dans tous les produits ?\n2. Pourquoi les deux fonctions `persist()` ne doivent-elles pas coexister dans un même produit ?\n3. Quelle fonction appelle `visibleTasks()` ? Où cette fonction est-elle définie ?\n4. Quelle option supplémentaire apparaît par rapport au T1 ?\n5. La dépendance entre JSONExport et LocalStorage est-elle une nécessité du langage ou une règle de cette gamme ? Que faudrait-il changer pour la supprimer ?\n6. Pourquoi le tableau `tasks`, la fonction `render` et chaque bouton ne deviennent-ils pas automatiquement des features ?",
+            "en": "Answer the six questions about the code:\n1. Which blocks are present in every product?\n2. Why must the two `persist()` functions not coexist in one product?\n3. Which function calls `visibleTasks()`? Where is it defined?\n4. Which extra option appears compared with T1?\n5. Is the dependency between JSONExport and LocalStorage a language necessity or a rule of this range? What would have to change to remove it?\n6. Why do the `tasks` array, the `render` function and each button not automatically become features?"
+          },
+          "correction": {
+            "fr": "1. Tout le code **hors des blocs `//#if`** : titre et manifeste, `download`, `button`, `validTitle`, l’ajout d’une tâche, `render()` (terminer, renommer, supprimer) et l’appel final à `render()`. C’est TaskManagement, le socle. Chaque produit a aussi **un** des deux blocs de stockage.\n2. Ce sont deux **implémentations concurrentes** de la même opération : le code commun appelle `persist()` sans savoir quel stockage est choisi. Un produit doit avoir exactement un comportement de sauvegarde (R02, groupe alternatif) : l’un ne conserve rien, l’autre écrit dans `localStorage`.\n3. `updateStatistics()` (bloc Statistics) l’appelle, et `render()` aussi quand Filters est présent. Elle est **définie dans le bloc `//#if Filters`**. D’où `Statistics => Filters` : sans Filters, `visibleTasks()` n’existe pas dans le produit.\n4. **JSONExport** (fonction `exportJSON()` et bouton « Exporter JSON »).\n5. Une **règle de la gamme** : `exportJSON()` n’utilise que `tasks` et `download`, jamais `localStorage` ; le contrat dit « politique commerciale … PAS une nécessité technique ». Pour la supprimer : obtenir l’accord de la partie prenante, retirer la clause 4 du contrat et la contrainte `JSONExport => LocalStorage` du modèle. Aucun code à modifier.\n6. Une feature est une **capacité qui distingue des produits** (« disposer de priorités »). `tasks` est une donnée, `render` un mécanisme commun à tous les produits, et un bouton est l’interface d’une feature (« Exporter CSV » appartient à CSVExport). Les transformer en features recopierait des détails techniques au lieu de représenter ce que la famille sait construire.\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.1 Variabilité fixée à la construction](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1) ; [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "1. All the code **outside the `//#if` blocks**: title and manifest, `download`, `button`, `validTitle`, adding a task, `render()` (finish, rename, delete) and the final call to `render()`. That is TaskManagement, the core. Each product also has **one** of the two storage blocks.\n2. They are two **competing implementations** of the same operation: the shared code calls `persist()` without knowing which storage is chosen. A product must have exactly one saving behaviour (R02, alternative group): one keeps nothing, the other writes to `localStorage`.\n3. `updateStatistics()` (Statistics block) calls it, and so does `render()` when Filters is present. It is **defined in the `//#if Filters` block**. Hence `Statistics => Filters`: without Filters, `visibleTasks()` does not exist in the product.\n4. **JSONExport** (function `exportJSON()` and the “Exporter JSON” button).\n5. A **rule of the range**: `exportJSON()` only uses `tasks` and `download`, never `localStorage`; the contract says “commercial policy … NOT a technical necessity”. To remove it: get the stakeholder’s agreement, remove clause 4 from the contract and the `JSONExport => LocalStorage` constraint from the model. No code to change.\n6. A feature is a **capability that distinguishes products** (“having priorities”). `tasks` is data, `render` a mechanism common to all products, and a button is a feature’s interface (“Exporter CSV” belongs to CSVExport). Turning them into features would copy technical details instead of representing what the family can build.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.1 Variability fixed at build time](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1); [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1. Le code hors des blocs = socle TaskManagement (0,5 pt)",
+              "en": "1. Code outside the blocks = TaskManagement core (0.5 pt)"
+            },
+            {
+              "fr": "2. Implémentations concurrentes d’une même opération, un seul stockage (0,5 pt)",
+              "en": "2. Competing implementations of one operation, one storage only (0.5 pt)"
+            },
+            {
+              "fr": "3. updateStatistics (et render) ; définie dans le bloc Filters (0,5 pt)",
+              "en": "3. updateStatistics (and render); defined in the Filters block (0.5 pt)"
+            },
+            {
+              "fr": "4. JSONExport (0,5 pt)",
+              "en": "4. JSONExport (0.5 pt)"
+            },
+            {
+              "fr": "5. Règle commerciale, pas technique ; retirer la clause et la contrainte avec l’accord d’une partie prenante (1 pt)",
+              "en": "5. Commercial, not technical rule; remove the clause and the constraint with a stakeholder’s agreement (1 pt)"
+            },
+            {
+              "fr": "6. Feature = capacité qui distingue des produits ; donnée, mécanisme commun et bouton n’en sont pas (1 pt)",
+              "en": "6. Feature = capability that distinguishes products; data, shared mechanism and button are not (1 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§2",
+              "quote": "La dépendance entre JSONExport et LocalStorage est-elle une nécessité du langage ou une règle de cette gamme ? Que faudrait-il changer pour la supprimer ?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/taskforge_existant.js.txt",
+              "quote": "3. Statistics appelle visibleTasks(), fourni par Filters."
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§2",
+              "quote": "Attention : une dépendance technique peut être établie par un appel de fonction. Une règle commerciale ne se déduit pas de cet appel"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t2-q04",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "**Reconstruire le modèle v2.** Pars du modèle v1, ajoute l’option découverte et la contrainte du contrat, sans changer les autres règles. Donne le fichier UVL, puis les vérifications attendues (syntaxe et satisfiabilité, features mortes, sélection de la nouvelle option, nombre exact de configurations, compatibilité des anciens produits). Explique enfin pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons sont autorisées.",
+            "en": "**Rebuild model v2.** Start from model v1, add the discovered option and the contract’s constraint, without changing the other rules. Give the UVL file, then the expected checks (syntax and satisfiability, dead features, selecting the new option, exact number of configurations, compatibility of old products). Finally explain why the two observed products do not prove that every combination is allowed."
+          },
+          "correction": {
+            "fr": "```\nfeatures\n    TaskForge\n        mandatory\n            TaskManagement\n            Storage\n                alternative\n                    Memory\n                    LocalStorage\n        optional\n            Priorities\n            DueDates\n            Filters\n            CSVExport\n            Statistics\n            Kiosk\n            JSONExport\nconstraints\n    Kiosk => Memory\n    Statistics => Filters\n    JSONExport => LocalStorage\n```\n\n**12 features** (le point de contrôle de l’énoncé). Vérifications :\n- syntaxe correcte, modèle **satisfiable** ;\n- **aucune feature morte** ;\n- JSONExport **sélectionnable** : par exemple le Pro (avec LocalStorage, sans Kiosk) ;\n- **96 configurations** : 8 (Priorities, DueDates, CSVExport) × 3 (Filters, Statistics) × **4** (Memory ; Memory + Kiosk ; LocalStorage ; LocalStorage + JSONExport) ;\n- **anciens produits conservés** : avec JSONExport exclue, on retrouve les 72 produits de la v1. L’ajout n’en supprime aucun ; il n’en double pas le nombre car JSONExport est liée à LocalStorage (72 → 96, pas 144).\n\n**Pourquoi deux produits ne prouvent rien** : ce sont 2 produits sur 96. Des combinaisons jamais observées peuvent être **interdites** (JSONExport avec Kiosk) ou permises sans avoir été construites. La reconstruction s’appuie sur les **blocs conditionnels**, les **appels entre fonctions** et le **contrat**, pas sur deux captures d’écran.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.3 L’effet d’une évolution sur le nombre de configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3) ; [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "```\nfeatures\n    TaskForge\n        mandatory\n            TaskManagement\n            Storage\n                alternative\n                    Memory\n                    LocalStorage\n        optional\n            Priorities\n            DueDates\n            Filters\n            CSVExport\n            Statistics\n            Kiosk\n            JSONExport\nconstraints\n    Kiosk => Memory\n    Statistics => Filters\n    JSONExport => LocalStorage\n```\n\n**12 features** (the statement’s checkpoint). Checks:\n- correct syntax, **satisfiable** model;\n- **no dead feature**;\n- JSONExport **selectable**: e.g. Pro (with LocalStorage, without Kiosk);\n- **96 configurations**: 8 (Priorities, DueDates, CSVExport) × 3 (Filters, Statistics) × **4** (Memory; Memory + Kiosk; LocalStorage; LocalStorage + JSONExport);\n- **old products kept**: with JSONExport excluded, you get back the 72 v1 products. The addition removes none; it does not double the count because JSONExport is tied to LocalStorage (72 → 96, not 144).\n\n**Why two products prove nothing**: they are 2 products out of 96. Combinations never observed may be **forbidden** (JSONExport with Kiosk) or allowed without having been built. The rebuild relies on the **conditional blocks**, the **calls between functions** and the **contract**, not on two screenshots.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.3 The effect of an evolution on the number of configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3); [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Modèle v2 : JSONExport optionnelle et JSONExport => LocalStorage, le reste inchangé (1 pt)",
+              "en": "Model v2: optional JSONExport and JSONExport => LocalStorage, the rest unchanged (1 pt)"
+            },
+            {
+              "fr": "96 configurations, calcul 8 × 3 × 4 expliqué (1 pt)",
+              "en": "96 configurations, calculation 8 × 3 × 4 explained (1 pt)"
+            },
+            {
+              "fr": "Vérifications : satisfiable, aucune morte, JSONExport sélectionnable, anciens produits représentables (1 pt)",
+              "en": "Checks: satisfiable, no dead feature, JSONExport selectable, old products representable (1 pt)"
+            },
+            {
+              "fr": "Deux produits observés insuffisants : combinaisons interdites ou non construites ; preuves = blocs, appels, contrat (1 pt)",
+              "en": "Two observed products not enough: forbidden or unbuilt combinations; evidence = blocks, calls, contract (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§3",
+              "quote": "Point de contrôle : le modèle v2 contient 12 features."
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§3",
+              "quote": "Votre reconstruction repose sur l’observation, les blocs conditionnels, les dépendances et le contrat, pas uniquement sur deux captures d’écran."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t2-q05",
+          "type": "open",
+          "points": 4,
+          "prompt": {
+            "fr": "**Du modèle au code réutilisable** (moteur.js : `parse`, `preprocess`, `build`). Sans analyser chaque ligne, explique :\n1. ce qui est vérifié avant la production ;\n2. comment un bloc `//#if X` est conservé ou supprimé ;\n3. pourquoi une option du code absente du modèle provoque une erreur ;\n4. pourquoi ce mécanisme fixe la variabilité à la construction plutôt qu’en cours d’utilisation ;\n5. ce qu’un compilateur JavaScript vérifierait encore après le prétraitement.",
+            "en": "**From model to reusable code** (moteur.js: `parse`, `preprocess`, `build`). Without analysing every line, explain:\n1. what is checked before production;\n2. how a `//#if X` block is kept or removed;\n3. why a code option missing from the model causes an error;\n4. why this mechanism fixes variability at build time rather than during use;\n5. what a JavaScript compiler would still check after preprocessing."
+          },
+          "correction": {
+            "fr": "1. **Avant la production**, `build` vérifie trois choses. (a) Le **modèle** (`parse`) : sections `features` / `constraints`, espaces et non tabulations, noms valides et uniques, chaque enfant dans un groupe, une seule racine, aucun groupe vide, contraintes écrites sur des features connues. (b) La **forme** de la configuration : `{name, selected}`, sans doublon. (c) La **sélection** contre le modèle (`errors`) : features connues, racine présente, enfant ⇒ parent, enfants obligatoires présents, exactement un enfant d’un groupe alternatif, contraintes respectées. Si une erreur existe, rien n’est produit.\n2. `preprocess` lit le gabarit ligne à ligne. À `//#if X`, le bloc devient **actif** si X est sélectionnée (et si le bloc englobant l’est) ; les lignes d’un bloc inactif ne sont **pas recopiées** ; `//#else` inverse, `//#endif` ferme ; une directive mal placée ou un `endif` manquant est une erreur.\n3. À chaque `//#if X`, le générateur vérifie que X est **une feature du modèle**, sélectionnée ou non : sinon « Option du code absente du modèle ». C’est le **contrôle de couverture** : aucune option du code ne doit rester hors de la ligne de produits.\n4. Le choix est fait **quand on génère** : le code des options non choisies est **retiré** du HTML livré. Le produit ne peut plus activer une option pendant l’utilisation, puisque son code n’y est pas. C’est différent de cacher un bouton dans un produit qui contient tout.\n5. La **syntaxe** du code obtenu (accolades, parenthèses, déclarations) : un bloc mal découpé peut la casser. Mais pas le comportement : un appel à une fonction absente (`visibleTasks()` sans Filters) n’apparaît qu’à l’exécution. Le générateur « ne prouve pas la correction de tout JavaScript arbitraire » : les tests restent nécessaires.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.1 Du modèle au produit : valider, puis générer](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.2 Le contrôle de couverture](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.2) ; [ch. 12 « Conception et réalisation d’une application », § 5.1 Variabilité fixée à la construction](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1) ; [ch. 13 « Tester une application sans tout retester », § 5.2 Le manifeste ne prouve rien ; limites du générateur](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.2)",
+            "en": "1. **Before production**, `build` checks three things. (a) The **model** (`parse`): `features` / `constraints` sections, spaces not tabs, valid unique names, each child in a group, a single root, no empty group, constraints on known features. (b) The configuration’s **shape**: `{name, selected}`, no duplicates. (c) The **selection** against the model (`errors`): known features, root present, child ⇒ parent, mandatory children present, exactly one child of an alternative group, constraints satisfied. If any error exists, nothing is produced.\n2. `preprocess` reads the template line by line. At `//#if X`, the block becomes **active** if X is selected (and the enclosing block is active); lines of an inactive block are **not copied**; `//#else` inverts, `//#endif` closes; a misplaced directive or a missing `endif` is an error.\n3. At each `//#if X`, the generator checks that X is **a feature of the model**, selected or not: otherwise “Option du code absente du modèle”. That is the **coverage check**: no code option must stay outside the product line.\n4. The choice is made **at generation time**: the code of unchosen options is **removed** from the delivered HTML. The product can no longer enable an option during use, since its code is not there. That differs from hiding a button in a product that contains everything.\n5. The **syntax** of the resulting code (braces, parentheses, declarations): a badly cut block can break it. But not behaviour: a call to a missing function (`visibleTasks()` without Filters) only shows up at run time. The generator “does not prove the correctness of arbitrary JavaScript”: tests remain necessary.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.1 From model to product: validate, then generate](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1); [ch. 9 “Configuring, generating and evolving a product”, § 3.2 The coverage check](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.2); [ch. 12 “Designing and building an application”, § 5.1 Variability fixed at build time](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1); [ch. 13 “Testing an application without retesting everything”, § 5.2 The manifest proves nothing; the generator’s limits](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "1. Vérifications du modèle, de la forme et de la sélection avant toute production (0,8 pt)",
+              "en": "1. Checks of the model, the shape and the selection before any production (0.8 pt)"
+            },
+            {
+              "fr": "2. Bloc actif si X sélectionnée, lignes inactives non recopiées, else / endif (0,8 pt)",
+              "en": "2. Block active if X selected, inactive lines not copied, else / endif (0.8 pt)"
+            },
+            {
+              "fr": "3. Contrôle de couverture : X doit être une feature du modèle, même non sélectionnée (0,8 pt)",
+              "en": "3. Coverage check: X must be a model feature, even if not selected (0.8 pt)"
+            },
+            {
+              "fr": "4. Liaison à la construction : code retiré du produit livré (0,8 pt)",
+              "en": "4. Build-time binding: code removed from the delivered product (0.8 pt)"
+            },
+            {
+              "fr": "5. Syntaxe vérifiable, comportement non : tests nécessaires (0,8 pt)",
+              "en": "5. Syntax checkable, behaviour not: tests needed (0.8 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/moteur.js",
+              "quote": "if(!known.includes(m[2]))throw Error('Option du code absente du modèle : '+m[2]);"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§4",
+              "quote": "Le générateur retire des blocs source, puis les insère dans une page HTML avec un petit manifeste de construction."
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§4",
+              "quote": "Il ne prouve pas la correction de tout JavaScript arbitraire : vos tests restent nécessaires."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t2-q06",
+          "type": "open",
+          "points": 2,
+          "prompt": {
+            "fr": "**Première preuve de cohérence.** Dans l’atelier, importe l’UVL v2, configurations/exemple_minimal.json et le gabarit complet ; « Valider » puis « Générer ». Que doit montrer le produit minimal ? Retire ensuite JSONExport du modèle en gardant le gabarit : que se passe-t-il, et pourquoi ?",
+            "en": "**First consistency proof.** In the workshop, import the v2 UVL, configurations/exemple_minimal.json and the full template; “Valider” then “Générer”. What must the minimal product show? Then remove JSONExport from the model while keeping the template: what happens, and why?"
+          },
+          "material": "configurations/exemple_minimal.json :\n\n```json\n{ \"name\": \"Mon produit\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"Memory\"] }\n```",
+          "correction": {
+            "fr": "**Produit minimal** : la sélection {TaskForge, TaskManagement, Storage, Memory} est valide (racine, obligatoires, un stockage, aucune contrainte violée). Le produit généré ne contient que le socle et le `persist()` vide de Memory : **ni priorité, ni échéance, ni filtre, ni export, ni compteur** ; les blocs `//#if` des options non sélectionnées ont été retirés. Les tâches disparaissent au rechargement.\n\n**JSONExport retirée du modèle** : la génération est **refusée**, même si JSONExport n’est pas sélectionnée, avec « Option du code absente du modèle : JSONExport ». Le gabarit contient un bloc `//#if JSONExport` que le modèle ne connaît plus : c’est le **contrôle de couverture**, qui évite de laisser des options du code hors de la ligne de produits. On rétablit ensuite le modèle complet.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.2 Le contrôle de couverture](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.2)",
+            "en": "**Minimal product**: the selection {TaskForge, TaskManagement, Storage, Memory} is valid (root, mandatory features, one storage, no constraint violated). The generated product contains only the core and Memory’s empty `persist()`: **no priority, no due date, no filter, no export, no counter**; the `//#if` blocks of unselected options have been removed. Tasks disappear on reload.\n\n**JSONExport removed from the model**: generation is **refused**, even though JSONExport is not selected, with “Option du code absente du modèle : JSONExport”. The template contains a `//#if JSONExport` block the model no longer knows: that is the **coverage check**, which prevents code options from staying outside the product line. The full model is then restored.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.2 The coverage check](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Produit minimal valide, sans priorité ni export ; blocs non sélectionnés retirés (1 pt)",
+              "en": "Minimal product valid, with no priority or export; unselected blocks removed (1 pt)"
+            },
+            {
+              "fr": "Refus par contrôle de couverture, même pour une option non sélectionnée (1 pt)",
+              "en": "Refusal by the coverage check, even for an unselected option (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§5",
+              "quote": "Vérifiez que le produit minimal n’offre ni priorité ni export."
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§5",
+              "quote": "Ce contrôle de couverture évite de laisser des options du code hors de la ligne de produits."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

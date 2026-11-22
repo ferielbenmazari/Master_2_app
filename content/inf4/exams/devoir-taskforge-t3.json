@@ -1,0 +1,357 @@
+{
+  "id": "inf4-devoir-taskforge-t3",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Devoir TaskForge T3 : configurer, générer, tester et faire évoluer (corrigé)",
+    "en": "TaskForge T3 assignment: configure, generate, test and evolve (solution)"
+  },
+  "kind": "past",
+  "durationMinutes": 60,
+  "source": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du TP du prof, reprises de l’énoncé de l’intranet. Aucun corrigé n’existe dans les fichiers : le corrigé est **proposé**, rédigé à partir du kit TaskForge et du cours, et les nombres de produits ont été vérifiés par énumération. Réponds d’abord, puis coche les critères atteints pour obtenir ta note.",
+    "en": "Questions from the teacher’s lab, taken from the intranet statement. No solution exists in the files: the solution is **proposed**, written from the TaskForge kit and the course, and product counts were checked by enumeration. Answer first, then tick the criteria you met to get your mark."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions du devoir",
+        "en": "Assignment questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Réponds d’abord seule, puis compare avec le corrigé et coche les critères atteints.",
+        "en": "Answer on your own first, then compare with the solution and tick the criteria you met."
+      },
+      "questions": [
+        {
+          "id": "inf4-devoir-taskforge-t3-q01",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Répondre à trois commandes.** Toutes les options non citées sont exclues.\n\n| Commande | Choix à satisfaire |\n|---|---|\n| Kiosque | Memory, Kiosk, Filters |\n| Étudiant | LocalStorage, Priorities, DueDates |\n| Pro | LocalStorage, Priorities, DueDates, Filters, Statistics, CSVExport, JSONExport |\n\nÉcris les trois configurations complètes dans le format stable du kit (`name`, `selected`, avec racine et regroupements) et justifie leur validité avec le modèle v2.",
+            "en": "**Answer three orders.** All options not listed are excluded.\n\n| Order | Choices to satisfy |\n|---|---|\n| Kiosque | Memory, Kiosk, Filters |\n| Étudiant | LocalStorage, Priorities, DueDates |\n| Pro | LocalStorage, Priorities, DueDates, Filters, Statistics, CSVExport, JSONExport |\n\nWrite the three complete configurations in the kit’s stable format (`name`, `selected`, with root and groupings) and justify their validity with model v2."
+          },
+          "correction": {
+            "fr": "```json\n{ \"name\": \"TaskForge Kiosque\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"Memory\", \"Kiosk\", \"Filters\"] }\n\n{ \"name\": \"TaskForge Etudiant\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"LocalStorage\", \"Priorities\", \"DueDates\"] }\n\n{ \"name\": \"TaskForge Pro\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"LocalStorage\", \"Priorities\", \"DueDates\",\n               \"Filters\", \"Statistics\", \"CSVExport\", \"JSONExport\"] }\n```\n\nCe sont exactement les manifestes des produits fournis. Validité (modèle v2) :\n- **Kiosque** : un stockage (Memory) ; `Kiosk => Memory` respectée ; pas de Statistics ; pas de JSONExport.\n- **Étudiant** : un stockage (LocalStorage) ; aucune option liée par une contrainte.\n- **Pro** : un stockage (LocalStorage) ; Statistics avec Filters ; JSONExport avec LocalStorage ; pas de Kiosk.\n\nIl faut **TaskForge, TaskManagement et Storage** dans chaque liste : une configuration complète exclut tout ce qui n’est pas listé, et un enfant sélectionné exige son parent. On ne dépend pas du format d’export de FlamapyIDE : on recopie la sélection dans ce format et l’atelier la valide avec le même UVL.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.1 Du modèle au produit : valider, puis générer](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)",
+            "en": "```json\n{ \"name\": \"TaskForge Kiosque\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"Memory\", \"Kiosk\", \"Filters\"] }\n\n{ \"name\": \"TaskForge Etudiant\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"LocalStorage\", \"Priorities\", \"DueDates\"] }\n\n{ \"name\": \"TaskForge Pro\",\n  \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"LocalStorage\", \"Priorities\", \"DueDates\",\n               \"Filters\", \"Statistics\", \"CSVExport\", \"JSONExport\"] }\n```\n\nThese are exactly the manifests of the supplied products. Validity (model v2):\n- **Kiosque**: one storage (Memory); `Kiosk => Memory` holds; no Statistics; no JSONExport.\n- **Étudiant**: one storage (LocalStorage); no option tied by a constraint.\n- **Pro**: one storage (LocalStorage); Statistics with Filters; JSONExport with LocalStorage; no Kiosk.\n\n**TaskForge, TaskManagement and Storage** must be in every list: a complete configuration excludes everything not listed, and a selected child requires its parent. We do not depend on FlamapyIDE’s export format: the selection is copied into this format and the workshop validates it with the same UVL.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.1 From model to product: validate, then generate](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1); [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Racine et regroupements (TaskForge, TaskManagement, Storage) dans chaque liste (1 pt)",
+              "en": "Root and groupings (TaskForge, TaskManagement, Storage) in every list (1 pt)"
+            },
+            {
+              "fr": "Les trois listes exactes, au format name / selected (1 pt)",
+              "en": "The three exact lists, in name / selected format (1 pt)"
+            },
+            {
+              "fr": "Validité justifiée par les contraintes du modèle v2 (1 pt)",
+              "en": "Validity justified by model v2’s constraints (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Recopiez la sélection finale dans le format stable ci-dessous, avec racine et regroupements."
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "\"name\": \"TaskForge Kiosque\", \"selected\": [\"TaskForge\", \"TaskManagement\", \"Storage\", \"Memory\", \"Kiosk\", \"Filters\"]"
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Une configuration complète exclut tout ce qui n’est pas listé."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q02",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Configuration partielle.** Impose Statistics et exclus LocalStorage. Quels autres choix deviennent nécessaires ? Plusieurs produits restent-ils possibles ? Donne une complétion valide.",
+            "en": "**Partial configuration.** Impose Statistics and exclude LocalStorage. Which other choices become necessary? Do several products remain possible? Give a valid completion."
+          },
+          "material": "configurations/partielle.json :\n\n```json\n{ \"required\": [\"Statistics\"], \"excluded\": [\"LocalStorage\"] }\n```",
+          "correction": {
+            "fr": "**Choix devenus nécessaires** :\n- **Memory** : Storage est obligatoire avec un groupe alternatif ; LocalStorage exclue laisse Memory ;\n- **Filters** : `Statistics => Filters` ;\n- **JSONExport exclue** : `JSONExport => LocalStorage`, or LocalStorage est exclue.\n\n**Produits restants** : Kiosk (permise, elle exige Memory qui est là), Priorities, DueDates et CSVExport restent libres : 2⁴ = **16 produits**. Plusieurs produits restent donc possibles.\n\n**Une complétion valide** : {TaskForge, TaskManagement, Storage, Memory, Filters, Statistics} (tout le reste exclu).\n\nUne configuration partielle laisse les éléments non cités **indécidés** : la compléter, c’est choisir les indécidés en gardant les décisions imposées et en respectant les contraintes.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.4 Deuxième exemple : compléter une demande TaskForge](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)",
+            "en": "**Choices that become necessary**:\n- **Memory**: Storage is mandatory with an alternative group; excluding LocalStorage leaves Memory;\n- **Filters**: `Statistics => Filters`;\n- **JSONExport excluded**: `JSONExport => LocalStorage`, and LocalStorage is excluded.\n\n**Remaining products**: Kiosk (allowed, it requires Memory which is there), Priorities, DueDates and CSVExport stay free: 2⁴ = **16 products**. So several products remain possible.\n\n**A valid completion**: {TaskForge, TaskManagement, Storage, Memory, Filters, Statistics} (everything else excluded).\n\nA partial configuration leaves unmentioned elements **undecided**: completing it means choosing the undecided ones while keeping the imposed decisions and respecting the constraints.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.4 Second example: completing a TaskForge request](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4); [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Memory et Filters nécessaires, JSONExport exclue, avec la règle de chaque (1 pt)",
+              "en": "Memory and Filters necessary, JSONExport excluded, with each rule (1 pt)"
+            },
+            {
+              "fr": "16 produits : quatre options libres, 2⁴ (1 pt)",
+              "en": "16 products: four free options, 2⁴ (1 pt)"
+            },
+            {
+              "fr": "Une complétion valide qui garde Statistics et exclut LocalStorage (1 pt)",
+              "en": "A valid completion keeping Statistics and excluding LocalStorage (1 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Imposez Statistics et excluez LocalStorage. Quels autres choix deviennent nécessaires ? Plusieurs produits restent-ils possibles ?"
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Une configuration partielle laisse les éléments non cités indécidés."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q03",
+          "type": "open",
+          "points": 2,
+          "prompt": {
+            "fr": "Teste une demande contenant à la fois JSONExport et Kiosk et explique le refus. Que faire avec le client ?",
+            "en": "Test a request containing both JSONExport and Kiosk and explain the refusal. What should be done with the customer?"
+          },
+          "correction": {
+            "fr": "**Refus** : `JSONExport => LocalStorage` et `Kiosk => Memory`, or Memory et LocalStorage forment un groupe **alternatif** : aucune configuration ne contient les deux. La demande n’a **aucune complétion** ; l’outil le signale et le générateur refuse la production. Il ne doit pas abandonner en silence une des deux exigences.\n\n**Avec le client** : choisir entre un kiosque sans export JSON et un produit avec export JSON sans mode kiosque. Autre piste : la règle `JSONExport => LocalStorage` est une **politique commerciale**, « PAS une nécessité technique » ; avec l’accord de la partie prenante, on pourrait la retirer du contrat et du modèle, et la demande deviendrait réalisable.\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.4 Deuxième exemple : compléter une demande TaskForge](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4) ; [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "**Refusal**: `JSONExport => LocalStorage` and `Kiosk => Memory`, but Memory and LocalStorage form an **alternative** group: no configuration contains both. The request has **no completion**; the tool reports it and the generator refuses production. It must not silently drop one of the two requirements.\n\n**With the customer**: choose between a kiosk without JSON export and a product with JSON export without kiosk mode. Another option: the rule `JSONExport => LocalStorage` is a **commercial policy**, “NOT a technical necessity”; with the stakeholder’s agreement it could be removed from the contract and the model, and the request would become feasible.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.4 Second example: completing a TaskForge request](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4); [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Chaîne JSONExport ⇒ LocalStorage, Kiosk ⇒ Memory, alternative : aucune complétion (1 pt)",
+              "en": "Chain JSONExport ⇒ LocalStorage, Kiosk ⇒ Memory, alternative: no completion (1 pt)"
+            },
+            {
+              "fr": "Ne rien abandonner en silence ; arbitrer avec le client ou revoir la règle commerciale (1 pt)",
+              "en": "Drop nothing silently; arbitrate with the customer or revisit the commercial rule (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Testez ensuite une demande contenant à la fois JSONExport et Kiosk et expliquez le refus."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/taskforge_existant.js.txt",
+              "quote": "4. JSONExport implique LocalStorage (politique commerciale de cette version, PAS une nécessité technique : une autre politique serait possible)."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q04",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Compléter un composant réutilisable.** Dans taskforge_a_completer.js.txt, la fonction `exportCSV()` est vide. Complète-la pour exporter les tâches avec quatre colonnes : title, done, priority, due (chaîne vide si priority ou due manque). Tu disposes de `tasks`, `csvCell(value)` et `download(name, text, type)`. Comment tester un titre contenant une virgule et des guillemets ?",
+            "en": "**Complete a reusable component.** In taskforge_a_completer.js.txt, the `exportCSV()` function is empty. Complete it to export the tasks with four columns: title, done, priority, due (empty string when priority or due is missing). You have `tasks`, `csvCell(value)` and `download(name, text, type)`. How do you test a title containing a comma and quotes?"
+          },
+          "material": "```js\nfunction exportCSV(){\n  // TODO T3 : construire les lignes, utiliser csvCell, puis download.\n  alert('À compléter : export CSV');\n}\n```\n\nDémarche de l’énoncé : un tableau avec une ligne d’en-tête, une ligne par tâche, `csvCell` sur chaque cellule, cellules jointes par une virgule, lignes par `\\r\\n`, téléchargement avec le type `text/csv;charset=utf-8`.",
+          "correction": {
+            "fr": "```js\nfunction exportCSV(){\n  const rows=[['title','done','priority','due'],\n    ...tasks.map(t=>[t.title, t.done, t.priority||'', t.due||''])];\n  download('tasks.csv',\n    rows.map(r=>r.map(csvCell).join(',')).join('\\r\\n'),\n    'text/csv;charset=utf-8');\n}\n```\n\nC’est la version du gabarit complet du T2. Étape par étape : l’en-tête `title, done, priority, due` ; une ligne par tâche, avec `''` quand priority ou due manque (produit sans Priorities ou sans DueDates) ; `csvCell` **sur chaque cellule** ; `join(',')` puis `join('\\r\\n')` ; `download` avec le type demandé. On ne change ni l’interface du composant ni les autres fonctions.\n\n**Test** : créer la tâche `Acheter \"pain\", lait` puis exporter. `csvCell` entoure la cellule de guillemets et **double** les guillemets internes : `\"Acheter \"\"pain\"\", lait\"`. La virgule reste dans la cellule, le fichier se relit avec les bonnes colonnes. `csvCell` ajoute aussi une apostrophe devant une valeur qui commence par `=`, `+`, `@` ou `-`, pour qu’un tableur ne l’interprète pas comme une formule. Télécharger le gabarit corrigé avant de continuer.\n\n→ Revoir : [ch. 13 « Tester une application sans tout retester », § 5.1 Deux familles de vérifications](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.1)",
+            "en": "```js\nfunction exportCSV(){\n  const rows=[['title','done','priority','due'],\n    ...tasks.map(t=>[t.title, t.done, t.priority||'', t.due||''])];\n  download('tasks.csv',\n    rows.map(r=>r.map(csvCell).join(',')).join('\\r\\n'),\n    'text/csv;charset=utf-8');\n}\n```\n\nThis is the version in the full T2 template. Step by step: the header `title, done, priority, due`; one row per task, with `''` when priority or due is missing (product without Priorities or without DueDates); `csvCell` **on every cell**; `join(',')` then `join('\\r\\n')`; `download` with the requested type. Neither the component’s interface nor the other functions change.\n\n**Test**: create the task `Acheter \"pain\", lait` then export. `csvCell` wraps the cell in quotes and **doubles** inner quotes: `\"Acheter \"\"pain\"\", lait\"`. The comma stays inside the cell, and the file reads back with the right columns. `csvCell` also adds an apostrophe before a value starting with `=`, `+`, `@` or `-`, so a spreadsheet does not read it as a formula. Download the fixed template before going on.\n\n→ Review: [ch. 13 “Testing an application without retesting everything”, § 5.1 Two families of checks](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.1)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "En-tête et une ligne par tâche, quatre colonnes, chaîne vide si valeur absente (1 pt)",
+              "en": "Header and one row per task, four columns, empty string if a value is missing (1 pt)"
+            },
+            {
+              "fr": "csvCell sur chaque cellule, virgule entre cellules, \\r\\n entre lignes (1 pt)",
+              "en": "csvCell on every cell, comma between cells, \\r\\n between rows (1 pt)"
+            },
+            {
+              "fr": "download avec text/csv;charset=utf-8 ; test virgule et guillemets expliqué (1 pt)",
+              "en": "download with text/csv;charset=utf-8; comma-and-quotes test explained (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§2",
+              "quote": "Complétez-la pour exporter les tâches avec quatre colonnes : title, done, priority, due."
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§2",
+              "quote": "Ne changez ni l’interface du composant ni les autres fonctions. Testez un titre contenant une virgule et des guillemets."
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "code/taskforge_a_completer.js.txt",
+              "quote": "// TODO T3 : construire les lignes, utiliser csvCell, puis download."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q05",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Vérifier le comportement ET le code.** Dans le code de chaque produit généré, où doit-on trouver (ou ne pas trouver) `function exportCSV`, `function exportJSON`, `function updateStatistics` et `localStorage.setItem` ? Pourquoi le nom d’une feature dans le manifeste ne suffit-il pas ? Explique la différence entre cacher un bouton dans un produit qui contient tout le code et retirer le composant au moment de la production.",
+            "en": "**Check behaviour AND code.** In each generated product’s code, where must `function exportCSV`, `function exportJSON`, `function updateStatistics` and `localStorage.setItem` be found (or not)? Why is a feature’s name in the manifest not enough? Explain the difference between hiding a button in a product containing all the code and removing the component at production time."
+          },
+          "correction": {
+            "fr": "| Recherche | Kiosque | Étudiant | Pro |\n|---|---|---|---|\n| `function exportCSV` | absente | absente | présente |\n| `function exportJSON` | absente | absente | présente |\n| `function updateStatistics` | absente | absente | présente |\n| `localStorage.setItem` | absente (Memory) | présente | présente |\n\nChaque fonction n’existe que si sa feature est sélectionnée : le générateur a retiré les blocs `//#if` des autres. Le **manifeste** (la liste affichée en haut) ne prouve pas que l’implémentation est là : on vérifie les **blocs de fonctions** dans le code produit, et un simple commentaire qui cite une feature ne prouve rien non plus.\n\n**Deux stratégies** :\n- **cacher un bouton** : tout le code est livré dans chaque produit, la variante est choisie à l’exécution ; le code non voulu reste présent (taille, risque qu’il soit réactivé, tests à faire quand même) ;\n- **retirer le composant à la production** : liaison à la **construction**, le code non sélectionné est absent du produit livré. C’est ce que fait le TP.\n\n→ Revoir : [ch. 13 « Tester une application sans tout retester », § 5.1 Deux familles de vérifications](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.1) ; [ch. 13 « Tester une application sans tout retester », § 5.2 Le manifeste ne prouve rien ; limites du générateur](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.2) ; [ch. 12 « Conception et réalisation d’une application », § 5.1 Variabilité fixée à la construction](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1)",
+            "en": "| Search | Kiosque | Étudiant | Pro |\n|---|---|---|---|\n| `function exportCSV` | absent | absent | present |\n| `function exportJSON` | absent | absent | present |\n| `function updateStatistics` | absent | absent | present |\n| `localStorage.setItem` | absent (Memory) | present | present |\n\nEach function exists only if its feature is selected: the generator removed the other `//#if` blocks. The **manifest** (the list shown at the top) does not prove the implementation is there: you check the **function blocks** in the product code, and a mere comment naming a feature proves nothing either.\n\n**Two strategies**:\n- **hiding a button**: all the code ships in every product, the variant is chosen at run time; the unwanted code stays present (size, risk of re-activation, still to be tested);\n- **removing the component at production**: **build-time** binding, unselected code is absent from the delivered product. That is what the lab does.\n\n→ Review: [ch. 13 “Testing an application without retesting everything”, § 5.1 Two families of checks](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.1); [ch. 13 “Testing an application without retesting everything”, § 5.2 The manifest proves nothing; the generator’s limits](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.2); [ch. 12 “Designing and building an application”, § 5.1 Variability fixed at build time](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Tableau présence / absence juste pour les trois produits (1 pt)",
+              "en": "Correct presence / absence table for the three products (1 pt)"
+            },
+            {
+              "fr": "Le manifeste ne prouve pas l’implémentation : vérifier les blocs de fonctions (1 pt)",
+              "en": "The manifest does not prove the implementation: check the function blocks (1 pt)"
+            },
+            {
+              "fr": "Cacher (exécution, code présent) ≠ retirer (construction, code absent) (1 pt)",
+              "en": "Hiding (run time, code present) ≠ removing (build time, code absent) (1 pt)"
+            }
+          ],
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§4",
+              "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§4",
+              "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q06",
+          "type": "open",
+          "points": 2,
+          "prompt": {
+            "fr": "**Matrice des tests.** Pour chaque test du kit, donne le résultat attendu et le risque qu’il vise.",
+            "en": "**Test matrix.** For each test of the kit, give the expected result and the risk it targets."
+          },
+          "correction": {
+            "fr": "| Test | Produit | Résultat attendu | Risque visé |\n|---|---|---|---|\n| Créer, renommer, terminer, supprimer | les trois | fonctionne | socle commun (communalité) |\n| Titre fait d’espaces | les trois | aucun ajout | validation des saisies (`validTitle`) |\n| Ajouter puis recharger | Kiosque | aucune tâche conservée | Memory : pas de persistance |\n| Ajouter puis recharger le même fichier | Étudiant, Pro | tâche conservée, ou échec de permission **signalé** | LocalStorage ; ne pas remplacer en silence par un test en mémoire |\n| Priorité et échéance | Étudiant | valeurs affichées et conservées | variants Priorities, DueDates |\n| Terminer une tâche, filtrer | Pro | liste et compteur cohérents | `Statistics => Filters` (compteur sur les tâches filtrées) |\n| Export CSV et JSON | Pro | fichiers lisibles, données cohérentes | composants d’export |\n| Titre avec virgule, guillemets, accents | Pro | CSV correctement encodé | échappement CSV |\n| Memory + LocalStorage | générateur | production refusée | groupe alternatif |\n| JSONExport + Kiosk | générateur | production refusée | contraintes du modèle |\n| Fonctions d’export dans le code | Kiosque | absentes | code non sélectionné bien retiré |\n\nPour chaque ligne, noter le résultat observé et une **preuve** (capture, fichier exporté, extrait de code).\n\n→ Revoir : [ch. 13 « Tester une application sans tout retester », § 5.1 Deux familles de vérifications](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.1) ; [ch. 13 « Tester une application sans tout retester », § 5.3 Lien avec les quatre catégories d’exigences](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.3)",
+            "en": "| Test | Product | Expected result | Targeted risk |\n|---|---|---|---|\n| Create, rename, finish, delete | all three | works | shared core (commonality) |\n| Title made of spaces | all three | nothing added | input validation (`validTitle`) |\n| Add then reload | Kiosque | no task kept | Memory: no persistence |\n| Add then reload the same file | Étudiant, Pro | task kept, or permission failure **reported** | LocalStorage; do not silently replace with an in-memory test |\n| Priority and due date | Étudiant | values shown and kept | Priorities, DueDates variants |\n| Finish a task, filter | Pro | list and counter consistent | `Statistics => Filters` (counter on filtered tasks) |\n| CSV and JSON export | Pro | readable files, consistent data | export components |\n| Title with comma, quotes, accents | Pro | correctly encoded CSV | CSV escaping |\n| Memory + LocalStorage | generator | production refused | alternative group |\n| JSONExport + Kiosk | generator | production refused | model constraints |\n| Export functions in the code | Kiosque | absent | unselected code really removed |\n\nFor each row, record the observed result and a **proof** (screenshot, exported file, code excerpt).\n\n→ Review: [ch. 13 “Testing an application without retesting everything”, § 5.1 Two families of checks](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.1); [ch. 13 “Testing an application without retesting everything”, § 5.3 Link with the four requirement categories](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.3)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Résultats attendus justes, y compris les deux refus de production (1 pt)",
+              "en": "Correct expected results, including the two production refusals (1 pt)"
+            },
+            {
+              "fr": "Risque visé par chaque test, preuve à consigner (1 pt)",
+              "en": "Risk targeted by each test, proof to record (1 pt)"
+            }
+          ],
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§4",
+              "quote": "Configuration Memory + LocalStorage \tProduction refusée"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "MATRICE_TESTS.csv",
+              "quote": "T04,Etudiant et Pro,Ajouter puis recharger,Tache conservee ou echec explicite de permission a signaler,,,"
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q07",
+          "type": "open",
+          "points": 3,
+          "prompt": {
+            "fr": "**Évolution : ClearCompleted.** Ajoute une option « supprimer toutes les tâches terminées d’un seul clic ». (1) Modèle : où l’ajouter, et comment évolue le nombre de configurations par rapport à la v2 ? (2) Code : écris le bloc à ajouter au gabarit. (3) Produits : lesquels la sélectionnent, et que faut-il vérifier ?",
+            "en": "**Evolution: ClearCompleted.** Add an option “delete all finished tasks in one click”. (1) Model: where to add it, and how does the number of configurations change compared with v2? (2) Code: write the block to add to the template. (3) Products: which ones select it, and what must be checked?"
+          },
+          "correction": {
+            "fr": "**1. Modèle (v3)** : `ClearCompleted` sous `optional` à la racine, **sans contrainte**. Configurations : **96 → 192**. Une option libre double le nombre : chaque produit v2 existe avec et sans ClearCompleted, et les anciens produits restent représentables (ClearCompleted exclue).\n\n**2. Code**, avant l’affectation `document.getElementById('add').onsubmit` :\n\n```js\n//#if ClearCompleted\nfunction clearCompleted(){ tasks=tasks.filter(t=>!t.done); persist(); render(); }\ntoolbar.append(button('Supprimer les terminées', clearCompleted));\n//#endif\ndocument.getElementById('add').onsubmit=e=>{ ...\n```\n\nLa fonction garde les tâches **non terminées** (`!t.done`), puis **enregistre** (`persist()`) et **réaffiche** (`render()`).\n\n**3. Produits** : ajouter `\"ClearCompleted\"` aux listes d’Étudiant et de Pro, pas à celle du Kiosque. Transférer le nouvel UVL à l’atelier, puis **régénérer les trois produits** à partir de la même version du gabarit. Vérifier : bouton et fonction **absents** du Kiosque, présents dans les deux autres ; les tâches non terminées sont préservées ; pour les produits persistants, **recharger** après suppression (la sauvegarde est à jour) ; les anciens tests passent encore (non-régression).\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.3 L’effet d’une évolution sur le nombre de configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3) ; [ch. 13 « Tester une application sans tout retester », § 5.2 Le manifeste ne prouve rien ; limites du générateur](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.2)",
+            "en": "**1. Model (v3)**: `ClearCompleted` under `optional` at the root, **with no constraint**. Configurations: **96 → 192**. A free option doubles the count: each v2 product exists with and without ClearCompleted, and old products stay representable (ClearCompleted excluded).\n\n**2. Code**, before the `document.getElementById('add').onsubmit` assignment:\n\n```js\n//#if ClearCompleted\nfunction clearCompleted(){ tasks=tasks.filter(t=>!t.done); persist(); render(); }\ntoolbar.append(button('Supprimer les terminées', clearCompleted));\n//#endif\ndocument.getElementById('add').onsubmit=e=>{ ...\n```\n\nThe function keeps the **unfinished** tasks (`!t.done`), then **saves** (`persist()`) and **redisplays** (`render()`).\n\n**3. Products**: add `\"ClearCompleted\"` to the Étudiant and Pro lists, not to Kiosque’s. Transfer the new UVL to the workshop, then **regenerate the three products** from the same template version. Check: button and function **absent** from Kiosque, present in the other two; unfinished tasks are preserved; for persistent products, **reload** after deleting (the saved data are up to date); the old tests still pass (non-regression).\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.3 The effect of an evolution on the number of configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3); [ch. 13 “Testing an application without retesting everything”, § 5.2 The manifest proves nothing; the generator’s limits](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=5.2)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Option libre à la racine ; 96 → 192 justifié (une option libre double le nombre) (1 pt)",
+              "en": "Free option at the root; 96 → 192 justified (a free option doubles the count) (1 pt)"
+            },
+            {
+              "fr": "Bloc //#if ClearCompleted correct : filtre !t.done, persist, render, bouton (1 pt)",
+              "en": "Correct //#if ClearCompleted block: filter !t.done, persist, render, button (1 pt)"
+            },
+            {
+              "fr": "Sélection Étudiant et Pro seulement, régénération des trois, vérifications présence / absence et rechargement (1 pt)",
+              "en": "Selection for Étudiant and Pro only, regeneration of all three, presence / absence and reload checks (1 pt)"
+            }
+          ],
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§5",
+              "quote": "Ajoutez ClearCompleted comme feature optionnelle à la racine dans FlamapyIDE, sans nouvelle contrainte métier."
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§5",
+              "quote": "créez une fonction clearCompleted qui filtre tasks pour ne garder que les tâches non terminées, puis appelle persist() et render()."
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§5",
+              "quote": "Vérifiez que le bouton et la fonction sont absents du Kiosque, présents dans les deux autres, et que les tâches non terminées sont préservées."
+            }
+          ]
+        },
+        {
+          "id": "inf4-devoir-taskforge-t3-q08",
+          "type": "open",
+          "points": 1,
+          "prompt": {
+            "fr": "Rédige les dix lignes demandées sur la réutilisation : actifs communs, points de variation, moment de fixation des choix, traçabilité et limites.",
+            "en": "Write the requested ten lines on reuse: common assets, variation points, binding time of choices, traceability and limits."
+          },
+          "correction": {
+            "fr": "Exemple de dix lignes :\n\n**Actifs communs** : un seul modèle UVL, un seul gabarit de code et un générateur, partagés par les trois produits ; une correction ou une évolution se fait une fois. **Points de variation** : les blocs `//#if`, un par option (huit options en v3), avec des identifiants stables du modèle au code. **Moment de fixation** : à la **construction** ; le code non choisi est retiré, le produit livré ne change plus pendant l’utilisation. **Traçabilité** : exigence (R01 à R11) → feature → bloc de code → test ; chaque produit garde sa configuration et son dossier de construction JSON (modèle, configuration, gabarit, produit). **Limites** : le générateur ne prouve pas la correction du JavaScript (tests nécessaires) ; la persistance dépend du navigateur ; le mode kiosque ne sécurise pas un poste partagé ; l’analyseur local se limite à 18 features booléennes ; la règle JSONExport ⇒ LocalStorage est commerciale et reste à confirmer avec une partie prenante.\n\n→ Revoir : [ch. 14 « Fiche : ce que chaque tutoriel t’apprend », § 3.1 Les trois TP](#/matiere/inf4/chapitre/inf4-14-fiche-tutoriels/lire?partie=3.1) ; [ch. 12 « Conception et réalisation d’une application », § 5.1 Variabilité fixée à la construction](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1)",
+            "en": "Example of ten lines:\n\n**Common assets**: one UVL model, one code template and one generator, shared by the three products; a fix or an evolution is made once. **Variation points**: the `//#if` blocks, one per option (eight options in v3), with stable identifiers from model to code. **Binding time**: at **build** time; unchosen code is removed, the delivered product no longer changes during use. **Traceability**: requirement (R01 to R11) → feature → code block → test; each product keeps its configuration and its JSON build folder (model, configuration, template, product). **Limits**: the generator does not prove the JavaScript correct (tests needed); persistence depends on the browser; kiosk mode does not secure a shared computer; the local analyser is limited to 18 Boolean features; the JSONExport ⇒ LocalStorage rule is commercial and still to be confirmed with a stakeholder.\n\n→ Review: [ch. 14 “Sheet: what each tutorial teaches you”, § 3.1 The three exercises](#/matiere/inf4/chapitre/inf4-14-fiche-tutoriels/lire?partie=3.1); [ch. 12 “Designing and building an application”, § 5.1 Variability fixed at build time](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1)"
+          },
+          "gradingGuide": [
+            {
+              "fr": "Les cinq thèmes traités avec un élément concret du TP chacun (1 pt)",
+              "en": "The five themes covered with a concrete element of the lab each (1 pt)"
+            }
+          ],
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "Rendu T3",
+              "quote": "Ajoutez dix lignes sur la réutilisation : actifs communs, points de variation, moment de fixation des choix, traçabilité et limites."
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "NB: Kiosk ne garantit ni la confidentialité de tout le poste ni l’effacement d’éventuels fichiers téléchargés."
+            },
+            {
+              "file": "sources-texte/inf4/25-enonce-taskforge.md",
+              "loc": "Prise en main de FlamapyIDE",
+              "quote": "L’analyseur local est volontairement limité au sous-ensemble booléen décrit dans l’atelier, à 18 features et à l’énumération exhaustive."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
