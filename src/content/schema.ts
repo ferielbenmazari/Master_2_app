@@ -58,8 +58,8 @@ export const StoryBlockSchema = z.discriminatedUnion('type', [
   }),
   z.strictObject({
     type: z.literal('callout'),
-    /** definition = « Définition à connaître » (src obligatoire) ; retenir = « À retenir » (récapitule des faits sourcés dans la section, src facultatif). */
-    variant: z.enum(['tip', 'warning', 'exam', 'analogy', 'repere', 'definition', 'retenir']),
+    /** definition = « Définition à connaître » (src obligatoire) ; retenir = « À retenir » (récapitule des faits sourcés dans la section, src facultatif) ; practice = « S’entraîner » (renvoie vers les questions du prof et les devoirs qui portent sur la section). */
+    variant: z.enum(['tip', 'warning', 'exam', 'analogy', 'repere', 'definition', 'retenir', 'practice']),
     text: LSchema,
     src: srcList.optional(),
   }),
@@ -230,8 +230,14 @@ export const ChapterSchema = z
     estimatedMinutes: z.number().positive(),
     sources: stringArray,
     status: z.enum(['draft', 'reviewed']),
-    // 80 blocs, titres et sous-titres compris (T28 : sommaire détaillé)
-    story: z.array(StoryBlockSchema).min(12).max(80),
+    // 80 blocs, titres et sous-titres compris (T28 : sommaire détaillé) ; les encadrés « S’entraîner »
+    // (navigation vers les questions du prof, un par partie au plus) ne comptent pas.
+    story: z
+      .array(StoryBlockSchema)
+      .min(12)
+      .refine((blocks) => blocks.filter((b) => !(b.type === 'callout' && b.variant === 'practice')).length <= 80, {
+        message: 'Trop de blocs : 80 au plus, hors encadrés « S’entraîner »',
+      }),
     glossary: z.array(TermSchema).min(6).max(20),
     notions: stringArray,
     keyPoints: z.array(KeyPointSchema).min(5).max(10),

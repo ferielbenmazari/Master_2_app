@@ -243,7 +243,7 @@ Le niveau de détail dépend de l'importance pour le partiel (preuve, §9.1), ja
 - Citations : 4 à 40 mots, recopiées du fichier (le texte extrait peut différer du PDF : « no-binding »). Réutiliser les citations déjà vérifiées : `node tools/cours/citations.mjs <id> "<extrait>"`.
 - V/F : 40 à 65 % de FAUX, et les mots absolus (toujours, jamais, garantir, uniquement…) aussi dans des énoncés VRAIS.
 - Déplacer une notion : mettre à jour son `chapter` dans `notions.json` (la couverture se calcule par préfixe d'id de chapitre), renommer les ids des items déplacés (`<chapitre>-qz-…`), remapper leur `objective`, vérifier que chaque `checkpoint` vise un quiz du chapitre.
-- `story` ≤ 80 blocs, titres et sous-titres compris (T28) ; paragraphe > 90 mots → le passer en liste ; liste ≤ 7 items, sinon tableau.
+- `story` ≤ 80 blocs, titres et sous-titres compris (T28), hors encadrés « S’entraîner » (`practice`, un par partie au plus : renvois vers les questions du prof, générés à partir des corrigés) ; paragraphe > 90 mots → le passer en liste ; liste ≤ 7 items, sinon tableau.
 - `explain: true` seulement pour relier des faits déjà sourcés dans le chapitre ; sinon un `src`.
 - Mermaid : `xychart-beta` avec `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "…"}}}}%%` (sinon la première courbe est presque invisible) et couleurs nommées dans la légende ; chaîne en `TB`, arbre large en `LR` (lisible sur téléphone) ; libellés entre guillemets s'ils contiennent des parenthèses.
 - Changer l'ordre des chapitres : `course.json.chapterOrder` **et** le champ `order` de chaque chapitre.

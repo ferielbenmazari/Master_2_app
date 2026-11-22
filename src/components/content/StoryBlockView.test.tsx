@@ -55,4 +55,19 @@ describe('StoryBlockView : structure du cours (T26)', () => {
     expect(screen.getByText('À retenir')).toBeInTheDocument()
     expect(container.querySelector('.callout-retenir')).not.toBeNull()
   })
+
+  it('encadré « S’entraîner » avec un lien vers un partiel', () => {
+    const { container } = render(
+      wrap(
+        <StoryBlockView
+          block={{ type: 'callout', variant: 'practice', text: L('[Quiz 3 du prof](#/matiere/inf4/partiel/quiz-prof-3) : Q2, Q10.'), src }}
+          layout="fr"
+          quizHref="#"
+        />,
+      ),
+    )
+    expect(screen.getByText('S’entraîner')).toBeInTheDocument()
+    expect(container.querySelector('.callout-practice')).not.toBeNull()
+    expect(screen.getByRole('link', { name: 'Quiz 3 du prof' })).toHaveAttribute('href', '#/matiere/inf4/partiel/quiz-prof-3')
+  })
 })

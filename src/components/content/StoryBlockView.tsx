@@ -4,6 +4,7 @@ import {
   Compass,
   Info,
   Lightbulb,
+  PencilLine,
   Route,
   Sparkles,
   TriangleAlert,
@@ -30,6 +31,7 @@ const CALLOUTS: Record<Extract<StoryBlock, { type: 'callout' }>['variant'], Luci
   repere: Compass,
   definition: BookOpen,
   retenir: Bookmark,
+  practice: PencilLine,
 }
 
 interface Props {

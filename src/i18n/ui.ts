@@ -134,6 +134,7 @@ export const UI = {
       repere: 'Repère',
       definition: 'Définition à connaître',
       retenir: 'À retenir',
+      practice: 'S’entraîner',
     },
     explain: 'Explication',
     method: 'Méthode',

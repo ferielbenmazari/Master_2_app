@@ -75,14 +75,14 @@ type StoryBlock =
       // explain: true = explication pédagogique : relie des faits sourcés AILLEURS dans le chapitre, n'en ajoute aucun
   | { type: "method"; title: L; steps: { do: L; why: L }[]; src?: SourceRef[]; notions?: string[] } // méthode pas à pas (2-8 étapes)
   | { type: "list"; ordered?: boolean; items: L[]; src: SourceRef[]; notions?: string[] }
-  | { type: "callout"; variant: "tip" | "warning" | "exam" | "analogy" | "repere" | "definition" | "retenir"; text: L; src?: SourceRef[] }
+  | { type: "callout"; variant: "tip" | "warning" | "exam" | "analogy" | "repere" | "definition" | "retenir" | "practice"; text: L; src?: SourceRef[] }
       // repere = contexte secondaire, jamais quizzé · definition = « Définition à connaître » (src obligatoire)
       // retenir = « À retenir » : récapitule des faits sourcés dans la section, n'en ajoute aucun (src facultatif)
   | { type: "table"; headers: L[]; rows: L[][]; src: SourceRef[]; notions?: string[] }
   | { type: "diagram"; mermaid: string; caption: L; src?: SourceRef[] }   // Mermaid valide, libellés en anglais
   | { type: "quote"; text: L; source: string }
   | { type: "checkpoint"; quizId: string };               // renvoie à un item de `quiz`
-// paragraph : src obligatoire sauf narrative: true ou explain: true · callout : src obligatoire sauf variants "analogy" et "retenir"
+// paragraph : src obligatoire sauf narrative: true ou explain: true · callout : src obligatoire sauf variants "analogy" et "retenir" · practice : renvois vers les questions du prof et les devoirs qui portent sur la partie (inverse des « → Revoir » des corrigés), hors limite des 80 blocs
 
 interface KeyPoint { text: L; src: SourceRef[]; notions?: string[] }
 
