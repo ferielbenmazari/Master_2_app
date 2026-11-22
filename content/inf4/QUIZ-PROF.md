@@ -11,7 +11,7 @@
 - « The final exam will cover **all lecture, all tutorials and all recommended readings**. » Les tutoriels VariaMos font donc partie du programme.
 - Les quiz portent sur « the tutorial, the lectures and the recommended readings ». Ils sont faits pour s'auto-tester, 3 essais, et l'examen reprendra probablement le même style.
 
-## 2. Ce que les quiz testent : sept savoir-faire
+## 2. Ce que les quiz testent : dix savoir-faire
 
 | # | Savoir-faire | Exemples dans les quiz | Où l'apprendre |
 |---|---|---|---|
@@ -21,7 +21,12 @@
 | 4 | **Distinguer le domaine et l'application** : le choix d'un client est une sélection (ingénierie d'application), pas un changement du périmètre de la famille ; retour d'une application vers le domaine ; copier-coller ≠ ligne de produits | Q0-1 à Q0-5, Q0-9 à Q0-12 | chapitres « Variabilité et ligne de produits » et « Exigences d'application » |
 | 5 | **Lire et écrire une exigence de ligne** : ALL / SOME / THOSE, SHALL / SHOULD / COULD, condition, « eventually » (RELAX), vague ou mesurable | Q1-2 à Q1-5, Q1-9, Q1-11, Q1-12 | nouveau chapitre « Gabarit SECRET » |
 | 6 | **Prudence épistémique** : ce qu'on observe (deux produits qui ont Analytics) ne prouve pas l'intention de la famille ; une phrase ambiguë se clarifie avec les parties prenantes, on ne la « choisit » pas | Q0-9, Q1-9, Q1-10 | idem |
-| 7 | **Faits du tutoriel** : structure d'un projet VariaMos, types d'éléments, noms exacts (Includes, Bundle Range, Constraint, Domain Requirements - AC, Contribution…) | Q0-7, Q0-8, Q1-6 à Q1-8, Q2-7, Q2-8 | fiches courtes dans les chapitres concernés |
+| 7 | **Faits du tutoriel** : structure d'un projet VariaMos, types d'éléments, noms exacts (Includes, Bundle Range, Constraint, Domain Requirements - AC, Contribution, Solver Specific Semantics, requêtes JSON, précaution de novembre 2024…) | Q0-7, Q0-8, Q0V2-7, Q0V2-8, Q1-6 à Q1-8, Q2-7, Q2-8, Q3-7, Q3-8, Q4-7, Q4-8, Q5-7, Q5-8 | fiches courtes dans les chapitres concernés |
+| 8 | **Lire un résultat d'outil sans conclure trop vite** : une solution prouve la satisfiabilité, pas l'unicité ; un échantillon ne donne pas le noyau ; un timeout ne prouve rien ; UNSAT sous des choix partiels ≠ morte ; un modèle de base UNSAT se corrige d'abord ; deux témoins différents = au moins deux produits | Q3-1 à Q3-4, Q3-10, Q3-11, Q4-3 à Q4-6, Q4-9, Q4-10, Q4-12 | « Traduire un modèle en contraintes » § 3.7 ; « Vérifier, diagnostiquer et corriger » § 3.7 |
+| 9 | **Configurer et optimiser** : une complétion garde les choix imposés et respecte le modèle ; ajouter des choix ne fait que restreindre (sous-ensemble, peut-être vide) ; un optimum vaut pour un objectif défini, n'est pas forcément unique ; un besoin du client reste une contrainte | Q5-1 à Q5-12, Q0V2-12 (point mort) | « Configurer, générer et faire évoluer » § 1.2, 1.3, 2.1.1, 2.1.2 ; « Principes » § 6.2 |
+| 10 | **La chaîne TaskForge** : configuration complète (le reste exclu) ou partielle (indécidé), enfant ⇒ parent, identifiants déclarés, preuves de reconstruction (blocs, appels, contrat), code retiré à la construction, tests du comportement et du code, diagnostic A / B / C | QCM T1 à T3, devoirs T1 à T3 | « Configurer » § 1.2, 1.4, 3.1, 3.3 ; « Conception et réalisation » § 5 ; « Tester » § 5 ; « Vérifier » § 4.6 |
+
+Dans le cours, chaque partie qui fait l'objet d'une question se termine par un encadré **« S'entraîner »** (généré à partir des renvois « → Revoir » des corrigés) : il liste, sous-partie par sous-partie, les questions du prof, des QCM, des devoirs et des partiels blancs qui portent dessus, avec un lien vers chaque épreuve.
 
 **Technique de réponse** (format « Select all correct statements », parfois notées sur 2) : traiter chaque proposition **séparément** ; chercher d'abord les mots absolus (« automatically », « necessarily », « must… every », « proves », « only ») : ils rendent presque toujours la proposition fausse ; une proposition qui dit « peut », « doit être évalué », « n'établit pas à elle seule » est souvent vraie.
 
