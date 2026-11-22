@@ -1,0 +1,653 @@
+{
+  "id": "inf4-quiz-prof-3",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Quiz 3 du prof (tutoriel 3, génération de code et analyse par solveur)",
+    "en": "Teacher’s quiz 3 (tutorial 3, code generation and solver analysis)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/18-quiz3.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du prof, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites du tutoriel et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "The teacher’s questions, with no official answers in the files: the answers are **proposed** (deduced from the tutorial and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-quiz-prof-3-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "On suppose que le modèle de base a une solution. Quelles affirmations décrivent correctement une feature booléenne morte F ? (Plusieurs réponses possibles.)",
+            "en": "Assume the base model has a solution. Which statements correctly describe a dead Boolean feature F? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Aucune configuration valide ne sélectionne F.",
+              "en": "No valid configuration selects F."
+            },
+            {
+              "fr": "Ajouter F = 1 rend le modèle insatisfiable.",
+              "en": "Adding F=1 makes the model unsatisfiable."
+            },
+            {
+              "fr": "F peut être dessinée optionnelle bien qu’elle soit morte.",
+              "en": "F may be drawn as optional despite being dead."
+            },
+            {
+              "fr": "F est absente d’un produit observé, donc elle est morte.",
+              "en": "F is absent from one observed product, so it is dead."
+            },
+            {
+              "fr": "L’étiquette de F manque sur le diagramme.",
+              "en": "F's label is missing from the diagram."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b, c.**\n\n- ✔ **a.** Définition : une feature morte n’apparaît dans aucun produit.\n- ✔ **b.** C’est la contrainte de vérification : forcer F à 1 ne laisse aucune solution.\n- ✔ **c.** C’est F4 dans le modèle d’amorce : optionnelle sur le dessin, morte à cause de F3 excludes F4.\n- ✘ **d.** Être absente d’un produit, c’est seulement ne pas être dans le noyau ; morte = absente de tous.\n- ✘ **e.** Une étiquette manquante est un problème d’affichage, pas de sémantique.\n\nDans le cours : « Since Prolog tells us that this query is “false” this proves that indeed there can never be a product containing F4. ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.3 Trois requêtes sur le modèle d’amorce](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3)",
+            "en": "**Proposed answer: a, b, c.**\n\n- ✔ **a.** Definition: a dead feature appears in no product.\n- ✔ **b.** That is the verification constraint: forcing F to 1 leaves no solution.\n- ✔ **c.** That is F4 in the starter model: optional in the drawing, dead because of F3 excludes F4.\n- ✘ **d.** Being absent from one product only means not being core; dead = absent from all.\n- ✘ **e.** A missing label is a display issue, not a semantic one.\n\nIn the course: “Since Prolog tells us that this query is “false” this proves that indeed there can never be a product containing F4.”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.3 Three queries on the starter model](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 1",
+              "quote": "Assume the base model has a solution. Which statements correctly describe a dead Boolean feature F?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 3",
+              "quote": "Since Prolog tells us that this query is “false” this proves that indeed there can never be a product containing F4."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelles affirmations distinguent la satisfiabilité de l’énumération de toutes les solutions ? (Plusieurs réponses possibles.)",
+            "en": "Which statements distinguish satisfiability from enumerating all solutions? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Une seule affectation valide établit la satisfiabilité.",
+              "en": "One valid assignment establishes satisfiability."
+            },
+            {
+              "fr": "Énumérer toutes les solutions exige de couvrir tout l’espace des solutions.",
+              "en": "Enumerating all solutions requires covering the entire solution space."
+            },
+            {
+              "fr": "Trouver une solution prouve qu’elle est unique.",
+              "en": "Finding one solution proves uniqueness."
+            },
+            {
+              "fr": "Un modèle satisfiable doit permettre au moins deux produits.",
+              "en": "A satisfiable model must allow at least two products."
+            },
+            {
+              "fr": "Un dépassement de délai pendant l’énumération prouve l’insatisfiabilité.",
+              "en": "An enumeration timeout proves unsatisfiability."
+            }
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b.**\n\n- ✔ **a.** Satisfiable = il existe au moins une solution : une suffit.\n- ✔ **b.** `findall` doit parcourir toutes les solutions pour les compter.\n- ✘ **c.** L’unicité demande une recherche complète (par exemple `findall` + `length` = 1).\n- ✘ **d.** Un seul produit suffit à être satisfiable ; deux produits, c’est « pas une fausse ligne ».\n- ✘ **e.** Un timeout dit seulement que la recherche n’a pas fini ; il ne prouve rien.\n\nDans le cours : « check for the presence of at least one solution that satisfies the constraints from the model ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.7 Compter sans tout stocker : ce qu’une énumération prouve](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)",
+            "en": "**Proposed answer: a, b.**\n\n- ✔ **a.** Satisfiable = at least one solution exists: one is enough.\n- ✔ **b.** `findall` must go through every solution to count them.\n- ✘ **c.** Uniqueness requires a complete search (e.g. `findall` + `length` = 1).\n- ✘ **d.** One product is enough to be satisfiable; two products means “not a false line”.\n- ✘ **e.** A timeout only says the search did not finish; it proves nothing.\n\nIn the course: “check for the presence of at least one solution that satisfies the constraints from the model”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.7 Counting without storing everything: what an enumeration proves](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 2",
+              "quote": "Which statements distinguish satisfiability from enumerating all solutions?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "check for the presence of at least one solution that satisfies the constraints from the model"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "La requête `findall(_, (program(L),label(L)), Ls), length(Ls,N)` se termine. On suppose une réponse par affectation complète. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "The query findall(_, (program(L),label(L)), Ls), length(Ls,N) completes. Assume one answer per complete assignment. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "N compte les affectations énumérées.",
+              "en": "N counts the enumerated assignments."
+            },
+            {
+              "fr": "Sa mémoire est constante quel que soit N.",
+              "en": "Its memory use is constant regardless of N."
+            },
+            {
+              "fr": "Elle évite de stocker chaque affectation complète comme gabarit collecté.",
+              "en": "It omits storing each full assignment as the collected template."
+            },
+            {
+              "fr": "Elle évite de chercher toutes les solutions.",
+              "en": "It avoids searching for every solution."
+            },
+            {
+              "fr": "Elle prouve que les affectations comptées sont des ensembles de features distincts quand des attributs varient.",
+              "en": "It proves all counted assignments are distinct feature sets if attributes vary."
+            }
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, c.**\n\n- ✔ **a.** `length` donne le nombre d’éléments collectés : un par affectation.\n- ✘ **b.** La liste a toujours N éléments (anonymes, donc petits) : la mémoire croît avec N, même lentement.\n- ✔ **c.** Le gabarit `_` remplace `L` : on ne garde pas les affectations, d’où « very little space in memory ».\n- ✘ **d.** Le solveur parcourt quand même toutes les solutions pour les compter.\n- ✘ **e.** Un attribut est une variable comme une autre : deux affectations peuvent avoir les mêmes features et des valeurs d’attribut différentes.\n\nDans le cours : « which will be filled with anonymous variables and thus occupy very little space in memory ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.7 Compter sans tout stocker : ce qu’une énumération prouve](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)",
+            "en": "**Proposed answer: a, c.**\n\n- ✔ **a.** `length` gives the number of collected elements: one per assignment.\n- ✘ **b.** The list still has N elements (anonymous, so small): memory grows with N, if slowly.\n- ✔ **c.** The template `_` replaces `L`: assignments are not kept, hence “very little space in memory”.\n- ✘ **d.** The solver still goes through every solution to count them.\n- ✘ **e.** An attribute is a variable like any other: two assignments can share the same features with different attribute values.\n\nIn the course: “which will be filled with anonymous variables and thus occupy very little space in memory”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.7 Counting without storing everything: what an enumeration proves](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 3",
+              "quote": "The query findall(_, (program(L),label(L)), Ls), length(Ls,N) completes. Assume one answer per complete assignment. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 5",
+              "quote": "which will be filled with anonymous variables and thus occupy very little space in memory"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle booléen non vide, énuméré exhaustivement, a 12 configurations distinctes. F vaut 0 dans les 12 ; G ne vaut 0 dans aucune. Qu’en déduit-on ? (Plusieurs réponses possibles.)",
+            "en": "A nonempty, exhaustively enumerated Boolean model has 12 distinct configurations. F is zero in all 12; G is zero in none. Which statements follow? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "F est morte.",
+              "en": "F is dead."
+            },
+            {
+              "fr": "G est dans le noyau.",
+              "en": "G is core."
+            },
+            {
+              "fr": "F et G sont toutes deux variables.",
+              "en": "F and G are both variable."
+            },
+            {
+              "fr": "Un compte de zéros nul pour un attribut entier signifie forcément que c’est une feature du noyau.",
+              "en": "A zero count for an integer attribute necessarily means it is a core feature."
+            },
+            {
+              "fr": "Le résultat prouve que G est reliée par une arête obligatoire au sens syntaxique.",
+              "en": "The result proves G is connected by a syntactically mandatory edge."
+            }
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b.**\n\n- ✔ **a.** Absente de toutes les solutions d’une énumération complète : morte.\n- ✔ **b.** Jamais à 0 : présente dans tous les produits, donc dans le noyau.\n- ✘ **c.** Variable = vaut 0 dans certaines solutions et 1 dans d’autres ; ce n’est le cas ni de F ni de G.\n- ✘ **d.** Un attribut n’est pas une feature ; aucun zéro dit seulement que sa valeur n’est jamais 0.\n- ✘ **e.** Le noyau peut venir d’une contrainte (requires, contrainte textuelle), pas seulement d’une arête obligatoire.\n\nDans le cours : « how many times it has been bound to 0, i.e., deselected ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.5 Noyau et features variables](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5) ; [ch. 7 « Traduire un modèle en contraintes », § 3.7 Compter sans tout stocker : ce qu’une énumération prouve](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)",
+            "en": "**Proposed answer: a, b.**\n\n- ✔ **a.** Absent from every solution of a complete enumeration: dead.\n- ✔ **b.** Never 0: present in every product, so core.\n- ✘ **c.** Variable = 0 in some solutions and 1 in others; neither F nor G is.\n- ✘ **d.** An attribute is not a feature; no zero only says its value is never 0.\n- ✘ **e.** Core-ness can come from a constraint (requires, textual constraint), not only from a mandatory edge.\n\nIn the course: “how many times it has been bound to 0, i.e., deselected”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.5 Core and variable features](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5); [ch. 7 “Translating a model into constraints”, § 3.7 Counting without storing everything: what an enumeration proves](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 4",
+              "quote": "A nonempty, exhaustively enumerated Boolean model has 12 distinct configurations. F is zero in all 12; G is zero in none. Which statements follow?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 5",
+              "quote": "how many times it has been bound to 0, i.e., deselected"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un prédicat généré attend `program([A,B,C])`. Un utilisateur appelle `program([C,B,A])` en lisant les noms de l’appelant comme les features d’origine. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "A generated predicate expects program([A,B,C]). A user calls program([C,B,A]) while interpreting the caller's names as the original features. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "L’appelant peut se tromper sur la feature que représente une position.",
+              "en": "The caller can misinterpret which feature a position represents."
+            },
+            {
+              "fr": "L’ordre de la liste doit correspondre à celui du prédicat exporté.",
+              "en": "The list order must be matched to the exported predicate."
+            },
+            {
+              "fr": "Le programme trie automatiquement les arguments par nom de feature.",
+              "en": "The program automatically sorts arguments by feature name."
+            },
+            {
+              "fr": "Le solveur lève forcément une erreur de syntaxe.",
+              "en": "The solver necessarily raises a syntax error."
+            },
+            {
+              "fr": "Renommer la variable de liste L corrige le décalage de positions.",
+              "en": "Renaming the list variable L fixes the positional mismatch."
+            }
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b.**\n\n- ✔ **a.** La 1re position reste la 1re feature du programme : la valeur lue sous le nom C est celle de A.\n- ✔ **b.** Le tutoriel fixe la liste pour que le nom et l’ordre des variables correspondent exactement au prédicat.\n- ✘ **c.** Prolog lie par position, jamais par nom.\n- ✘ **d.** L’appel est syntaxiquement correct : l’erreur est silencieuse.\n- ✘ **e.** Le nom de la liste n’a aucun effet sur l’ordre de ses éléments.\n\nDans le cours : « to guarantee that the name and order of variables match that of the program predicate exactly ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.3 Trois requêtes sur le modèle d’amorce](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3)",
+            "en": "**Proposed answer: a, b.**\n\n- ✔ **a.** The 1st position stays the program’s 1st feature: the value read under the name C is A’s.\n- ✔ **b.** The tutorial fixes the list so that the name and order of the variables exactly match the predicate.\n- ✘ **c.** Prolog binds by position, never by name.\n- ✘ **d.** The call is syntactically correct: the error is silent.\n- ✘ **e.** The list’s name has no effect on the order of its elements.\n\nIn the course: “to guarantee that the name and order of variables match that of the program predicate exactly”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.3 Three queries on the starter model](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 5",
+              "quote": "A generated predicate expects program([A,B,C]). A user calls program([C,B,A]) while interpreting the caller's names as the original features. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 3",
+              "quote": "to guarantee that the name and order of variables match that of the program predicate exactly"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Pour A, B dans {0,1}, on compare A+B≤1 et A×B=0. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "For A,B in {0,1}, compare A+B≤1 and A×B=0. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Les deux excluent A = B = 1.",
+              "en": "Both exclude A=B=1."
+            },
+            {
+              "fr": "Les deux permettent A = B = 0.",
+              "en": "Both permit A=B=0."
+            },
+            {
+              "fr": "Elles admettent les mêmes affectations booléennes.",
+              "en": "They admit the same Boolean assignments."
+            },
+            {
+              "fr": "Les deux exigent exactement une feature sélectionnée.",
+              "en": "Both require exactly one selected feature."
+            },
+            {
+              "fr": "Elles admettent A = B = 1 si les features sont optionnelles.",
+              "en": "They admit A=B=1 if the features are optional."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b, c.**\n\n- ✔ **a.** 1 + 1 = 2 > 1 et 1 × 1 = 1 ≠ 0.\n- ✔ **b.** 0 + 0 = 0 ≤ 1 et 0 × 0 = 0.\n- ✔ **c.** Toutes deux gardent (0,0), (0,1), (1,0) : le tutoriel change la ligne 13 et l’ensemble des solutions reste le même.\n- ✘ **d.** (0,0) est permis : excludes interdit d’avoir les deux, pas d’avoir aucune.\n- ✘ **e.** Optionnelles ou non, (1,1) viole chacune des deux contraintes.\n\nDans le cours : « If we then run our analysis again, we observe that the set of solutions remains the same ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.4 Deux écritures de excludes](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.4)",
+            "en": "**Proposed answer: a, b, c.**\n\n- ✔ **a.** 1 + 1 = 2 > 1 and 1 × 1 = 1 ≠ 0.\n- ✔ **b.** 0 + 0 = 0 ≤ 1 and 0 × 0 = 0.\n- ✔ **c.** Both keep (0,0), (0,1), (1,0): the tutorial changes line 13 and the set of solutions stays the same.\n- ✘ **d.** (0,0) is allowed: excludes forbids both, not none.\n- ✘ **e.** Optional or not, (1,1) violates each constraint.\n\nIn the course: “If we then run our analysis again, we observe that the set of solutions remains the same”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.4 Two ways to write excludes](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.4)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 6",
+              "quote": "For A,B in {0,1}, compare A+B≤1 and A×B=0. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 3",
+              "quote": "If we then run our analysis again, we observe that the set of solutions remains the same"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Comment le tutoriel ajoute-t-il l’attribut Version de VoiceControl ? (Une seule réponse.)",
+            "en": "How does the tutorial add VoiceControl's Version attribute? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Nommer une nouvelle racine Version et supprimer VoiceControl.",
+              "en": "Name a new root Version and delete VoiceControl."
+            },
+            {
+              "fr": "Ouvrir les propriétés de VoiceControl, ajouter un attribut avec l’icône « + », le nommer Version et choisir Integer.",
+              "en": "Open VoiceControl properties, add an attribute with the plus icon, name it Version and select Integer."
+            },
+            {
+              "fr": "Choisir String et supposer que le solveur lit n’importe quel mot comme un entier.",
+              "en": "Choose String and assume the solver interprets any word as an integer."
+            },
+            {
+              "fr": "Écrire Version seulement dans le titre du projet.",
+              "en": "Write Version only in the project title."
+            },
+            {
+              "fr": "Changer une arête sans rapport en Excludes.",
+              "en": "Change an unrelated edge to Excludes."
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b.**\n\n- ✘ **a.** L’attribut s’ajoute à la feature ; on ne supprime rien.\n- ✔ **b.** Double-clic sur la feature, icône « + » noire au-dessus de Name, Name = Version, Domain = Integer.\n- ✘ **c.** Le tutoriel choisit Integer : Version sert dans une contrainte numérique (≥ 2).\n- ✘ **d.** Le titre du projet n’est pas un attribut.\n- ✘ **e.** Une relation sans rapport ne crée pas d’attribut.\n\nDans le cours : « Fill the “Name” field with the name “Version” and change the “Domain” field to Integer ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.6 Contraintes textuelles : CLIF](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.6)",
+            "en": "**Proposed answer: b.**\n\n- ✘ **a.** The attribute is added to the feature; nothing is deleted.\n- ✔ **b.** Double-click the feature, black “plus” icon above Name, Name = Version, Domain = Integer.\n- ✘ **c.** The tutorial chooses Integer: Version is used in a numeric constraint (≥ 2).\n- ✘ **d.** The project title is not an attribute.\n- ✘ **e.** An unrelated relationship creates no attribute.\n\nIn the course: “Fill the “Name” field with the name “Version” and change the “Domain” field to Integer”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.6 Textual constraints: CLIF](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.6)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 7",
+              "quote": "How does the tutorial add VoiceControl's Version attribute?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 4",
+              "quote": "Fill the “Name” field with the name “Version” and change the “Domain” field to Integer"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q08",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelle suite d’actions obtient la représentation SWI dans le tutoriel ? (Une seule réponse.)",
+            "en": "Which sequence obtains the SWI representation in the tutorial? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Ouvrir la fenêtre des outils, choisir Solver Specific Semantics, sélectionner swi et cliquer sur Get swi Model.",
+              "en": "Open the tools modal, choose Solver Specific Semantics, select swi and click Get swi Model."
+            },
+            {
+              "fr": "Générer le SRS/SyRS à partir d’un modèle d’exigences.",
+              "en": "Generate SRS/SyRS from a requirements model."
+            },
+            {
+              "fr": "Renommer le feature model en Prolog.",
+              "en": "Rename the feature model to Prolog."
+            },
+            {
+              "fr": "Choisir Related requirements sur un nœud de sécurité.",
+              "en": "Choose Related requirements on a security node."
+            },
+            {
+              "fr": "Télécharger une capture d’écran et l’exécuter comme code source.",
+              "en": "Download a screenshot and run it as source code."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** Icône « clé et tournevis », onglet Solver Specific Semantics, swi, Get swi Model.\n- ✘ **b.** Le SRS est le document d’exigences du tutoriel 1, pas du code.\n- ✘ **c.** Un nom ne traduit rien.\n- ✘ **d.** Related requirements relie des exigences (tutoriel 1).\n- ✘ **e.** Une image n’est pas du code exécutable.\n\nDans le cours : « Navigate to the “Solver Specific Semantics” Tab and select the language to which you want to transform your model. ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.2 Le programme du tutoriel, ligne à ligne](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** “Wrench and screwdriver” icon, Solver Specific Semantics tab, swi, Get swi Model.\n- ✘ **b.** The SRS is tutorial 1’s requirements document, not code.\n- ✘ **c.** A name translates nothing.\n- ✘ **d.** Related requirements links requirements (tutorial 1).\n- ✘ **e.** An image is not executable code.\n\nIn the course: “Navigate to the “Solver Specific Semantics” Tab and select the language to which you want to transform your model.”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.2 The tutorial’s program, line by line](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 8",
+              "quote": "Which sequence obtains the SWI representation in the tutorial?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 2",
+              "quote": "Navigate to the “Solver Specific Semantics” Tab and select the language to which you want to transform your model."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Toutes les Fi sont booléennes. F1=1, F2=F1, F3=F2, F4≤F1, F5=F4 et F3+F4≤1. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "All Fi are Boolean. F1=1, F2=F1, F3=F2, F4≤F1, F5=F4 and F3+F4≤1. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "La seule solution est F1 = F2 = F3 = 1 et F4 = F5 = 0.",
+              "en": "The only solution is F1=F2=F3=1 and F4=F5=0."
+            },
+            {
+              "fr": "F4 et F5 sont mortes.",
+              "en": "F4 and F5 are dead."
+            },
+            {
+              "fr": "F4 = 1, F5 = 0 est valide.",
+              "en": "F4=1,F5=0 is valid."
+            },
+            {
+              "fr": "Le modèle est vide.",
+              "en": "The model is void."
+            },
+            {
+              "fr": "F5 peut être sélectionnée indépendamment de F4.",
+              "en": "F5 can be selected independently of F4."
+            }
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b.**\n\n- ✔ **a.** F1 = 1 impose F2 = F3 = 1 ; F3 + F4 ≤ 1 impose F4 = 0, et F5 = F4 = 0.\n- ✔ **b.** Elles valent 0 dans l’unique solution : c’est le modèle d’amorce du tutoriel.\n- ✘ **c.** F5 = F4 interdit F4 = 1 avec F5 = 0 (et F4 = 1 viole déjà F3 + F4 ≤ 1).\n- ✘ **d.** Il a une solution : il est satisfiable (mais c’est une fausse ligne).\n- ✘ **e.** F5 = F4 : F5 suit F4 (enfant obligatoire).\n\nDans le cours : « Prolog tells us that the allowed configuration is F1, F2 and F3, excluding F4 and F5. ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.3 Trois requêtes sur le modèle d’amorce](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3) ; [ch. 7 « Traduire un modèle en contraintes », § 3.2 Le programme du tutoriel, ligne à ligne](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2)",
+            "en": "**Proposed answer: a, b.**\n\n- ✔ **a.** F1 = 1 forces F2 = F3 = 1; F3 + F4 ≤ 1 forces F4 = 0, and F5 = F4 = 0.\n- ✔ **b.** They are 0 in the only solution: it is the tutorial’s starter model.\n- ✘ **c.** F5 = F4 forbids F4 = 1 with F5 = 0 (and F4 = 1 already violates F3 + F4 ≤ 1).\n- ✘ **d.** It has one solution: it is satisfiable (but a false line).\n- ✘ **e.** F5 = F4: F5 follows F4 (mandatory child).\n\nIn the course: “Prolog tells us that the allowed configuration is F1, F2 and F3, excluding F4 and F5.”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.3 Three queries on the starter model](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3); [ch. 7 “Translating a model into constraints”, § 3.2 The tutorial’s program, line by line](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 9",
+              "quote": "All Fi are Boolean. F1=1, F2=F1, F3=F2, F4≤F1, F5=F4 and F3+F4≤1. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 3",
+              "quote": "Prolog tells us that the allowed configuration is F1, F2 and F3, excluding F4 and F5."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Une requête renvoie les deux premières solutions, toutes deux avec Login = 1, sans épuiser la recherche. Quelle affirmation est justifiée ? (Une seule réponse.)",
+            "en": "A query returns the first two solutions, both with Login=1, without exhausting the search. Which statement is justified? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Login est sûrement dans le noyau.",
+              "en": "Login is definitely core."
+            },
+            {
+              "fr": "Login est sûrement morte.",
+              "en": "Login is definitely dead."
+            },
+            {
+              "fr": "Login est sélectionnable, mais son appartenance au noyau n’est pas prouvée.",
+              "en": "Login is selectable, but its core status remains unproved."
+            },
+            {
+              "fr": "Il existe exactement deux produits.",
+              "en": "Exactly two products exist."
+            },
+            {
+              "fr": "Toute feature non observée doit être absente.",
+              "en": "Every unobserved feature must be absent."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c.**\n\n- ✘ **a.** Deux solutions ne disent rien des autres : un échantillon ne donne qu’une approximation du noyau.\n- ✘ **b.** Elle est sélectionnée dans une solution valide : elle n’est pas morte.\n- ✔ **c.** Une solution avec Login = 1 prouve qu’elle est sélectionnable ; le noyau exige de vérifier toutes les solutions.\n- ✘ **d.** La recherche n’est pas finie : il peut y en avoir d’autres.\n- ✘ **e.** Ne pas avoir vu une feature, ce n’est pas qu’elle soit absente partout.\n\nDans le cours : « getting an “approximate” calculation of core features by sampling a portion of the space of solutions ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.7 Compter sans tout stocker : ce qu’une énumération prouve](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7) ; [ch. 7 « Traduire un modèle en contraintes », § 3.5 Noyau et features variables](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5)",
+            "en": "**Proposed answer: c.**\n\n- ✘ **a.** Two solutions say nothing about the others: a sample only approximates the core.\n- ✘ **b.** It is selected in a valid solution: it is not dead.\n- ✔ **c.** A solution with Login = 1 proves it is selectable; the core requires checking every solution.\n- ✘ **d.** The search is not finished: there may be others.\n- ✘ **e.** Not having seen a feature does not mean it is absent everywhere.\n\nIn the course: “getting an “approximate” calculation of core features by sampling a portion of the space of solutions”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.7 Counting without storing everything: what an enumeration proves](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.7); [ch. 7 “Translating a model into constraints”, § 3.5 Core and variable features](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 10",
+              "quote": "A query returns the first two solutions, both with Login=1, without exhausting the search. Which statement is justified?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 5",
+              "quote": "getting an “approximate” calculation of core features by sampling a portion of the space of solutions"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle fini satisfiable est testé avec F = 1 et la recherche complète renvoie false. Qu’en déduit-on ? (Plusieurs réponses possibles.)",
+            "en": "A satisfiable finite model is tested with F=1 and complete search returns false. Which statements follow? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Aucune affectation complète valide ne contient F.",
+              "en": "No valid full assignment contains F."
+            },
+            {
+              "fr": "F est morte dans ce modèle.",
+              "en": "F is dead in this model."
+            },
+            {
+              "fr": "Le modèle de base n’a aucun produit.",
+              "en": "The base model has no products."
+            },
+            {
+              "fr": "Le modèle graphique est réparé automatiquement.",
+              "en": "The graphical model is automatically repaired."
+            },
+            {
+              "fr": "Le résultat désigne une contrainte unique à supprimer.",
+              "en": "The result identifies a unique constraint to delete."
+            }
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b.**\n\n- ✔ **a.** false avec F = 1 imposée : aucune solution ne contient F.\n- ✔ **b.** C’est la définition d’une feature morte, comme F4 dans le tutoriel.\n- ✘ **c.** Le modèle est satisfiable par hypothèse : seul l’ajout de F = 1 le rend insatisfiable.\n- ✘ **d.** Le solveur ne modifie pas le modèle.\n- ✘ **e.** Le test détecte ; trouver la cause (une ou plusieurs contraintes) demande un diagnostic.\n\nDans le cours : « This query is much like our first one, but adds a constraint forcing F4 to be selected. ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.3 Trois requêtes sur le modèle d’amorce](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.1 Diagnostiquer à la main : la chaîne de contraintes](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.1)",
+            "en": "**Proposed answer: a, b.**\n\n- ✔ **a.** false with F = 1 imposed: no solution contains F.\n- ✔ **b.** That is the definition of a dead feature, like F4 in the tutorial.\n- ✘ **c.** The model is satisfiable by assumption: only adding F = 1 makes it unsatisfiable.\n- ✘ **d.** The solver does not change the model.\n- ✘ **e.** The test detects; finding the cause (one or more constraints) needs a diagnosis.\n\nIn the course: “This query is much like our first one, but adds a constraint forcing F4 to be selected.”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.3 Three queries on the starter model](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.1 Diagnosing by hand: the chain of constraints](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.1)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 11",
+              "quote": "A satisfiable finite model is tested with F=1 and complete search returns false. Which statements follow?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 3",
+              "quote": "This query is much like our first one, but adds a constraint forcing F4 to be selected."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-3-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Toutes les Fi sont booléennes. F1=1, F2=F1, F3=F2, F4≤F1 et F5=F4. Il n’y a pas d’exclusion. Combien d’affectations complètes existe-t-il ? (Une seule réponse.)",
+            "en": "All Fi are Boolean. F1=1, F2=F1, F3=F2, F4≤F1 and F5=F4. There is no exclusion. How many complete assignments exist? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Une.",
+              "en": "One."
+            },
+            {
+              "fr": "Deux.",
+              "en": "Two."
+            },
+            {
+              "fr": "Quatre.",
+              "en": "Four."
+            },
+            {
+              "fr": "Huit.",
+              "en": "Eight."
+            },
+            {
+              "fr": "Zéro.",
+              "en": "Zero."
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b.**\n\n- ✘ **a.** Une seule, c’était avec l’exclusion F3 + F4 ≤ 1 (question 9).\n- ✔ **b.** F1, F2, F3 sont forcées à 1 ; seule F4 est libre (0 ou 1), et F5 la suit : 2 affectations.\n- ✘ **c.** 4 supposerait F4 et F5 indépendantes ; or F5 = F4.\n- ✘ **d.** 8 supposerait trois variables libres.\n- ✘ **e.** F1 = F2 = F3 = 1 avec F4 = F5 = 0 est une solution.\n\nDans le cours : « Line 10 defines the optional relationship obligating the parent to be present if the child feature is selected, but not the opposite. ».\n\n→ Revoir : [ch. 7 « Traduire un modèle en contraintes », § 3.2 Le programme du tutoriel, ligne à ligne](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2) ; [ch. 3 « Les feature models », § 2.1 Les étapes](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=2.1)",
+            "en": "**Proposed answer: b.**\n\n- ✘ **a.** Only one was with the exclusion F3 + F4 ≤ 1 (question 9).\n- ✔ **b.** F1, F2, F3 are forced to 1; only F4 is free (0 or 1), and F5 follows it: 2 assignments.\n- ✘ **c.** 4 would assume F4 and F5 independent; but F5 = F4.\n- ✘ **d.** 8 would assume three free variables.\n- ✘ **e.** F1 = F2 = F3 = 1 with F4 = F5 = 0 is a solution.\n\nIn the course: “Line 10 defines the optional relationship obligating the parent to be present if the child feature is selected, but not the opposite.”.\n\n→ Review: [ch. 7 “Translating a model into constraints”, § 3.2 The tutorial’s program, line by line](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.2); [ch. 3 “Feature models”, § 2.1 The steps](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=2.1)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/18-quiz3.md",
+              "loc": "Question 12",
+              "quote": "All Fi are Boolean. F1=1, F2=F1, F3=F2, F4≤F1 and F5=F4. There is no exclusion. How many complete assignments exist?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 3",
+              "quote": "Line 10 defines the optional relationship obligating the parent to be present if the child feature is selected, but not the opposite."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

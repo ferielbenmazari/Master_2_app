@@ -136,7 +136,7 @@
       }
     ]
   },
-  "estimatedMinutes": 14,
+  "estimatedMinutes": 15,
   "sources": [
     "ressources/S3__INF4/mardown/1__introduction.md",
     "sources-texte/inf4/1-introduction-to-ple.md",
@@ -727,22 +727,22 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 11",
+          "loc": "Version 1, Question 11",
           "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it."
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 3",
+          "loc": "Version 1, Question 3",
           "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 4",
+          "loc": "Version 1, Question 4",
           "quote": "An application team discovers a requirement unsupported by current domain assets."
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 9",
+          "loc": "Version 1, Question 9",
           "quote": "A family’s domain model explicitly makes Analytics optional."
         }
       ],
@@ -964,6 +964,46 @@
             "fr": "pas de sauvegarde automatique ; un invité ne peut que **télécharger** le projet en JSON",
             "en": "pas de sauvegarde automatique ; un invité ne peut que **télécharger** le projet en JSON"
           }
+        ],
+        [
+          {
+            "fr": "Créer une **ligne de produits**",
+            "en": "Create a **product line**"
+          },
+          {
+            "fr": "clic droit sur le nom du projet → **New product line**",
+            "en": "right-click the project name → **New product line**"
+          }
+        ],
+        [
+          {
+            "fr": "Créer une **application** (un nouveau produit de la ligne)",
+            "en": "Create an **application** (a new product of the line)"
+          },
+          {
+            "fr": "clic droit sur **Application engineering** dans la ligne → **New application**",
+            "en": "right-click **Application engineering** in the line → **New application**"
+          }
+        ],
+        [
+          {
+            "fr": "Créer une **adaptation**",
+            "en": "Create an **adaptation**"
+          },
+          {
+            "fr": "clic droit sur le nom de l’**application** → **New adaptation**",
+            "en": "right-click the **application** name → **New adaptation**"
+          }
+        ],
+        [
+          {
+            "fr": "Créer un **modèle**",
+            "en": "Create a **model**"
+          },
+          {
+            "fr": "clic droit sur **Domain engineering** (modèle de domaine), sur l’**application** (modèle d’application) ou sur l’**adaptation** (modèle d’adaptation) → **New model**, puis choisir le type de modèle",
+            "en": "right-click **Domain engineering** (domain model), the **application** (application model) or the **adaptation** (adaptation model) → **New model**, then choose the model type"
+          }
         ]
       ],
       "src": [
@@ -991,6 +1031,31 @@
           "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
           "loc": "§1.4",
           "quote": "If the user is logged in as a guest, they will only be able to download the project as a JSON file."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.1",
+          "quote": "Select the New product line option."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5",
+          "quote": "Right-click on Application engineering in your product line."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.6",
+          "quote": "Right-click on the application’s name of your product line."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.7",
+          "quote": "Right-click on Domain engineering in your product line."
+        },
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.9",
+          "quote": "Right-click on the adaptation (for which you want to create a model) in your application."
         }
       ],
       "notions": [
@@ -1014,12 +1079,12 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 10",
+          "loc": "Version 1, Question 10",
           "quote": "A company deliberately engineers one text-editor family with a shared core and managed optional features."
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 12",
+          "loc": "Version 1, Question 12",
           "quote": "One robot application must adapt its behaviour when deployed on a beach or on a city street."
         },
         {
@@ -1040,11 +1105,62 @@
       ]
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "3.2.2 Ce qu’un nœud créé ne prouve pas : configurer n’est pas dériver",
+        "en": "3.2.2 What a created node does not prove: configuring is not deriving"
+      },
+      "level": 3
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une application sert à mener « the whole process of configuration, customisation and derivation » d’un produit. Deux étapes à distinguer : **configurer**, c’est sélectionner des options que la famille prévoit ; **dériver**, c’est produire l’application (architecture, composants) à partir des actifs sélectionnés. Créer un nœud d’application, le renommer ou y dessiner une relation ne configure, ne dérive, n’implémente ni ne teste rien.",
+        "en": "An application is where “the whole process of configuration, customisation and derivation” of a product takes place. Two steps to tell apart: **configuring** is selecting options the family provides; **deriving** is producing the application (architecture, components) from the selected assets. Creating an application node, renaming it or drawing a relationship in it configures, derives, implements and tests nothing."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/10-tutorial-0-variamos-projets.md",
+          "loc": "§2.1.5",
+          "quote": "a new Application must be created to carry out in that space the whole process of configuration, customisation and derivation of each new product"
+        },
+        {
+          "file": "ressources/S3__INF4/mardown/1__introduction.md",
+          "loc": "Schéma du framework PLE",
+          "quote": "On sélectionne ses exigences dans le modèle de variabilité (Configuration), ce qui dérive automatiquement l'architecture et rassemble les composants pour créer le produit fini."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Conséquence pour les quiz : une sélection qui respecte les relations du modèle (Receipt requires Payment, les deux choisis) satisfait ces relations, mais ne prouve ni qu’un code existe, ni que les besoins non exprimés sont couverts : il faut encore l’implémentation et les tests. De même, un élément nommé « Transfer » ne prouve pas que sa réalisation existe : une demande non couverte se traite par une **analyse d’écart** avec les actifs du domaine.",
+        "en": "Consequence for the quizzes: a selection that respects the model’s relationships (Receipt requires Payment, both chosen) satisfies those relationships, but proves neither that code exists nor that unstated needs are covered: implementation and tests are still needed. Likewise, an element named “Transfer” does not prove its realisation exists: an uncovered request is handled by a **gap analysis** against the domain assets."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Version 2, Question 9",
+          "quote": "A booking family offers Payment and Receipt, with Receipt requiring Payment."
+        },
+        {
+          "file": "sources-texte/inf4/11-quiz0.md",
+          "loc": "Version 2, Question 11",
+          "quote": "A new customer requests an unsupported inter-library transfer feature."
+        },
+        {
+          "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+          "loc": "§4",
+          "quote": "Le nom d’une feature dans un manifeste n’est pas la preuve de la présence de son implémentation."
+        }
+      ]
+    },
+    {
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "Projet → ligne(s) → Domain engineering (modèles réutilisables) et Application engineering (une application par produit) ; adaptation = contexte d’un même système. Software / System = gabarits d’exigences.",
-        "en": "Project → line(s) → Domain engineering (reusable models) and Application engineering (one application per product); adaptation = context of one system. Software / System = requirements templates."
+        "fr": "Projet → ligne(s) → Domain engineering (modèles réutilisables) et Application engineering (une application par produit) ; adaptation = contexte d’un même système. Software / System = gabarits d’exigences. Configurer (sélectionner) ≠ dériver (produire l’application) ; un nœud créé ne prouve rien sur le code.",
+        "en": "Project → line(s) → Domain engineering (reusable models) and Application engineering (one application per product); adaptation = context of one system. Software / System = requirements templates. Configuring (selecting) ≠ deriving (producing the application); a created node proves nothing about the code."
       }
     },
     {
@@ -1298,7 +1414,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 5",
+          "loc": "Version 1, Question 5",
           "quote": "A team copies a completed product into several repositories and maintains each copy independently."
         },
         {
@@ -2979,7 +3095,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 11",
+          "loc": "Version 1, Question 11",
           "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it."
         }
       ],
@@ -3005,7 +3121,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 3",
+          "loc": "Version 1, Question 3",
           "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
         },
         {
@@ -3035,7 +3151,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 9",
+          "loc": "Version 1, Question 9",
           "quote": "A family’s domain model explicitly makes Analytics optional."
         }
       ],
@@ -3060,7 +3176,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 5",
+          "loc": "Version 1, Question 5",
           "quote": "A team copies a completed product into several repositories and maintains each copy independently."
         }
       ],
@@ -3090,7 +3206,7 @@
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 4",
+          "loc": "Version 1, Question 4",
           "quote": "An application team discovers a requirement unsupported by current domain assets."
         }
       ],
@@ -3137,7 +3253,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 10",
+          "loc": "Version 1, Question 10",
           "quote": "A company deliberately engineers one text-editor family with a shared core and managed optional features."
         },
         {
@@ -3188,7 +3304,7 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 12",
+          "loc": "Version 1, Question 12",
           "quote": "One robot application must adapt its behaviour when deployed on a beach or on a city street."
         },
         {
@@ -3358,17 +3474,17 @@
       "src": [
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 11",
+          "loc": "Version 1, Question 11",
           "quote": "An invoicing family supports optional PDFExport. Customer Alpha does not want it; Customer Beta requires it."
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 3",
+          "loc": "Version 1, Question 3",
           "quote": "A requirement is common to all products currently inside a defined family scope. A proposed new product would not satisfy it."
         },
         {
           "file": "sources-texte/inf4/11-quiz0.md",
-          "loc": "Question 4",
+          "loc": "Version 1, Question 4",
           "quote": "An application team discovers a requirement unsupported by current domain assets."
         }
       ],

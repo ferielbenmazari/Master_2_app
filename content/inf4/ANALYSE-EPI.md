@@ -3,6 +3,7 @@
 > **Périmètre** : les 24 éléments de `ressources/S3__INF4/epi/`, tous donnés par le prof. Les éléments « difficilement accessibles » (intranet : questions, rendus, quiz 3 à 5) ne sont pas analysés : voir « Limites ». Cette analyse remplace l'hypothèse « aucune annale » de `PROFIL-PROF.md` §1 : le prof a donné des quiz, un barème de TP et une consigne sur l'examen.
 > Les numéros de chapitre sont ceux de l'**ordre d'affichage** proposé (`REFONTE-ARCHITECTURE.md` §8.2) : 5 = gabarit SECRET, 6 = trois stratégies, 7 = contraintes, 8 = vérification, 9 = configuration, 10 = exigences d'application, 11 = RED-PL, 12 = conception et réalisation, 13 = test.
 > Tout est indexé (`sources.json`, 28 fichiers lisibles, 1 080 passages) et citable avec `m2-sources`.
+> **Mise à jour du 2026-11-22** : quiz 3 à 5 déposés (12 questions chacun), quiz 0 en **deux versions** (V2 ajoutée), page TaskForge de l'intranet (provenance du kit confirmée), énoncés T1 à T3 et **trois QCM d'auto-évaluation TaskForge** (`25__` à `31__`). Ils sont tous dans l'app comme partiels « annale » à corrigé proposé (`exams/quiz-prof-0-v2`, `quiz-prof-3` à `5`, `taskforge-t1` à `t3`), et le cours a été complété là où il ne permettait pas d'y répondre.
 
 ## 1. Inventaire : ce que contient chaque fichier et ce qu'il apporte
 
@@ -24,13 +25,15 @@
 | 15 | Tutorial 2 | tutoriel | feature model avec attributs : mandatory, optional, includes, Bundle Range, attributs, ClothingStores (25 features) | 3 |
 | 16 | quiz2 | **quiz du prof** | 12 questions : implication, comptage de groupes, fragments de modèle | 3 |
 | 17 | Tutorial 3 | tutoriel | modèle → SWI-Prolog, `findall`, faux produit, mort, noyau, `findnsols`, CLIF, attributs entiers | 7 |
-| 18 | quiz3 | quiz | **vide (0 octet)** | 7 |
+| 18 | quiz3 | **quiz du prof** | 12 questions : morte, satisfiabilité ou énumération, `findall(_, …)`, noyau, ordre des variables, deux écritures de excludes, gestes VariaMos | 7 |
 | 19 | Tutorial 4 | tutoriel | requêtes JSON PLEIADES : `sat`, `solve`, `nsolve`, `optimize`, `iterate_over` ; solveurs minizinc / swi / z3 | 8 |
-| 20 | quiz4 | quiz | **vide** | 8 |
+| 20 | quiz4 | **quiz du prof** | 12 questions : vide, fausse ligne, base UNSAT, choix partiels, timeout, témoins de deux solveurs, requêtes JSON | 8 |
 | 21 | Tutorial 5 | tutoriel | trois tâches de configuration, configuration partielle, comptage, optimisation de coût | 9 (nouveau, configuration) |
-| 22 | quiz5 | quiz | **vide** | 9 |
+| 22 | quiz5 | **quiz du prof** | 12 questions : complétion, choix imposés, optimum, sens min / max, coût de Tabbing, précaution de novembre 2024 | 9 |
 | 23 | ISO/IEC 24707:2018 | norme (donnée par le prof) | CLIF : syntaxe LISP, notation préfixe ; le tutoriel 3 s'en sert pour les contraintes textuelles | 7 (une section courte) |
 | 24 | TaskForge (zip) | **TP noté du prof** | UVL, modèle v1 à v3, trois modèles fautifs, rétro-ingénierie d'un code, génération par préprocesseur, évolution ; **barème sur 20** | 3, 8, 12, 13 (exemple filé) |
+| 25-30 | TaskForge, pages de l'intranet | TP (énoncés) | présentation du cas, énoncés T1, T2, T3 (reprennent le guide de l'archive) | 8, 9, 12, 13 |
+| 27, 29, 31 | QCM d'auto-évaluation T1, T2, T3 | **quiz du prof** | 36 questions : configuration complète ou partielle, implications, faussement optionnelle, réparation du modèle A, preuves de reconstruction, identifiants, ClearCompleted, tests | 8, 9, 12, 13 |
 
 ## 2. Les signaux d'examen, du plus fort au plus faible
 
@@ -60,7 +63,7 @@
 
 ## 5. Limites de cette analyse (à lever par vous)
 
-- **quiz3, quiz4, quiz5** : vides ; les prévisions du chapitre correspondant s'appuient sur le tutoriel seul.
+- **quiz3, quiz4, quiz5** : déposés le 2026-11-22, corrigés proposés dans l'app (aucun corrigé officiel dans les fichiers).
 - **Intranet** : questions, quiz supplémentaires et rendus non accessibles. Les corrigés de l'app resteront « proposés » tant que vous n'avez pas confronté les réponses à la correction de la plateforme (la page « Revue » d'un quiz affiche en général les bonnes réponses : en coller une rendrait les corrigés officiels).
 - **Format et date du partiel** : inconnus. Le cours refondu est construit pour résister aux deux formats les plus probables (QCM à réponses multiples sur scénarios ; exercices à rédiger de type slides ou TaskForge).
 - **ISO 24707** : 78 pages ; seule la syntaxe CLIF utilisée par le tutoriel 3 est retenue (niveau D). Si le prof l'a signalée comme lecture, dites-le-moi.

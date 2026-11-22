@@ -1,0 +1,652 @@
+{
+  "id": "inf4-quiz-prof-5",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Quiz 5 du prof (tutoriel 5, configuration automatique et optimisation)",
+    "en": "Teacher’s quiz 5 (tutorial 5, automated configuration and optimisation)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/22-quiz5.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du prof, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites du tutoriel et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "The teacher’s questions, with no official answers in the files: the answers are **proposed** (deduced from the tutorial and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-quiz-prof-5-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelles affirmations décrivent la complétion d’une configuration partielle ? (Plusieurs réponses possibles.)",
+            "en": "Which statements describe completion of a partial configuration? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Elle doit conserver les décisions imposées dans la configuration partielle.",
+              "en": "It must preserve the decisions imposed in the partial configuration."
+            },
+            {
+              "fr": "Elle peut ignorer en silence une sélection gênante de l’utilisateur.",
+              "en": "It can silently ignore an inconvenient user selection."
+            },
+            {
+              "fr": "Elle existe toujours, quelles que soient les sélections de l’utilisateur.",
+              "en": "It always exists for any set of user selections."
+            },
+            {
+              "fr": "Elle maximise forcément le nombre de features.",
+              "en": "It necessarily maximizes feature count."
+            },
+            {
+              "fr": "Elle doit satisfaire les contraintes du modèle.",
+              "en": "It must satisfy the model constraints."
+            }
+          ],
+          "correct": [
+            0,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, e.**\n\n- ✔ **a.** Compléter = garder les sélections et exclusions imposées.\n- ✘ **b.** Si aucune complétion ne respecte les choix, l’outil signale l’insolubilité.\n- ✘ **c.** F5 et F2 sélectionnées ensemble n’ont aucune complétion (tutoriel 5).\n- ✘ **d.** Aucun objectif n’est en jeu : n’importe quelle complétion valide convient.\n- ✔ **e.** Une complétion est une configuration complète valide du modèle.\n\nDans le cours : « Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model. ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.3 Exemple corrigé : le modèle du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)",
+            "en": "**Proposed answer: a, e.**\n\n- ✔ **a.** Completing = keeping the imposed selections and exclusions.\n- ✘ **b.** If no completion respects the choices, the tool reports unsolvability.\n- ✘ **c.** F5 and F2 selected together have no completion (tutorial 5).\n- ✘ **d.** No objective is involved: any valid completion will do.\n- ✔ **e.** A completion is a valid complete configuration of the model.\n\nIn the course: “Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model.”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2); [ch. 9 “Configuring, generating and evolving a product”, § 1.3 Worked example: tutorial 5’s model](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 1",
+              "quote": "Which statements describe completion of a partial configuration?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelle affirmation distingue une configuration optimale d’une configuration valide quelconque ? (Une seule réponse.)",
+            "en": "Which statement distinguishes an optimal configuration from an arbitrary valid configuration? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Elle ignore tous les choix de l’utilisateur pour réduire le coût.",
+              "en": "It ignores all user choices to reduce cost."
+            },
+            {
+              "fr": "C’est simplement le premier résultat de solve.",
+              "en": "It is simply the first result of solve."
+            },
+            {
+              "fr": "Elle inclut toutes les features optionnelles.",
+              "en": "It includes every optional feature."
+            },
+            {
+              "fr": "Elle est garantie la meilleure selon tous les critères des parties prenantes.",
+              "en": "It is guaranteed best under every stakeholder criterion."
+            },
+            {
+              "fr": "Elle atteint la meilleure valeur d’un objectif défini parmi les configurations faisables.",
+              "en": "It achieves the best value of a defined objective among feasible configurations."
+            }
+          ],
+          "correct": [
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : e.**\n\n- ✘ **a.** Les choix restent des contraintes : l’optimum se cherche parmi les configurations qui les respectent.\n- ✘ **b.** `solve` renvoie une solution quelconque ; il faut `optimize`.\n- ✘ **c.** Tout dépend de l’objectif : au coût minimal, on en prend le moins possible.\n- ✘ **d.** Elle est optimale pour **un** objectif ; le tutoriel montre qu’un coût mal posé donne un optimum discutable.\n- ✔ **e.** `optimize` : une cible (TotCost) et un sens (min ou max).\n\nDans le cours : « which defines the variable over which the optimization problem will be defined ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.2 Ce que garantit une configuration optimale](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1 Définir le coût, puis optimiser](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1)",
+            "en": "**Proposed answer: e.**\n\n- ✘ **a.** Choices stay constraints: the optimum is sought among the configurations respecting them.\n- ✘ **b.** `solve` returns any solution; `optimize` is needed.\n- ✘ **c.** It depends on the objective: at minimum cost, as few as possible are taken.\n- ✘ **d.** It is optimal for **one** objective; the tutorial shows that a badly defined cost gives a debatable optimum.\n- ✔ **e.** `optimize`: a target (TotCost) and a direction (min or max).\n\nIn the course: “which defines the variable over which the optimization problem will be defined”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.2 What an optimal configuration guarantees](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2); [ch. 9 “Configuring, generating and evolving a product”, § 2.1 Define the cost, then optimise](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 2",
+              "quote": "Which statement distinguishes an optimal configuration from an arbitrary valid configuration?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "which defines the variable over which the optimization problem will be defined"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Soit S l’ensemble des configurations qui satisfont un modèle. On ajoute de nouveaux choix imposés P sans modifier le modèle. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "Let S be the configurations satisfying a model. New hard choices P are added without altering the model. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "L’ensemble faisable peut devenir vide.",
+              "en": "The feasible set may become empty."
+            },
+            {
+              "fr": "Ajouter des choix imposés peut créer une solution hors de S.",
+              "en": "Adding hard choices can create a solution outside S."
+            },
+            {
+              "fr": "Chaque choix ajouté doit réduire strictement le nombre de solutions.",
+              "en": "Every added choice must reduce the solution count strictly."
+            },
+            {
+              "fr": "Les configurations faisables deviennent un sous-ensemble de S.",
+              "en": "The feasible configurations become a subset of S."
+            },
+            {
+              "fr": "Le nombre de solutions doit augmenter.",
+              "en": "The number of solutions must increase."
+            }
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, d.**\n\n- ✔ **a.** Exemple du tutoriel : F5 et F2 sélectionnées, aucune solution.\n- ✘ **b.** Un choix ajoute une contrainte : il ne peut qu’écarter des solutions.\n- ✘ **c.** Un choix compatible avec toutes les solutions (une feature du noyau) ne réduit rien.\n- ✔ **d.** Les solutions restantes satisfont le modèle et P : elles sont dans S.\n- ✘ **e.** Il ne peut que rester égal ou diminuer (9 → 1 avec F5 sélectionnée, 9 → 4 sans F4).\n\nDans le cours : « it is of course possible to mix and match selected and excluded features in a given model, which will impact the set of possible products ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.3 Exemple corrigé : le modèle du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)",
+            "en": "**Proposed answer: a, d.**\n\n- ✔ **a.** Tutorial example: F5 and F2 selected, no solution.\n- ✘ **b.** A choice adds a constraint: it can only rule solutions out.\n- ✘ **c.** A choice compatible with every solution (a core feature) reduces nothing.\n- ✔ **d.** The remaining solutions satisfy the model and P: they are in S.\n- ✘ **e.** It can only stay equal or drop (9 → 1 with F5 selected, 9 → 4 without F4).\n\nIn the course: “it is of course possible to mix and match selected and excluded features in a given model, which will impact the set of possible products”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2); [ch. 9 “Configuring, generating and evolving a product”, § 1.3 Worked example: tutorial 5’s model](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 3",
+              "quote": "Let S be the configurations satisfying a model. New hard choices P are added without altering the model. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "it is of course possible to mix and match selected and excluded features in a given model, which will impact the set of possible products"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "TotCost est correctement défini. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "TotCost is correctly defined. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Une configuration de coût minimal n’a forcément aucune feature.",
+              "en": "A minimum-cost configuration necessarily has no features."
+            },
+            {
+              "fr": "Minimiser TotCost cherche une configuration faisable de moindre coût.",
+              "en": "Minimizing TotCost seeks a least-cost feasible configuration."
+            },
+            {
+              "fr": "Maximiser TotCost revient à maximiser le nombre de features.",
+              "en": "Maximizing TotCost means maximizing the number of features."
+            },
+            {
+              "fr": "Changer le sens change les contraintes qui définissent la faisabilité.",
+              "en": "Changing the direction changes which constraints define feasibility."
+            },
+            {
+              "fr": "Maximiser TotCost cherche une configuration faisable de plus grand coût.",
+              "en": "Maximizing TotCost seeks a greatest-cost feasible configuration."
+            }
+          ],
+          "correct": [
+            1,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, e.**\n\n- ✘ **a.** Les features obligatoires (racine, noyau) restent : le minimum se prend parmi les configurations valides.\n- ✔ **b.** `\"optimization_direction\": \"min\"` : le produit le moins cher.\n- ✘ **c.** Coût et nombre de features sont deux objectifs différents (TotCost contre TotFeat).\n- ✘ **d.** Le sens change ce qu’on cherche, pas les contraintes.\n- ✔ **e.** `\"max\"` : le produit le plus cher que la ligne peut produire.\n\nDans le cours : « find out what is the most expensive product we can make within the product line based on these costs ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.2 Ce que garantit une configuration optimale](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2)",
+            "en": "**Proposed answer: b, e.**\n\n- ✘ **a.** Mandatory features (root, core) remain: the minimum is taken among valid configurations.\n- ✔ **b.** `\"optimization_direction\": \"min\"`: the cheapest product.\n- ✘ **c.** Cost and number of features are two different objectives (TotCost versus TotFeat).\n- ✘ **d.** The direction changes what is sought, not the constraints.\n- ✔ **e.** `\"max\"`: the most expensive product the line can make.\n\nIn the course: “find out what is the most expensive product we can make within the product line based on these costs”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.2 What an optimal configuration guarantees](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 4",
+              "quote": "TotCost is correctly defined. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 2",
+              "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un client exige Security=1. L’équipe veut aussi le TotCost minimal. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "A customer requires Security=1. The team also wants minimum TotCost. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "La minimisation impose automatiquement toutes les préférences du client non enregistrées.",
+              "en": "Minimization automatically enforces every unrecorded customer preference."
+            },
+            {
+              "fr": "L’optimiseur peut abandonner Security dans le seul but de baisser le coût tout en satisfaisant la demande.",
+              "en": "The optimizer may drop Security solely to lower cost while still satisfying the request."
+            },
+            {
+              "fr": "Le produit le moins cher sans contrainte peut différer du produit le moins cher qui satisfait ce besoin.",
+              "en": "The cheapest unconstrained product may differ from the cheapest product satisfying this need."
+            },
+            {
+              "fr": "L’objectif dispense d’un modèle de variabilité.",
+              "en": "The objective eliminates the need for a variability model."
+            },
+            {
+              "fr": "Security=1 doit rester une contrainte de faisabilité pendant qu’on minimise le coût.",
+              "en": "Security=1 should remain a feasibility constraint while cost is minimized."
+            }
+          ],
+          "correct": [
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c, e.**\n\n- ✘ **a.** Le solveur ne connaît que ce qui est écrit dans le modèle et les choix.\n- ✘ **b.** Abandonner Security viole la demande : c’est une contrainte, pas une préférence.\n- ✔ **c.** Imposer Security restreint les produits faisables : l’optimum peut changer.\n- ✘ **d.** L’optimum se cherche parmi les configurations que le modèle autorise.\n- ✔ **e.** On marque Security comme sélectionnée, puis on lance `optimize` en `min`.\n\nDans le cours : « the only difference is whether or not specific elements are marked as selected (or deselected) ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.2 Ce que garantit une configuration optimale](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.1 Les trois tâches de configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.1)",
+            "en": "**Proposed answer: c, e.**\n\n- ✘ **a.** The solver only knows what is written in the model and the choices.\n- ✘ **b.** Dropping Security violates the request: it is a constraint, not a preference.\n- ✔ **c.** Imposing Security restricts the feasible products: the optimum can change.\n- ✘ **d.** The optimum is sought among the configurations the model allows.\n- ✔ **e.** Security is marked selected, then `optimize` is run with `min`.\n\nIn the course: “the only difference is whether or not specific elements are marked as selected (or deselected)”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.2 What an optimal configuration guarantees](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2); [ch. 9 “Configuring, generating and evolving a product”, § 1.1 The three configuration tasks](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.1)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 5",
+              "quote": "A customer requires Security=1. The team also wants minimum TotCost. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "the only difference is whether or not specific elements are marked as selected (or deselected)"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Deux configurations faisables différentes atteignent toutes deux le coût minimal prouvé, 20. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "Two different feasible configurations both achieve the proven minimum cost 20. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Recevoir un seul optimum n’implique pas qu’il est unique.",
+              "en": "A single returned optimum does not imply that it is unique."
+            },
+            {
+              "fr": "L’une doit violer une contrainte, puisque leurs coûts sont égaux.",
+              "en": "One must violate a constraint because their costs match."
+            },
+            {
+              "fr": "Le solveur doit choisir celle que préfèrent toutes les parties prenantes.",
+              "en": "The solver must pick the one preferred by all stakeholders."
+            },
+            {
+              "fr": "Le problème d’optimisation est insatisfiable.",
+              "en": "The optimization problem is unsatisfiable."
+            },
+            {
+              "fr": "Les deux sont optimales pour cet objectif.",
+              "en": "Both are optimal for that objective."
+            }
+          ],
+          "correct": [
+            0,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, e.**\n\n- ✔ **a.** Le solveur en renvoie une ; d’autres peuvent avoir le même coût.\n- ✘ **b.** Deux configurations valides peuvent avoir le même coût.\n- ✘ **c.** Le solveur ne connaît pas les préférences qui ne sont pas modélisées.\n- ✘ **d.** Il a deux solutions optimales : il est satisfiable.\n- ✔ **e.** Optimal = meilleure valeur de l’objectif ; les deux l’atteignent.\n\nDans le cours : « it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.2 Ce que garantit une configuration optimale](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2)",
+            "en": "**Proposed answer: a, e.**\n\n- ✔ **a.** The solver returns one; others may have the same cost.\n- ✘ **b.** Two valid configurations can have the same cost.\n- ✘ **c.** The solver does not know preferences that are not modelled.\n- ✘ **d.** It has two optimal solutions: it is satisfiable.\n- ✔ **e.** Optimal = best objective value; both reach it.\n\nIn the course: “it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.2 What an optimal configuration guarantees](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 6",
+              "quote": "Two different feasible configurations both achieve the proven minimum cost 20. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelles étapes intègrent le coût de 5 de Tabbing dans l’optimisation du tutoriel ? (Plusieurs réponses possibles.)",
+            "en": "Which steps incorporate Tabbing's cost of 5 into the tutorial's optimization? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Passer l’opération de optimize à sat pour ajouter le coût.",
+              "en": "Change operation from optimize to sat to add the charge."
+            },
+            {
+              "fr": "Ajouter à Tabbing un attribut entier Cost et le fixer à 5.",
+              "en": "Add an Integer Cost attribute to Tabbing and set it to 5."
+            },
+            {
+              "fr": "Écrire seulement 5 dans le nom du projet.",
+              "en": "Only write 5 in the project name."
+            },
+            {
+              "fr": "Ajouter Tabbing×Tabbing::Cost à l’expression de TotCost.",
+              "en": "Add Tabbing×Tabbing::Cost to the TotCost expression."
+            },
+            {
+              "fr": "Supprimer la feature Tabbing pour faire disparaître son coût réel.",
+              "en": "Remove the Tabbing feature so its real cost disappears."
+            }
+          ],
+          "correct": [
+            1,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, d.**\n\n- ✘ **a.** `sat` vérifie qu’une solution existe ; il n’optimise rien.\n- ✔ **b.** Comme au tutoriel 2 : attribut Cost de domaine Integer, valeur 5.\n- ✘ **c.** Le nom du projet n’entre pas dans le calcul.\n- ✔ **d.** TotCost est la somme des feature × feature::Cost : on y ajoute le terme de Tabbing.\n- ✘ **e.** Supprimer Tabbing change la ligne de produits au lieu de corriger le modèle de coût.\n\nDans le cours : « add a cost of 5 to the Tabbing feature to obtain the following model ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.1 Exemple corrigé : le navigateur du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.1)",
+            "en": "**Proposed answer: b, d.**\n\n- ✘ **a.** `sat` checks that a solution exists; it optimises nothing.\n- ✔ **b.** As in tutorial 2: Cost attribute, Integer domain, value 5.\n- ✘ **c.** The project name does not enter the calculation.\n- ✔ **d.** TotCost is the sum of feature × feature::Cost: Tabbing’s term is added to it.\n- ✘ **e.** Deleting Tabbing changes the product line instead of fixing the cost model.\n\nIn the course: “add a cost of 5 to the Tabbing feature to obtain the following model”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.1 Worked example: tutorial 5’s browser](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.1)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 7",
+              "quote": "Which steps incorporate Tabbing's cost of 5 into the tutorial's optimization?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 2",
+              "quote": "add a cost of 5 to the Tabbing feature to obtain the following model"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q08",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Pour la version de novembre 2024 du tutoriel 5, quelle précaution est documentée avant l’optimisation suivante, une fois les attributs configurés ? (Une seule réponse.)",
+            "en": "For the November 2024 version in Tutorial 5, what precaution is documented before the next optimization after attributes have been configured? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Recharger le modèle et réinsérer les contraintes additionnelles.",
+              "en": "Reload the model and reinsert the additional constraints."
+            },
+            {
+              "fr": "Vider seulement l’historique des résultats ; cela réinitialise tous les attributs.",
+              "en": "Only clear the Results history; that resets every attribute."
+            },
+            {
+              "fr": "Supprimer définitivement l’objectif.",
+              "en": "Delete the objective permanently."
+            },
+            {
+              "fr": "Supposer que Reset model configuration state réinitialise tous les attributs.",
+              "en": "Assume Reset model configuration state resets all attributes."
+            },
+            {
+              "fr": "Renommer toutes les features pour effacer les valeurs précédentes.",
+              "en": "Rename every feature to remove previous values."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** « please reload your model before the next step and reinsert the arbitrary constraints ».\n- ✘ **b.** Vider les résultats ne touche pas au modèle.\n- ✘ **c.** L’objectif sert encore à l’étape suivante (minimisation).\n- ✘ **d.** La remise à zéro des attributs n’est justement « not yet implemented ».\n- ✘ **e.** Renommer ne remet aucune valeur à zéro et casse les contraintes qui citent les noms.\n\nDans le cours : « the attributes resetting capability is not yet implemented in the tool, so please reload your model before the next step and reinsert the arbitrary constraints ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.1 Exemple corrigé : le navigateur du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.1)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** “please reload your model before the next step and reinsert the arbitrary constraints”.\n- ✘ **b.** Clearing the results does not touch the model.\n- ✘ **c.** The objective is still needed for the next step (minimisation).\n- ✘ **d.** Resetting attributes is precisely “not yet implemented”.\n- ✘ **e.** Renaming resets no value and breaks the constraints that cite the names.\n\nIn the course: “the attributes resetting capability is not yet implemented in the tool, so please reload your model before the next step and reinsert the arbitrary constraints”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.1 Worked example: tutorial 5’s browser](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.1)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 8",
+              "quote": "For the November 2024 version in Tutorial 5, what precaution is documented before the next optimization after attributes have been configured?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 2",
+              "quote": "the attributes resetting capability is not yet implemented in the tool, so please reload your model before the next step and reinsert the arbitrary constraints"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Les produits complets sont {R}, {R,A}, {R,B}, {R,A,B}. L’utilisateur désélectionne A. Combien de complétions restent ? (Une seule réponse.)",
+            "en": "The complete products are {R}, {R,A}, {R,B}, {R,A,B}. The user deselects A. How many completions remain? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Deux.",
+              "en": "Two."
+            },
+            {
+              "fr": "Quatre.",
+              "en": "Four."
+            },
+            {
+              "fr": "Une.",
+              "en": "One."
+            },
+            {
+              "fr": "Trois.",
+              "en": "Three."
+            },
+            {
+              "fr": "Zéro.",
+              "en": "Zero."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** Sans A : {R} et {R,B}.\n- ✘ **b.** 4 est le nombre sans aucun choix.\n- ✘ **c.** Une seule si l’on fixait aussi B.\n- ✘ **d.** 3 compterait un produit qui contient A.\n- ✘ **e.** Exclure A est compatible avec deux produits.\n\nDans le cours : « asking for F4 NOT to be included as follows ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.3 Exemple corrigé : le modèle du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** Without A: {R} and {R,B}.\n- ✘ **b.** 4 is the count with no choice.\n- ✘ **c.** Only one if B were also fixed.\n- ✘ **d.** 3 would count a product containing A.\n- ✘ **e.** Excluding A is compatible with two products.\n\nIn the course: “asking for F4 NOT to be included as follows”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2); [ch. 9 “Configuring, generating and evolving a product”, § 1.3 Worked example: tutorial 5’s model](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 9",
+              "quote": "The complete products are {R}, {R,A}, {R,B}, {R,A,B}. The user deselects A. How many completions remain?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "asking for F4 NOT to be included as follows"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Une requête nsolve demandant dix configurations se termine normalement après avoir épuisé la recherche et renvoie neuf affectations complètes distinctes. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "An nsolve request for ten configurations terminates normally after exhausting the search and returns nine distinct full assignments. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "La neuvième solution doit avoir le coût le plus bas.",
+              "en": "The ninth solution must have the lowest cost."
+            },
+            {
+              "fr": "Exactement neuf affectations complètes satisfont le modèle et les choix actuels.",
+              "en": "Exactly nine full assignments satisfy the current model and choices."
+            },
+            {
+              "fr": "Il existe dix solutions, puisqu’on en a demandé dix.",
+              "en": "Ten solutions exist because ten were requested."
+            },
+            {
+              "fr": "Neuf est forcément le nombre d’avant tout choix partiel.",
+              "en": "Nine is necessarily the count before any partial choices were imposed."
+            },
+            {
+              "fr": "Demander dix n’a pas forcé le système à en inventer une dixième.",
+              "en": "Requesting ten did not force the system to invent a tenth."
+            }
+          ],
+          "correct": [
+            1,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, e.**\n\n- ✘ **a.** `nsolve` n’ordonne pas par coût ; l’ordre des solutions n’est pas contrôlable.\n- ✔ **b.** Recherche épuisée : il n’y en a pas d’autres (tutoriel 5 : « only 9 really exist »).\n- ✘ **c.** n est un maximum (« at most »), pas une promesse.\n- ✘ **d.** Le compte vaut pour les choix actuels ; avec d’autres choix, il change.\n- ✔ **e.** Le solveur renvoie autant de solutions qu’il en trouve, au plus n.\n\nDans le cours : « while we requested 10 solutions, only 9 really exist ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.3 Exemple corrigé : le modèle du tutoriel 5](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)",
+            "en": "**Proposed answer: b, e.**\n\n- ✘ **a.** `nsolve` does not order by cost; the order of solutions cannot be controlled.\n- ✔ **b.** Search exhausted: there are no others (tutorial 5: “only 9 really exist”).\n- ✘ **c.** n is a maximum (“at most”), not a promise.\n- ✘ **d.** The count holds for the current choices; with other choices it changes.\n- ✔ **e.** The solver returns as many solutions as it finds, at most n.\n\nIn the course: “while we requested 10 solutions, only 9 really exist”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.3 Worked example: tutorial 5’s model](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 10",
+              "quote": "An nsolve request for ten configurations terminates normally after exhausting the search and returns nine distinct full assignments. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "while we requested 10 solutions, only 9 really exist"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "R=1 ; A et B sont des enfants optionnels ; A requires B. L’utilisateur sélectionne A. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "R=1; A and B are optional children; A requires B. The user selects A. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Toute complétion sélectionne B.",
+              "en": "Every completion selects B."
+            },
+            {
+              "fr": "Le solveur peut omettre A et respecter quand même la demande.",
+              "en": "The solver can omit A and still preserve the request."
+            },
+            {
+              "fr": "La sélection R=1, A=1, B=1 est une complétion valide selon ces règles.",
+              "en": "The selection R=1,A=1,B=1 is a valid completion under these rules."
+            },
+            {
+              "fr": "B=0 est une complétion valide.",
+              "en": "B=0 is a valid completion."
+            },
+            {
+              "fr": "Sélectionner A rend R absent.",
+              "en": "Selecting A makes R absent."
+            }
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, c.**\n\n- ✔ **a.** A ⇒ B : A choisie impose B.\n- ✘ **b.** Omettre A violerait le choix de l’utilisateur.\n- ✔ **c.** R, A et B : toutes les règles sont satisfaites.\n- ✘ **d.** Avec A sélectionnée, B = 0 viole A requires B.\n- ✘ **e.** La racine est toujours présente (R = 1).\n\nDans le cours : « we want to find a configuration that in addition to respecting all of our model ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) ; [ch. 3 « Les feature models », § 3.1 Ce que chaque relation permet de conclure](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)",
+            "en": "**Proposed answer: a, c.**\n\n- ✔ **a.** A ⇒ B: A chosen forces B.\n- ✘ **b.** Omitting A would violate the user’s choice.\n- ✔ **c.** R, A and B: every rule is satisfied.\n- ✘ **d.** With A selected, B = 0 violates A requires B.\n- ✘ **e.** The root is always present (R = 1).\n\nIn the course: “we want to find a configuration that in addition to respecting all of our model”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2); [ch. 3 “Feature models”, § 3.1 What each relationship lets you conclude](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 11",
+              "quote": "R=1; A and B are optional children; A requires B. The user selects A. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "we want to find a configuration that in addition to respecting all of our model"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-5-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Seuls deux produits sont faisables : P sélectionne une feature qui coûte 100 ; Q sélectionne trois features qui coûtent 10 chacune. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "Only two products are feasible: P selects one feature costing 100; Q selects three features each costing 10. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Minimiser le coût choisit P.",
+              "en": "Minimizing cost selects P."
+            },
+            {
+              "fr": "Les deux objectifs doivent choisir le même produit.",
+              "en": "Both objectives must select the same product."
+            },
+            {
+              "fr": "Maximiser le nombre de features distinctes sélectionnées choisit Q.",
+              "en": "Maximizing the number of distinct selected features selects Q."
+            },
+            {
+              "fr": "P a trois features sélectionnées, puisque son coût a trois chiffres.",
+              "en": "P has three selected features because its cost has three digits."
+            },
+            {
+              "fr": "Maximiser le coût total choisit P.",
+              "en": "Maximizing total cost selects P."
+            }
+          ],
+          "correct": [
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c, e.**\n\n- ✘ **a.** P coûte 100, Q coûte 3 × 10 = 30 : minimiser choisit Q.\n- ✘ **b.** Rien ne l’impose : maximiser le coût choisit P, maximiser le nombre de features choisit Q.\n- ✔ **c.** Q a 3 features, P une seule.\n- ✘ **d.** Le nombre de chiffres d’un coût n’a rien à voir avec le nombre de features.\n- ✔ **e.** 100 > 30 : le produit le plus cher est P.\n\nDans le cours : « Using “swi”, calculate the number of features in the product with the largest number of features. ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 2.1.2 Ce que garantit une configuration optimale](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2)",
+            "en": "**Proposed answer: c, e.**\n\n- ✘ **a.** P costs 100, Q costs 3 × 10 = 30: minimising picks Q.\n- ✘ **b.** Nothing forces it: maximising cost picks P, maximising the number of features picks Q.\n- ✔ **c.** Q has 3 features, P only one.\n- ✘ **d.** The number of digits in a cost has nothing to do with the number of features.\n- ✔ **e.** 100 > 30: the most expensive product is P.\n\nIn the course: “Using “swi”, calculate the number of features in the product with the largest number of features.”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 2.1.2 What an optimal configuration guarantees](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=2.1.2)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/22-quiz5.md",
+              "loc": "Question 12",
+              "quote": "Only two products are feasible: P selects one feature costing 100; Q selects three features each costing 10. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 3",
+              "quote": "Using “swi”, calculate the number of features in the product with the largest number of features."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

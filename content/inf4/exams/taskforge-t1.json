@@ -1,0 +1,650 @@
+{
+  "id": "inf4-taskforge-t1",
+  "courseId": "inf4",
+  "title": {
+    "fr": "QCM d’auto-évaluation TaskForge T1 (modèle, vérification, diagnostic)",
+    "en": "TaskForge T1 self-assessment quiz (model, verification, diagnosis)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "QCM d’auto-évaluation des TP TaskForge, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites de l’énoncé du TP, du kit et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "Self-assessment quiz for the TaskForge labs, with no official answers in the files: the answers are **proposed** (deduced from the lab statement, the kit and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-taskforge-t1-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelle affirmation décrit le mieux une ligne de produits logiciels ? (Une seule réponse.)",
+            "en": "Which statement best describes a software product line? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Une famille dérivée d’actifs partagés, avec une variabilité gérée explicitement.",
+              "en": "A family derived from shared assets with explicitly managed variability."
+            },
+            {
+              "fr": "Un diagramme de features sans aucun actif d’implémentation.",
+              "en": "A feature diagram with no implementation assets."
+            },
+            {
+              "fr": "Une copie d’une application pour chaque client, sans stratégie de maintenance commune.",
+              "en": "A copy of one application for every customer, with no common maintenance strategy."
+            },
+            {
+              "fr": "Plusieurs applications sans lien vendues par une même entreprise.",
+              "en": "Several unrelated applications sold by one company."
+            },
+            {
+              "fr": "Un produit dont toutes les features doivent toujours être activées.",
+              "en": "A product in which every feature must always be enabled."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** Actifs communs et variabilité explicite : c’est la « famille réutilisable » que TaskForge construit.\n- ✘ **b.** Le modèle seul ne suffit pas : TaskForge relie exigences, modèle, configurations, code et tests.\n- ✘ **c.** Copier sans stratégie commune, c’est l’inverse d’une ligne.\n- ✘ **d.** Sans actifs partagés, pas de ligne.\n- ✘ **e.** Il n’y aurait plus aucune variabilité.\n\nDans le cours : « Vous devez construire une famille réutilisable, expliquer les variantes autorisées et livrer des applications qui fonctionnent. ».\n\n→ Revoir : [ch. 1 « Variabilité et ligne de produits », § 2.4 Ligne de produits et périmètre](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=2.4)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** Shared assets and explicit variability: that is the “reusable family” TaskForge builds.\n- ✘ **b.** The model alone is not enough: TaskForge links requirements, model, configurations, code and tests.\n- ✘ **c.** Copying with no common strategy is the opposite of a line.\n- ✘ **d.** Without shared assets, no line.\n- ✘ **e.** There would be no variability left.\n\nIn the course: “Vous devez construire une famille réutilisable, expliquer les variantes autorisées et livrer des applications qui fonctionnent.”.\n\n→ Review: [ch. 1 “Variability and product lines”, § 2.4 Product line and scope](#/matiere/inf4/chapitre/inf4-01-variabilite/lire?partie=2.4)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 1",
+              "quote": "Which statement best describes a software product line?"
+            },
+            {
+              "file": "sources-texte/inf4/25-enonce-taskforge.md",
+              "loc": "Cas étudié",
+              "quote": "Vous devez construire une famille réutilisable, expliquer les variantes autorisées et livrer des applications qui fonctionnent."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Dans le kit, une configuration complète liste les features sélectionnées. Quelles affirmations sont correctes ? (Plusieurs réponses possibles.)",
+            "en": "In the kit, a complete configuration lists selected features. Which statements are correct? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Les features non listées restent indécidées.",
+              "en": "Unlisted features remain undecided."
+            },
+            {
+              "fr": "Toutes les features optionnelles doivent être listées.",
+              "en": "Every optional feature must be listed."
+            },
+            {
+              "fr": "La liste doit satisfaire le modèle.",
+              "en": "The list must satisfy the model."
+            },
+            {
+              "fr": "Le nom du produit remplace la liste de features.",
+              "en": "The product name replaces the feature list."
+            },
+            {
+              "fr": "Les features non listées sont exclues.",
+              "en": "Unlisted features are excluded."
+            }
+          ],
+          "correct": [
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c, e.**\n\n- ✘ **a.** Indécidé, c’est une configuration **partielle**.\n- ✘ **b.** On liste ce qui est sélectionné ; une optionnelle absente de la liste est exclue.\n- ✔ **c.** L’atelier valide la liste contre l’UVL avant de générer.\n- ✘ **d.** Le nom n’est qu’une étiquette.\n- ✔ **e.** « Une configuration complète exclut tout ce qui n’est pas listé. »\n\nDans le cours : « Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés. ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)",
+            "en": "**Proposed answer: c, e.**\n\n- ✘ **a.** Undecided is a **partial** configuration.\n- ✘ **b.** What is selected is listed; an optional feature missing from the list is excluded.\n- ✔ **c.** The workshop validates the list against the UVL before generating.\n- ✘ **d.** The name is only a label.\n- ✔ **e.** “A complete configuration excludes everything that is not listed.”\n\nIn the course: “Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés.”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 2",
+              "quote": "In the kit, a complete configuration lists selected features. Which statements are correct?"
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "La contrainte est Statistics => Filters. Quelles affirmations découlent de cette seule contrainte ? (Plusieurs réponses possibles.)",
+            "en": "The constraint is Statistics => Filters. Which claims follow from this constraint alone? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Exclure Filters oblige à exclure Statistics.",
+              "en": "Excluding Filters requires excluding Statistics."
+            },
+            {
+              "fr": "Exclure Statistics oblige à exclure Filters.",
+              "en": "Excluding Statistics requires excluding Filters."
+            },
+            {
+              "fr": "Les deux features doivent toujours avoir la même valeur.",
+              "en": "Both features must always have equal values."
+            },
+            {
+              "fr": "Sélectionner Statistics exige Filters.",
+              "en": "Selecting Statistics requires Filters."
+            },
+            {
+              "fr": "Sélectionner Filters exige Statistics.",
+              "en": "Selecting Filters requires Statistics."
+            }
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, d.**\n\n- ✔ **a.** Contraposée : non Filters ⇒ non Statistics.\n- ✘ **b.** Exclure Statistics ne dit rien sur Filters.\n- ✘ **c.** Filters sans Statistics est permis : ce n’est pas une équivalence.\n- ✔ **d.** C’est le sens même de l’implication.\n- ✘ **e.** C’est la réciproque, que le T1 demande justement de ne pas confondre.\n\nDans le cours : « Pourquoi Statistics => Filters n’est-il pas équivalent à Filters => Statistics ? ».\n\n→ Revoir : [ch. 3 « Les feature models », § 3.1 Ce que chaque relation permet de conclure](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)",
+            "en": "**Proposed answer: a, d.**\n\n- ✔ **a.** Contrapositive: not Filters ⇒ not Statistics.\n- ✘ **b.** Excluding Statistics says nothing about Filters.\n- ✘ **c.** Filters without Statistics is allowed: it is not an equivalence.\n- ✔ **d.** That is what the implication says.\n- ✘ **e.** That is the converse, which T1 asks you not to confuse.\n\nIn the course: “Pourquoi Statistics => Filters n’est-il pas équivalent à Filters => Statistics ?”.\n\n→ Review: [ch. 3 “Feature models”, § 3.1 What each relationship lets you conclude](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 3",
+              "quote": "The constraint is Statistics => Filters. Which claims follow from this constraint alone?"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§2",
+              "quote": "Pourquoi Statistics => Filters n’est-il pas équivalent à Filters => Statistics ?"
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "R a un enfant optionnel P ; P a un enfant optionnel C ; la contrainte est P => C. P peut être exclu. Quelles affirmations sont correctes ? (Plusieurs réponses possibles.)",
+            "en": "R has optional P; P has optional C; the constraint is P => C. P can be excluded. Which statements are correct? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Le modèle est forcément vide.",
+              "en": "The model must be void."
+            },
+            {
+              "fr": "C est faussement optionnelle par rapport à P.",
+              "en": "C is false optional relative to P."
+            },
+            {
+              "fr": "L’arête optionnelle garantit que C peut être exclue quand P est sélectionné.",
+              "en": "The optional edge guarantees C can be excluded when P is selected."
+            },
+            {
+              "fr": "C n’est pas forcément dans le noyau du modèle entier.",
+              "en": "C need not be core in the whole model."
+            },
+            {
+              "fr": "C est présente dans tous les produits valides.",
+              "en": "C is present in every valid product."
+            }
+          ],
+          "correct": [
+            1,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, d.**\n\n- ✘ **a.** {R} et {R,P,C} sont des produits.\n- ✔ **b.** Dès que P est sélectionné, C doit l’être : c’est la définition TaskForge.\n- ✘ **c.** La contrainte P => C l’emporte sur le dessin.\n- ✔ **d.** P exclu entraîne C exclue : {R} ne contient pas C.\n- ✘ **e.** {R} est valide sans C.\n\nDans le cours : « Une feature optionnelle est faussement optionnelle si, dès que son parent est sélectionné, elle doit l’être aussi. ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3) ; [ch. 3 « Les feature models », § 3.3 Lire un fragment de modèle](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3)",
+            "en": "**Proposed answer: b, d.**\n\n- ✘ **a.** {R} and {R,P,C} are products.\n- ✔ **b.** As soon as P is selected, C must be: that is TaskForge’s definition.\n- ✘ **c.** The constraint P => C overrides the drawing.\n- ✔ **d.** P excluded means C excluded: {R} does not contain C.\n- ✘ **e.** {R} is valid without C.\n\nIn the course: “Une feature optionnelle est faussement optionnelle si, dès que son parent est sélectionné, elle doit l’être aussi.”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3); [ch. 3 “Feature models”, § 3.3 Reading a model fragment](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 4",
+              "quote": "R has optional P; P has optional C; the constraint is P => C. P can be excluded. Which statements are correct?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 1 §4",
+              "quote": "Une feature optionnelle est faussement optionnelle si, dès que son parent est sélectionné, elle doit l’être aussi."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Le modèle A ajoute deux règles sans fondement : CSVExport => Kiosk et CSVExport => LocalStorage. Le contrat d’origine permet l’export avec l’un ou l’autre stockage. Quelle est la bonne réparation ? (Une seule réponse.)",
+            "en": "Model A adds two unsupported rules: CSVExport => Kiosk and CSVExport => LocalStorage. The original contract permits export with either storage. What is the appropriate repair? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Supprimer la feature CSVExport annoncée.",
+              "en": "Delete the advertised CSVExport feature."
+            },
+            {
+              "fr": "Supprimer l’alternative de stockage.",
+              "en": "Remove the storage alternative."
+            },
+            {
+              "fr": "Rendre CSVExport obligatoire.",
+              "en": "Make CSVExport mandatory."
+            },
+            {
+              "fr": "Supprimer Statistics => Filters.",
+              "en": "Delete Statistics => Filters."
+            },
+            {
+              "fr": "Retirer les deux règles sans fondement en conservant les contraintes d’origine.",
+              "en": "Remove both unsupported rules while preserving the original constraints."
+            }
+          ],
+          "correct": [
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : e.**\n\n- ✘ **a.** Supprimer une vraie exigence (R08) pour faire passer le solveur n’est pas une correction.\n- ✘ **b.** R02 exige exactement un stockage.\n- ✘ **c.** R11 dit CSVExport optionnelle, et le modèle deviendrait vide (CSVExport imposerait les deux stockages).\n- ✘ **d.** Cette contrainte vient de R09 et n’a rien à voir avec le défaut.\n- ✔ **e.** Kiosk impose Memory, qui exclut LocalStorage : CSVExport est morte ; retirer les deux règles inventées la rétablit sans toucher à R01–R11.\n\nDans le cours : « Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable. ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.6 Exercice corrigé (TaskForge T1) : trois modèles fautifs](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6)",
+            "en": "**Proposed answer: e.**\n\n- ✘ **a.** Deleting a real requirement (R08) to please the solver is not a fix.\n- ✘ **b.** R02 requires exactly one storage.\n- ✘ **c.** R11 says CSVExport is optional, and the model would become void (CSVExport would force both storages).\n- ✘ **d.** This constraint comes from R09 and has nothing to do with the defect.\n- ✔ **e.** Kiosk forces Memory, which excludes LocalStorage: CSVExport is dead; removing both invented rules restores it without touching R01–R11.\n\nIn the course: “Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable.”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.6 Worked exercise (TaskForge T1): three faulty models](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 5",
+              "quote": "Model A adds two unsupported rules: CSVExport => Kiosk and CSVExport => LocalStorage. The original contract permits export with either storage. What is the appropriate repair?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 1 §4",
+              "quote": "Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "La racine R a un enfant optionnel P ; P a un enfant obligatoire C. R est sélectionnée et aucune autre contrainte ne s’applique. Quelles sélections sont valides ? (Plusieurs réponses possibles.)",
+            "en": "Root R has optional P; P has mandatory C. R is selected and no other constraints apply. Which selections are valid? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "P sélectionné et C indécidé dans une configuration complète.",
+              "en": "P selected and C undecided in a complete configuration."
+            },
+            {
+              "fr": "P et C tous deux exclus.",
+              "en": "P and C both excluded."
+            },
+            {
+              "fr": "P exclu et C sélectionné.",
+              "en": "P excluded and C selected."
+            },
+            {
+              "fr": "P sélectionné et C exclu.",
+              "en": "P selected and C excluded."
+            },
+            {
+              "fr": "P et C tous deux sélectionnés.",
+              "en": "P and C both selected."
+            }
+          ],
+          "correct": [
+            1,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, e.**\n\n- ✘ **a.** Une configuration complète ne laisse rien d’indécidé.\n- ✔ **b.** P est optionnel : l’omettre omet tout son sous-arbre.\n- ✘ **c.** Un enfant sélectionné exige son parent.\n- ✘ **d.** C est obligatoire sous P : P sélectionné impose C.\n- ✔ **e.** P choisi, donc C obligatoire choisi aussi.\n\nDans le cours : « Un enfant optionnel peut-il être sélectionné si son parent est absent ? ».\n\n→ Revoir : [ch. 3 « Les feature models », § 3.3 Lire un fragment de modèle](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3) ; [ch. 3 « Les feature models », § 3.1 Ce que chaque relation permet de conclure](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)",
+            "en": "**Proposed answer: b, e.**\n\n- ✘ **a.** A complete configuration leaves nothing undecided.\n- ✔ **b.** P is optional: omitting it omits its whole subtree.\n- ✘ **c.** A selected child requires its parent.\n- ✘ **d.** C is mandatory under P: P selected forces C.\n- ✔ **e.** P chosen, so mandatory C chosen too.\n\nIn the course: “Un enfant optionnel peut-il être sélectionné si son parent est absent ?”.\n\n→ Review: [ch. 3 “Feature models”, § 3.3 Reading a model fragment](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.3); [ch. 3 “Feature models”, § 3.1 What each relationship lets you conclude](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 6",
+              "quote": "Root R has optional P; P has mandatory C. R is selected and no other constraints apply. Which selections are valid?"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§2",
+              "quote": "Un enfant optionnel peut-il être sélectionné si son parent est absent ?"
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelles actions conservent le modèle pour le générateur local ? (Plusieurs réponses possibles.)",
+            "en": "Which actions preserve the model for the local generator? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Renommer un fichier PNG en .uvl.",
+              "en": "Rename a PNG file to .uvl."
+            },
+            {
+              "fr": "N’enregistrer qu’un nom de produit.",
+              "en": "Save only a product name."
+            },
+            {
+              "fr": "Copier le texte UVL dans l’atelier et le télécharger.",
+              "en": "Copy the UVL text into the workshop and download it."
+            },
+            {
+              "fr": "Exporter l’UVL et l’importer dans l’atelier.",
+              "en": "Export UVL and import it in the workshop."
+            },
+            {
+              "fr": "N’enregistrer qu’une capture d’écran du graphe.",
+              "en": "Save only a graph screenshot."
+            }
+          ],
+          "correct": [
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c, d.**\n\n- ✘ **a.** Une image renommée reste une image : le générateur lit du texte UVL.\n- ✘ **b.** Un nom ne contient ni features ni contraintes.\n- ✔ **c.** C’est la solution de secours du guide si l’export ne fonctionne pas.\n- ✔ **d.** Le générateur importe le même fichier UVL que FlamapyIDE.\n- ✘ **e.** Une capture ne se réimporte pas.\n\nDans le cours : « Si l’export ne fonctionne pas, copiez le texte dans le champ UVL de l’atelier et cliquez sur « Télécharger le modèle ». ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.1 Du modèle au produit : valider, puis générer](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)",
+            "en": "**Proposed answer: c, d.**\n\n- ✘ **a.** A renamed image is still an image: the generator reads UVL text.\n- ✘ **b.** A name holds neither features nor constraints.\n- ✔ **c.** That is the guide’s fallback if export does not work.\n- ✔ **d.** The generator imports the same UVL file as FlamapyIDE.\n- ✘ **e.** A screenshot cannot be re-imported.\n\nIn the course: “Si l’export ne fonctionne pas, copiez le texte dans le champ UVL de l’atelier et cliquez sur « Télécharger le modèle ».”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.1 From model to product: validate, then generate](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 7",
+              "quote": "Which actions preserve the model for the local generator?"
+            },
+            {
+              "file": "sources-texte/inf4/25-enonce-taskforge.md",
+              "loc": "Prise en main de FlamapyIDE",
+              "quote": "Si l’export ne fonctionne pas, copiez le texte dans le champ UVL de l’atelier et cliquez sur « Télécharger le modèle »."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q08",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Comment faut-il examiner les modèles A, B et C fournis ? (Plusieurs réponses possibles.)",
+            "en": "How should the supplied A, B and C models be examined? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Relancer les analyses après chaque correction.",
+              "en": "Rerun the analyses after each correction."
+            },
+            {
+              "fr": "Réutiliser un ancien résultat pour le fichier nouvellement chargé.",
+              "en": "Reuse an old result for the newly loaded file."
+            },
+            {
+              "fr": "Combiner d’abord toutes leurs règles ajoutées.",
+              "en": "Combine all their added rules first."
+            },
+            {
+              "fr": "S’arrêter dès que le graphe a l’air plausible.",
+              "en": "Stop once the graph looks plausible."
+            },
+            {
+              "fr": "Analyser chaque fichier fautif indépendamment.",
+              "en": "Analyse each faulty file independently."
+            }
+          ],
+          "correct": [
+            0,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, e.**\n\n- ✔ **a.** « Relancez les analyses et comparez au modèle de référence. »\n- ✘ **b.** Chaque fichier a son propre défaut : un ancien résultat ne vaut rien pour lui.\n- ✘ **c.** « Ne cumulez pas les corrections d’un fichier sur l’autre. »\n- ✘ **d.** Un graphe plausible peut cacher une feature morte : seul le solveur tranche.\n- ✔ **e.** Chaque fichier repart du modèle de référence avec un défaut indépendant.\n\nDans le cours : « chaque fichier repart du modèle de référence et introduit un défaut indépendant. Ne cumulez pas les corrections d’un fichier sur l’autre. ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.6 Exercice corrigé (TaskForge T1) : trois modèles fautifs](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6)",
+            "en": "**Proposed answer: a, e.**\n\n- ✔ **a.** “Rerun the analyses and compare with the reference model.”\n- ✘ **b.** Each file has its own defect: an old result is worthless for it.\n- ✘ **c.** “Do not carry corrections from one file over to another.”\n- ✘ **d.** A plausible graph can hide a dead feature: only the solver decides.\n- ✔ **e.** Each file starts from the reference model with an independent defect.\n\nIn the course: “chaque fichier repart du modèle de référence et introduit un défaut indépendant. Ne cumulez pas les corrections d’un fichier sur l’autre.”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.6 Worked exercise (TaskForge T1): three faulty models](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 8",
+              "quote": "How should the supplied A, B and C models be examined?"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§4",
+              "quote": "chaque fichier repart du modèle de référence et introduit un défaut indépendant. Ne cumulez pas les corrections d’un fichier sur l’autre."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle est satisfiable, mais ajouter l’hypothèse F = faux le rend insatisfiable. Qu’en déduit-on ? (Une seule réponse.)",
+            "en": "A model is satisfiable, but adding the assumption F=false makes it unsatisfiable. What follows? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Le modèle d’origine est vide.",
+              "en": "The original model is void."
+            },
+            {
+              "fr": "F a forcément une arête obligatoire.",
+              "en": "F must have a mandatory edge."
+            },
+            {
+              "fr": "F est morte.",
+              "en": "F is dead."
+            },
+            {
+              "fr": "F a forcément un élément visible dans l’interface.",
+              "en": "F must have a visible widget."
+            },
+            {
+              "fr": "F est dans le noyau.",
+              "en": "F is core."
+            }
+          ],
+          "correct": [
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : e.**\n\n- ✘ **a.** Il est satisfiable par hypothèse.\n- ✘ **b.** Le noyau peut venir d’une contrainte, pas seulement d’une arête.\n- ✘ **c.** Une feature morte se teste avec F = vrai.\n- ✘ **d.** L’interface ne dit rien de la sémantique du modèle.\n- ✔ **e.** Aucun produit sans F : F est présente partout, donc dans le noyau.\n\nDans le cours : « features that are definitely present in all products and form (part) of the “core” features ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7) ; [ch. 7 « Traduire un modèle en contraintes », § 3.5 Noyau et features variables](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5)",
+            "en": "**Proposed answer: e.**\n\n- ✘ **a.** It is satisfiable by assumption.\n- ✘ **b.** Core-ness can come from a constraint, not only an edge.\n- ✘ **c.** A dead feature is tested with F = true.\n- ✘ **d.** The interface says nothing about the model’s semantics.\n- ✔ **e.** No product without F: F is present everywhere, so core.\n\nIn the course: “features that are definitely present in all products and form (part) of the “core” features”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7); [ch. 7 “Translating a model into constraints”, § 3.5 Core and variable features](#/matiere/inf4/chapitre/inf4-07-transformation-verification/lire?partie=3.5)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 9",
+              "quote": "A model is satisfiable, but adding the assumption F=false makes it unsatisfiable. What follows?"
+            },
+            {
+              "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+              "loc": "Part 5",
+              "quote": "features that are definitely present in all products and form (part) of the “core” features"
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Une configuration sélectionne Storage mais aucun de ses enfants alternatifs, Memory et LocalStorage. Pourquoi est-elle invalide ? (Une seule réponse.)",
+            "en": "A configuration selects Storage but neither of its alternative children Memory and LocalStorage. Why is it invalid? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Il faut exactement un enfant sous le parent sélectionné.",
+              "en": "Exactly one child is required under the selected parent."
+            },
+            {
+              "fr": "Storage est optionnel dans TaskForge v1.",
+              "en": "Storage is optional in TaskForge v1."
+            },
+            {
+              "fr": "CSVExport manque.",
+              "en": "CSVExport is missing."
+            },
+            {
+              "fr": "Les deux enfants sont chacun obligatoires.",
+              "en": "Both children are independently mandatory."
+            },
+            {
+              "fr": "Toutes les features optionnelles doivent être sélectionnées.",
+              "en": "All optional features must be selected."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** Groupe alternatif : exactement un enfant dès que le parent est choisi (R02).\n- ✘ **b.** Storage est obligatoire sous TaskForge.\n- ✘ **c.** CSVExport est optionnelle.\n- ✘ **d.** S’ils étaient tous deux obligatoires, Memory et LocalStorage coexisteraient.\n- ✘ **e.** Les options sont libres, sous réserve de R09 et R10.\n\nDans le cours : « Tout produit utilise exactement un stockage : Memory ou LocalStorage. ».\n\n→ Revoir : [ch. 3 « Les feature models », § 1.2 Le tableau de la notation](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=1.2) ; [ch. 3 « Les feature models », § 3.1 Ce que chaque relation permet de conclure](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** Alternative group: exactly one child once the parent is chosen (R02).\n- ✘ **b.** Storage is mandatory under TaskForge.\n- ✘ **c.** CSVExport is optional.\n- ✘ **d.** If both were mandatory, Memory and LocalStorage would coexist.\n- ✘ **e.** Options are free, subject to R09 and R10.\n\nIn the course: “Tout produit utilise exactement un stockage : Memory ou LocalStorage.”.\n\n→ Review: [ch. 3 “Feature models”, § 1.2 The notation table](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=1.2); [ch. 3 “Feature models”, § 3.1 What each relationship lets you conclude](#/matiere/inf4/chapitre/inf4-03-cadre-ple/lire?partie=3.1)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 10",
+              "quote": "A configuration selects Storage but neither of its alternative children Memory and LocalStorage. Why is it invalid?"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "Tout produit utilise exactement un stockage : Memory ou LocalStorage."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Quelle expérience prouve que F est morte dans un feature model satisfiable ? (Une seule réponse.)",
+            "en": "Which experiment proves that F is dead in a satisfiable feature model? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Constater que F est une feuille.",
+              "en": "Observe that F is a leaf."
+            },
+            {
+              "fr": "Cacher son bouton dans l’interface.",
+              "en": "Hide its UI button."
+            },
+            {
+              "fr": "Imposer F et montrer qu’aucune complétion valide n’existe.",
+              "en": "Require F and show that no valid completion exists."
+            },
+            {
+              "fr": "Trouver un produit sans F.",
+              "en": "Find one product excluding F."
+            },
+            {
+              "fr": "Compter les mentions de F dans un document.",
+              "en": "Count mentions of F in a document."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c.**\n\n- ✘ **a.** Une feuille peut parfaitement être sélectionnable.\n- ✘ **b.** Cacher un bouton ne change pas le modèle.\n- ✔ **c.** C’est la contrainte de vérification : forcer F à 1 ; aucune solution = morte.\n- ✘ **d.** Un produit sans F prouve seulement que F n’est pas dans le noyau.\n- ✘ **e.** Un document ne prouve rien sur le modèle.\n\nDans le cours : « Une feature est morte si aucun produit valide ne la contient. ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3)",
+            "en": "**Proposed answer: c.**\n\n- ✘ **a.** A leaf can perfectly well be selectable.\n- ✘ **b.** Hiding a button does not change the model.\n- ✔ **c.** That is the verification constraint: force F to 1; no solution = dead.\n- ✘ **d.** A product without F only proves F is not core.\n- ✘ **e.** A document proves nothing about the model.\n\nIn the course: “Une feature est morte si aucun produit valide ne la contient.”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 11",
+              "quote": "Which experiment proves that F is dead in a satisfiable feature model?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 1 §4",
+              "quote": "Une feature est morte si aucun produit valide ne la contient."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t1-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Dans ce modèle v1, la liste complète sélectionnée est TaskForge, TaskManagement, Storage, Memory, Kiosk, Filters. Quelles affirmations sont vraies ? Modèle de référence TaskForge v1 : TaskForge a pour enfants obligatoires TaskManagement et Storage (groupe alternatif : Memory ou LocalStorage) et pour enfants optionnels Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk ; contraintes : `Kiosk => Memory`, `Statistics => Filters`. (Plusieurs réponses possibles.)",
+            "en": "In this v1 model the complete selected list is TaskForge, TaskManagement, Storage, Memory, Kiosk, Filters. Which statements are true? Reference model TaskForge v1: TaskForge has mandatory children TaskManagement and Storage (alternative group: Memory or LocalStorage) and optional children Priorities, DueDates, Filters, CSVExport, Statistics, Kiosk; constraints: `Kiosk => Memory`, `Statistics => Filters`. (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Filters impose Statistics.",
+              "en": "Filters forces Statistics."
+            },
+            {
+              "fr": "Statistics est exclue.",
+              "en": "Statistics is excluded."
+            },
+            {
+              "fr": "Elle est valide.",
+              "en": "It is valid."
+            },
+            {
+              "fr": "Il faut ajouter Priorities.",
+              "en": "Priorities must be added."
+            },
+            {
+              "fr": "LocalStorage reste indécidé.",
+              "en": "LocalStorage remains undecided."
+            }
+          ],
+          "correct": [
+            1,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, c.**\n\n- ✘ **a.** C’est Statistics => Filters, pas l’inverse.\n- ✔ **b.** Liste complète : ce qui n’est pas listé est exclu.\n- ✔ **c.** Un seul stockage (Memory), Kiosk => Memory respectée, Statistics absente.\n- ✘ **d.** Priorities est optionnelle.\n- ✘ **e.** Dans une configuration complète, LocalStorage non listé est exclu.\n\nDans le cours : « Pour chacune, ajoutez racine et parents obligatoires et considérez les options non citées comme exclues ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.4 Deuxième exemple : compléter une demande TaskForge](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4)",
+            "en": "**Proposed answer: b, c.**\n\n- ✘ **a.** It is Statistics => Filters, not the converse.\n- ✔ **b.** Complete list: whatever is not listed is excluded.\n- ✔ **c.** One storage (Memory), Kiosk => Memory holds, Statistics absent.\n- ✘ **d.** Priorities is optional.\n- ✘ **e.** In a complete configuration, unlisted LocalStorage is excluded.\n\nIn the course: “Pour chacune, ajoutez racine et parents obligatoires et considérez les options non citées comme exclues”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2); [ch. 9 “Configuring, generating and evolving a product”, § 1.4 Second example: completing a TaskForge request](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.4)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/27-qcm-taskforge-t1.md",
+              "loc": "Question 12",
+              "quote": "In this v1 model the complete selected list is TaskForge, TaskManagement, Storage, Memory, Kiosk, Filters. Which statements are true?"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§3",
+              "quote": "Pour chacune, ajoutez racine et parents obligatoires et considérez les options non citées comme exclues"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

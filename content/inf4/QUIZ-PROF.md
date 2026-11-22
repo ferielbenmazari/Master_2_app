@@ -1,8 +1,8 @@
 # INF4 — Quiz et tutoriels du prof : ce qu'il faut savoir faire, corrigés proposés
 
-> **Statut : brouillon de travail du 2026-11-20, à valider.** Source : `ressources/S3__INF4/epi/` (tutoriels T0 à T5, annexe SECRET, `9__applications.md`, quiz 0 à 2, archive TaskForge).
+> **Statut : brouillon de travail du 2026-11-20, complété le 2026-11-22, à valider.** Source : `ressources/S3__INF4/epi/` (tutoriels T0 à T5, annexe SECRET, `9__applications.md`, quiz 0 (deux versions) à 5, archive et pages TaskForge, QCM d'auto-évaluation T1 à T3).
 > - Les quiz du prof **n'ont aucun corrigé** dans les fichiers. Chaque réponse ci-dessous est **déduite** du tutoriel, du cours ou de la logique, et marquée « proposée ». Rien n'est officiel.
-> - **quiz3, quiz4 et quiz5 sont vides (0 octet)** : à redéposer. Les sections qui les concernent sont une **prévision** à partir des tutoriels T3, T4, T5.
+> - **quiz3, quiz4 et quiz5** ont été déposés le 2026-11-22 (corrigés proposés § 4.5 à 4.7) ; le quiz 0 a une **version 2** (§ 4.4) ; les QCM d'auto-évaluation TaskForge sont au § 4.8. Tous sont dans l'app (`content/inf4/exams/`), avec une raison par proposition et des renvois au cours.
 > - Les questions et rendus de l'intranet ne sont pas dans les fichiers : à coller ici.
 > - Les comptages ont été **vérifiés par énumération** (script maison, aucun code de l'archive n'a été exécuté).
 
@@ -32,9 +32,9 @@
 | T0 | Projets, lignes de produits, applications, adaptations dans VariaMos | quiz0 (12 q.) | « Variabilité et ligne de produits » (§ domaine / application / périmètre) + fiche VariaMos |
 | T1 + annexe 1 | Exigences de domaine, gabarit SECRET, relations entre exigences, SRS | quiz1 (12 q.) | **nouveau** « Écrire une exigence de ligne : le gabarit SECRET » |
 | T2 | Modèle de variabilité (feature model avec attributs) | quiz2 (12 q.) | « Les feature models » |
-| T3 | Génération de code (SWI-Prolog), analyse par solveur | quiz3 (vide) | « Traduire un modèle en contraintes » |
-| T4 | Vérification automatique (PLEIADES, requêtes JSON) | quiz4 (vide) | « Vérifier, diagnostiquer et corriger » |
-| T5 | Configuration automatique, optimisation | quiz5 (vide) | **nouveau** « Configurer automatiquement un produit » |
+| T3 | Génération de code (SWI-Prolog), analyse par solveur | quiz3 (12 q.) | « Traduire un modèle en contraintes » |
+| T4 | Vérification automatique (PLEIADES, requêtes JSON) | quiz4 (12 q.) | « Vérifier, diagnostiquer et corriger » |
+| T5 | Configuration automatique, optimisation | quiz5 (12 q.) | **nouveau** « Configurer automatiquement un produit » |
 
 ## 4. Corrigés proposés des quiz
 
@@ -91,6 +91,127 @@ Légende : ✔ vraie · ✘ fausse. « T0 §1.2 » = Tutoriel 0, section 1.2.
 | 11 | **b, d, e** | Web management requires Login ; Login a pour parent User, donc User est sélectionné (e) ; User model est obligatoire sous User (d) ; Login (b). Account et Demo data ne sont pas forcés. |
 | 12 | **a, d, e** | Seul Alphabetic est choisi ; il faut `[1..2]` parmi Upper et Lower : Upper seul (a), Lower seul (d), les deux (e). « Aucun type » viole `[1..2]` (b) ; Roman appartient à Numeric (c). |
 
+### 4.4 quiz0, version 2 (Tutoriel 0 + lecture d’introduction)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **a** | (a) C’est la définition du SEI : des systèmes qui partagent des features gérées et sont développés à partir d’actifs de base communs « in a prescribed way ». |
+| 2 | **b** | (b) L’ingénierie de domaine analyse la famille, modélise toutes ses variations et construit les actifs réutilisables. |
+| 3 | **a** | (a) Le point mort est le croisement des courbes de coût (investissement, coût par système), et son emplacement précis dépend de l’organisation et du marché. |
+| 4 | **b, c** | (b) Les liens de traçabilité entre la plate-forme et les produits dérivés disent quels produits utilisent le composant. (c) Corriger une fois l’actif commun profite aux produits qui l’intègrent, après re-dérivation et tests. |
+| 5 | **b** | (b) Domain engineering accueille les modèles réutilisables de la famille ; chaque application, l’ingénierie d’un produit. |
+| 6 | **a, c** | (a) Configurer = sélectionner dans le modèle de variabilité ce que la famille prévoit. (c) Dériver = produire l’application (architecture, composants) à partir des actifs choisis. |
+| 7 | **a, b, e** | (a) T0 § 2.1.8 : clic droit sur l’application, New model, puis choisir le modèle. (b) T0 § 2.1.7 : clic droit sur Domain engineering dans la ligne, New model. (e) T0 § 2.1.9 : clic droit sur l’adaptation dans l’application, New model. |
+| 8 | **a** | (a) T0 § 2.1.5 : une nouvelle application est un nouveau produit de la ligne. |
+| 9 | **a, e** | (a) La sélection n’est que la configuration ; un produit qui fonctionne demande du code et des tests. (e) Receipt et Payment sont tous deux choisis : Receipt ⇒ Payment est respectée. |
+| 10 | **a, d, e** | (a) C’est le rôle de la traçabilité entre la plate-forme et les produits dérivés ; ici, il faut la tenir soi-même. (d) Même le commun se reteste, car la configuration de chaque application peut influencer le résultat. (e) On corrige une fois l’actif commun, puis on re-dérive et on teste les produits qui l’utilisent. |
+| 11 | **d, e** | (d) Le retour de l’application vers le domaine peut faire évoluer les actifs de la ligne. (e) C’est l’évaluation du delta : ce que le client demande en plus de ce que la famille sait faire. |
+| 12 | **b, d** | (b) À 5 produits : 120 000 + 5 × 20 000 = 220 000 € contre 5 × 50 000 = 250 000 €. À 4, il y a égalité. (d) 120 000 + 4 × 20 000 = 200 000 = 4 × 50 000 : c’est le point mort. |
+
+### 4.5 quiz3 (Tutoriel 3)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **a, b, c** | (a) Définition : une feature morte n’apparaît dans aucun produit. (b) C’est la contrainte de vérification : forcer F à 1 ne laisse aucune solution. (c) C’est F4 dans le modèle d’amorce : optionnelle sur le dessin, morte à cause de F3 excludes F4. |
+| 2 | **a, b** | (a) Satisfiable = il existe au moins une solution : une suffit. (b) `findall` doit parcourir toutes les solutions pour les compter. |
+| 3 | **a, c** | (a) `length` donne le nombre d’éléments collectés : un par affectation. (c) Le gabarit `_` remplace `L` : on ne garde pas les affectations, d’où « very little space in memory ». |
+| 4 | **a, b** | (a) Absente de toutes les solutions d’une énumération complète : morte. (b) Jamais à 0 : présente dans tous les produits, donc dans le noyau. |
+| 5 | **a, b** | (a) La 1re position reste la 1re feature du programme : la valeur lue sous le nom C est celle de A. (b) Le tutoriel fixe la liste pour que le nom et l’ordre des variables correspondent exactement au prédicat. |
+| 6 | **a, b, c** | (a) 1 + 1 = 2 > 1 et 1 × 1 = 1 ≠ 0. (b) 0 + 0 = 0 ≤ 1 et 0 × 0 = 0. (c) Toutes deux gardent (0,0), (0,1), (1,0) : le tutoriel change la ligne 13 et l’ensemble des solutions reste le même. |
+| 7 | **b** | (b) Double-clic sur la feature, icône « + » noire au-dessus de Name, Name = Version, Domain = Integer. |
+| 8 | **a** | (a) Icône « clé et tournevis », onglet Solver Specific Semantics, swi, Get swi Model. |
+| 9 | **a, b** | (a) F1 = 1 impose F2 = F3 = 1 ; F3 + F4 ≤ 1 impose F4 = 0, et F5 = F4 = 0. (b) Elles valent 0 dans l’unique solution : c’est le modèle d’amorce du tutoriel. |
+| 10 | **c** | (c) Une solution avec Login = 1 prouve qu’elle est sélectionnable ; le noyau exige de vérifier toutes les solutions. |
+| 11 | **a, b** | (a) false avec F = 1 imposée : aucune solution ne contient F. (b) C’est la définition d’une feature morte, comme F4 dans le tutoriel. |
+| 12 | **b** | (b) F1, F2, F3 sont forcées à 1 ; seule F4 est libre (0 ou 1), et F5 la suit : 2 affectations. |
+
+### 4.6 quiz4 (Tutoriel 4)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **d** | (d) Fausse ligne = un seul produit : le test `nsolve` avec n = 2 n’en trouve qu’un. |
+| 2 | **a, c** | (a) `sat` répond « insatisfiable » : aucune solution. (c) Vide = aucun produit configurable. |
+| 3 | **b, c, d** | (b) Ajouter une contrainte à un ensemble sans solution ne peut pas en créer une. (c) TaskForge : pour un modèle globalement incohérent, commencer par rétablir l’existence de produits. (d) Sur un modèle vide, chaque feature paraît « morte » : ce diagnostic n’apprend rien. |
+| 4 | **b** | (b) Le test dit « F morte » ; la cause se cherche ensuite (chaîne de contraintes, MUS) et la correction respecte les exigences. |
+| 5 | **b, c, d** | (b) Un seul produit : le test « fausse ligne » échoue. (c) La fin de la recherche est confirmée : il n’y a pas de deuxième solution. (d) Un produit existe : le modèle n’est pas vide. |
+| 6 | **a, d** | (a) La mort se teste sur le modèle seul : d’abord Reset model configuration state. (d) C’est exactement ce que dit le résultat : F est incompatible avec P. |
+| 7 | **b** | (b) solver = minizinc (Gecode), operation = sat : la première requête du tutoriel. |
+| 8 | **a, c, e** | (a) Une feature morte se teste en la forçant à 1 (sélectionnée). (c) On itère sur les features abstraites et concrètes (la racine se teste par « vide ? »). (e) On parcourt les éléments, c’est-à-dire les nœuds du graphe. |
+| 9 | **a, c** | (a) Deux configurations valides différentes : au moins deux produits (pas une fausse ligne). (c) Les solveurs doivent donner le même verdict (SAT), pas le même témoin. |
+| 10 | **a** | (a) Un témoin prouve la satisfiabilité ; la recherche interrompue ne dit rien d’un deuxième produit. |
+| 11 | **a, b, c** | (a) {R,A,B} est une solution. (b) Exactement un produit : fausse ligne. (c) Absentes de la seule solution : aucun produit ne les contient. |
+| 12 | **c** | (c) Sous le choix A, B est impossible ; sans choix, {R,B} existe : B n’est pas morte. |
+
+### 4.7 quiz5 (Tutoriel 5)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **a, e** | (a) Compléter = garder les sélections et exclusions imposées. (e) Une complétion est une configuration complète valide du modèle. |
+| 2 | **e** | (e) `optimize` : une cible (TotCost) et un sens (min ou max). |
+| 3 | **a, d** | (a) Exemple du tutoriel : F5 et F2 sélectionnées, aucune solution. (d) Les solutions restantes satisfont le modèle et P : elles sont dans S. |
+| 4 | **b, e** | (b) `"optimization_direction": "min"` : le produit le moins cher. (e) `"max"` : le produit le plus cher que la ligne peut produire. |
+| 5 | **c, e** | (c) Imposer Security restreint les produits faisables : l’optimum peut changer. (e) On marque Security comme sélectionnée, puis on lance `optimize` en `min`. |
+| 6 | **a, e** | (a) Le solveur en renvoie une ; d’autres peuvent avoir le même coût. (e) Optimal = meilleure valeur de l’objectif ; les deux l’atteignent. |
+| 7 | **b, d** | (b) Comme au tutoriel 2 : attribut Cost de domaine Integer, valeur 5. (d) TotCost est la somme des feature × feature::Cost : on y ajoute le terme de Tabbing. |
+| 8 | **a** | (a) « please reload your model before the next step and reinsert the arbitrary constraints ». |
+| 9 | **a** | (a) Sans A : {R} et {R,B}. |
+| 10 | **b, e** | (b) Recherche épuisée : il n’y en a pas d’autres (tutoriel 5 : « only 9 really exist »). (e) Le solveur renvoie autant de solutions qu’il en trouve, au plus n. |
+| 11 | **a, c** | (a) A ⇒ B : A choisie impose B. (c) R, A et B : toutes les règles sont satisfaites. |
+| 12 | **c, e** | (c) Q a 3 features, P une seule. (e) 100 > 30 : le produit le plus cher est P. |
+
+### 4.8 QCM d’auto-évaluation TaskForge
+
+#### T1 (modèle, vérification, diagnostic)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **a** | (a) Actifs communs et variabilité explicite : c’est la « famille réutilisable » que TaskForge construit. |
+| 2 | **c, e** | (c) L’atelier valide la liste contre l’UVL avant de générer. (e) « Une configuration complète exclut tout ce qui n’est pas listé. » |
+| 3 | **a, d** | (a) Contraposée : non Filters ⇒ non Statistics. (d) C’est le sens même de l’implication. |
+| 4 | **b, d** | (b) Dès que P est sélectionné, C doit l’être : c’est la définition TaskForge. (d) P exclu entraîne C exclue : {R} ne contient pas C. |
+| 5 | **e** | (e) Kiosk impose Memory, qui exclut LocalStorage : CSVExport est morte ; retirer les deux règles inventées la rétablit sans toucher à R01–R11. |
+| 6 | **b, e** | (b) P est optionnel : l’omettre omet tout son sous-arbre. (e) P choisi, donc C obligatoire choisi aussi. |
+| 7 | **c, d** | (c) C’est la solution de secours du guide si l’export ne fonctionne pas. (d) Le générateur importe le même fichier UVL que FlamapyIDE. |
+| 8 | **a, e** | (a) « Relancez les analyses et comparez au modèle de référence. » (e) Chaque fichier repart du modèle de référence avec un défaut indépendant. |
+| 9 | **e** | (e) Aucun produit sans F : F est présente partout, donc dans le noyau. |
+| 10 | **a** | (a) Groupe alternatif : exactement un enfant dès que le parent est choisi (R02). |
+| 11 | **c** | (c) C’est la contrainte de vérification : forcer F à 1 ; aucune solution = morte. |
+| 12 | **b, c** | (b) Liste complète : ce qui n’est pas listé est exclu. (c) Un seul stockage (Memory), Kiosk => Memory respectée, Statistics absente. |
+
+#### T2 (variabilité d’un code existant)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **c** | (c) Les différences sont un point de départ, à confirmer par le code et le contrat. |
+| 2 | **e** | (e) C’est la traçabilité option → code → dépendance → test du rendu T2. |
+| 3 | **c** | (c) Une règle de gamme se confirme par le contrat ou par une partie prenante. |
+| 4 | **d, e** | (d) Dépendance technique établie par l’appel de fonction : Statistics => Filters. (e) Sans le bloc Filters, visibleTasks() n’existe pas dans le produit généré. |
+| 5 | **a, b** | (a) Avec JSONExport exclue, les anciennes règles sont inchangées : les anciens produits restent représentables. (b) Avec LocalStorage (donc sans Kiosk), JSONExport est sélectionnable. |
+| 6 | **d, e** | (d) Le code partagé appelle persist() sans savoir quel stockage est choisi. (e) Groupe alternatif : un seul bloc persist() dans chaque produit. |
+| 7 | **b** | (b) Format stable `{"name", "selected"}`, validé par l’atelier avec le même UVL. |
+| 8 | **a, b, e** | (a) Le T2 demande la « possibilité de sélectionner chaque nouvelle option ». (b) Le T2 demande le nombre exact de configurations (96). (e) Première vérification : syntaxe et satisfiabilité. |
+| 9 | **c, d, e** | (c) JSONExport => LocalStorage est une règle de gamme explicitée dans le contrat. (d) Les blocs `//#if` délimitent les options. (e) Statistics appelle visibleTasks() de Filters : dépendance technique. |
+| 10 | **e** | (e) Si chaque combinaison a une complétion valide, aucune règle ne lie A et B. |
+| 11 | **a** | (a) Des identifiants stables relient exigences, modèle, configuration et code. |
+| 12 | **b, c** | (b) Une configuration enregistrée permet de régénérer le produit et de tracer ses choix. (c) Un gabarit commun avec des blocs `//#if` : actifs communs et points de variation explicites. |
+
+#### T3 (configurer, générer, tester, faire évoluer)
+
+| Q | Réponse | Pourquoi (propositions justes) |
+|---|---|---|
+| 1 | **d** | (d) « Une configuration partielle laisse les éléments non cités indécidés. » |
+| 2 | **b** | (b) Une commande (Kiosque, Étudiant, Pro) → une configuration validée → un produit généré. |
+| 3 | **a, c** | (a) Storage est obligatoire avec une alternative ; LocalStorage exclue laisse Memory. (c) Statistics => Filters. |
+| 4 | **b, e** | (b) Memory et LocalStorage sont alternatives : aucune configuration ne satisfait les deux demandes. (e) C’est la cause du refus. |
+| 5 | **b, e** | (b) Filters indécidée peut devenir sélectionnée. (e) Statistics sans Filters viole la contrainte : aucune complétion. |
+| 6 | **d** | (d) Enfant ⇒ parent : la liste viole le modèle. |
+| 7 | **d** | (d) « Distinguez un choix explicitement exclu d’un choix encore indécidé. » |
+| 8 | **b** | (b) L’atelier ne connaît que l’UVL qu’on lui importe : il faut lui donner la v3. |
+| 9 | **e** | (e) Garder les non terminées, enregistrer (persist), réafficher (render). |
+| 10 | **d** | (d) Seule la présence des fonctions et du bouton prouve l’inclusion. |
+| 11 | **a, c, e** | (a) Test du TP : titre avec virgule, guillemets, accents → CSV correctement encodé. (c) Kiosque : rien n’est conservé ; Étudiant et Pro : la tâche est conservée. (e) « Créer une tâche composée d’espaces » → aucun ajout. |
+| 12 | **a, b, c** | (a) On vérifie le comportement ET l’absence du code non sélectionné. (b) Même UVL, même gabarit, trois configurations : la chaîne réutilisable. (c) ClearCompleted ajoutée une fois, trois produits régénérés depuis la même version du gabarit. |
+
 ## 5. Exercices pratiques des tutoriels
 
 ### Tutoriel 2 — modèle ClothingStores (T2 §4)
@@ -131,7 +252,7 @@ Observations du tutoriel (toutes vérifiées) : avec F5 seule, **un** produit ; 
 
 ## 6. Archive TaskForge (3 tutoriels en français, FlamapyIDE, format UVL)
 
-> **Provenance à confirmer** : kit « TaskForge educational kit contributors », licence MIT, daté du 17 novembre 2026. Il utilise FlamapyIDE et UVL, **pas VariaMos** : à vérifier si le prof l'a bien donné. Les concepts (vide, morte, faussement optionnelle, noyau, configuration partielle) recoupent T3 à T5 et le chapitre de vérification.
+> **Provenance confirmée le 2026-11-22** : la page de l'intranet (`25__enonce_taskforge.md`) présente le cas (« Appliquez ce que vous avez appris avec une étude de cas et l'outil FlamapyIDE et testez vous »). Kit « TaskForge educational kit contributors », licence MIT, daté du 17 novembre 2026, avec FlamapyIDE et UVL (pas VariaMos). Les concepts (vide, morte, faussement optionnelle, noyau, configuration partielle) recoupent T3 à T5 et le chapitre de vérification.
 
 **Modèle v1** (11 éléments avec racine et regroupements) : `Storage` obligatoire avec alternative `Memory` / `LocalStorage` ; six optionnelles ; `Statistics ⇒ Filters`, `Kiosk ⇒ Memory`. **72 produits** (8 choix libres pour Priorities / DueDates / CSVExport × 3 couples valides pour Filters et Statistics × 3 couples valides pour le stockage et Kiosk). v2 (ajout de `JSONExport ⇒ LocalStorage`, 12 éléments) : **96**. v3 (ajout de `ClearCompleted` optionnelle sans contrainte) : **192**, soit le **double** (une option libre double le nombre de produits ; les anciens produits restent représentables avec la nouvelle feature exclue).
 
@@ -147,7 +268,7 @@ Diagnostic des trois modèles fautifs (T1 §4) :
 Complétion de T3 §1 : `Statistics` imposé et `LocalStorage` exclu → **Memory** et **Filters** deviennent nécessaires, `JSONExport` est exclu ; Kiosk, Priorities, DueDates, CSVExport restent libres : **16 produits** (2⁴). Les trois commandes (Kiosque, Étudiant, Pro) sont **valides** ; `JSONExport + Kiosk` est **refusée** (JSONExport ⇒ LocalStorage et Kiosk ⇒ Memory).
 
 ## 7. Ce qui reste hors de portée aujourd'hui
-- Corrections des quiz 3, 4, 5 et des questions de l'intranet : **fichiers à redéposer** (ou texte collé).
+- Corrigés **officiels** : aucun fichier n'en contient ; coller la page « Revue » d'un quiz Moodle permettrait de passer les corrigés concernés en officiels.
 - « Rendus » de l'intranet : je ne peux pas les lire ; à coller.
 - Chiffres du modèle ClothingStores (T2, T3 étape 6, T5 étapes 6 à 8) : à calculer à partir des images du PDF.
 - ISO/IEC 24707:2018 (Common Logic) : le tutoriel T3 ne s'en sert que pour la syntaxe **CLIF** des contraintes textuelles (`(if (= Advanced 1) (>= VoiceControl::Version 2))`, préfixe, style LISP). La norme entière (78 pages) n'est pas traitée sauf si vous savez que le prof l'a demandée.

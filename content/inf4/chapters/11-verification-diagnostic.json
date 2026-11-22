@@ -115,7 +115,7 @@
       }
     ]
   },
-  "estimatedMinutes": 12,
+  "estimatedMinutes": 14,
   "sources": [
     "ressources/S3__INF4/mardown/7__ple.md",
     "sources-texte/inf4/7-domain-engineering-for-reuse-paris1-part2.md"
@@ -340,8 +340,8 @@
             "en": "**[[term-false-optional|False optional]]**"
           },
           {
-            "fr": "Dessiné optionnel mais présent dans tous les produits",
-            "en": "Drawn optional but present in every product"
+            "fr": "Dessiné optionnel mais présent dans tous les produits (TaskForge : présent **dès que son parent** l’est ; si le parent peut être absent, la feature n’est pas pour autant dans le noyau)",
+            "en": "Drawn optional but present in every product (TaskForge: present **whenever its parent** is; if the parent can be absent, the feature is not in the core for all that)"
           },
           {
             "fr": "Forcer l’élément à 0 : `F5 #= 0`",
@@ -426,6 +426,11 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 54",
           "quote": "**There is no solution**"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §4",
+          "quote": "Une feature optionnelle est faussement optionnelle si, dès que son parent est sélectionné, elle doit l’être aussi."
         }
       ],
       "notions": [
@@ -1254,11 +1259,186 @@
       "explain": true
     },
     {
+      "type": "subheading",
+      "text": {
+        "fr": "3.7 Lire un résultat sans sur-interpréter",
+        "en": "3.7 Reading a result without over-interpreting it"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Situation",
+          "en": "Situation"
+        },
+        {
+          "fr": "Conclusion juste",
+          "en": "Sound conclusion"
+        },
+        {
+          "fr": "Piège",
+          "en": "Trap"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "le modèle de base est UNSAT, avant tout choix",
+            "en": "the base model is UNSAT, before any choice"
+          },
+          {
+            "fr": "tout test ajouté (F = 1, F = 0) sera UNSAT aussi : rétablir d’abord l’existence de produits",
+            "en": "every added test (F = 1, F = 0) will be UNSAT too: first restore the existence of products"
+          },
+          {
+            "fr": "lire chaque échec comme un défaut distinct, ou accuser « la » racine",
+            "en": "reading each failure as a separate defect, or blaming “the” root"
+          }
+        ],
+        [
+          {
+            "fr": "des choix partiels P sont en place ; F = 1 donne UNSAT",
+            "en": "partial choices P are in place; F = 1 gives UNSAT"
+          },
+          {
+            "fr": "F est **incompatible avec P**",
+            "en": "F is **incompatible with P**"
+          },
+          {
+            "fr": "conclure que F est morte : d’abord **Reset model configuration state**, puis refaire le test",
+            "en": "concluding F is dead: first **Reset model configuration state**, then redo the test"
+          }
+        ],
+        [
+          {
+            "fr": "F = 0 rend UNSAT un modèle satisfiable",
+            "en": "F = 0 makes a satisfiable model UNSAT"
+          },
+          {
+            "fr": "F est dans le **noyau** (présente dans tous les produits)",
+            "en": "F is in the **core** (present in every product)"
+          },
+          {
+            "fr": "dire « morte » : c’est F = 1 qui teste la mort",
+            "en": "saying “dead”: F = 1 is the dead test"
+          }
+        ],
+        [
+          {
+            "fr": "`nsolve` (n = 2) : une solution, puis **timeout**",
+            "en": "`nsolve` (n = 2): one solution, then a **timeout**"
+          },
+          {
+            "fr": "satisfiable ; unicité **non** établie",
+            "en": "satisfiable; uniqueness **not** established"
+          },
+          {
+            "fr": "conclure « fausse ligne » sans recherche terminée",
+            "en": "concluding “false line” without a completed search"
+          }
+        ],
+        [
+          {
+            "fr": "`nsolve` (n = 2) se termine normalement avec **une** solution",
+            "en": "`nsolve` (n = 2) ends normally with **one** solution"
+          },
+          {
+            "fr": "satisfiable, et **fausse** ligne de produits : aucun deuxième produit",
+            "en": "satisfiable, and a **false** product line: no second product"
+          },
+          {
+            "fr": "dire « vide » : vide = aucune solution",
+            "en": "saying “void”: void = no solution"
+          }
+        ],
+        [
+          {
+            "fr": "deux solveurs renvoient deux solutions valides différentes",
+            "en": "two solvers return two different valid solutions"
+          },
+          {
+            "fr": "au moins **deux** produits",
+            "en": "at least **two** products"
+          },
+          {
+            "fr": "accuser un solveur : l’ordre des solutions n’est pas contrôlable ; ni « exactement deux »",
+            "en": "blaming a solver: the order of solutions cannot be controlled; nor “exactly two”"
+          }
+        ],
+        [
+          {
+            "fr": "forcer F rend le modèle UNSAT",
+            "en": "forcing F makes the model UNSAT"
+          },
+          {
+            "fr": "une incompatibilité est **détectée**",
+            "en": "an incompatibility is **detected**"
+          },
+          {
+            "fr": "croire que l’outil explique ou répare : il faut diagnostiquer (partie 4), ne pas supprimer au hasard",
+            "en": "believing the tool explains or repairs: a diagnosis is needed (part 4), not random deletion"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "Tutoriel 1 §4",
+          "quote": "Pour un modèle globalement incohérent, commencez par rétablir l’existence de produits"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "features that are definitely present in all products and form (part) of the “core” features"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "since there are no guarantees that the requested number of solutions exists"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "we are sure that no other solution can exist in this model; and therefore, this has failed the check for whether this is a false product line"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Deux boutons à ne pas confondre : **Reset model configuration state** retire la sélection posée sur le modèle (retour à l’état non configuré, nécessaire avant un test global de feature morte) ; **Clear Query Results** vide seulement l’onglet des résultats : il ne retire aucun choix.",
+        "en": "Two buttons not to confuse: **Reset model configuration state** removes the selection placed on the model (back to the unconfigured state, needed before a global dead-feature test); **Clear Query Results** only empties the results tab: it removes no choice."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "clicking on the “Reset model configuration state” button, which will remove the selection from the model"
+        },
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "first click on “Clear Query Results” to reset the saved solutions"
+        }
+      ]
+    },
+    {
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "Une requête JSON = solver + operation (+ operation_n, optimisation, iterate_over). sat → vide ? ; nsolve 2 → fausse ? ; sat + iterate_over (1) → mortes ; les trois solveurs : minizinc, swi, z3 (le plus rapide, mais incomplet).",
-        "en": "A JSON query = solver + operation (+ operation_n, optimisation, iterate_over). sat → void? ; nsolve 2 → false? ; sat + iterate_over (1) → dead; the three solvers: minizinc, swi, z3 (fastest, but incomplete)."
+        "fr": "Une requête JSON = solver + operation (+ operation_n, optimisation, iterate_over). sat → vide ? ; nsolve 2 → fausse ? ; sat + iterate_over (1) → mortes ; les trois solveurs : minizinc, swi, z3 (le plus rapide, mais incomplet). Base UNSAT : la corriger d’abord. UNSAT sous des choix partiels ≠ morte (Reset d’abord). Timeout ≠ unicité. Deux témoins différents = au moins deux produits.",
+        "en": "A JSON query = solver + operation (+ operation_n, optimisation, iterate_over). sat → void? ; nsolve 2 → false? ; sat + iterate_over (1) → dead; the three solvers: minizinc, swi, z3 (fastest, but incomplete). Base UNSAT: fix it first. UNSAT under partial choices ≠ dead (Reset first). Timeout ≠ uniqueness. Two different witnesses = at least two products."
       }
     },
     {
@@ -1703,6 +1883,152 @@
           "file": "ressources/S3__INF4/mardown/7__ple.md",
           "loc": "diapo 74",
           "quote": "F5 is a dead feature"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "4.6 Exercice corrigé (TaskForge T1) : trois modèles fautifs",
+        "en": "4.6 Worked exercise (TaskForge T1): three faulty models"
+      }
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Fichier",
+          "en": "File"
+        },
+        {
+          "fr": "Symptôme",
+          "en": "Symptom"
+        },
+        {
+          "fr": "Cause",
+          "en": "Cause"
+        },
+        {
+          "fr": "Correction",
+          "en": "Fix"
+        },
+        {
+          "fr": "Après",
+          "en": "After"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "A",
+            "en": "A"
+          },
+          {
+            "fr": "**CSVExport morte** : 36 produits au lieu de 72",
+            "en": "**CSVExport dead**: 36 products instead of 72"
+          },
+          {
+            "fr": "`CSVExport => Kiosk` (donc Memory, par `Kiosk => Memory`) et `CSVExport => LocalStorage` : les deux stockages sont alternatifs",
+            "en": "`CSVExport => Kiosk` (hence Memory, through `Kiosk => Memory`) and `CSVExport => LocalStorage`: the two storages are alternatives"
+          },
+          {
+            "fr": "retirer **les deux** règles, absentes de R01 à R11 (en retirer une seule ressuscite CSVExport, 48 produits, mais garde une règle inventée)",
+            "en": "remove **both** rules, absent from R01 to R11 (removing only one revives CSVExport, 48 products, but keeps an invented rule)"
+          },
+          {
+            "fr": "72 produits, aucune morte",
+            "en": "72 products, none dead"
+          }
+        ],
+        [
+          {
+            "fr": "B",
+            "en": "B"
+          },
+          {
+            "fr": "**Filters faussement optionnelle** : toujours présente, 48 produits",
+            "en": "**Filters false optional**: always present, 48 products"
+          },
+          {
+            "fr": "`TaskManagement => Filters`, alors que TaskManagement est obligatoire",
+            "en": "`TaskManagement => Filters`, while TaskManagement is mandatory"
+          },
+          {
+            "fr": "retirer cette contrainte : R11 dit Filters optionnelle",
+            "en": "remove this constraint: R11 says Filters is optional"
+          },
+          {
+            "fr": "72 produits",
+            "en": "72 products"
+          }
+        ],
+        [
+          {
+            "fr": "C",
+            "en": "C"
+          },
+          {
+            "fr": "modèle **vide** : 0 produit, les listes de mortes ou de noyau n’ont aucun sens",
+            "en": "**void** model: 0 products, lists of dead or core features mean nothing"
+          },
+          {
+            "fr": "les contraintes `Memory` et `LocalStorage` imposent les deux stockages, alors que le groupe est alternatif",
+            "en": "the constraints `Memory` and `LocalStorage` force both storages, while the group is an alternative"
+          },
+          {
+            "fr": "retirer **les deux** : n’en retirer qu’une imposerait un stockage et rendrait l’autre morte (R02 à R04)",
+            "en": "remove **both**: removing only one would force one storage and make the other dead (R02 to R04)"
+          },
+          {
+            "fr": "72 produits",
+            "en": "72 products"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "modeles/A_morte.uvl",
+          "quote": "Statistics => Filters CSVExport => Kiosk CSVExport => LocalStorage"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "modeles/B_fausse_optionnelle.uvl",
+          "quote": "Statistics => Filters TaskManagement => Filters"
+        },
+        {
+          "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+          "loc": "modeles/C_incoherent.uvl",
+          "quote": "Kiosk => Memory Statistics => Filters Memory LocalStorage"
+        },
+        {
+          "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+          "loc": "§1",
+          "quote": "R11 \tPriorities, DueDates, Filters, CSVExport, Statistics et Kiosk sont optionnels, sous réserve des contraintes R09 et R10."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La démarche que le prof demande : ouvrir A, B et C **séparément** (chacun repart du modèle de référence avec un défaut indépendant, on ne cumule pas les corrections), vérifier la **satisfiabilité d’abord**, puis chercher mortes, noyau et faussement optionnelles, expliquer en deux à quatre phrases, corriger **sans supprimer une vraie exigence**, et relancer les analyses pour comparer au modèle de référence (72 produits).",
+        "en": "The approach the teacher asks for: open A, B and C **separately** (each starts from the reference model with an independent defect; corrections are not carried over), check **satisfiability first**, then look for dead, core and false optional features, explain in two to four sentences, fix **without deleting a real requirement**, and rerun the analyses to compare with the reference model (72 products)."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+          "loc": "§4",
+          "quote": "chaque fichier repart du modèle de référence et introduit un défaut indépendant. Ne cumulez pas les corrections d’un fichier sur l’autre."
+        },
+        {
+          "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+          "loc": "§4",
+          "quote": "Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable."
+        },
+        {
+          "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+          "loc": "§4",
+          "quote": "Relancez les analyses et comparez au modèle de référence."
         }
       ]
     },

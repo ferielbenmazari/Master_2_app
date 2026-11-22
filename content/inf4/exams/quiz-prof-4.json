@@ -1,0 +1,654 @@
+{
+  "id": "inf4-quiz-prof-4",
+  "courseId": "inf4",
+  "title": {
+    "fr": "Quiz 4 du prof (tutoriel 4, vérification automatique)",
+    "en": "Teacher’s quiz 4 (tutorial 4, automated verification)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/20-quiz4.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "Questions du prof, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites du tutoriel et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "The teacher’s questions, with no official answers in the files: the answers are **proposed** (deduced from the tutorial and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 21,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-quiz-prof-4-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Avec la terminologie du tutoriel, qu’est-ce qu’une fausse ligne de produits ? (Une seule réponse.)",
+            "en": "Using the tutorial's terminology, what is a false product line? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Tout modèle avec une contrainte textuelle.",
+              "en": "Any model with a textual constraint."
+            },
+            {
+              "fr": "Tout modèle contenant une feature optionnelle.",
+              "en": "Any model containing an optional feature."
+            },
+            {
+              "fr": "Un modèle sans aucune affectation satisfaisante.",
+              "en": "A model with no satisfying assignment."
+            },
+            {
+              "fr": "Un modèle qui n’autorise qu’une seule configuration de produit.",
+              "en": "A model allowing exactly one product configuration."
+            },
+            {
+              "fr": "Un modèle dont le nom contient une faute de frappe.",
+              "en": "A model whose name contains a typo."
+            }
+          ],
+          "correct": [
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : d.**\n\n- ✘ **a.** Une contrainte textuelle n’est pas un défaut.\n- ✘ **b.** Une optionnelle est au contraire une source de variabilité.\n- ✘ **c.** Aucune solution, c’est un modèle **vide** (void).\n- ✔ **d.** Fausse ligne = un seul produit : le test `nsolve` avec n = 2 n’en trouve qu’un.\n- ✘ **e.** Le nom n’a aucun effet sur la sémantique.\n\nDans le cours : « checking for a false product line, which implies simply determining that at least two solutions exist ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.3 Quelle requête pour quel défaut](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)",
+            "en": "**Proposed answer: d.**\n\n- ✘ **a.** A textual constraint is not a defect.\n- ✘ **b.** An optional feature is, on the contrary, a source of variability.\n- ✘ **c.** No solution is a **void** model.\n- ✔ **d.** False line = one product: the `nsolve` test with n = 2 finds only one.\n- ✘ **e.** The name has no effect on semantics.\n\nIn the course: “checking for a false product line, which implies simply determining that at least two solutions exist”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.3 Which query for which defect](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 1",
+              "quote": "Using the tutorial's terminology, what is a false product line?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "checking for a false product line, which implies simply determining that at least two solutions exist"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelles affirmations décrivent un modèle vide (void) ? (Plusieurs réponses possibles.)",
+            "en": "Which statements describe a void model? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Une vérification complète de satisfiabilité renvoie UNSAT.",
+              "en": "A complete satisfiability check returns UNSAT."
+            },
+            {
+              "fr": "Une feature optionnelle est omise dans une configuration.",
+              "en": "One optional feature is omitted in one configuration."
+            },
+            {
+              "fr": "Il n’a aucune configuration satisfaisante.",
+              "en": "It has no satisfying configuration."
+            },
+            {
+              "fr": "Le panneau des résultats a été vidé.",
+              "en": "The results panel has been cleared."
+            },
+            {
+              "fr": "Il a exactement une configuration.",
+              "en": "It has exactly one configuration."
+            }
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, c.**\n\n- ✔ **a.** `sat` répond « insatisfiable » : aucune solution.\n- ✘ **b.** Omettre une optionnelle est normal dans un modèle sain.\n- ✔ **c.** Vide = aucun produit configurable.\n- ✘ **d.** Clear Query Results vide l’onglet des résultats, pas le modèle.\n- ✘ **e.** Une seule configuration = fausse ligne, pas modèle vide.\n\nDans le cours : « in verification terms, it means that the model is not void ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.6 Erreur de syntaxe ou modèle vide ?](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.6)",
+            "en": "**Proposed answer: a, c.**\n\n- ✔ **a.** `sat` answers “unsatisfiable”: no solution.\n- ✘ **b.** Omitting an optional feature is normal in a sound model.\n- ✔ **c.** Void = no configurable product.\n- ✘ **d.** Clear Query Results empties the results tab, not the model.\n- ✘ **e.** One configuration = false line, not a void model.\n\nIn the course: “in verification terms, it means that the model is not void”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.6 Syntax error or void model?](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.6)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 2",
+              "quote": "Which statements describe a void model?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "in verification terms, it means that the model is not void"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle de base est UNSAT avant qu’aucune feature soit forcée. Quelles affirmations sont justifiées ? (Plusieurs réponses possibles.)",
+            "en": "A base model is UNSAT before any feature is forced. Which statements are justified? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Chaque test en échec prouve une erreur de modélisation distincte et indépendante.",
+              "en": "Each failed test proves a separate independent modelling mistake."
+            },
+            {
+              "fr": "Tout test ajouté qui sélectionne une feature reste lui aussi UNSAT.",
+              "en": "Every added feature-selection test also remains UNSAT."
+            },
+            {
+              "fr": "Il faut examiner la contradiction de base avant d’utiliser ces tests pour distinguer le comportement des features.",
+              "en": "The base contradiction should be investigated before using these tests to distinguish feature behaviours."
+            },
+            {
+              "fr": "Un contrôle de satisfiabilité de base est nécessaire avant de lire les tests de features comme des défauts isolés.",
+              "en": "A base satisfiability check is needed before interpreting feature tests as isolated defects."
+            },
+            {
+              "fr": "La racine est l’unique cause de l’incohérence.",
+              "en": "The root is the unique cause of inconsistency."
+            }
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, c, d.**\n\n- ✘ **a.** Tous échouent pour la même raison : le modèle n’a déjà aucun produit.\n- ✔ **b.** Ajouter une contrainte à un ensemble sans solution ne peut pas en créer une.\n- ✔ **c.** TaskForge : pour un modèle globalement incohérent, commencer par rétablir l’existence de produits.\n- ✔ **d.** Sur un modèle vide, chaque feature paraît « morte » : ce diagnostic n’apprend rien.\n- ✘ **e.** La cause est une combinaison de contraintes à diagnostiquer ; rien ne désigne la racine.\n\nDans le cours : « des listes de features calculées sur un ensemble vide ne constituent pas un diagnostic utile ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.6 Exercice corrigé (TaskForge T1) : trois modèles fautifs](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6)",
+            "en": "**Proposed answer: b, c, d.**\n\n- ✘ **a.** They all fail for the same reason: the model already has no product.\n- ✔ **b.** Adding a constraint to a set with no solution cannot create one.\n- ✔ **c.** TaskForge: for a globally inconsistent model, start by restoring the existence of products.\n- ✔ **d.** On a void model every feature looks “dead”: that diagnosis teaches nothing.\n- ✘ **e.** The cause is a combination of constraints to diagnose; nothing points to the root.\n\nIn the course: “des listes de features calculées sur un ensemble vide ne constituent pas un diagnostic utile”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.6 Worked exercise (TaskForge T1): three faulty models](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.6)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 3",
+              "quote": "A base model is UNSAT before any feature is forced. Which statements are justified?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 1 §4",
+              "quote": "des listes de features calculées sur un ensemble vide ne constituent pas un diagnostic utile"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un solveur indique que forcer la feature F rend le modèle UNSAT. Quelle affirmation est justifiée ? (Une seule réponse.)",
+            "en": "A solver reports that forcing feature F makes the model UNSAT. Which statement is justified? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Le solveur a modifié automatiquement l’exigence.",
+              "en": "The solver has automatically changed the requirement."
+            },
+            {
+              "fr": "Le test détecte une incompatibilité, mais l’expliquer et la réparer demande une analyse supplémentaire.",
+              "en": "The test detects incompatibility, but explaining and repairing it requires further analysis."
+            },
+            {
+              "fr": "Supprimer toutes les contraintes qui mentionnent F.",
+              "en": "Delete every constraint mentioning F."
+            },
+            {
+              "fr": "Il faut renommer F pour la rendre sélectionnable.",
+              "en": "F must be renamed to make it selectable."
+            },
+            {
+              "fr": "La dernière contrainte ajoutée est forcément l’unique cause.",
+              "en": "The last added constraint is necessarily the sole cause."
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b.**\n\n- ✘ **a.** Le solveur répond à une question ; il ne change ni le modèle ni les exigences.\n- ✔ **b.** Le test dit « F morte » ; la cause se cherche ensuite (chaîne de contraintes, MUS) et la correction respecte les exigences.\n- ✘ **c.** Supprimer en bloc détruit des exigences légitimes : supprimer une vraie exigence pour faire passer le solveur n’est pas une correction.\n- ✘ **d.** Un nom ne change pas les contraintes.\n- ✘ **e.** L’incompatibilité vient souvent de plusieurs contraintes à la fois.\n\nDans le cours : « Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable. ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.1 Diagnostiquer à la main : la chaîne de contraintes](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.1) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 4.3 Le MUS : effacer ou relâcher](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.3)",
+            "en": "**Proposed answer: b.**\n\n- ✘ **a.** The solver answers a question; it changes neither the model nor the requirements.\n- ✔ **b.** The test says “F dead”; the cause is then sought (chain of constraints, MUS) and the fix respects the requirements.\n- ✘ **c.** Mass deletion destroys legitimate requirements: deleting a real requirement to please the solver is not a fix.\n- ✘ **d.** A name does not change the constraints.\n- ✘ **e.** The incompatibility often comes from several constraints together.\n\nIn the course: “Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable.”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.1 Diagnosing by hand: the chain of constraints](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.1); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 4.3 The MUS: erasing or relaxing](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=4.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 4",
+              "quote": "A solver reports that forcing feature F makes the model UNSAT. Which statement is justified?"
+            },
+            {
+              "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
+              "loc": "Tutoriel 1 §4",
+              "quote": "Supprimer une vraie exigence pour faire passer le solveur n’est pas une correction acceptable."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle fini non configuré est exploré exhaustivement après avoir demandé au plus deux produits distincts ; il en existe exactement un et la fin de la recherche est confirmée. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "A finite unconfigured model is exhaustively searched after requesting at most two distinct products; exactly one exists and completion is confirmed. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Un seul résultat affiché prouve toujours l’unicité, même après un timeout.",
+              "en": "One displayed result always proves uniqueness even after timeout."
+            },
+            {
+              "fr": "C’est une fausse ligne de produits au sens du tutoriel.",
+              "en": "It is a false product line under the tutorial's definition."
+            },
+            {
+              "fr": "Aucun deuxième produit n’existe sous les contraintes analysées.",
+              "en": "No second product exists under the analysed constraints."
+            },
+            {
+              "fr": "Le modèle est satisfiable.",
+              "en": "The model is satisfiable."
+            },
+            {
+              "fr": "Le modèle est vide.",
+              "en": "The model is void."
+            }
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, c, d.**\n\n- ✘ **a.** Après un timeout, la recherche n’a pas fini : l’unicité n’est pas établie.\n- ✔ **b.** Un seul produit : le test « fausse ligne » échoue.\n- ✔ **c.** La fin de la recherche est confirmée : il n’y a pas de deuxième solution.\n- ✔ **d.** Un produit existe : le modèle n’est pas vide.\n- ✘ **e.** Vide = aucun produit ; ici il y en a un.\n\nDans le cours : « we are sure that no other solution can exist in this model; and therefore, this has failed the check for whether this is a false product line ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.4 Exemple corrigé : le modèle d’amorce (F4 et F5 mortes)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4)",
+            "en": "**Proposed answer: b, c, d.**\n\n- ✘ **a.** After a timeout the search has not finished: uniqueness is not established.\n- ✔ **b.** One product: the “false line” check fails.\n- ✔ **c.** The end of the search is confirmed: there is no second solution.\n- ✔ **d.** One product exists: the model is not void.\n- ✘ **e.** Void = no product; here there is one.\n\nIn the course: “we are sure that no other solution can exist in this model; and therefore, this has failed the check for whether this is a false product line”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.4 Worked example: the starter model (F4 and F5 dead)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 5",
+              "quote": "A finite unconfigured model is exhaustively searched after requesting at most two distinct products; exactly one exists and completion is confirmed. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "we are sure that no other solution can exist in this model; and therefore, this has failed the check for whether this is a false product line"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "M est satisfiable. Sous des choix partiels P, M ET P ET F=1 est UNSAT. Quelles conclusions sont justifiées ? (Plusieurs réponses possibles.)",
+            "en": "M is satisfiable. Under partial choices P, M AND P AND F=1 is UNSAT. Which conclusions are justified? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Un test global de feature morte doit retirer les choix partiels sans rapport.",
+              "en": "A global dead-feature test must remove unrelated partial choices."
+            },
+            {
+              "fr": "Le solveur doit supprimer P automatiquement.",
+              "en": "P must be deleted automatically by the solver."
+            },
+            {
+              "fr": "F est forcément morte dans M non configuré.",
+              "en": "F is necessarily dead in unconfigured M."
+            },
+            {
+              "fr": "F ne peut pas être sélectionnée en conservant P.",
+              "en": "F cannot be selected while preserving P."
+            },
+            {
+              "fr": "M est forcément vide.",
+              "en": "M itself is necessarily void."
+            }
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, d.**\n\n- ✔ **a.** La mort se teste sur le modèle seul : d’abord Reset model configuration state.\n- ✘ **b.** Le solveur ne retire jamais un choix de l’utilisateur.\n- ✘ **c.** F peut être sélectionnable sans P : l’échec vient peut-être de P.\n- ✔ **d.** C’est exactement ce que dit le résultat : F est incompatible avec P.\n- ✘ **e.** M est satisfiable par hypothèse.\n\nDans le cours : « clicking on the “Reset model configuration state” button, which will remove the selection from the model ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)",
+            "en": "**Proposed answer: a, d.**\n\n- ✔ **a.** Deadness is tested on the model alone: first Reset model configuration state.\n- ✘ **b.** The solver never removes a user’s choice.\n- ✘ **c.** F may be selectable without P: the failure may come from P.\n- ✔ **d.** That is exactly what the result says: F is incompatible with P.\n- ✘ **e.** M is satisfiable by assumption.\n\nIn the course: “clicking on the “Reset model configuration state” button, which will remove the selection from the model”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 6",
+              "quote": "M is satisfiable. Under partial choices P, M AND P AND F=1 is UNSAT. Which conclusions are justified?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "clicking on the “Reset model configuration state” button, which will remove the selection from the model"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelle requête JSON demande une vérification de satisfiabilité avec MiniZinc, comme dans le tutoriel ? (Une seule réponse.)",
+            "en": "Which JSON query requests a satisfiability check using MiniZinc as in the tutorial? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "`{\"solver\":\"minizinc\",\"operation\":\"reset\"}`",
+              "en": "`{\"solver\":\"minizinc\",\"operation\":\"reset\"}`"
+            },
+            {
+              "fr": "`{\"solver\":\"minizinc\",\"operation\":\"sat\"}`",
+              "en": "`{\"solver\":\"minizinc\",\"operation\":\"sat\"}`"
+            },
+            {
+              "fr": "`{\"solver\":\"minizinc\",\"operation\":\"nsolve\",\"operation_n\":2}`",
+              "en": "`{\"solver\":\"minizinc\",\"operation\":\"nsolve\",\"operation_n\":2}`"
+            },
+            {
+              "fr": "`{\"solver\":\"minizinc\",\"operation\":\"optimize\"}`",
+              "en": "`{\"solver\":\"minizinc\",\"operation\":\"optimize\"}`"
+            },
+            {
+              "fr": "`{\"solver\":\"sat\",\"operation\":\"minizinc\"}`",
+              "en": "`{\"solver\":\"sat\",\"operation\":\"minizinc\"}`"
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b.**\n\n- ✘ **a.** `reset` n’est pas une opération du langage de requêtes (sat, solve, nsolve, optimize).\n- ✔ **b.** solver = minizinc (Gecode), operation = sat : la première requête du tutoriel.\n- ✘ **c.** `nsolve` avec `operation_n` 2 cherche deux solutions (test de fausse ligne).\n- ✘ **d.** `optimize` sert à optimiser et demande une cible et un sens.\n- ✘ **e.** Les valeurs sont inversées : `sat` n’est pas un solveur.\n\nDans le cours : « To use Gecode (through MiniZinc) as the solver. ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.2 Le schéma d’une requête](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.2) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.3 Quelle requête pour quel défaut](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)",
+            "en": "**Proposed answer: b.**\n\n- ✘ **a.** `reset` is not an operation of the query language (sat, solve, nsolve, optimize).\n- ✔ **b.** solver = minizinc (Gecode), operation = sat: the tutorial’s first query.\n- ✘ **c.** `nsolve` with `operation_n` 2 looks for two solutions (false-line check).\n- ✘ **d.** `optimize` is for optimising and needs a target and a direction.\n- ✘ **e.** The values are swapped: `sat` is not a solver.\n\nIn the course: “To use Gecode (through MiniZinc) as the solver.”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.2 A query’s schema](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.2); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.3 Which query for which defect](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 7",
+              "quote": "Which JSON query requests a satisfiability check using MiniZinc as in the tutorial?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "To use Gecode (through MiniZinc) as the solver."
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q08",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Quels champs expriment l’itération booléenne du tutoriel pour trouver les features mortes ? (Plusieurs réponses possibles.)",
+            "en": "Which fields express the tutorial's Boolean dead-feature iteration? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "`\"with_value\": 1`",
+              "en": "`\"with_value\": 1`"
+            },
+            {
+              "fr": "`\"with_value\": 0`, comme test de mort.",
+              "en": "`\"with_value\": 0 as the test for deadness.`"
+            },
+            {
+              "fr": "`\"object_type\": [\"AbstractFeature\",\"ConcreteFeature\"]`",
+              "en": "`\"object_type\": [\"AbstractFeature\",\"ConcreteFeature\"]`"
+            },
+            {
+              "fr": "`\"operation\": \"rename\"`",
+              "en": "`\"operation\": \"rename\"`"
+            },
+            {
+              "fr": "`\"model_object\": \"element\"`",
+              "en": "`\"model_object\": \"element\"`"
+            }
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, c, e.**\n\n- ✔ **a.** Une feature morte se teste en la forçant à 1 (sélectionnée).\n- ✘ **b.** Forcer à 0 teste l’inverse : faussement optionnelle ou noyau.\n- ✔ **c.** On itère sur les features abstraites et concrètes (la racine se teste par « vide ? »).\n- ✘ **d.** `rename` n’existe pas ; l’opération est `sat`.\n- ✔ **e.** On parcourt les éléments, c’est-à-dire les nœuds du graphe.\n\nDans le cours : « checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.3 Quelle requête pour quel défaut](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.4 Exemple corrigé : le modèle d’amorce (F4 et F5 mortes)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4)",
+            "en": "**Proposed answer: a, c, e.**\n\n- ✔ **a.** A dead feature is tested by forcing it to 1 (selected).\n- ✘ **b.** Forcing to 0 tests the opposite: false optional or core.\n- ✔ **c.** We iterate over abstract and concrete features (the root is tested by “void?”).\n- ✘ **d.** `rename` does not exist; the operation is `sat`.\n- ✔ **e.** We go through the elements, i.e. the graph’s nodes.\n\nIn the course: “checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.3 Which query for which defect](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.4 Worked example: the starter model (F4 and F5 dead)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 8",
+              "quote": "Which fields express the tutorial's Boolean dead-feature iteration?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "checking for a dead feature in Feature Models is essentially determining whether a model is satisfiable if a given feature is set to selected"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Le solveur A renvoie {R,X} ; le solveur B renvoie {R,Y}. Les deux sont vérifiées sur le même modèle et sont valides. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "Solver A returns {R,X}; solver B returns {R,Y}. Both are checked against the same model and are valid. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Les deux témoins distincts établissent qu’il existe au moins deux produits.",
+              "en": "The two distinct witnesses establish at least two products."
+            },
+            {
+              "fr": "Un des solveurs est défectueux, puisque son témoin diffère.",
+              "en": "One solver must be defective because its witness differs."
+            },
+            {
+              "fr": "Des premières solutions différentes sont compatibles avec des solveurs corrects.",
+              "en": "Different first solutions are compatible with correct solvers."
+            },
+            {
+              "fr": "Le solveur qui renvoie le moins de features a forcément optimisé la taille.",
+              "en": "The solver returning fewer features necessarily optimized size."
+            },
+            {
+              "fr": "Il y a exactement deux produits.",
+              "en": "There are exactly two products."
+            }
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, c.**\n\n- ✔ **a.** Deux configurations valides différentes : au moins deux produits (pas une fausse ligne).\n- ✘ **b.** L’ordre dans lequel un solveur trouve les solutions n’est pas contrôlable : chacun peut en renvoyer une autre en premier.\n- ✔ **c.** Les solveurs doivent donner le même verdict (SAT), pas le même témoin.\n- ✘ **d.** `solve` ne minimise rien ; optimiser demande `optimize` et un objectif.\n- ✘ **e.** Rien ne dit qu’il n’en existe pas d’autres.\n\nDans le cours : « it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.5 Choisir le solveur](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.5)",
+            "en": "**Proposed answer: a, c.**\n\n- ✔ **a.** Two different valid configurations: at least two products (not a false line).\n- ✘ **b.** The order in which a solver finds solutions cannot be controlled: each may return a different one first.\n- ✔ **c.** Solvers must give the same verdict (SAT), not the same witness.\n- ✘ **d.** `solve` minimises nothing; optimising needs `optimize` and an objective.\n- ✘ **e.** Nothing says there are no others.\n\nIn the course: “it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.5 Choosing the solver](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.5)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 9",
+              "quote": "Solver A returns {R,X}; solver B returns {R,Y}. Both are checked against the same model and are valid. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+              "loc": "Part 1",
+              "quote": "it is not simple (and occasionally outright impossible) to control the order in which solutions are calculated"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Une requête nsolve pour deux produits renvoie un témoin avant un timeout signalé. Quelle affirmation est justifiée ? (Une seule réponse.)",
+            "en": "An nsolve request for two products returns one witness before a reported timeout. Which statement is justified? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Le modèle est satisfiable, mais l’unicité n’est pas établie.",
+              "en": "The model is satisfiable, but uniqueness is not established."
+            },
+            {
+              "fr": "Il n’existe aucun produit.",
+              "en": "No products exist."
+            },
+            {
+              "fr": "Il existe exactement un produit.",
+              "en": "Exactly one product exists."
+            },
+            {
+              "fr": "Le témoin est forcément optimal.",
+              "en": "The witness is necessarily optimal."
+            },
+            {
+              "fr": "Toute feature absente est morte.",
+              "en": "Every missing feature is dead."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** Un témoin prouve la satisfiabilité ; la recherche interrompue ne dit rien d’un deuxième produit.\n- ✘ **b.** Le témoin est justement un produit.\n- ✘ **c.** n est un maximum (« at most ») : sans recherche terminée, on ne sait pas s’il y en a d’autres.\n- ✘ **d.** Aucun objectif n’a été donné.\n- ✘ **e.** Une feature absente d’un témoin peut figurer dans un autre.\n\nDans le cours : « since there are no guarantees that the requested number of solutions exists ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** A witness proves satisfiability; the interrupted search says nothing about a second product.\n- ✘ **b.** The witness is precisely a product.\n- ✘ **c.** n is a maximum (“at most”): without a finished search, we do not know whether there are others.\n- ✘ **d.** No objective was given.\n- ✘ **e.** A feature absent from one witness may appear in another.\n\nIn the course: “since there are no guarantees that the requested number of solutions exists”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 10",
+              "quote": "An nsolve request for two products returns one witness before a reported timeout. Which statement is justified?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "since there are no guarantees that the requested number of solutions exists"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle booléen a exactement la solution {R,A,B} ; les features C et D ne sont jamais sélectionnées. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "A Boolean model has exactly the solution {R,A,B}; features C and D are never selected. Which statements hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Le modèle est satisfiable.",
+              "en": "The model is satisfiable."
+            },
+            {
+              "fr": "C’est une fausse ligne de produits au sens du tutoriel.",
+              "en": "It is a false product line under the tutorial's definition."
+            },
+            {
+              "fr": "C et D sont mortes.",
+              "en": "C and D are dead."
+            },
+            {
+              "fr": "Le modèle est vide.",
+              "en": "The model is void."
+            },
+            {
+              "fr": "A est morte puisqu’il n’y a qu’un seul produit.",
+              "en": "A is dead because there is only one product."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b, c.**\n\n- ✔ **a.** {R,A,B} est une solution.\n- ✔ **b.** Exactement un produit : fausse ligne.\n- ✔ **c.** Absentes de la seule solution : aucun produit ne les contient.\n- ✘ **d.** Vide = aucune solution ; il y en a une.\n- ✘ **e.** A est dans l’unique produit : elle est dans le noyau, pas morte.\n\nDans le cours : « These one-way signs now indicate that both features F4 and F5 are “Dead” and can never be selected in any configuration ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 1.3 Les défauts et leur contrainte de vérification](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3) ; [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.4 Exemple corrigé : le modèle d’amorce (F4 et F5 mortes)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4)",
+            "en": "**Proposed answer: a, b, c.**\n\n- ✔ **a.** {R,A,B} is a solution.\n- ✔ **b.** Exactly one product: false line.\n- ✔ **c.** Absent from the only solution: no product contains them.\n- ✘ **d.** Void = no solution; there is one.\n- ✘ **e.** A is in the only product: it is core, not dead.\n\nIn the course: “These one-way signs now indicate that both features F4 and F5 are “Dead” and can never be selected in any configuration”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 1.3 The defects and their verification constraint](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=1.3); [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.4 Worked example: the starter model (F4 and F5 dead)](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.4)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 11",
+              "quote": "A Boolean model has exactly the solution {R,A,B}; features C and D are never selected. Which statements hold?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "These one-way signs now indicate that both features F4 and F5 are “Dead” and can never be selected in any configuration"
+            }
+          ]
+        },
+        {
+          "id": "inf4-quiz-prof-4-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Un modèle non configuré permet {R,A} et {R,B}. Un utilisateur a sélectionné A, puis teste B = 1 et obtient UNSAT. Quelle affirmation est correcte ? (Une seule réponse.)",
+            "en": "An unconfigured model permits {R,A} and {R,B}. A user has selected A, then tests B=1 and gets UNSAT. Which statement is correct? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Clear Query Results suffit à retirer logiquement A.",
+              "en": "Clear Query Results alone logically removes A."
+            },
+            {
+              "fr": "Le modèle non configuré est vide.",
+              "en": "The unconfigured model is void."
+            },
+            {
+              "fr": "B est incompatible avec la sélection actuelle de A ; réinitialiser les choix avant d’évaluer la mort globale.",
+              "en": "B is incompatible with the current A selection; reset choices before assessing global deadness."
+            },
+            {
+              "fr": "Le résultat signifie que B est obligatoire.",
+              "en": "The result means that B is mandatory."
+            },
+            {
+              "fr": "B est globalement morte.",
+              "en": "B is globally dead."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c.**\n\n- ✘ **a.** Clear Query Results vide l’onglet des résultats ; c’est Reset model configuration state qui retire la sélection.\n- ✘ **b.** Il permet deux produits.\n- ✔ **c.** Sous le choix A, B est impossible ; sans choix, {R,B} existe : B n’est pas morte.\n- ✘ **d.** UNSAT avec B = 1 dit l’inverse d’« obligatoire ».\n- ✘ **e.** {R,B} est un produit du modèle non configuré.\n\nDans le cours : « first click on “Clear Query Results” to reset the saved solutions ».\n\n→ Revoir : [ch. 8 « Vérifier, diagnostiquer et corriger un modèle de ligne de produits », § 3.7 Lire un résultat sans sur-interpréter](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)",
+            "en": "**Proposed answer: c.**\n\n- ✘ **a.** Clear Query Results empties the results tab; Reset model configuration state removes the selection.\n- ✘ **b.** It allows two products.\n- ✔ **c.** Under choice A, B is impossible; with no choice, {R,B} exists: B is not dead.\n- ✘ **d.** UNSAT with B = 1 says the opposite of “mandatory”.\n- ✘ **e.** {R,B} is a product of the unconfigured model.\n\nIn the course: “first click on “Clear Query Results” to reset the saved solutions”.\n\n→ Review: [ch. 8 “Verifying, diagnosing and fixing a product line model”, § 3.7 Reading a result without over-interpreting it](#/matiere/inf4/chapitre/inf4-11-verification-diagnostic/lire?partie=3.7)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/20-quiz4.md",
+              "loc": "Question 12",
+              "quote": "An unconfigured model permits {R,A} and {R,B}. A user has selected A, then tests B=1 and gets UNSAT. Which statement is correct?"
+            },
+            {
+              "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+              "loc": "Part 2",
+              "quote": "first click on “Clear Query Results” to reset the saved solutions"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

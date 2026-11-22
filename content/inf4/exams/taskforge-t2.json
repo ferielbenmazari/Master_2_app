@@ -1,0 +1,651 @@
+{
+  "id": "inf4-taskforge-t2",
+  "courseId": "inf4",
+  "title": {
+    "fr": "QCM d’auto-évaluation TaskForge T2 (variabilité d’un code existant)",
+    "en": "TaskForge T2 self-assessment quiz (variability of existing code)"
+  },
+  "kind": "past",
+  "durationMinutes": 20,
+  "source": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+  "correctionStatus": "proposed",
+  "instructions": {
+    "fr": "QCM d’auto-évaluation des TP TaskForge, en anglais, sans corrigé dans les fichiers : les réponses sont **proposées** (déduites de l’énoncé du TP, du kit et du cours). Plusieurs réponses justes possibles quand l’énoncé dit « Select all correct statements ».",
+    "en": "Self-assessment quiz for the TaskForge labs, with no official answers in the files: the answers are **proposed** (deduced from the lab statement, the kit and the course). Several answers may be correct when the statement says “Select all correct statements”."
+  },
+  "sections": [
+    {
+      "title": {
+        "fr": "Questions à choix multiples",
+        "en": "Multiple-choice questions"
+      },
+      "points": 20,
+      "instructions": {
+        "fr": "Lis chaque proposition séparément.",
+        "en": "Read each statement separately."
+      },
+      "questions": [
+        {
+          "id": "inf4-taskforge-t2-q01",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Tu observes des capacités différentes dans deux applications générées. Qu’est-ce qui est justifié ? (Une seule réponse.)",
+            "en": "You observe different capabilities in two generated applications. What is justified? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Inspecter le code source est inutile.",
+              "en": "Source inspection is unnecessary."
+            },
+            {
+              "fr": "Toute combinaison non observée est invalide.",
+              "en": "Every unobserved combination is invalid."
+            },
+            {
+              "fr": "Se servir des différences comme indices pour étudier la variabilité.",
+              "en": "Use the differences as evidence to investigate variability."
+            },
+            {
+              "fr": "Toute combinaison non observée est valide.",
+              "en": "Every unobserved combination is valid."
+            },
+            {
+              "fr": "Seuls les boutons peuvent représenter de la variabilité.",
+              "en": "Only buttons can represent variability."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c.**\n\n- ✘ **a.** Le T2 demande justement de lire les blocs `//#if` et le contrat de construction.\n- ✘ **b.** Deux produits ne disent rien des combinaisons non vues.\n- ✔ **c.** Les différences sont un point de départ, à confirmer par le code et le contrat.\n- ✘ **d.** Elles peuvent être interdites par une contrainte (JSONExport => LocalStorage).\n- ✘ **e.** Une capacité peut n’avoir aucun bouton (la persistance) ; un bouton n’est pas forcément une feature.\n\nDans le cours : « expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.2 Méthode : reconstruire un modèle à partir d’un code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2) ; [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "**Proposed answer: c.**\n\n- ✘ **a.** T2 precisely asks to read the `//#if` blocks and the build contract.\n- ✘ **b.** Two products say nothing about unseen combinations.\n- ✔ **c.** Differences are a starting point, to be confirmed with the code and the contract.\n- ✘ **d.** They may be forbidden by a constraint (JSONExport => LocalStorage).\n- ✘ **e.** A capability may have no button (persistence); a button is not necessarily a feature.\n\nIn the course: “expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.2 Method: rebuilding a model from code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2); [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 1",
+              "quote": "You observe different capabilities in two generated applications. What is justified?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§3",
+              "quote": "expliquez pourquoi les deux produits observés ne suffisent pas à prouver que toutes les combinaisons imaginables sont autorisées."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q02",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Qu’apporte une matrice feature–code–test ? (Une seule réponse.)",
+            "en": "What does a feature–code–test matrix provide? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Un substitut à l’exécution des tests.",
+              "en": "A replacement for running tests."
+            },
+            {
+              "fr": "Une liste de noms de clients sans lien.",
+              "en": "A list of unrelated customer names."
+            },
+            {
+              "fr": "Une règle qui impose un dépôt par feature.",
+              "en": "A rule requiring one repository per feature."
+            },
+            {
+              "fr": "Une garantie que les exigences ne changeront jamais.",
+              "en": "A guarantee that requirements never change."
+            },
+            {
+              "fr": "Des liens entre les capacités, les actifs d’implémentation et les vérifications.",
+              "en": "Links from capabilities to implementation assets and checks."
+            }
+          ],
+          "correct": [
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : e.**\n\n- ✘ **a.** La matrice dit quoi tester ; elle ne remplace pas les tests.\n- ✘ **b.** Elle relie des features, pas des clients.\n- ✘ **c.** Rien de tel : un seul gabarit contient toutes les options.\n- ✘ **d.** Elle aide au contraire à gérer les évolutions.\n- ✔ **e.** C’est la traçabilité option → code → dépendance → test du rendu T2.\n\nDans le cours : « taskforge_v2.uvl, matrice option–code–dépendance–test, résultat du comptage et explication de la nouvelle feature. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.2 Méthode : reconstruire un modèle à partir d’un code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2) ; [ch. 13 « Tester une application sans tout retester », § 1.4 Retrouver les tests réutilisables : la traçabilité](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=1.4)",
+            "en": "**Proposed answer: e.**\n\n- ✘ **a.** The matrix says what to test; it does not replace tests.\n- ✘ **b.** It links features, not customers.\n- ✘ **c.** Nothing of the sort: one template holds all the options.\n- ✘ **d.** On the contrary, it helps manage evolutions.\n- ✔ **e.** That is the option → code → dependency → test traceability of the T2 deliverable.\n\nIn the course: “taskforge_v2.uvl, matrice option–code–dépendance–test, résultat du comptage et explication de la nouvelle feature.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.2 Method: rebuilding a model from code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2); [ch. 13 “Testing an application without retesting everything”, § 1.4 Finding reusable tests: traceability](#/matiere/inf4/chapitre/inf4-10-test-application/lire?partie=1.4)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 2",
+              "quote": "What does a feature–code–test matrix provide?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "Rendu T2",
+              "quote": "taskforge_v2.uvl, matrice option–code–dépendance–test, résultat du comptage et explication de la nouvelle feature."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q03",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Tous les produits observés qui ont CSVExport ont aussi Priorities, mais il n’y a ni dépendance dans le code ni règle énoncée. Qu’est-ce qui est rigoureux ? (Une seule réponse.)",
+            "en": "Every observed product with CSVExport also has Priorities, but there is no source dependency or stated policy. What is sound? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Déclarer prouvée l’implication réciproque.",
+              "en": "Declare the reverse implication proven."
+            },
+            {
+              "fr": "Déclarer les deux features équivalentes.",
+              "en": "Declare both features equivalent."
+            },
+            {
+              "fr": "Traiter CSVExport => Priorities comme une hypothèse qui demande des preuves.",
+              "en": "Treat CSVExport => Priorities as a hypothesis needing evidence."
+            },
+            {
+              "fr": "Supprimer les deux features.",
+              "en": "Delete both features."
+            },
+            {
+              "fr": "Déclarer immédiatement cette implication prouvée.",
+              "en": "Immediately declare that implication proven."
+            }
+          ],
+          "correct": [
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c.**\n\n- ✘ **a.** Aucune preuve, dans aucun sens.\n- ✘ **b.** Une co-occurrence n’est pas une équivalence.\n- ✔ **c.** Une règle de gamme se confirme par le contrat ou par une partie prenante.\n- ✘ **d.** Elles existent dans le code : les supprimer ferait perdre des produits.\n- ✘ **e.** Une observation sur quelques produits ne prouve pas une règle.\n\nDans le cours : « Dans un vrai projet, il faudrait la confirmer avec une partie prenante. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "**Proposed answer: c.**\n\n- ✘ **a.** No evidence, either way.\n- ✘ **b.** A co-occurrence is not an equivalence.\n- ✔ **c.** A range rule is confirmed by the contract or by a stakeholder.\n- ✘ **d.** They exist in the code: deleting them would lose products.\n- ✘ **e.** An observation on a few products does not prove a rule.\n\nIn the course: “Dans un vrai projet, il faudrait la confirmer avec une partie prenante.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 3",
+              "quote": "Every observed product with CSVExport also has Priorities, but there is no source dependency or stated policy. What is sound?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§2",
+              "quote": "Dans un vrai projet, il faudrait la confirmer avec une partie prenante."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q04",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Statistics appelle visibleTasks(), définie seulement par Filters. Il n’existe aucun substitut. Qu’en découle-t-il ? (Plusieurs réponses possibles.)",
+            "en": "Statistics calls visibleTasks(), which is defined only by Filters. No substitute exists. What follows? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Statistics doit être présente dans tous les produits.",
+              "en": "Statistics must be present in all products."
+            },
+            {
+              "fr": "Filters exige Statistics.",
+              "en": "Filters requires Statistics."
+            },
+            {
+              "fr": "Renommer le nœud du diagramme fournit la fonction.",
+              "en": "Renaming the diagram node supplies the function."
+            },
+            {
+              "fr": "Statistics exige Filters dans cette implémentation.",
+              "en": "Statistics requires Filters in this implementation."
+            },
+            {
+              "fr": "Statistics sans Filters risque une erreur de fonction manquante.",
+              "en": "Statistics without Filters risks a missing-function error."
+            }
+          ],
+          "correct": [
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : d, e.**\n\n- ✘ **a.** L’appel crée une dépendance, pas une obligation.\n- ✘ **b.** C’est la réciproque ; Filters fonctionne seule.\n- ✘ **c.** Un nom dans le modèle ne crée pas de code.\n- ✔ **d.** Dépendance technique établie par l’appel de fonction : Statistics => Filters.\n- ✔ **e.** Sans le bloc Filters, visibleTasks() n’existe pas dans le produit généré.\n\nDans le cours : « Attention : une dépendance technique peut être établie par un appel de fonction. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "**Proposed answer: d, e.**\n\n- ✘ **a.** The call creates a dependency, not an obligation.\n- ✘ **b.** That is the converse; Filters works alone.\n- ✘ **c.** A name in the model creates no code.\n- ✔ **d.** Technical dependency established by the function call: Statistics => Filters.\n- ✔ **e.** Without the Filters block, visibleTasks() does not exist in the generated product.\n\nIn the course: “Attention : une dépendance technique peut être établie par un appel de fonction.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 4",
+              "quote": "Statistics calls visibleTasks(), which is defined only by Filters. No substitute exists. What follows?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§2",
+              "quote": "Attention : une dépendance technique peut être établie par un appel de fonction."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q05",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "La v2 ajoute à la v1 l’option JSONExport et JSONExport => LocalStorage, sans autre changement. Quelles affirmations sont vraies ? (Plusieurs réponses possibles.)",
+            "en": "V2 adds optional JSONExport and JSONExport => LocalStorage to v1, with no other changes. Which claims hold? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Tout produit v1 se prolonge en un produit v2 sans JSONExport.",
+              "en": "Every v1 product extends to a v2 product excluding JSONExport."
+            },
+            {
+              "fr": "Certains produits v2 sélectionnent JSONExport.",
+              "en": "Some v2 products select JSONExport."
+            },
+            {
+              "fr": "Tout ancien produit doit sélectionner JSONExport.",
+              "en": "Every old product must select JSONExport."
+            },
+            {
+              "fr": "Tout ajout optionnel double toujours le nombre de produits.",
+              "en": "Any optional addition always doubles the count."
+            },
+            {
+              "fr": "Tous les anciens produits Memory deviennent invalides.",
+              "en": "All old Memory products become invalid."
+            }
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b.**\n\n- ✔ **a.** Avec JSONExport exclue, les anciennes règles sont inchangées : les anciens produits restent représentables.\n- ✔ **b.** Avec LocalStorage (donc sans Kiosk), JSONExport est sélectionnable.\n- ✘ **c.** JSONExport est optionnelle.\n- ✘ **d.** Une option liée par une contrainte ajoute moins : 72 → 96, pas 144.\n- ✘ **e.** Ils restent valides sans JSONExport.\n\nDans le cours : « L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue. ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.3 L’effet d’une évolution sur le nombre de configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3)",
+            "en": "**Proposed answer: a, b.**\n\n- ✔ **a.** With JSONExport excluded, the old rules are unchanged: the old products remain representable.\n- ✔ **b.** With LocalStorage (hence without Kiosk), JSONExport is selectable.\n- ✘ **c.** JSONExport is optional.\n- ✘ **d.** An option tied by a constraint adds less: 72 → 96, not 144.\n- ✘ **e.** They stay valid without JSONExport.\n\nIn the course: “L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue.”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.3 The effect of an evolution on the number of configurations](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 5",
+              "quote": "V2 adds optional JSONExport and JSONExport => LocalStorage to v1, with no other changes. Which claims hold?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§3",
+              "quote": "L’ajout de la fonctionnalité ne doit pas supprimer les anciens produits : ils restent représentables lorsque la nouvelle feature est exclue."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q06",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Memory et LocalStorage implémentent chacun persist(). Quelles affirmations expliquent ce choix de conception ? (Plusieurs réponses possibles.)",
+            "en": "Memory and LocalStorage each implement persist(). Which statements explain this design? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Un nom de fonction partagé prouve un comportement identique.",
+              "en": "A shared function name proves identical behaviour."
+            },
+            {
+              "fr": "Tous les appels à persist() doivent disparaître des produits Memory.",
+              "en": "All calls to persist() must disappear in Memory products."
+            },
+            {
+              "fr": "Les deux doivent être inclus pour que l’un ou l’autre fonctionne.",
+              "en": "Both must be included for either to work."
+            },
+            {
+              "fr": "Le code commun utilise une opération commune.",
+              "en": "The shared code uses a common operation."
+            },
+            {
+              "fr": "Sélectionner une seule alternative évite des implémentations concurrentes.",
+              "en": "Selecting one alternative avoids competing implementations."
+            }
+          ],
+          "correct": [
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : d, e.**\n\n- ✘ **a.** Même nom, comportements différents : vide pour Memory, enregistrement pour LocalStorage.\n- ✘ **b.** Le code commun appelle toujours persist() ; c’est la version vide qui est incluse.\n- ✘ **c.** Les deux persist() ne doivent pas coexister dans un même produit.\n- ✔ **d.** Le code partagé appelle persist() sans savoir quel stockage est choisi.\n- ✔ **e.** Groupe alternatif : un seul bloc persist() dans chaque produit.\n\nDans le cours : « Pourquoi les deux fonctions persist() ne doivent-elles pas coexister dans un même produit ? ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.1 Variabilité fixée à la construction](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1) ; [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "**Proposed answer: d, e.**\n\n- ✘ **a.** Same name, different behaviours: empty for Memory, saving for LocalStorage.\n- ✘ **b.** Shared code still calls persist(); it is the empty version that is included.\n- ✘ **c.** The two persist() must not coexist in one product.\n- ✔ **d.** Shared code calls persist() without knowing which storage is chosen.\n- ✔ **e.** Alternative group: a single persist() block in each product.\n\nIn the course: “Pourquoi les deux fonctions persist() ne doivent-elles pas coexister dans un même produit ?”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.1 Variability fixed at build time](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1); [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 6",
+              "quote": "Memory and LocalStorage each implement persist(). Which statements explain this design?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§2",
+              "quote": "Pourquoi les deux fonctions persist() ne doivent-elles pas coexister dans un même produit ?"
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q07",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Le déroulé évite de dépendre d’un format privé d’export de configuration de FlamapyIDE. Comment la sélection est-elle transmise ? (Une seule réponse.)",
+            "en": "The workflow avoids depending on a private FlamapyIDE configuration-export format. How is selection transferred? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Coller une capture d’écran dans la liste sélectionnée.",
+              "en": "Paste a screenshot into the selected list."
+            },
+            {
+              "fr": "Écrire le JSON documenté des features sélectionnées et le valider contre le même UVL.",
+              "en": "Write the documented selected-feature JSON and validate against the same UVL."
+            },
+            {
+              "fr": "Renommer n’importe quel export en .json.",
+              "en": "Rename any export to .json."
+            },
+            {
+              "fr": "Sauter la validation, puisque les choix ont été faits visuellement.",
+              "en": "Skip validation because choices were made visually."
+            },
+            {
+              "fr": "N’utiliser que le nom du produit.",
+              "en": "Use only the product name."
+            }
+          ],
+          "correct": [
+            1
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b.**\n\n- ✘ **a.** Une image n’est pas lisible par l’atelier.\n- ✔ **b.** Format stable `{\"name\", \"selected\"}`, validé par l’atelier avec le même UVL.\n- ✘ **c.** Changer l’extension ne change pas le format.\n- ✘ **d.** La validation contre le modèle est obligatoire avant de générer.\n- ✘ **e.** Le nom ne dit pas quelles features sont choisies.\n\nDans le cours : « Le format d’export des configurations de FlamapyIDE peut varier ; nous n’en dépendons pas. ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.1 Du modèle au produit : valider, puis générer](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)",
+            "en": "**Proposed answer: b.**\n\n- ✘ **a.** An image is not readable by the workshop.\n- ✔ **b.** Stable `{\"name\", \"selected\"}` format, validated by the workshop with the same UVL.\n- ✘ **c.** Changing the extension does not change the format.\n- ✘ **d.** Validation against the model is required before generating.\n- ✘ **e.** The name does not say which features are chosen.\n\nIn the course: “Le format d’export des configurations de FlamapyIDE peut varier ; nous n’en dépendons pas.”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.1 From model to product: validate, then generate](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)"
+          },
+          "level": "remember",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 7",
+              "quote": "The workflow avoids depending on a private FlamapyIDE configuration-export format. How is selection transferred?"
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "§1",
+              "quote": "Le format d’export des configurations de FlamapyIDE peut varier ; nous n’en dépendons pas."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q08",
+          "type": "mcq",
+          "points": 1,
+          "question": {
+            "fr": "Quelles vérifications conviennent après la reconstruction de la v2 ? (Plusieurs réponses possibles.)",
+            "en": "Which checks are appropriate after reconstructing v2? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Vérifier si JSONExport peut figurer dans un produit valide.",
+              "en": "Whether JSONExport can occur in a valid product."
+            },
+            {
+              "fr": "Le nombre exact de configurations.",
+              "en": "The exact configuration count."
+            },
+            {
+              "fr": "Vérifier si l’analyse de l’UVL prouve que chaque fonction JavaScript existe.",
+              "en": "Whether UVL parsing proves every JavaScript function exists."
+            },
+            {
+              "fr": "Vérifier si la vue Graph échappe correctement les guillemets CSV.",
+              "en": "Whether Graph view correctly escapes CSV quotations."
+            },
+            {
+              "fr": "La satisfiabilité.",
+              "en": "Satisfiability."
+            }
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a, b, e.**\n\n- ✔ **a.** Le T2 demande la « possibilité de sélectionner chaque nouvelle option ».\n- ✔ **b.** Le T2 demande le nombre exact de configurations (96).\n- ✘ **c.** L’UVL décrit le modèle, pas le code : il faut des tests.\n- ✘ **d.** L’encodage CSV se teste dans le produit (T3), pas dans le graphe.\n- ✔ **e.** Première vérification : syntaxe et satisfiabilité.\n\nDans le cours : « syntaxe et satisfiabilité ; absence de features mortes ; possibilité de sélectionner chaque nouvelle option ; nombre exact de configurations ; compatibilité des anciens produits. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.2 Méthode : reconstruire un modèle à partir d’un code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)",
+            "en": "**Proposed answer: a, b, e.**\n\n- ✔ **a.** T2 asks for the “possibility of selecting each new option”.\n- ✔ **b.** T2 asks for the exact number of configurations (96).\n- ✘ **c.** UVL describes the model, not the code: tests are needed.\n- ✘ **d.** CSV encoding is tested in the product (T3), not in the graph.\n- ✔ **e.** First check: syntax and satisfiability.\n\nIn the course: “syntaxe et satisfiabilité ; absence de features mortes ; possibilité de sélectionner chaque nouvelle option ; nombre exact de configurations ; compatibilité des anciens produits.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.2 Method: rebuilding a model from code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 8",
+              "quote": "Which checks are appropriate after reconstructing v2?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§3",
+              "quote": "syntaxe et satisfiabilité ; absence de features mortes ; possibilité de sélectionner chaque nouvelle option ; nombre exact de configurations ; compatibilité des anciens produits."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q09",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Quels éléments servent de preuves pour la reconstruction dans TaskForge ? (Plusieurs réponses possibles.)",
+            "en": "Which evidence is used for reconstruction in TaskForge? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Lire l’ordre de déclaration comme une priorité commerciale.",
+              "en": "Treating declaration order as commercial priority."
+            },
+            {
+              "fr": "Supposer que chaque option coexiste avec toutes les autres.",
+              "en": "Assuming every option coexists with every other."
+            },
+            {
+              "fr": "Les règles explicites de politique produit du contrat du code.",
+              "en": "Explicit product-policy statements in the source contract."
+            },
+            {
+              "fr": "Les blocs de code conditionnels.",
+              "en": "Conditional code blocks."
+            },
+            {
+              "fr": "Les appels entre fonctions propres aux features.",
+              "en": "Calls between feature-specific functions."
+            }
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : c, d, e.**\n\n- ✘ **a.** L’ordre des déclarations ne dit rien d’une priorité.\n- ✘ **b.** Le contrat contient des exclusions (alternative de stockage, Kiosk => Memory).\n- ✔ **c.** JSONExport => LocalStorage est une règle de gamme explicitée dans le contrat.\n- ✔ **d.** Les blocs `//#if` délimitent les options.\n- ✔ **e.** Statistics appelle visibleTasks() de Filters : dépendance technique.\n\nDans le cours : « Votre reconstruction repose sur l’observation, les blocs conditionnels, les dépendances et le contrat, pas uniquement sur deux captures d’écran. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.2 Méthode : reconstruire un modèle à partir d’un code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2) ; [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)",
+            "en": "**Proposed answer: c, d, e.**\n\n- ✘ **a.** Declaration order says nothing about priority.\n- ✘ **b.** The contract contains exclusions (storage alternative, Kiosk => Memory).\n- ✔ **c.** JSONExport => LocalStorage is a range rule stated in the contract.\n- ✔ **d.** `//#if` blocks delimit the options.\n- ✔ **e.** Statistics calls Filters’ visibleTasks(): technical dependency.\n\nIn the course: “Votre reconstruction repose sur l’observation, les blocs conditionnels, les dépendances et le contrat, pas uniquement sur deux captures d’écran.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.2 Method: rebuilding a model from code](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.2); [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 9",
+              "quote": "Which evidence is used for reconstruction in TaskForge?"
+            },
+            {
+              "file": "sources-texte/inf4/28-enonce-taskforge-t2.md",
+              "loc": "§3",
+              "quote": "Votre reconstruction repose sur l’observation, les blocs conditionnels, les dépendances et le contrat, pas uniquement sur deux captures d’écran."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q10",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "A et B sont optionnelles sous une racine toujours sélectionnée et ne dépendent d’aucun autre choix. Quelle preuve, au niveau du modèle, appuie leur indépendance ? (Une seule réponse.)",
+            "en": "A and B are optional under an always-selected root and have no dependencies on other choices. What model-level evidence supports independence? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Leurs cases à cocher ont la même couleur.",
+              "en": "Their checkboxes share a colour."
+            },
+            {
+              "fr": "Les deux utilisent JavaScript.",
+              "en": "Both use JavaScript."
+            },
+            {
+              "fr": "Leurs noms sont voisins dans le source.",
+              "en": "Their names are adjacent in source."
+            },
+            {
+              "fr": "Seule la combinaison 11 a été observée.",
+              "en": "Only 11 has been observed."
+            },
+            {
+              "fr": "Les quatre combinaisons 00, 01, 10 et 11 admettent chacune une complétion.",
+              "en": "All four combinations 00, 01, 10 and 11 admit completions."
+            }
+          ],
+          "correct": [
+            4
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : e.**\n\n- ✘ **a.** L’apparence ne dit rien du modèle.\n- ✘ **b.** Un langage commun ne prouve aucune indépendance.\n- ✘ **c.** Être voisins dans le code ne dit rien.\n- ✘ **d.** Une seule combinaison observée ne prouve rien sur les trois autres.\n- ✔ **e.** Si chaque combinaison a une complétion valide, aucune règle ne lie A et B.\n\nDans le cours : « Vérifiez les complétions ou configurations compatibles via les opérations proposées. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.3 Exemple corrigé : le contrat TaskForge et sa matrice](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3) ; [ch. 9 « Configurer, générer et faire évoluer un produit », § 1.2 Configuration complète ou partielle](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)",
+            "en": "**Proposed answer: e.**\n\n- ✘ **a.** Appearance says nothing about the model.\n- ✘ **b.** A shared language proves no independence.\n- ✘ **c.** Being next to each other in the code says nothing.\n- ✘ **d.** One observed combination proves nothing about the other three.\n- ✔ **e.** If each combination has a valid completion, no rule ties A and B.\n\nIn the course: “Vérifiez les complétions ou configurations compatibles via les opérations proposées.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.3 Worked example: the TaskForge contract and its matrix](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.3); [ch. 9 “Configuring, generating and evolving a product”, § 1.2 Complete or partial configuration](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=1.2)"
+          },
+          "level": "analyze",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 10",
+              "quote": "A and B are optional under an always-selected root and have no dependencies on other choices. What model-level evidence supports independence?"
+            },
+            {
+              "file": "sources-texte/inf4/25-enonce-taskforge.md",
+              "loc": "Prise en main de FlamapyIDE",
+              "quote": "Vérifiez les complétions ou configurations compatibles via les opérations proposées."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q11",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Le modèle et le code déclarent DueDates, mais la configuration liste Deadlines. Quelle est la bonne correction ? (Une seule réponse.)",
+            "en": "The model and source declare DueDates, but the configuration lists Deadlines. What is the appropriate correction? (Select the single correct statement.)"
+          },
+          "options": [
+            {
+              "fr": "Utiliser l’identifiant déclaré de façon cohérente.",
+              "en": "Use the declared identifier consistently."
+            },
+            {
+              "fr": "Ne changer que le titre affiché du produit.",
+              "en": "Change only the displayed product title."
+            },
+            {
+              "fr": "Demander au navigateur de le traduire.",
+              "en": "Ask the browser to translate it."
+            },
+            {
+              "fr": "Supposer que les synonymes sont déduits.",
+              "en": "Assume synonyms are inferred."
+            },
+            {
+              "fr": "Supprimer la validation.",
+              "en": "Remove validation."
+            }
+          ],
+          "correct": [
+            0
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : a.**\n\n- ✔ **a.** Des identifiants stables relient exigences, modèle, configuration et code.\n- ✘ **b.** Le titre n’est pas lu par le validateur.\n- ✘ **c.** Traduire ne change pas l’identifiant attendu.\n- ✘ **d.** L’atelier compare des identifiants exacts : Deadlines est une option inconnue.\n- ✘ **e.** C’est la validation qui a détecté l’erreur.\n\nDans le cours : « La stabilité des identifiants permettra de relier modèle et code. ».\n\n→ Revoir : [ch. 9 « Configurer, générer et faire évoluer un produit », § 3.1 Du modèle au produit : valider, puis générer](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)",
+            "en": "**Proposed answer: a.**\n\n- ✔ **a.** Stable identifiers link requirements, model, configuration and code.\n- ✘ **b.** The title is not read by the validator.\n- ✘ **c.** Translating does not change the expected identifier.\n- ✘ **d.** The workshop compares exact identifiers: Deadlines is an unknown option.\n- ✘ **e.** Validation is what detected the error.\n\nIn the course: “La stabilité des identifiants permettra de relier modèle et code.”.\n\n→ Review: [ch. 9 “Configuring, generating and evolving a product”, § 3.1 From model to product: validate, then generate](#/matiere/inf4/chapitre/inf4-13-configuration-automatique/lire?partie=3.1)"
+          },
+          "level": "apply",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 11",
+              "quote": "The model and source declare DueDates, but the configuration lists Deadlines. What is the appropriate correction?"
+            },
+            {
+              "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+              "loc": "§1",
+              "quote": "La stabilité des identifiants permettra de relier modèle et code."
+            }
+          ]
+        },
+        {
+          "id": "inf4-taskforge-t2-q12",
+          "type": "mcq",
+          "points": 2,
+          "question": {
+            "fr": "Quelles pratiques soutiennent la réutilisation visée ? (Plusieurs réponses possibles.)",
+            "en": "Which practices support the intended reuse? (Select all correct statements.)"
+          },
+          "options": [
+            {
+              "fr": "Corriger indéfiniment chaque HTML généré séparément.",
+              "en": "Patch every generated HTML independently forever."
+            },
+            {
+              "fr": "Enregistrer la configuration de chaque produit.",
+              "en": "Record each product configuration."
+            },
+            {
+              "fr": "Maintenir un seul gabarit partagé avec des points de variation explicites.",
+              "en": "Maintain one shared template with explicit variation points."
+            },
+            {
+              "fr": "Utiliser des identifiants de features aléatoires et différents dans chaque artefact.",
+              "en": "Use unrelated random feature identifiers in each artifact."
+            },
+            {
+              "fr": "Abandonner le gabarit et garder des copies sans lien.",
+              "en": "Abandon the template and keep unrelated copies."
+            }
+          ],
+          "correct": [
+            1,
+            2
+          ],
+          "explanation": {
+            "fr": "**Réponse proposée : b, c.**\n\n- ✘ **a.** Corriger chaque produit à part, c’est revenir aux copies divergentes.\n- ✔ **b.** Une configuration enregistrée permet de régénérer le produit et de tracer ses choix.\n- ✔ **c.** Un gabarit commun avec des blocs `//#if` : actifs communs et points de variation explicites.\n- ✘ **d.** Les identifiants doivent être stables pour relier les artefacts.\n- ✘ **e.** Des copies sans lien ne sont plus une ligne de produits.\n\nDans le cours : « Ajoutez dix lignes sur la réutilisation : actifs communs, points de variation, moment de fixation des choix, traçabilité et limites. ».\n\n→ Revoir : [ch. 12 « Conception et réalisation d’une application », § 5.1 Variabilité fixée à la construction](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1) ; [ch. 14 « Fiche : ce que chaque tutoriel t’apprend », § 3.1 Les trois TP](#/matiere/inf4/chapitre/inf4-14-fiche-tutoriels/lire?partie=3.1)",
+            "en": "**Proposed answer: b, c.**\n\n- ✘ **a.** Fixing each product separately goes back to diverging copies.\n- ✔ **b.** A recorded configuration allows regenerating the product and tracing its choices.\n- ✔ **c.** A common template with `//#if` blocks: common assets and explicit variation points.\n- ✘ **d.** Identifiers must be stable to link the artefacts.\n- ✘ **e.** Unlinked copies are no longer a product line.\n\nIn the course: “Ajoutez dix lignes sur la réutilisation : actifs communs, points de variation, moment de fixation des choix, traçabilité et limites.”.\n\n→ Review: [ch. 12 “Designing and building an application”, § 5.1 Variability fixed at build time](#/matiere/inf4/chapitre/inf4-06-ingenierie-application-2/lire?partie=5.1); [ch. 14 “Sheet: what each tutorial teaches you”, § 3.1 The three exercises](#/matiere/inf4/chapitre/inf4-14-fiche-tutoriels/lire?partie=3.1)"
+          },
+          "level": "understand",
+          "src": [
+            {
+              "file": "sources-texte/inf4/29-qcm-taskforge-t2.md",
+              "loc": "Question 12",
+              "quote": "Which practices support the intended reuse?"
+            },
+            {
+              "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+              "loc": "Rendu T3",
+              "quote": "Ajoutez dix lignes sur la réutilisation : actifs communs, points de variation, moment de fixation des choix, traçabilité et limites."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

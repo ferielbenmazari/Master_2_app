@@ -108,7 +108,7 @@
       }
     ]
   },
-  "estimatedMinutes": 11,
+  "estimatedMinutes": 14,
   "sources": [
     "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
     "sources-texte/inf4/24-taskforge-guide-modeles.md"
@@ -278,6 +278,44 @@
           "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
           "loc": "Tutoriel 3 §1",
           "quote": "Une configuration complète exclut tout ce qui n’est pas listé. Une configuration partielle laisse les éléments non cités indécidés."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "**Compléter** une configuration partielle, c’est trouver une configuration complète qui **garde toutes les décisions imposées** (sélections et exclusions) et **respecte les contraintes** du modèle. Elle n’existe pas toujours : l’outil signale alors l’insolubilité, il n’ignore pas en silence un choix gênant. Dans le configurateur, trois états : **sélectionné**, **exclu**, **indécidé**.",
+        "en": "**Completing** a partial configuration means finding a complete configuration that **keeps every imposed decision** (selections and exclusions) and **satisfies the model’s constraints**. It does not always exist: the tool then reports unsolvability, it does not silently ignore an inconvenient choice. In the configurator, three states: **selected**, **excluded**, **undecided**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "Complete (and visualize) a partially defined configuration or notify its unsolvability (lack of satisfying solution) given the constraints in the model."
+        },
+        {
+          "file": "sources-texte/inf4/25-enonce-taskforge.md",
+          "loc": "Prise en main de FlamapyIDE",
+          "quote": "Distinguez un choix explicitement exclu d’un choix encore indécidé."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ajouter des choix imposés ne change pas le modèle : les produits possibles forment un **sous-ensemble** des produits du modèle, éventuellement **vide** ; aucun produit nouveau n’apparaît. Un choix compatible avec tous les produits (une feature du noyau) ne réduit pas leur nombre. Exemple : produits {R}, {R,A}, {R,B}, {R,A,B} ; exclure A laisse {R} et {R,B}, soit **2** complétions.",
+        "en": "Adding imposed choices does not change the model: the possible products form a **subset** of the model’s products, possibly **empty**; no new product appears. A choice compatible with every product (a core feature) does not reduce their number. Example: products {R}, {R,A}, {R,B}, {R,A,B}; excluding A leaves {R} and {R,B}, i.e. **2** completions."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "it is of course possible to mix and match selected and excluded features in a given model, which will impact the set of possible products"
+        },
+        {
+          "file": "sources-texte/inf4/22-quiz5.md",
+          "loc": "Question 9",
+          "quote": "The complete products are {R}, {R,A}, {R,B}, {R,A,B}. The user deselects A. How many completions remain?"
         }
       ]
     },
@@ -569,6 +607,25 @@
       "explain": true
     },
     {
+      "type": "paragraph",
+      "text": {
+        "fr": "Une demande qui impose Statistics et laisse Filters **indécidé** se complète en sélectionnant Filters ; si elle **exclut** Filters, elle est incohérente : on ne réécrit pas une exclusion explicite.",
+        "en": "A request that imposes Statistics and leaves Filters **undecided** is completed by selecting Filters; if it **excludes** Filters, it is inconsistent: an explicit exclusion is not overwritten."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/31-qcm-taskforge-t3.md",
+          "loc": "Question 5",
+          "quote": "Request A selects Statistics and leaves Filters undecided. Request B selects Statistics and excludes Filters."
+        },
+        {
+          "file": "sources-texte/inf4/22-quiz5.md",
+          "loc": "Question 1",
+          "quote": "Which statements describe completion of a partial configuration?"
+        }
+      ]
+    },
+    {
       "type": "callout",
       "variant": "retenir",
       "text": {
@@ -695,6 +752,85 @@
       ]
     },
     {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour corriger le coût de Tabbing : lui ajouter un attribut **Cost** de domaine **Integer** (même geste qu’au tutoriel 2), le fixer à **5**, puis ajouter `(Tabbing * Tabbing::Cost)` à l’expression de TotCost. **Précaution de la version de novembre 2024** : l’optimisation configure aussi les attributs, et l’outil ne sait pas encore les remettre à zéro ; avant l’optimisation suivante, **recharger le modèle et réinsérer les contraintes additionnelles**.",
+        "en": "To fix Tabbing’s cost: give it a **Cost** attribute of **Integer** domain (same gesture as in tutorial 2), set it to **5**, then add `(Tabbing * Tabbing::Cost)` to the TotCost expression. **Precaution for the November 2024 version**: optimisation also configures the attributes, and the tool cannot reset them yet; before the next optimisation, **reload the model and reinsert the additional constraints**."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "add a cost of 5 to the Tabbing feature to obtain the following model"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "Now, let’s modify our equation for total cost, adding the cost of tabbing as follows"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "the attributes resetting capability is not yet implemented in the tool, so please reload your model before the next step and reinsert the arbitrary constraints"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "2.1.2 Ce que garantit une configuration optimale",
+        "en": "2.1.2 What an optimal configuration guarantees"
+      },
+      "level": 3
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "fr": "**Optimale** = la meilleure valeur d’un **objectif défini** (TotCost, `min` ou `max`) parmi les configurations **faisables**. Ce n’est ni la première réponse de `solve`, ni « la meilleure pour toutes les parties prenantes ».",
+          "en": "**Optimal** = the best value of a **defined objective** (TotCost, `min` or `max`) among the **feasible** configurations. It is neither `solve`’s first answer nor “the best for every stakeholder”."
+        },
+        {
+          "fr": "Le sens (`min` / `max`) change ce qu’on cherche, pas ce qui est faisable : les contraintes restent les mêmes. Minimiser le coût ne veut pas dire « aucune feature » : les features obligatoires restent.",
+          "en": "The direction (`min` / `max`) changes what is sought, not what is feasible: the constraints stay the same. Minimising cost does not mean “no feature”: mandatory features remain."
+        },
+        {
+          "fr": "Un besoin du client (Security = 1) reste une **contrainte** pendant qu’on minimise le coût : le produit le moins cher sans contrainte peut différer du moins cher qui satisfait ce besoin.",
+          "en": "A customer need (Security = 1) stays a **constraint** while cost is minimised: the cheapest unconstrained product may differ from the cheapest one meeting that need."
+        },
+        {
+          "fr": "Plusieurs configurations peuvent atteindre le même optimum : en recevoir une ne prouve pas qu’elle est unique.",
+          "en": "Several configurations can reach the same optimum: receiving one does not prove it is unique."
+        },
+        {
+          "fr": "Deux objectifs différents peuvent choisir deux produits différents : une feature à 100 donne le produit le **plus cher** ; trois features à 10 donnent le produit le **moins cher** et celui qui a **le plus de features** (TotFeat de l’exercice final).",
+          "en": "Two different objectives can pick two different products: one feature at 100 gives the **most expensive** product; three features at 10 give the **cheapest** one and the one with **the most features** (TotFeat in the final exercise)."
+        }
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/19-tutorial-4-verification-automatique.md",
+          "loc": "Part 2",
+          "quote": "which defines the variable over which the optimization problem will be defined"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 2",
+          "quote": "find out what is the most expensive product we can make within the product line based on these costs"
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 3",
+          "quote": "Using “swi”, calculate the number of features in the product with the largest number of features."
+        },
+        {
+          "file": "sources-texte/inf4/22-quiz5.md",
+          "loc": "Question 5",
+          "quote": "A customer requires Security=1. The team also wants minimum TotCost."
+        }
+      ]
+    },
+    {
       "type": "subheading",
       "text": {
         "fr": "2.2 Les limites : l’outil ne remplace pas le jugement",
@@ -781,6 +917,44 @@
       ],
       "notions": [
         "n-generation-coverage-check"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La sélection passe au générateur dans un **format stable** documenté, pas par l’export du configurateur (« nous n’en dépendons pas ») : `{\"name\": \"TaskForge Kiosque\", \"selected\": [...]}`, **avec la racine et les regroupements**. L’atelier valide ce JSON contre le **même UVL** : une liste qui sélectionne LocalStorage sans son parent Storage est rejetée, car un enfant sélectionné exige son parent.",
+        "en": "The selection reaches the generator in a documented **stable format**, not through the configurator’s export (“we do not depend on it”): `{\"name\": \"TaskForge Kiosque\", \"selected\": [...]}`, **with the root and the groupings**. The workshop validates this JSON against the **same UVL**: a list selecting LocalStorage without its parent Storage is rejected, because a selected child requires its parent."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+          "loc": "§1",
+          "quote": "Le format d’export des configurations de FlamapyIDE peut varier ; nous n’en dépendons pas."
+        },
+        {
+          "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+          "loc": "§1",
+          "quote": "Recopiez la sélection finale dans le format stable ci-dessous, avec racine et regroupements."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Les identifiants doivent être **ceux déclarés** dans le modèle et le code : « Deadlines » n’est pas reconnu comme synonyme de DueDates. Après une évolution faite dans FlamapyIDE (ajout de ClearCompleted), l’atelier ne connaît que l’UVL qu’on lui importe : il faut **transférer le nouvel UVL** et revalider la configuration complète avant de générer.",
+        "en": "Identifiers must be **the declared ones** in the model and the code: “Deadlines” is not recognised as a synonym of DueDates. After an evolution made in FlamapyIDE (adding ClearCompleted), the workshop only knows the UVL it is given: **transfer the new UVL** and revalidate the complete configuration before generating."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/26-enonce-taskforge-t1.md",
+          "loc": "§1",
+          "quote": "La stabilité des identifiants permettra de relier modèle et code."
+        },
+        {
+          "file": "sources-texte/inf4/25-enonce-taskforge.md",
+          "loc": "Ce que font les outils",
+          "quote": "Il importe le même fichier UVL : les contraintes ne sont donc pas recopiées manuellement dans une seconde liste de règles."
+        }
       ]
     },
     {
@@ -973,8 +1147,8 @@
         },
         {
           "do": {
-            "fr": "Ajouter au gabarit de code un bloc conditionnel pour la feature.",
-            "en": "Add to the code template a conditional block for the feature."
+            "fr": "Ajouter au gabarit, avant `document.getElementById('add').onsubmit`, un bloc `//#if ClearCompleted … //#endif` : une fonction `clearCompleted` qui **garde les tâches non terminées** (`!t.done`), puis appelle `persist()` et `render()`, et un bouton « Supprimer les terminées ».",
+            "en": "Add to the template, before `document.getElementById('add').onsubmit`, a `//#if ClearCompleted … //#endif` block: a `clearCompleted` function that **keeps the unfinished tasks** (`!t.done`), then calls `persist()` and `render()`, and a “Supprimer les terminées” button."
           },
           "why": {
             "fr": "Le code commun reste unique.",
@@ -1017,6 +1191,11 @@
           "file": "sources-texte/inf4/24-taskforge-guide-modeles.md",
           "loc": "Tutoriel 3 §4",
           "quote": "Dans ce TP, le code non sélectionné est effectivement retiré."
+        },
+        {
+          "file": "sources-texte/inf4/30-enonce-taskforge-t3.md",
+          "loc": "§5",
+          "quote": "créez une fonction clearCompleted qui filtre tasks pour ne garder que les tâches non terminées, puis appelle persist() et render()."
         }
       ],
       "notions": [

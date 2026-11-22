@@ -107,7 +107,7 @@
       }
     ]
   },
-  "estimatedMinutes": 10,
+  "estimatedMinutes": 13,
   "sources": [
     "ressources/S3__INF4/mardown/7__ple.md",
     "ressources/S3__INF4/mardown/4__overview.md"
@@ -1047,14 +1047,24 @@
     {
       "type": "paragraph",
       "text": {
-        "fr": "C’est la même traduction que celle de la partie 2 (exercice F1…F12 en GNU Prolog) : une variable par feature, une contrainte par relation. SWI-Prolog (tutoriel 3) et GNU Prolog (slides) jouent le même rôle ; le tutoriel obtient le code par la fonction de traduction de VariaMos (« Get swi Model »).",
-        "en": "This is the same translation as in part 2 (exercise F1…F12 in GNU Prolog): one variable per feature, one constraint per relation. SWI-Prolog (tutorial 3) and GNU Prolog (slides) play the same role; the tutorial gets the code from VariaMos’s translation function (“Get swi Model”)."
+        "fr": "C’est la même traduction que celle de la partie 2 (exercice F1…F12 en GNU Prolog) : une variable par feature, une contrainte par relation. SWI-Prolog (tutoriel 3) et GNU Prolog (slides) jouent le même rôle ; le tutoriel obtient le code par la fonction de traduction de VariaMos (« Get swi Model »). Chemin exact : icône « clé et tournevis » au-dessus de l’explorateur → onglet **Solver Specific Semantics** → choisir **swi** → **Get swi Model**.",
+        "en": "This is the same translation as in part 2 (exercise F1…F12 in GNU Prolog): one variable per feature, one constraint per relation. SWI-Prolog (tutorial 3) and GNU Prolog (slides) play the same role; the tutorial gets the code from VariaMos’s translation function (“Get swi Model”). Exact path: “wrench and screwdriver” icon above the explorer → **Solver Specific Semantics** tab → choose **swi** → **Get swi Model**."
       },
       "src": [
         {
           "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
           "loc": "Part 2",
           "quote": "What you see in the text area in the center of the modal is a translation of your model into its constraint logic programming (CLP) representation."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 2",
+          "quote": "Navigate to the “Solver Specific Semantics” Tab and select the language to which you want to transform your model."
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 2",
+          "quote": "Now, click on the “Get swi Model” button, and you should see your model’s code appear on screen"
         }
       ],
       "notions": [
@@ -1154,6 +1164,20 @@
       "notions": [
         "n-false-pl-by-counting",
         "n-swi-translation"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "La requête commence par `L = [F4,F2,F3,F1,F5]` pour que **le nom et l’ordre** des variables correspondent **exactement** à ceux du prédicat `program` : la liste est **positionnelle**. Un appel `program([C,B,A])` au lieu de `program([A,B,C])` n’est pas une erreur de syntaxe et rien n’est trié par nom : la 1re position reste la 1re feature du programme, et l’appelant lit alors les valeurs sous les mauvais noms. Renommer la variable `L` n’y change rien.",
+        "en": "The query starts with `L = [F4,F2,F3,F1,F5]` so that **the name and order** of the variables match those of the `program` predicate **exactly**: the list is **positional**. Calling `program([C,B,A])` instead of `program([A,B,C])` is not a syntax error and nothing is sorted by name: the 1st position stays the program’s 1st feature, and the caller then reads the values under the wrong names. Renaming the variable `L` changes nothing."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "to guarantee that the name and order of variables match that of the program predicate exactly"
+        }
       ]
     },
     {
@@ -1337,11 +1361,191 @@
       ]
     },
     {
+      "type": "paragraph",
+      "text": {
+        "fr": "Ajouter l’attribut entier **Version** à VoiceControl : double-cliquer sur la feature pour ouvrir ses propriétés, cliquer sur l’icône **« + » noire** au-dessus de *Name*, nommer l’attribut `Version` et choisir le domaine **Integer**, puis Accept. Le domaine des valeurs (1 à 3) s’écrit ensuite en CLIF : `(and (>= VoiceControl::Version 1) (=< VoiceControl::Version 3))`.",
+        "en": "Adding the integer attribute **Version** to VoiceControl: double-click the feature to open its properties, click the **black “plus” icon** above *Name*, name the attribute `Version` and choose the **Integer** domain, then Accept. The value domain (1 to 3) is then written in CLIF: `(and (>= VoiceControl::Version 1) (=< VoiceControl::Version 3))`."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "click on the black “plus” icon above “Name” to add a new attribute"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "Fill the “Name” field with the name “Version” and change the “Domain” field to Integer"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 4",
+          "quote": "we haven’t restricted its domain"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "fr": "3.7 Compter sans tout stocker : ce qu’une énumération prouve",
+        "en": "3.7 Counting without storing everything: what an enumeration proves"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": {
+        "fr": "Pour compter sans garder les solutions, le tutoriel remplace le gabarit `L` par la variable anonyme `_` : `findall(_, (program(L), label(L)), Ls), length(Ls, N)`. La liste ne contient que des variables anonymes et occupe « very little space in memory » ; mais le solveur **parcourt quand même toutes les solutions** et la liste a toujours N éléments : la mémoire n’est pas constante.",
+        "en": "To count without keeping the solutions, the tutorial replaces the template `L` with the anonymous variable `_`: `findall(_, (program(L), label(L)), Ls), length(Ls, N)`. The list holds only anonymous variables and occupies “very little space in memory”; but the solver **still goes through every solution** and the list still has N elements: memory is not constant."
+      },
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "avoiding the accumulation of the concrete solutions and simply determining how many solutions are present"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "which will be filled with anonymous variables and thus occupy very little space in memory"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        {
+          "fr": "Résultat obtenu",
+          "en": "Result obtained"
+        },
+        {
+          "fr": "Ce qu’il prouve",
+          "en": "What it proves"
+        },
+        {
+          "fr": "Ce qu’il ne prouve pas",
+          "en": "What it does not prove"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "fr": "une solution (`label`, `solve`)",
+            "en": "one solution (`label`, `solve`)"
+          },
+          {
+            "fr": "le modèle est **satisfiable**",
+            "en": "the model is **satisfiable**"
+          },
+          {
+            "fr": "l’unicité, le noyau, ni qu’il existe deux produits",
+            "en": "uniqueness, the core, or that two products exist"
+          }
+        ],
+        [
+          {
+            "fr": "`findall` terminé, `length` = N",
+            "en": "completed `findall`, `length` = N"
+          },
+          {
+            "fr": "il y a exactement **N affectations complètes**",
+            "en": "there are exactly **N complete assignments**"
+          },
+          {
+            "fr": "N ensembles de features distincts : un attribut entier est « simply a variable », deux affectations peuvent ne différer que par lui",
+            "en": "N distinct feature sets: an integer attribute is “simply a variable”, two assignments may differ only by it"
+          }
+        ],
+        [
+          {
+            "fr": "F à 0 dans **toutes** les solutions d’une énumération complète",
+            "en": "F at 0 in **all** solutions of a complete enumeration"
+          },
+          {
+            "fr": "F est **morte**",
+            "en": "F is **dead**"
+          },
+          {
+            "fr": "—",
+            "en": "—"
+          }
+        ],
+        [
+          {
+            "fr": "F **jamais** à 0 dans une énumération complète",
+            "en": "F **never** at 0 in a complete enumeration"
+          },
+          {
+            "fr": "F est dans le **noyau**",
+            "en": "F is in the **core**"
+          },
+          {
+            "fr": "qu’un arc obligatoire la relie : une contrainte peut l’imposer",
+            "en": "that a mandatory edge links it: a constraint may impose it"
+          }
+        ],
+        [
+          {
+            "fr": "`F #= 1` ajouté, recherche complète : `false` (modèle satisfiable)",
+            "en": "`F #= 1` added, complete search: `false` (satisfiable model)"
+          },
+          {
+            "fr": "aucune affectation ne contient F : F est **morte**",
+            "en": "no assignment contains F: F is **dead**"
+          },
+          {
+            "fr": "quelle contrainte supprimer : il faut diagnostiquer",
+            "en": "which constraint to delete: a diagnosis is needed"
+          }
+        ],
+        [
+          {
+            "fr": "quelques solutions (`findnsols`) ou une recherche interrompue",
+            "en": "a few solutions (`findnsols`) or an interrupted search"
+          },
+          {
+            "fr": "ce qui est observé est **possible** (une feature vue à 1 est sélectionnable)",
+            "en": "what is observed is **possible** (a feature seen at 1 is selectable)"
+          },
+          {
+            "fr": "le noyau ni le nombre total (approximation) ; un **timeout** ne prouve pas l’insatisfiabilité",
+            "en": "the core or the total count (approximation); a **timeout** does not prove unsatisfiability"
+          }
+        ]
+      ],
+      "src": [
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "we would need to check among all the possible solutions if they are never set to 0, and this requires at least some degree of solving"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "getting an “approximate” calculation of core features by sampling a portion of the space of solutions"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 5",
+          "quote": "though beyond that, it is treated simply as a variable"
+        },
+        {
+          "file": "sources-texte/inf4/17-tutorial-3-code-generation-solveurs.md",
+          "loc": "Part 3",
+          "quote": "Since Prolog tells us that this query is “false” this proves that indeed there can never be a product containing F4."
+        },
+        {
+          "file": "sources-texte/inf4/21-tutorial-5-configuration-automatique.md",
+          "loc": "Part 1",
+          "quote": "the solver can only, in practice, traverse a limited portion of it in a reasonable amount of time"
+        }
+      ]
+    },
+    {
       "type": "callout",
       "variant": "retenir",
       "text": {
-        "fr": "Sémantique d’un modèle = ses affectations satisfaisantes. Une variable par feature, une contrainte par relation ; `findall` + `length` compte les produits (1 = fausse ligne) ; forcer F à 1 sans solution = F morte. Noyau = jamais à 0 ; `findnsols` = approximation ; CLIF = notation préfixe.",
-        "en": "A model’s semantics = its satisfying assignments. One variable per feature, one constraint per relation; `findall` + `length` counts products (1 = false line); forcing F to 1 with no solution = F dead. Core = never at 0; `findnsols` = approximation; CLIF = prefix notation."
+        "fr": "Sémantique d’un modèle = ses affectations satisfaisantes. Une variable par feature, une contrainte par relation ; `findall` + `length` compte les produits (1 = fausse ligne) ; forcer F à 1 sans solution = F morte. Noyau = jamais à 0 ; `findnsols` = approximation ; CLIF = notation préfixe. La liste de variables est positionnelle. `findall(_, …)` compte sans stocker, mais énumère tout ; une solution prouve la satisfiabilité, pas l’unicité ; un timeout ne prouve rien.",
+        "en": "A model’s semantics = its satisfying assignments. One variable per feature, one constraint per relation; `findall` + `length` counts products (1 = false line); forcing F to 1 with no solution = F dead. Core = never at 0; `findnsols` = approximation; CLIF = prefix notation. The variable list is positional. `findall(_, …)` counts without storing, but enumerates everything; one solution proves satisfiability, not uniqueness; a timeout proves nothing."
       }
     },
     {
